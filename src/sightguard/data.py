@@ -47,7 +47,7 @@ class FrameRecord:
     detections: tuple[Detection, ...] = ()
     status: Literal["ok", "processing_error"] = "ok"
     error: str | None = None
-    timestamp_source: Literal["video_pts", "fps_fallback"] = "fps_fallback"
+    timestamp_source: Literal["video_pts", "fps_fallback", "monotonic"] = "fps_fallback"
     schema_version: str = SCHEMA_VERSION
 
     def __post_init__(self) -> None:
@@ -59,7 +59,7 @@ class FrameRecord:
             raise ValueError("Invalid timestamp_ms")
         if any(type(v) is not int or v <= 0 for v in (self.frame_width, self.frame_height)):
             raise ValueError("Invalid frame dimensions")
-        if self.timestamp_source not in ("video_pts", "fps_fallback"):
+        if self.timestamp_source not in ("video_pts", "fps_fallback", "monotonic"):
             raise ValueError("Invalid timestamp_source")
         if self.status not in ("ok", "processing_error"):
             raise ValueError("Invalid frame status")

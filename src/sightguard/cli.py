@@ -54,10 +54,51 @@ def main(argv: list[str] | None = None) -> int:
     ui = sub.add_parser("ui", help="Launch local SightGuard Research Console")
     ui.add_argument("--port", type=int, default=7860)
     ui.add_argument("--open-browser", action="store_true")
+    live = sub.add_parser("live", help="OpenCV live camera risk demo (Q quit, H details)")
+    live.add_argument("--camera", type=int)
+    live.add_argument("--device", help="auto, cpu, cuda, cuda:0 or GPU index; default auto")
+    live.add_argument("--width", type=int)
+    live.add_argument("--height", type=int)
+    live.add_argument("--imgsz", type=int)
+    live.add_argument("--model", help="Override existing local model path; no download")
+    live.add_argument("--config", type=Path, help="Perception YAML")
+    live.add_argument("--risk-config", type=Path, help="Existing Phase 2 risk YAML")
+    live.add_argument("--live-config", type=Path, help="Camera/staleness/display YAML")
+    live.add_argument("--duration", type=float, help="Optional auto-exit duration in seconds")
     args = parser.parse_args(argv)
     logging.basicConfig(level=logging.INFO, format="%(levelname)s %(name)s: %(message)s")
     try:
-        if args.command == "ui":
+        if args.command == "live":
+            import math
+
+            from sightguard.live.app import run_live
+            from sightguard.live.config import load_live_config, resolve_device
+            from sightguard.risk.config import load_risk_config
+
+            if args.duration is not None and (
+                not math.isfinite(args.duration) or args.duration <= 0
+            ):
+                raise ValueError("duration must be finite and positive")
+            perception = load_config(args.config)
+            device = args.device or (perception.device if args.config else "auto")
+            overrides = {"device": resolve_device(device)}
+            if args.model is not None:
+                overrides["model_path"] = args.model
+            if args.imgsz is not None:
+                overrides["image_size"] = args.imgsz
+            live_config = load_live_config(args.live_config)
+            camera_overrides = {
+                name: getattr(args, name)
+                for name in ("camera", "width", "height")
+                if getattr(args, name) is not None
+            }
+            run_live(
+                replace(perception, **overrides),
+                load_risk_config(args.risk_config),
+                replace(live_config, **camera_overrides),
+                duration_s=args.duration,
+            )
+        elif args.command == "ui":
             from sightguard.ui.app import launch_ui
 
             launch_ui(Path.cwd(), args.port, inbrowser=args.open_browser)

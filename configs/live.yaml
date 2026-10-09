@@ -1,0 +1,8 @@
+# Camera dimensions are requested; the driver may negotiate different dimensions.
+camera: 0
+width: 640
+height: 480
+stale_after_ms: 1000
+alert_banner_ms: 2000
+failure_display_ms: 1200
+join_timeout_s: 10

@@ -227,3 +227,19 @@ uv run python scripts/validate_console.py --run-analysis --output outputs/consol
 HTTP 验证脚本默认读取本机 `phase3_final` 和 `tracking_verified` 运行；其他机器可用
 `--benchmark-run` / `--analysis-run` 指定已生成的目录。实际上传验证需要本机
 `examples/tracking_fixture.mp4` 及模型权重；报告拒绝覆盖，不能把本机未提交的视频当作内置样例。
+
+## Phase 5 P0–P2：实时 PC Demo
+
+使用本地权重和 OpenCV 原生窗口，实时复用现有检测、跟踪与风险决策链路：
+
+```powershell
+uv run sightguard live --camera 0 --device auto --width 640 --height 480 --imgsz 640
+# 本机 Xiaomi USB 摄像头为 DirectShow 编号 1：
+uv run sightguard live --camera 1 --device auto
+```
+
+Q 退出，H 切换详细信息。容量为 1 的缓冲区保留最新待处理帧；结果绑定其原始画面，
+过期状态显示 UNKNOWN。窗口显示实际评分、事件、提醒原因、风险更新 FPS 和处理耗时。
+设备编号随机器和设备变化；使用 `--config`、`--risk-config`、`--live-config` 读取配置，
+`--duration` 可指定自动退出秒数。启动方式、接口及本次验证见 [实时 Demo 文档](docs/live.md)。
+本次仅为 P0–P2 工程原型，不是完整 Phase 5 发布或真实道路风险效果验证。

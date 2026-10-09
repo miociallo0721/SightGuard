@@ -86,3 +86,10 @@ C 的实际核心提醒包装为统一接口，不接收 Ground Truth。
 新增 `analyze_video(on_progress=...)` 可选帧进度回调，旧调用接口保持兼容。
 风险/决策/评价核心不引用 UI。媒体缓存和导出副本集中于 `outputs/console/`，不覆盖研究来源。
 完整边界和接口见 [ui_architecture.md](ui_architecture.md)。
+
+## Phase 5 P0–P2 实时适配
+
+`cli → live.app → live.runtime → YoloPerceptor / AssessmentEngine`；`live.display` 只展示
+实际 StepResult。采集/推理/窗口分别在采集线程、推理线程、主线程运行，单槽缓存覆盖待处理旧帧。
+FrameRecord 新增 `monotonic` 时间来源，风险与事件算法保持原实现，采集序号与连续处理序号分离。
+配置、过期处理、退出及验证边界见 [live.md](live.md)。不与 Gradio 实时集成。
