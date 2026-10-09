@@ -92,4 +92,6 @@ C 的实际核心提醒包装为统一接口，不接收 Ground Truth。
 `cli → live.app → live.runtime → YoloPerceptor / AssessmentEngine`；`live.display` 只展示
 实际 StepResult。采集/推理/窗口分别在采集线程、推理线程、主线程运行，单槽缓存覆盖待处理旧帧。
 FrameRecord 新增 `monotonic` 时间来源，风险与事件算法保持原实现，采集序号与连续处理序号分离。
-配置、过期处理、退出及验证边界见 [live.md](live.md)。不与 Gradio 实时集成。
+配置、过期处理、退出及验证边界见 [live.md](live.md)。保留独立 OpenCV CLI。
+Gradio 的 `ui.live.LiveController` 为现有 LiveSession 添加单页面所有权、心跳和资源释放，
+`ui.live_tab` 新增第五个实时页。内存 JPEG 与原始结果绑定，UI 不生成评分或提醒。

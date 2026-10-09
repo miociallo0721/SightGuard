@@ -1,8 +1,9 @@
 # Research Console 架构
 
-Research Console 是本机离线研究工具，用于查看已保存的 Phase 1/2 分析、读取 Phase 3
+Research Console 是本机研究工具，用于查看已保存的 Phase 1/2 分析、读取 Phase 3
 对照实验、浏览数据集，以及在已保存感知记录上预览策略行为。它提供结果浏览和研究操作入口，
 不改变风险评分、提醒决策或独立标注口径。
+新增第五页实时摄像头 Demo，复用 Phase 5 的 LiveSession；其他研究页面继续使用已保存数据。
 
 ## 分层与依赖方向
 
@@ -16,12 +17,19 @@ flowchart LR
     Jobs --> Assess[Phase 2 assessment]
     Jobs --> Services
     Browser --> Presentation[Presentation + Plotly]
+    Browser --> Live[LiveController]
+    Live --> Session[LiveSession + AssessmentEngine]
 ```
 
 `ui.app` 负责页面、控件和回调；`ui.services` 将磁盘文件解析为类型明确的 view，进行 schema、
 状态、哈希和路径检查；`ui.jobs` 只处理用户明确发起的新视频分析及浏览器媒体副本；
 `ui.presentation` 与 `ui.plots` 把已读取的数据转换为表格、说明和图形。风险和策略核心不依赖
 Gradio，UI 通过 `FrameRecord`、配置及已保存文件与核心模块交互。
+
+`ui.live` 管理本机摄像头单页面所有权、失败/心跳清理及内存 JPEG；`ui.live_tab` 绑定
+开始/停止、Timer 与 tab/unload 清理。实时页不写私人摄像头帧，不向其他浏览器会话提供画面。
+展示沿用现有 `render_live(include_panel=False)` 的目标框和关注区域，网页表格直接读取真实
+StepResult，未定义值显示 N/A。接口与验证见 [live.md](live.md)。
 
 服务接口的主要数据对象是不可重新计算指标的 `AnalysisView` 和 `BenchmarkView`：
 

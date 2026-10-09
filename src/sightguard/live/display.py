@@ -34,6 +34,7 @@ def render_live(
     show_details: bool = True,
     error: str | None = None,
     preview: CapturedFrame | None = None,
+    include_panel: bool = True,
 ) -> np.ndarray:
     packet = result.captured if result is not None else preview
     image = (
@@ -98,6 +99,10 @@ def render_live(
                 cv2.putText(
                     image, line, (x1, y), cv2.FONT_HERSHEY_SIMPLEX, 0.43, color, 1, cv2.LINE_AA
                 )
+    if not include_panel:
+        if alerts and (now - alerts[-1][1]) * 1000 <= live_config.alert_banner_ms:
+            cv2.rectangle(image, (0, 0), (width - 1, height - 1), COLORS["HIGH"], 5)
+        return image
     panel_width = 470
     canvas = np.full((max(height, 560), width + panel_width, 3), (22, 25, 29), dtype=np.uint8)
     canvas[:height, :width] = image

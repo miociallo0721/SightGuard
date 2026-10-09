@@ -14,6 +14,7 @@ import gradio as gr
 import pandas as pd
 
 from sightguard.ui.jobs import AnalysisJobs
+from sightguard.ui.live_tab import add_live_tab
 from sightguard.ui.plots import metrics_plot, risk_plot, timeline_plot
 from sightguard.ui.presentation import alert_frame, experiment_summary, kpi_html, metrics_frame
 from sightguard.ui.services import BenchmarkView, ConsoleDataError, ConsoleStore
@@ -477,7 +478,7 @@ def build_app(root: Path | None = None) -> gr.Blocks:
         gr.HTML(
             '<header class="sg-hero"><div><h1>SightGuard <span style="color:#6cd3e8">'
             "Research Console</span></h1><p>视觉感知 · 动态风险 · 事件决策 · 独立对照实验</p>"
-            '</div><span class="sg-badge">LOCAL · OFFLINE REPLAY</span></header>'
+            '</div><span class="sg-badge">LOCAL · REPLAY + LIVE</span></header>'
         )
         gr.HTML(
             '<div class="sg-note">内置实验示例为合成数据；上传视频来源须独立确认。'
@@ -485,7 +486,7 @@ def build_app(root: Path | None = None) -> gr.Blocks:
             "实验指标不构成道路安全保证。</div>"
         )
         with gr.Tabs():
-            with gr.Tab("视觉分析 · Vision Analysis"):
+            with gr.Tab("视觉分析 · Vision Analysis") as vision_tab:
                 vision_state = gr.State(None)
                 with gr.Row():
                     vision_run = gr.Dropdown(
@@ -592,7 +593,7 @@ def build_app(root: Path | None = None) -> gr.Blocks:
                     api_name="locate_event",
                 )
                 export_button.click(export, vision_state, export_file, api_name="export_analysis")
-            with gr.Tab("策略对比 · Strategy Comparison"):
+            with gr.Tab("策略对比 · Strategy Comparison") as comparison_tab:
                 comparison_state = gr.State(None)
                 with gr.Row():
                     comparison_run = gr.Dropdown(
@@ -695,7 +696,7 @@ def build_app(root: Path | None = None) -> gr.Blocks:
                     [preview_status, preview_plot, preview_alerts],
                     api_name="preview_strategies",
                 )
-            with gr.Tab("实验分析 · Experiment Analytics"):
+            with gr.Tab("实验分析 · Experiment Analytics") as analytics_tab:
                 analytics_state = gr.State(None)
                 with gr.Row():
                     analytics_run = gr.Dropdown(
@@ -753,7 +754,7 @@ def build_app(root: Path | None = None) -> gr.Blocks:
                     errors_table,
                     api_name="filter_errors",
                 )
-            with gr.Tab("数据集管理 · Dataset Management"):
+            with gr.Tab("数据集管理 · Dataset Management") as dataset_tab:
                 with gr.Row():
                     dataset = gr.Dropdown(
                         manifests, value=first_manifest, label="项目数据集 manifest", scale=5
@@ -776,6 +777,9 @@ def build_app(root: Path | None = None) -> gr.Blocks:
                 validate_button.click(
                     validate, dataset, dataset_status, api_name="validate_dataset"
                 )
+            live_controller = add_live_tab(
+                app, store, configs, (vision_tab, comparison_tab, analytics_tab, dataset_tab)
+            )
         gr.Markdown("SightGuard · 研究原型 · 单机离线分析 · 感知错误与真实数据缺口须保留并报告")
         if first_analysis:
             app.load(load_vision, vision_run, vision_outputs, api_name=False)
@@ -788,6 +792,7 @@ def build_app(root: Path | None = None) -> gr.Blocks:
     # Narrow media allowlist: metadata/configs/models are never served as file endpoints.
     app.sightguard_store = store
     app.sightguard_jobs = jobs
+    app.sightguard_live = live_controller
     return app.queue(default_concurrency_limit=2, max_size=16)
 
 

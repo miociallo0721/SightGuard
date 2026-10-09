@@ -17,5 +17,13 @@ body, .gradio-container { background: #0b1018 !important; color: #e6edf5 !import
 .gradio-container [tabindex]:focus-visible { outline:2px solid #67d8ed !important;
   outline-offset:3px; }
 .gradio-container .plot-container { border-radius:8px; overflow:hidden; }
+.sg-live-video, .sg-live-empty { background:#080e16; border:1px solid #26374d;
+  border-radius:10px; min-height:380px; display:flex; align-items:center; justify-content:center; }
+.sg-live-video img { display:block; width:100%; max-height:520px; object-fit:contain; }
+.sg-live-empty { color:#93a9be; }
+.sg-live-alert { padding:18px; background:#141e2b; border:1px solid #334155;
+  border-radius:10px; color:#c7d6e5; overflow-wrap:anywhere; }
+.sg-live-alert strong { font-size:18px; }
+.sg-live-alert.active { border-color:#ef6868; background:#351c26; color:#ffd1d1; }
 @media (max-width: 900px) { .sg-hero { align-items:flex-start; flex-direction:column; }
   .sg-hero h1 { font-size:24px; } }
