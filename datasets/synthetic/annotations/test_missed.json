@@ -1,0 +1,49 @@
+{
+  "annotation_status": "reviewed",
+  "annotator_id": "synthetic-fixture-author",
+  "data_kind": "synthetic",
+  "duration_ms": 4000,
+  "events": [
+    {
+      "alert_opportunities": [
+        {
+          "deadline_ms": 750,
+          "kind": "initial",
+          "minimum_severity": "MEDIUM",
+          "opportunity_id": "initial",
+          "window_start_ms": 0
+        }
+      ],
+      "annotation_status": "confirmed",
+      "annotator_id": "synthetic-fixture-author",
+      "class_ids": [
+        0
+      ],
+      "end_ms": 4000,
+      "event_id": "gt_unperceived_person",
+      "event_type": "important_unperceived_obstacle",
+      "notes": "Scenario ground truth contains an important obstacle, while the tracks intentionally omit it.",
+      "severity": "HIGH",
+      "start_ms": 0,
+      "target_regions": [
+        {
+          "bbox_normalized": [
+            0.4,
+            0.25,
+            0.6,
+            0.95
+          ],
+          "end_ms": 4000,
+          "start_ms": 0
+        }
+      ],
+      "video_id": "test_missed"
+    }
+  ],
+  "excluded_intervals": [],
+  "label_source": "synthetic_scenario",
+  "notes": "Synthetic test fixture; ground-truth obstacle is deliberately absent from perception tracks.",
+  "schema_version": "3.0",
+  "source_video_sha256": "4776baff4619a920de5e280670612238bba3cebb1f91877a3e2b49b38a6744e2",
+  "video_id": "test_missed"
+}

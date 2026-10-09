@@ -1,0 +1,126 @@
+{
+  "annotation_status": "reviewed",
+  "annotator_id": "synthetic-fixture-author",
+  "data_kind": "synthetic",
+  "duration_ms": 2000,
+  "events": [
+    {
+      "alert_opportunities": [
+        {
+          "deadline_ms": 750,
+          "kind": "initial",
+          "minimum_severity": "MEDIUM",
+          "opportunity_id": "initial",
+          "window_start_ms": 0
+        },
+        {
+          "deadline_ms": 1500,
+          "kind": "escalation",
+          "minimum_severity": "HIGH",
+          "opportunity_id": "escalation",
+          "window_start_ms": 1000
+        }
+      ],
+      "annotation_status": "confirmed",
+      "annotator_id": "synthetic-fixture-author",
+      "class_ids": [
+        0
+      ],
+      "end_ms": 2000,
+      "event_id": "gt_growing_person",
+      "event_type": "growing_scale_obstacle",
+      "notes": "Scripted target grows in image scale; escalation opportunity is independently declared.",
+      "severity": "HIGH",
+      "start_ms": 0,
+      "target_regions": [
+        {
+          "bbox_normalized": [
+            0.479375,
+            0.6116666666666667,
+            0.520625,
+            0.705
+          ],
+          "end_ms": 250.0,
+          "start_ms": 0.0
+        },
+        {
+          "bbox_normalized": [
+            0.479375,
+            0.6116666666666667,
+            0.520625,
+            0.705
+          ],
+          "end_ms": 500.0,
+          "start_ms": 250.0
+        },
+        {
+          "bbox_normalized": [
+            0.4715625,
+            0.57,
+            0.5284375,
+            0.705
+          ],
+          "end_ms": 750.0,
+          "start_ms": 500.0
+        },
+        {
+          "bbox_normalized": [
+            0.45984375,
+            0.5075,
+            0.54015625,
+            0.705
+          ],
+          "end_ms": 1000.0,
+          "start_ms": 750.0
+        },
+        {
+          "bbox_normalized": [
+            0.441875,
+            0.4116666666666667,
+            0.558125,
+            0.705
+          ],
+          "end_ms": 1250.0,
+          "start_ms": 1000.0
+        },
+        {
+          "bbox_normalized": [
+            0.4153125,
+            0.27,
+            0.5846875,
+            0.705
+          ],
+          "end_ms": 1500.0,
+          "start_ms": 1250.0
+        },
+        {
+          "bbox_normalized": [
+            0.4153125,
+            0.27,
+            0.5846875,
+            0.705
+          ],
+          "end_ms": 1750.0,
+          "start_ms": 1500.0
+        },
+        {
+          "bbox_normalized": [
+            0.4153125,
+            0.27,
+            0.5846875,
+            0.705
+          ],
+          "end_ms": 2000,
+          "start_ms": 1750.0
+        }
+      ],
+      "video_id": "test_escalation"
+    }
+  ],
+  "excluded_intervals": [],
+  "label_source": "synthetic_scenario",
+  "notes": "Synthetic test fixture; target boxes and independent alert opportunities are scripted.",
+  "schema_version": "3.0",
+  "source_video_sha256": "8433d72ea8d1ca3a3052f7d512f2fa7e07e6f272d2ca6a24a134f3eaf243a027",
+  "video_id": "test_escalation"
+}

@@ -1,0 +1,44 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "sightguard"
+version = "0.4.0"
+description = "Reproducible offline visual perception for SightGuard research"
+readme = "README.md"
+requires-python = ">=3.12,<3.13"
+dependencies = [
+  "numpy>=2.0,<3",
+  "opencv-python>=4.10,<5",
+  "ultralytics>=8.4,<9",
+  "torch>=2.5,<3",
+  "torchvision>=0.20,<1",
+  "lap>=0.5.12,<1",
+  "PyYAML>=6,<7",
+  "matplotlib>=3.9,<4",
+  "gradio>=6,<7",
+  "plotly>=6,<7",
+  "pandas>=2.2,<4",
+  "imageio-ffmpeg>=0.6,<1",
+]
+
+[dependency-groups]
+dev = ["pytest>=8,<10", "ruff>=0.11,<1"]
+
+[project.scripts]
+sightguard = "sightguard.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/sightguard"]
+
+[tool.ruff]
+target-version = "py312"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+markers = ["integration: opt-in real YOLO tests requiring local weights"]

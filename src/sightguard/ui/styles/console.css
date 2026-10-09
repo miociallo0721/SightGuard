@@ -1,0 +1,21 @@
+:root { color-scheme: dark; }
+body, .gradio-container { background: #0b1018 !important; color: #e6edf5 !important; }
+.gradio-container { width: min(100%, 1660px) !important; min-width: 0 !important;
+  max-width: 1660px !important; margin: auto !important; box-sizing: border-box; }
+.sg-hero { display:flex; justify-content:space-between; gap:20px; align-items:center;
+  border-bottom:1px solid #253246; padding:12px 0 22px; margin-bottom:12px; }
+.sg-hero h1 { font-size:28px; margin:0 0 6px; font-weight:650; letter-spacing:-.5px; }
+.sg-hero p { color:#9cafc5; margin:0; font-size:14px; }
+.sg-badge { border:1px solid #17637a; border-radius:6px; padding:6px 10px;
+  color:#79d9ef; background:#10232d; font-size:12px; white-space:nowrap; }
+.sg-note { color:#a9bdd1; font-size:13px; padding:10px 12px; border-left:3px solid #23aac6;
+  background:#111e2b; border-radius:4px; margin:10px 0; }
+.sg-panel { border:1px solid #26374d !important; border-radius:10px !important; }
+.sg-status { background:#101d2a; border:1px solid #253a50; border-radius:8px; padding:10px; }
+.gradio-container table th { color:#b7cce2; font-weight:600; }
+.gradio-container button:focus-visible, .gradio-container input:focus-visible,
+.gradio-container [tabindex]:focus-visible { outline:2px solid #67d8ed !important;
+  outline-offset:3px; }
+.gradio-container .plot-container { border-radius:8px; overflow:hidden; }
+@media (max-width: 900px) { .sg-hero { align-items:flex-start; flex-direction:column; }
+  .sg-hero h1 { font-size:24px; } }

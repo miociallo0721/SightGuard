@@ -1,0 +1,16 @@
+{
+  "note": "Hand-specified expected outputs, not generated from the implementation. Image-space synthetic data only.",
+  "frame_states": ["CANDIDATE", "CANDIDATE", "ACTIVE", "LOST", "ACTIVE"],
+  "scores": [1.0, 0.8, 0.8, null, 1.0],
+  "event_changes": [
+    [0, "E000001", "created", "CANDIDATE"],
+    [125, "E000001", "updated", "CANDIDATE"],
+    [250, "E000001", "updated", "CANDIDATE"],
+    [250, "E000001", "activated", "ACTIVE"],
+    [500, "E000001", "lost", "LOST"],
+    [650, "E000001", "recovered", "ACTIVE"],
+    [650, "E000001", "censored", "ACTIVE"]
+  ],
+  "alerts": [[250, "A000001", "E000001", "first", "HIGH", [7]]],
+  "final_source_track_ids": [7, 9]
+}

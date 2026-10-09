@@ -1,0 +1,52 @@
+schema_version: "2.0"
+features:
+  focus_center_x: 0.5
+  focus_top_y: 0.35
+  focus_bottom_y: 1.0
+  focus_top_half_width: 0.12
+  focus_bottom_half_width: 0.45
+  focus_soft_margin: 0.15
+  history_window_ms: 1500
+  motion_min_interval_ms: 10
+  motion_max_interval_ms: 750
+  motion_smoothing_tau_ms: 150
+  quality_observation_target: 4
+  fallback_time_quality: 0.8
+scoring:
+  spatial_weight: 0.45
+  appearance_weight: 0.35
+  motion_weight: 0.20
+  area_full_score: 0.20
+  bottom_start: 0.30
+  bottom_full_score: 0.95
+  appearance_area_weight: 0.70
+  scale_rate_full_score: 0.50
+  inward_rate_full_score: 0.25
+  motion_scale_weight: 0.75
+  medium_threshold: 0.35
+  high_threshold: 0.65
+  smoothing_tau_ms: 0
+  upgrade_margin: 0.02
+  downgrade_margin: 0.05
+  downgrade_hold_ms: 400
+association:
+  recovery_window_ms: 750
+  track_max_center_distance: 0.35
+  geometry_max_center_distance: 0.15
+  geometry_min_iou: 0.10
+  geometry_min_score: 0.35
+  iou_weight: 0.60
+  ambiguity_margin: 0.08
+  confirmation_ms: 250
+  confirmation_observations: 2
+  confirmation_max_gap_ms: 500
+alerts:
+  minimum_level: MEDIUM
+  ordinary_interval_ms: 3000
+  escalation_interval_ms: 1000
+  escalation_min_score_delta: 0.05
+  repeat_enabled: false
+  max_alerts_per_frame: 1
+  perception_confirm_ms: 500
+  limited_quality_threshold: 0.30
+  max_frame_gap_ms: 1000

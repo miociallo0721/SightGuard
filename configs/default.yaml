@@ -1,0 +1,8 @@
+schema_version: "1.0"
+model_path: models/yolo26n.pt
+confidence: 0.25
+device: cpu
+image_size: 640
+class_ids: [0, 1, 3] # COCO: person, bicycle, motorcycle; null means all classes
+tracker: botsort.yaml
+log_every_frames: 30

@@ -1,0 +1,13 @@
+{
+  "annotation_status": "reviewed",
+  "annotator_id": "synthetic-fixture-author",
+  "data_kind": "synthetic",
+  "duration_ms": 3000,
+  "events": [],
+  "excluded_intervals": [],
+  "label_source": "synthetic_scenario",
+  "notes": "Synthetic test fixture; small target passage is labelled as no alert-worthy risk event.",
+  "schema_version": "3.0",
+  "source_video_sha256": "201fe5b619438cd7e7a3afef3be746f3fcf35c7e13ae0192a3a7e1843b788328",
+  "video_id": "test_nonrisk"
+}

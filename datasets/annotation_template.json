@@ -1,0 +1,30 @@
+{
+  "schema_version": "3.0",
+  "video_id": "REPLACE_VIDEO_ID",
+  "duration_ms": 10000,
+  "data_kind": "real",
+  "annotation_status": "draft",
+  "annotator_id": "UNASSIGNED",
+  "label_source": "pending_human_review",
+  "source_video_sha256": "REPLACE_WITH_ORIGINAL_VIDEO_SHA256",
+  "notes": "Draft template, not a negative or reviewed sample. Replace timestamps/classes using raw video only.",
+  "events": [
+    {
+      "video_id": "REPLACE_VIDEO_ID",
+      "event_id": "G001",
+      "event_type": "forward_person",
+      "start_ms": 1000,
+      "end_ms": 5000,
+      "severity": "MEDIUM",
+      "annotation_status": "confirmed",
+      "alert_opportunities": [
+        {"opportunity_id": "initial-1", "kind": "initial", "window_start_ms": 1000, "deadline_ms": 2000, "minimum_severity": "MEDIUM"}
+      ],
+      "annotator_id": "UNASSIGNED",
+      "notes": "Example field structure only; erase this event and annotate independently.",
+      "class_ids": [0],
+      "target_regions": []
+    }
+  ],
+  "excluded_intervals": []
+}

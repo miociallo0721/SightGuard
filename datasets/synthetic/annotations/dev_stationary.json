@@ -1,0 +1,49 @@
+{
+  "annotation_status": "reviewed",
+  "annotator_id": "synthetic-fixture-author",
+  "data_kind": "synthetic",
+  "duration_ms": 2000,
+  "events": [
+    {
+      "alert_opportunities": [
+        {
+          "deadline_ms": 750,
+          "kind": "initial",
+          "minimum_severity": "MEDIUM",
+          "opportunity_id": "initial",
+          "window_start_ms": 0
+        }
+      ],
+      "annotation_status": "confirmed",
+      "annotator_id": "synthetic-fixture-author",
+      "class_ids": [
+        1
+      ],
+      "end_ms": 2000,
+      "event_id": "gt_dev_bicycle",
+      "event_type": "stationary_bicycle",
+      "notes": "Development-only scripted bicycle scenario; label authored from scenario rules.",
+      "severity": "HIGH",
+      "start_ms": 0,
+      "target_regions": [
+        {
+          "bbox_normalized": [
+            0.4325,
+            0.495,
+            0.5675,
+            0.8383333333333334
+          ],
+          "end_ms": 2000,
+          "start_ms": 0
+        }
+      ],
+      "video_id": "dev_stationary"
+    }
+  ],
+  "excluded_intervals": [],
+  "label_source": "synthetic_scenario",
+  "notes": "Synthetic development fixture; no real video is included.",
+  "schema_version": "3.0",
+  "source_video_sha256": "14252232f78f11b9af459dbd5bb357dbcc77ed797b261a47072ae8c198ae0ff3",
+  "video_id": "dev_stationary"
+}
