@@ -1,0 +1,14 @@
+{
+  "seed": 20261011,
+  "rule": "entire first parent in development; no test set",
+  "assignments": {
+    "urbanego_run8_01": "development",
+    "urbanego_run8_02": "development",
+    "urbanego_run8_03": "development",
+    "urbanego_run8_04": "development",
+    "urbanego_run8_05": "development",
+    "urbanego_run8_06": "development",
+    "urbanego_run8_07": "development",
+    "urbanego_run8_08": "development"
+  }
+}

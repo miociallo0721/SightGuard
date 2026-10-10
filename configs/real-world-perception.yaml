@@ -1,0 +1,8 @@
+schema_version: '1.0'
+model_path: models/yolo26n.pt
+confidence: 0.25
+device: cpu
+image_size: 640
+class_ids: null
+tracker: botsort.yaml
+log_every_frames: 100

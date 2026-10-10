@@ -40,3 +40,7 @@ datasets/videos/*
 datasets/annotations/*
 !datasets/annotations/.gitkeep
 datasets/imported/*
+datasets/real_world/raw/
+datasets/real_world/processed/
+datasets/real_world/reports/
+datasets/real_world/annotations/

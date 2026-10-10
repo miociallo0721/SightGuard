@@ -1,0 +1,63 @@
+{
+  "schema_version": "sightguard.source-catalog.v0.1",
+  "access_date": "2026-10-11",
+  "sources": [
+    {
+      "dataset": "PEDESTRIAN",
+      "data_url": "https://doi.org/10.5281/zenodo.10907945",
+      "code_url": "https://github.com/CYENS/PEDESTRIAN",
+      "license": "unavailable",
+      "code_license": "unavailable",
+      "status": "blocked",
+      "evidence": "Official Zenodo record API and provided GitHub repository return HTTP 404; no dataset license verified; no download"
+    },
+    {
+      "dataset": "SANPO",
+      "data_url": "https://storage.googleapis.com/gresearch/sanpo_dataset/v0/",
+      "code_url": "https://github.com/google-research-datasets/sanpo_dataset",
+      "license": "CC-BY-4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "license_evidence": "https://raw.githubusercontent.com/google-research-datasets/sanpo_dataset/main/README.md",
+      "code_license": "Apache-2.0",
+      "status": "registered_not_acquired",
+      "format": "PNG sequences; JSON/CSV camera, poses, IMU; NPZ depth",
+      "scope": "SANPO-Real head/chest first-person, real outdoor volunteer recordings; exclude synthetic subset",
+      "size": "Official full dataset approximately 6 TB; first sampled head frames 3.66-3.91 MB, camera metadata 15 fps; eight full-rate 10-second segments estimated over 4 GiB",
+      "permitted_usage": "Research, local adaptation and evaluation with attribution and indication of changes",
+      "privacy": "Publisher states faces/license plates blurred; local review still required"
+    },
+    {
+      "dataset": "UrbanEgo",
+      "data_url": "https://zenodo.org/records/23062929",
+      "source_record_id": "23062929",
+      "license": "CC-BY-4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "license_evidence": "https://zenodo.org/api/records/23062929",
+      "code_license": "unavailable; no separate code acquisition",
+      "status": "acquired_verified",
+      "original_filename": "run8_20260714_174138.zip",
+      "expected_bytes": 596342239,
+      "publisher_checksum": "md5:98fc2cd3b807ac3b89816b67c129ee5e",
+      "oversize_approval": "User explicitly approved this 569 MiB archive in this task",
+      "format": "MP4 RGB, PNG depth, JSONL/CSV IMU/GPS/head pose and exported detections",
+      "scope": "Eight pedestrian runs, one wearer, Aveiro Portugal, daytime fair weather; selected run8 only",
+      "permitted_usage": "Research download, local cropping and evaluation with attribution and indication of changes",
+      "attribution": "Rodrigo Abreu, André Clérigo, Gonçalo Lourenço Silva, Pedro Rito, Susana Sargento; UrbanEgo dataset v1.0; DOI 10.5281/zenodo.23062929",
+      "limitations": "Single-source first batch; derived crops not independent test recordings; do not treat exported object detections as risk ground truth",
+      "downloaded_bytes": 596342239,
+      "archive_sha256": "f9e9298672888d414bb490b6df89e09f64f5d1bdf5d1c0535ac013a0ac6b74e7"
+    },
+    {
+      "dataset": "EgoBlind",
+      "data_url": "https://github.com/doc-doc/EgoBlind#download",
+      "license": "CC-BY-NC-4.0 for processed dataset/annotations; original video third-party restrictions",
+      "license_url": "https://raw.githubusercontent.com/doc-doc/EgoBlind/main/LICENSE",
+      "code_license": "No separate general code license inferred from dataset terms",
+      "status": "registered_not_acquired",
+      "scope": "Publisher describes 1392 blind-user first-person VideoQA videos and approximately 5.3K questions",
+      "access": "Official Google Drive train/test folders and original-source reference; no bypass or automated bulk acquisition",
+      "permitted_usage": "Non-commercial research, education, evaluation; attribution to paper and original sources; restricted original files must not be redistributed",
+      "limitations": "More suitable for subsequent user needs/VideoQA; original-source rights need per-file review before download"
+    }
+  ]
+}

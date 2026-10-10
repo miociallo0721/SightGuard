@@ -1,5 +1,11 @@
 # SightGuard（视界）
 
+## Real-World Benchmark v0.1
+
+已准备 UrbanEgo 同一次步行记录的 8 段开发视频，完成本地感知、风险日志和
+Phase 3 draft 导入。人工真值尚未完成，不提供真实监督指标；数据仅保存在 D 盘。
+来源、许可、复现命令及独立标注步骤见[数据集阶段文档](docs/real_world_benchmark_v01.md)。
+
 ## Hybrid Intelligence（影子研究）
 
 已有产品网页的“实时体验”新增 Risk Intelligence 面板，支持 Rule / Laya / Vision /
