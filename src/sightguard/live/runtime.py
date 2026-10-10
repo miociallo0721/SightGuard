@@ -9,7 +9,7 @@ from collections.abc import Callable
 from dataclasses import dataclass
 from threading import Condition, Event, Lock, Thread
 from time import monotonic
-from typing import Protocol
+from typing import TYPE_CHECKING, Protocol
 from uuid import uuid4
 
 import cv2
@@ -24,6 +24,9 @@ from sightguard.risk.engine import AssessmentEngine
 from sightguard.risk.schema import AlertEvent, StepResult
 
 LOGGER = logging.getLogger(__name__)
+
+if TYPE_CHECKING:
+    from sightguard.spatial.config import SpatialConfig
 
 
 def open_camera(index: int) -> Camera:
@@ -98,6 +101,8 @@ class LiveSession:
         camera_factory: Callable[[int], Camera] = open_camera,
         perceptor_factory: Callable[[PerceptionConfig], Perceptor] = YoloPerceptor,
         clock: Callable[[], float] = monotonic,
+        spatial_config: SpatialConfig | None = None,
+        audio_factory: Callable | None = None,
     ) -> None:
         self.perception, self.risk, self.config = perception, risk, config
         self.camera_factory, self.perceptor_factory, self.clock = (
@@ -117,12 +122,31 @@ class LiveSession:
         self.origin = 0.0
         self.started = False
         self.threads: tuple[Thread, ...] = ()
+        self.spatial_config = spatial_config
+        self.audio_factory = audio_factory
+        self.audio = None
+        self.audio_adapter = None
+        self.audio_error: str | None = None
 
     def start(self) -> None:
         if self.started:
             raise RuntimeError("LiveSession cannot be reused; create a new session")
         self.started = True
         self.origin = self.clock()
+        if self.spatial_config is not None:
+            try:
+                from sightguard.spatial.risk_adapter import RiskCueAdapter
+                from sightguard.spatial.worker import AudioWorker
+
+                factory = self.audio_factory or AudioWorker
+                self.audio = factory(
+                    self.spatial_config, clock_ms=lambda: (self.clock() - self.origin) * 1000
+                )
+                self.audio_adapter = RiskCueAdapter(self.spatial_config)
+                self.audio.start()  # Native device opening stays off the inference thread.
+            except Exception as exc:
+                self.audio_error = f"Spatial audio unavailable: {exc}"
+                LOGGER.warning("%s; vision continues", self.audio_error)
         self.threads = (
             Thread(target=self._capture, name="sightguard-camera", daemon=True),
             Thread(target=self._infer, name="sightguard-inference", daemon=True),
@@ -153,6 +177,19 @@ class LiveSession:
                 raise RuntimeError(f"Cannot open camera {self.config.camera}")
             camera.set(cv2.CAP_PROP_FRAME_WIDTH, self.config.width)
             camera.set(cv2.CAP_PROP_FRAME_HEIGHT, self.config.height)
+            # Negotiate size and FPS first, codec last. DirectShow may reset the codec
+            # when changing dimensions; Xiaomi's default YUY2 mode produces corrupt frames.
+            fps_set = camera.set(cv2.CAP_PROP_FPS, self.config.camera_fps)
+            codec_set = camera.set(
+                cv2.CAP_PROP_FOURCC, cv2.VideoWriter_fourcc(*self.config.camera_fourcc)
+            )
+            LOGGER.info(
+                "Camera requested fps=%s codec=%s; accepted fps=%s codec=%s",
+                self.config.camera_fps,
+                self.config.camera_fourcc,
+                fps_set,
+                codec_set,
+            )
             camera.set(cv2.CAP_PROP_BUFFERSIZE, 1)  # Best effort; not supported by every driver.
             index = 0
             while not self.stop_event.is_set():
@@ -249,6 +286,15 @@ class LiveSession:
                 with self.lock:
                     self.result = result
                     self.recent_alerts.extend((alert, completed) for alert in decision.alerts)
+                if self.audio is not None and self.audio_adapter is not None:
+                    try:
+                        for cue in self.audio_adapter.convert(
+                            record, decision, (completed - self.origin) * 1000
+                        ):
+                            self.audio.submit(cue)
+                    except Exception as exc:
+                        self.audio_error = f"Spatial cue submission failed: {exc}"
+                        LOGGER.warning("%s; vision continues", self.audio_error)
                 for alert in decision.alerts:
                     LOGGER.info("Alert %s %s: %s", alert.alert_type, alert.event_id, alert.reason)
                 index += 1
@@ -259,6 +305,12 @@ class LiveSession:
 
     def close(self) -> None:
         self.stop_event.set()
+        if self.audio is not None:
+            try:
+                self.audio.close()
+            except Exception as exc:
+                self.audio_error = f"Audio cleanup failed: {exc}"
+                LOGGER.warning("%s", self.audio_error)
         with self.frames.condition:
             self.frames.condition.notify_all()
         for thread in self.threads:

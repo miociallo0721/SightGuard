@@ -1,7 +1,10 @@
 """Main-thread OpenCV window and keyboard lifecycle."""
 
+from __future__ import annotations
+
 import logging
 from time import monotonic
+from typing import TYPE_CHECKING
 
 import cv2
 
@@ -14,6 +17,9 @@ from sightguard.risk.config import RiskConfig
 LOGGER = logging.getLogger(__name__)
 WINDOW = "SightGuard Live - Q quit / H details"
 
+if TYPE_CHECKING:
+    from sightguard.spatial.config import SpatialConfig
+
 
 def run_live(
     perception: PerceptionConfig,
@@ -21,8 +27,14 @@ def run_live(
     config: LiveConfig,
     *,
     duration_s: float | None = None,
+    spatial_config: SpatialConfig | None = None,
 ) -> None:
-    session = LiveSession(perception, risk, config)
+    # Preserve the default call shape for existing adapters and mock clients.
+    session = (
+        LiveSession(perception, risk, config)
+        if spatial_config is None
+        else LiveSession(perception, risk, config, spatial_config=spatial_config)
+    )
     show_details = True
     terminal_error = None
     LOGGER.info(

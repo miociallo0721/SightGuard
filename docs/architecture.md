@@ -95,3 +95,13 @@ FrameRecord 新增 `monotonic` 时间来源，风险与事件算法保持原实�
 配置、过期处理、退出及验证边界见 [live.md](live.md)。保留独立 OpenCV CLI。
 Gradio 的 `ui.live.LiveController` 为现有 LiveSession 添加单页面所有权、心跳和资源释放，
 `ui.live_tab` 新增第五个实时页。内存 JPEG 与原始结果绑定，UI 不生成评分或提醒。
+
+
+## Spatial 原生音频适配
+
+`spatial.risk_adapter` 仅将现有 AlertEvent 转成 SpatialCue，不修改评分或事件条件。
+`spatial.navigation_adapter` 提供听者相对方向的手动模拟，统一交给有界 TTL/优先级调度与
+独立 AudioWorker；OpenAL Soft ctypes 后端实际查询 HRTF，失败不停止视觉流程。
+产品网页通过 `ui.product_live` 复用现有控制器，研究台保留独立试听页。
+摄像头先设置尺寸/FPS、最后设置 MJPG，时间戳仍使用 monotonic。
+详见 [空间音频架构](spatial_audio_architecture.md)及[验证记录](spatial_audio_validation.md)。

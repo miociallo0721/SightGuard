@@ -60,3 +60,29 @@ def test_model_failure_is_reported_and_concurrent_upload_rejected(
         status = http.get(f"/api/jobs/{job}").json()
         assert status["status"] == "failed"
         assert "model test failure" in status["message"]
+
+
+def test_live_and_spatial_controls_validate_inputs_and_preserve_owner(tmp_path, monkeypatch):
+    from sightguard.ui.live import LiveController, LiveView
+
+    seen = []
+
+    def fake_start(self, owner, *args):
+        seen.append((owner, args))
+        return LiveView(running=True, audio_status={"enabled": args[-2]})
+
+    monkeypatch.setattr(LiveController, "start", fake_start)
+    with client(tmp_path) as http:
+        initial = http.get("/api/live/poll")
+        assert initial.status_code == 200 and not initial.json()["running"]
+        identity = http.cookies.get("sightguard_session")
+        assert identity and "HttpOnly" in initial.headers["set-cookie"]
+        response = http.post("/api/live/start", json={"camera": 1, "spatial_audio": True})
+        assert response.status_code == 200 and response.json()["audio_status"]["enabled"]
+        assert seen[0][0] == identity
+        assert seen[0][1][-2:] == (True, 0.12)
+        assert http.post("/api/live/start", json={"camera": -1}).status_code == 422
+        assert http.post("/api/spatial/play", json={"azimuth": 181}).status_code == 422
+        assert http.post("/api/live/navigation", json={"action": "play"}).status_code == 400
+        assert http.post("/api/live/stop").status_code == 200
+        assert http.post("/api/spatial/release").status_code == 200

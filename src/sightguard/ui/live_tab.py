@@ -42,9 +42,21 @@ def add_live_tab(
             gr.update(active=view.running),
             gr.update(interactive=not view.running),
             gr.update(interactive=view.running),
+            view.audio_status,
         )
 
-    def start(camera, device, width, height, imgsz, perception, risk, request: gr.Request) -> tuple:
+    def start(
+        camera,
+        device,
+        width,
+        height,
+        imgsz,
+        perception,
+        risk,
+        request: gr.Request,
+        spatial_audio=False,
+        audio_gain=0.12,
+    ) -> tuple:
         try:
             return outputs(
                 controller.start(
@@ -56,6 +68,8 @@ def add_live_tab(
                     imgsz,
                     perception,
                     risk,
+                    spatial_audio,
+                    audio_gain,
                 )
             )
         except Exception as exc:
@@ -69,6 +83,7 @@ def add_live_tab(
                     view.events,
                     view.alerts,
                     view.running,
+                    view.audio_status,
                 )
             )
 
@@ -77,6 +92,12 @@ def add_live_tab(
 
     def stop(request: gr.Request) -> tuple:
         return outputs(controller.stop(request.session_hash or ""))
+
+    def mute(request: gr.Request) -> tuple:
+        return outputs(controller.toggle_audio(request.session_hash or ""))
+
+    def navigate(angle, action, request: gr.Request) -> tuple:
+        return outputs(controller.navigation(request.session_hash or "", action, angle))
 
     def release(request: gr.Request) -> None:
         controller.stop(request.session_hash or "")
@@ -113,6 +134,20 @@ def add_live_tab(
                     configs["risk"], value=next(iter(configs["risk"]), None), label="风险配置"
                 )
             gr.Markdown("设备编号变化后重启控制台刷新列表；其他页面运行时不能抢占设备。")
+            with gr.Row():
+                spatial_audio = gr.Checkbox(value=False, label="开启 PC 空间音频 · 下次启动生效")
+                audio_gain = gr.Slider(0, 1, value=0.12, step=0.01, label="音频增益 · 下次启动生效")
+                mute_button = gr.Button("切换音频静音")
+            gr.Markdown("声音从服务所在 PC 输出；先在 Spatial Audio Lab 核对耳机与 HRTF。")
+        with gr.Accordion("实际空间音频状态与提交记录", open=False):
+            audio_status = gr.JSON(label="HRTF / 输出设备 / 最近 512 条诊断；非实际听觉延迟")
+        with gr.Accordion("模拟导航 · 与实际风险共享音频队列", open=False):
+            gr.Markdown("仅模拟目标方向，不提供路线或安全导航；高优先级风险可以抢占短导航音。")
+            nav_angle = gr.Slider(-180, 180, value=45, label="相对听者方向")
+            nav_action = gr.Radio(
+                ["play", "pause", "resume", "cancel"], value="play", label="导航操作"
+            )
+            nav_button = gr.Button("执行模拟导航操作")
         status = gr.Markdown(LiveView().status, elem_classes="sg-status")
         metrics = gr.HTML()
         with gr.Row():
@@ -141,15 +176,30 @@ def add_live_tab(
                 wrap=True,
             )
         timer = gr.Timer(0.2, active=False)
-        targets = [image, status, metrics, alert, events, alerts, timer, start_button, stop_button]
+        targets = [
+            image,
+            status,
+            metrics,
+            alert,
+            events,
+            alerts,
+            timer,
+            start_button,
+            stop_button,
+            audio_status,
+        ]
         start_button.click(
             start,
-            [camera, device, width, height, imgsz, perception, risk],
+            [camera, device, width, height, imgsz, perception, risk, spatial_audio, audio_gain],
             targets,
             api_name="live_start",
             queue=False,
         )
+        nav_button.click(
+            navigate, [nav_angle, nav_action], targets, api_name="live_navigation", queue=False
+        )
         stop_button.click(stop, None, targets, api_name="live_stop", queue=False)
+        mute_button.click(mute, None, targets, api_name="live_audio_mute", queue=False)
         timer.tick(
             refresh,
             None,
@@ -160,6 +210,7 @@ def add_live_tab(
             trigger_mode="once",
         )
         tab.select(leave, None, targets, api_name=False, queue=False)
+    controller.tab = tab
     app.unload(release)
     for other_tab in other_tabs:
         other_tab.select(stop, None, targets, api_name=False, queue=False)

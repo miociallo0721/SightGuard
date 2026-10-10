@@ -55,6 +55,9 @@ def main(argv: list[str] | None = None) -> int:
     ui.add_argument("--port", type=int, default=7860)
     ui.add_argument("--open-browser", action="store_true")
     ui.add_argument("--research", action="store_true", help="Open the Gradio research console")
+    spatial = sub.add_parser("spatial-demo", help="Local OpenAL HRTF listening lab (no camera)")
+    spatial.add_argument("--port", type=int, default=7862)
+    spatial.add_argument("--open-browser", action="store_true")
     live = sub.add_parser("live", help="OpenCV live camera risk demo (Q quit, H details)")
     live.add_argument("--camera", type=int)
     live.add_argument("--device", help="auto, cpu, cuda, cuda:0 or GPU index; default auto")
@@ -66,10 +69,18 @@ def main(argv: list[str] | None = None) -> int:
     live.add_argument("--risk-config", type=Path, help="Existing Phase 2 risk YAML")
     live.add_argument("--live-config", type=Path, help="Camera/staleness/display YAML")
     live.add_argument("--duration", type=float, help="Optional auto-exit duration in seconds")
+    live.add_argument("--spatial-audio", action="store_true", help="Opt-in native PC spatial audio")
+    live.add_argument("--spatial-config", type=Path, help="Audio YAML; does not change risk rules")
+    live.add_argument("--audio-device", help="Exact OpenAL playback device name")
+    live.add_argument("--audio-volume", type=float, help="Audio gain in 0..1")
     args = parser.parse_args(argv)
     logging.basicConfig(level=logging.INFO, format="%(levelname)s %(name)s: %(message)s")
     try:
-        if args.command == "live":
+        if args.command == "spatial-demo":
+            from sightguard.spatial.app import launch_spatial_demo
+
+            launch_spatial_demo(Path.cwd(), args.port, inbrowser=args.open_browser)
+        elif args.command == "live":
             import math
 
             from sightguard.live.app import run_live
@@ -93,11 +104,26 @@ def main(argv: list[str] | None = None) -> int:
                 for name in ("camera", "width", "height")
                 if getattr(args, name) is not None
             }
+            spatial_options = {}
+            if args.spatial_audio:
+                from sightguard.spatial.config import load_spatial_config
+
+                default_audio = Path("configs/spatial.yaml")
+                spatial_config = load_spatial_config(
+                    args.spatial_config or (default_audio if default_audio.is_file() else None)
+                )
+                audio_overrides = {}
+                if args.audio_device is not None:
+                    audio_overrides["device_name"] = args.audio_device
+                if args.audio_volume is not None:
+                    audio_overrides["gain"] = args.audio_volume
+                spatial_options["spatial_config"] = replace(spatial_config, **audio_overrides)
             run_live(
                 replace(perception, **overrides),
                 load_risk_config(args.risk_config),
                 replace(live_config, **camera_overrides),
                 duration_s=args.duration,
+                **spatial_options,
             )
         elif args.command == "ui":
             if args.research:

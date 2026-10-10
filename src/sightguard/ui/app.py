@@ -19,6 +19,7 @@ from sightguard.ui.plots import metrics_plot, risk_plot, timeline_plot
 from sightguard.ui.presentation import alert_frame, experiment_summary, kpi_html, metrics_frame
 from sightguard.ui.services import BenchmarkView, ConsoleDataError, ConsoleStore
 from sightguard.ui.showcase import BRAND_HEADER, FOOTER, add_overview, section_heading
+from sightguard.ui.spatial_lab import add_spatial_tab
 
 
 def _table(value: pd.DataFrame) -> pd.DataFrame:
@@ -802,12 +803,33 @@ def build_app(root: Path | None = None) -> gr.Blocks:
                 validate_button.click(
                     validate, dataset, dataset_status, api_name="validate_dataset"
                 )
+            spatial_controller = add_spatial_tab(app, root)
             live_controller = add_live_tab(
                 app,
                 store,
                 configs,
-                (overview_tab, vision_tab, comparison_tab, analytics_tab, dataset_tab),
+                (
+                    overview_tab,
+                    vision_tab,
+                    comparison_tab,
+                    analytics_tab,
+                    dataset_tab,
+                    spatial_controller.tab,
+                ),
             )
+
+        def release_spatial(request: gr.Request) -> None:
+            spatial_controller.release(request.session_hash or "")
+
+        for other in (
+            overview_tab,
+            vision_tab,
+            comparison_tab,
+            analytics_tab,
+            dataset_tab,
+            live_controller.tab,
+        ):
+            other.select(release_spatial, api_name=False, queue=False)
         open_live.click(lambda: gr.update(selected="live"), outputs=navigation, api_name=False)
         open_replay.click(lambda: gr.update(selected="vision"), outputs=navigation, api_name=False)
         gr.HTML(FOOTER)
@@ -823,6 +845,7 @@ def build_app(root: Path | None = None) -> gr.Blocks:
     app.sightguard_store = store
     app.sightguard_jobs = jobs
     app.sightguard_live = live_controller
+    app.sightguard_spatial = spatial_controller
     return app.queue(default_concurrency_limit=2, max_size=16)
 
 

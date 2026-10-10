@@ -5,6 +5,7 @@ import logging
 import threading
 import uuid
 import webbrowser
+from contextlib import asynccontextmanager
 from dataclasses import asdict
 from pathlib import Path
 from typing import Annotated
@@ -17,6 +18,7 @@ from fastapi.staticfiles import StaticFiles
 from sightguard.decision.demo_guidance import DemoGuidance, load_demo_guidance
 from sightguard.evaluation.dataset import sha256_file
 from sightguard.ui.jobs import AnalysisJobs
+from sightguard.ui.product_live import add_product_live
 from sightguard.ui.services import ConsoleStore
 
 LOGGER = logging.getLogger(__name__)
@@ -30,7 +32,19 @@ def build_product_app(root: Path) -> FastAPI:
     jobs = AnalysisJobs(store)
     config_path = store.config_path("demo_guidance.yaml")
     guidance_config = load_demo_guidance(config_path)
-    app = FastAPI(title="SightGuard · 智能辅助眼镜", docs_url=None, redoc_url=None)
+
+    @asynccontextmanager
+    async def lifespan(application: FastAPI):
+        try:
+            yield
+        finally:
+            application.state.live.shutdown()
+            application.state.spatial.shutdown()
+
+    app = FastAPI(
+        lifespan=lifespan, title="SightGuard · 智能辅助眼镜", docs_url=None, redoc_url=None
+    )
+    add_product_live(app, store)
     app.mount("/static", StaticFiles(directory=WEB_ROOT), name="static")
     state: dict[str, dict] = {}
     busy = threading.Lock()

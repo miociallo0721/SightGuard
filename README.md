@@ -278,3 +278,38 @@ uv run sightguard ui --research --port 7860
 同一控制台只运行一个摄像头会话，其他页面不能抢占或读取该会话画面。
 摄像头由本机 Python 读取，JPEG 通过内存更新，不创建摄像头视频或逐帧磁盘缓存。
 原有 OpenCV `live` 命令继续可用。使用限制及验证见 [实时 Demo 文档](docs/live.md)。
+
+
+## Spatial：PC 空间音频与模拟导航
+
+音频默认关闭，声音由服务所在 PC 的 OpenAL Soft 输出，不通过浏览器播放器。
+请先连接双耳耳机，在试听页面确认输出设备和实际 HRTF 状态。
+
+```powershell
+# 首次安装原生运行库（显式下载官方 Windows x64 发行包）
+uv run python scripts/prepare_openal.py
+# 独立试听页面
+uv run sightguard spatial-demo --port 7862
+# 研究控制台：Spatial Audio Lab 与实时体验页
+uv run sightguard ui --research --port 7861
+# Xiaomi 摄像头，本机 DirectShow 编号 1；其他机器需重新确认编号
+uv run sightguard live --camera 1 --device cpu --spatial-audio
+```
+
+产品网页 `uv run sightguard ui --port 7860` 的“实时体验”区可直接选择摄像头、
+开启空间音频、试听左/前/右方向，并查看实际 HRTF/设备/错误。
+研究台实时页的高级设置也可开启音频并设置增益；运行中可静音。
+模拟导航与该实时会话的风险提醒共享队列，支持播放、暂停、恢复和取消。
+首次提醒、升级和感知受限只来自现有 AlertEvent；试听页手动风险音是测试音。
+音频不可用会显示错误，视觉流程继续运行。未知方向使用中性正前方提示，
+默认屏幕位置映射只是近似方向，不表示测得的世界方位、距离或碰撞概率。
+同进程只允许一个音频会话；不要同时在独立 Lab 和其他服务进程中播放。
+
+原生 DLL、下载包、试听记录均在 Git 忽略目录内。Windows x64 自动准备脚本
+保留官方许可、版本与哈希；Linux/macOS 需要安装系统 OpenAL Soft 或配置
+`SIGHTGUARD_OPENAL_LIBRARY` / `configs/spatial.yaml` 的 `library_path`。
+详见 [空间音频架构](docs/spatial_audio_architecture.md)与
+[验证记录](docs/spatial_audio_validation.md)。前后/高度定位、头部跟踪、实际导航及道路效果尚未验证。
+
+本机 Xiaomi 黑屏/横纹问题已通过先设置尺寸与帧率、最后设置 MJPG 修复。
+采集格式与请求帧率由 `configs/live.yaml` 配置；时间戳仍使用 monotonic，不按请求 FPS 推算。
