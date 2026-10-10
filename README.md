@@ -1,5 +1,12 @@
 # SightGuard（视界）
 
+## Annotation Studio
+
+`uv run sightguard ui --research --port 7861` → Annotation Studio：原视频 PTS 逐帧查看、
+可点击人工时间轴、事件/提醒机会/排除区间编辑、Schema 3.0 保存及显式二次审核。
+不会自动生成真值；八段真实数据仍待人工标注。
+使用步骤见[标注工具文档](docs/annotation_studio.md)，实测记录见[验证文档](docs/annotation_studio_validation.md)。
+
 ## Real-World Benchmark v0.1
 
 已准备 UrbanEgo 同一次步行记录的 8 段开发视频，完成本地感知、风险日志和

@@ -13,6 +13,7 @@ os.environ["HF_HUB_DISABLE_TELEMETRY"] = "1"
 import gradio as gr
 import pandas as pd
 
+from sightguard.ui.annotation_tab import add_annotation_tab
 from sightguard.ui.jobs import AnalysisJobs
 from sightguard.ui.live_tab import add_live_tab
 from sightguard.ui.plots import metrics_plot, risk_plot, timeline_plot
@@ -804,6 +805,7 @@ def build_app(root: Path | None = None) -> gr.Blocks:
                     validate, dataset, dataset_status, api_name="validate_dataset"
                 )
             spatial_controller = add_spatial_tab(app, root)
+            annotation_tab = add_annotation_tab(root)
             live_controller = add_live_tab(
                 app,
                 store,
@@ -815,6 +817,7 @@ def build_app(root: Path | None = None) -> gr.Blocks:
                     analytics_tab,
                     dataset_tab,
                     spatial_controller.tab,
+                    annotation_tab,
                 ),
             )
 
@@ -828,6 +831,7 @@ def build_app(root: Path | None = None) -> gr.Blocks:
             analytics_tab,
             dataset_tab,
             live_controller.tab,
+            annotation_tab,
         ):
             other.select(release_spatial, api_name=False, queue=False)
         open_live.click(lambda: gr.update(selected="live"), outputs=navigation, api_name=False)

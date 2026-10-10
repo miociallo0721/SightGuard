@@ -64,6 +64,11 @@ StepResult，未定义值显示 N/A。接口与验证见 [live.md](live.md)。
 
 ## 文件访问与写入边界
 
+Annotation Studio 是显式人工编辑入口，独立 `annotation_store` 只对已登记且通过
+来源校验的 development 标签写入，复用 Schema 3.0。Reviewed/test 只读；保存更新
+标签与 manifest 哈希并保留旧版本。它仅显示原始视频和人工区间，不显示模型输出。
+原有 ConsoleStore 及其他研究页面继续只读。具体工作流见 [Annotation Studio](annotation_studio.md)。
+
 `ConsoleStore` 的运行 ID、数据集 manifest ID 和配置 ID 都是受限的相对路径。解析后还会检查路径
 仍在项目的 `outputs/`、`datasets/` 或 `configs/` 范围内，因此 `..`、绝对路径和逃逸到根目录外的
 符号链接会被拒绝。读取标注前，benchmark manifest、标注哈希、感知哈希和运行输入引用必须一致；
