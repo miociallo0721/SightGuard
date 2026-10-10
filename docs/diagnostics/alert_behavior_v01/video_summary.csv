@@ -1,0 +1,9 @@
+﻿video_id,duration_ms,alert_count,alerts_per_minute,alert_types,alert_levels,event_count,risk_event_count,perception_event_count,alerted_event_count
+urbanego_run8_01,15000.000000000002,33,131.99999999999997,"{'first': 31, 'escalation': 2}","{'HIGH': 9, 'MEDIUM': 24}",104,100,4,31
+urbanego_run8_02,15000.000000000002,55,219.99999999999997,"{'first': 51, 'escalation': 4}","{'HIGH': 23, 'MEDIUM': 32}",132,123,9,51
+urbanego_run8_03,15000.000000000002,34,135.99999999999997,"{'first': 32, 'escalation': 2}","{'HIGH': 15, 'MEDIUM': 19}",85,84,1,32
+urbanego_run8_04,15000.000000000002,20,79.99999999999999,"{'first': 18, 'escalation': 2}","{'HIGH': 12, 'MEDIUM': 8}",38,36,2,18
+urbanego_run8_05,15000.000000000002,36,143.99999999999997,"{'first': 33, 'escalation': 3}","{'HIGH': 12, 'MEDIUM': 24}",144,140,4,33
+urbanego_run8_06,15000.000000000002,25,99.99999999999999,"{'first': 22, 'escalation': 3}","{'HIGH': 19, 'MEDIUM': 6}",66,65,1,22
+urbanego_run8_07,15000.000000000002,48,191.99999999999997,"{'first': 40, 'escalation': 8}","{'HIGH': 28, 'MEDIUM': 20}",130,121,9,40
+urbanego_run8_08,15000.000000000002,6,23.999999999999996,"{'first': 5, 'escalation': 1}","{'MEDIUM': 4, 'HIGH': 2}",63,60,3,5

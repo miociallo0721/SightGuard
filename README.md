@@ -364,3 +364,8 @@ uv run sightguard live --camera 1 --device cpu --spatial-audio
 Hybrid GPU 研究工具与实际限制见 [GPU 可行性记录](docs/hybrid_gpu_feasibility.md)。
 2026-10-11 已完成 RTX 2050 上 Vision 混合精度真实推理；默认仍为 CPU 影子模式。
 原风险任务仍全部 UNKNOWN，GPU 加速不等于风险判断有效；见 [UNKNOWN 调查](docs/laya_vision_unknown_investigation.md)。
+
+提醒行为诊断：`uv run python scripts/diagnose_alert_behavior.py` 只读取现有真实运行日志，
+输出逐视频统计、事件异常索引与原始评分轨迹，不重新推理或改变策略。
+Research Console 的视频回放页提供事件筛选、原始曲线、实际 AlertEvent 标记与关键帧定位。
+统计口径、证据和下一阶段建议见 [诊断报告](docs/alert_behavior_diagnosis.md)。

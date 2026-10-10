@@ -3,6 +3,7 @@
 import html
 import json
 import os
+from collections import Counter
 from pathlib import Path
 from typing import Any
 
@@ -235,7 +236,7 @@ def build_app(root: Path | None = None) -> gr.Blocks:
                     "运行统计 · 非准确率",
                 ),
                 jobs.playable_video(view.video_path),
-                risk_plot(view.risk_frames),
+                risk_plot(view.risk_frames, view.alerts),
                 _table(alert_frame(view.alerts)),
                 _table(pd.DataFrame(view.events)),
                 gr.Slider(minimum=0, maximum=max(1, view.duration_ms), value=0, step=1),
@@ -277,6 +278,56 @@ def build_app(root: Path | None = None) -> gr.Blocks:
             )
         except Exception as exc:
             return None, pd.DataFrame(), pd.DataFrame(), _message(exc)
+
+    def diagnostic_choices(run_id: str | None) -> Any:
+        if not run_id:
+            return gr.Dropdown(choices=[], value=None)
+        view = store.load_analysis(run_id)
+        counts = Counter(a["event_id"] for a in view.alerts)
+        ids = {r["event_id"] for r in view.events}
+        return gr.Dropdown(
+            choices=[("全部事件", "")]
+            + [
+                (f"{eid} · {counts[eid]} 次提醒", eid)
+                for eid in sorted(ids, key=lambda e: (-counts[e], e))
+            ],
+            value="",
+        )
+
+    def diagnostic_event(run_id: str | None, selected: str | None) -> tuple:
+        from sightguard.evaluation.alert_diagnosis import diagnose_video
+        from sightguard.ui.plots import lifecycle_plot
+
+        if not run_id:
+            return risk_plot(()), lifecycle_plot([]), pd.DataFrame(), "请先加载分析", 0
+        view = store.load_analysis(run_id)
+        result = diagnose_video(
+            run_id, view.duration_ms, list(view.risk_frames), list(view.events), list(view.alerts)
+        )
+        rows = [r for r in result["events"] if not selected or r["event_id"] == selected]
+        detail = [r for r in view.events if not selected or r["event_id"] == selected]
+        first = rows[0] if selected and rows else None
+        timestamp = (
+            first["alerts"][0]["timestamp_ms"]
+            if first and first["alerts"]
+            else first["start_ms"]
+            if first
+            else 0
+        )
+        note = (
+            f"{first['event_id']} · {first['class_name']} · tracks={first['source_track_ids']} · "
+            f"提醒 {first['alert_count']} 次 · 观测跨度 {first['observed_span_ms']:.0f} ms · "
+            f"右删失={first['right_censored']}"
+            if first
+            else "全部事件；区间包含 LOST 等状态，非持续可见时间。"
+        )
+        return (
+            risk_plot(view.risk_frames, view.alerts, selected or None),
+            lifecycle_plot(rows),
+            _table(pd.DataFrame(detail)),
+            note,
+            timestamp,
+        )
 
     def event_at(run_id: str | None, token: str | None) -> tuple:
         try:
@@ -524,6 +575,13 @@ def build_app(root: Path | None = None) -> gr.Blocks:
                         scale=1,
                     )
                     risk_chart = gr.Plot(label="风险评分曲线", value=risk_plot(()), scale=1)
+                with gr.Accordion("提醒行为诊断 · 原始曲线与生命周期", open=False):
+                    diagnostic_selector = gr.Dropdown([], label="按事件筛选 · 提醒最多优先")
+                    diagnostic_note = gr.Markdown("未加载事件；行为统计不代表误报评价。")
+                    diagnostic_timeline = gr.Plot(label="事件区间与实际提醒")
+                    diagnostic_rows = gr.Dataframe(label="所选事件生命周期详情", interactive=False)
+                    diagnostic_time = gr.Number(value=0, label="定位时间 / ms", precision=1)
+                    diagnostic_jump = gr.Button("定位到事件首次提醒 / 修改时间后跳转")
                 with gr.Accordion("逐帧探索 · 目标、时间与事件", open=False):
                     gr.Markdown(
                         "**独立时间定位**：滑块选择最近的先前帧，并显示实际帧号/时间。"
@@ -570,6 +628,25 @@ def build_app(root: Path | None = None) -> gr.Blocks:
                     export_file,
                 ]
                 load_button.click(load_vision, vision_run, vision_outputs, api_name="load_analysis")
+                vision_state.change(diagnostic_choices, vision_state, diagnostic_selector)
+                diagnostic_selector.change(
+                    diagnostic_event,
+                    [vision_state, diagnostic_selector],
+                    [
+                        risk_chart,
+                        diagnostic_timeline,
+                        diagnostic_rows,
+                        diagnostic_note,
+                        diagnostic_time,
+                    ],
+                    api_name="diagnose_event",
+                )
+                diagnostic_jump.click(
+                    lambda run, timestamp: (timestamp, *frame_at(run, timestamp)),
+                    [vision_state, diagnostic_time],
+                    [time_slider, keyframe, observations, current_alerts, frame_info],
+                    api_name="locate_diagnostic_time",
+                )
                 refresh.click(
                     lambda: gr.Dropdown(choices=store.analysis_runs(), value=None),
                     outputs=vision_run,

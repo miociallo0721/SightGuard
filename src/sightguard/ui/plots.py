@@ -90,7 +90,9 @@ def _empty_figure(title: str, message: str, *, x_title: str, y_title: str) -> go
     return figure
 
 
-def risk_plot(risk_frames: tuple[dict, ...]) -> go.Figure:
+def risk_plot(
+    risk_frames: tuple[dict, ...], alerts: tuple[dict, ...] = (), event_id: str | None = None
+) -> go.Figure:
     """Plot observed risk scores over video time without interpolating missing frames."""
     points: dict[str, list[tuple[float, float, list[Any]]]] = defaultdict(list)
     for frame in risk_frames:
@@ -108,7 +110,9 @@ def risk_plot(risk_frames: tuple[dict, ...]) -> go.Figure:
             score = _number(assessment.get("score"))
             if score is None:
                 continue
-            event_id = str(observation.get("event_id") or "未关联事件")
+            observed_id = str(observation.get("event_id") or "未关联事件")
+            if event_id is not None and observed_id != event_id:
+                continue
             severity = str(assessment.get("level") or "未知")
             quality = _dict(assessment.get("quality"))
             if quality.get("score") is None:
@@ -118,15 +122,16 @@ def risk_plot(risk_frames: tuple[dict, ...]) -> go.Figure:
             quality_text = "N/A" if quality_score is None else f"{quality_score:.3f}"
             class_name = str(observation.get("class_name") or "未知类别")
             customdata = [
-                html.escape(event_id),
+                html.escape(observed_id),
                 html.escape(severity),
                 quality_text,
                 html.escape(class_name),
                 frame.get("frame_index"),
             ]
-            points[event_id].append((timestamp_s, score, customdata))
+            points[observed_id].append((timestamp_s, score, customdata))
 
-    if not points:
+    visible_alerts = [a for a in alerts if event_id is None or a.get("event_id") == event_id]
+    if not points and not visible_alerts:
         return _empty_figure(
             "风险分数随视频时间变化",
             "没有可绘制的有效风险观测",
@@ -135,16 +140,29 @@ def risk_plot(risk_frames: tuple[dict, ...]) -> go.Figure:
         )
 
     figure = go.Figure()
-    for event_id in sorted(points):
-        rows = sorted(points[event_id], key=lambda item: item[0])
+    for observed_id in sorted(points):
+        rows = sorted(points[observed_id], key=lambda item: item[0])
+        # Break lines across absent observations; no smoothing or gap interpolation.
+        frame_times = [
+            float(f["timestamp_ms"]) / 1000
+            for f in risk_frames
+            if _number(f.get("timestamp_ms")) is not None
+        ]
+        adjacent = set(zip(frame_times, frame_times[1:], strict=False))
+        plotted = []
+        for row in rows:
+            if plotted and (plotted[-1][0], row[0]) not in adjacent:
+                plotted.append((None, None, [None] * 5))
+            plotted.append(row)
         figure.add_trace(
             go.Scatter(
-                x=[row[0] for row in rows],
-                y=[row[1] for row in rows],
-                customdata=[row[2] for row in rows],
-                mode="markers",
-                name=html.escape(event_id),
-                marker={"size": 8},
+                x=[row[0] for row in plotted],
+                y=[row[1] for row in plotted],
+                customdata=[row[2] for row in plotted],
+                mode="lines+markers",
+                connectgaps=False,
+                name=html.escape(observed_id),
+                marker={"size": 3},
                 hovertemplate=(
                     "时间：%{x:.3f} 秒<br>风险分数：%{y:.3f}<br>"
                     "事件：%{customdata[0]}<br>等级：%{customdata[1]}<br>"
@@ -153,12 +171,47 @@ def risk_plot(risk_frames: tuple[dict, ...]) -> go.Figure:
                 ),
             )
         )
+    for kind, symbol in (
+        ("first", "circle"),
+        ("escalation", "triangle-up"),
+        ("perception_limited", "x"),
+    ):
+        selected = [
+            a
+            for a in alerts
+            if a.get("alert_type") == kind and (event_id is None or a.get("event_id") == event_id)
+        ]
+        if selected:
+            figure.add_trace(
+                go.Scatter(
+                    x=[a["timestamp_ms"] / 1000 for a in selected],
+                    y=[
+                        1.04 if kind == "perception_limited" else a.get("risk_score")
+                        for a in selected
+                    ],
+                    mode="markers",
+                    name=f"AlertEvent · {_TYPE_LABELS[kind]}"
+                    + ("（无风险分数，独立提示行）" if kind == "perception_limited" else ""),
+                    marker={"size": 12, "symbol": symbol, "color": "#fb923c"},
+                    customdata=[
+                        [a.get("event_id"), a.get("alert_id"), a.get("reason")] for a in selected
+                    ],
+                    hovertemplate=(
+                        "%{x:.3f}s · %{y:.3f}<br>%{customdata[0]} · "
+                        "%{customdata[1]}<br>%{customdata[2]}<extra></extra>"
+                    ),
+                )
+            )
     figure.update_layout(
         template=_DARK,
         title="风险分数随视频时间变化",
         xaxis_title="视频时间（秒）",
         yaxis_title="风险分数（0–1）",
-        yaxis={"range": [0, 1]},
+        yaxis={
+            "range": [0, 1.1]
+            if any(a.get("alert_type") == "perception_limited" for a in visible_alerts)
+            else [0, 1]
+        },
         legend_title="风险事件",
         hovermode="closest",
     )
@@ -168,6 +221,56 @@ def risk_plot(risk_frames: tuple[dict, ...]) -> go.Figure:
 def _video_id(record: Mapping[str, Any]) -> str | None:
     value = record.get("video_id", record.get("stream_id"))
     return None if value is None else str(value)
+
+
+def lifecycle_plot(events: list[dict]) -> go.Figure:
+    """Model event intervals (including absence) and real AlertEvent positions."""
+    figure = go.Figure()
+    for event in events:
+        eid = event["event_id"]
+        figure.add_trace(
+            go.Scatter(
+                x=[event["start_ms"] / 1000, event["end_ms"] / 1000],
+                y=[eid, eid],
+                mode="lines",
+                line={"width": 9, "color": "#35576b"},
+                showlegend=False,
+                name=eid,
+                hovertemplate="%{y} · %{x:.3f}s<extra>生命周期范围，含缺失</extra>",
+            )
+        )
+        for transition in event["transitions"]:
+            figure.add_trace(
+                go.Scatter(
+                    x=[transition["timestamp_ms"] / 1000],
+                    y=[eid],
+                    mode="markers",
+                    marker={"size": 5, "color": "#94a3b8"},
+                    showlegend=False,
+                    text=[transition["state"]],
+                    hovertemplate="%{x:.3f}s · %{text}<extra></extra>",
+                )
+            )
+        for alert in event["alerts"]:
+            kind = alert["alert_type"]
+            figure.add_trace(
+                go.Scatter(
+                    x=[alert["timestamp_ms"] / 1000],
+                    y=[eid],
+                    mode="markers",
+                    showlegend=False,
+                    marker={"size": 12, "symbol": _TYPE_SYMBOLS.get(kind, "x"), "color": "#fb923c"},
+                    text=[f"{kind} · {alert['alert_id']} · score={alert.get('risk_score')}"],
+                    hovertemplate="%{x:.3f}s · %{y}<br>%{text}<extra></extra>",
+                )
+            )
+    figure.update_layout(
+        template=_DARK,
+        title="生命周期 · 圆形首次 / 三角升级 / ×感知受限",
+        xaxis_title="视频时间（秒）",
+        height=max(300, min(1200, len(events) * 22)),
+    )
+    return figure
 
 
 def _record_status(rows: list[Mapping[str, Any]]) -> tuple[str, str, str]:
