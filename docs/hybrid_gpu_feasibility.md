@@ -1,5 +1,128 @@
 # Hybrid GPU 可行性研究记录
 
+## 2026-10-11 续验：Vision 已完成真实 CUDA 推理
+
+本节为最新结果，下方 2026-10-10 记录为历史状态，保留其失败诊断与原始产物。
+未改变默认 CPU 模式、规则风险、AlertEvent 或音频调度；GPU 仅作影子研究。
+
+### CUDA 环境与验收
+
+复用 D 盘隔离环境，一次完成官方 PyTorch **2.10.0+cu130** 安装，下载约 1.7 GiB，
+未更换驱动或安装系统 CUDA Toolkit。RTX 2050 4096 MiB，驱动 616.56，compute capability
+8.6；`torch.version.cuda=13.0`，`torch.cuda.is_available()=True`，cuDNN 9.12。
+真实 CUDA 1024×1024 矩阵乘法输出 1024；张量释放并 empty_cache 后分配量下降，但仍约
+8 MiB 库工作空间，不将其解释为泄漏或完全零占用。记录在 `2026-10-11-environment/cuda_tensor_probe.json`。
+
+官方提供 Python 3.12 Windows cu130 wheel，实际兼容性由本机运算和模型前向验证，
+不依据驱动显示的 CUDA 13.4 单独判断。[PyTorch 官方版本安装说明](https://pytorch.org/get-started/previous-versions/#v2-10-0)
+
+### Vision 固定输入 GPU / CPU 同环境比较
+
+固定模型、权重 SHA、图像、state、questions 与预处理定义完全一致，均使用新隔离环境
+中的 Torch 2.10.0；CPU FP32 在同环境 CPU 设备运算，原 CPU 环境另行回归。
+每组冷启动 1 次、预热 3 次、稳态 30 次，均成功且零异常、未发生 OOM。
+
+- CUDA encoder FP16 + FP32 readout/head：predict P50 **154.358 ms**、P95 **160.781 ms**、
+  Mean **154.794 ms**；加载 **9047.214 ms**，冷启动端到端 **1075.641 ms**。
+  预处理 P50 96.399 ms，forward P50 55.101 ms，风险解析 P50 0.009 ms。
+- CPU FP32 同依赖对照：predict P50 **1783.087 ms**、P95 **1849.632 ms**、
+  Mean **1786.863 ms**；加载 **7731.327 ms**，冷启动端到端 **1896.222 ms**。
+  预处理 P50 96.757 ms，forward P50 1684.577 ms，风险解析 P50 0.012 ms。
+
+本组调用 P50 比约 11.55 倍；不是摄像头端到端提速，也没有测量 YOLO 竞争时的实际 FPS。
+当前图像预处理仍在 CPU，有约 96 ms 开销；未为优化进行额外改动。
+
+192698688 个参数 FP16、8462659 个参数 FP32，所有参数在 cuda:0。
+实际运行 hook 显示视觉塔 FP16 CUDA 输入/输出、scorer FP32 CUDA 输入/输出；Profiler
+记录 1225 个 CUDA 设备事件。最终文本解析与上游输出 `.cpu()` 不构成骨干 CPU 回退。
+
+模型加载后 Torch allocated 425644544 bytes，reserved 914358272 bytes；全程
+peak allocated **828387328 bytes（790 MiB）**，peak reserved **920649728 bytes（878 MiB）**。
+nvidia-smi 采样整卡峰值 **969 MiB**，仅为采样下界且非进程独占显存；WDDM 进程显存为 N/A。
+CUDA 初始化时实际 free 3468951552 bytes，模型加载后 free 2544107520 bytes，total
+4294508544 bytes。未执行长时间稳定性或真实 OOM 试验。
+
+原固定风险任务 CPU 与 GPU 各 30/30 UNKNOWN，选择一致，候选概率最大绝对差 **0.0036**。
+GPU 较快没有消除弃权。小测试集中的 22 个 choice 全部 CPU/GPU 选择一致，概率最大差
+0.0032；六个风险任务仍全部 UNKNOWN。原始 logits、预处理后张量设备、问题/图像哈希、
+原始分数及具体错误判断见 [UNKNOWN 调查](laya_vision_unknown_investigation.md)。
+
+新增记录目录均在 `outputs/hybrid/gpu-benchmark/`：`vision-cuda-2026-10-11/`、
+`vision-cpu-matched-2026-10-11/`、`unknown-cuda-2026-10-11/`、`unknown-cpu-2026-10-11/`、
+`2026-10-11-environment/`，不覆盖历史记录。新的 CPU 耗时不与此前 Torch 2.14.1 的
+1701 ms 数据直接作为同依赖对照；本轮重新统一了环境。
+
+Vision CUDA Benchmark 可按下面历史章节中的命令复现，输出目录须换新目录；UNKNOWN
+调查命令见对应文档。默认 CPU 与真实提醒继续保留，Vision 仅适合进一步任务语义研究。
+
+### Structured QInt8：CUDA 执行与 CPU fallback 并存
+
+ORT 1.31.0 GPU 隔离环境在先 import CUDA Torch 后能够加载 `cublasLt64_13.dll`、
+`cublas64_13.dll`、`cudart64_13.dll`、`cudnn64_9.dll`（逐项实际 WinDLL 检查）。
+真实 Session providers 为 CUDAExecutionProvider、CPUExecutionProvider，不再是此前初始化
+缺 DLL 后的纯 CPU Session；未改系统 PATH/驱动，原 QInt8 权重未修改。
+
+同一环境、同输入 CPU/GPU 各 30 次真实稳态调用，均成功、零非法输出：
+
+- CUDA+CPU：predict P50 **546.582 ms**、P95 **575.352 ms**、Mean **548.463 ms**；
+  加载 11063.272 ms，冷启动端到端 758.018 ms。整卡采样峰值 629 MiB（非独占/采样下界）。
+- CPU：predict P50 **659.254 ms**、P95 **682.706 ms**、Mean **661.548 ms**；
+  加载 7323.964 ms，冷启动端到端 701.240 ms。
+
+profiling 共记录 CUDA 75242、CPU 13668 个节点事件（包含冷启动、预热和稳态的重复节点事件，
+不是静态独立节点数）。约 84.6% 事件在 CUDA，但主要 QInt8 矩阵运算回退 CPU：
+MatMulInteger 4148 个事件，累计 10149220 µs；DynamicQuantizeLinear 4148 个事件，
+累计 709920 µs。CUDA MemcpyFromHost 8296 个事件，累计 2094786 µs；大量传输开销。
+全部 CPU 节点累计 10926124 µs，CUDA 节点累计 3692122 µs，CPU 占所记录节点时长约 74.7%。
+这些 profiler 时长可能异步/重叠，不能当作端到端耗时比例或设备利用率。
+
+CPU/GPU 相同输入的最终代表调用均选择 HIGH，候选概率最大差 0.0109；只是合法模型选择，
+没有独立风险真值，不代表判断正确。CUDA Session 实际执行了 GPU 节点，但核心量化路径
+仍受 CPU 限制。P50 约缩短 17.1%，仅约 1.21 倍调用收益，加载更慢；保留 CPU INT8 默认，
+本轮停止图改写、重量化或 FP32 额外下载探索。
+
+记录在 `laya-cuda-2026-10-11/`、`laya-cpu-matched-2026-10-11/`，节点分类附于
+`2026-10-11-environment/structured_nodes.json`，DLL 检查附于 `cuda_dlls.json`。
+Torch allocator 不覆盖 ORT 显存分配，因此不以 Torch 的峰值作为 ORT 峰值。
+
+### 本轮复现与范围
+
+```powershell
+$env:TEMP="$PWD/models/hybrid/tmp"; $env:TMP=$env:TEMP; $env:TMPDIR=$env:TEMP
+$env:UV_CACHE_DIR="$PWD/models/hybrid/cache/uv"
+uv pip install --python models/hybrid/env-gpu-runtime/Scripts/python.exe torch==2.10.0 --index-url https://download.pytorch.org/whl/cu130
+./models/hybrid/env-vision-gpu/Scripts/python.exe scripts/benchmark_hybrid_gpu.py --model vision --device cuda --precision fp16 --iterations 30 --warmup 3 --output outputs/hybrid/gpu-benchmark/vision-cuda-new
+./models/hybrid/env-vision-gpu/Scripts/python.exe scripts/benchmark_hybrid_gpu.py --model vision --device cpu --precision fp32 --iterations 30 --warmup 3 --output outputs/hybrid/gpu-benchmark/vision-cpu-new
+./models/hybrid/env-structured-gpu/Scripts/python.exe scripts/benchmark_hybrid_gpu.py --model laya --device cuda --precision int8 --iterations 30 --warmup 3 --output outputs/hybrid/gpu-benchmark/laya-cuda-new
+./models/hybrid/env-structured-gpu/Scripts/python.exe scripts/benchmark_hybrid_gpu.py --model laya --device cpu --precision int8 --iterations 30 --warmup 3 --output outputs/hybrid/gpu-benchmark/laya-cpu-new
+```
+
+复用已经建立的模型环境和固定源码，Torch 通过 .pth 只读共享独立 GPU runtime。完整准备
+脚本新增真实 CUDA 张量验收；本轮是在已有环境上修复 Torch，不是新机器安装全流程验收。
+主环境/原 CPU 辅助环境保持不变，模型与所有新增产物仍在 D 盘，不自动删除缓存或推送远端。
+没有新增 UI、延长 TTL、改变真实提醒，也没有执行资源竞争/摄像头压力测试。
+
+CUDA / TorchInductor / Triton 缓存环境变量也显式指向 D 盘研究缓存；模型子进程继承到
+会话自己的临时目录，避免未来 JIT 缓存默认落到用户目录。未清理共享缓存或修改系统目录。
+四组 Benchmark 执行后保存各隔离环境 freeze 清单，结合记录中的实际版本和固定源码复现。
+
+完整回归开启本地真实 YOLO、原 CPU Structured/Vision 和 GPU Vision opt-in。
+第一轮 **322 passed，76.52 s，零 skipped**，含真实 GPU host 两次加载/推理/卸载重载。
+最终缓存路径收尾后完整回归 **322 passed，66.72 s，零 skipped**。
+新增诊断与既有 Benchmark 测试独立 **6 passed**，验证输入确定性、显式 UNKNOWN 保留及
+非有限值检测；Ruff check 通过，format check 报告 **141 个文件已格式化**。
+网页和 spatial-demo 原 CLI `--help` 通过，不代表本轮重启服务、摄像头或进行了耳机试听。
+HRTF 与影子链路行为由原测试回归覆盖，未开展新的硬件音频验收。
+
+最终回归命令：设置 D 盘 TEMP/TMP/TMPDIR、UV_CACHE_DIR 及三种 GPU 缓存环境变量，
+`SIGHTGUARD_TEST_MODEL` 为本地 `models/yolo26n.pt` 绝对路径，
+`SIGHTGUARD_TEST_HYBRID=1`、`SIGHTGUARD_TEST_HYBRID_GPU=1`，然后执行
+`uv run pytest -q --basetemp models/hybrid/tmp/pytest-gpu-unknown-final-2026-10-11`。
+原始日志 `outputs/hybrid/gpu-benchmark/pytest-final-2026-10-11.log`。
+代码不含新的风险阈值或弃权阈值；两个此前未跟踪的阶段报告保持原样，本轮不纳入提交。
+
+## 2026-10-10 历史记录
+
 研究日期：2026-10-10。工作分支：`codex/hybrid-gpu-feasibility`。本轮提交研究工具、CPU 复核和真实失败诊断，不代表 GPU 验证通过。
 
 ## 实际结论与边界

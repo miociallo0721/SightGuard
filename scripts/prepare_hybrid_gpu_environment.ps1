@@ -12,6 +12,10 @@ $env:UV_CACHE_DIR = Join-Path $cacheRoot 'uv'
 $env:UV_PYTHON_INSTALL_DIR = Join-Path $cacheRoot 'python'
 $env:HF_HOME = Join-Path $cacheRoot 'hf'
 $env:TORCH_HOME = Join-Path $cacheRoot 'torch'
+$env:CUDA_CACHE_PATH = Join-Path $cacheRoot 'cuda'
+$env:TORCHINDUCTOR_CACHE_DIR = Join-Path $cacheRoot 'torchinductor'
+$env:TRITON_CACHE_DIR = Join-Path $cacheRoot 'triton'
+New-Item -ItemType Directory -Force $env:CUDA_CACHE_PATH,$env:TORCHINDUCTOR_CACHE_DIR,$env:TRITON_CACHE_DIR | Out-Null
 $env:PYTHONDONTWRITEBYTECODE = '1'
 
 function Invoke-UvChecked {
@@ -47,7 +51,7 @@ foreach ($modelName in @('vision', 'structured')) {
         Invoke-UvChecked pip install --python $modelPython --no-deps 'laya==0.4.2'
     }
     # Do not silently accept a shadowing CPU torch package in a reused GPU environment.
-    & $modelPython -c "import torch; assert torch.version.cuda == '13.0', torch.__version__; print(torch.__version__, torch.cuda.is_available())"
+    & $modelPython -c "import torch; assert torch.version.cuda == '13.0', torch.__version__; assert torch.cuda.is_available(), 'CUDA device unavailable'; x=torch.ones((2,2),device='cuda'); y=x@x; torch.cuda.synchronize(); assert y[0,0].item()==2; print(torch.__version__, torch.cuda.get_device_name(0), torch.backends.cudnn.version())"
     if ($LASTEXITCODE -ne 0) { throw "Incorrect CUDA torch in $modelRuntime; inspect this isolated environment." }
 }
 Write-Output 'GPU study runtimes prepared. Main/CPU environments and weights are unchanged.'

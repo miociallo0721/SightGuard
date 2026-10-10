@@ -101,7 +101,16 @@ class ProcessDecisionProvider:
         temporary = self.log_path.parent / "tmp"
         temporary.mkdir(exist_ok=True)
         environment = {**os.environ, "PYTHONUTF8": "1", "PYTHONDONTWRITEBYTECODE": "1"}
-        for name in ("TEMP", "TMP", "TMPDIR", "HF_HOME", "TORCH_HOME"):
+        for name in (
+            "TEMP",
+            "TMP",
+            "TMPDIR",
+            "HF_HOME",
+            "TORCH_HOME",
+            "CUDA_CACHE_PATH",
+            "TORCHINDUCTOR_CACHE_DIR",
+            "TRITON_CACHE_DIR",
+        ):
             environment[name] = str(temporary.resolve())
         self.process = subprocess.Popen(
             [self.config.python, "-u", str(Path(__file__).with_name("model_host.py"))],

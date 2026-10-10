@@ -107,6 +107,9 @@ def configure_local_runtime(root: Path) -> dict[str, str]:
         "TORCH_HOME": cache / "torch",
         "PIP_CACHE_DIR": cache / "pip",
         "UV_CACHE_DIR": cache / "uv",
+        "CUDA_CACHE_PATH": cache / "cuda",
+        "TORCHINDUCTOR_CACHE_DIR": cache / "torchinductor",
+        "TRITON_CACHE_DIR": cache / "triton",
     }
     for path in set(paths.values()):
         path.mkdir(parents=True, exist_ok=True)
