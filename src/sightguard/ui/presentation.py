@@ -70,18 +70,17 @@ def kpi_html(stats: dict, title: str = "运行统计") -> str:
     cards = []
     for label, value in stats.items():
         cards.append(
-            '<div style="background:#1e293b;border:1px solid #334155;border-radius:10px;'
-            'padding:12px;min-width:120px">'
-            f'<div style="color:#94a3b8;font-size:12px">{html.escape(str(label))}</div>'
-            f'<div style="color:#f8fafc;font-size:20px;font-weight:600">'
+            '<div class="sg-kpi">'
+            f'<div class="sg-kpi-label">{html.escape(str(label))}</div>'
+            '<div class="sg-kpi-value">'
             f"{html.escape(_display_value(value))}</div></div>"
         )
     if not cards:
-        cards.append('<div style="color:#94a3b8;padding:12px">没有可用统计数据</div>')
+        cards.append('<div class="sg-kpi-empty">选择一份记录，查看实际运行统计</div>')
     return (
-        '<section style="font-family:system-ui,sans-serif;color:#f8fafc">'
-        f'<h3 style="margin:0 0 12px 0">{html.escape(title)}</h3>'
-        '<div style="display:flex;flex-wrap:wrap;gap:10px">' + "".join(cards) + "</div></section>"
+        '<section class="sg-kpi-section">'
+        f"<h3>{html.escape(title)}</h3>"
+        '<div class="sg-kpi-grid">' + "".join(cards) + "</div></section>"
     )
 
 
@@ -184,7 +183,8 @@ def experiment_summary(metadata: dict, metrics: dict[str, dict]) -> str:
         for label, value in facts.items()
     )
     return (
-        '<section style="font-family:system-ui,sans-serif;color:#f8fafc;'
+        '<section class="sg-experiment-summary" '
+        'style="font-family:system-ui,sans-serif;color:#f8fafc;'
         'background:#0f172a;border:1px solid #334155;border-radius:12px;padding:16px">'
         f'<span style="display:inline-block;background:{badge_color};color:white;'
         f'padding:4px 10px;border-radius:999px">{html.escape(kind_label)}</span>'

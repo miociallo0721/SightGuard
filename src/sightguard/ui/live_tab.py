@@ -14,6 +14,7 @@ from sightguard.ui.live import (
     camera_choices,
 )
 from sightguard.ui.services import ConsoleStore
+from sightguard.ui.showcase import section_heading
 
 
 def add_live_tab(
@@ -85,20 +86,21 @@ def add_live_tab(
             return outputs(controller.stop(request.session_hash or ""))
         return outputs(controller.poll(request.session_hash or ""))
 
-    with gr.Tab("实时 Demo · Live Camera", id="live", elem_id="sg-live-tab") as tab:
-        gr.Markdown(
-            "### 实时摄像头 · 复用 SightGuard 风险引擎\n"
-            "读取运行服务器所在电脑的摄像头；优先 Xiaomi。画面不保存到磁盘。"
-        )
-        with gr.Row():
-            camera = gr.Dropdown(
-                choices, value=preferred_camera, label="摄像头 · DirectShow 编号", scale=3
+    with gr.Tab("实时体验", id="live", elem_id="sg-live-tab") as tab:
+        gr.HTML(
+            section_heading(
+                "LIVE EXPERIENCE",
+                "此刻的画面，持续的感知。",
+                "选择本机摄像头，开启视觉感知演示。画面仅在内存中处理。",
             )
-            device = gr.Dropdown(["auto", "cpu", "cuda"], value="auto", label="推理设备", scale=1)
-            start_button = gr.Button("开始实时 Demo", variant="primary", scale=1)
-            stop_button = gr.Button("停止并释放摄像头", interactive=False, scale=1)
-        with gr.Accordion("推理与画面设置 · 下次启动生效", open=False):
+        )
+        with gr.Row(elem_classes="sg-control-bar"):
+            camera = gr.Dropdown(choices, value=preferred_camera, label="选择摄像头", scale=3)
+            start_button = gr.Button("开始实时体验  ↗", variant="primary", scale=1)
+            stop_button = gr.Button("结束体验", interactive=False, scale=1)
+        with gr.Accordion("高级设置 · 设备与画面", open=False):
             with gr.Row():
+                device = gr.Dropdown(["auto", "cpu", "cuda"], value="auto", label="推理设备")
                 width = gr.Number(value=640, precision=0, label="请求宽度", minimum=1)
                 height = gr.Number(value=480, precision=0, label="请求高度", minimum=1)
                 imgsz = gr.Number(value=640, precision=0, label="模型输入尺寸", minimum=1)
@@ -118,12 +120,17 @@ def add_live_tab(
                 image = gr.HTML(LiveView().image)
             with gr.Column(scale=2, min_width=300):
                 alert = gr.HTML(LiveView().alert)
-                gr.Markdown(
-                    "绿色 LOW · 黄色 MEDIUM · 红色 HIGH · 灰色 UNKNOWN\n\n"
-                    "关注梯形只表示图像区域；风险评分不是碰撞概率。"
-                    "同等级事件默认抑制重复提醒。"
+                gr.HTML(
+                    '<div class="sg-live-guide"><span class="sg-eyebrow">READ THE SIGNAL</span>'
+                    "<h3>理解画面中的变化</h3>"
+                    '<div class="sg-levels"><span><i class="low"></i>低关注</span>'
+                    '<span><i class="medium"></i>中关注</span>'
+                    '<span><i class="high"></i>高关注</span>'
+                    '<span><i class="unknown"></i>未知</span></div>'
+                    "<p>等级对应图像风险评分。感知过期或受限时显示未知状态。</p>"
+                    "<p>同等级事件默认抑制重复提醒；评分不是碰撞概率。</p></div>"
                 )
-        with gr.Accordion("当前风险事件与最近提醒", open=True):
+        with gr.Accordion("查看事件与提醒详情", open=False):
             events = gr.Dataframe(
                 pd.DataFrame(columns=EVENT_COLUMNS), interactive=False, label="事件状态"
             )

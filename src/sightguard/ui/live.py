@@ -32,7 +32,12 @@ ALERT_NAMES = {
     "perception_limited": "感知受限",
     "repeat": "重复提醒",
 }
-EMPTY_CAMERA = '<div class="sg-live-empty">摄像头未启动 · 点击“开始实时 Demo”</div>'
+EMPTY_CAMERA = (
+    '<div class="sg-live-empty"><div class="sg-camera-reticle" aria-hidden="true">'
+    '<span>◎</span></div><span class="sg-eyebrow">READY WHEN YOU ARE</span>'
+    "<h3>你的视野，即将成为感知现场。</h3>"
+    "<p>选择摄像头，点击“开始实时体验”</p><small>摄像头未启动 · 无实时画面</small></div>"
+)
 
 
 def camera_choices() -> tuple[list[tuple[str, int]], int]:
@@ -96,7 +101,10 @@ class LiveView:
     image: str = EMPTY_CAMERA
     status: str = "**未运行** · 摄像头只在点击开始后打开"
     metrics: str = ""
-    alert: str = '<div class="sg-live-alert">尚无 AlertEvent</div>'
+    alert: str = (
+        '<div class="sg-live-alert"><span class="sg-eyebrow">EVENT SIGNAL</span>'
+        "<h3>等待事件信号</h3><p>启动后，在这里查看实际提醒与触发原因。</p></div>"
+    )
     events: pd.DataFrame | None = None
     alerts: pd.DataFrame | None = None
     running: bool = False

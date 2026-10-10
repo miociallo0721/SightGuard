@@ -54,6 +54,7 @@ def main(argv: list[str] | None = None) -> int:
     ui = sub.add_parser("ui", help="Launch local SightGuard Research Console")
     ui.add_argument("--port", type=int, default=7860)
     ui.add_argument("--open-browser", action="store_true")
+    ui.add_argument("--research", action="store_true", help="Open the Gradio research console")
     live = sub.add_parser("live", help="OpenCV live camera risk demo (Q quit, H details)")
     live.add_argument("--camera", type=int)
     live.add_argument("--device", help="auto, cpu, cuda, cuda:0 or GPU index; default auto")
@@ -99,9 +100,14 @@ def main(argv: list[str] | None = None) -> int:
                 duration_s=args.duration,
             )
         elif args.command == "ui":
-            from sightguard.ui.app import launch_ui
+            if args.research:
+                from sightguard.ui.app import launch_ui
 
-            launch_ui(Path.cwd(), args.port, inbrowser=args.open_browser)
+                launch_ui(Path.cwd(), args.port, inbrowser=args.open_browser)
+            else:
+                from sightguard.ui.product_app import launch_product_ui
+
+                launch_product_ui(Path.cwd(), args.port, inbrowser=args.open_browser)
         elif args.command == "import-video":
             from sightguard.evaluation.importing import import_video
 
