@@ -16,8 +16,14 @@ from sightguard.risk.schema import (
 )
 
 
-def _detection(track_id: int | None, bbox: tuple[float, float, float, float]) -> Detection:
-    return Detection(track_id, 0, "person", 0.9, bbox)
+def _detection(
+    track_id: int | None,
+    bbox: tuple[float, float, float, float],
+    *,
+    class_id: int = 0,
+    class_name: str = "person",
+) -> Detection:
+    return Detection(track_id, class_id, class_name, 0.9, bbox)
 
 
 def _frame(
@@ -103,6 +109,113 @@ def _observe_frame(manager: EventManager, frame: FrameRecord):
         )
     changes.extend(manager.end_frame(frame.timestamp_ms, complete))
     return associations, tuple(changes)
+
+
+def test_experimental_track_association_continues_across_class_switch() -> None:
+    association_config = AssociationConfig(allow_class_switch_for_track_id=True)
+    engine = AssessmentEngine(RiskConfig(association=association_config), "camera-a")
+    box = (280, 280, 360, 440)
+
+    first = engine.step(_frame(0, 0, (_detection(7, box, class_id=7, class_name="truck"),)))
+    switched = engine.step(_frame(1, 50, (_detection(7, box, class_id=2, class_name="car"),)))
+
+    assert first.frame.observations[0].event_id == "E000001"
+    assert switched.frame.observations[0].event_id == "E000001"
+    assert switched.frame.observations[0].association_method == "track_id_class_switch"
+    assert engine.manager.events["E000001"].class_name == "car"
+    assert tuple(engine.manager.events) == ("E000001",)
+
+
+def test_default_association_does_not_join_different_classes() -> None:
+    manager = EventManager(AssociationConfig(), "camera-a")
+    box = (280, 280, 360, 440)
+
+    first, _ = _observe_frame(
+        manager, _frame(0, 0, (_detection(7, box, class_id=7, class_name="truck"),))
+    )
+    second, _ = _observe_frame(
+        manager, _frame(1, 50, (_detection(7, box, class_id=2, class_name="car"),))
+    )
+
+    assert first[0].event.event_id == "E000001"
+    assert second[0].event.event_id == "E000002"
+    assert second[0].created
+
+
+def test_experimental_class_switch_still_requires_spatial_plausibility() -> None:
+    manager = EventManager(AssociationConfig(allow_class_switch_for_track_id=True), "camera-a")
+
+    first, _ = _observe_frame(
+        manager,
+        _frame(0, 0, (_detection(7, (30, 280, 110, 440), class_id=7, class_name="truck"),)),
+    )
+    second, _ = _observe_frame(
+        manager,
+        _frame(1, 50, (_detection(7, (530, 280, 610, 440), class_id=2, class_name="car"),)),
+    )
+
+    assert first[0].event.event_id == "E000001"
+    assert second[0].event.event_id == "E000002"
+    assert second[0].method == "new"
+
+
+def test_experimental_class_switch_rejects_low_overlap_even_when_centers_match() -> None:
+    manager = EventManager(AssociationConfig(allow_class_switch_for_track_id=True), "camera-a")
+
+    first, _ = _observe_frame(
+        manager,
+        _frame(0, 0, (_detection(7, (280, 280, 360, 440), class_id=7, class_name="truck"),)),
+    )
+    second, _ = _observe_frame(
+        manager,
+        _frame(1, 50, (_detection(7, (310, 340, 330, 380), class_id=2, class_name="car"),)),
+    )
+
+    assert first[0].event.event_id == "E000001"
+    assert second[0].event.event_id == "E000002"
+    assert second[0].method == "new"
+
+
+def test_experimental_class_switch_refuses_ambiguous_tracker_id_claims() -> None:
+    manager = EventManager(AssociationConfig(allow_class_switch_for_track_id=True), "camera-a")
+    left, right = (120, 280, 200, 440), (440, 280, 520, 440)
+    _observe_frame(
+        manager,
+        _frame(
+            0,
+            0,
+            (
+                _detection(7, left, class_id=7, class_name="truck"),
+                _detection(7, right, class_id=2, class_name="car"),
+            ),
+        ),
+    )
+
+    second, _ = _observe_frame(
+        manager, _frame(1, 50, (_detection(7, left, class_id=0, class_name="person"),))
+    )
+
+    assert len(manager.events) == 3
+    assert second[0].event.event_id == "E000003"
+    assert second[0].method == "new"
+
+
+def test_two_targets_cross_without_creating_or_merging_events() -> None:
+    manager = EventManager(AssociationConfig(), "camera-a")
+    left, right = (100, 280, 180, 440), (460, 280, 540, 440)
+    _observe_frame(
+        manager,
+        _frame(0, 0, (_detection(1, left), _detection(2, right))),
+    )
+
+    crossed, _ = _observe_frame(
+        manager,
+        _frame(1, 50, (_detection(1, right), _detection(2, left))),
+    )
+
+    assert len(manager.events) == 2
+    assert {item.event.event_id for item in crossed} == {"E000001", "E000002"}
+    assert {item.method for item in crossed} == {"geometry"}
 
 
 def test_track_switch_recovers_same_event_and_keeps_source_id_history() -> None:
@@ -279,6 +392,26 @@ def test_engine_stationary_target_emits_one_first_alert_at_confirmation_time() -
     assert confirmed.frame.events[0].state == EventState.ACTIVE
     assert stationary.alerts == ()
     assert later.alerts == ()
+
+
+def test_experimental_class_switch_keeps_existing_alert_history() -> None:
+    engine = AssessmentEngine(
+        RiskConfig(association=AssociationConfig(allow_class_switch_for_track_id=True)),
+        "camera-a",
+    )
+    box = (280, 300, 360, 450)
+    engine.step(_frame(0, 0, (_detection(7, box, class_id=7, class_name="truck"),)))
+    confirmed = engine.step(_frame(1, 250, (_detection(7, box, class_id=7, class_name="truck"),)))
+
+    switched = engine.step(_frame(2, 300, (_detection(7, box, class_id=2, class_name="car"),)))
+
+    assert [(alert.event_id, alert.alert_type) for alert in confirmed.alerts] == [
+        ("E000001", "first")
+    ]
+    assert switched.alerts == ()
+    assert switched.frame.observations[0].event_id == "E000001"
+    assert switched.frame.observations[0].association_method == "track_id_class_switch"
+    assert set(engine.scheduler.history) == {"E000001"}
 
 
 def test_engine_emits_upgrade_after_score_increase_and_escalation_interval() -> None:

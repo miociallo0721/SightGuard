@@ -122,6 +122,7 @@ class ScoringConfig:
 class AssociationConfig:
     recovery_window_ms: float = 750
     track_max_center_distance: float = 0.35
+    allow_class_switch_for_track_id: bool = False
     geometry_max_center_distance: float = 0.15
     geometry_min_iou: float = 0.10
     geometry_min_score: float = 0.35
@@ -139,6 +140,8 @@ class AssociationConfig:
             "confirmation_max_gap_ms",
         ):
             _number(name, getattr(self, name), 1e-9)
+        if type(self.allow_class_switch_for_track_id) is not bool:
+            raise ValueError("allow_class_switch_for_track_id must be boolean")
         for name in ("geometry_min_iou", "geometry_min_score", "iou_weight", "ambiguity_margin"):
             _number(name, getattr(self, name), 0, 1)
         _number("confirmation_ms", self.confirmation_ms)
