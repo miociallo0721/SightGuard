@@ -58,20 +58,30 @@ def main() -> None:
             revision = manifest.get("revision", manifest.get("huggingface_revision"))
             if manifest.get("model_id") != config["model_id"] or revision != config["revision"]:
                 raise ValueError("Local manifest and configured model identity/revision disagree")
+            weight = (
+                Path(config["onnx_path"])
+                if source != "vision" and config["backend"] == "onnx"
+                else model_dir / "model.safetensors"
+            )
+            weight_hash = hash_file(weight)
+            expected_hash = (
+                manifest.get("model_safetensors_sha256")
+                if source == "vision"
+                else manifest.get("onnx_export", {}).get("sha256")
+                if config["backend"] == "onnx"
+                else manifest.get("source_checkpoint_sha256")
+            )
+            if expected_hash != weight_hash:
+                raise ValueError("Local weight hash disagrees with source/export manifest")
             if source == "vision":
-                agent = laya.load_vlm(str(model_dir), device="cpu", dtype="fp32")
-                dtype = torch.float16 if config["precision"] == "fp16" else torch.float32
-                if device == "cpu" and dtype == torch.float16:
-                    raise ValueError("Vision CPU requires FP32")
-                agent.model.to(device=device, dtype=dtype)
-                agent.device = torch.device(device)
-                agent._torch_dtype = lambda: dtype
-                precision = str(next(agent.model.parameters()).dtype)
-                weight = model_dir / "model.safetensors"
+                from runtime_support import configure_vision, load_vision
+
+                agent = load_vision(laya, str(model_dir))
+                profile = configure_vision(agent, torch, device, config["precision"])
+                precision = profile["precision"]
             elif config["backend"] == "onnx":
                 from laya.onnx_agent import ONNXAgent
 
-                weight = Path(config["onnx_path"])
                 agent = ONNXAgent(str(model_dir), onnx_path=str(weight))
                 # Use the same official graph/session contract, with bounded CPU threads.
                 import onnxruntime as ort
@@ -92,17 +102,6 @@ def main() -> None:
                     raise ValueError("Structured eager baseline currently supports FP32 only")
                 agent = laya.load(str(model_dir), device=device, compile=False, backend="eager")
                 precision = str(next(agent.model.parameters()).dtype)
-                weight = model_dir / "model.safetensors"
-            weight_hash = hash_file(weight)
-            expected_hash = (
-                manifest.get("model_safetensors_sha256")
-                if source == "vision"
-                else manifest.get("onnx_export", {}).get("sha256")
-                if config["backend"] == "onnx"
-                else manifest.get("source_checkpoint_sha256")
-            )
-            if expected_hash != weight_hash:
-                raise ValueError("Local weight hash disagrees with source/export manifest")
             metadata = {
                 "model_id": config["model_id"],
                 "revision": config["revision"],
@@ -123,6 +122,12 @@ def main() -> None:
                 "torch_cuda_runtime": torch.version.cuda,
                 "onnxruntime": version("onnxruntime") if config["backend"] == "onnx" else None,
             }
+            if source == "vision":
+                metadata.update(profile)
+                metadata["weight_reader"] = "pread" if os.name == "nt" else "mmap"
+            if device == "cuda":
+                torch.cuda.synchronize()
+                metadata["gpu_name"] = torch.cuda.get_device_name(0)
         send({"ok": True, "metadata": metadata})
     except Exception as exc:
         send({"ok": False, "error": f"{type(exc).__name__}: {exc}"})
@@ -131,6 +136,8 @@ def main() -> None:
         try:
             request = json.loads(line)
             with contextlib.redirect_stdout(sys.stderr):
+                if device == "cuda":
+                    torch.cuda.synchronize()
                 if source == "vision":
                     from PIL import Image
 
@@ -145,6 +152,8 @@ def main() -> None:
                     )
                 else:
                     raw = agent.system_one(request["state"], request["questions"])
+                if device == "cuda":
+                    torch.cuda.synchronize()
                 peak = torch.cuda.max_memory_allocated() / 1024**2 if device == "cuda" else None
             send({"ok": True, "raw_output": raw, "peak_vram_mb": peak})
         except Exception as exc:

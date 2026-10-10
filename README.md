@@ -347,3 +347,6 @@ uv run sightguard live --camera 1 --device cpu --spatial-audio
 
 本机 Xiaomi 黑屏/横纹问题已通过先设置尺寸与帧率、最后设置 MJPG 修复。
 采集格式与请求帧率由 `configs/live.yaml` 配置；时间戳仍使用 monotonic，不按请求 FPS 推算。
+
+Hybrid GPU 研究工具与实际限制见 [GPU 可行性记录](docs/hybrid_gpu_feasibility.md)。
+本轮尚未获得 CUDA 模型推理结果；默认仍为 CPU 影子模式，GPU 研究配置不代表已验证。

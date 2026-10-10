@@ -115,3 +115,8 @@ Gradio 的 `ui.live.LiveController` 为现有 LiveSession 添加单页面所有�
 定义版本化结果、同源事件比较和标签融合。四种模式都是研究选择，实际 AlertEvent
 及空间音频仍来自现有规则链路。产品网页通过 `/api/live/intelligence` 与已有所有权
 控制器交互，研究控制台保持原入口。详见 [Hybrid 架构](hybrid_intelligence_architecture.md)。
+
+GPU 可行性工具独立于 UI 和规则引擎。Vision 精度适配保留 FP32 readout，计划仅 CUDA
+encoder 使用 FP16；实际参数 dtype/device 写入记录，GPU 路径尚未实测。Windows 隔离
+模型进程使用 safetensors pread 读取以规避本轮发现的 mmap 原生故障，权重哈希在加载
+前验证。默认 CPU 配置保持不变。见 [GPU 研究记录](hybrid_gpu_feasibility.md)。
