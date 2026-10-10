@@ -18,6 +18,7 @@ from sightguard.ui.live_tab import add_live_tab
 from sightguard.ui.plots import metrics_plot, risk_plot, timeline_plot
 from sightguard.ui.presentation import alert_frame, experiment_summary, kpi_html, metrics_frame
 from sightguard.ui.services import BenchmarkView, ConsoleDataError, ConsoleStore
+from sightguard.ui.showcase import BRAND_HEADER, FOOTER, add_overview, section_heading
 
 
 def _table(value: pd.DataFrame) -> pd.DataFrame:
@@ -470,31 +471,31 @@ def build_app(root: Path | None = None) -> gr.Blocks:
         ("FN（机会）", "fn"),
     ]
     with gr.Blocks(
-        title="SightGuard Research Console",
+        title="SightGuard · 视界 | 视觉辅助感知",
         analytics_enabled=False,
         fill_width=True,
         delete_cache=(86400, 604800),
     ) as app:
-        gr.HTML(
-            '<header class="sg-hero"><div><h1>SightGuard <span style="color:#6cd3e8">'
-            "Research Console</span></h1><p>视觉感知 · 动态风险 · 事件决策 · 独立对照实验</p>"
-            '</div><span class="sg-badge">LOCAL · REPLAY + LIVE</span></header>'
-        )
-        gr.HTML(
-            '<div class="sg-note">内置实验示例为合成数据；上传视频来源须独立确认。'
-            "画面风险线索不是碰撞概率，"
-            "实验指标不构成道路安全保证。</div>"
-        )
-        with gr.Tabs():
-            with gr.Tab("视觉分析 · Vision Analysis") as vision_tab:
+        gr.HTML(BRAND_HEADER)
+        with gr.Tabs(selected="overview", elem_id="sg-navigation") as navigation:
+            with gr.Tab("产品概览", id="overview") as overview_tab:
+                open_live, open_replay = add_overview()
+            with gr.Tab("视频回放", id="vision") as vision_tab:
+                gr.HTML(
+                    section_heading(
+                        "VIDEO EXPLORER",
+                        "让每一帧，都有迹可循。",
+                        "选择已有记录，或上传一段视频，探索目标、风险变化与提醒事件。",
+                    )
+                )
                 vision_state = gr.State(None)
                 with gr.Row():
                     vision_run = gr.Dropdown(
-                        analysis_ids, value=first_analysis, label="已有分析任务 · run_id", scale=5
+                        analysis_ids, value=first_analysis, label="选择回放记录", scale=5
                     )
-                    load_button = gr.Button("加载分析", scale=1, variant="primary")
-                    refresh = gr.Button("刷新任务目录", scale=1)
-                with gr.Accordion("上传 MP4 并运行本地分析", open=False):
+                    load_button = gr.Button("打开回放", scale=1, variant="primary")
+                    refresh = gr.Button("刷新记录", scale=1)
+                with gr.Accordion("＋ 上传视频，开始新的分析", open=False):
                     upload = gr.File(
                         file_types=[".mp4"], type="filepath", label="上传 MP4 · ≤500 MiB"
                     )
@@ -509,39 +510,40 @@ def build_app(root: Path | None = None) -> gr.Blocks:
                             value=default_config("risk", "risk.yaml"),
                             label="风险/决策配置",
                         )
-                    analyze_button = gr.Button("开始检测、跟踪与风险重放", variant="primary")
+                    analyze_button = gr.Button("开始视频分析  ↗", variant="primary")
                     gr.Markdown("每次新建 run_id；使用 models 中的本地权重，原有实验不被覆盖。")
                 vision_status = gr.Markdown("请选择分析任务", elem_classes="sg-status")
                 vision_kpis = gr.HTML(kpi_html({}))
                 with gr.Row():
                     video_player = gr.Video(
-                        label="视觉标注副本 · 类别 / track_id",
+                        label="感知画面 · 标注视频",
                         interactive=False,
                         height=360,
                         scale=1,
                     )
                     risk_chart = gr.Plot(label="风险评分曲线", value=risk_plot(()), scale=1)
-                gr.Markdown(
-                    "**独立时间定位**：滑块选择最近的先前帧，并显示实际帧号/时间。"
-                    "关键帧与数据对应；播放器播放位置不会与滑块双向同步。"
-                )
-                time_slider = gr.Slider(0, 1, value=0, step=1, label="查询视频时间 / ms")
-                frame_info = gr.Markdown("未加载帧")
-                with gr.Row():
-                    keyframe = gr.Image(
-                        label="所选实际帧 · 视觉标注", interactive=False, height=290, scale=1
+                with gr.Accordion("逐帧探索 · 目标、时间与事件", open=False):
+                    gr.Markdown(
+                        "**独立时间定位**：滑块选择最近的先前帧，并显示实际帧号/时间。"
+                        "关键帧与数据对应；播放器播放位置不会与滑块双向同步。"
                     )
-                    observations = gr.Dataframe(
-                        label="当前目标 · 风险特征 / 生命周期",
-                        interactive=False,
-                        wrap=True,
-                        max_height=290,
-                        scale=2,
-                    )
-                current_alerts = gr.Dataframe(label="当前帧提醒与原因", interactive=False)
-                with gr.Row():
-                    event_locator = gr.Dropdown([], label="事件生命周期定位", scale=4)
-                    locate_button = gr.Button("定位该记录", scale=1)
+                    time_slider = gr.Slider(0, 1, value=0, step=1, label="查询视频时间 / ms")
+                    frame_info = gr.Markdown("未加载帧")
+                    with gr.Row():
+                        keyframe = gr.Image(
+                            label="所选实际帧 · 视觉标注", interactive=False, height=290, scale=1
+                        )
+                        observations = gr.Dataframe(
+                            label="当前目标 · 风险特征 / 生命周期",
+                            interactive=False,
+                            wrap=True,
+                            max_height=290,
+                            scale=2,
+                        )
+                    current_alerts = gr.Dataframe(label="当前帧提醒与原因", interactive=False)
+                    with gr.Row():
+                        event_locator = gr.Dropdown([], label="事件生命周期定位", scale=4)
+                        locate_button = gr.Button("定位该记录", scale=1)
                 with gr.Accordion("完整提醒与生命周期记录", open=False):
                     vision_alerts = gr.Dataframe(
                         label="结构化 AlertEvent", interactive=False, wrap=True
@@ -593,13 +595,20 @@ def build_app(root: Path | None = None) -> gr.Blocks:
                     api_name="locate_event",
                 )
                 export_button.click(export, vision_state, export_file, api_name="export_analysis")
-            with gr.Tab("策略对比 · Strategy Comparison") as comparison_tab:
+            with gr.Tab("策略对比", id="comparison") as comparison_tab:
+                gr.HTML(
+                    section_heading(
+                        "STRATEGY COMPARISON",
+                        "同一画面，不同提醒方式。",
+                        "在共同的视频时间轴上，观察三种策略如何筛选和触发提醒。",
+                    )
+                )
                 comparison_state = gr.State(None)
                 with gr.Row():
                     comparison_run = gr.Dropdown(
                         benchmark_ids,
                         value=first_benchmark,
-                        label="已完成 Benchmark · run_id",
+                        label="选择对照实验",
                         scale=5,
                     )
                     comparison_load = gr.Button("加载策略对比", variant="primary", scale=1)
@@ -612,12 +621,13 @@ def build_app(root: Path | None = None) -> gr.Blocks:
                     comparison_event = gr.Dropdown([], label="独立 GT / 算法事件")
                 comparison_plot = gr.Plot(value=timeline_plot(()), label="共享视频时间轴")
                 comparison_status = gr.Markdown("未加载实验")
-                comparison_alerts = gr.Dataframe(
-                    label="所选事件的策略行为", interactive=False, wrap=True, max_height=300
-                )
-                comparison_matches = gr.Dataframe(
-                    label="机会匹配与遗漏记录", interactive=False, wrap=True, max_height=250
-                )
+                with gr.Accordion("提醒行为与匹配详情", open=False):
+                    comparison_alerts = gr.Dataframe(
+                        label="所选事件的策略行为", interactive=False, wrap=True, max_height=300
+                    )
+                    comparison_matches = gr.Dataframe(
+                        label="机会匹配与遗漏记录", interactive=False, wrap=True, max_height=250
+                    )
                 with gr.Accordion("整次实验的汇总指标 · 视频筛选不改变此表", open=False):
                     comparison_metrics = gr.Dataframe(
                         interactive=False, label="指标原值 · N/A 未定义"
@@ -696,7 +706,14 @@ def build_app(root: Path | None = None) -> gr.Blocks:
                     [preview_status, preview_plot, preview_alerts],
                     api_name="preview_strategies",
                 )
-            with gr.Tab("实验分析 · Experiment Analytics") as analytics_tab:
+            with gr.Tab("实验洞察", id="analytics") as analytics_tab:
+                gr.HTML(
+                    section_heading(
+                        "RESEARCH INSIGHTS",
+                        "用数据，理解每一次提醒。",
+                        "浏览已保存的实验指标；数据来源与验证状态始终随结果呈现。",
+                    )
+                )
                 analytics_state = gr.State(None)
                 with gr.Row():
                     analytics_run = gr.Dropdown(
@@ -704,9 +721,10 @@ def build_app(root: Path | None = None) -> gr.Blocks:
                     )
                     analytics_load = gr.Button("加载实验分析", variant="primary", scale=1)
                 analytics_summary = gr.HTML("请选择完成的实验")
-                analytics_metrics = gr.Dataframe(
-                    label="策略指标 · 原始数值 / N/A", interactive=False
-                )
+                with gr.Accordion("查看原始指标", open=False):
+                    analytics_metrics = gr.Dataframe(
+                        label="策略指标 · 原始数值 / N/A", interactive=False
+                    )
                 metric = gr.Dropdown(metric_choices, value="event_recall", label="图表指标与单位")
                 analytics_plot = gr.Plot(
                     value=metrics_plot({}, "event_recall"), label="策略指标对比"
@@ -754,7 +772,14 @@ def build_app(root: Path | None = None) -> gr.Blocks:
                     errors_table,
                     api_name="filter_errors",
                 )
-            with gr.Tab("数据集管理 · Dataset Management") as dataset_tab:
+            with gr.Tab("数据资料", id="datasets") as dataset_tab:
+                gr.HTML(
+                    section_heading(
+                        "DATA LIBRARY",
+                        "每一份观察，都有来源。",
+                        "查看视频来源、标注与数据划分，保留研究记录的可追溯性。",
+                    )
+                )
                 with gr.Row():
                     dataset = gr.Dropdown(
                         manifests, value=first_manifest, label="项目数据集 manifest", scale=5
@@ -778,9 +803,14 @@ def build_app(root: Path | None = None) -> gr.Blocks:
                     validate, dataset, dataset_status, api_name="validate_dataset"
                 )
             live_controller = add_live_tab(
-                app, store, configs, (vision_tab, comparison_tab, analytics_tab, dataset_tab)
+                app,
+                store,
+                configs,
+                (overview_tab, vision_tab, comparison_tab, analytics_tab, dataset_tab),
             )
-        gr.Markdown("SightGuard · 研究原型 · 单机离线分析 · 感知错误与真实数据缺口须保留并报告")
+        open_live.click(lambda: gr.update(selected="live"), outputs=navigation, api_name=False)
+        open_replay.click(lambda: gr.update(selected="vision"), outputs=navigation, api_name=False)
+        gr.HTML(FOOTER)
         if first_analysis:
             app.load(load_vision, vision_run, vision_outputs, api_name=False)
         if first_benchmark:
@@ -804,20 +834,20 @@ def launch_ui(
     app = build_app(root)
     jobs = app.sightguard_jobs
     theme = gr.themes.Base(primary_hue="cyan", neutral_hue="slate").set(
-        body_background_fill="#0b1018",
-        body_background_fill_dark="#0b1018",
-        block_background_fill="#141e2b",
-        block_background_fill_dark="#141e2b",
+        body_background_fill="#080d10",
+        body_background_fill_dark="#080d10",
+        block_background_fill="#111a1e",
+        block_background_fill_dark="#111a1e",
         body_text_color="#e6edf5",
         body_text_color_dark="#e6edf5",
-        input_background_fill="#0e1723",
-        input_background_fill_dark="#0e1723",
-        input_border_color="#334155",
-        input_border_color_dark="#334155",
-        block_border_color="#26374d",
-        block_border_color_dark="#26374d",
-        button_secondary_background_fill="#1e3045",
-        button_secondary_background_fill_dark="#1e3045",
+        input_background_fill="#0c1418",
+        input_background_fill_dark="#0c1418",
+        input_border_color="#293b3d",
+        input_border_color_dark="#293b3d",
+        block_border_color="#253436",
+        block_border_color_dark="#253436",
+        button_secondary_background_fill="#152326",
+        button_secondary_background_fill_dark="#152326",
         button_secondary_text_color="#e6edf5",
         button_secondary_text_color_dark="#e6edf5",
     )

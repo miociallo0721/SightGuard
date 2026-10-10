@@ -1226,6 +1226,7 @@ name = "sightguard"
 version = "0.4.0"
 source = { editable = "." }
 dependencies = [
+    { name = "fastapi" },
     { name = "gradio" },
     { name = "imageio-ffmpeg" },
     { name = "lap" },
@@ -1234,10 +1235,12 @@ dependencies = [
     { name = "opencv-python" },
     { name = "pandas" },
     { name = "plotly" },
+    { name = "python-multipart" },
     { name = "pyyaml" },
     { name = "torch" },
     { name = "torchvision" },
     { name = "ultralytics" },
+    { name = "uvicorn" },
 ]
 
 [package.dev-dependencies]
@@ -1248,6 +1251,7 @@ dev = [
 
 [package.metadata]
 requires-dist = [
+    { name = "fastapi", specifier = ">=0.143,<1" },
     { name = "gradio", specifier = ">=6,<7" },
     { name = "imageio-ffmpeg", specifier = ">=0.6,<1" },
     { name = "lap", specifier = ">=0.5.12,<1" },
@@ -1256,10 +1260,12 @@ requires-dist = [
     { name = "opencv-python", specifier = ">=4.10,<5" },
     { name = "pandas", specifier = ">=2.2,<4" },
     { name = "plotly", specifier = ">=6,<7" },
+    { name = "python-multipart", specifier = ">=0.0.32,<1" },
     { name = "pyyaml", specifier = ">=6,<7" },
     { name = "torch", specifier = ">=2.5,<3" },
     { name = "torchvision", specifier = ">=0.20,<1" },
     { name = "ultralytics", specifier = ">=8.4,<9" },
+    { name = "uvicorn", specifier = ">=0.54,<1" },
 ]
 
 [package.metadata.requires-dev]

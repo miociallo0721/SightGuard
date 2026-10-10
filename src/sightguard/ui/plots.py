@@ -9,11 +9,20 @@ from collections.abc import Mapping
 from typing import Any
 
 import plotly.graph_objects as go
+import plotly.io as pio
 
 from sightguard.evaluation.matching import prepare_ground_truth
 from sightguard.evaluation.schema import VideoAnnotations
 
-_DARK = "plotly_dark"
+_DARK = go.layout.Template(pio.templates["plotly_dark"])
+_DARK.layout.update(
+    paper_bgcolor="#111a1e",
+    plot_bgcolor="#111a1e",
+    font={"family": "Segoe UI, Microsoft YaHei, sans-serif", "color": "#afc8bd"},
+    colorway=["#a1edca", "#86bbd8", "#d4bb86", "#ae9ed5", "#dc9797"],
+    xaxis={"gridcolor": "#253833", "zerolinecolor": "#354e42"},
+    yaxis={"gridcolor": "#253833", "zerolinecolor": "#354e42"},
+)
 _STATUS_COLORS = {
     "matched": "#22c55e",
     "duplicate": "#f59e0b",

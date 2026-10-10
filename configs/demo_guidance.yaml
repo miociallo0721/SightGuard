@@ -1,0 +1,8 @@
+schema_version: "1.0"
+center_left: 0.35
+center_right: 0.65
+min_bottom: 0.55
+min_area: 0.015
+stop_area: 0.30
+side_difference: 0.035
+confirmation_ms: 350
