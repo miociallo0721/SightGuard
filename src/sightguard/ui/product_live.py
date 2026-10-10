@@ -1,6 +1,7 @@
 """Product-page controls sharing the existing live and native-audio adapters."""
 
 from dataclasses import asdict
+from typing import Literal
 from uuid import uuid4
 
 from fastapi import FastAPI, HTTPException, Request, Response
@@ -21,6 +22,13 @@ class LiveStart(BaseModel):
 class Navigate(BaseModel):
     action: str
     angle: float = Field(default=0, ge=-180, le=180, allow_inf_nan=False)
+
+
+class IntelligenceAction(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+    mode: Literal["rule", "laya", "vision", "hybrid"]
+    auxiliary: Literal["laya", "vision"] = "laya"
+    action: Literal["select", "load", "unload"] = "select"
 
 
 class TestSound(BaseModel):
@@ -95,6 +103,16 @@ def add_product_live(app: FastAPI, store: ConsoleStore) -> None:
     @app.post("/api/live/mute")
     def mute(request: Request, response: Response) -> dict:
         return call(live.toggle_audio, owner(request, response))
+
+    @app.post("/api/live/intelligence")
+    def intelligence(body: IntelligenceAction, request: Request, response: Response) -> dict:
+        return call(
+            live.intelligence,
+            owner(request, response),
+            body.mode,
+            body.auxiliary,
+            body.action,
+        )
 
     @app.post("/api/live/navigation")
     def navigate(body: Navigate, request: Request, response: Response) -> dict:

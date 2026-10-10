@@ -110,6 +110,7 @@ class LiveView:
     alerts: pd.DataFrame | None = None
     running: bool = False
     audio_status: dict | None = None
+    intelligence: dict | None = None
 
 
 class LiveController:
@@ -228,6 +229,47 @@ class LiveController:
                 audio = getattr(self.session, "audio", None)
                 if audio is not None:
                     audio.set_enabled(not audio.snapshot()["enabled"])
+            return self.poll(owner)
+
+    def intelligence(
+        self,
+        owner: str,
+        mode: str,
+        auxiliary: str = "laya",
+        action: str = "load",
+    ) -> LiveView:
+        """Manage shadow inference for the current camera session without restarting it."""
+        if mode not in {"rule", "laya", "vision", "hybrid"}:
+            raise ValueError("Unknown intelligence mode")
+        if auxiliary not in {"laya", "vision"}:
+            raise ValueError("Unknown auxiliary model")
+        if action not in {"select", "load", "unload"}:
+            raise ValueError("Unknown intelligence action")
+        if action == "load" and mode == "rule":
+            raise ValueError("Rule Engine 模式没有辅助模型可加载")
+
+        with self.lock:
+            if self.session is None or self.owner != owner:
+                raise ValueError("请先在当前页面启动实时会话")
+            session = self.session
+            manager = getattr(session, "intelligence", None)
+            if action == "unload":
+                if manager is not None:
+                    manager.unload()
+            elif mode == "rule" and action == "select" and manager is None:
+                # Rule Engine already runs in the fast path; do not create an auxiliary
+                # provider just to re-select the default mode.
+                pass
+            else:
+                if manager is None:
+                    enable = getattr(session, "enable_intelligence", None)
+                    if enable is None:
+                        raise RuntimeError("当前实时会话不支持 Risk Intelligence")
+                    enable(self.store.root)
+                    manager = getattr(session, "intelligence", None)
+                    if manager is None:
+                        raise RuntimeError("Risk Intelligence 管理器初始化失败")
+                manager.select(mode, auxiliary=auxiliary, load=action == "load")
             return self.poll(owner)
 
     def navigation(self, owner: str, action: str, angle: float = 0) -> LiveView:
@@ -387,5 +429,10 @@ class LiveController:
                     session.audio.snapshot()
                     if getattr(session, "audio", None) is not None
                     else {"enabled": False, "error": getattr(session, "audio_error", None)}
+                ),
+                (
+                    session.intelligence.snapshot()
+                    if getattr(session, "intelligence", None) is not None
+                    else None
                 ),
             )

@@ -105,3 +105,13 @@ Gradio 的 `ui.live.LiveController` 为现有 LiveSession 添加单页面所有�
 产品网页通过 `ui.product_live` 复用现有控制器，研究台保留独立试听页。
 摄像头先设置尺寸/FPS、最后设置 MJPG，时间戳仍使用 monotonic。
 详见 [空间音频架构](spatial_audio_architecture.md)及[验证记录](spatial_audio_validation.md)。
+
+## Hybrid Intelligence 影子研究
+
+`live.runtime` 在原规则提醒/音频提交之后，将不可变 LiveResult 引用交给
+`hybrid.manager` 的容量一最新状态槽。独立语义线程拥有选定辅助模型的子进程；
+模型加载失败、超时、OOM、卸载与模式切换均不重建摄像头或 Phase 2 引擎。
+`hybrid.input` 提取原图/检测/时序特征，排除规则最终风险标签；`hybrid.schema`
+定义版本化结果、同源事件比较和标签融合。四种模式都是研究选择，实际 AlertEvent
+及空间音频仍来自现有规则链路。产品网页通过 `/api/live/intelligence` 与已有所有权
+控制器交互，研究控制台保持原入口。详见 [Hybrid 架构](hybrid_intelligence_architecture.md)。

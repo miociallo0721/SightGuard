@@ -49,6 +49,7 @@ async function postApi(url, body) {
 }
 let liveActive=false, liveMuted=false, livePollTimer=null, livePollBusy=false;
 let spatialActive=false, spatialPollTimer=null, spatialPollBusy=false;
+let intelligenceMutationBusy=false, lastIntelligenceSnapshot=null;
 function setLiveActive(active){
   liveActive=active;$("live-start").disabled=active||!$("live-camera").value;
   $("live-stop").disabled=!active;$("live-mute").disabled=!active;
@@ -76,6 +77,101 @@ function renderLiveRecords(container, rows, emptyMessage, columns=[]){
 }
 const liveEventColumns=["event_id","类别","track_id","状态","等级","风险评分","当前观察"];
 const liveAlertColumns=["alert_id","event_id","时间 ms","类型","触发原因"];
+const intelligenceModeNames={rule:"Rule Engine",laya:"Laya Structured",vision:"Laya Vision",hybrid:"Hybrid Intelligence"};
+function intelligenceText(value){
+  if(value===null||value===undefined||value==="")return "—";
+  if(typeof value==="object")return JSON.stringify(value);
+  return String(value);
+}
+function intelligenceMs(value){
+  return typeof value==="number"&&Number.isFinite(value)?`${value.toFixed(1)} ms`:intelligenceText(value);
+}
+function renderIntelligence(snapshot, events){
+  const data=snapshot&&typeof snapshot==="object"?snapshot:null;
+  lastIntelligenceSnapshot=data;
+  const mode=data?.mode in intelligenceModeNames?data.mode:"rule";
+  const auxiliary=(data?.auxiliary==="vision"||mode==="vision")?"vision":"laya";
+  if(!intelligenceMutationBusy){
+    $("intelligence-mode").value=mode;
+    $("intelligence-auxiliary").value=auxiliary;
+  }
+  $("intelligence-auxiliary-field").hidden=$("intelligence-mode").value!=="hybrid";
+  const model=data?.model&&typeof data.model==="object"?data.model:{};
+  const result=data?.latest_result&&typeof data.latest_result==="object"?data.latest_result:null;
+  const comparison=data?.comparison&&typeof data.comparison==="object"?data.comparison:{};
+  const performance=data?.performance&&typeof data.performance==="object"?data.performance:{};
+  const activeRuleEvent=Array.isArray(events)?events.find(event=>Array.isArray(event)?event[6]==="是"&&event[4]!=="UNKNOWN":event&&event["当前观察"]==="是"&&event["等级"]!=="UNKNOWN"):null;
+  const status=data?.model_status||"Unavailable";
+  $("intelligence-status").textContent=status;
+  $("intelligence-status").dataset.status=status;
+  const selectedName=intelligenceModeNames[mode]||"辅助模型";
+  const stateNotes={
+    rule:"当前仅运行 Rule Engine；实际提醒由 Rule Engine 负责。",
+    Unavailable:`已选择 ${selectedName} 模式，但辅助模型尚未加载；点击“加载辅助模型”后才会运行。实际提醒仍由 Rule Engine 负责。`,
+    "Not Installed":"本地辅助模型或权重尚未就绪；实际提醒仍由 Rule Engine 负责。",
+    Loading:"辅助模型正在加载；实际提醒仍由 Rule Engine 负责。",
+    Ready:"辅助模型已加载，等待有效推理；实际提醒仍由 Rule Engine 负责。",
+    Running:"辅助模型正在运行；实际提醒仍由 Rule Engine 负责。",
+    Failed:"辅助模型当前不可用；实际提醒仍由 Rule Engine 负责。"
+  };
+  const stateKey=mode==="rule"?"rule":status;
+  $("intelligence-state-note").textContent=stateNotes[stateKey]||`辅助模型状态：${status}。实际提醒仍由 Rule Engine 负责。`;
+  $("intelligence-model-id").textContent=intelligenceText(model.model_id??model.id);
+  $("intelligence-revision").textContent=intelligenceText(model.revision);
+  $("intelligence-device").textContent=intelligenceText(model.device);
+  const precision=[model.precision,model.format].filter(value=>value!==null&&value!==undefined&&value!=="").map(intelligenceText);
+  $("intelligence-precision").textContent=precision.length?precision.join(" · "):"—";
+  const latency=result?.inference_latency_ms??data?.inference_latency_ms??model.inference_latency_ms;
+  $("intelligence-latency").textContent=intelligenceMs(latency);
+  if(result&&result.valid!==false&&result.stale!==true){
+    const candidate=result.candidate_risk_level;
+    const score=result.candidate_score;
+    const summary=candidate===null||candidate===undefined
+      ?"原始判断见下方"
+      :intelligenceText(candidate);
+    $("intelligence-latest").textContent=score===null||score===undefined
+      ?summary:`${summary} · score ${intelligenceText(score)}`;
+  }else{
+    $("intelligence-latest").textContent=result?(result.stale?"暂无有效结果 · 最近结果已过期":"暂无有效结果 · 最近结果不可用"):"暂无有效结果";
+  }
+  const auxiliaryName=intelligenceModeNames[auxiliary]||"辅助模型";
+  $("intelligence-auxiliary-name").textContent=auxiliaryName;
+  const ruleLevel=comparison.rule_level??(Array.isArray(activeRuleEvent)?activeRuleEvent[4]:activeRuleEvent?.["等级"]);
+  $("intelligence-rule-level").textContent=intelligenceText(ruleLevel);
+  $("intelligence-auxiliary-level").textContent=intelligenceText(comparison.auxiliary_level);
+  const statusText=comparison.status??(comparison.agreement===true?"agreement":comparison.agreement===false?"disagreement":"unavailable");
+  const comparisonLabels={agreement:"判断一致",disagreement:"判断分歧",not_comparable:"不可比较",unavailable:"等待有效且可比较的判断",stale:"结果已过期"};
+  const statusKey=String(statusText).toLowerCase();
+  $("intelligence-agreement").textContent=comparisonLabels[statusKey]||intelligenceText(statusText);
+  $("intelligence-agreement").dataset.state=statusKey;
+  $("intelligence-fusion-level").textContent=intelligenceText(comparison.fusion_level);
+  const frame=comparison.frame_id??result?.frame_id;
+  const event=comparison.event_id??result?.event_id;
+  const timestamp=comparison.timestamp_ms??result?.timestamp_ms;
+  const context=[frame===null||frame===undefined?null:`Frame ${intelligenceText(frame)}`,event===null||event===undefined?null:`Event ${intelligenceText(event)}`,timestamp===null||timestamp===undefined?null:`${intelligenceText(timestamp)} ms`].filter(Boolean);
+  $("intelligence-comparison-context").textContent=context.length?context.join(" · "):"Frame / Event：—";
+  const rawOutput=result?.raw_output;
+  const reason=comparison.not_comparable_reason??comparison.reason??result?.error??data?.error;
+  const rawParts=[];
+  if(rawOutput!==null&&rawOutput!==undefined)rawParts.push(`模型原始输出：\n${typeof rawOutput==="string"?rawOutput:JSON.stringify(rawOutput,null,2)}`);
+  if(reason)rawParts.push(`不可比较 / 错误原因：\n${intelligenceText(reason)}`);
+  $("intelligence-raw-output").textContent=rawParts.length?rawParts.join("\n\n"):"暂无模型输出";
+  const p50=performance.p50_ms,p95=performance.p95_ms;
+  $("intelligence-percentiles").textContent=p50==null&&p95==null?"—":`${intelligenceMs(p50)} / ${intelligenceMs(p95)}`;
+  const calls=performance.calls,timeouts=performance.timeouts;
+  $("intelligence-calls").textContent=calls==null&&timeouts==null?"—":`${intelligenceText(calls)} / ${intelligenceText(timeouts)}`;
+  $("intelligence-stale").textContent=intelligenceText(performance.stale);
+  $("intelligence-load-time").textContent=intelligenceMs(performance.load_ms);
+  $("intelligence-vram").textContent=typeof performance.peak_vram_mb==="number"&&Number.isFinite(performance.peak_vram_mb)?`${performance.peak_vram_mb.toFixed(1)} MB`:intelligenceText(performance.peak_vram_mb);
+  const fpsBefore=performance.fast_fps_before,fpsAfter=performance.fast_fps_after;
+  $("intelligence-fast-fps-before").textContent=typeof fpsBefore==="number"&&Number.isFinite(fpsBefore)?`${fpsBefore.toFixed(1)} FPS`:intelligenceText(fpsBefore);
+  $("intelligence-fast-fps-after").textContent=typeof fpsAfter==="number"&&Number.isFinite(fpsAfter)?`${fpsAfter.toFixed(1)} FPS`:intelligenceText(fpsAfter);
+  const active=liveActive&&!intelligenceMutationBusy;
+  $("intelligence-mode").disabled=!active;
+  $("intelligence-auxiliary").disabled=!active;
+  $("intelligence-load").disabled=!active||$("intelligence-mode").value==="rule"||["Loading","Ready","Running"].includes(status);
+  $("intelligence-unload").disabled=!active||!["Loading","Ready","Running","Failed"].includes(status);
+}
 function renderLive(view){
   if(typeof view.image==="string")$("live-image").innerHTML=view.image;
   if(typeof view.status==="string")$("live-status").textContent=plainStatus(view.status);
@@ -103,6 +199,7 @@ function renderLive(view){
   renderLiveRecords($("live-events"),view.events,"尚无实时事件",liveEventColumns);
   renderLiveRecords($("live-alerts"),view.alerts,"尚无实时提醒",liveAlertColumns);
   setLiveActive(Boolean(view.running));
+  renderIntelligence(view.intelligence,view.events);
   $("live-mute").textContent=liveMuted?"解除静音":"静音";
   $("live-mute").disabled=!view.running||!liveAudioAvailable||Boolean(audio?.error);
   const navigationReady=Boolean(view.running&&audio?.ready&&audio.enabled&&!audio.error);
@@ -152,6 +249,38 @@ async function pollLive(){
   catch(error){showLiveError(error.message);$("live-status").textContent="实时状态读取失败；会话将在服务端租约超时后释放。";setLiveActive(false);}
   finally{livePollBusy=false;}
 }
+function selectedIntelligenceAuxiliary(mode){
+  if(mode==="vision")return "vision";
+  if(mode==="hybrid")return $("intelligence-auxiliary").value;
+  return "laya";
+}
+async function updateIntelligence(action){
+  if(!liveActive){$("intelligence-error").textContent="请先启动当前实时会话，再管理辅助模型。";$("intelligence-error").hidden=false;return;}
+  const mode=$("intelligence-mode").value;
+  if(action==="load"&&mode==="rule")return;
+  $("intelligence-error").hidden=true;
+  intelligenceMutationBusy=true;
+  renderIntelligence(lastIntelligenceSnapshot);
+  try{
+    const view=await postApi("/api/live/intelligence",{
+      mode,auxiliary:selectedIntelligenceAuxiliary(mode),action
+    });
+    intelligenceMutationBusy=false;
+    renderLive(view);
+  }catch(error){
+    intelligenceMutationBusy=false;
+    renderIntelligence(lastIntelligenceSnapshot);
+    $("intelligence-error").textContent=error.message;
+    $("intelligence-error").hidden=false;
+  }
+}
+$("intelligence-mode").addEventListener("change",()=>{
+  $("intelligence-auxiliary-field").hidden=$("intelligence-mode").value!=="hybrid";
+  void updateIntelligence("select");
+});
+$("intelligence-auxiliary").addEventListener("change",()=>void updateIntelligence("select"));
+$("intelligence-load").addEventListener("click",()=>void updateIntelligence("load"));
+$("intelligence-unload").addEventListener("click",()=>void updateIntelligence("unload"));
 $("live-start").addEventListener("click",startLive);
 $("live-stop").addEventListener("click",async()=>{
   $("live-stop").disabled=true;

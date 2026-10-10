@@ -146,6 +146,72 @@
     </aside>
    </div>
 
+   <article id="live-intelligence" class="panel live-intelligence-panel" aria-labelledby="live-intelligence-title">
+    <div class="live-intelligence-heading">
+     <div>
+      <div class="eyebrow">SHADOW DECISION RESEARCH</div>
+      <div class="panel-title"><h3 id="live-intelligence-title">Risk Intelligence</h3><span id="intelligence-status" class="intelligence-status" data-status="Unavailable">Unavailable</span></div>
+      <p class="panel-description">辅助模型结果仅用于影子对照，不会增加、取消或改变实际提醒。</p>
+     </div>
+     <div class="actual-alert-controller"><span>Actual Alert Controller</span><strong>Rule Engine</strong></div>
+    </div>
+    <div class="intelligence-controls">
+     <label class="live-field" for="intelligence-mode">研究模式
+      <select id="intelligence-mode" aria-label="Risk Intelligence 研究模式" disabled>
+       <option value="rule">Rule Engine</option>
+       <option value="laya">Laya Structured</option>
+       <option value="vision">Laya Vision</option>
+       <option value="hybrid">Hybrid Intelligence</option>
+      </select>
+     </label>
+     <label id="intelligence-auxiliary-field" class="live-field" for="intelligence-auxiliary" hidden>Hybrid 辅助模型
+      <select id="intelligence-auxiliary" aria-label="Hybrid 辅助模型" disabled><option value="laya">Laya Structured</option><option value="vision">Laya Vision</option></select>
+     </label>
+     <div class="live-actions intelligence-actions">
+      <button id="intelligence-load" class="button primary" disabled>加载辅助模型</button>
+      <button id="intelligence-unload" class="button ghost" disabled>卸载辅助模型</button>
+     </div>
+     <p id="intelligence-state-note" class="intelligence-state-note" role="status">当前实际提醒由 Rule Engine 负责；辅助模型仅用于研究对照。</p>
+     <div id="intelligence-error" class="error-message" role="alert" hidden></div>
+    </div>
+    <div class="intelligence-grid">
+     <section class="intelligence-card" aria-label="辅助模型状态">
+      <h4>辅助模型</h4>
+      <dl class="intelligence-details">
+       <div><dt>模型</dt><dd id="intelligence-model-id">—</dd></div>
+       <div><dt>Revision</dt><dd id="intelligence-revision">—</dd></div>
+       <div><dt>运行设备</dt><dd id="intelligence-device">—</dd></div>
+       <div><dt>精度 / 格式</dt><dd id="intelligence-precision">—</dd></div>
+       <div><dt>推理延迟</dt><dd id="intelligence-latency">—</dd></div>
+       <div><dt>最近有效决策</dt><dd id="intelligence-latest">暂无有效结果</dd></div>
+      </dl>
+     </section>
+     <section class="intelligence-card" aria-label="规则与辅助模型比较">
+      <h4>同一事件的判断对照</h4>
+      <div class="intelligence-comparison">
+       <div><span>Rule Engine</span><strong id="intelligence-rule-level">—</strong></div>
+       <div><span id="intelligence-auxiliary-name">辅助模型</span><strong id="intelligence-auxiliary-level">—</strong></div>
+      </div>
+      <p id="intelligence-agreement" class="intelligence-agreement">等待有效且可比较的判断</p>
+      <p class="intelligence-fusion"><span>实验性融合候选等级</span><strong id="intelligence-fusion-level">—</strong></p>
+      <small id="intelligence-comparison-context">Frame / Event：—</small>
+      <details class="intelligence-output-details"><summary>原始模型输出与不可比较原因</summary><pre id="intelligence-raw-output">暂无模型输出</pre></details>
+     </section>
+     <section class="intelligence-card intelligence-performance" aria-label="辅助模型性能统计">
+      <h4>研究性能统计</h4>
+      <dl class="intelligence-details">
+       <div><dt>P50 / P95</dt><dd id="intelligence-percentiles">—</dd></div>
+       <div><dt>调用 / 超时</dt><dd id="intelligence-calls">—</dd></div>
+       <div><dt>过期结果</dt><dd id="intelligence-stale">—</dd></div>
+       <div><dt>模型加载耗时</dt><dd id="intelligence-load-time">—</dd></div>
+       <div><dt>峰值显存</dt><dd id="intelligence-vram">—</dd></div>
+       <div><dt>Fast Path FPS（加载前）</dt><dd id="intelligence-fast-fps-before">—</dd></div>
+       <div><dt>Fast Path FPS（加载后）</dt><dd id="intelligence-fast-fps-after">—</dd></div>
+      </dl>
+     </section>
+    </div>
+   </article>
+
    <div class="live-lab-grid">
     <article class="panel live-lab-panel">
      <div class="panel-title"><span class="step-number">03</span><h3>手动空间音频试听</h3><span class="live-label">SYSTEM TEST TONE</span></div>

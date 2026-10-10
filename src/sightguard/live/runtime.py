@@ -6,7 +6,8 @@ import logging
 import sys
 from collections import deque
 from collections.abc import Callable
-from dataclasses import dataclass
+from dataclasses import asdict, dataclass
+from pathlib import Path
 from threading import Condition, Event, Lock, Thread
 from time import monotonic
 from typing import TYPE_CHECKING, Protocol
@@ -26,6 +27,7 @@ from sightguard.risk.schema import AlertEvent, StepResult
 LOGGER = logging.getLogger(__name__)
 
 if TYPE_CHECKING:
+    from sightguard.hybrid.manager import IntelligenceManager
     from sightguard.spatial.config import SpatialConfig
 
 
@@ -127,6 +129,28 @@ class LiveSession:
         self.audio = None
         self.audio_adapter = None
         self.audio_error: str | None = None
+        self.intelligence = None
+
+    def enable_intelligence(self, root: Path) -> IntelligenceManager:
+        """Opt-in shadow worker; auxiliary selection never recreates this live session."""
+        from sightguard.hybrid.config import load_hybrid_config
+        from sightguard.hybrid.manager import IntelligenceManager
+
+        if self.intelligence is None:
+            config = load_hybrid_config(root / "configs" / "hybrid.yaml", root)
+            self.intelligence = IntelligenceManager(config, root, self.engine.stream_id)
+            self.intelligence.record_source(
+                {
+                    "perception_config": asdict(self.perception),
+                    "risk_config": asdict(self.risk),
+                    "live_config": asdict(self.config),
+                    "timestamp_source": "monotonic relative to live session origin",
+                }
+            )
+            result, _ = self.snapshot()
+            if result is not None:
+                self.intelligence.submit(result)
+        return self.intelligence
 
     def start(self) -> None:
         if self.started:
@@ -297,6 +321,11 @@ class LiveSession:
                         LOGGER.warning("%s; vision continues", self.audio_error)
                 for alert in decision.alerts:
                     LOGGER.info("Alert %s %s: %s", alert.alert_type, alert.event_id, alert.reason)
+                if self.intelligence is not None:
+                    try:
+                        self.intelligence.submit(result)
+                    except Exception:
+                        LOGGER.exception("Shadow submission failed; rule alerts continue")
                 index += 1
         except Exception as exc:
             self._fail(f"Live processing stopped: {exc}")
@@ -305,6 +334,12 @@ class LiveSession:
 
     def close(self) -> None:
         self.stop_event.set()
+        intelligence_error = None
+        if self.intelligence is not None:
+            try:
+                self.intelligence.close()
+            except Exception as exc:
+                intelligence_error = exc
         if self.audio is not None:
             try:
                 self.audio.close()
@@ -322,3 +357,5 @@ class LiveSession:
                 thread.join(self.config.join_timeout_s)
         if any(thread.is_alive() for thread in self.threads):
             raise RuntimeError("Camera/inference backend did not stop within shutdown timeout")
+        if intelligence_error is not None:
+            raise RuntimeError(f"Shadow worker cleanup failed: {intelligence_error}")

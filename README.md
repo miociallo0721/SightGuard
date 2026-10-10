@@ -1,5 +1,39 @@
 # SightGuard（视界）
 
+## Hybrid Intelligence（影子研究）
+
+已有产品网页的“实时体验”新增 Risk Intelligence 面板，支持 Rule / Laya / Vision /
+Hybrid 四种研究模式。**Actual Alert Controller 始终是 Rule Engine**；辅助判断与实验性融合
+不会控制实际提醒或空间音频。先启动摄像头，再选模式并主动点击“加载辅助模型”；
+切换模式会卸载旧辅助模型，随后可加载新模型，摄像头、YOLO 和现有风险事件保持连续。
+
+本机已验证 Laya CPU INT8 ONNX 与 Laya Vision CPU FP32；CUDA/FP16 尚未验证。
+`configs/hybrid.yaml` 配置本地权重、隔离解释器、设备、限频、超时、有效期和融合策略。
+默认不下载、不启动辅助模型；两套上游包同名 `laya`，使用独立环境与单一辅助子进程。
+
+```powershell
+# 从项目根目录执行；本次所有临时与缓存文件均使用 D 盘
+New-Item -ItemType Directory -Force models/hybrid/tmp,models/hybrid/cache | Out-Null
+$env:TEMP = "$PWD/models/hybrid/tmp"
+$env:TMP = $env:TEMP
+$env:TMPDIR = $env:TEMP
+$env:UV_CACHE_DIR = "$PWD/models/hybrid/cache/uv"
+$env:HF_HOME = "$PWD/models/hybrid/cache/hf"
+$env:TORCH_HOME = "$PWD/models/hybrid/cache/torch"
+uv run sightguard ui --port 7860
+# 独立真实模型测试：必须已准备本地权重，不会自动下载
+$env:SIGHTGUARD_TEST_HYBRID = '1'
+uv run pytest tests/test_hybrid_integration.py -q --basetemp models/hybrid/tmp/pytest-real
+uv run python scripts/verify_hybrid_live.py --camera 1
+```
+
+运行记录保存于新的 `outputs/hybrid/session-*`；包含原始输出、同源帧比较、实际规则提醒、
+配置/权重哈希及性能统计。规则日志仅记录语义任务采样帧，不是完整视频；Vision 原图默认
+只存像素哈希，需精确离线重放图像时显式设 `retain_images: true`，注意磁盘占用与隐私。
+候选得分未校准，模型间一致率不是准确率。Vision 权重 CC-BY-NC-SA-4.0，发布需审查许可。
+环境重建、固定来源和限制见[架构文档](docs/hybrid_intelligence_architecture.md)，
+真实验证数据与兼容性见[验证记录](docs/hybrid_intelligence_validation.md)。
+
 ## 智能辅助眼镜展示网页
 
 面向高中科创展示的产品介绍与视频模型演示现作为默认网页入口：

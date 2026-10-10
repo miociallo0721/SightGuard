@@ -44,4 +44,4 @@ select = ["E", "F", "I", "UP", "B"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
-markers = ["integration: opt-in real YOLO tests requiring local weights"]
+markers = ["integration: opt-in real YOLO/auxiliary tests requiring local weights"]
