@@ -1,5 +1,31 @@
 # SightGuard（视界）
 
+## 当前运行架构（2026-10-11）
+
+正式结构化提醒主链路为 **YOLO26n / BoT-SORT → FrameRecord → AssessmentEngine
+（风险特征、评分、事件与感知状态）→ AlertScheduler → AlertEvent**。
+实时摄像头和离线 tracks 重放复用同一核心；空间音频需要显式启用，再由
+RiskCueAdapter / CueScheduler / AudioWorker 提交到 PC 的 OpenAL Soft。
+存在 AlertEvent 不代表声音已播放或用户已听到。
+
+- `sightguard ui`：默认 FastAPI 产品演示页；`sightguard ui --research`：Gradio Research Console。
+  当前 CLI 总帮助仍将 `ui` 描述为 Research Console，实际路由以上述开关为准。
+- `sightguard live`：OpenCV 摄像头规则演示；`analyze`：仅 MP4 感知；`assess`：已有 tracks
+  的正式规则评估；`replay`：仅校验与摘要。产品上传任务顺序执行 analyze 和 assess。
+- SegFormer / Path Relevance v1：独立 `path-relevance` 离线 Shadow，未进入默认实时摄像头；
+  Research Console 只浏览其产物。最新权威研究批次是 `outputs/path_relevance/v04/`，
+  CLI 默认目录 v01 不表示最新结果。
+- Event Association v2：`allow_class_switch_for_track_id` 默认 false，只有显式实验配置启用。
+  Laya Structured / Vision / Hybrid 均为按需加载的 Shadow，不控制正式提醒或 HRTF。
+- 产品 MP4 的 DemoGuidance 方向建议、语音试听及手动 NavigationCue 是演示/模拟来源，
+  不等于正式 AlertEvent，更不证明通行安全。
+
+本轮只整理架构与文档，保留全部运行代码、配置和 Schema；尚未实现统一 SceneEvidence、
+Corridor Grid、度量深度或可靠走廊决策。接手开发先阅读
+[实际架构审计](docs/architecture_audit_2026-10-11.md)、
+[Roana 源码对照](docs/roana_architecture_comparison.md)和
+[契约与分阶段迁移计划](docs/architecture_consolidation_plan.md)。
+
 ## Annotation Studio
 
 `uv run sightguard ui --research --port 7861` → Annotation Studio：原视频 PTS 逐帧查看、
@@ -20,9 +46,12 @@ Hybrid 四种研究模式。**Actual Alert Controller 始终是 Rule Engine**；
 不会控制实际提醒或空间音频。先启动摄像头，再选模式并主动点击“加载辅助模型”；
 切换模式会卸载旧辅助模型，随后可加载新模型，摄像头、YOLO 和现有风险事件保持连续。
 
-本机已验证 Laya CPU INT8 ONNX 与 Laya Vision CPU FP32；CUDA/FP16 尚未验证。
+本机历史记录已验证 Laya CPU INT8 ONNX、Vision CPU FP32，以及隔离环境的 Vision CUDA
+混合精度前向；Structured CUDA 仍有核心量化运算回退 CPU。它们是研究验证，不是风险准确率验证。
 `configs/hybrid.yaml` 配置本地权重、隔离解释器、设备、限频、超时、有效期和融合策略。
-默认不下载、不启动辅助模型；两套上游包同名 `laya`，使用独立环境与单一辅助子进程。
+默认不下载、不启动辅助模型；当前配置 Structured 为 CPU INT8 ONNX，Vision 为
+`device: auto` / FP32（实际设备由隔离解释器能力决定）。两套上游包同名 `laya`，
+使用独立环境与单一辅助子进程。真实 GPU 研究记录见 [GPU 可行性记录](docs/hybrid_gpu_feasibility.md)。
 
 ```powershell
 # 从项目根目录执行；本次所有临时与缓存文件均使用 D 盘
@@ -154,7 +183,8 @@ Ultralytics 使用前应阅读其 [许可说明](https://www.ultralytics.com/lic
 ## 后续阶段
 
 Phase 3 和 Phase 4 的研究功能已实现。后续可研究性能优化、ONNX/Core ML 与 iOS 部署；
-当前不播放提醒音频，不提供导航或移动端功能。
+`assess` 仅导出结构化提醒，不播放音频；实时链路可显式启用 PC 空间音频，见下文 Spatial。
+不提供经验证的导航或移动端功能。
 
 ## Phase 2：离线风险分析
 
@@ -362,7 +392,8 @@ uv run sightguard live --camera 1 --device cpu --spatial-audio
 采集格式与请求帧率由 `configs/live.yaml` 配置；时间戳仍使用 monotonic，不按请求 FPS 推算。
 
 Hybrid GPU 研究工具与实际限制见 [GPU 可行性记录](docs/hybrid_gpu_feasibility.md)。
-2026-10-11 已完成 RTX 2050 上 Vision 混合精度真实推理；默认仍为 CPU 影子模式。
+2026-10-11 已完成 RTX 2050 上 Vision 混合精度真实推理；默认不加载辅助模型。
+按需加载仍为 Shadow，设备以当前配置及隔离解释器能力为准，见本文开头的运行状态说明。
 原风险任务仍全部 UNKNOWN，GPU 加速不等于风险判断有效；见 [UNKNOWN 调查](docs/laya_vision_unknown_investigation.md)。
 
 提醒行为诊断：`uv run python scripts/diagnose_alert_behavior.py` 只读取现有真实运行日志，
