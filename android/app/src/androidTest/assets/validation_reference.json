@@ -1,0 +1,464 @@
+{
+  "format_version": 1,
+  "created_at_utc": "2026-10-11T09:08:34.209074+00:00",
+  "validation_image": {
+    "file": "validation.jpg",
+    "sha256": "c02019c4979c191eb739ddd944445ef408dad5679acab6fd520ef9d434bfbc63",
+    "width": 810,
+    "height": 1080,
+    "source": "ultralytics package bundled assets/bus.jpg"
+  },
+  "preprocessing": {
+    "source_width": 810,
+    "source_height": 1080,
+    "target_width": 320,
+    "target_height": 320,
+    "scale": 0.2962962962962963,
+    "actual_scale_x": 0.2962962962962963,
+    "actual_scale_y": 0.2962962962962963,
+    "resized_width": 240,
+    "resized_height": 320,
+    "pad_left": 40,
+    "pad_top": 0,
+    "pad_right": 40,
+    "pad_bottom": 0,
+    "pad_rgb": [
+      114,
+      114,
+      114
+    ]
+  },
+  "preprocessing_method": {
+    "source_order": "OpenCV decoded BGR converted to RGB",
+    "resize_ratio": "min(320/source_width, 320/source_height)",
+    "scaled_dimensions": "round(source_dimension * ratio)",
+    "interpolation": "OpenCV cv2.INTER_LINEAR (half-pixel bilinear; no antialiasing)",
+    "android_interpolation": "Bitmap.createScaledBitmap(..., filter=true); expected to be closer to OpenCV bilinear than antialiased Pillow downsampling, though not pixel-identical",
+    "cross_runtime_tolerance": {
+      "comparison": "object-level; pixel-identical resized images are not assumed",
+      "minimum_bbox_iou": 0.8,
+      "maximum_confidence_delta": 0.15
+    },
+    "padding": "centered; integer left/top=floor(remaining/2); RGB=(114,114,114)",
+    "tensor": "RGB uint8 to float32, NCHW, divide by 255"
+  },
+  "input": {
+    "name": "images",
+    "shape": [
+      1,
+      3,
+      320,
+      320
+    ]
+  },
+  "outputs": [
+    {
+      "name": "output0",
+      "shape": [
+        1,
+        300,
+        6
+      ],
+      "dtype": "tensor(float)"
+    }
+  ],
+  "comparison": [
+    {
+      "output_index": 0,
+      "shape": [
+        1,
+        300,
+        6
+      ],
+      "max_absolute_error": 0.000396728515625,
+      "mean_absolute_error": 7.63618002464581e-06,
+      "allclose_rtol_1e-3_atol_1e-4": true
+    }
+  ],
+  "raw_output_summary": {
+    "pytorch": {
+      "row_count": 300,
+      "count_at_or_above_0_25": 5,
+      "android_min_score": 0.35,
+      "count_at_or_above_android_min_score": 5,
+      "top_10_by_score": [
+        {
+          "rank": 1,
+          "score": 0.8880670666694641,
+          "class_index": 0,
+          "class_name": "person",
+          "xyxy": [
+            55.7811393737793,
+            117.20680236816406,
+            109.85922241210938,
+            267.7317199707031
+          ]
+        },
+        {
+          "rank": 2,
+          "score": 0.8501641750335693,
+          "class_index": 0,
+          "class_name": "person",
+          "xyxy": [
+            103.91839599609375,
+            117.70125579833984,
+            142.88864135742188,
+            255.39842224121094
+          ]
+        },
+        {
+          "rank": 3,
+          "score": 0.7576658725738525,
+          "class_index": 5,
+          "class_name": "bus",
+          "xyxy": [
+            46.8428955078125,
+            67.07503509521484,
+            278.0718078613281,
+            223.8108367919922
+          ]
+        },
+        {
+          "rank": 4,
+          "score": 0.5093526840209961,
+          "class_index": 0,
+          "class_name": "person",
+          "xyxy": [
+            237.5205078125,
+            118.2886734008789,
+            281.6144104003906,
+            259.11016845703125
+          ]
+        },
+        {
+          "rank": 5,
+          "score": 0.3855026364326477,
+          "class_index": 0,
+          "class_name": "person",
+          "xyxy": [
+            40.49474334716797,
+            169.70474243164062,
+            63.076690673828125,
+            260.0260925292969
+          ]
+        },
+        {
+          "rank": 6,
+          "score": 0.0891542062163353,
+          "class_index": 24,
+          "class_name": "backpack",
+          "xyxy": [
+            244.91664123535156,
+            143.6575469970703,
+            270.9524841308594,
+            200.2205047607422
+          ]
+        },
+        {
+          "rank": 7,
+          "score": 0.054987095296382904,
+          "class_index": 7,
+          "class_name": "truck",
+          "xyxy": [
+            46.8428955078125,
+            67.07503509521484,
+            278.0718078613281,
+            223.8108367919922
+          ]
+        },
+        {
+          "rank": 8,
+          "score": 0.03735329955816269,
+          "class_index": 0,
+          "class_name": "person",
+          "xyxy": [
+            213.56723022460938,
+            119.9263916015625,
+            226.997802734375,
+            144.19415283203125
+          ]
+        },
+        {
+          "rank": 9,
+          "score": 0.026377320289611816,
+          "class_index": 0,
+          "class_name": "person",
+          "xyxy": [
+            244.9203338623047,
+            123.12899780273438,
+            278.4446716308594,
+            201.789794921875
+          ]
+        },
+        {
+          "rank": 10,
+          "score": 0.02262042835354805,
+          "class_index": 0,
+          "class_name": "person",
+          "xyxy": [
+            41.072349548339844,
+            108.56260681152344,
+            50.000694274902344,
+            141.41664123535156
+          ]
+        }
+      ]
+    },
+    "onnxruntime": {
+      "row_count": 300,
+      "count_at_or_above_0_25": 5,
+      "android_min_score": 0.35,
+      "count_at_or_above_android_min_score": 5,
+      "top_10_by_score": [
+        {
+          "rank": 1,
+          "score": 0.8880672454833984,
+          "class_index": 0,
+          "class_name": "person",
+          "xyxy": [
+            55.7811279296875,
+            117.20682525634766,
+            109.85923767089844,
+            267.731689453125
+          ]
+        },
+        {
+          "rank": 2,
+          "score": 0.850164532661438,
+          "class_index": 0,
+          "class_name": "person",
+          "xyxy": [
+            103.91839599609375,
+            117.70123291015625,
+            142.88864135742188,
+            255.39842224121094
+          ]
+        },
+        {
+          "rank": 3,
+          "score": 0.7576655149459839,
+          "class_index": 5,
+          "class_name": "bus",
+          "xyxy": [
+            46.842926025390625,
+            67.07502746582031,
+            278.07183837890625,
+            223.8108367919922
+          ]
+        },
+        {
+          "rank": 4,
+          "score": 0.5093511343002319,
+          "class_index": 0,
+          "class_name": "person",
+          "xyxy": [
+            237.5205078125,
+            118.28860473632812,
+            281.6144104003906,
+            259.11016845703125
+          ]
+        },
+        {
+          "rank": 5,
+          "score": 0.3855028748512268,
+          "class_index": 0,
+          "class_name": "person",
+          "xyxy": [
+            40.4947395324707,
+            169.70474243164062,
+            63.07668685913086,
+            260.0260925292969
+          ]
+        },
+        {
+          "rank": 6,
+          "score": 0.0891546905040741,
+          "class_index": 24,
+          "class_name": "backpack",
+          "xyxy": [
+            244.91664123535156,
+            143.65756225585938,
+            270.9524841308594,
+            200.22048950195312
+          ]
+        },
+        {
+          "rank": 7,
+          "score": 0.054987192153930664,
+          "class_index": 7,
+          "class_name": "truck",
+          "xyxy": [
+            46.842926025390625,
+            67.07502746582031,
+            278.07183837890625,
+            223.8108367919922
+          ]
+        },
+        {
+          "rank": 8,
+          "score": 0.03735315799713135,
+          "class_index": 0,
+          "class_name": "person",
+          "xyxy": [
+            213.56723022460938,
+            119.9263916015625,
+            226.997802734375,
+            144.19415283203125
+          ]
+        },
+        {
+          "rank": 9,
+          "score": 0.026377499103546143,
+          "class_index": 0,
+          "class_name": "person",
+          "xyxy": [
+            244.92034912109375,
+            123.12896728515625,
+            278.4446716308594,
+            201.789794921875
+          ]
+        },
+        {
+          "rank": 10,
+          "score": 0.02262037992477417,
+          "class_index": 0,
+          "class_name": "person",
+          "xyxy": [
+            41.072349548339844,
+            108.56261444091797,
+            50.00069046020508,
+            141.41665649414062
+          ]
+        }
+      ]
+    }
+  },
+  "detections": {
+    "confidence_threshold": 0.25,
+    "maximum_records": 20,
+    "pytorch": [
+      {
+        "xyxy": [
+          55.7811393737793,
+          117.20680236816406,
+          109.85922241210938,
+          267.7317199707031
+        ],
+        "score": 0.8880670666694641,
+        "class_index": 0,
+        "class_name": "person"
+      },
+      {
+        "xyxy": [
+          103.91839599609375,
+          117.70125579833984,
+          142.88864135742188,
+          255.39842224121094
+        ],
+        "score": 0.8501641750335693,
+        "class_index": 0,
+        "class_name": "person"
+      },
+      {
+        "xyxy": [
+          46.8428955078125,
+          67.07503509521484,
+          278.0718078613281,
+          223.8108367919922
+        ],
+        "score": 0.7576658725738525,
+        "class_index": 5,
+        "class_name": "bus"
+      },
+      {
+        "xyxy": [
+          237.5205078125,
+          118.2886734008789,
+          281.6144104003906,
+          259.11016845703125
+        ],
+        "score": 0.5093526840209961,
+        "class_index": 0,
+        "class_name": "person"
+      },
+      {
+        "xyxy": [
+          40.49474334716797,
+          169.70474243164062,
+          63.076690673828125,
+          260.0260925292969
+        ],
+        "score": 0.3855026364326477,
+        "class_index": 0,
+        "class_name": "person"
+      }
+    ],
+    "onnxruntime": [
+      {
+        "xyxy": [
+          55.7811279296875,
+          117.20682525634766,
+          109.85923767089844,
+          267.731689453125
+        ],
+        "score": 0.8880672454833984,
+        "class_index": 0,
+        "class_name": "person"
+      },
+      {
+        "xyxy": [
+          103.91839599609375,
+          117.70123291015625,
+          142.88864135742188,
+          255.39842224121094
+        ],
+        "score": 0.850164532661438,
+        "class_index": 0,
+        "class_name": "person"
+      },
+      {
+        "xyxy": [
+          46.842926025390625,
+          67.07502746582031,
+          278.07183837890625,
+          223.8108367919922
+        ],
+        "score": 0.7576655149459839,
+        "class_index": 5,
+        "class_name": "bus"
+      },
+      {
+        "xyxy": [
+          237.5205078125,
+          118.28860473632812,
+          281.6144104003906,
+          259.11016845703125
+        ],
+        "score": 0.5093511343002319,
+        "class_index": 0,
+        "class_name": "person"
+      },
+      {
+        "xyxy": [
+          40.4947395324707,
+          169.70474243164062,
+          63.07668685913086,
+          260.0260925292969
+        ],
+        "score": 0.3855028748512268,
+        "class_index": 0,
+        "class_name": "person"
+      }
+    ]
+  },
+  "versions": {
+    "python": "3.12.15 (main, Oct  1 2026, 21:00:48) [MSC v.1944 64 bit (AMD64)]",
+    "ultralytics": "8.4.174",
+    "torch": "2.14.1+cpu",
+    "opencv": "4.14.0",
+    "onnx": "1.19.1",
+    "onnxruntime": "1.24.4"
+  },
+  "weights_sha256": "9b09cc8bf347f0fc8a5f7657480587f25db09b34bf33b0652110fb03a8ad4fef",
+  "onnx_sha256": "e093d7e1805d63cc1b671c333ce0b48b5cd33f70f64ea16c9b5bd713e33242cf"
+}
