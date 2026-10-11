@@ -1,0 +1,32 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Corridor evidence inspector</title><style>
+body{font:15px system-ui;background:#15191e;color:#e1e5e9;margin:20px}h1{font-size:24px}button,select,input{font:inherit;background:#252c35;color:inherit;padding:6px;border:1px solid #66717d}label{margin-right:16px}.controls{display:flex;gap:12px;align-items:center;flex-wrap:wrap}.layout{display:grid;grid-template-columns:minmax(450px,1.5fr) minmax(340px,1fr);gap:20px;margin-top:16px}.picture{position:relative}.picture img{width:100%;display:block}.picture svg{position:absolute;inset:0;width:100%;height:100%}table{border-collapse:collapse;width:100%}td,th{text-align:left;border-bottom:1px solid #45515b;padding:6px}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#20262d;padding:12px;font-size:12px;max-height:420px;overflow:auto}.notice{color:#efc48f}#status{font-weight:600}summary{cursor:pointer}@media(max-width:950px){.layout{display:block}}
+</style><body><h1>Corridor Intelligence · image evidence inspector</h1>
+<p class="notice">Research observation only. Lower image rows are attention bands, not metric near-field. No navigation or safety guarantee. Unknown camera pose blocks default D.</p>
+<div class="controls"><label>Sample <input id="frame" aria-label="Sample" type="range" min="0" value="0"></label><button id="previous">Previous</button><button id="next">Next</button>
+<label>Ablation <select id="ablation"><option>A</option><option>B</option><option>C</option><option selected>D</option></select></label>
+<label>Candidate <select id="candidate"></select></label>
+<label><input id="rgb" type="checkbox">Original RGB</label><label><input id="unknown" type="checkbox">Unknown cells</label></div>
+<p id="frameLabel"></p><p id="status"></p><div class="layout"><div><div class="picture"><img id="image" alt="Exact source frame with image bands"><svg id="overlay" role="img" aria-label="Selected candidate cells and object boxes"></svg></div><p>Click a selected grid cell to inspect source evidence. Outlines denote image candidates.</p><details open><summary>Selected cell</summary><pre id="cell">Select a grid cell.</pre></details></div>
+<div><h2>Eligibility and cost</h2><div id="cost"></div><pre id="reasons"></pre><details open><summary>Ground, boxes, depth and unknown evidence</summary><pre id="evidence"></pre></details><details open><summary>Objects overlapping selected candidate</summary><pre id="objects"></pre></details><details><summary>Source provenance</summary><pre id="provenance"></pre></details></div></div>
+<script src="evidence.js"></script><script>
+'use strict';const rows=window.CORRIDOR_DATA;const $=id=>document.getElementById(id);const frame=$('frame');frame.max=rows.length-1;const ns='http://www.w3.org/2000/svg';
+for(const c of rows[0].ablations.D.candidates){const option=document.createElement('option');option.value=option.textContent=c.candidate.candidate_id;$('candidate').append(option)}
+if(Array.from($('candidate').options).some(o=>o.value==='IMAGE_CENTER'))$('candidate').value='IMAGE_CENTER';
+function svg(tag,attrs){const e=document.createElementNS(ns,tag);for(const [k,v] of Object.entries(attrs))e.setAttribute(k,v);return e;}
+function show(){const row=rows[Number(frame.value)],a=row.ablations[$('ablation').value],s=a.candidates.find(x=>x.candidate.candidate_id===$('candidate').value),k=row.key;
+$('frameLabel').textContent=`${k.video_id} · sample ${Number(frame.value)+1}/${rows.length} · frame ${k.frame_index} · video PTS ${k.timestamp_ms} ms · ${k.width}×${k.height}`;
+$('status').textContent=`${a.ablation}: ${a.status} · best supported image band: ${a.best_supported_candidate||'none'} · ${s.candidate.candidate_id}: ${s.evaluation_status}`;
+$('reasons').textContent=JSON.stringify({frame_reasons:a.abstain_reasons,tied:a.tied_candidates,candidate_reasons:s.eligibility_reasons,missing_components:s.missing_components},null,2);
+$('evidence').textContent=JSON.stringify(s.evidence,null,2);$('objects').textContent=JSON.stringify(s.object_relations,null,2);$('provenance').textContent=JSON.stringify(a.provenance,null,2);
+const t=document.createElement('table'),head=t.insertRow();for(const text of ['Component','Raw cost','Weighted']){const th=document.createElement('th');th.textContent=text;head.append(th)}for(const [name,value] of Object.entries(s.cost_components)){const tr=t.insertRow();for(const text of [name,value===null?'excluded / missing':value.toFixed(5),s.weighted_contributions[name]===null?'—':s.weighted_contributions[name].toFixed(5)])tr.insertCell().textContent=text}const total=t.insertRow();for(const text of ['Total eligible cost',s.total_cost===null?'null (ineligible)':s.total_cost.toFixed(5),''])total.insertCell().textContent=text;$('cost').replaceChildren(t);
+$('image').src=`previews/${String(k.frame_index).padStart(6,'0')}${$('rgb').checked?'_rgb':''}.jpg`;
+const o=$('overlay');o.setAttribute('viewBox',`0 0 ${k.width} ${k.height}`);o.replaceChildren();
+if($('unknown').checked)for(const c of row.cells){if(c.ground.status==='unknown'){const [x1,y1,x2,y2]=c.bounds_xyxy;o.append(svg('rect',{x:x1,y:y1,width:x2-x1,height:y2-y1,fill:'#e3c182','fill-opacity':.24,'pointer-events':'none'}))}}
+const colors=['#75c7e0','#f0aa70','#cd99cd'];a.candidates.forEach((c,i)=>o.append(svg('polygon',{points:c.candidate.polygon_xy.map(p=>p.join(',')).join(' '),fill:'none',stroke:colors[i%colors.length],'stroke-width':2,'pointer-events':'none'})));
+for(const id of s.candidate.cell_ids){const c=row.cells[id],[x1,y1,x2,y2]=c.bounds_xyxy,r=svg('rect',{x:x1,y:y1,width:x2-x1,height:y2-y1,fill:'transparent',stroke:'#f3f3f3','stroke-width':1,'data-cell-id':id});r.addEventListener('click',()=>$('cell').textContent=JSON.stringify(c,null,2));o.append(r)}
+for(const r of s.object_relations)for(const id of r.cell_ids){const [x1,y1,x2,y2]=row.cells[id].bounds_xyxy;o.append(svg('rect',{x:x1+3,y:y1+3,width:x2-x1-6,height:y2-y1-6,fill:'none',stroke:'#e6b87c','stroke-width':2,'pointer-events':'none'}))}
+document.body.dataset.sample=frame.value;document.body.dataset.ablation=a.ablation;document.body.dataset.status=a.status;document.body.dataset.candidate=s.candidate.candidate_id;
+}
+for(const id of ['frame','ablation','candidate','rgb','unknown'])$(id).addEventListener('input',show);$('previous').onclick=()=>{frame.value=Math.max(0,Number(frame.value)-1);show()};$('next').onclick=()=>{frame.value=Math.min(rows.length-1,Number(frame.value)+1);show()};show();
+</script></body></html>

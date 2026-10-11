@@ -417,3 +417,18 @@ Depth 相对深度在同一原图坐标下形成可配置 15×15 证据网格，
 输出目录必须不存在；首次缺少原始语义缓存时使用 `scripts/prepare_spatial_semantics.py`。
 设计、上游参考与数据契约见 [实现说明](docs/spatial_grid_fusion_v1.md)，
 240 帧真实融合、A/B/C/D、性能、限制与复现见 [验证报告](docs/spatial_grid_validation.md)。
+
+Corridor Intelligence v1 读取既有 Spatial Grid v03，生成确定性的图像候选带，
+独立聚合地面、检测框、相对深度和未知证据，提供可评价性门禁、分项成本与弃权。
+默认严格配置因缺少实测相机姿态而弃权，不输出导航动作，也不控制正式提醒或音频。
+运行 `uv run --no-sync python scripts/run_corridor.py --output outputs/corridor_intelligence/new-run`，
+输出目录必须不存在。图像几何与接口见 [实现说明](docs/corridor_intelligence_v1.md)，
+八视频真实消融、性能、浏览器检查和 257 条提醒回归见
+[阶段验证报告](docs/corridor_intelligence_validation.md)。
+
+Stage 4A Motion Quality 以真实相邻 RGB、检测框排除、双向 LK 和 RANSAC
+建立 CPU 图像运动与过去窗口证据，附加原走廊的时间诊断及模拟 Freshness。
+保持绝对姿态 UNKNOWN，原严格 D 门禁与正式提醒不变；Temporal Stabilization 未运行。
+运行 `uv run --no-sync python scripts/run_motion_quality.py --motion-output outputs/motion_quality/new-run --temporal-output outputs/temporal_corridor/new-run`，
+两个输出目录必须不存在。见 [实现说明](docs/motion_quality_v1.md)及
+[真实视频、保守弃权与回归报告](docs/temporal_corridor_validation.md)。

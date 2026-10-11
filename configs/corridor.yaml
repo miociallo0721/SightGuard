@@ -1,0 +1,31 @@
+schema_version: sightguard.corridor-config.v1
+candidates:
+  names: [IMAGE_LEFT, IMAGE_CENTER, IMAGE_RIGHT]
+  top_centers: [0.2, 0.5, 0.8]
+  bottom_centers: [0.35, 0.5, 0.65]
+  start_row_fraction: 0.4
+  top_width_fraction: 0.2
+  bottom_width_fraction: 0.3333333333333333
+  near_row_fraction: 0.8
+  row_weight_gain: 1.0
+evaluation:
+  min_ground_support: 0.2
+  min_bottom_ground: 0.15
+  min_continuity: 0.2
+  min_depth_coverage: 0.8
+  max_unknown: 0.45
+  max_conflict: 0.4
+  max_near_bbox_coverage: 0.65
+  min_scene_confidence: 0.45
+  require_observed_orientation: true
+  tie_margin: 0.03
+  depth_near_fraction: 0.75
+  road_support_factor: 0.5
+  floor_support_factor: 0.8
+  sidewalk_support_factor: 1.0
+  ground_weight: 0.25
+  continuity_weight: 0.2
+  obstacle_weight: 0.2
+  depth_weight: 0.15
+  unknown_weight: 0.15
+  conflict_weight: 0.05
