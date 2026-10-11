@@ -1,0 +1,611 @@
+{
+  "schemaVersion": "sightguard.ade20k-labels.v1",
+  "sourceUrl": "https://raw.githubusercontent.com/open-mmlab/mmsegmentation/v0.17.0/mmseg/datasets/ade.py",
+  "sourceSha256": "5c2a2e53efa3591e4c3584ace7b23fef5c5c73213a02189ecd7a6188dfbaa20b",
+  "sourceVersion": "MMSegmentation v0.17.0",
+  "indexing": "zero-based logits channels 0..149; annotation background 0 removed by reduce_zero_label=True",
+  "labels": [
+    {
+      "id": 0,
+      "rawLabel": "wall"
+    },
+    {
+      "id": 1,
+      "rawLabel": "building"
+    },
+    {
+      "id": 2,
+      "rawLabel": "sky"
+    },
+    {
+      "id": 3,
+      "rawLabel": "floor"
+    },
+    {
+      "id": 4,
+      "rawLabel": "tree"
+    },
+    {
+      "id": 5,
+      "rawLabel": "ceiling"
+    },
+    {
+      "id": 6,
+      "rawLabel": "road"
+    },
+    {
+      "id": 7,
+      "rawLabel": "bed "
+    },
+    {
+      "id": 8,
+      "rawLabel": "windowpane"
+    },
+    {
+      "id": 9,
+      "rawLabel": "grass"
+    },
+    {
+      "id": 10,
+      "rawLabel": "cabinet"
+    },
+    {
+      "id": 11,
+      "rawLabel": "sidewalk"
+    },
+    {
+      "id": 12,
+      "rawLabel": "person"
+    },
+    {
+      "id": 13,
+      "rawLabel": "earth"
+    },
+    {
+      "id": 14,
+      "rawLabel": "door"
+    },
+    {
+      "id": 15,
+      "rawLabel": "table"
+    },
+    {
+      "id": 16,
+      "rawLabel": "mountain"
+    },
+    {
+      "id": 17,
+      "rawLabel": "plant"
+    },
+    {
+      "id": 18,
+      "rawLabel": "curtain"
+    },
+    {
+      "id": 19,
+      "rawLabel": "chair"
+    },
+    {
+      "id": 20,
+      "rawLabel": "car"
+    },
+    {
+      "id": 21,
+      "rawLabel": "water"
+    },
+    {
+      "id": 22,
+      "rawLabel": "painting"
+    },
+    {
+      "id": 23,
+      "rawLabel": "sofa"
+    },
+    {
+      "id": 24,
+      "rawLabel": "shelf"
+    },
+    {
+      "id": 25,
+      "rawLabel": "house"
+    },
+    {
+      "id": 26,
+      "rawLabel": "sea"
+    },
+    {
+      "id": 27,
+      "rawLabel": "mirror"
+    },
+    {
+      "id": 28,
+      "rawLabel": "rug"
+    },
+    {
+      "id": 29,
+      "rawLabel": "field"
+    },
+    {
+      "id": 30,
+      "rawLabel": "armchair"
+    },
+    {
+      "id": 31,
+      "rawLabel": "seat"
+    },
+    {
+      "id": 32,
+      "rawLabel": "fence"
+    },
+    {
+      "id": 33,
+      "rawLabel": "desk"
+    },
+    {
+      "id": 34,
+      "rawLabel": "rock"
+    },
+    {
+      "id": 35,
+      "rawLabel": "wardrobe"
+    },
+    {
+      "id": 36,
+      "rawLabel": "lamp"
+    },
+    {
+      "id": 37,
+      "rawLabel": "bathtub"
+    },
+    {
+      "id": 38,
+      "rawLabel": "railing"
+    },
+    {
+      "id": 39,
+      "rawLabel": "cushion"
+    },
+    {
+      "id": 40,
+      "rawLabel": "base"
+    },
+    {
+      "id": 41,
+      "rawLabel": "box"
+    },
+    {
+      "id": 42,
+      "rawLabel": "column"
+    },
+    {
+      "id": 43,
+      "rawLabel": "signboard"
+    },
+    {
+      "id": 44,
+      "rawLabel": "chest of drawers"
+    },
+    {
+      "id": 45,
+      "rawLabel": "counter"
+    },
+    {
+      "id": 46,
+      "rawLabel": "sand"
+    },
+    {
+      "id": 47,
+      "rawLabel": "sink"
+    },
+    {
+      "id": 48,
+      "rawLabel": "skyscraper"
+    },
+    {
+      "id": 49,
+      "rawLabel": "fireplace"
+    },
+    {
+      "id": 50,
+      "rawLabel": "refrigerator"
+    },
+    {
+      "id": 51,
+      "rawLabel": "grandstand"
+    },
+    {
+      "id": 52,
+      "rawLabel": "path"
+    },
+    {
+      "id": 53,
+      "rawLabel": "stairs"
+    },
+    {
+      "id": 54,
+      "rawLabel": "runway"
+    },
+    {
+      "id": 55,
+      "rawLabel": "case"
+    },
+    {
+      "id": 56,
+      "rawLabel": "pool table"
+    },
+    {
+      "id": 57,
+      "rawLabel": "pillow"
+    },
+    {
+      "id": 58,
+      "rawLabel": "screen door"
+    },
+    {
+      "id": 59,
+      "rawLabel": "stairway"
+    },
+    {
+      "id": 60,
+      "rawLabel": "river"
+    },
+    {
+      "id": 61,
+      "rawLabel": "bridge"
+    },
+    {
+      "id": 62,
+      "rawLabel": "bookcase"
+    },
+    {
+      "id": 63,
+      "rawLabel": "blind"
+    },
+    {
+      "id": 64,
+      "rawLabel": "coffee table"
+    },
+    {
+      "id": 65,
+      "rawLabel": "toilet"
+    },
+    {
+      "id": 66,
+      "rawLabel": "flower"
+    },
+    {
+      "id": 67,
+      "rawLabel": "book"
+    },
+    {
+      "id": 68,
+      "rawLabel": "hill"
+    },
+    {
+      "id": 69,
+      "rawLabel": "bench"
+    },
+    {
+      "id": 70,
+      "rawLabel": "countertop"
+    },
+    {
+      "id": 71,
+      "rawLabel": "stove"
+    },
+    {
+      "id": 72,
+      "rawLabel": "palm"
+    },
+    {
+      "id": 73,
+      "rawLabel": "kitchen island"
+    },
+    {
+      "id": 74,
+      "rawLabel": "computer"
+    },
+    {
+      "id": 75,
+      "rawLabel": "swivel chair"
+    },
+    {
+      "id": 76,
+      "rawLabel": "boat"
+    },
+    {
+      "id": 77,
+      "rawLabel": "bar"
+    },
+    {
+      "id": 78,
+      "rawLabel": "arcade machine"
+    },
+    {
+      "id": 79,
+      "rawLabel": "hovel"
+    },
+    {
+      "id": 80,
+      "rawLabel": "bus"
+    },
+    {
+      "id": 81,
+      "rawLabel": "towel"
+    },
+    {
+      "id": 82,
+      "rawLabel": "light"
+    },
+    {
+      "id": 83,
+      "rawLabel": "truck"
+    },
+    {
+      "id": 84,
+      "rawLabel": "tower"
+    },
+    {
+      "id": 85,
+      "rawLabel": "chandelier"
+    },
+    {
+      "id": 86,
+      "rawLabel": "awning"
+    },
+    {
+      "id": 87,
+      "rawLabel": "streetlight"
+    },
+    {
+      "id": 88,
+      "rawLabel": "booth"
+    },
+    {
+      "id": 89,
+      "rawLabel": "television receiver"
+    },
+    {
+      "id": 90,
+      "rawLabel": "airplane"
+    },
+    {
+      "id": 91,
+      "rawLabel": "dirt track"
+    },
+    {
+      "id": 92,
+      "rawLabel": "apparel"
+    },
+    {
+      "id": 93,
+      "rawLabel": "pole"
+    },
+    {
+      "id": 94,
+      "rawLabel": "land"
+    },
+    {
+      "id": 95,
+      "rawLabel": "bannister"
+    },
+    {
+      "id": 96,
+      "rawLabel": "escalator"
+    },
+    {
+      "id": 97,
+      "rawLabel": "ottoman"
+    },
+    {
+      "id": 98,
+      "rawLabel": "bottle"
+    },
+    {
+      "id": 99,
+      "rawLabel": "buffet"
+    },
+    {
+      "id": 100,
+      "rawLabel": "poster"
+    },
+    {
+      "id": 101,
+      "rawLabel": "stage"
+    },
+    {
+      "id": 102,
+      "rawLabel": "van"
+    },
+    {
+      "id": 103,
+      "rawLabel": "ship"
+    },
+    {
+      "id": 104,
+      "rawLabel": "fountain"
+    },
+    {
+      "id": 105,
+      "rawLabel": "conveyer belt"
+    },
+    {
+      "id": 106,
+      "rawLabel": "canopy"
+    },
+    {
+      "id": 107,
+      "rawLabel": "washer"
+    },
+    {
+      "id": 108,
+      "rawLabel": "plaything"
+    },
+    {
+      "id": 109,
+      "rawLabel": "swimming pool"
+    },
+    {
+      "id": 110,
+      "rawLabel": "stool"
+    },
+    {
+      "id": 111,
+      "rawLabel": "barrel"
+    },
+    {
+      "id": 112,
+      "rawLabel": "basket"
+    },
+    {
+      "id": 113,
+      "rawLabel": "waterfall"
+    },
+    {
+      "id": 114,
+      "rawLabel": "tent"
+    },
+    {
+      "id": 115,
+      "rawLabel": "bag"
+    },
+    {
+      "id": 116,
+      "rawLabel": "minibike"
+    },
+    {
+      "id": 117,
+      "rawLabel": "cradle"
+    },
+    {
+      "id": 118,
+      "rawLabel": "oven"
+    },
+    {
+      "id": 119,
+      "rawLabel": "ball"
+    },
+    {
+      "id": 120,
+      "rawLabel": "food"
+    },
+    {
+      "id": 121,
+      "rawLabel": "step"
+    },
+    {
+      "id": 122,
+      "rawLabel": "tank"
+    },
+    {
+      "id": 123,
+      "rawLabel": "trade name"
+    },
+    {
+      "id": 124,
+      "rawLabel": "microwave"
+    },
+    {
+      "id": 125,
+      "rawLabel": "pot"
+    },
+    {
+      "id": 126,
+      "rawLabel": "animal"
+    },
+    {
+      "id": 127,
+      "rawLabel": "bicycle"
+    },
+    {
+      "id": 128,
+      "rawLabel": "lake"
+    },
+    {
+      "id": 129,
+      "rawLabel": "dishwasher"
+    },
+    {
+      "id": 130,
+      "rawLabel": "screen"
+    },
+    {
+      "id": 131,
+      "rawLabel": "blanket"
+    },
+    {
+      "id": 132,
+      "rawLabel": "sculpture"
+    },
+    {
+      "id": 133,
+      "rawLabel": "hood"
+    },
+    {
+      "id": 134,
+      "rawLabel": "sconce"
+    },
+    {
+      "id": 135,
+      "rawLabel": "vase"
+    },
+    {
+      "id": 136,
+      "rawLabel": "traffic light"
+    },
+    {
+      "id": 137,
+      "rawLabel": "tray"
+    },
+    {
+      "id": 138,
+      "rawLabel": "ashcan"
+    },
+    {
+      "id": 139,
+      "rawLabel": "fan"
+    },
+    {
+      "id": 140,
+      "rawLabel": "pier"
+    },
+    {
+      "id": 141,
+      "rawLabel": "crt screen"
+    },
+    {
+      "id": 142,
+      "rawLabel": "plate"
+    },
+    {
+      "id": 143,
+      "rawLabel": "monitor"
+    },
+    {
+      "id": 144,
+      "rawLabel": "bulletin board"
+    },
+    {
+      "id": 145,
+      "rawLabel": "shower"
+    },
+    {
+      "id": 146,
+      "rawLabel": "radiator"
+    },
+    {
+      "id": 147,
+      "rawLabel": "glass"
+    },
+    {
+      "id": 148,
+      "rawLabel": "clock"
+    },
+    {
+      "id": 149,
+      "rawLabel": "flag"
+    }
+  ],
+  "modelConfigUrl": "https://raw.githubusercontent.com/open-mmlab/mmsegmentation/v0.17.0/configs/segformer/segformer_mit-b0_512x512_160k_ade20k.py",
+  "checkpointSha256": "8ffa8fdac140ffaef9119150aca65e9fcb4e7a165e60b80be0102cc805d73a9c"
+}

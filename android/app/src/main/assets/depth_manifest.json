@@ -1,0 +1,99 @@
+{
+  "schema_version": "sightguard.depth-model-manifest.v1",
+  "version": "sightguard.depth.v03",
+  "model_id": "depth-anything/Depth-Anything-V2-Small-hf",
+  "model_revision": "5426e4f0f36572d16453bbda7a8389317b1bef99",
+  "model_asset": "depth_anything_v2_small_280.onnx",
+  "onnx_sha256": "01013aabdd38909eff174b88c177ec583967b37d14041bab8f91d405c3a1760e",
+  "onnx_size_bytes": 99092113,
+  "checkpoint_sha256": "3152477ce0d8d6978d76b995120de97cb5b928701fd0f817769f59e249a16b70",
+  "config_sha256": "c56698d3643dde1f83ea2212759e6b31a22b8f827246a36dd007ee8a22b3ff75",
+  "processor_sha256": "d41175c0d889477ca8fc67191e540faef14baf6275157b3fdecf78469e6bbf84",
+  "checkpoint_source": "https://huggingface.co/depth-anything/Depth-Anything-V2-Small-hf/resolve/5426e4f0f36572d16453bbda7a8389317b1bef99/model.safetensors",
+  "license": "Apache-2.0",
+  "license_basis": "Apache-2.0 (local pinned README front matter)",
+  "readme_sha256": "319566441daaac0c5ed83e75a8fd19bae0863f3275e23f147c06fe0906edf6fb",
+  "opset": 17,
+  "input_size": 280,
+  "input": {
+    "name": "pixel_values",
+    "shape": [
+      1,
+      3,
+      280,
+      280
+    ],
+    "dtype": "float32",
+    "layout": "NCHW",
+    "channel_order": "RGB"
+  },
+  "output": {
+    "name": "predicted_depth",
+    "shape": [
+      1,
+      280,
+      280
+    ],
+    "dtype": "float32",
+    "layout": "NHW",
+    "normalization": "none"
+  },
+  "dynamic_axes": false,
+  "depth_semantics": "relative_inverse_depth_larger_is_nearer",
+  "depth_scale_type": "frame_relative_uncalibrated",
+  "metric_distance": false,
+  "semantics_source": "https://arxiv.org/html/2406.09414v2#S5.SS2",
+  "preprocessing": {
+    "method": "center_letterbox_preserve_aspect",
+    "target_width": 280,
+    "target_height": 280,
+    "scale": "min(280/sourceWidth, 280/sourceHeight)",
+    "resize_rounding": "nearest integer (Python round in reference)",
+    "pad_left_top": "floor((280-resizedWidth)/2), floor((280-resizedHeight)/2)",
+    "channel_order": "RGB",
+    "rescale_factor": 0.00392156862745098,
+    "mean": [
+      0.48500001430511475,
+      0.4560000002384186,
+      0.4059999883174896
+    ],
+    "std": [
+      0.2290000021457672,
+      0.2240000069141388,
+      0.22499999403953552
+    ],
+    "padding_after_normalization": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "python_interpolation": "OpenCV INTER_AREA",
+    "android_interpolation": "Bitmap bilinear; bitmap preprocessing differs",
+    "numeric_parity_scope": "exact serialized float32 input tensor",
+    "pc_difference": "PC DPTImageProcessor preserves aspect by variable dimensions; Android uses static mean-padded letterbox"
+  },
+  "spatial_restore": "crop letterbox padding then resize to exact source frame",
+  "tool_versions": {
+    "python": "3.12.15",
+    "torch": "2.14.1",
+    "transformers": "5.19.0",
+    "onnx": "1.19.1",
+    "onnxruntime": "1.24.4",
+    "numpy": "2.5.3",
+    "opencv-python": "4.14.0.94"
+  },
+  "validation": {
+    "report_schema": "sightguard.depth-onnx-validation.v1",
+    "report_sha256": "05f784cd867c298e9a7320d4ddccce112c8b23d05ba02c89ff15ee3fb6a4d48c",
+    "finished_at_utc": "2026-10-11T11:55:45.929957+00:00",
+    "comparison": {
+      "sameInputTensor": true,
+      "maxAbsoluteError": 3.409385681152344e-05,
+      "meanAbsoluteError": 2.0471367300773154e-06,
+      "rtol": 0.001,
+      "atol": 0.0001,
+      "passed": true
+    },
+    "input_tensor_sha256": "37c97b4608fe525c3687650ba46715113f92a92bb38c3512e8166d8dc44760f1"
+  }
+}

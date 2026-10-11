@@ -3,7 +3,7 @@ package org.sightguard.app
 import org.sightguard.app.core.*
 
 data class PresentationConfig(val cooldownMs: Long = 3000, val expiryMs: Long = 2000, val sameGeometryMemoryMs: Long = 10000, val directionMargin: Double = .05)
-data class PresentedAlert(val alert: AlertEvent, val text: String, val important: Boolean, val merged: List<AlertEvent> = emptyList())
+data class PresentedAlert(val alert: AlertEvent, val text: String, val important: Boolean, val merged: List<AlertEvent> = emptyList(), val direction: Direction? = null)
 
 /** Mobile delivery policy is deliberately separate from the PC-compatible scheduler. */
 class AlertPresenter(private val config: PresentationConfig = PresentationConfig()) {
@@ -23,7 +23,7 @@ class AlertPresenter(private val config: PresentationConfig = PresentationConfig
         directions[id] = current; return current
     }
     fun choose(result: StepResult, nowMs: Long): PresentedAlert? {
-        return result.alerts.firstNotNullOfOrNull { chooseCandidate(it, result, nowMs) }
+        return result.alerts.sortedByDescending { it.riskLevel?.rank ?: -1 }.firstNotNullOfOrNull { chooseCandidate(it, result, nowMs) }
     }
     private fun chooseCandidate(selected: AlertEvent, result: StepResult, nowMs: Long): PresentedAlert? {
         val live = result.frame.events.filter { it.observedNow }.associateBy { it.eventId }
@@ -31,12 +31,13 @@ class AlertPresenter(private val config: PresentationConfig = PresentationConfig
         spoken.removeAll { result.frame.timestampMs - it.sourceTimeMs > config.sameGeometryMemoryMs }
         if (selected.alertType == "perception_limited") return PresentedAlert(selected, "感知暂时受限", true)
         val event = live[selected.eventId] ?: return null
+        if (event.assessment?.level == RiskLevel.LOW) return null
         val box = event.assessment?.let { result.frame.observations.firstOrNull { o -> o.eventId == event.eventId }?.features?.spatial?.bboxNormalized } ?: return null
         val dir = direction(event.eventId, (box[0] + box[2]) / 2)
         val prefix = when (dir) { Direction.LEFT -> "左侧"; Direction.CENTER -> "前方"; Direction.RIGHT -> "右侧" }
         val upgrade = selected.alertType == "escalation"
         if (!upgrade && spoken.any { it.classId == event.classId && it.direction == dir && bboxIou(it.box, box) >= .55 }) return null
-        val important = upgrade || (event.classId in setOf(1, 2, 3, 5, 7) && dir == Direction.CENTER && (event.assessment?.score ?: 0.0) >= .85)
+        val important = upgrade || event.assessment?.level == RiskLevel.HIGH
         if (!important && lastOrdinaryAt?.let { nowMs - it < config.cooldownMs } == true) return null
         val peers = result.frame.events.filter { it.observedNow && it.state == EventState.ACTIVE && it.classId == event.classId && it.assessment!!.level.rank >= RiskLevel.MEDIUM.rank }
             .filter { other -> val geo = result.frame.observations.firstOrNull { it.eventId == other.eventId }?.features?.spatial ?: return@filter false; direction(other.eventId, geo.centerXY[0]) == dir }
@@ -47,7 +48,7 @@ class AlertPresenter(private val config: PresentationConfig = PresentationConfig
             event.classId == 0 && eligiblePeers.size > 1 -> "${prefix}有多名行人"
             else -> "${prefix}有${Labels.coco80.getOrElse(event.classId) { "目标" }}"
         }
-        return PresentedAlert(selected, text, important, if (event.classId == 0 && eligiblePeers.size > 1) result.alerts.filter { it.eventId != selected.eventId && it.eventId in eligiblePeers.map(EventSnapshot::eventId) } else emptyList())
+        return PresentedAlert(selected, text, important, if (event.classId == 0 && eligiblePeers.size > 1) result.alerts.filter { it.eventId != selected.eventId && it.eventId in eligiblePeers.map(EventSnapshot::eventId) } else emptyList(), direction = dir)
     }
     fun accepted(presentation: PresentedAlert, result: StepResult, nowMs: Long) {
         if (!presentation.important) lastOrdinaryAt = nowMs

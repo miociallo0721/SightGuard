@@ -10,6 +10,7 @@ validation/
 parity-validation/
 segformer-validation/
 spatial-models/
+deliveries/
 app/src/main/assets/*.jpg
 app/src/main/assets/*.png
 validation/validation.jpg

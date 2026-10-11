@@ -80,3 +80,11 @@ SDK、Gradle cache、UV cache、构建、下载、生成 proto 和任务临时�
 
 验收结束已关闭 AVD，未留下 Gradle/Kotlin 编译 daemon。模拟器内部默认写入的 C 盘 `Temp\avd` 控制元数据目录也在模拟器关闭后迁移至 `D:\Temp\SightGuard\emulator-control`，原路径为 junction。
 > 后续0.2原生PC体验对齐版（本地视频、风险核心、可选真实SegFormer）的最新交付见 [android_pc_parity_delivery.md](android_pc_parity_delivery.md)。本文保留0.1 MVP原始验收记录及独立APK副本。
+
+## 2026-10-11 Android 0.3 更新
+
+最终 APK：`D:\program\SightGuard\android\deliveries\v03-final\SightGuard-0.3-spatial.apk`。
+SHA256：`69539570ae1d1ffffe74cb59f86475e80d35148628a521e59e94dc7c6cdd9d07`。
+88项JVM、21项AVD instrumentation通过；真实三模型及固定中文音频通过，平台动态中文TTS尚未验证。
+完整验收与限制见 `android/docs/spatial_perception_validation.md`；0.1历史APK保存在 `android/deliveries/mvp-verified/SightGuard-0.1-mvp-verified.apk`，0.2保存在 `android/deliveries/parity-final/SightGuard-0.2-parity.apk`。
+历史正文中的build输出路径会随新构建变化，不能拿当前app-debug.apk对应旧SHA。

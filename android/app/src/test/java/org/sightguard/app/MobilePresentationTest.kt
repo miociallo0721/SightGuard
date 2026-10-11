@@ -6,7 +6,9 @@ import org.sightguard.app.core.*
 
 class MobilePresentationTest {
     private val config = RiskConfig().let { it.copy(association = it.association.copy(recoveryWindowMs = 2500.0), alerts = it.alerts.copy(maxAlertsPerFrame = 8)) }
-    private fun person(id: Long, x: Double = 250.0) = PDetection(id, 0, "person", .9, listOf(x, 200.0, x + 120, 700.0))
+    // Both first-frame renormalized and reliable static scores are MEDIUM.
+    // This deliberately tests ordinary cooldown rather than the new HIGH priority policy.
+    private fun person(id: Long, x: Double = 250.0) = PDetection(id, 0, "person", .9, listOf(x, 525.0, x + 80, 600.0))
     @Test fun directionsUseHysteresisAndRestartClearsThem() {
         val p = AlertPresenter()
         assertEquals(Direction.LEFT, p.direction("a", .2)); assertEquals(Direction.LEFT, p.direction("a", .4))
@@ -29,10 +31,13 @@ class MobilePresentationTest {
         val engine = AssessmentEngine(config); val p = AlertPresenter()
         engine.step(PFrame(0, 0.0, 1000, 1000, listOf(person(1), person(2, 700.0))), false)
         val result = engine.step(PFrame(1, 300.0, 1000, 1000, listOf(person(1), person(2, 700.0))), false)
+        assertTrue(result.frame.events.all { it.assessment!!.level == RiskLevel.MEDIUM })
         val initial = p.choose(result, 300)!!
+        assertFalse(initial.important)
         assertEquals(initial.alert.eventId, p.choose(result, 1000)!!.alert.eventId)
         p.accepted(initial, result, 1000); engine.acceptAlert(initial.alert)
         val next = engine.step(PFrame(2, 600.0, 1000, 1000, listOf(person(1), person(2, 700.0))), false)
+        assertEquals(RiskLevel.MEDIUM, next.alerts.single().riskLevel)
         assertNull(p.choose(next, 2000))
         assertNotNull(p.choose(next, 4100))
         assertEquals(6100L, p.deadline(4100))
@@ -49,6 +54,7 @@ class MobilePresentationTest {
         engine.step(PFrame(0, 0.0, 1000, 1000, listOf(person(1))), false)
         val first = engine.step(PFrame(1, 300.0, 1000, 1000, listOf(person(1))), false)
         val ordinary = presenter.choose(first, 300)!!
+        assertEquals(RiskLevel.MEDIUM, ordinary.alert.riskLevel)
         assertFalse(ordinary.important)
         presenter.accepted(ordinary, first, 300); engine.acceptAlert(ordinary.alert)
         val bus = PDetection(2, 5, "bus", .95, listOf(350.0, 450.0, 650.0, 850.0))
@@ -56,6 +62,7 @@ class MobilePresentationTest {
         val largerBus = bus.copy(bboxXyxy = listOf(100.0, 50.0, 900.0, 1000.0))
         val confirmed = engine.step(PFrame(3, 700.0, 1000, 1000, listOf(person(1), largerBus)), false)
         val urgent = presenter.choose(confirmed, 700)!!
+        assertEquals(RiskLevel.HIGH, urgent.alert.riskLevel)
         assertTrue(urgent.important)
         assertEquals(5, confirmed.frame.events.single { it.eventId == urgent.alert.eventId }.classId)
     }
