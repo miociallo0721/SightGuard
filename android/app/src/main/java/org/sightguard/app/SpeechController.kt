@@ -58,7 +58,14 @@ internal object SpeechRequestRules {
         nowElapsedMs >= request.validUntilElapsedMs
 
     fun preempts(incoming: SpeechRequest, active: SpeechRequest): Boolean =
-        incoming.important && !active.important
+        priority(incoming)>priority(active)
+    fun priority(request: SpeechRequest): Int = when {
+        request.important -> 5
+        request.eventId?.startsWith("semantic:")==true -> 3
+        request.eventId?.startsWith("overview-")==true -> 2
+        request.eventId?.startsWith("status-")==true -> 1
+        else -> 4
+    }
 }
 
 /** A single expiring waiting slot; the active utterance is managed by SpeechController. */
@@ -71,7 +78,7 @@ internal class SpeechRequestQueue {
             pending = request
             return SpeechQueueOffer(accepted = true)
         }
-        if (request.important && !current.important) {
+        if (SpeechRequestRules.priority(request)>SpeechRequestRules.priority(current)) {
             pending = request
             return SpeechQueueOffer(accepted = true, replaced = current)
         }
@@ -128,8 +135,15 @@ internal object SpeechPromptCatalog {
             "感知暂时受限" to "perception_limited",
             "感知已恢复" to "perception_recovered",
             "摄像头已停止" to "camera_stopped",
+            "前方检测到墙面。" to "environment_wall",
+            "前方检测到楼梯。" to "environment_stairs",
+            "前方检测到台阶。" to "environment_step",
+            "前方检测到杆柱。" to "environment_pole",
         )
         fixed[text]?.let { return SpeechPromptSelection(it, text, usedGeneric = false) }
+        for(kind in EnvironmentKind.entries) for((key,direction) in listOf("left" to Direction.LEFT,"center" to Direction.CENTER,"right" to Direction.RIGHT)) {
+            if(text==environmentText(kind,direction)) return SpeechPromptSelection("environment_${kind.name.lowercase()}_$key",text,false)
+        }
 
         for ((directionKey, directionText) in directions) {
             val elevatedText = "${directionText}目标风险升高，请注意"
@@ -253,6 +267,17 @@ class SpeechController(
         cancelQueued(reason)
         cancelCurrent(reason, keepAudioFocus = false)
         abandonAudioFocus()
+    }
+
+    /** Cancel only obsolete semantic requests; preserve YOLO/system speech. */
+    fun cancelSemanticExcept(validIds: Set<String>, reason: String) {
+        checkMainThread()
+        fun obsolete(request: SpeechRequest?) = request?.eventId?.let { it.startsWith("semantic:") && it !in validIds } == true
+        if (obsolete(requestQueue.peek())) cancelQueued(reason)
+        // Once a fresh utterance starts, normal TTL does not truncate it; scene/session changes do.
+        if (obsolete(activeRequest) && (!activePlaybackStarted || reason != "semantic_expired")) {
+            cancelCurrent(reason, keepAudioFocus = true); startNextQueuedRequest()
+        }
     }
 
     /** Returns true when this request is now active or occupies the single waiting slot. */
@@ -752,6 +777,10 @@ class SpeechController(
             "perception_limited" -> return R.raw.perception_limited
             "perception_recovered" -> return R.raw.perception_recovered
             "camera_stopped" -> return R.raw.camera_stopped
+            "environment_wall" -> return R.raw.environment_wall
+            "environment_stairs" -> return R.raw.environment_stairs
+            "environment_step" -> return R.raw.environment_step
+            "environment_pole" -> return R.raw.environment_pole
             "alert_left_risk_elevated" -> return R.raw.alert_left_risk_elevated
             "alert_center_risk_elevated" -> return R.raw.alert_center_risk_elevated
             "alert_right_risk_elevated" -> return R.raw.alert_right_risk_elevated
@@ -761,6 +790,11 @@ class SpeechController(
             "alert_left_multiple_targets" -> return R.raw.alert_left_multiple_targets
             "alert_center_multiple_targets" -> return R.raw.alert_center_multiple_targets
             "alert_right_multiple_targets" -> return R.raw.alert_right_multiple_targets
+        }
+        if(name.startsWith("environment_")) {
+            val id=appContext.resources.getIdentifier(name,"raw",appContext.packageName)
+            require(id!=0) { "Missing exact environment audio: $name" }
+            return id
         }
         val body = name.removePrefix("alert_")
         val direction = body.substringBefore('_')
@@ -933,8 +967,10 @@ class SpeechController(
 
     private fun requestAudioFocus(): Boolean {
         if (hasAudioFocus) return true
+        val touchExploration=(appContext.getSystemService(Context.ACCESSIBILITY_SERVICE) as android.view.accessibility.AccessibilityManager).isTouchExplorationEnabled
+        Log.i("SG_AUDIO","focus requested policy=${if(touchExploration) "transient_may_duck" else "transient"}")
         val result = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            val request = AudioFocusRequest.Builder(AudioManager.AUDIOFOCUS_GAIN_TRANSIENT)
+            val request = AudioFocusRequest.Builder(if (touchExploration) AudioManager.AUDIOFOCUS_GAIN_TRANSIENT_MAY_DUCK else AudioManager.AUDIOFOCUS_GAIN_TRANSIENT)
                 .setAudioAttributes(speechAudioAttributes)
                 .setOnAudioFocusChangeListener(focusListener, mainHandler)
                 .build()

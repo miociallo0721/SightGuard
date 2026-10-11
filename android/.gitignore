@@ -1,4 +1,5 @@
 .gradle/
+.kotlin/
 .export-venv/
 build/
 **/build/
@@ -15,6 +16,7 @@ app/src/main/assets/*.jpg
 app/src/main/assets/*.png
 validation/validation.jpg
 app/src/androidTest/assets/*.jpg
+app/src/androidTest/assets/awareness/
 validation/*.png
 validation/*.xml
 validation/*.txt

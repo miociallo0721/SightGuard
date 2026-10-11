@@ -1,0 +1,48 @@
+{
+  "schema_version": 2,
+  "max_source_age_ms": 500,
+  "sample_interval_ms": 650,
+  "recovery_ms": 4000,
+  "cooldown_ms": 15000,
+  "confirmation_count": 2,
+  "min_confirmation_span_ms": 250,
+  "min_confidence": 0.55,
+  "min_roi_fraction": 0.12,
+  "min_cells": 12,
+  "roi": [
+    0.3,
+    0.2,
+    0.7,
+    0.85
+  ],
+  "max_scene_difference": 0.12,
+  "approach_enabled": false,
+  "automatic_kinds": ["WALL", "STAIRS", "POLE", "RAILING"],
+  "step_validation": "insufficient real single-step and curb evidence; retain class 121 observations without automatic speech",
+  "structures": {
+    "STAIRS": {
+      "min_roi_fraction": 0.035,
+      "min_cells": 8,
+      "min_confidence": 0.55,
+      "confirmation_count": 2
+    },
+    "STEP": {
+      "min_roi_fraction": 0.015,
+      "min_cells": 5,
+      "min_confidence": 0.65,
+      "confirmation_count": 3
+    },
+    "POLE": {
+      "min_roi_fraction": 0.012,
+      "min_cells": 6,
+      "min_confidence": 0.6,
+      "confirmation_count": 2
+    },
+    "RAILING": {
+      "min_roi_fraction": 0.025,
+      "min_cells": 8,
+      "min_confidence": 0.6,
+      "confirmation_count": 2
+    }
+  }
+}

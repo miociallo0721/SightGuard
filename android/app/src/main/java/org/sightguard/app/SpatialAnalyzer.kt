@@ -27,7 +27,8 @@ class SpatialDetector(context: Context) : AutoCloseable {
     init {
         val mapping = org.json.JSONObject(context.assets.open("ade20k_labels.json").bufferedReader().use { it.readText() }).getJSONArray("labels")
         require(mapping.length() == 150 && (0 until 150).all { mapping.getJSONObject(it).getInt("id") == it }) { "ADE20K mapping mismatch" }
-        require(mapping.getJSONObject(0).getString("rawLabel") == "wall" && mapping.getJSONObject(14).getString("rawLabel") == "door")
+        val expected = mapOf(0 to "wall", 53 to "stairs", 59 to "stairway", 121 to "step", 93 to "pole", 42 to "column", 38 to "railing", 95 to "bannister", 14 to "door", 32 to "fence", 4 to "tree", 87 to "streetlight", 96 to "escalator", 21 to "water", 34 to "rock")
+        require(expected.all { (id,label) -> mapping.getJSONObject(id).getString("rawLabel")==label }) { "Environment ADE20K class mapping mismatch" }
         val bytes = context.assets.open(MODEL_FILE).use { it.readBytes() }
         val sha = MessageDigest.getInstance("SHA-256").digest(bytes).joinToString("") { "%02x".format(it) }
         require(sha == MODEL_SHA) { "SegFormer SHA mismatch" }
@@ -88,7 +89,7 @@ class SpatialDetector(context: Context) : AutoCloseable {
             if (right > left && bottom > top) cells += SemanticCell(left, top, right, bottom, best, confidence)
         }
         val completed = SystemClock.elapsedRealtime()
-        val evidence = GroundEvidence(key, cells, completed - started, completed, if (cells.isEmpty()) "ABSTAIN：缺少可信地面语义" else "地面语义 · 非安全区域")
+        val evidence = GroundEvidence(key, cells, completed - started, completed, if (cells.isEmpty()) "ABSTAIN：缺少可信语义" else "真实语义 · 非安全区域")
         Log.i("SG_SPATIAL", "frame=${key.frameIndex} sourceMs=${key.timestampMs} cells=${cells.size} latencyMs=${evidence.latencyMs} evidenceAgeMs=${completed - key.capturedAtMs} state=${evidence.state}")
         return evidence
     }

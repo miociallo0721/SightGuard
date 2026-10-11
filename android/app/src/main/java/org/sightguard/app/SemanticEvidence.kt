@@ -29,11 +29,11 @@ data class SemanticSummary(val regions: List<SemanticRegion>, val overview: Stri
 /** Pure deterministic aggregation of nonoverlapping segmentation cells; no alert state. */
 object SemanticEvidence {
     val groundClassIds: Set<Int> = setOf(3, 6, 11)
-    val displayedClassIds: Set<Int> = setOf(0, 1, 2, 3, 4, 6, 9, 10, 11, 14, 15, 17, 19, 21, 32, 53, 59, 93, 121)
+    val displayedClassIds: Set<Int> = setOf(0, 1, 2, 3, 4, 6, 9, 10, 11, 14, 15, 17, 19, 21, 32, 34, 38, 42, 53, 59, 87, 93, 95, 96, 121)
     private fun direction(centerX: Float): Direction = when { centerX < 1f / 3f -> Direction.LEFT; centerX > 2f / 3f -> Direction.RIGHT; else -> Direction.CENTER }
     private fun directionText(direction: Direction): String = when (direction) { Direction.LEFT -> "左侧"; Direction.CENTER -> "前方"; Direction.RIGHT -> "右侧" }
     private fun sceneName(region: SemanticRegion): String = when (region.classId) {
-        10 -> "柜子"; 15 -> "桌子"; 19 -> "椅子"; 32 -> "围栏"; 93 -> "杆柱"
+        10 -> "柜子"; 15 -> "桌子"; 19 -> "椅子"; 32 -> "围栏"; 34 -> "岩石"; 38 -> "栏杆"; 42 -> "立柱"; 87 -> "路灯"; 93 -> "杆柱"; 95 -> "扶手"; 96 -> "自动扶梯"
         else -> region.group.displayName
     }
 
@@ -43,7 +43,7 @@ object SemanticEvidence {
         6 -> SemanticGroup.ROAD; 9 -> SemanticGroup.GRASS; 11 -> SemanticGroup.SIDEWALK
         14 -> SemanticGroup.DOOR; 17 -> SemanticGroup.PLANT; 21 -> SemanticGroup.WATER
         53 -> SemanticGroup.STAIRS; 59 -> SemanticGroup.STAIRWAY; 121 -> SemanticGroup.STEP
-        10, 15, 19, 32, 93 -> SemanticGroup.STATIC
+        10, 15, 19, 32, 34, 38, 42, 87, 93, 95, 96 -> SemanticGroup.STATIC
         else -> SemanticGroup.OTHER
     }
 

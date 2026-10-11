@@ -46,18 +46,23 @@ class ImuMonitor(context: Context) : SensorEventListener, AutoCloseable {
         }
         if(count%200==1) Log.i("SG_IMU","samples=$count type=${event.sensor.type} timestampNs=${event.timestamp} receiveNs=${SystemClock.elapsedRealtimeNanos()} values=${event.values.take(3)} accuracy=${event.accuracy}")
     }
-    @Synchronized fun evidence(key:SpatialFrameKey,processedNs:Long=SystemClock.elapsedRealtimeNanos()):MotionEvidence {
+    @Synchronized fun evidence(key:SpatialFrameKey,processedNs:Long=SystemClock.elapsedRealtimeNanos(),windowStartNs:Long?=null):MotionEvidence {
         val capture=key.captureTimestampNs
         if(key.timestampClock!="REALTIME" || capture==null || capture<=0 || processedNs<capture) return MotionRules.classify(null,null,false)
-        val preceding=gyros.lastOrNull { it.timeNs<=capture }
-        val window=gyros.filter { it.timeNs>=capture-100_000_000L && it.timeNs<=processedNs }
-        val gap=preceding?.let { capture-it.timeNs }
-        val orientation=orientations.lastOrNull { it.timeNs<=capture && capture-it.timeNs<=200_000_000L }
-        val poseWindow=orientations.filter { it.timeNs>=capture && it.timeNs<=processedNs }
+        val start=windowStartNs ?: capture
+        if(start>capture || start<=0) return MotionRules.classify(null,null,false)
+        val preceding=gyros.lastOrNull { it.timeNs<=start }
+        val window=gyros.filter { it.timeNs>=(preceding?.timeNs ?: start) && it.timeNs<=processedNs }
+        val gap=preceding?.let { start-it.timeNs }
+        val gaps=window.zipWithNext().maxOfOrNull { (a,b)->b.timeNs-a.timeNs } ?: Long.MAX_VALUE
+        val complete=gap!=null && gap<=200_000_000L && gaps<=200_000_000L && window.lastOrNull()?.let { processedNs-it.timeNs<=200_000_000L }==true
+        val rotation=if(complete) window.zipWithNext().sumOf { (a,b)->(a.speed+b.speed)*.5*(b.timeNs-a.timeNs)/1e9 }.toFloat() else null
+        val orientation=orientations.lastOrNull { it.timeNs<=start && start-it.timeNs<=200_000_000L }
+        val poseWindow=orientations.filter { it.timeNs>=start && it.timeNs<=processedNs }
         fun angleDifference(a:Float,b:Float):Float = kotlin.math.abs(((a-b+540f)%360f)-180f)
         val delta=orientation?.let { first -> poseWindow.maxOfOrNull { maxOf(angleDifference(first.pitch,it.pitch),angleDifference(first.roll,it.roll)) } }
         val result=MotionRules.classify(window.maxOfOrNull { it.speed },gap,true,orientation?.pitch,orientation?.roll,orientationDeltaDegrees=delta)
-        return result.copy(sampleCount=window.size)
+        return result.copy(sampleCount=window.size,intervalStartNs=if(complete) preceding?.timeNs else null,intervalEndNs=if(complete) processedNs else null,rotationMagnitudeRad=rotation)
     }
     @Synchronized fun currentDeviceMotion(nowNs:Long=SystemClock.elapsedRealtimeNanos()):MotionEvidence {
         val last=gyros.lastOrNull()
