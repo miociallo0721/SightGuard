@@ -417,3 +417,11 @@ Depth 相对深度在同一原图坐标下形成可配置 15×15 证据网格，
 输出目录必须不存在；首次缺少原始语义缓存时使用 `scripts/prepare_spatial_semantics.py`。
 设计、上游参考与数据契约见 [实现说明](docs/spatial_grid_fusion_v1.md)，
 240 帧真实融合、A/B/C/D、性能、限制与复现见 [验证报告](docs/spatial_grid_validation.md)。
+
+Corridor Intelligence v1 读取既有 Spatial Grid v03，生成确定性的图像候选带，
+独立聚合地面、检测框、相对深度和未知证据，提供可评价性门禁、分项成本与弃权。
+默认严格配置因缺少实测相机姿态而弃权，不输出导航动作，也不控制正式提醒或音频。
+运行 `uv run --no-sync python scripts/run_corridor.py --output outputs/corridor_intelligence/new-run`，
+输出目录必须不存在。图像几何与接口见 [实现说明](docs/corridor_intelligence_v1.md)，
+八视频真实消融、性能、浏览器检查和 257 条提醒回归见
+[阶段验证报告](docs/corridor_intelligence_validation.md)。
