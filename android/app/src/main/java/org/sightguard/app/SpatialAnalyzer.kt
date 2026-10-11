@@ -15,7 +15,7 @@ import java.util.concurrent.atomic.AtomicBoolean
 import kotlin.math.exp
 import kotlin.math.roundToInt
 
-data class SpatialFrameKey(val generation: Long, val epoch: Long, val frameIndex: Int, val timestampMs: Double, val width: Int, val height: Int, val capturedAtMs: Long)
+data class SpatialFrameKey(val generation: Long, val epoch: Long, val frameIndex: Int, val timestampMs: Double, val width: Int, val height: Int, val capturedAtMs: Long, val captureTimestampNs: Long? = null, val timestampClock: String = "UNKNOWN", val rotationDegrees: Int = 0)
 data class SemanticCell(val left: Float, val top: Float, val right: Float, val bottom: Float, val classId: Int, val confidence: Float)
 data class GroundEvidence(val key: SpatialFrameKey, val cells: List<SemanticCell>, val latencyMs: Long, val completedAtMs: Long, val state: String)
 data class SpatialInput(val values: FloatArray, val resizedWidth: Int, val resizedHeight: Int, val padLeft: Int, val padTop: Int)
@@ -25,6 +25,9 @@ class SpatialDetector(context: Context) : AutoCloseable {
     private val environment = OrtEnvironment.getEnvironment()
     private val session: OrtSession
     init {
+        val mapping = org.json.JSONObject(context.assets.open("ade20k_labels.json").bufferedReader().use { it.readText() }).getJSONArray("labels")
+        require(mapping.length() == 150 && (0 until 150).all { mapping.getJSONObject(it).getInt("id") == it }) { "ADE20K mapping mismatch" }
+        require(mapping.getJSONObject(0).getString("rawLabel") == "wall" && mapping.getJSONObject(14).getString("rawLabel") == "door")
         val bytes = context.assets.open(MODEL_FILE).use { it.readBytes() }
         val sha = MessageDigest.getInstance("SHA-256").digest(bytes).joinToString("") { "%02x".format(it) }
         require(sha == MODEL_SHA) { "SegFormer SHA mismatch" }
@@ -65,17 +68,19 @@ class SpatialDetector(context: Context) : AutoCloseable {
             }
         }
     }
-    fun analyze(bitmap: Bitmap, key: SpatialFrameKey): GroundEvidence {
+    fun analyze(bitmap: Bitmap, key: SpatialFrameKey): GroundEvidence = analyzeClasses(bitmap, key, GROUND_CLASSES)
+    fun analyzeAll(bitmap: Bitmap, key: SpatialFrameKey): GroundEvidence = analyzeClasses(bitmap, key, (0 until 150).toSet())
+    private fun analyzeClasses(bitmap: Bitmap, key: SpatialFrameKey, allowedClasses: Set<Int>): GroundEvidence {
         val started = SystemClock.elapsedRealtime(); val input = prepare(bitmap); val logits = infer(input.values)
         val cells = mutableListOf<SemanticCell>()
         for (pixel in 0 until 4096) {
             var best = 0
             for (cls in 1 until 150) if (logits[cls][pixel] > logits[best][pixel]) best = cls
-            if (best !in GROUND_CLASSES) continue
+            if (best !in allowedClasses || !logits[best][pixel].isFinite()) continue
             val max = logits[best][pixel]; var denominator = 0.0
             for (cls in 0 until 150) denominator += exp((logits[cls][pixel] - max).toDouble())
             val confidence = (1.0 / denominator).toFloat()
-            if (confidence < MIN_CONFIDENCE) continue
+            if (!confidence.isFinite() || confidence < MIN_CONFIDENCE) continue
             val left = ((pixel % 64 * 4f - input.padLeft) / input.resizedWidth).coerceIn(0f, 1f)
             val top = ((pixel / 64 * 4f - input.padTop) / input.resizedHeight).coerceIn(0f, 1f)
             val right = (((pixel % 64 + 1) * 4f - input.padLeft) / input.resizedWidth).coerceIn(0f, 1f)

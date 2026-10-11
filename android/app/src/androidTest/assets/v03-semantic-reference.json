@@ -1,0 +1,344 @@
+{
+  "schemaVersion": "sightguard.v03-real-semantics.v1",
+  "createdAtUtc": "2026-10-11T12:02:21.350240+00:00",
+  "modelSha256": "85913f7adae1b787da8cbe4a046e6d8a22bae901340d548be2fea46ec7ff2e0f",
+  "modelPath": "D:\\program\\SightGuard\\android\\spatial-models\\segformer_mit_b0_ade20k_256.onnx",
+  "python": "3.12.15",
+  "numpy": "2.5.3",
+  "opencv": "4.14.0",
+  "onnxruntime": "1.24.4",
+  "torchImported": false,
+  "minimumConfidence": 0.35,
+  "minimumRegionArea": 0.003,
+  "timeSource": "static real photographs; inference latency uses perf_counter",
+  "limitations": [
+    "Class outputs are model predictions, not independent ground truth or risk estimates.",
+    "OpenCV INTER_LINEAR resize differs from Android Bitmap bilinear; same-tensor parity isolates runtime differences.",
+    "Selection is a small convenience sample, not an accuracy benchmark."
+  ],
+  "samples": [
+    {
+      "file": "v03-room.jpg",
+      "imageSha256": "26d14443b40affb0211180bcde069065ad8b22889374b6e658ec530269554264",
+      "width": 685,
+      "height": 913,
+      "resizedWidth": 192,
+      "resizedHeight": 256,
+      "padLeft": 32,
+      "padTop": 0,
+      "preprocessing": "RGB ImageNet mean/std; center letterbox; zero normalized padding; INTER_LINEAR",
+      "tensorSha256": "2d7ca2f9e49aa2972381de31134e91cf7ffe9c5fcd1034834eec6caa63dd9e0e",
+      "inferenceMs": 60.0443000002997,
+      "distribution": [
+        {
+          "classId": 0,
+          "rawLabel": "wall",
+          "argmaxCells": 1531,
+          "acceptedCells": 1486,
+          "acceptedAreaFraction": 0.4837239583333333
+        },
+        {
+          "classId": 3,
+          "rawLabel": "floor",
+          "argmaxCells": 1031,
+          "acceptedCells": 1018,
+          "acceptedAreaFraction": 0.3313802083333333
+        },
+        {
+          "classId": 19,
+          "rawLabel": "chair",
+          "argmaxCells": 350,
+          "acceptedCells": 339,
+          "acceptedAreaFraction": 0.1103515625
+        },
+        {
+          "classId": 18,
+          "rawLabel": "curtain",
+          "argmaxCells": 95,
+          "acceptedCells": 95,
+          "acceptedAreaFraction": 0.03092447916666667
+        },
+        {
+          "classId": 15,
+          "rawLabel": "table",
+          "argmaxCells": 37,
+          "acceptedCells": 31,
+          "acceptedAreaFraction": 0.010091145833333336
+        },
+        {
+          "classId": 66,
+          "rawLabel": "flower",
+          "argmaxCells": 28,
+          "acceptedCells": 26,
+          "acceptedAreaFraction": 0.008463541666666668
+        }
+      ],
+      "outputLogitsSha256": "4becdae1ed699f9e17881cdb3e35bcc806b25c8f30d3fbaa128e67dc5d5cf92a",
+      "sameTensorReference": {
+        "inputFile": "v03-semantic.tensor.bin",
+        "logitsFile": "v03-semantic.logits.bin",
+        "dtype": "float32",
+        "byteOrder": "little",
+        "inputShape": [
+          1,
+          3,
+          256,
+          256
+        ],
+        "outputShape": [
+          1,
+          150,
+          64,
+          64
+        ]
+      }
+    },
+    {
+      "file": "v03-outdoor.jpg",
+      "imageSha256": "c0927bae9407471e47377a4b8dcc7a6a668086610cd45fe02b006f110a750c87",
+      "width": 1752,
+      "height": 1401,
+      "resizedWidth": 256,
+      "resizedHeight": 205,
+      "padLeft": 0,
+      "padTop": 25,
+      "preprocessing": "RGB ImageNet mean/std; center letterbox; zero normalized padding; INTER_LINEAR",
+      "tensorSha256": "97901e7d85c09598695a17015b723f05585fa9aba637604898d5a59bc9964ab1",
+      "inferenceMs": 53.87870001140982,
+      "distribution": [
+        {
+          "classId": 4,
+          "rawLabel": "tree",
+          "argmaxCells": 1889,
+          "acceptedCells": 1887,
+          "acceptedAreaFraction": 0.5702743902439025
+        },
+        {
+          "classId": 9,
+          "rawLabel": "grass",
+          "argmaxCells": 1070,
+          "acceptedCells": 1057,
+          "acceptedAreaFraction": 0.3155487804878049
+        },
+        {
+          "classId": 52,
+          "rawLabel": "path",
+          "argmaxCells": 343,
+          "acceptedCells": 341,
+          "acceptedAreaFraction": 0.10106707317073171
+        },
+        {
+          "classId": 13,
+          "rawLabel": "earth",
+          "argmaxCells": 13,
+          "acceptedCells": 13,
+          "acceptedAreaFraction": 0.003963414634146338
+        },
+        {
+          "classId": 6,
+          "rawLabel": "road",
+          "argmaxCells": 10,
+          "acceptedCells": 9,
+          "acceptedAreaFraction": 0.002743902439024391
+        },
+        {
+          "classId": 32,
+          "rawLabel": "fence",
+          "argmaxCells": 3,
+          "acceptedCells": 0,
+          "acceptedAreaFraction": 0
+        }
+      ],
+      "outputLogitsSha256": "98fd4fefeb490c3eab31d41bf7566fc0f85d7a20e650a01cd4caa86f2bb477c6"
+    },
+    {
+      "file": "v03-sidewalk.jpg",
+      "imageSha256": "1953ccca7f04b6f9a02bd0c462bc71bb048592602f962f2eed0d757b585fa62c",
+      "width": 3264,
+      "height": 2448,
+      "resizedWidth": 256,
+      "resizedHeight": 192,
+      "padLeft": 0,
+      "padTop": 32,
+      "preprocessing": "RGB ImageNet mean/std; center letterbox; zero normalized padding; INTER_LINEAR",
+      "tensorSha256": "90a41b18fde934ddc3ebdf2b3edfe3947c811bd9442911c8b755b77fbd40ef80",
+      "inferenceMs": 50.157399993622676,
+      "distribution": [
+        {
+          "classId": 4,
+          "rawLabel": "tree",
+          "argmaxCells": 929,
+          "acceptedCells": 880,
+          "acceptedAreaFraction": 0.2864583333333333
+        },
+        {
+          "classId": 6,
+          "rawLabel": "road",
+          "argmaxCells": 709,
+          "acceptedCells": 690,
+          "acceptedAreaFraction": 0.224609375
+        },
+        {
+          "classId": 11,
+          "rawLabel": "sidewalk",
+          "argmaxCells": 430,
+          "acceptedCells": 365,
+          "acceptedAreaFraction": 0.11881510416666666
+        },
+        {
+          "classId": 1,
+          "rawLabel": "building",
+          "argmaxCells": 319,
+          "acceptedCells": 245,
+          "acceptedAreaFraction": 0.07975260416666667
+        },
+        {
+          "classId": 32,
+          "rawLabel": "fence",
+          "argmaxCells": 216,
+          "acceptedCells": 151,
+          "acceptedAreaFraction": 0.04915364583333333
+        },
+        {
+          "classId": 17,
+          "rawLabel": "plant",
+          "argmaxCells": 208,
+          "acceptedCells": 146,
+          "acceptedAreaFraction": 0.04752604166666667
+        },
+        {
+          "classId": 13,
+          "rawLabel": "earth",
+          "argmaxCells": 177,
+          "acceptedCells": 156,
+          "acceptedAreaFraction": 0.05078125
+        },
+        {
+          "classId": 2,
+          "rawLabel": "sky",
+          "argmaxCells": 83,
+          "acceptedCells": 82,
+          "acceptedAreaFraction": 0.026692708333333332
+        },
+        {
+          "classId": 0,
+          "rawLabel": "wall",
+          "argmaxCells": 1,
+          "acceptedCells": 0,
+          "acceptedAreaFraction": 0
+        }
+      ],
+      "outputLogitsSha256": "26d3548288f04e527fbeac7c64a72a7c29a01e447766001f1f911daa70adb23f"
+    },
+    {
+      "file": "v03-door.jpg",
+      "imageSha256": "79c4e0ace3514a4e35bd0c271e8b58ce30c254de55cc97a4f7e1e026a64d55b3",
+      "width": 3456,
+      "height": 2304,
+      "resizedWidth": 256,
+      "resizedHeight": 171,
+      "padLeft": 0,
+      "padTop": 42,
+      "preprocessing": "RGB ImageNet mean/std; center letterbox; zero normalized padding; INTER_LINEAR",
+      "tensorSha256": "5341b1825a3d1cf7ecca5cc595ac48a37b17d17badfbd585281dae8a66d3f658",
+      "inferenceMs": 44.02460000710562,
+      "distribution": [
+        {
+          "classId": 0,
+          "rawLabel": "wall",
+          "argmaxCells": 1675,
+          "acceptedCells": 1668,
+          "acceptedAreaFraction": 0.6029788011695906
+        },
+        {
+          "classId": 3,
+          "rawLabel": "floor",
+          "argmaxCells": 447,
+          "acceptedCells": 446,
+          "acceptedAreaFraction": 0.14848318713450295
+        },
+        {
+          "classId": 5,
+          "rawLabel": "ceiling",
+          "argmaxCells": 280,
+          "acceptedCells": 280,
+          "acceptedAreaFraction": 0.09429824561403508
+        },
+        {
+          "classId": 14,
+          "rawLabel": "door",
+          "argmaxCells": 255,
+          "acceptedCells": 254,
+          "acceptedAreaFraction": 0.09283625730994152
+        },
+        {
+          "classId": 22,
+          "rawLabel": "painting",
+          "argmaxCells": 154,
+          "acceptedCells": 154,
+          "acceptedAreaFraction": 0.056286549707602336
+        },
+        {
+          "classId": 8,
+          "rawLabel": "windowpane",
+          "argmaxCells": 5,
+          "acceptedCells": 5,
+          "acceptedAreaFraction": 0.001827485380116959
+        }
+      ],
+      "outputLogitsSha256": "5337a895ea74a0f1ef627ffc4a164bfc26ea6dc2e2262de34d4a4cf204d59480"
+    }
+  ],
+  "downloadAttempts": [
+    {
+      "file": "v03-room.jpg",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Wooden_table_with_two_chairs.jpg",
+      "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/5/57/Wooden_table_with_two_chairs.jpg",
+      "author": "JesusisGreat7",
+      "license": "CC0-1.0",
+      "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "changes": "none; original JPEG bytes",
+      "sha256": "26d14443b40affb0211180bcde069065ad8b22889374b6e658ec530269554264",
+      "status": "downloaded"
+    },
+    {
+      "file": "v03-outdoor.jpg",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Trees_along_walkway_in_public_park_in_Cupertino,_California.JPG",
+      "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/a/a3/Trees_along_walkway_in_public_park_in_Cupertino%2C_California.JPG",
+      "author": "Tomwsulcer",
+      "license": "CC0-1.0",
+      "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "changes": "none; original JPEG bytes",
+      "sha256": "c0927bae9407471e47377a4b8dcc7a6a668086610cd45fe02b006f110a750c87",
+      "status": "downloaded"
+    },
+    {
+      "file": "v03-door.jpg",
+      "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/f/fd/Door_in_a_white_room_%28Unsplash%29.jpg",
+      "status": "failed",
+      "failure": "HTTP Error 429: Too many requests (f061ab2)"
+    },
+    {
+      "file": "v03-sidewalk.jpg",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Bangalore_sidewalk_trees_IMG20180910084944.jpg",
+      "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/7/74/Bangalore_sidewalk_trees_IMG20180910084944.jpg",
+      "author": "T. R. Shankar Raman",
+      "license": "CC-BY-SA-4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "changes": "none; original JPEG bytes",
+      "sha256": "1953ccca7f04b6f9a02bd0c462bc71bb048592602f962f2eed0d757b585fa62c",
+      "status": "downloaded"
+    },
+    {
+      "file": "v03-door.jpg",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Oak_Room_(Plaza_Hotel)_door,_Sept_2017.jpg",
+      "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/3/36/Oak_Room_%28Plaza_Hotel%29_door%2C_Sept_2017.jpg",
+      "author": "Thomson200",
+      "license": "CC0-1.0",
+      "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "changes": "none; original JPEG bytes",
+      "sha256": "79c4e0ace3514a4e35bd0c271e8b58ce30c254de55cc97a4f7e1e026a64d55b3",
+      "status": "downloaded"
+    }
+  ]
+}

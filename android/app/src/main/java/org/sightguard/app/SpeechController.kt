@@ -6,6 +6,7 @@ import android.media.AudioAttributes
 import android.media.AudioFocusRequest
 import android.media.AudioManager
 import android.os.Build
+import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.os.SystemClock
@@ -19,6 +20,7 @@ enum class SpeechPlaybackPhase(val logName: String) {
     REQUESTED("requested"),
     ACCEPTED("accepted"),
     ON_START("onStart"),
+    COMPLETED("completed"),
     SUPPRESSED("suppressed"),
     CANCELLED("cancelled"),
 }
@@ -28,7 +30,7 @@ data class SpeechPlaybackEvent(
     val eventId: String?,
     /** Text requested by the caller, even when a fixed local clip says a shorter phrase. */
     val requestedText: String,
-    /** Text heard on onStart; null for events that do not represent actual playback. */
+    /** Actual text on start/completion; null for events without playback. */
     val spokenText: String?,
     val important: Boolean,
     val elapsedRealtimeMs: Long,
@@ -37,6 +39,7 @@ data class SpeechPlaybackEvent(
     val resourceName: String? = null,
     /** Speech session token, so consumers can ignore callbacks from a previous session. */
     val sessionGeneration: Long = 0L,
+    val direction: Direction? = null,
 )
 
 internal data class SpeechRequest(
@@ -44,6 +47,8 @@ internal data class SpeechRequest(
     val important: Boolean,
     val eventId: String?,
     val validUntilElapsedMs: Long,
+    val direction: Direction? = null,
+    val requireExactSpeech: Boolean = false,
 )
 
 internal data class SpeechQueueOffer(val accepted: Boolean, val replaced: SpeechRequest? = null)
@@ -163,6 +168,7 @@ class SpeechController(
     private val onStatus: (String) -> Unit,
     private val onSpoken: (String) -> Unit,
     private val onPlayback: (SpeechPlaybackEvent) -> Unit = {},
+    private val directionalAudioConfig: DirectionalAudioConfig = DirectionalAudioConfig(),
 ) {
     private val appContext = context.applicationContext
     private val mainHandler = Handler(Looper.getMainLooper())
@@ -195,6 +201,21 @@ class SpeechController(
         get() = gate.canSpeak || (fallbackMode && gate.canUseFallback && !gate.isMuted)
     val canQueueOrdinaryAlert: Boolean
         get() = isReady && requestQueue.peek() == null
+    val isOfflineTtsReady: Boolean
+        get() = gate.canSpeak && tts != null && !fallbackMode
+    val canSpeakDynamic: Boolean
+        get() = isOfflineTtsReady
+
+    /** Instrumentation-only entry: same lifecycle and scheduler, with local fallback forced. */
+    internal fun startLocalFallbackForTest() {
+        checkMainThread()
+        if (gate.isClosed) return
+        releaseEngine("test_session_restarted")
+        val session = gate.start()
+        gate.initializationFinished(session, succeeded = false)
+        fallbackMode = true
+        onStatus("固定本地提示音测试已就绪")
+    }
 
     fun start() {
         checkMainThread()
@@ -240,13 +261,16 @@ class SpeechController(
         important: Boolean,
         eventId: String?,
         validUntilElapsedMs: Long,
+        direction: Direction? = null,
+        requireExactSpeech: Boolean = false,
     ): Boolean {
         checkMainThread()
-        val request = SpeechRequest(text, important, eventId, validUntilElapsedMs)
+        val request = SpeechRequest(text, important, eventId, validUntilElapsedMs, direction, requireExactSpeech)
         record(SpeechPlaybackPhase.REQUESTED, request)
         if (text.isBlank()) return suppress(request, "blank_text")
         if (SpeechRequestRules.isExpired(request, SystemClock.elapsedRealtime())) return suppress(request, "expired")
         if (!canAcceptRequest()) return suppress(request, rejectionReason())
+        if (requireExactSpeech && !canSpeakDynamic) return suppress(request, "dynamic_speech_unavailable")
         discardExpiredQueuedRequest()
 
         val current = activeRequest
@@ -371,6 +395,7 @@ class SpeechController(
             return suppress(request, "expired")
         }
         if (!canAcceptRequest()) return suppress(request, rejectionReason())
+        if (request.requireExactSpeech && !canSpeakDynamic) return suppress(request, "dynamic_speech_unavailable")
         if (!requestAudioFocus()) {
             onStatus(if (fallbackMode) "未获得音频焦点，固定提示音已取消" else "未获得音频焦点，提醒已取消")
             return suppress(request, "audio_focus_denied")
@@ -433,13 +458,15 @@ class SpeechController(
             detail = detail,
             resourceName = resourceName,
             sessionGeneration = gate.generation,
+            direction = request.direction,
         )
         Log.i(
             "SG_SPEECH",
             "event=${phase.logName} eventId=${event.eventId ?: "none"} important=${event.important} " +
                 "requestText=${event.requestedText} spokenText=${event.spokenText ?: "none"} " +
                 "elapsedMs=${event.elapsedRealtimeMs} validUntilMs=${event.validUntilElapsedMs} " +
-                "detail=${event.detail ?: "none"} resource=${event.resourceName ?: "none"}",
+                "detail=${event.detail ?: "none"} resource=${event.resourceName ?: "none"} " +
+                "direction=${event.direction ?: "none"}",
         )
         mainHandler.post {
             try {
@@ -527,6 +554,12 @@ class SpeechController(
     }
 
     private fun playLocalPrompt(request: SpeechRequest, isStopAnnouncement: Boolean) {
+        if (request.requireExactSpeech) {
+            onStatus("无可用的离线动态语音，请查看环境概览文本")
+            cancelCurrent("dynamic_speech_unavailable", keepAudioFocus = !isStopAnnouncement)
+            if (isStopAnnouncement) finishStop() else startNextQueuedRequest()
+            return
+        }
         val reason = when {
             gate.isMuted -> "muted"
             gate.isClosed -> "closed"
@@ -568,6 +601,8 @@ class SpeechController(
                     return@setOnPreparedListener
                 }
                 try {
+                    val mix = DirectionalAudio.mix(request.direction, directionalAudioConfig)
+                    prepared.setVolume(mix.leftGain, mix.rightGain)
                     prepared.start()
                     if (prepared.isPlaying) {
                         activePlaybackStarted = true
@@ -590,6 +625,8 @@ class SpeechController(
             }
             player.setOnCompletionListener { completed ->
                 if (session != gate.generation || localPlayer !== completed || localPlaybackId != id) return@setOnCompletionListener
+                record(SpeechPlaybackPhase.COMPLETED, request, spokenText = prompt.spokenText,
+                    resourceName = prompt.resourceName, detail = "local_media_player")
                 stopLocalPlayback(completed)
                 clearActiveRequest()
                 cancelExpiryTimeout()
@@ -766,10 +803,13 @@ class SpeechController(
         activeUtteranceId = id
         activeText = request.text
         if (isStopAnnouncement) stopUtteranceId = id
-        val result = engine.speak(request.text, TextToSpeech.QUEUE_FLUSH, null, id)
+        val parameters = Bundle().apply {
+            putFloat(TextToSpeech.Engine.KEY_PARAM_PAN, DirectionalAudio.mix(request.direction, directionalAudioConfig).ttsPan)
+        }
+        val result = engine.speak(request.text, TextToSpeech.QUEUE_FLUSH, parameters, id)
         if (result != TextToSpeech.SUCCESS) {
             fallbackMode = true
-            onStatus("离线中文TTS播放失败，使用固定本地提示音")
+            onStatus(if (request.requireExactSpeech) "离线动态语音播放失败，请查看环境概览文本" else "离线中文TTS播放失败，使用固定本地提示音")
             clearActiveUtterance()
             engine.shutdown()
             tts = null
@@ -835,6 +875,7 @@ class SpeechController(
             mainHandler.post {
                 val id = utteranceId ?: return@post
                 if (id != activeUtteranceId || session != gate.generation) return@post
+                activeRequest?.let { record(SpeechPlaybackPhase.COMPLETED, it, spokenText = activeText, detail = "android_tts") }
                 if (id == stopUtteranceId) {
                     clearActiveUtterance()
                     clearActiveRequest()
@@ -882,7 +923,7 @@ class SpeechController(
             val failedRequest = activeRequest ?: return@post
             val isStopAnnouncement = id == stopUtteranceId
             fallbackMode = true
-            onStatus("离线中文TTS播放失败，使用固定本地提示音")
+            onStatus(if (failedRequest.requireExactSpeech) "离线动态语音播放失败，请查看环境概览文本" else "离线中文TTS播放失败，使用固定本地提示音")
             clearActiveUtterance()
             tts?.shutdown()
             tts = null

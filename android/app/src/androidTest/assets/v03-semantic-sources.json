@@ -1,0 +1,52 @@
+[
+  {
+    "file": "v03-room.jpg",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Wooden_table_with_two_chairs.jpg",
+    "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/5/57/Wooden_table_with_two_chairs.jpg",
+    "author": "JesusisGreat7",
+    "license": "CC0-1.0",
+    "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "changes": "none; original JPEG bytes",
+    "sha256": "26d14443b40affb0211180bcde069065ad8b22889374b6e658ec530269554264",
+    "status": "downloaded"
+  },
+  {
+    "file": "v03-outdoor.jpg",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Trees_along_walkway_in_public_park_in_Cupertino,_California.JPG",
+    "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/a/a3/Trees_along_walkway_in_public_park_in_Cupertino%2C_California.JPG",
+    "author": "Tomwsulcer",
+    "license": "CC0-1.0",
+    "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "changes": "none; original JPEG bytes",
+    "sha256": "c0927bae9407471e47377a4b8dcc7a6a668086610cd45fe02b006f110a750c87",
+    "status": "downloaded"
+  },
+  {
+    "file": "v03-door.jpg",
+    "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/f/fd/Door_in_a_white_room_%28Unsplash%29.jpg",
+    "status": "failed",
+    "failure": "HTTP Error 429: Too many requests (f061ab2)"
+  },
+  {
+    "file": "v03-sidewalk.jpg",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Bangalore_sidewalk_trees_IMG20180910084944.jpg",
+    "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/7/74/Bangalore_sidewalk_trees_IMG20180910084944.jpg",
+    "author": "T. R. Shankar Raman",
+    "license": "CC-BY-SA-4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "changes": "none; original JPEG bytes",
+    "sha256": "1953ccca7f04b6f9a02bd0c462bc71bb048592602f962f2eed0d757b585fa62c",
+    "status": "downloaded"
+  },
+  {
+    "file": "v03-door.jpg",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Oak_Room_(Plaza_Hotel)_door,_Sept_2017.jpg",
+    "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/3/36/Oak_Room_%28Plaza_Hotel%29_door%2C_Sept_2017.jpg",
+    "author": "Thomson200",
+    "license": "CC0-1.0",
+    "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "changes": "none; original JPEG bytes",
+    "sha256": "79c4e0ace3514a4e35bd0c271e8b58ce30c254de55cc97a4f7e1e026a64d55b3",
+    "status": "downloaded"
+  }
+]
