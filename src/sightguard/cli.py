@@ -29,6 +29,38 @@ def main(argv: list[str] | None = None) -> int:
     assess.add_argument(
         "--stream-id", help="Stable video identity, e.g. clip-01; defaults to path hash"
     )
+    path_relevance = sub.add_parser(
+        "path-relevance",
+        help="Run the offline SegFormer Path Relevance Shadow analysis over saved tracks",
+    )
+    path_relevance.add_argument("--config", type=Path, default=Path("configs/path_relevance.yaml"))
+    path_relevance.add_argument(
+        "--manifest", type=Path, default=Path("datasets/real_world/manifests/dataset.json")
+    )
+    path_relevance.add_argument("--baseline-dir", type=Path, default=Path("outputs/real_world/v01"))
+    path_relevance.add_argument(
+        "--output-dir", type=Path, default=Path("outputs/path_relevance/v01")
+    )
+    path_relevance.add_argument(
+        "--model", type=Path, help="Override the checkpoint path from the Path Relevance YAML"
+    )
+    path_relevance.add_argument("--device", help="Override YAML: auto, cpu, cuda:0 or GPU index")
+    path_relevance.add_argument(
+        "--sample-interval", type=float, help="Override YAML scene inference cadence in seconds"
+    )
+    path_relevance.add_argument("--input-width", type=int, help="Override YAML input width")
+    path_relevance.add_argument(
+        "--min-pixel-confidence", type=float, help="Override YAML pixel confidence"
+    )
+    path_relevance.add_argument("--result-ttl-ms", type=float, help="Override YAML result TTL")
+    path_relevance.add_argument(
+        "--video-id", action="append", help="Optional video ID; repeat to select more than one"
+    )
+    path_relevance.add_argument(
+        "--no-cpu-fallback",
+        action="store_true",
+        help="Disable controlled CPU fallback after CUDA OOM",
+    )
     for command in ("benchmark", "validate-labels", "seal-labels", "freeze-protocol"):
         command_parser = sub.add_parser(command, help=f"Phase 3: {command}")
         command_parser.add_argument("--dataset", type=Path, required=True)
@@ -202,6 +234,86 @@ def main(argv: list[str] | None = None) -> int:
                 args.output_dir,
                 load_risk_config(args.config),
                 stream_id=args.stream_id,
+            )
+        elif args.command == "path-relevance":
+            import yaml
+
+            from sightguard.path_relevance.pipeline import run_path_relevance_batch
+
+            raw_config = yaml.safe_load(args.config.read_text(encoding="utf-8"))
+            if not isinstance(raw_config, dict) or raw_config.get("schema_version") != (
+                "sightguard.path-relevance-config.v1"
+            ):
+                raise ValueError("Unsupported Path Relevance configuration schema")
+            model_config = raw_config.get("model", {})
+            inference_config = raw_config.get("inference", {})
+            corridor_config = raw_config.get("corridor", {})
+            shadow_config = raw_config.get("shadow", {})
+            scoring_config = raw_config.get("scoring", {})
+            roi_config = shadow_config.get("geometry_baseline_roi", {})
+            class_config = corridor_config.get("walkable_ade20k_classes", {})
+            from sightguard.path_relevance.engine import WALKABLE_ADE20K_CLASSES
+
+            expected_classes = {
+                name: class_id for class_id, name in WALKABLE_ADE20K_CLASSES.items()
+            }
+            if class_config != expected_classes:
+                raise ValueError(
+                    "Configured ADE20K walkable class IDs do not match the model label map"
+                )
+            if shadow_config.get("production_decision_changed") is not False:
+                raise ValueError(
+                    "Path Relevance configuration must keep production decisions isolated"
+                )
+            metadata = run_path_relevance_batch(
+                args.manifest,
+                args.baseline_dir,
+                args.output_dir,
+                checkpoint_path=args.model or Path(model_config.get("checkpoint", "")),
+                device=args.device or str(model_config.get("device", "auto")),
+                sample_interval_s=(
+                    args.sample_interval
+                    if args.sample_interval is not None
+                    else float(inference_config.get("sample_interval_seconds", 0.5))
+                ),
+                input_width=(
+                    args.input_width
+                    if args.input_width is not None
+                    else int(model_config.get("input_width", 512))
+                ),
+                min_pixel_confidence=(
+                    args.min_pixel_confidence
+                    if args.min_pixel_confidence is not None
+                    else float(inference_config.get("min_pixel_confidence", 0.35))
+                ),
+                result_ttl_ms=(
+                    args.result_ttl_ms
+                    if args.result_ttl_ms is not None
+                    else float(inference_config.get("result_ttl_ms", 500))
+                ),
+                allow_cpu_fallback=bool(
+                    inference_config.get("allow_cpu_fallback_on_cuda_oom", True)
+                    and not args.no_cpu_fallback
+                ),
+                min_area_fraction=float(corridor_config.get("min_area_fraction", 0.005)),
+                bottom_start_fraction=float(corridor_config.get("bottom_start_fraction", 0.82)),
+                min_vertical_extent_fraction=float(
+                    corridor_config.get("min_vertical_extent_fraction", 0.35)
+                ),
+                geometry_roi=(
+                    float(roi_config.get("x_start_fraction", 1 / 3)),
+                    float(roi_config.get("x_end_fraction", 2 / 3)),
+                    float(roi_config.get("y_start_fraction", 0.55)),
+                ),
+                medium_threshold=float(scoring_config.get("medium_min", 0.20)),
+                high_threshold=float(scoring_config.get("high_min", 0.55)),
+                video_ids=tuple(args.video_id) if args.video_id else None,
+            )
+            logging.info(
+                "Path Relevance completed for %d videos (%d sampled frames); output: %s",
+                metadata["summary"]["videos_completed"],
+                metadata["summary"]["sampled_scene_frames"],
+                args.output_dir,
             )
         else:
             from sightguard.pipeline.video import analyze_video

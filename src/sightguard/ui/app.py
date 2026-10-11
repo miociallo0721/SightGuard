@@ -17,6 +17,7 @@ import pandas as pd
 from sightguard.ui.annotation_tab import add_annotation_tab
 from sightguard.ui.jobs import AnalysisJobs
 from sightguard.ui.live_tab import add_live_tab
+from sightguard.ui.path_relevance_tab import add_path_relevance_tab
 from sightguard.ui.plots import metrics_plot, risk_plot, timeline_plot
 from sightguard.ui.presentation import alert_frame, experiment_summary, kpi_html, metrics_frame
 from sightguard.ui.services import BenchmarkView, ConsoleDataError, ConsoleStore
@@ -881,6 +882,7 @@ def build_app(root: Path | None = None) -> gr.Blocks:
                 validate_button.click(
                     validate, dataset, dataset_status, api_name="validate_dataset"
                 )
+            path_relevance_tab = add_path_relevance_tab(app, root)
             spatial_controller = add_spatial_tab(app, root)
             annotation_tab = add_annotation_tab(root)
             live_controller = add_live_tab(
@@ -893,6 +895,7 @@ def build_app(root: Path | None = None) -> gr.Blocks:
                     comparison_tab,
                     analytics_tab,
                     dataset_tab,
+                    path_relevance_tab,
                     spatial_controller.tab,
                     annotation_tab,
                 ),
@@ -907,6 +910,7 @@ def build_app(root: Path | None = None) -> gr.Blocks:
             comparison_tab,
             analytics_tab,
             dataset_tab,
+            path_relevance_tab,
             live_controller.tab,
             annotation_tab,
         ):
