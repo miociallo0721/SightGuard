@@ -1,0 +1,15 @@
+{
+  "schema_version": "sightguard.metric-research-config.v1",
+  "shadow_only": true,
+  "default_enabled": false,
+  "automatic_speech": false,
+  "sample_interval_ms": 12000,
+  "minimum_available_memory_mb": 768,
+  "wall": {
+    "minimum_confidence": 0.55,
+    "minimum_component_pixels": 64,
+    "minimum_roi_coverage": 0.08,
+    "minimum_valid_fraction": 0.75,
+    "maximum_source_age_ms": 500
+  }
+}

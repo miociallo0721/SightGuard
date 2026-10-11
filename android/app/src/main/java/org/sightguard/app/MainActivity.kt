@@ -68,6 +68,8 @@ class MainActivity : ComponentActivity() {
     private var boxesEnabled by mutableStateOf(true)
     private var riskEnabled by mutableStateOf(true)
     private var depthEnabled by mutableStateOf(true)
+    private var metricResearchEnabled by mutableStateOf(false)
+    private var metricResearchStatus by mutableStateOf("米制墙距研究关闭 · 未进行手机卷尺量测")
     private var spatialEnabled by mutableStateOf(true)
     private var ignoreAuxThermalForTest = false
     private lateinit var environmentEngine: SemanticEnvironmentEngine
@@ -213,7 +215,7 @@ class MainActivity : ComponentActivity() {
         status = "正在加载本地 YOLO26n…"; inputStatus = if (videoMode) "读取本地视频" else "等待后置摄像头"
         lastEvent = "尚无已确认事件"; videoPlaying = videoMode; videoBusy = false; processedVideoEpoch = -1; videoEpoch++
         speech.setMuted(muted); speech.start()
-        if (spatialEnabled || depthEnabled || gridEnabled) startSpatialSession()
+        if (spatialEnabled || depthEnabled || gridEnabled || metricResearchEnabled) startSpatialSession()
         val executor = Executors.newSingleThreadExecutor(); worker = executor
         var ownedStage: VisionStage? = null; var ownedVideo: VideoFileSource? = null
         releaseSession = { ownedVideo?.close(); ownedVideo = null; ownedStage?.close(); ownedStage = null }
@@ -406,6 +408,7 @@ class MainActivity : ComponentActivity() {
         restartAfterRelease = false
         if (!running) { if (stopSpeech) speech.stop(false); return }
         environmentEngine.reset(); semanticPending.clear(); environmentStatus="墙面：感知已停止"
+        metricResearchStatus="米制研究：感知已停止，旧结果不再有效"
         running = false; active = false; generation++; pendingSpeech.clear(); videoPlaying = false; videoEpoch++
         spatialSession?.let { old -> spatialReleasePending=true; old.release { spatialReleasePending=false; if(running) startSpatialSession() } }; spatialSession = null; spatialSnapshot = null; spatialStatus = "空间资源已释放"; environmentOverview = "当前环境信息不足。"
         imuMonitor?.close(); imuMonitor = null; cameraTimestampClock = "UNKNOWN"
@@ -455,11 +458,11 @@ class MainActivity : ComponentActivity() {
             previous.release { spatialReleasePending=false; if(running) startSpatialSession() }
             return
         }
-        if (!running || !(spatialEnabled || depthEnabled || gridEnabled)) { spatialStatus = "空间模型关闭"; return }
+        if (!running || !(spatialEnabled || depthEnabled || gridEnabled || metricResearchEnabled)) { spatialStatus = "空间模型关闭"; return }
         if(imuEnabled && !videoMode) imuMonitor = ImuMonitor(this)
         spatialStatus = "正在加载本地空间模型…"
         val token = generation
-        spatialSession = SpatialSessionAnalyzer(this, SpatialSettings(depthEnabled, spatialEnabled, gridEnabled,ignoreAuxThermalForTest), { result ->
+        spatialSession = SpatialSessionAnalyzer(this, SpatialSettings(depthEnabled, spatialEnabled, gridEnabled,ignoreAuxThermalForTest,metricResearchEnabled), { result ->
             val key = result.key
             if (running && generation == key.generation && (!videoMode || videoEpoch == key.epoch)) {
                 val pausedExact = videoMode && !videoPlaying && frame?.vision?.records?.frameIndex == key.frameIndex
@@ -486,7 +489,12 @@ class MainActivity : ComponentActivity() {
                 wallShadowStatus="${record.state} · ${record.abstainReason ?: "研究候选"} · features ${record.flow?.inliers ?: 0} · ${record.flowLatencyMs}ms"
                 diagnostics.record("wall_shadow",wallRecordJson(record))
             }
-        }, { key,previous -> imuMonitor?.evidence(key,windowStartNs=previous?.captureTimestampNs) ?: MotionEvidence(MotionQuality.UNKNOWN,"source not synchronized to device IMU") })
+        }, { key,previous -> imuMonitor?.evidence(key,windowStartNs=previous?.captureTimestampNs) ?: MotionEvidence(MotionQuality.UNKNOWN,"source not synchronized to device IMU") }, {record->
+            if(running && generation==record.key.generation && (!videoMode || videoEpoch==record.key.epoch)) {
+                metricResearchStatus="最近米制研究记录：${record.status} · 预测光轴深度 ${record.median?.let {"%.2f m".format(it)} ?: "UNKNOWN"} · 完成时年龄 ${record.sourceAgeMs}ms · ${record.rejectionReasons.joinToString()} · 未标定"
+                diagnostics.record("wall_metric",metricWallJson(record))
+            }
+        }, { imuMonitor?.currentDeviceMotion() ?: MotionEvidence(MotionQuality.UNKNOWN,"current device motion unavailable") })
     }
 
     private fun onSemanticEvidence(evidence: GroundEvidence, sceneCurrent: Boolean, motion: MotionEvidence) {
@@ -541,6 +549,9 @@ class MainActivity : ComponentActivity() {
             text = { Column(Modifier.verticalScroll(rememberScrollState()), verticalArrangement = Arrangement.spacedBy(6.dp)) {
                 Row(verticalAlignment=Alignment.CenterVertically) { Text("打开应用自动感知",Modifier.weight(1f),fontSize=12.sp); Switch(autoStart,{autoStart=it; autoPolicy.enabled=it; getSharedPreferences("perception",MODE_PRIVATE).edit().putBoolean("auto_start",it).apply()},Modifier.semantics{contentDescription="前台自动启动感知"}) }
                 Row(verticalAlignment = Alignment.CenterVertically) { Text("Depth Anything V2 Small", Modifier.weight(1f), fontSize = 12.sp); Switch(depthEnabled, { depthEnabled=it; startSpatialSession() }, Modifier.semantics { contentDescription = "启用相对深度" }) }
+                Row(verticalAlignment = Alignment.CenterVertically) { Text("米制墙距研究 · 默认关闭",Modifier.weight(1f),fontSize=12.sp); Switch(metricResearchEnabled,{metricResearchEnabled=it;metricResearchStatus=if(it) "等待同帧研究证据，自动语音关闭" else "米制墙距研究关闭";startSpatialSession()},Modifier.semantics {contentDescription="启用米制墙距研究，不产生语音或导航建议"}) }
+                Text(metricResearchStatus,fontSize=11.sp)
+                Text("米制数据仅用于研究；P10/P90 是区域分布，不是准确率区间。局部走廊候选仍在 PC 验证。",fontSize=11.sp)
                 Row(verticalAlignment = Alignment.CenterVertically) { Text("SegFormer ADE20K", Modifier.weight(1f), fontSize = 12.sp); Switch(spatialEnabled, { spatialEnabled=it; startSpatialSession() }, Modifier.semantics { contentDescription = "启用环境语义" }) }
                 Row(verticalAlignment = Alignment.CenterVertically) { Text("15×15 Spatial Grid", Modifier.weight(1f), fontSize=12.sp); Switch(gridEnabled, { gridEnabled=it; startSpatialSession() }, Modifier.semantics { contentDescription="启用空间网格" }) }
                 Row(verticalAlignment = Alignment.CenterVertically) { Text("IMU 运动质量", Modifier.weight(1f), fontSize=12.sp); Switch(imuEnabled, { imuEnabled=it; startSpatialSession() }, Modifier.semantics { contentDescription="启用运动传感器" }) }

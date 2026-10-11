@@ -12,7 +12,7 @@ class AwarenessDiagnostics(private val maximum: Int=1500) {
         while(records.size>maximum) records.removeFirst()
     }
     @Synchronized fun snapshot(session: JSONObject): String = JSONObject()
-        .put("schema_version",1).put("app_version","0.4-accessible-awareness")
+        .put("schema_version",1).put("app_version","0.4-metric-corridor-shadow")
         .put("device",android.os.Build.MODEL).put("api",android.os.Build.VERSION.SDK_INT)
         .put("semantic_model_sha256",SpatialDetector.MODEL_SHA).put("session",session)
         .put("wall_proximity_automatic",false).put("records",JSONArray(records.toList())).toString(2)
