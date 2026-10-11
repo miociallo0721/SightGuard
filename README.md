@@ -20,11 +20,20 @@ RiskCueAdapter / CueScheduler / AudioWorker 提交到 PC 的 OpenAL Soft。
 - 产品 MP4 的 DemoGuidance 方向建议、语音试听及手动 NavigationCue 是演示/模拟来源，
   不等于正式 AlertEvent，更不证明通行安全。
 
-本轮只整理架构与文档，保留全部运行代码、配置和 Schema；尚未实现统一 SceneEvidence、
-Corridor Grid、度量深度或可靠走廊决策。接手开发先阅读
+架构整理阶段只修改文档。随后 Depth Integration v1 新增独立的本地相对深度研究入口，
+不改变上述默认主链路；尚未实现统一 SceneEvidence、Corridor Grid、度量深度或可靠走廊决策。
+接手开发先阅读
 [实际架构审计](docs/architecture_audit_2026-10-11.md)、
 [Roana 源码对照](docs/roana_architecture_comparison.md)和
 [契约与分阶段迁移计划](docs/architecture_consolidation_plan.md)。
+
+## Depth Integration v1
+
+Depth Anything V2 Small 的真实 CPU/CUDA 推理、原生预测和原图对齐 float32 NPZ、
+帧级 JSONL、近远语义及 UNKNOWN 检查均独立于提醒。UrbanEgo 八段各 30 个采样帧；
+当前完整批次在 `outputs/depth_integration/v03/`。较大值表示画面内相对更近，没有米制距离。
+入口为 `scripts/run_depth.py`，不加载 YOLO/SegFormer/Laya，不发音频。
+详见[模型与数据契约](docs/depth_integration_v1.md)和[真实验证记录](docs/depth_integration_validation.md)。
 
 ## Annotation Studio
 

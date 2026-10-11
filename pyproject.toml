@@ -28,6 +28,7 @@ dependencies = [
 
 [project.optional-dependencies]
 path-relevance = ["transformers>=4.50,<6"]
+depth = ["transformers>=4.50,<6"]
 
 [dependency-groups]
 dev = ["pytest>=8,<10", "ruff>=0.11,<1"]
