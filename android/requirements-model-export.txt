@@ -1,0 +1,16 @@
+# Reference export stack used for the checked-in model manifest and comparison.
+# Create android/.export-venv with Python 3.12, then install this file into it.
+# PyTorch CPU wheels are on the extra index; other packages come from PyPI.
+--extra-index-url https://download.pytorch.org/whl/cpu
+
+onnx==1.19.1
+onnxruntime==1.24.4
+ultralytics==8.4.174
+torch==2.14.1+cpu
+torchvision==0.29.1+cpu
+opencv-python==4.14.0
+numpy==2.5.3
+transformers==5.19.0
+# AVD camera verification only; not needed by APK or model export.
+grpcio==1.78.0
+grpcio-tools==1.78.0

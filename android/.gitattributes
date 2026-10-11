@@ -1,0 +1,7 @@
+# Replay fixtures are generated from the versioned Python generator and saved camera input.
+# Review the generator and tests instead of hundreds of thousands of reference-value lines.
+app/src/test/resources/parity_reference.json -diff
+app/src/androidTest/assets/parity_reference.json -diff
+*.wav binary
+gradlew text eol=lf
+gradlew.bat text eol=crlf
