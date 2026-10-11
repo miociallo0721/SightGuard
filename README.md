@@ -409,3 +409,11 @@ Hybrid GPU 研究工具与实际限制见 [GPU 可行性记录](docs/hybrid_gpu_
 输出逐视频统计、事件异常索引与原始评分轨迹，不重新推理或改变策略。
 Research Console 的视频回放页提供事件筛选、原始曲线、实际 AlertEvent 标记与关键帧定位。
 统计口径、证据和下一阶段建议见 [诊断报告](docs/alert_behavior_diagnosis.md)。
+
+Spatial Grid Fusion v1 提供独立离线 Shadow：YOLO 跟踪、SegFormer 地面语义与
+Depth 相对深度在同一原图坐标下形成可配置 15×15 证据网格，保留 UNKNOWN、MIXED 和溯源。
+它不是米制占用地图或导航，不改变正式风险、提醒和音频。
+运行 `uv run --no-sync python scripts/run_spatial_grid.py --output outputs/spatial_grid/new-run`，
+输出目录必须不存在；首次缺少原始语义缓存时使用 `scripts/prepare_spatial_semantics.py`。
+设计、上游参考与数据契约见 [实现说明](docs/spatial_grid_fusion_v1.md)，
+240 帧真实融合、A/B/C/D、性能、限制与复现见 [验证报告](docs/spatial_grid_validation.md)。
