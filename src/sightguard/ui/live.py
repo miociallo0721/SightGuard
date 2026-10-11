@@ -8,6 +8,7 @@ import subprocess
 import sys
 from collections.abc import Callable
 from dataclasses import dataclass, replace
+from pathlib import Path
 from threading import RLock, Thread
 from time import monotonic
 
@@ -108,6 +109,8 @@ class LiveView:
     events: pd.DataFrame | None = None
     alerts: pd.DataFrame | None = None
     running: bool = False
+    audio_status: dict | None = None
+    intelligence: dict | None = None
 
 
 class LiveController:
@@ -139,6 +142,8 @@ class LiveController:
         imgsz: int,
         perception_id: str,
         risk_id: str,
+        spatial_audio: bool = False,
+        audio_gain: float = 0.12,
     ) -> LiveView:
         if not owner:
             raise ConsoleDataError("缺少浏览器会话，请刷新页面")
@@ -170,7 +175,25 @@ class LiveController:
                 device=resolve_device(device),
                 image_size=_integer(imgsz, "imgsz"),
             )
-            session = self.session_factory(perception, risk, live)
+            if type(spatial_audio) is not bool:
+                raise ConsoleDataError("空间音频开关必须为布尔值")
+            session_options = {}
+            if spatial_audio:
+                from sightguard.spatial.config import load_spatial_config
+
+                audio_path = self.store.root / "configs" / "spatial.yaml"
+                audio_config = load_spatial_config(audio_path if audio_path.is_file() else None)
+                library = audio_config.library_path
+                if library and not Path(library).is_absolute():
+                    library = str(self.store.root / library)
+                if library is None:
+                    dll = self.store.root / "models" / "openal-soft" / "soft_oal.dll"
+                    if dll.is_file():
+                        library = str(dll)
+                session_options["spatial_config"] = replace(
+                    audio_config, gain=audio_gain, library_path=library
+                )
+            session = self.session_factory(perception, risk, live, **session_options)
             try:
                 session.start()
             except Exception:
@@ -198,6 +221,79 @@ class LiveController:
         with self.lock:
             if self.session is not None and self.owner == owner:
                 self._stop_locked("**已停止** · 摄像头与推理线程已释放")
+            return self.poll(owner)
+
+    def toggle_audio(self, owner: str) -> LiveView:
+        with self.lock:
+            if self.session is not None and self.owner == owner:
+                audio = getattr(self.session, "audio", None)
+                if audio is not None:
+                    audio.set_enabled(not audio.snapshot()["enabled"])
+            return self.poll(owner)
+
+    def intelligence(
+        self,
+        owner: str,
+        mode: str,
+        auxiliary: str = "laya",
+        action: str = "load",
+    ) -> LiveView:
+        """Manage shadow inference for the current camera session without restarting it."""
+        if mode not in {"rule", "laya", "vision", "hybrid"}:
+            raise ValueError("Unknown intelligence mode")
+        if auxiliary not in {"laya", "vision"}:
+            raise ValueError("Unknown auxiliary model")
+        if action not in {"select", "load", "unload"}:
+            raise ValueError("Unknown intelligence action")
+        if action == "load" and mode == "rule":
+            raise ValueError("Rule Engine 模式没有辅助模型可加载")
+
+        with self.lock:
+            if self.session is None or self.owner != owner:
+                raise ValueError("请先在当前页面启动实时会话")
+            session = self.session
+            manager = getattr(session, "intelligence", None)
+            if action == "unload":
+                if manager is not None:
+                    manager.unload()
+            elif mode == "rule" and action == "select" and manager is None:
+                # Rule Engine already runs in the fast path; do not create an auxiliary
+                # provider just to re-select the default mode.
+                pass
+            else:
+                if manager is None:
+                    enable = getattr(session, "enable_intelligence", None)
+                    if enable is None:
+                        raise RuntimeError("当前实时会话不支持 Risk Intelligence")
+                    enable(self.store.root)
+                    manager = getattr(session, "intelligence", None)
+                    if manager is None:
+                        raise RuntimeError("Risk Intelligence 管理器初始化失败")
+                manager.select(mode, auxiliary=auxiliary, load=action == "load")
+            return self.poll(owner)
+
+    def navigation(self, owner: str, action: str, angle: float = 0) -> LiveView:
+        """Submit simulated navigation into the same queue as actual risk alerts."""
+        from sightguard.spatial.navigation_adapter import NavigationAdapter, NavigationCue
+
+        with self.lock:
+            audio = getattr(self.session, "audio", None) if self.owner == owner else None
+            if audio is None:
+                raise ValueError("请先启动已开启空间音频的实时会话")
+            if action == "play":
+                audio.cancel_navigation()
+                cue = NavigationAdapter(audio.config).convert(
+                    NavigationCue("live-simulated-goal", angle), now_ms=audio.now_ms()
+                )
+                audio.submit(cue)
+            elif action == "pause":
+                audio.pause_navigation(True)
+            elif action == "resume":
+                audio.pause_navigation(False)
+            elif action == "cancel":
+                audio.cancel_navigation()
+            else:
+                raise ValueError("Unknown navigation action")
             return self.poll(owner)
 
     def shutdown(self) -> None:
@@ -329,4 +425,14 @@ class LiveController:
                     columns=ALERT_COLUMNS,
                 ),
                 True,
+                (
+                    session.audio.snapshot()
+                    if getattr(session, "audio", None) is not None
+                    else {"enabled": False, "error": getattr(session, "audio_error", None)}
+                ),
+                (
+                    session.intelligence.snapshot()
+                    if getattr(session, "intelligence", None) is not None
+                    else None
+                ),
             )

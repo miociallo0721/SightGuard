@@ -140,9 +140,11 @@ class EventManager:
                     continue
                 detection, geometry = frame.detections[index], spatial[index]
                 for event in live:
-                    if (
-                        event.event_id not in available_events
-                        or event.class_id != detection.class_id
+                    if event.event_id not in available_events:
+                        continue
+                    class_switch = event.class_id != detection.class_id
+                    if class_switch and not (
+                        method == "track_id" and self.config.allow_class_switch_for_track_id
                     ):
                         continue
                     dt = frame.timestamp_ms - event.last_seen_ms
@@ -157,6 +159,7 @@ class EventManager:
                             or detection_ids[detection.track_id] != 1
                             or event_ids[detection.track_id] != 1
                             or distance > self.config.track_max_center_distance
+                            or (class_switch and overlap < self.config.geometry_min_iou)
                         ):
                             continue
                         score = overlap
@@ -188,7 +191,13 @@ class EventManager:
                     for options in (left, right)
                 ):
                     continue
-                assigned[index] = (self.events[event_id], method)
+                event = self.events[event_id]
+                association_method = (
+                    "track_id_class_switch"
+                    if method == "track_id" and event.class_id != frame.detections[index].class_id
+                    else method
+                )
+                assigned[index] = (event, association_method)
                 available_indices.remove(index)
                 available_events.remove(event_id)
         result = []
@@ -231,6 +240,8 @@ class EventManager:
         event.confirmation_count += 1
         event.valid_observations += 1
         event.last_seen_ms, event.spatial = timestamp, spatial
+        if association.method == "track_id_class_switch":
+            event.class_id, event.class_name = detection.class_id, detection.class_name
         event.last_track_id, event.observed_now, event.assessment = (
             detection.track_id,
             True,

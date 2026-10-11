@@ -1,0 +1,29 @@
+schema_version: sightguard.path-relevance-config.v1
+model:
+  name: segformer_mit_b0_ade20k_160k
+  checkpoint: models/path_relevance/segformer_mit_b0_ade20k_160k.pth
+  input_width: 512
+  device: auto
+inference:
+  sample_interval_seconds: 0.5
+  min_pixel_confidence: 0.35
+  result_ttl_ms: 500
+  allow_cpu_fallback_on_cuda_oom: true
+corridor:
+  walkable_ade20k_classes:
+    floor: 3
+    road: 6
+    sidewalk: 11
+  min_area_fraction: 0.005
+  bottom_start_fraction: 0.82
+  min_vertical_extent_fraction: 0.35
+shadow:
+  geometry_baseline_roi:
+    x_start_fraction: 0.3333333333
+    x_end_fraction: 0.6666666667
+    y_start_fraction: 0.55
+  recommendations_only: true
+  production_decision_changed: false
+scoring:
+  medium_min: 0.2
+  high_min: 0.55

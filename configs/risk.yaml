@@ -32,6 +32,7 @@ scoring:
 association:
   recovery_window_ms: 750
   track_max_center_distance: 0.35
+  allow_class_switch_for_track_id: false
   geometry_max_center_distance: 0.15
   geometry_min_iou: 0.10
   geometry_min_score: 0.35

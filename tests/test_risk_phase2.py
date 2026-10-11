@@ -3,7 +3,7 @@ from dataclasses import replace
 import pytest
 
 from sightguard.data import Detection, FrameRecord
-from sightguard.risk.config import FeatureConfig, RiskConfig
+from sightguard.risk.config import AssociationConfig, FeatureConfig, RiskConfig
 from sightguard.risk.features import FeatureExtractor, spatial_features
 from sightguard.risk.schema import (
     PerceptionQuality,
@@ -161,3 +161,11 @@ def test_threshold_hysteresis_holds_downgrade_for_configured_video_time() -> Non
     assert scorer.assess("E000001", low, 499).level == RiskLevel.HIGH
     assert scorer.assess("E000001", low, 500).level == RiskLevel.LOW
     assert scorer.assess("E000001", high, 600).level == RiskLevel.HIGH
+
+
+def test_class_switch_association_is_opt_in_and_requires_boolean() -> None:
+    assert AssociationConfig().allow_class_switch_for_track_id is False
+    assert AssociationConfig(allow_class_switch_for_track_id=True).allow_class_switch_for_track_id
+
+    with pytest.raises(ValueError, match="must be boolean"):
+        AssociationConfig(allow_class_switch_for_track_id=1)

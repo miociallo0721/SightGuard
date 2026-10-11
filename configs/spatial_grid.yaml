@@ -1,0 +1,8 @@
+schema_version: sightguard.spatial-grid-config.v1
+rows: 15
+cols: 15
+min_pixel_confidence: 0.35
+ground_fraction_threshold: 0.25
+min_detection_confidence: 0.35
+occupancy_coverage_threshold: 0.25
+depth_spread_fraction: 0.25

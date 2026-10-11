@@ -85,6 +85,15 @@ M 缺失时为 null，R=`(ws*S+wa*A)/(ws+wa)`，明确 degraded=true 与解释�
 detection_index 决胜。每帧一个事件最多关联一个目标，一个目标最多关联一个事件。
 有歧义时原事件暂时 LOST、新目标新建候选；宁可分裂，也不强制合并无法解释的身份。
 
+`association.allow_class_switch_for_track_id` 默认为 `false`，维持上述 Baseline。实验配置
+`configs/risk-association-v2.yaml` 将其开启：仅当当前和历史 `track_id` 在帧内与活动事件中均唯一、
+视频时间处于恢复窗口内、中心距离不超过 0.35 且框 IoU 不低于现有 `geometry_min_iou`（0.10）时，
+才允许相同 tracker ID 跨检测类别续接。
+几何匹配仍要求类别相同；冲突或越过距离门限时照常拒绝。续接记录的
+`association_method="track_id_class_switch"` 标明类别发生变化，事件快照更新为当前检测类别。
+提醒历史仍按原 event_id 保留。此策略不合并不同 track_id，也不证明追踪器 ID 对应同一真实目标；
+它仅用于研究稳定 tracker ID 与检测类别短时波动对事件分裂的影响。
+
 创建 → CANDIDATE；满足 250ms 与至少 2 次有效观察 → ACTIVE。
 候选确认区间中相邻有效观察间隔不得超过 500ms；成功空帧或未知帧使未观察候选重新计时。
 有效观察次数另行累计，不用墙钟等候来补确认条件。

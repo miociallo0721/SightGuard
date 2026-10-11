@@ -1,0 +1,316 @@
+{
+  "schema_version": "sightguard.alert-diagnosis.v1",
+  "ground_truth_used": false,
+  "audio_playback_count": null,
+  "audio_note": "Offline assessment has no playback log; not zero playback evidence",
+  "input_sha256": {
+    "datasets\\real_world\\manifests\\dataset.json": "b4de54f10c7236968532792a05ad1997b4033f0f7c9ed9d5144421185bcb1d42",
+    "D:\\program\\SightGuard\\scripts\\diagnose_alert_behavior.py": "7cf0651a7f355623b9378c7ec2dff86001fdbce4d54466032345fe7028c798a3",
+    "configs\\risk.yaml": "94a29ca91bb2a1367a385d4072197c51eb048481146fb50c77f1ddffb6681d3f",
+    "src\\sightguard\\evaluation\\alert_diagnosis.py": "e649217635547a19e287ba56cefc0cf71d29b4eb0a23905621b9513c120d9717",
+    "outputs\\real_world\\v01\\urbanego_run8_01\\perception\\tracks.jsonl": "b784c34e1229d0531a1bbc0703b4b764e35ef354de0d00dc1a863f7c255a3bc1",
+    "outputs\\real_world\\v01\\urbanego_run8_01\\assessment\\run_metadata.json": "fa69f79658ae24459eda3fcae7e714492433011393c61cb0ab5efa9a1422d6d7",
+    "outputs\\real_world\\v01\\urbanego_run8_01\\assessment\\risk_frames.jsonl": "db7c31ae9d97b3efa47d41397d3a391d4d526c750b3c0074a8e60d29c8d5dbed",
+    "outputs\\real_world\\v01\\urbanego_run8_01\\assessment\\events.jsonl": "a01b5876ffc59f22756da3fdfc0ec3f3b912470002eda1d8bbac1c16ee350d15",
+    "outputs\\real_world\\v01\\urbanego_run8_01\\assessment\\alerts.jsonl": "8b55d31a70ade430c1031492d80ee48aeaf23f46376024c6fa6c0071761db971",
+    "outputs\\real_world\\v01\\urbanego_run8_02\\perception\\tracks.jsonl": "6c247e36579c2adaa14b7ff0378a789432d658f12a71441cd1442c11f9c33fb0",
+    "outputs\\real_world\\v01\\urbanego_run8_02\\assessment\\run_metadata.json": "f7c4d1349d5fb33aab97628719416182121ba385160b39ea7c11eeab10a8702d",
+    "outputs\\real_world\\v01\\urbanego_run8_02\\assessment\\risk_frames.jsonl": "fe159693914637ecb118937ff81c005041bccd46b3fd2873ed170b390b4f8ee1",
+    "outputs\\real_world\\v01\\urbanego_run8_02\\assessment\\events.jsonl": "cecd5633b218e7abe4fc74c8733c78e1df8c87272af2f8bc26272ac3f527c54f",
+    "outputs\\real_world\\v01\\urbanego_run8_02\\assessment\\alerts.jsonl": "141e03a8597033914ddfa0e18e0c4eadafcc1d46e6fc808ee86f6a9cf642d2bf",
+    "outputs\\real_world\\v01\\urbanego_run8_03\\perception\\tracks.jsonl": "e196be907a562a44981612c1520afe4cd5f7f3b661c7bc715ba11b66d26fc156",
+    "outputs\\real_world\\v01\\urbanego_run8_03\\assessment\\run_metadata.json": "8ee1fba677428ec1915e35d2b837053aeaab1b551fc8ac491f47cb204cc611df",
+    "outputs\\real_world\\v01\\urbanego_run8_03\\assessment\\risk_frames.jsonl": "8cb8db7d52be0f2d84f7a4af1506235a9989f4af1193fe05f6eb4e0a8b78ba0b",
+    "outputs\\real_world\\v01\\urbanego_run8_03\\assessment\\events.jsonl": "b1562538d9d06cd2680843d7366cd36b99f104849668b92172e3217c936ebc29",
+    "outputs\\real_world\\v01\\urbanego_run8_03\\assessment\\alerts.jsonl": "ea8baa81fae6f16d841264a58e450a1ded98296690abaf3d2733f01ed06a8972",
+    "outputs\\real_world\\v01\\urbanego_run8_04\\perception\\tracks.jsonl": "8381dc63b9107cf0b9cdfabe55ae7bcc10001b1b852068e1211316c7a05f7ee5",
+    "outputs\\real_world\\v01\\urbanego_run8_04\\assessment\\run_metadata.json": "3033ffdeeb5dcad19820a3c3ce9c2f98fd33789434086ea1e862fc845a208d89",
+    "outputs\\real_world\\v01\\urbanego_run8_04\\assessment\\risk_frames.jsonl": "43c82420d4e74efc6c83ebb3b4b99dddd9b346f9c65f4075d60dba728bea8ea2",
+    "outputs\\real_world\\v01\\urbanego_run8_04\\assessment\\events.jsonl": "598caa561749bf75f4ef2110db4b173b8f1ef29c76f71e8120df036f566d469c",
+    "outputs\\real_world\\v01\\urbanego_run8_04\\assessment\\alerts.jsonl": "28fdde7473eb75246af9677ff5602d9bd54400f6b81d0799be96ca789a76cbba",
+    "outputs\\real_world\\v01\\urbanego_run8_05\\perception\\tracks.jsonl": "34db94762fe26986929b6a061ef915a497831d0141c6e0dca8a139a3e545b00b",
+    "outputs\\real_world\\v01\\urbanego_run8_05\\assessment\\run_metadata.json": "a46853ff3a4935c1490ed90238061944a0e0a2f1f1b0826cbe2960c4f648698b",
+    "outputs\\real_world\\v01\\urbanego_run8_05\\assessment\\risk_frames.jsonl": "42df7da273f2d2caea771b8cec6327a08cccda2a2f9f29c3a82340ccedbf13eb",
+    "outputs\\real_world\\v01\\urbanego_run8_05\\assessment\\events.jsonl": "d11efad562afa410dfca43779dda94dbc3ed6345c3d867efccf65115fdafbbdd",
+    "outputs\\real_world\\v01\\urbanego_run8_05\\assessment\\alerts.jsonl": "273660066f9c92be24e907fed656001246d41726d25a817fd9956380a5d276f1",
+    "outputs\\real_world\\v01\\urbanego_run8_06\\perception\\tracks.jsonl": "509899a457006d45ec8a366add6b049e8bb66ffa76f6165db846ca2291b03513",
+    "outputs\\real_world\\v01\\urbanego_run8_06\\assessment\\run_metadata.json": "25233afd803e0851ff85c0a5d529e23196b1801be5f0dd53da42bbb180516c84",
+    "outputs\\real_world\\v01\\urbanego_run8_06\\assessment\\risk_frames.jsonl": "87b5fbfa1c399cd066a594212341cef8ab5e328d11894936949f395872d48fa1",
+    "outputs\\real_world\\v01\\urbanego_run8_06\\assessment\\events.jsonl": "fb0f330b03267d11a3d99bff7b5aa987d275fcaf55fc5cfdc1b53b56b2d56312",
+    "outputs\\real_world\\v01\\urbanego_run8_06\\assessment\\alerts.jsonl": "d7e0af80c8266fa72c34baed028990ec8297c848d3af40e4bdfebc9b416cb476",
+    "outputs\\real_world\\v01\\urbanego_run8_07\\perception\\tracks.jsonl": "2495f6d1cc50854ab59899a6d902541b77afb576be1978693fdbe86e4df779d4",
+    "outputs\\real_world\\v01\\urbanego_run8_07\\assessment\\run_metadata.json": "b0a11858de5d479164364b66b81d4b53408a866d00b1e7489aaaf99f8988ef91",
+    "outputs\\real_world\\v01\\urbanego_run8_07\\assessment\\risk_frames.jsonl": "fcd4f602596446d2e8c8647745537ada69662efc6991c65c93197eb554761380",
+    "outputs\\real_world\\v01\\urbanego_run8_07\\assessment\\events.jsonl": "5ba72d921c5fdf803a6a1082d675b3705ed4db9df7736301d4aaefd56ca9e9b2",
+    "outputs\\real_world\\v01\\urbanego_run8_07\\assessment\\alerts.jsonl": "0c0ae9493b69e91938dc3407084844f6cdeccc2064b0c74a604ac192d30ffd6c",
+    "outputs\\real_world\\v01\\urbanego_run8_08\\perception\\tracks.jsonl": "d03567d4c35a02b5084bec7d7f264f6884e0696743d532424e3353b428458d91",
+    "outputs\\real_world\\v01\\urbanego_run8_08\\assessment\\run_metadata.json": "dac0ce8bbefc3293c9e5a5dada10601833a07c05e75f61b8779dc5b053b3f09e",
+    "outputs\\real_world\\v01\\urbanego_run8_08\\assessment\\risk_frames.jsonl": "deabb148f14a19a60e15894bb0bf7c24cec1c2da0ac2cdbe8851a0e56502c92d",
+    "outputs\\real_world\\v01\\urbanego_run8_08\\assessment\\events.jsonl": "d2e2e1b677aadbcc6af11d1acc2d6b3e6b0d80e05f32ca81ee69369f77fee449",
+    "outputs\\real_world\\v01\\urbanego_run8_08\\assessment\\alerts.jsonl": "b0870a0afd2a9961ace9d8bb386287972417249292b45b6551e382cb735df626"
+  },
+  "alert_class_counts": {
+    "bench": 6,
+    "potted plant": 9,
+    "person": 113,
+    "umbrella": 6,
+    "parking meter": 1,
+    "chair": 50,
+    "donut": 1,
+    "bottle": 2,
+    "fire hydrant": 1,
+    "handbag": 3,
+    "car": 44,
+    "truck": 6,
+    "motorcycle": 4,
+    "train": 3,
+    "suitcase": 1,
+    "bus": 1,
+    "boat": 1,
+    "dining table": 2,
+    "tv": 1,
+    "refrigerator": 2
+  },
+  "current_track_realerts": [
+    {
+      "video_id": "urbanego_run8_02",
+      "track_id": 9,
+      "first_alerts": [
+        {
+          "event_id": "E000006",
+          "timestamp_ms": 600.0000000000001,
+          "score": 0.48861677461445674,
+          "alert_id": "A000004"
+        },
+        {
+          "event_id": "E000020",
+          "timestamp_ms": 1850.0,
+          "score": 0.5896942687490963,
+          "alert_id": "A000010"
+        }
+      ]
+    },
+    {
+      "video_id": "urbanego_run8_03",
+      "track_id": 190,
+      "first_alerts": [
+        {
+          "event_id": "E000066",
+          "timestamp_ms": 8000.0,
+          "score": 0.5907763563289752,
+          "alert_id": "A000024"
+        },
+        {
+          "event_id": "E000080",
+          "timestamp_ms": 10950.000000000002,
+          "score": 0.6593815902786191,
+          "alert_id": "A000033"
+        }
+      ]
+    },
+    {
+      "video_id": "urbanego_run8_03",
+      "track_id": 1,
+      "first_alerts": [
+        {
+          "event_id": "E000003",
+          "timestamp_ms": 250.0,
+          "score": 0.7439524127275516,
+          "alert_id": "A000001"
+        },
+        {
+          "event_id": "E000004",
+          "timestamp_ms": 850.0000000000001,
+          "score": 0.8,
+          "alert_id": "A000004"
+        },
+        {
+          "event_id": "E000013",
+          "timestamp_ms": 3550.0000000000005,
+          "score": 0.7220808810281378,
+          "alert_id": "A000008"
+        }
+      ]
+    },
+    {
+      "video_id": "urbanego_run8_04",
+      "track_id": 53,
+      "first_alerts": [
+        {
+          "event_id": "E000019",
+          "timestamp_ms": 4450.0,
+          "score": 0.5399048863959582,
+          "alert_id": "A000010"
+        },
+        {
+          "event_id": "E000023",
+          "timestamp_ms": 6500.0,
+          "score": 0.5920435587571697,
+          "alert_id": "A000012"
+        }
+      ]
+    },
+    {
+      "video_id": "urbanego_run8_04",
+      "track_id": 84,
+      "first_alerts": [
+        {
+          "event_id": "E000024",
+          "timestamp_ms": 6800.000000000001,
+          "score": 0.6314546864183201,
+          "alert_id": "A000013"
+        },
+        {
+          "event_id": "E000031",
+          "timestamp_ms": 11500.0,
+          "score": 0.805546730469354,
+          "alert_id": "A000018"
+        }
+      ]
+    },
+    {
+      "video_id": "urbanego_run8_04",
+      "track_id": 92,
+      "first_alerts": [
+        {
+          "event_id": "E000026",
+          "timestamp_ms": 8200.000000000002,
+          "score": 0.33218985981478755,
+          "alert_id": "A000015"
+        },
+        {
+          "event_id": "E000027",
+          "timestamp_ms": 10350.000000000002,
+          "score": 0.33885515348558204,
+          "alert_id": "A000016"
+        }
+      ]
+    },
+    {
+      "video_id": "urbanego_run8_04",
+      "track_id": 103,
+      "first_alerts": [
+        {
+          "event_id": "E000030",
+          "timestamp_ms": 11150.0,
+          "score": 0.8050412500277959,
+          "alert_id": "A000017"
+        },
+        {
+          "event_id": "E000034",
+          "timestamp_ms": 14150.0,
+          "score": 0.8,
+          "alert_id": "A000020"
+        }
+      ]
+    },
+    {
+      "video_id": "urbanego_run8_05",
+      "track_id": 212,
+      "first_alerts": [
+        {
+          "event_id": "E000050",
+          "timestamp_ms": 9450.000000000002,
+          "score": 0.37313383490757335,
+          "alert_id": "A000011"
+        },
+        {
+          "event_id": "E000063",
+          "timestamp_ms": 10750.0,
+          "score": 0.6414075659716783,
+          "alert_id": "A000019"
+        }
+      ]
+    },
+    {
+      "video_id": "urbanego_run8_05",
+      "track_id": 211,
+      "first_alerts": [
+        {
+          "event_id": "E000053",
+          "timestamp_ms": 9300.0,
+          "score": 0.570006144260651,
+          "alert_id": "A000008"
+        },
+        {
+          "event_id": "E000069",
+          "timestamp_ms": 10550.0,
+          "score": 0.6924670266330366,
+          "alert_id": "A000016"
+        }
+      ]
+    },
+    {
+      "video_id": "urbanego_run8_06",
+      "track_id": 4,
+      "first_alerts": [
+        {
+          "event_id": "E000042",
+          "timestamp_ms": 8350.0,
+          "score": 0.5973315547291571,
+          "alert_id": "A000018"
+        },
+        {
+          "event_id": "E000002",
+          "timestamp_ms": 500.0,
+          "score": 0.5433801681500354,
+          "alert_id": "A000004"
+        }
+      ]
+    },
+    {
+      "video_id": "urbanego_run8_06",
+      "track_id": 12,
+      "first_alerts": [
+        {
+          "event_id": "E000007",
+          "timestamp_ms": 1250.0,
+          "score": 0.6706250305188981,
+          "alert_id": "A000005"
+        },
+        {
+          "event_id": "E000009",
+          "timestamp_ms": 2400.0000000000005,
+          "score": 0.6813676177087322,
+          "alert_id": "A000006"
+        }
+      ]
+    },
+    {
+      "video_id": "urbanego_run8_06",
+      "track_id": 143,
+      "first_alerts": [
+        {
+          "event_id": "E000033",
+          "timestamp_ms": 7050.000000000001,
+          "score": 0.9940015333126753,
+          "alert_id": "A000013"
+        },
+        {
+          "event_id": "E000037",
+          "timestamp_ms": 8150.0,
+          "score": 0.7912839742807242,
+          "alert_id": "A000015"
+        }
+      ]
+    },
+    {
+      "video_id": "urbanego_run8_07",
+      "track_id": 86,
+      "first_alerts": [
+        {
+          "event_id": "E000041",
+          "timestamp_ms": 3850.0,
+          "score": 0.5463360076794882,
+          "alert_id": "A000017"
+        },
+        {
+          "event_id": "E000064",
+          "timestamp_ms": 6350.000000000001,
+          "score": 0.7740841420652258,
+          "alert_id": "A000025"
+        }
+      ]
+    }
+  ]
+}

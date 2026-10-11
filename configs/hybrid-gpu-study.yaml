@@ -1,0 +1,31 @@
+schema_version: '1.0'
+frequency_hz: 1.0
+timeout_s: 8.0
+load_timeout_s: 90.0
+stale_after_ms: 2000.0
+max_objects: 8
+fusion: conservative_max
+output_dir: outputs/hybrid/gpu-benchmark/sessions
+retain_images: false
+models:
+  laya:
+    python: models/hybrid/env-structured/Scripts/python.exe
+    path: models/hybrid/laya-structured-source
+    model_id: convaiinnovations/laya
+    revision: 7b928d828b7b0e022f929d9bd2e44165aa270148
+    device: cpu
+    precision: int8
+    backend: onnx
+    onnx_path: models/hybrid/laya-structured-source/laya.int8.onnx
+    license: Apache-2.0
+    code_revision: 68804629e8ccd9d616d48a40e87de9fabbeae069
+  vision:
+    python: models/hybrid/env-vision-gpu/Scripts/python.exe
+    path: models/hybrid/vision
+    model_id: thaitea/laya-vision
+    revision: f2fe3c12cb6d04c59d8a190250bf3fb40fc828dc
+    device: cuda
+    precision: fp16
+    backend: pytorch
+    license: CC-BY-NC-SA-4.0
+    code_revision: 9e1e2419d855ad3e1a2af4d4bd1ef6be5418842c

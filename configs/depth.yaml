@@ -1,0 +1,15 @@
+schema_version: sightguard.depth-config.v1
+model:
+  checkpoint_dir: models/depth_anything_v2_small
+  model_id: depth-anything/Depth-Anything-V2-Small-hf
+  model_revision: 5426e4f0f36572d16453bbda7a8389317b1bef99
+  checkpoint_sha256: 3152477ce0d8d6978d76b995120de97cb5b928701fd0f817769f59e249a16b70
+  config_sha256: c56698d3643dde1f83ea2212759e6b31a22b8f827246a36dd007ee8a22b3ff75
+  processor_sha256: d41175c0d889477ca8fc67191e540faef14baf6275157b3fdecf78469e6bbf84
+  device: auto
+  input_size: 280
+  allow_cpu_fallback: true
+  min_relative_spread: 0.00001
+sampling:
+  interval_seconds: 0.5
+  warmup_frames: 2

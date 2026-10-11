@@ -162,6 +162,52 @@ def test_stop_closes_session_and_restart_creates_a_fresh_one(tmp_path: Path) -> 
     assert sessions[1].closed == 1
 
 
+def test_intelligence_mode_and_model_lifecycle_keep_the_live_session(tmp_path: Path) -> None:
+    clock = FakeClock()
+    controller, sessions = _controller(_workspace(tmp_path), clock)
+    _start(controller)
+    session = sessions[0]
+
+    class MockIntelligence:
+        def __init__(self) -> None:
+            self.calls = []
+            self.status = "Not Installed"
+
+        def select(self, mode, *, auxiliary, load):
+            self.calls.append((mode, auxiliary, load))
+            if load:
+                self.status = "Loading"
+
+        def unload(self):
+            self.status = "Not Installed"
+
+        def snapshot(self):
+            return {"mode": "hybrid", "auxiliary": "vision", "model_status": self.status}
+
+    manager = MockIntelligence()
+
+    def enable(_root):
+        session.intelligence = manager
+        return manager
+
+    session.enable_intelligence = enable
+    selected = controller.intelligence("browser-a", "hybrid", "vision", "load")
+    assert selected.intelligence["model_status"] == "Loading"
+    assert manager.calls == [("hybrid", "vision", True)]
+    assert controller.session is session
+    assert session.started == 1
+
+    controller.intelligence("browser-a", "vision", "vision", "select")
+    assert manager.calls[-1] == ("vision", "vision", False)
+    with pytest.raises(ValueError, match="启动实时会话"):
+        controller.intelligence("browser-b", "hybrid", "laya", "load")
+    controller.intelligence("browser-a", "hybrid", "vision", "unload")
+    assert manager.status == "Not Installed"
+    assert controller.session is session
+    assert session.started == 1
+    controller.shutdown()
+
+
 def test_lease_reaper_expires_without_intruder_poll_extending_owner_lease(
     tmp_path: Path,
 ) -> None:

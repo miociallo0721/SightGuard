@@ -12,6 +12,8 @@ class LiveConfig:
     camera: int = 0
     width: int = 640
     height: int = 480
+    camera_fps: float = 30
+    camera_fourcc: str = "MJPG"
     stale_after_ms: float = 1000
     alert_banner_ms: float = 2000
     failure_display_ms: float = 1200
@@ -23,7 +25,19 @@ class LiveConfig:
         for name in ("width", "height"):
             if type(getattr(self, name)) is not int or getattr(self, name) < 1:
                 raise ValueError(f"{name} must be a positive integer")
-        for name in ("stale_after_ms", "alert_banner_ms", "failure_display_ms", "join_timeout_s"):
+        if (
+            not isinstance(self.camera_fourcc, str)
+            or len(self.camera_fourcc) != 4
+            or not self.camera_fourcc.isascii()
+        ):
+            raise ValueError("camera_fourcc must contain four ASCII characters")
+        for name in (
+            "camera_fps",
+            "stale_after_ms",
+            "alert_banner_ms",
+            "failure_display_ms",
+            "join_timeout_s",
+        ):
             value = getattr(self, name)
             if isinstance(value, bool) or not isinstance(value, (int, float)):
                 raise ValueError(f"{name} must be numeric")

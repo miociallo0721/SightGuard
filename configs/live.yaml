@@ -6,3 +6,7 @@ stale_after_ms: 1000
 alert_banner_ms: 2000
 failure_display_ms: 1200
 join_timeout_s: 10
+
+# Negotiate size/FPS before codec; Xiaomi DirectShow requires MJPG on this PC.
+camera_fps: 30
+camera_fourcc: MJPG

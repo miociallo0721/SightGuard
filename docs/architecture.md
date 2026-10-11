@@ -1,4 +1,16 @@
-# Phase 1 架构与接口
+# SightGuard 架构与既有接口
+
+## 当前状态索引（2026-10-11）
+
+本文件保留各阶段接口说明，以下 Phase 1–5 是已存在代码的历史扩展记录。
+完整当前调用审计见 [architecture_audit_2026-10-11.md](architecture_audit_2026-10-11.md)，
+目标领域边界与新契约提案见 [architecture_consolidation_plan.md](architecture_consolidation_plan.md)。
+目标架构不表示 Corridor Intelligence 已实现。
+
+默认产品入口为 `sightguard ui`（FastAPI）；研究台为 `sightguard ui --research`（Gradio）。
+规则主链路在实时 LiveSession 和离线 assess 中复用 AssessmentEngine，AlertScheduler 产生
+AlertEvent。SegFormer / Path Relevance 仅离线 Shadow；Laya / Vision / Hybrid 按需 Shadow；
+Event Association v2 的跨类别同 ID 关联默认关闭。音频需要显式启用，AlertEvent 与实际播放分开。
 
 ## 模块与依赖方向
 
@@ -10,7 +22,8 @@
 
 Phase 2 已实现：`risk` 计算空间/运动特征及评分，`decision` 管理原生状态机与提醒抑制；
 `pipeline.assess` 读取既有感知 JSONL，导出风险帧、事件和提醒。
-后续规划（当前未实现）：`evaluation` 独立标注与对照评估，`ui` 为 Gradio Blocks 展示。
+`evaluation` 的独立标注与对照评估、`ui` 的 Gradio 研究台及 FastAPI 产品页均已实现，
+见下方阶段记录；真实独立标注和道路效果验证仍未完成。
 risk/decision 不得引用 YOLO、torch、Gradio；UI 只能调用核心模块。
 未来 ONNX/Core ML 可替换感知适配器；现在不实现导出或 Swift。
 
@@ -80,7 +93,8 @@ C 的实际核心提醒包装为统一接口，不接收 Ground Truth。
 
 ## Phase 4 扩展
 
-`ui.app` 以 Gradio Blocks 提供四页本地控制台；`ui.services.ConsoleStore` 读取并验证已有产物，
+`ui.app` 以 Gradio Blocks 提供本地控制台（后续新增实时、标注和 Shadow 等页面）；
+`ui.services.ConsoleStore` 读取并验证已有产物，
 不重算实验指标，`ui.jobs.AnalysisJobs` 为主动上传分析创建唯一新目录并调用既有流水线。
 `ui.presentation`/`ui.plots` 使用原值和视频时间呈现表格与 Plotly 图，不参与决策。
 新增 `analyze_video(on_progress=...)` 可选帧进度回调，旧调用接口保持兼容。
@@ -95,3 +109,44 @@ FrameRecord 新增 `monotonic` 时间来源，风险与事件算法保持原实�
 配置、过期处理、退出及验证边界见 [live.md](live.md)。保留独立 OpenCV CLI。
 Gradio 的 `ui.live.LiveController` 为现有 LiveSession 添加单页面所有权、心跳和资源释放，
 `ui.live_tab` 新增第五个实时页。内存 JPEG 与原始结果绑定，UI 不生成评分或提醒。
+
+
+## Spatial 原生音频适配
+
+`spatial.risk_adapter` 仅将现有 AlertEvent 转成 SpatialCue，不修改评分或事件条件。
+`spatial.navigation_adapter` 提供听者相对方向的手动模拟，统一交给有界 TTL/优先级调度与
+独立 AudioWorker；OpenAL Soft ctypes 后端实际查询 HRTF，失败不停止视觉流程。
+产品网页通过 `ui.product_live` 复用现有控制器，研究台保留独立试听页。
+摄像头先设置尺寸/FPS、最后设置 MJPG，时间戳仍使用 monotonic。
+详见 [空间音频架构](spatial_audio_architecture.md)及[验证记录](spatial_audio_validation.md)。
+
+## Hybrid Intelligence 影子研究
+
+`live.runtime` 在原规则提醒/音频提交之后，将不可变 LiveResult 引用交给
+`hybrid.manager` 的容量一最新状态槽。独立语义线程拥有选定辅助模型的子进程；
+模型加载失败、超时、OOM、卸载与模式切换均不重建摄像头或 Phase 2 引擎。
+`hybrid.input` 提取原图/检测/时序特征，排除规则最终风险标签；`hybrid.schema`
+定义版本化结果、同源事件比较和标签融合。四种模式都是研究选择，实际 AlertEvent
+及空间音频仍来自现有规则链路。产品网页通过 `/api/live/intelligence` 与已有所有权
+控制器交互，研究控制台保持原入口。详见 [Hybrid 架构](hybrid_intelligence_architecture.md)。
+
+GPU 可行性工具独立于 UI 和规则引擎。Vision 精度适配保留 FP32 readout，仅 CUDA
+encoder 使用 FP16；实际参数 dtype/device 写入记录，2026-10-11 已完成真实 CUDA 前向与
+固定输入实测。Windows 隔离
+模型进程使用 safetensors pread 读取以规避历史 GPU 研究发现的 mmap 原生故障，权重哈希在加载
+前验证。当前 `configs/hybrid.yaml` 中 Structured 是 CPU INT8 ONNX，Vision 是
+auto / FP32，且辅助模型仍默认不加载；隔离 CUDA 研究不等于正式提醒接管。
+见 [GPU 研究记录](hybrid_gpu_feasibility.md)。
+
+## 产品演示与 Path Relevance 边界
+
+产品页 `ui.product_app` 复用 AnalysisJobs 执行 MP4 感知和风险重放，实时 API 复用
+LiveController / LiveSession。MP4 展示的 `DemoGuidance` suggestion 和浏览器语音试听
+由独立图像区域演示规则产生，不是 AlertScheduler 的 AlertEvent；手动 NavigationCue
+也是模拟方向输入，没有实际导航能力。
+
+`path_relevance.model` 使用本地 SegFormer MiT-B0 / ADE20K，`engine` 估计图像语义地面
+连通候选及目标相关性，`pipeline` 复用原视频和既有 tracks/risk/alerts 生成离线 Shadow。
+Research Console 只浏览这些结果；未接入实时、正式评分、提醒或音频。
+当前没有统一空间网格、可靠相机姿态、度量深度或经验证的可通行走廊。
+权威批次与限制见 [Path Relevance 验证](path_relevance_validation.md)。

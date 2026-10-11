@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "SightGuard real-world provenance v0.1 (not Ground Truth)",
+  "type": "object",
+  "required": ["schema_version", "videos"],
+  "properties": {
+    "schema_version": {"const": "sightguard.real-world.v0.1"},
+    "videos": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["schema_version", "video_id", "parent_source_id", "scenario_category", "camera_perspective", "acquisition_status", "annotation_status", "eligibility_status", "split", "filepath", "duration", "width", "height", "fps", "source_sha256", "processed_sha256", "source_dataset", "source_url", "source_record_id", "license", "license_url", "access_date", "original_filename", "original_sha256", "original_duration", "original_fps", "original_resolution", "selected_start_time", "selected_end_time", "selection_reason", "permitted_usage", "attribution", "review_status"],
+        "properties": {
+          "schema_version": {"const": "sightguard.real-world.v0.1"},
+          "video_id": {"type": "string", "pattern": "^[A-Za-z0-9_-]+$"},
+          "parent_source_id": {"type": "string", "minLength": 1},
+          "acquisition_status": {"enum": ["pending", "failed", "verified"]},
+          "annotation_status": {"enum": ["pending", "draft", "reviewed"]},
+          "eligibility_status": {"enum": ["pending_visual_review", "accepted", "excluded"]},
+          "split": {"enum": ["development", "test"]},
+          "source_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+          "processed_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+          "duration": {"type": "number", "exclusiveMinimum": 0},
+          "fps": {"type": "number", "exclusiveMinimum": 0},
+          "width": {"type": "integer", "minimum": 1},
+          "height": {"type": "integer", "minimum": 1},
+          "selected_start_time": {"type": "number", "minimum": 0},
+          "selected_end_time": {"type": "number", "exclusiveMinimum": 0}
+        }
+      }
+    }
+  }
+}

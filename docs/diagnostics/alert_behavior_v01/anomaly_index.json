@@ -1,0 +1,7321 @@
+[
+  {
+    "video_id": "urbanego_run8_01",
+    "event_id": "E000024",
+    "event_kind": "risk",
+    "start_ms": 2900.0000000000005,
+    "end_ms": 8900.0,
+    "right_censored": false,
+    "alert_count": 2,
+    "source_track_ids": [
+      57
+    ],
+    "class_name": "bench",
+    "alert_times_ms": [
+      3150.0000000000005,
+      7600.000000000001
+    ],
+    "flags": [
+      "multiple_alerts",
+      "score_level_change_or_delta_ge_0.15",
+      "active_reentry"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_01",
+    "event_id": "E000059",
+    "event_kind": "risk",
+    "start_ms": 8500.0,
+    "end_ms": 11900.0,
+    "right_censored": false,
+    "alert_count": 2,
+    "source_track_ids": [
+      224,
+      247
+    ],
+    "class_name": "potted plant",
+    "alert_times_ms": [
+      8800.0,
+      10900.0
+    ],
+    "flags": [
+      "multiple_alerts",
+      "score_level_change_or_delta_ge_0.15",
+      "multiple_track_ids",
+      "active_reentry"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_01",
+    "event_id": "E000002",
+    "event_kind": "risk",
+    "start_ms": 0.0,
+    "end_ms": 8900.0,
+    "right_censored": false,
+    "alert_count": 1,
+    "source_track_ids": [
+      2
+    ],
+    "class_name": "person",
+    "alert_times_ms": [
+      250.0
+    ],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_01",
+    "event_id": "E000003",
+    "event_kind": "risk",
+    "start_ms": 0.0,
+    "end_ms": 2050.0000000000005,
+    "right_censored": false,
+    "alert_count": 1,
+    "source_track_ids": [
+      3
+    ],
+    "class_name": "person",
+    "alert_times_ms": [
+      300.00000000000006
+    ],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_01",
+    "event_id": "E000015",
+    "event_kind": "risk",
+    "start_ms": 1650.0000000000002,
+    "end_ms": 4950.0,
+    "right_censored": false,
+    "alert_count": 1,
+    "source_track_ids": [
+      29
+    ],
+    "class_name": "person",
+    "alert_times_ms": [
+      2800.0000000000005
+    ],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15",
+      "active_reentry"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_01",
+    "event_id": "E000018",
+    "event_kind": "risk",
+    "start_ms": 1850.0,
+    "end_ms": 8900.0,
+    "right_censored": false,
+    "alert_count": 1,
+    "source_track_ids": [
+      10
+    ],
+    "class_name": "person",
+    "alert_times_ms": [
+      2100.0
+    ],
+    "flags": []
+  },
+  {
+    "video_id": "urbanego_run8_01",
+    "event_id": "E000019",
+    "event_kind": "risk",
+    "start_ms": 1900.0000000000002,
+    "end_ms": 3550.0000000000005,
+    "right_censored": false,
+    "alert_count": 1,
+    "source_track_ids": [
+      38
+    ],
+    "class_name": "person",
+    "alert_times_ms": [
+      2650.0000000000005
+    ],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_01",
+    "event_id": "E000021",
+    "event_kind": "risk",
+    "start_ms": 2800.0000000000005,
+    "end_ms": 8850.0,
+    "right_censored": false,
+    "alert_count": 1,
+    "source_track_ids": [
+      54
+    ],
+    "class_name": "umbrella",
+    "alert_times_ms": [
+      5500.0
+    ],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15",
+      "active_reentry"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_01",
+    "event_id": "E000026",
+    "event_kind": "risk",
+    "start_ms": 3650.0000000000005,
+    "end_ms": 5250.0,
+    "right_censored": false,
+    "alert_count": 1,
+    "source_track_ids": [
+      32,
+      77
+    ],
+    "class_name": "person",
+    "alert_times_ms": [
+      4300.0
+    ],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15",
+      "multiple_track_ids",
+      "active_reentry"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_01",
+    "event_id": "E000028",
+    "event_kind": "risk",
+    "start_ms": 3800.0000000000005,
+    "end_ms": 5050.000000000001,
+    "right_censored": false,
+    "alert_count": 1,
+    "source_track_ids": [
+      85
+    ],
+    "class_name": "potted plant",
+    "alert_times_ms": [
+      4100.000000000001
+    ],
+    "flags": []
+  },
+  {
+    "video_id": "urbanego_run8_01",
+    "event_id": "E000034",
+    "event_kind": "risk",
+    "start_ms": 4800.000000000001,
+    "end_ms": 6950.0,
+    "right_censored": false,
+    "alert_count": 1,
+    "source_track_ids": [
+      118
+    ],
+    "class_name": "person",
+    "alert_times_ms": [
+      5400.0
+    ],
+    "flags": [
+      "active_reentry"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_01",
+    "event_id": "E000036",
+    "event_kind": "risk",
+    "start_ms": 5050.000000000001,
+    "end_ms": 8450.000000000002,
+    "right_censored": false,
+    "alert_count": 1,
+    "source_track_ids": [
+      130
+    ],
+    "class_name": "person",
+    "alert_times_ms": [
+      5300.000000000001
+    ],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15",
+      "active_reentry"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_01",
+    "event_id": "E000037",
+    "event_kind": "risk",
+    "start_ms": 5050.000000000001,
+    "end_ms": 7150.0,
+    "right_censored": false,
+    "alert_count": 1,
+    "source_track_ids": [
+      129
+    ],
+    "class_name": "person",
+    "alert_times_ms": [
+      5650.0
+    ],
+    "flags": []
+  },
+  {
+    "video_id": "urbanego_run8_01",
+    "event_id": "E000039",
+    "event_kind": "risk",
+    "start_ms": 5800.000000000001,
+    "end_ms": 7250.0,
+    "right_censored": false,
+    "alert_count": 1,
+    "source_track_ids": [
+      149
+    ],
+    "class_name": "person",
+    "alert_times_ms": [
+      6050.000000000001
+    ],
+    "flags": []
+  },
+  {
+    "video_id": "urbanego_run8_01",
+    "event_id": "E000041",
+    "event_kind": "risk",
+    "start_ms": 6200.0,
+    "end_ms": 8850.0,
+    "right_censored": false,
+    "alert_count": 1,
+    "source_track_ids": [
+      111
+    ],
+    "class_name": "umbrella",
+    "alert_times_ms": [
+      7950.0
+    ],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_01",
+    "event_id": "E000049",
+    "event_kind": "risk",
+    "start_ms": 8150.0,
+    "end_ms": 12300.0,
+    "right_censored": false,
+    "alert_count": 1,
+    "source_track_ids": [
+      182
+    ],
+    "class_name": "person",
+    "alert_times_ms": [
+      8400.0
+    ],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15",
+      "active_reentry"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_01",
+    "event_id": "E000052",
+    "event_kind": "risk",
+    "start_ms": 8250.0,
+    "end_ms": 10300.0,
+    "right_censored": false,
+    "alert_count": 1,
+    "source_track_ids": [
+      201
+    ],
+    "class_name": "umbrella",
+    "alert_times_ms": [
+      8500.0
+    ],
+    "flags": []
+  },
+  {
+    "video_id": "urbanego_run8_01",
+    "event_id": "E000053",
+    "event_kind": "risk",
+    "start_ms": 8300.0,
+    "end_ms": 10000.0,
+    "right_censored": false,
+    "alert_count": 1,
+    "source_track_ids": [
+      203
+    ],
+    "class_name": "person",
+    "alert_times_ms": [
+      8550.0
+    ],
+    "flags": [
+      "active_reentry"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_01",
+    "event_id": "E000054",
+    "event_kind": "risk",
+    "start_ms": 8400.0,
+    "end_ms": 10200.000000000002,
+    "right_censored": false,
+    "alert_count": 1,
+    "source_track_ids": [
+      214,
+      219
+    ],
+    "class_name": "person",
+    "alert_times_ms": [
+      8650.0
+    ],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15",
+      "multiple_track_ids",
+      "active_reentry"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_01",
+    "event_id": "E000055",
+    "event_kind": "risk",
+    "start_ms": 8450.000000000002,
+    "end_ms": 10300.0,
+    "right_censored": false,
+    "alert_count": 1,
+    "source_track_ids": [
+      216
+    ],
+    "class_name": "umbrella",
+    "alert_times_ms": [
+      8700.000000000002
+    ],
+    "flags": [
+      "active_reentry"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_01",
+    "event_id": "E000057",
+    "event_kind": "risk",
+    "start_ms": 8500.0,
+    "end_ms": 10500.0,
+    "right_censored": false,
+    "alert_count": 1,
+    "source_track_ids": [
+      223
+    ],
+    "class_name": "person",
+    "alert_times_ms": [
+      9450.000000000002
+    ],
+    "flags": [
+      "active_reentry"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_01",
+    "event_id": "E000058",
+    "event_kind": "risk",
+    "start_ms": 8500.0,
+    "end_ms": 10500.0,
+    "right_censored": false,
+    "alert_count": 1,
+    "source_track_ids": [
+      221
+    ],
+    "class_name": "potted plant",
+    "alert_times_ms": [
+      8750.0
+    ],
+    "flags": [
+      "active_reentry"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_01",
+    "event_id": "E000068",
+    "event_kind": "risk",
+    "start_ms": 9800.0,
+    "end_ms": 11000.0,
+    "right_censored": false,
+    "alert_count": 1,
+    "source_track_ids": [
+      236,
+      251
+    ],
+    "class_name": "bench",
+    "alert_times_ms": [
+      10050.0
+    ],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15",
+      "multiple_track_ids",
+      "active_reentry"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_01",
+    "event_id": "E000071",
+    "event_kind": "risk",
+    "start_ms": 9800.0,
+    "end_ms": 12400.0,
+    "right_censored": false,
+    "alert_count": 1,
+    "source_track_ids": [
+      239
+    ],
+    "class_name": "potted plant",
+    "alert_times_ms": [
+      10100.000000000002
+    ],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15",
+      "active_reentry"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_01",
+    "event_id": "E000082",
+    "event_kind": "risk",
+    "start_ms": 10850.000000000002,
+    "end_ms": 14150.0,
+    "right_censored": false,
+    "alert_count": 1,
+    "source_track_ids": [
+      269
+    ],
+    "class_name": "potted plant",
+    "alert_times_ms": [
+      11950.000000000002
+    ],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_01",
+    "event_id": "E000083",
+    "event_kind": "risk",
+    "start_ms": 11200.000000000002,
+    "end_ms": 13400.0,
+    "right_censored": false,
+    "alert_count": 1,
+    "source_track_ids": [
+      277
+    ],
+    "class_name": "parking meter",
+    "alert_times_ms": [
+      11600.000000000002
+    ],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15",
+      "active_reentry"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_01",
+    "event_id": "E000090",
+    "event_kind": "risk",
+    "start_ms": 12950.000000000002,
+    "end_ms": 15000.000000000002,
+    "right_censored": true,
+    "alert_count": 1,
+    "source_track_ids": [
+      316
+    ],
+    "class_name": "person",
+    "alert_times_ms": [
+      13200.000000000002
+    ],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_01",
+    "event_id": "E000091",
+    "event_kind": "risk",
+    "start_ms": 13100.000000000002,
+    "end_ms": 15000.000000000002,
+    "right_censored": true,
+    "alert_count": 1,
+    "source_track_ids": [
+      323
+    ],
+    "class_name": "umbrella",
+    "alert_times_ms": [
+      13450.000000000002
+    ],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_01",
+    "event_id": "E000092",
+    "event_kind": "risk",
+    "start_ms": 13150.0,
+    "end_ms": 15000.000000000002,
+    "right_censored": true,
+    "alert_count": 1,
+    "source_track_ids": [
+      326
+    ],
+    "class_name": "person",
+    "alert_times_ms": [
+      14000.0
+    ],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_01",
+    "event_id": "E000094",
+    "event_kind": "risk",
+    "start_ms": 13450.000000000002,
+    "end_ms": 15000.000000000002,
+    "right_censored": true,
+    "alert_count": 1,
+    "source_track_ids": [
+      335,
+      356
+    ],
+    "class_name": "person",
+    "alert_times_ms": [
+      14150.0
+    ],
+    "flags": [
+      "multiple_track_ids"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_01",
+    "event_id": "E000095",
+    "event_kind": "risk",
+    "start_ms": 13550.0,
+    "end_ms": 15000.000000000002,
+    "right_censored": true,
+    "alert_count": 1,
+    "source_track_ids": [
+      341
+    ],
+    "class_name": "person",
+    "alert_times_ms": [
+      14350.000000000002
+    ],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15",
+      "active_reentry"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_01",
+    "event_id": "E000011",
+    "event_kind": "risk",
+    "start_ms": 1250.0,
+    "end_ms": 2300.0000000000005,
+    "right_censored": false,
+    "alert_count": 0,
+    "source_track_ids": [
+      14
+    ],
+    "class_name": "person",
+    "alert_times_ms": [],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_01",
+    "event_id": "E000014",
+    "event_kind": "risk",
+    "start_ms": 1600.0,
+    "end_ms": 2550.0000000000005,
+    "right_censored": false,
+    "alert_count": 0,
+    "source_track_ids": [
+      10
+    ],
+    "class_name": "person",
+    "alert_times_ms": [],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_01",
+    "event_id": "E000029",
+    "event_kind": "risk",
+    "start_ms": 4100.000000000001,
+    "end_ms": 5250.0,
+    "right_censored": false,
+    "alert_count": 0,
+    "source_track_ids": [
+      92
+    ],
+    "class_name": "person",
+    "alert_times_ms": [],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_01",
+    "event_id": "E000033",
+    "event_kind": "risk",
+    "start_ms": 4650.0,
+    "end_ms": 5750.0,
+    "right_censored": false,
+    "alert_count": 0,
+    "source_track_ids": [
+      111
+    ],
+    "class_name": "umbrella",
+    "alert_times_ms": [],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_01",
+    "event_id": "E000045",
+    "event_kind": "risk",
+    "start_ms": 7400.0,
+    "end_ms": 8850.0,
+    "right_censored": false,
+    "alert_count": 0,
+    "source_track_ids": [
+      180
+    ],
+    "class_name": "person",
+    "alert_times_ms": [],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_01",
+    "event_id": "E000070",
+    "event_kind": "risk",
+    "start_ms": 9800.0,
+    "end_ms": 12300.0,
+    "right_censored": false,
+    "alert_count": 0,
+    "source_track_ids": [
+      237,
+      249
+    ],
+    "class_name": "umbrella",
+    "alert_times_ms": [],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15",
+      "multiple_track_ids",
+      "active_reentry"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_01",
+    "event_id": "E000072",
+    "event_kind": "risk",
+    "start_ms": 10050.0,
+    "end_ms": 10900.0,
+    "right_censored": false,
+    "alert_count": 0,
+    "source_track_ids": [
+      242
+    ],
+    "class_name": "person",
+    "alert_times_ms": [],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_01",
+    "event_id": "E000074",
+    "event_kind": "risk",
+    "start_ms": 10050.0,
+    "end_ms": 11900.0,
+    "right_censored": false,
+    "alert_count": 0,
+    "source_track_ids": [
+      241,
+      248,
+      274
+    ],
+    "class_name": "potted plant",
+    "alert_times_ms": [],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15",
+      "multiple_track_ids"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_01",
+    "event_id": "E000079",
+    "event_kind": "risk",
+    "start_ms": 10300.0,
+    "end_ms": 11400.0,
+    "right_censored": false,
+    "alert_count": 0,
+    "source_track_ids": [
+      256
+    ],
+    "class_name": "person",
+    "alert_times_ms": [],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_01",
+    "event_id": "E000087",
+    "event_kind": "risk",
+    "start_ms": 11600.000000000002,
+    "end_ms": 12600.000000000002,
+    "right_censored": false,
+    "alert_count": 0,
+    "source_track_ids": [
+      248
+    ],
+    "class_name": "potted plant",
+    "alert_times_ms": [],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_01",
+    "event_id": "E000096",
+    "event_kind": "risk",
+    "start_ms": 13600.000000000002,
+    "end_ms": 14750.0,
+    "right_censored": false,
+    "alert_count": 0,
+    "source_track_ids": [
+      342
+    ],
+    "class_name": "person",
+    "alert_times_ms": [],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_01",
+    "event_id": "E000097",
+    "event_kind": "risk",
+    "start_ms": 13900.0,
+    "end_ms": 15000.000000000002,
+    "right_censored": true,
+    "alert_count": 0,
+    "source_track_ids": [
+      357
+    ],
+    "class_name": "umbrella",
+    "alert_times_ms": [],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_01",
+    "event_id": "E000098",
+    "event_kind": "risk",
+    "start_ms": 14450.000000000002,
+    "end_ms": 15000.000000000002,
+    "right_censored": true,
+    "alert_count": 0,
+    "source_track_ids": [
+      361
+    ],
+    "class_name": "potted plant",
+    "alert_times_ms": [],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_01",
+    "event_id": "E000099",
+    "event_kind": "risk",
+    "start_ms": 14600.000000000002,
+    "end_ms": 15000.000000000002,
+    "right_censored": true,
+    "alert_count": 0,
+    "source_track_ids": [
+      365
+    ],
+    "class_name": "person",
+    "alert_times_ms": [],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_01",
+    "event_id": "E000100",
+    "event_kind": "risk",
+    "start_ms": 14650.0,
+    "end_ms": 15000.000000000002,
+    "right_censored": true,
+    "alert_count": 0,
+    "source_track_ids": [
+      367
+    ],
+    "class_name": "potted plant",
+    "alert_times_ms": [],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_01",
+    "event_id": "H000001",
+    "event_kind": "perception",
+    "start_ms": 4950.0,
+    "end_ms": 5000.0,
+    "right_censored": false,
+    "alert_count": 0,
+    "source_track_ids": [],
+    "class_name": null,
+    "alert_times_ms": [],
+    "flags": [
+      "perception_episode_no_alert"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_01",
+    "event_id": "H000002",
+    "event_kind": "perception",
+    "start_ms": 6450.0,
+    "end_ms": 6500.0,
+    "right_censored": false,
+    "alert_count": 0,
+    "source_track_ids": [],
+    "class_name": null,
+    "alert_times_ms": [],
+    "flags": [
+      "perception_episode_no_alert"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_01",
+    "event_id": "H000003",
+    "event_kind": "perception",
+    "start_ms": 6700.0,
+    "end_ms": 6750.0,
+    "right_censored": false,
+    "alert_count": 0,
+    "source_track_ids": [],
+    "class_name": null,
+    "alert_times_ms": [],
+    "flags": [
+      "perception_episode_no_alert"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_01",
+    "event_id": "H000004",
+    "event_kind": "perception",
+    "start_ms": 11350.000000000002,
+    "end_ms": 11400.0,
+    "right_censored": false,
+    "alert_count": 0,
+    "source_track_ids": [],
+    "class_name": null,
+    "alert_times_ms": [],
+    "flags": [
+      "perception_episode_no_alert"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_02",
+    "event_id": "E000059",
+    "event_kind": "risk",
+    "start_ms": 6500.0,
+    "end_ms": 12050.0,
+    "right_censored": false,
+    "alert_count": 2,
+    "source_track_ids": [
+      360,
+      370
+    ],
+    "class_name": "person",
+    "alert_times_ms": [
+      6800.000000000001,
+      10850.000000000002
+    ],
+    "flags": [
+      "multiple_alerts",
+      "score_level_change_or_delta_ge_0.15",
+      "multiple_track_ids",
+      "active_reentry"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_02",
+    "event_id": "E000077",
+    "event_kind": "risk",
+    "start_ms": 9300.0,
+    "end_ms": 15000.000000000002,
+    "right_censored": true,
+    "alert_count": 2,
+    "source_track_ids": [
+      429,
+      644
+    ],
+    "class_name": "person",
+    "alert_times_ms": [
+      9550.0,
+      10750.0
+    ],
+    "flags": [
+      "multiple_alerts",
+      "score_level_change_or_delta_ge_0.15",
+      "multiple_track_ids",
+      "active_reentry"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_02",
+    "event_id": "E000078",
+    "event_kind": "risk",
+    "start_ms": 9300.0,
+    "end_ms": 14150.0,
+    "right_censored": false,
+    "alert_count": 2,
+    "source_track_ids": [
+      428
+    ],
+    "class_name": "person",
+    "alert_times_ms": [
+      9600.000000000002,
+      11650.0
+    ],
+    "flags": [
+      "multiple_alerts",
+      "score_level_change_or_delta_ge_0.15",
+      "active_reentry"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_02",
+    "event_id": "E000104",
+    "event_kind": "risk",
+    "start_ms": 12800.0,
+    "end_ms": 15000.000000000002,
+    "right_censored": true,
+    "alert_count": 2,
+    "source_track_ids": [
+      562
+    ],
+    "class_name": "person",
+    "alert_times_ms": [
+      13050.0,
+      14050.0
+    ],
+    "flags": [
+      "multiple_alerts",
+      "score_level_change_or_delta_ge_0.15",
+      "active_reentry"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_02",
+    "event_id": "E000001",
+    "event_kind": "risk",
+    "start_ms": 0.0,
+    "end_ms": 4750.0,
+    "right_censored": false,
+    "alert_count": 1,
+    "source_track_ids": [
+      1
+    ],
+    "class_name": "person",
+    "alert_times_ms": [
+      250.0
+    ],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_02",
+    "event_id": "E000003",
+    "event_kind": "risk",
+    "start_ms": 0.0,
+    "end_ms": 1950.0000000000002,
+    "right_censored": false,
+    "alert_count": 1,
+    "source_track_ids": [
+      3,
+      13
+    ],
+    "class_name": "person",
+    "alert_times_ms": [
+      350.00000000000006
+    ],
+    "flags": [
+      "multiple_track_ids",
+      "active_reentry"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_02",
+    "event_id": "E000004",
+    "event_kind": "risk",
+    "start_ms": 0.0,
+    "end_ms": 5000.0,
+    "right_censored": false,
+    "alert_count": 1,
+    "source_track_ids": [
+      13,
+      42,
+      212
+    ],
+    "class_name": "person",
+    "alert_times_ms": [
+      1150.0000000000002
+    ],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15",
+      "multiple_track_ids",
+      "active_reentry"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_02",
+    "event_id": "E000006",
+    "event_kind": "risk",
+    "start_ms": 0.0,
+    "end_ms": 2400.0000000000005,
+    "right_censored": false,
+    "alert_count": 1,
+    "source_track_ids": [
+      6,
+      9
+    ],
+    "class_name": "person",
+    "alert_times_ms": [
+      600.0000000000001
+    ],
+    "flags": [
+      "multiple_track_ids",
+      "active_reentry"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_02",
+    "event_id": "E000007",
+    "event_kind": "risk",
+    "start_ms": 0.0,
+    "end_ms": 15000.000000000002,
+    "right_censored": true,
+    "alert_count": 1,
+    "source_track_ids": [
+      2
+    ],
+    "class_name": "person",
+    "alert_times_ms": [
+      300.00000000000006
+    ],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_02",
+    "event_id": "E000015",
+    "event_kind": "risk",
+    "start_ms": 450.0,
+    "end_ms": 1700.0000000000002,
+    "right_censored": false,
+    "alert_count": 1,
+    "source_track_ids": [
+      33
+    ],
+    "class_name": "person",
+    "alert_times_ms": [
+      950.0000000000001
+    ],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_02",
+    "event_id": "E000016",
+    "event_kind": "risk",
+    "start_ms": 950.0000000000001,
+    "end_ms": 3450.0,
+    "right_censored": false,
+    "alert_count": 1,
+    "source_track_ids": [
+      57
+    ],
+    "class_name": "person",
+    "alert_times_ms": [
+      1250.0
+    ],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15",
+      "active_reentry"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_02",
+    "event_id": "E000017",
+    "event_kind": "risk",
+    "start_ms": 950.0000000000001,
+    "end_ms": 2900.0000000000005,
+    "right_censored": false,
+    "alert_count": 1,
+    "source_track_ids": [
+      55
+    ],
+    "class_name": "chair",
+    "alert_times_ms": [
+      1200.0000000000002
+    ],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_02",
+    "event_id": "E000020",
+    "event_kind": "risk",
+    "start_ms": 1450.0000000000002,
+    "end_ms": 5000.0,
+    "right_censored": false,
+    "alert_count": 1,
+    "source_track_ids": [
+      9,
+      94
+    ],
+    "class_name": "person",
+    "alert_times_ms": [
+      1850.0
+    ],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15",
+      "multiple_track_ids",
+      "active_reentry"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_02",
+    "event_id": "E000021",
+    "event_kind": "risk",
+    "start_ms": 1450.0000000000002,
+    "end_ms": 3050.0000000000005,
+    "right_censored": false,
+    "alert_count": 1,
+    "source_track_ids": [
+      93,
+      129
+    ],
+    "class_name": "donut",
+    "alert_times_ms": [
+      1700.0000000000002
+    ],
+    "flags": [
+      "multiple_track_ids",
+      "active_reentry"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_02",
+    "event_id": "E000026",
+    "event_kind": "risk",
+    "start_ms": 2450.0,
+    "end_ms": 5000.0,
+    "right_censored": false,
+    "alert_count": 1,
+    "source_track_ids": [
+      144
+    ],
+    "class_name": "person",
+    "alert_times_ms": [
+      2700.0
+    ],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15",
+      "active_reentry"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_02",
+    "event_id": "E000030",
+    "event_kind": "risk",
+    "start_ms": 3200.0,
+    "end_ms": 4450.0,
+    "right_censored": false,
+    "alert_count": 1,
+    "source_track_ids": [
+      178
+    ],
+    "class_name": "person",
+    "alert_times_ms": [
+      3450.0
+    ],
+    "flags": []
+  },
+  {
+    "video_id": "urbanego_run8_02",
+    "event_id": "E000034",
+    "event_kind": "risk",
+    "start_ms": 3900.0000000000005,
+    "end_ms": 5000.0,
+    "right_censored": false,
+    "alert_count": 1,
+    "source_track_ids": [
+      207
+    ],
+    "class_name": "chair",
+    "alert_times_ms": [
+      4200.0
+    ],
+    "flags": []
+  },
+  {
+    "video_id": "urbanego_run8_02",
+    "event_id": "E000035",
+    "event_kind": "risk",
+    "start_ms": 3950.0,
+    "end_ms": 5800.000000000001,
+    "right_censored": false,
+    "alert_count": 1,
+    "source_track_ids": [
+      210
+    ],
+    "class_name": "chair",
+    "alert_times_ms": [
+      4250.0
+    ],
+    "flags": []
+  },
+  {
+    "video_id": "urbanego_run8_02",
+    "event_id": "E000038",
+    "event_kind": "risk",
+    "start_ms": 4200.0,
+    "end_ms": 5800.000000000001,
+    "right_censored": false,
+    "alert_count": 1,
+    "source_track_ids": [
+      220
+    ],
+    "class_name": "person",
+    "alert_times_ms": [
+      4450.0
+    ],
+    "flags": []
+  },
+  {
+    "video_id": "urbanego_run8_02",
+    "event_id": "E000044",
+    "event_kind": "risk",
+    "start_ms": 4600.000000000001,
+    "end_ms": 5800.000000000001,
+    "right_censored": false,
+    "alert_count": 1,
+    "source_track_ids": [
+      262
+    ],
+    "class_name": "person",
+    "alert_times_ms": [
+      4850.000000000001
+    ],
+    "flags": []
+  },
+  {
+    "video_id": "urbanego_run8_02",
+    "event_id": "E000045",
+    "event_kind": "risk",
+    "start_ms": 5100.000000000001,
+    "end_ms": 6300.000000000001,
+    "right_censored": false,
+    "alert_count": 1,
+    "source_track_ids": [
+      284
+    ],
+    "class_name": "person",
+    "alert_times_ms": [
+      5500.0
+    ],
+    "flags": []
+  },
+  {
+    "video_id": "urbanego_run8_02",
+    "event_id": "E000046",
+    "event_kind": "risk",
+    "start_ms": 5100.000000000001,
+    "end_ms": 6300.000000000001,
+    "right_censored": false,
+    "alert_count": 1,
+    "source_track_ids": [
+      283
+    ],
+    "class_name": "person",
+    "alert_times_ms": [
+      5350.000000000001
+    ],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_02",
+    "event_id": "E000047",
+    "event_kind": "risk",
+    "start_ms": 5150.0,
+    "end_ms": 6300.000000000001,
+    "right_censored": false,
+    "alert_count": 1,
+    "source_track_ids": [
+      290
+    ],
+    "class_name": "person",
+    "alert_times_ms": [
+      5400.0
+    ],
+    "flags": []
+  },
+  {
+    "video_id": "urbanego_run8_02",
+    "event_id": "E000048",
+    "event_kind": "risk",
+    "start_ms": 5150.0,
+    "end_ms": 11100.000000000002,
+    "right_censored": false,
+    "alert_count": 1,
+    "source_track_ids": [
+      289
+    ],
+    "class_name": "person",
+    "alert_times_ms": [
+      5450.0
+    ],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15",
+      "active_reentry"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_02",
+    "event_id": "E000049",
+    "event_kind": "risk",
+    "start_ms": 5250.0,
+    "end_ms": 6450.0,
+    "right_censored": false,
+    "alert_count": 1,
+    "source_track_ids": [
+      298
+    ],
+    "class_name": "chair",
+    "alert_times_ms": [
+      5600.000000000001
+    ],
+    "flags": [
+      "active_reentry"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_02",
+    "event_id": "E000056",
+    "event_kind": "risk",
+    "start_ms": 5600.000000000001,
+    "end_ms": 6850.000000000001,
+    "right_censored": false,
+    "alert_count": 1,
+    "source_track_ids": [
+      314
+    ],
+    "class_name": "bottle",
+    "alert_times_ms": [
+      5850.000000000001
+    ],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_02",
+    "event_id": "E000057",
+    "event_kind": "risk",
+    "start_ms": 5900.0,
+    "end_ms": 7850.000000000001,
+    "right_censored": false,
+    "alert_count": 1,
+    "source_track_ids": [
+      336,
+      377
+    ],
+    "class_name": "person",
+    "alert_times_ms": [
+      6350.000000000001
+    ],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15",
+      "multiple_track_ids",
+      "active_reentry"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_02",
+    "event_id": "E000060",
+    "event_kind": "risk",
+    "start_ms": 6500.0,
+    "end_ms": 7650.0,
+    "right_censored": false,
+    "alert_count": 1,
+    "source_track_ids": [
+      359
+    ],
+    "class_name": "bottle",
+    "alert_times_ms": [
+      6750.0
+    ],
+    "flags": [
+      "active_reentry"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_02",
+    "event_id": "E000062",
+    "event_kind": "risk",
+    "start_ms": 6650.0,
+    "end_ms": 9250.0,
+    "right_censored": false,
+    "alert_count": 1,
+    "source_track_ids": [
+      369
+    ],
+    "class_name": "fire hydrant",
+    "alert_times_ms": [
+      6900.0
+    ],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15",
+      "active_reentry"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_02",
+    "event_id": "E000064",
+    "event_kind": "risk",
+    "start_ms": 7050.000000000001,
+    "end_ms": 9200.000000000002,
+    "right_censored": false,
+    "alert_count": 1,
+    "source_track_ids": [
+      378
+    ],
+    "class_name": "person",
+    "alert_times_ms": [
+      7300.000000000001
+    ],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15",
+      "active_reentry"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_02",
+    "event_id": "E000071",
+    "event_kind": "risk",
+    "start_ms": 8450.000000000002,
+    "end_ms": 12850.000000000002,
+    "right_censored": false,
+    "alert_count": 1,
+    "source_track_ids": [
+      377,
+      378,
+      412
+    ],
+    "class_name": "person",
+    "alert_times_ms": [
+      8850.0
+    ],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15",
+      "multiple_track_ids",
+      "active_reentry"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_02",
+    "event_id": "E000076",
+    "event_kind": "risk",
+    "start_ms": 9050.0,
+    "end_ms": 12000.0,
+    "right_censored": false,
+    "alert_count": 1,
+    "source_track_ids": [
+      418,
+      453
+    ],
+    "class_name": "person",
+    "alert_times_ms": [
+      9650.0
+    ],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15",
+      "multiple_track_ids",
+      "active_reentry"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_02",
+    "event_id": "E000084",
+    "event_kind": "risk",
+    "start_ms": 10900.0,
+    "end_ms": 13200.000000000002,
+    "right_censored": false,
+    "alert_count": 1,
+    "source_track_ids": [
+      456,
+      473,
+      496,
+      516
+    ],
+    "class_name": "person",
+    "alert_times_ms": [
+      11150.0
+    ],
+    "flags": [
+      "multiple_track_ids",
+      "active_reentry"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_02",
+    "event_id": "E000086",
+    "event_kind": "risk",
+    "start_ms": 11300.0,
+    "end_ms": 12850.000000000002,
+    "right_censored": false,
+    "alert_count": 1,
+    "source_track_ids": [
+      456,
+      470
+    ],
+    "class_name": "person",
+    "alert_times_ms": [
+      11750.0
+    ],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15",
+      "multiple_track_ids"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_02",
+    "event_id": "E000087",
+    "event_kind": "risk",
+    "start_ms": 11350.000000000002,
+    "end_ms": 12400.0,
+    "right_censored": false,
+    "alert_count": 1,
+    "source_track_ids": [
+      473
+    ],
+    "class_name": "person",
+    "alert_times_ms": [
+      11600.000000000002
+    ],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_02",
+    "event_id": "E000092",
+    "event_kind": "risk",
+    "start_ms": 11600.000000000002,
+    "end_ms": 14500.0,
+    "right_censored": false,
+    "alert_count": 1,
+    "source_track_ids": [
+      483
+    ],
+    "class_name": "person",
+    "alert_times_ms": [
+      12100.000000000002
+    ],
+    "flags": []
+  },
+  {
+    "video_id": "urbanego_run8_02",
+    "event_id": "E000094",
+    "event_kind": "risk",
+    "start_ms": 11950.000000000002,
+    "end_ms": 14800.0,
+    "right_censored": false,
+    "alert_count": 1,
+    "source_track_ids": [
+      503
+    ],
+    "class_name": "chair",
+    "alert_times_ms": [
+      12200.000000000002
+    ],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15",
+      "active_reentry"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_02",
+    "event_id": "E000096",
+    "event_kind": "risk",
+    "start_ms": 12150.0,
+    "end_ms": 13950.000000000002,
+    "right_censored": false,
+    "alert_count": 1,
+    "source_track_ids": [
+      513
+    ],
+    "class_name": "person",
+    "alert_times_ms": [
+      12450.000000000002
+    ],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_02",
+    "event_id": "E000097",
+    "event_kind": "risk",
+    "start_ms": 12150.0,
+    "end_ms": 14700.000000000002,
+    "right_censored": false,
+    "alert_count": 1,
+    "source_track_ids": [
+      514
+    ],
+    "class_name": "person",
+    "alert_times_ms": [
+      12500.0
+    ],
+    "flags": []
+  },
+  {
+    "video_id": "urbanego_run8_02",
+    "event_id": "E000098",
+    "event_kind": "risk",
+    "start_ms": 12150.0,
+    "end_ms": 13650.0,
+    "right_censored": false,
+    "alert_count": 1,
+    "source_track_ids": [
+      515
+    ],
+    "class_name": "handbag",
+    "alert_times_ms": [
+      12400.0
+    ],
+    "flags": []
+  },
+  {
+    "video_id": "urbanego_run8_02",
+    "event_id": "E000099",
+    "event_kind": "risk",
+    "start_ms": 12150.0,
+    "end_ms": 14500.0,
+    "right_censored": false,
+    "alert_count": 1,
+    "source_track_ids": [
+      518
+    ],
+    "class_name": "chair",
+    "alert_times_ms": [
+      12950.000000000002
+    ],
+    "flags": [
+      "active_reentry"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_02",
+    "event_id": "E000102",
+    "event_kind": "risk",
+    "start_ms": 12650.0,
+    "end_ms": 15000.000000000002,
+    "right_censored": true,
+    "alert_count": 1,
+    "source_track_ids": [
+      489
+    ],
+    "class_name": "person",
+    "alert_times_ms": [
+      12900.0
+    ],
+    "flags": []
+  },
+  {
+    "video_id": "urbanego_run8_02",
+    "event_id": "E000103",
+    "event_kind": "risk",
+    "start_ms": 12750.0,
+    "end_ms": 14700.000000000002,
+    "right_censored": false,
+    "alert_count": 1,
+    "source_track_ids": [
+      370,
+      584
+    ],
+    "class_name": "person",
+    "alert_times_ms": [
+      13550.0
+    ],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15",
+      "multiple_track_ids",
+      "active_reentry"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_02",
+    "event_id": "E000107",
+    "event_kind": "risk",
+    "start_ms": 13250.0,
+    "end_ms": 15000.000000000002,
+    "right_censored": true,
+    "alert_count": 1,
+    "source_track_ids": [
+      578
+    ],
+    "class_name": "person",
+    "alert_times_ms": [
+      14000.0
+    ],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_02",
+    "event_id": "E000108",
+    "event_kind": "risk",
+    "start_ms": 13250.0,
+    "end_ms": 14550.0,
+    "right_censored": false,
+    "alert_count": 1,
+    "source_track_ids": [
+      580,
+      594
+    ],
+    "class_name": "chair",
+    "alert_times_ms": [
+      13700.000000000002
+    ],
+    "flags": [
+      "multiple_track_ids"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_02",
+    "event_id": "E000113",
+    "event_kind": "risk",
+    "start_ms": 13550.0,
+    "end_ms": 15000.000000000002,
+    "right_censored": true,
+    "alert_count": 1,
+    "source_track_ids": [
+      605,
+      617
+    ],
+    "class_name": "person",
+    "alert_times_ms": [
+      14350.000000000002
+    ],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15",
+      "multiple_track_ids"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_02",
+    "event_id": "E000114",
+    "event_kind": "risk",
+    "start_ms": 13750.0,
+    "end_ms": 15000.000000000002,
+    "right_censored": true,
+    "alert_count": 1,
+    "source_track_ids": [
+      516
+    ],
+    "class_name": "person",
+    "alert_times_ms": [
+      14450.000000000002
+    ],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15",
+      "active_reentry"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_02",
+    "event_id": "E000115",
+    "event_kind": "risk",
+    "start_ms": 13750.0,
+    "end_ms": 15000.000000000002,
+    "right_censored": true,
+    "alert_count": 1,
+    "source_track_ids": [
+      613
+    ],
+    "class_name": "chair",
+    "alert_times_ms": [
+      14550.0
+    ],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_02",
+    "event_id": "E000116",
+    "event_kind": "risk",
+    "start_ms": 13850.000000000002,
+    "end_ms": 15000.000000000002,
+    "right_censored": true,
+    "alert_count": 1,
+    "source_track_ids": [
+      616
+    ],
+    "class_name": "person",
+    "alert_times_ms": [
+      14100.000000000002
+    ],
+    "flags": [
+      "active_reentry"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_02",
+    "event_id": "E000117",
+    "event_kind": "risk",
+    "start_ms": 14150.0,
+    "end_ms": 15000.000000000002,
+    "right_censored": true,
+    "alert_count": 1,
+    "source_track_ids": [
+      639
+    ],
+    "class_name": "person",
+    "alert_times_ms": [
+      14400.0
+    ],
+    "flags": []
+  },
+  {
+    "video_id": "urbanego_run8_02",
+    "event_id": "E000118",
+    "event_kind": "risk",
+    "start_ms": 14150.0,
+    "end_ms": 15000.000000000002,
+    "right_censored": true,
+    "alert_count": 1,
+    "source_track_ids": [
+      638,
+      663
+    ],
+    "class_name": "person",
+    "alert_times_ms": [
+      14750.0
+    ],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15",
+      "multiple_track_ids",
+      "active_reentry"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_02",
+    "event_id": "E000010",
+    "event_kind": "risk",
+    "start_ms": 0.0,
+    "end_ms": 2050.0000000000005,
+    "right_censored": false,
+    "alert_count": 0,
+    "source_track_ids": [
+      4
+    ],
+    "class_name": "train",
+    "alert_times_ms": [],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_02",
+    "event_id": "E000011",
+    "event_kind": "risk",
+    "start_ms": 0.0,
+    "end_ms": 1450.0000000000002,
+    "right_censored": false,
+    "alert_count": 0,
+    "source_track_ids": [
+      7
+    ],
+    "class_name": "umbrella",
+    "alert_times_ms": [],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_02",
+    "event_id": "E000019",
+    "event_kind": "risk",
+    "start_ms": 1150.0000000000002,
+    "end_ms": 2050.0000000000005,
+    "right_censored": false,
+    "alert_count": 0,
+    "source_track_ids": [
+      72
+    ],
+    "class_name": "chair",
+    "alert_times_ms": [],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_02",
+    "event_id": "E000025",
+    "event_kind": "risk",
+    "start_ms": 2250.0,
+    "end_ms": 3100.0,
+    "right_censored": false,
+    "alert_count": 0,
+    "source_track_ids": [
+      130
+    ],
+    "class_name": "dining table",
+    "alert_times_ms": [],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_02",
+    "event_id": "E000032",
+    "event_kind": "risk",
+    "start_ms": 3800.0000000000005,
+    "end_ms": 5000.0,
+    "right_censored": false,
+    "alert_count": 0,
+    "source_track_ids": [
+      201
+    ],
+    "class_name": "person",
+    "alert_times_ms": [],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_02",
+    "event_id": "E000033",
+    "event_kind": "risk",
+    "start_ms": 3800.0000000000005,
+    "end_ms": 4800.000000000001,
+    "right_censored": false,
+    "alert_count": 0,
+    "source_track_ids": [
+      199
+    ],
+    "class_name": "person",
+    "alert_times_ms": [],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_02",
+    "event_id": "E000039",
+    "event_kind": "risk",
+    "start_ms": 4300.0,
+    "end_ms": 5300.000000000001,
+    "right_censored": false,
+    "alert_count": 0,
+    "source_track_ids": [
+      235
+    ],
+    "class_name": "umbrella",
+    "alert_times_ms": [],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_02",
+    "event_id": "E000041",
+    "event_kind": "risk",
+    "start_ms": 4350.000000000001,
+    "end_ms": 5300.000000000001,
+    "right_censored": false,
+    "alert_count": 0,
+    "source_track_ids": [
+      237
+    ],
+    "class_name": "chair",
+    "alert_times_ms": [],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_02",
+    "event_id": "E000055",
+    "event_kind": "risk",
+    "start_ms": 5600.000000000001,
+    "end_ms": 6750.0,
+    "right_censored": false,
+    "alert_count": 0,
+    "source_track_ids": [
+      313
+    ],
+    "class_name": "bottle",
+    "alert_times_ms": [],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_02",
+    "event_id": "E000058",
+    "event_kind": "risk",
+    "start_ms": 6250.0,
+    "end_ms": 7200.0,
+    "right_censored": false,
+    "alert_count": 0,
+    "source_track_ids": [
+      343
+    ],
+    "class_name": "potted plant",
+    "alert_times_ms": [],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_02",
+    "event_id": "E000065",
+    "event_kind": "risk",
+    "start_ms": 7200.0,
+    "end_ms": 8400.0,
+    "right_censored": false,
+    "alert_count": 0,
+    "source_track_ids": [
+      381
+    ],
+    "class_name": "person",
+    "alert_times_ms": [],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_02",
+    "event_id": "E000066",
+    "event_kind": "risk",
+    "start_ms": 7250.0,
+    "end_ms": 8950.000000000002,
+    "right_censored": false,
+    "alert_count": 0,
+    "source_track_ids": [
+      384,
+      392
+    ],
+    "class_name": "person",
+    "alert_times_ms": [],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15",
+      "multiple_track_ids"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_02",
+    "event_id": "E000068",
+    "event_kind": "risk",
+    "start_ms": 7550.000000000001,
+    "end_ms": 8700.000000000002,
+    "right_censored": false,
+    "alert_count": 0,
+    "source_track_ids": [
+      389
+    ],
+    "class_name": "person",
+    "alert_times_ms": [],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_02",
+    "event_id": "E000070",
+    "event_kind": "risk",
+    "start_ms": 7850.000000000001,
+    "end_ms": 9000.0,
+    "right_censored": false,
+    "alert_count": 0,
+    "source_track_ids": [
+      399
+    ],
+    "class_name": "person",
+    "alert_times_ms": [],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_02",
+    "event_id": "E000072",
+    "event_kind": "risk",
+    "start_ms": 8550.0,
+    "end_ms": 10250.0,
+    "right_censored": false,
+    "alert_count": 0,
+    "source_track_ids": [
+      408
+    ],
+    "class_name": "person",
+    "alert_times_ms": [],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_02",
+    "event_id": "E000093",
+    "event_kind": "risk",
+    "start_ms": 11950.000000000002,
+    "end_ms": 12950.000000000002,
+    "right_censored": false,
+    "alert_count": 0,
+    "source_track_ids": [
+      507
+    ],
+    "class_name": "handbag",
+    "alert_times_ms": [],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_02",
+    "event_id": "H000001",
+    "event_kind": "perception",
+    "start_ms": 550.0,
+    "end_ms": 600.0000000000001,
+    "right_censored": false,
+    "alert_count": 0,
+    "source_track_ids": [],
+    "class_name": null,
+    "alert_times_ms": [],
+    "flags": [
+      "perception_episode_no_alert"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_02",
+    "event_id": "H000002",
+    "event_kind": "perception",
+    "start_ms": 900.0,
+    "end_ms": 950.0000000000001,
+    "right_censored": false,
+    "alert_count": 0,
+    "source_track_ids": [],
+    "class_name": null,
+    "alert_times_ms": [],
+    "flags": [
+      "perception_episode_no_alert"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_02",
+    "event_id": "H000003",
+    "event_kind": "perception",
+    "start_ms": 2150.0,
+    "end_ms": 2200.0,
+    "right_censored": false,
+    "alert_count": 0,
+    "source_track_ids": [],
+    "class_name": null,
+    "alert_times_ms": [],
+    "flags": [
+      "perception_episode_no_alert"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_02",
+    "event_id": "H000004",
+    "event_kind": "perception",
+    "start_ms": 3550.0000000000005,
+    "end_ms": 3600.0,
+    "right_censored": false,
+    "alert_count": 0,
+    "source_track_ids": [],
+    "class_name": null,
+    "alert_times_ms": [],
+    "flags": [
+      "perception_episode_no_alert"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_02",
+    "event_id": "H000005",
+    "event_kind": "perception",
+    "start_ms": 7550.000000000001,
+    "end_ms": 7600.000000000001,
+    "right_censored": false,
+    "alert_count": 0,
+    "source_track_ids": [],
+    "class_name": null,
+    "alert_times_ms": [],
+    "flags": [
+      "perception_episode_no_alert"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_02",
+    "event_id": "H000006",
+    "event_kind": "perception",
+    "start_ms": 11500.0,
+    "end_ms": 11550.0,
+    "right_censored": false,
+    "alert_count": 0,
+    "source_track_ids": [],
+    "class_name": null,
+    "alert_times_ms": [],
+    "flags": [
+      "perception_episode_no_alert"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_02",
+    "event_id": "H000007",
+    "event_kind": "perception",
+    "start_ms": 13400.0,
+    "end_ms": 13450.000000000002,
+    "right_censored": false,
+    "alert_count": 0,
+    "source_track_ids": [],
+    "class_name": null,
+    "alert_times_ms": [],
+    "flags": [
+      "perception_episode_no_alert"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_02",
+    "event_id": "H000008",
+    "event_kind": "perception",
+    "start_ms": 13750.0,
+    "end_ms": 13800.0,
+    "right_censored": false,
+    "alert_count": 0,
+    "source_track_ids": [],
+    "class_name": null,
+    "alert_times_ms": [],
+    "flags": [
+      "perception_episode_no_alert"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_02",
+    "event_id": "H000009",
+    "event_kind": "perception",
+    "start_ms": 13950.000000000002,
+    "end_ms": 14000.0,
+    "right_censored": false,
+    "alert_count": 0,
+    "source_track_ids": [],
+    "class_name": null,
+    "alert_times_ms": [],
+    "flags": [
+      "perception_episode_no_alert"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_03",
+    "event_id": "E000018",
+    "event_kind": "risk",
+    "start_ms": 3250.0,
+    "end_ms": 8100.0,
+    "right_censored": false,
+    "alert_count": 2,
+    "source_track_ids": [
+      54
+    ],
+    "class_name": "car",
+    "alert_times_ms": [
+      3600.0,
+      6250.0
+    ],
+    "flags": [
+      "multiple_alerts",
+      "score_level_change_or_delta_ge_0.15",
+      "active_reentry"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_03",
+    "event_id": "E000066",
+    "event_kind": "risk",
+    "start_ms": 7650.0,
+    "end_ms": 11450.000000000002,
+    "right_censored": false,
+    "alert_count": 2,
+    "source_track_ids": [
+      190
+    ],
+    "class_name": "truck",
+    "alert_times_ms": [
+      8000.0,
+      9350.0
+    ],
+    "flags": [
+      "multiple_alerts",
+      "score_level_change_or_delta_ge_0.15",
+      "active_reentry"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_03",
+    "event_id": "E000001",
+    "event_kind": "risk",
+    "start_ms": 0.0,
+    "end_ms": 1100.0,
+    "right_censored": false,
+    "alert_count": 1,
+    "source_track_ids": [
+      3
+    ],
+    "class_name": "person",
+    "alert_times_ms": [
+      300.00000000000006
+    ],
+    "flags": []
+  },
+  {
+    "video_id": "urbanego_run8_03",
+    "event_id": "E000002",
+    "event_kind": "risk",
+    "start_ms": 0.0,
+    "end_ms": 1400.0000000000002,
+    "right_censored": false,
+    "alert_count": 1,
+    "source_track_ids": [
+      2
+    ],
+    "class_name": "person",
+    "alert_times_ms": [
+      600.0000000000001
+    ],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_03",
+    "event_id": "E000003",
+    "event_kind": "risk",
+    "start_ms": 0.0,
+    "end_ms": 1400.0000000000002,
+    "right_censored": false,
+    "alert_count": 1,
+    "source_track_ids": [
+      1,
+      7
+    ],
+    "class_name": "truck",
+    "alert_times_ms": [
+      250.0
+    ],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15",
+      "multiple_track_ids",
+      "active_reentry"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_03",
+    "event_id": "E000004",
+    "event_kind": "risk",
+    "start_ms": 350.00000000000006,
+    "end_ms": 4800.000000000001,
+    "right_censored": false,
+    "alert_count": 1,
+    "source_track_ids": [
+      1,
+      29
+    ],
+    "class_name": "car",
+    "alert_times_ms": [
+      850.0000000000001
+    ],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15",
+      "multiple_track_ids",
+      "active_reentry"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_03",
+    "event_id": "E000011",
+    "event_kind": "risk",
+    "start_ms": 1750.0,
+    "end_ms": 4300.0,
+    "right_censored": false,
+    "alert_count": 1,
+    "source_track_ids": [
+      19,
+      51
+    ],
+    "class_name": "car",
+    "alert_times_ms": [
+      2750.0
+    ],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15",
+      "multiple_track_ids",
+      "active_reentry"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_03",
+    "event_id": "E000013",
+    "event_kind": "risk",
+    "start_ms": 2600.0,
+    "end_ms": 7950.0,
+    "right_censored": false,
+    "alert_count": 1,
+    "source_track_ids": [
+      1,
+      29
+    ],
+    "class_name": "motorcycle",
+    "alert_times_ms": [
+      3550.0000000000005
+    ],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15",
+      "multiple_track_ids",
+      "active_reentry"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_03",
+    "event_id": "E000015",
+    "event_kind": "risk",
+    "start_ms": 2950.0,
+    "end_ms": 6800.000000000001,
+    "right_censored": false,
+    "alert_count": 1,
+    "source_track_ids": [
+      37
+    ],
+    "class_name": "car",
+    "alert_times_ms": [
+      3500.0
+    ],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_03",
+    "event_id": "E000017",
+    "event_kind": "risk",
+    "start_ms": 3150.0000000000005,
+    "end_ms": 6000.0,
+    "right_censored": false,
+    "alert_count": 1,
+    "source_track_ids": [
+      19,
+      51,
+      81
+    ],
+    "class_name": "truck",
+    "alert_times_ms": [
+      3400.0000000000005
+    ],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15",
+      "multiple_track_ids",
+      "active_reentry"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_03",
+    "event_id": "E000019",
+    "event_kind": "risk",
+    "start_ms": 3450.0,
+    "end_ms": 6800.000000000001,
+    "right_censored": false,
+    "alert_count": 1,
+    "source_track_ids": [
+      61,
+      97
+    ],
+    "class_name": "motorcycle",
+    "alert_times_ms": [
+      3850.0
+    ],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15",
+      "multiple_track_ids",
+      "active_reentry"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_03",
+    "event_id": "E000020",
+    "event_kind": "risk",
+    "start_ms": 3500.0,
+    "end_ms": 4800.000000000001,
+    "right_censored": false,
+    "alert_count": 1,
+    "source_track_ids": [
+      64
+    ],
+    "class_name": "car",
+    "alert_times_ms": [
+      3750.0
+    ],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_03",
+    "event_id": "E000021",
+    "event_kind": "risk",
+    "start_ms": 3500.0,
+    "end_ms": 7000.0,
+    "right_censored": false,
+    "alert_count": 1,
+    "source_track_ids": [
+      68,
+      97,
+      132
+    ],
+    "class_name": "motorcycle",
+    "alert_times_ms": [
+      6000.0
+    ],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15",
+      "multiple_track_ids"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_03",
+    "event_id": "E000022",
+    "event_kind": "risk",
+    "start_ms": 3600.0,
+    "end_ms": 7050.000000000001,
+    "right_censored": false,
+    "alert_count": 1,
+    "source_track_ids": [
+      72
+    ],
+    "class_name": "car",
+    "alert_times_ms": [
+      4100.000000000001
+    ],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15",
+      "active_reentry"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_03",
+    "event_id": "E000023",
+    "event_kind": "risk",
+    "start_ms": 3600.0,
+    "end_ms": 7000.0,
+    "right_censored": false,
+    "alert_count": 1,
+    "source_track_ids": [
+      71
+    ],
+    "class_name": "car",
+    "alert_times_ms": [
+      4700.0
+    ],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15",
+      "active_reentry"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_03",
+    "event_id": "E000028",
+    "event_kind": "risk",
+    "start_ms": 4550.0,
+    "end_ms": 7150.0,
+    "right_censored": false,
+    "alert_count": 1,
+    "source_track_ids": [
+      83
+    ],
+    "class_name": "car",
+    "alert_times_ms": [
+      5250.0
+    ],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_03",
+    "event_id": "E000030",
+    "event_kind": "risk",
+    "start_ms": 4900.0,
+    "end_ms": 7300.000000000001,
+    "right_censored": false,
+    "alert_count": 1,
+    "source_track_ids": [
+      120
+    ],
+    "class_name": "car",
+    "alert_times_ms": [
+      5800.000000000001
+    ],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_03",
+    "event_id": "E000032",
+    "event_kind": "risk",
+    "start_ms": 5200.0,
+    "end_ms": 7400.0,
+    "right_censored": false,
+    "alert_count": 1,
+    "source_track_ids": [
+      129
+    ],
+    "class_name": "car",
+    "alert_times_ms": [
+      5450.0
+    ],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15",
+      "active_reentry"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_03",
+    "event_id": "E000040",
+    "event_kind": "risk",
+    "start_ms": 6600.000000000001,
+    "end_ms": 8100.0,
+    "right_censored": false,
+    "alert_count": 1,
+    "source_track_ids": [
+      148
+    ],
+    "class_name": "person",
+    "alert_times_ms": [
+      6850.000000000001
+    ],
+    "flags": [
+      "active_reentry"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_03",
+    "event_id": "E000041",
+    "event_kind": "risk",
+    "start_ms": 6650.0,
+    "end_ms": 7950.0,
+    "right_censored": false,
+    "alert_count": 1,
+    "source_track_ids": [
+      153
+    ],
+    "class_name": "car",
+    "alert_times_ms": [
+      6900.0
+    ],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_03",
+    "event_id": "E000043",
+    "event_kind": "risk",
+    "start_ms": 6700.0,
+    "end_ms": 8100.0,
+    "right_censored": false,
+    "alert_count": 1,
+    "source_track_ids": [
+      155,
+      169
+    ],
+    "class_name": "car",
+    "alert_times_ms": [
+      6950.0
+    ],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15",
+      "multiple_track_ids",
+      "active_reentry"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_03",
+    "event_id": "E000054",
+    "event_kind": "risk",
+    "start_ms": 7400.0,
+    "end_ms": 15000.000000000002,
+    "right_censored": true,
+    "alert_count": 1,
+    "source_track_ids": [
+      177,
+      185,
+      272
+    ],
+    "class_name": "car",
+    "alert_times_ms": [
+      7950.0
+    ],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15",
+      "multiple_track_ids",
+      "active_reentry"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_03",
+    "event_id": "E000064",
+    "event_kind": "risk",
+    "start_ms": 7650.0,
+    "end_ms": 10050.0,
+    "right_censored": false,
+    "alert_count": 1,
+    "source_track_ids": [
+      192,
+      205
+    ],
+    "class_name": "car",
+    "alert_times_ms": [
+      8700.000000000002
+    ],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15",
+      "multiple_track_ids"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_03",
+    "event_id": "E000065",
+    "event_kind": "risk",
+    "start_ms": 7650.0,
+    "end_ms": 8700.000000000002,
+    "right_censored": false,
+    "alert_count": 1,
+    "source_track_ids": [
+      186
+    ],
+    "class_name": "motorcycle",
+    "alert_times_ms": [
+      7900.0
+    ],
+    "flags": []
+  },
+  {
+    "video_id": "urbanego_run8_03",
+    "event_id": "E000067",
+    "event_kind": "risk",
+    "start_ms": 8050.000000000001,
+    "end_ms": 11200.000000000002,
+    "right_censored": false,
+    "alert_count": 1,
+    "source_track_ids": [
+      206,
+      214
+    ],
+    "class_name": "car",
+    "alert_times_ms": [
+      9600.000000000002
+    ],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15",
+      "multiple_track_ids",
+      "active_reentry"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_03",
+    "event_id": "E000069",
+    "event_kind": "risk",
+    "start_ms": 8750.0,
+    "end_ms": 11350.000000000002,
+    "right_censored": false,
+    "alert_count": 1,
+    "source_track_ids": [
+      197
+    ],
+    "class_name": "car",
+    "alert_times_ms": [
+      9650.0
+    ],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_03",
+    "event_id": "E000070",
+    "event_kind": "risk",
+    "start_ms": 8950.000000000002,
+    "end_ms": 11350.000000000002,
+    "right_censored": false,
+    "alert_count": 1,
+    "source_track_ids": [
+      221
+    ],
+    "class_name": "car",
+    "alert_times_ms": [
+      9550.0
+    ],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15",
+      "active_reentry"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_03",
+    "event_id": "E000074",
+    "event_kind": "risk",
+    "start_ms": 9400.0,
+    "end_ms": 11200.000000000002,
+    "right_censored": false,
+    "alert_count": 1,
+    "source_track_ids": [
+      190,
+      227,
+      229,
+      240,
+      241
+    ],
+    "class_name": "car",
+    "alert_times_ms": [
+      10400.0
+    ],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15",
+      "multiple_track_ids"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_03",
+    "event_id": "E000075",
+    "event_kind": "risk",
+    "start_ms": 9850.000000000002,
+    "end_ms": 11050.0,
+    "right_censored": false,
+    "alert_count": 1,
+    "source_track_ids": [
+      237
+    ],
+    "class_name": "car",
+    "alert_times_ms": [
+      10100.000000000002
+    ],
+    "flags": []
+  },
+  {
+    "video_id": "urbanego_run8_03",
+    "event_id": "E000076",
+    "event_kind": "risk",
+    "start_ms": 10350.000000000002,
+    "end_ms": 15000.000000000002,
+    "right_censored": true,
+    "alert_count": 1,
+    "source_track_ids": [
+      244
+    ],
+    "class_name": "car",
+    "alert_times_ms": [
+      11400.0
+    ],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_03",
+    "event_id": "E000079",
+    "event_kind": "risk",
+    "start_ms": 10650.0,
+    "end_ms": 14600.000000000002,
+    "right_censored": false,
+    "alert_count": 1,
+    "source_track_ids": [
+      190,
+      249,
+      259,
+      264,
+      266,
+      277,
+      280
+    ],
+    "class_name": "car",
+    "alert_times_ms": [
+      10900.0
+    ],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15",
+      "multiple_track_ids",
+      "active_reentry"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_03",
+    "event_id": "E000080",
+    "event_kind": "risk",
+    "start_ms": 10700.000000000002,
+    "end_ms": 15000.000000000002,
+    "right_censored": true,
+    "alert_count": 1,
+    "source_track_ids": [
+      190,
+      249,
+      259,
+      266,
+      280
+    ],
+    "class_name": "truck",
+    "alert_times_ms": [
+      10950.000000000002
+    ],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15",
+      "multiple_track_ids",
+      "active_reentry"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_03",
+    "event_id": "E000007",
+    "event_kind": "risk",
+    "start_ms": 700.0000000000001,
+    "end_ms": 2400.0000000000005,
+    "right_censored": false,
+    "alert_count": 0,
+    "source_track_ids": [
+      6,
+      8
+    ],
+    "class_name": "car",
+    "alert_times_ms": [],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15",
+      "multiple_track_ids",
+      "active_reentry"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_03",
+    "event_id": "E000008",
+    "event_kind": "risk",
+    "start_ms": 750.0,
+    "end_ms": 2400.0000000000005,
+    "right_censored": false,
+    "alert_count": 0,
+    "source_track_ids": [
+      6,
+      8
+    ],
+    "class_name": "truck",
+    "alert_times_ms": [],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15",
+      "multiple_track_ids",
+      "active_reentry"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_03",
+    "event_id": "E000025",
+    "event_kind": "risk",
+    "start_ms": 4050.0,
+    "end_ms": 6100.000000000001,
+    "right_censored": false,
+    "alert_count": 0,
+    "source_track_ids": [
+      83,
+      105
+    ],
+    "class_name": "car",
+    "alert_times_ms": [],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15",
+      "multiple_track_ids"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_03",
+    "event_id": "E000029",
+    "event_kind": "risk",
+    "start_ms": 4600.000000000001,
+    "end_ms": 5500.0,
+    "right_censored": false,
+    "alert_count": 0,
+    "source_track_ids": [
+      81,
+      113
+    ],
+    "class_name": "car",
+    "alert_times_ms": [],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15",
+      "multiple_track_ids"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_03",
+    "event_id": "E000035",
+    "event_kind": "risk",
+    "start_ms": 5850.000000000001,
+    "end_ms": 6750.0,
+    "right_censored": false,
+    "alert_count": 0,
+    "source_track_ids": [
+      135
+    ],
+    "class_name": "motorcycle",
+    "alert_times_ms": [],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_03",
+    "event_id": "E000036",
+    "event_kind": "risk",
+    "start_ms": 6100.000000000001,
+    "end_ms": 7000.0,
+    "right_censored": false,
+    "alert_count": 0,
+    "source_track_ids": [
+      135
+    ],
+    "class_name": "boat",
+    "alert_times_ms": [],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_03",
+    "event_id": "E000037",
+    "event_kind": "risk",
+    "start_ms": 6300.000000000001,
+    "end_ms": 7200.0,
+    "right_censored": false,
+    "alert_count": 0,
+    "source_track_ids": [
+      135
+    ],
+    "class_name": "car",
+    "alert_times_ms": [],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_03",
+    "event_id": "E000044",
+    "event_kind": "risk",
+    "start_ms": 6700.0,
+    "end_ms": 7550.000000000001,
+    "right_censored": false,
+    "alert_count": 0,
+    "source_track_ids": [
+      157
+    ],
+    "class_name": "motorcycle",
+    "alert_times_ms": [],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_03",
+    "event_id": "E000045",
+    "event_kind": "risk",
+    "start_ms": 6850.000000000001,
+    "end_ms": 7850.000000000001,
+    "right_censored": false,
+    "alert_count": 0,
+    "source_track_ids": [
+      158
+    ],
+    "class_name": "car",
+    "alert_times_ms": [],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_03",
+    "event_id": "E000055",
+    "event_kind": "risk",
+    "start_ms": 7400.0,
+    "end_ms": 8350.0,
+    "right_censored": false,
+    "alert_count": 0,
+    "source_track_ids": [
+      176
+    ],
+    "class_name": "car",
+    "alert_times_ms": [],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_03",
+    "event_id": "E000057",
+    "event_kind": "risk",
+    "start_ms": 7450.0,
+    "end_ms": 8350.0,
+    "right_censored": false,
+    "alert_count": 0,
+    "source_track_ids": [
+      180
+    ],
+    "class_name": "motorcycle",
+    "alert_times_ms": [],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_03",
+    "event_id": "E000061",
+    "event_kind": "risk",
+    "start_ms": 7600.000000000001,
+    "end_ms": 8550.0,
+    "right_censored": false,
+    "alert_count": 0,
+    "source_track_ids": [
+      171
+    ],
+    "class_name": "person",
+    "alert_times_ms": [],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_03",
+    "event_id": "E000073",
+    "event_kind": "risk",
+    "start_ms": 9100.0,
+    "end_ms": 10050.0,
+    "right_censored": false,
+    "alert_count": 0,
+    "source_track_ids": [
+      225
+    ],
+    "class_name": "motorcycle",
+    "alert_times_ms": [],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_03",
+    "event_id": "E000081",
+    "event_kind": "risk",
+    "start_ms": 12950.000000000002,
+    "end_ms": 13800.0,
+    "right_censored": false,
+    "alert_count": 0,
+    "source_track_ids": [
+      274
+    ],
+    "class_name": "parking meter",
+    "alert_times_ms": [],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_03",
+    "event_id": "H000001",
+    "event_kind": "perception",
+    "start_ms": 5550.000000000001,
+    "end_ms": 5600.000000000001,
+    "right_censored": false,
+    "alert_count": 0,
+    "source_track_ids": [],
+    "class_name": null,
+    "alert_times_ms": [],
+    "flags": [
+      "perception_episode_no_alert"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_04",
+    "event_id": "E000006",
+    "event_kind": "risk",
+    "start_ms": 150.00000000000003,
+    "end_ms": 2650.0000000000005,
+    "right_censored": false,
+    "alert_count": 2,
+    "source_track_ids": [
+      9
+    ],
+    "class_name": "car",
+    "alert_times_ms": [
+      700.0000000000001,
+      1700.0000000000002
+    ],
+    "flags": [
+      "multiple_alerts",
+      "score_level_change_or_delta_ge_0.15"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_04",
+    "event_id": "E000021",
+    "event_kind": "risk",
+    "start_ms": 3800.0000000000005,
+    "end_ms": 12000.0,
+    "right_censored": false,
+    "alert_count": 2,
+    "source_track_ids": [
+      44
+    ],
+    "class_name": "car",
+    "alert_times_ms": [
+      5050.000000000001,
+      8000.0
+    ],
+    "flags": [
+      "multiple_alerts",
+      "score_level_change_or_delta_ge_0.15",
+      "active_reentry"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_04",
+    "event_id": "E000001",
+    "event_kind": "risk",
+    "start_ms": 0.0,
+    "end_ms": 1900.0000000000002,
+    "right_censored": false,
+    "alert_count": 1,
+    "source_track_ids": [
+      1
+    ],
+    "class_name": "car",
+    "alert_times_ms": [
+      250.0
+    ],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_04",
+    "event_id": "E000004",
+    "event_kind": "risk",
+    "start_ms": 0.0,
+    "end_ms": 5550.000000000001,
+    "right_censored": false,
+    "alert_count": 1,
+    "source_track_ids": [
+      2
+    ],
+    "class_name": "car",
+    "alert_times_ms": [
+      300.00000000000006
+    ],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15",
+      "active_reentry"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_04",
+    "event_id": "E000010",
+    "event_kind": "risk",
+    "start_ms": 450.0,
+    "end_ms": 9100.0,
+    "right_censored": false,
+    "alert_count": 1,
+    "source_track_ids": [
+      18
+    ],
+    "class_name": "car",
+    "alert_times_ms": [
+      900.0
+    ],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_04",
+    "event_id": "E000011",
+    "event_kind": "risk",
+    "start_ms": 650.0,
+    "end_ms": 2400.0000000000005,
+    "right_censored": false,
+    "alert_count": 1,
+    "source_track_ids": [
+      19
+    ],
+    "class_name": "person",
+    "alert_times_ms": [
+      1150.0000000000002
+    ],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_04",
+    "event_id": "E000012",
+    "event_kind": "risk",
+    "start_ms": 750.0,
+    "end_ms": 2250.0,
+    "right_censored": false,
+    "alert_count": 1,
+    "source_track_ids": [
+      21
+    ],
+    "class_name": "car",
+    "alert_times_ms": [
+      1250.0
+    ],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_04",
+    "event_id": "E000016",
+    "event_kind": "risk",
+    "start_ms": 1950.0000000000002,
+    "end_ms": 10300.0,
+    "right_censored": false,
+    "alert_count": 1,
+    "source_track_ids": [
+      23,
+      93
+    ],
+    "class_name": "train",
+    "alert_times_ms": [
+      3300.0000000000005
+    ],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15",
+      "multiple_track_ids",
+      "active_reentry"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_04",
+    "event_id": "E000018",
+    "event_kind": "risk",
+    "start_ms": 2550.0000000000005,
+    "end_ms": 5300.000000000001,
+    "right_censored": false,
+    "alert_count": 1,
+    "source_track_ids": [
+      40
+    ],
+    "class_name": "person",
+    "alert_times_ms": [
+      3050.0000000000005
+    ],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15",
+      "active_reentry"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_04",
+    "event_id": "E000019",
+    "event_kind": "risk",
+    "start_ms": 3150.0000000000005,
+    "end_ms": 5250.0,
+    "right_censored": false,
+    "alert_count": 1,
+    "source_track_ids": [
+      44,
+      53
+    ],
+    "class_name": "car",
+    "alert_times_ms": [
+      4450.0
+    ],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15",
+      "multiple_track_ids"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_04",
+    "event_id": "E000023",
+    "event_kind": "risk",
+    "start_ms": 5500.0,
+    "end_ms": 7600.000000000001,
+    "right_censored": false,
+    "alert_count": 1,
+    "source_track_ids": [
+      53
+    ],
+    "class_name": "car",
+    "alert_times_ms": [
+      6500.0
+    ],
+    "flags": [
+      "active_reentry"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_04",
+    "event_id": "E000024",
+    "event_kind": "risk",
+    "start_ms": 6550.000000000001,
+    "end_ms": 12950.000000000002,
+    "right_censored": false,
+    "alert_count": 1,
+    "source_track_ids": [
+      84,
+      105
+    ],
+    "class_name": "car",
+    "alert_times_ms": [
+      6800.000000000001
+    ],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15",
+      "multiple_track_ids",
+      "active_reentry"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_04",
+    "event_id": "E000026",
+    "event_kind": "risk",
+    "start_ms": 7950.0,
+    "end_ms": 10850.000000000002,
+    "right_censored": false,
+    "alert_count": 1,
+    "source_track_ids": [
+      92,
+      98
+    ],
+    "class_name": "car",
+    "alert_times_ms": [
+      8200.000000000002
+    ],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15",
+      "multiple_track_ids",
+      "active_reentry"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_04",
+    "event_id": "E000027",
+    "event_kind": "risk",
+    "start_ms": 10100.000000000002,
+    "end_ms": 12300.0,
+    "right_censored": false,
+    "alert_count": 1,
+    "source_track_ids": [
+      92
+    ],
+    "class_name": "car",
+    "alert_times_ms": [
+      10350.000000000002
+    ],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_04",
+    "event_id": "E000030",
+    "event_kind": "risk",
+    "start_ms": 10900.0,
+    "end_ms": 15000.000000000002,
+    "right_censored": true,
+    "alert_count": 1,
+    "source_track_ids": [
+      103,
+      117
+    ],
+    "class_name": "car",
+    "alert_times_ms": [
+      11150.0
+    ],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15",
+      "multiple_track_ids",
+      "active_reentry"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_04",
+    "event_id": "E000031",
+    "event_kind": "risk",
+    "start_ms": 11250.0,
+    "end_ms": 12450.000000000002,
+    "right_censored": false,
+    "alert_count": 1,
+    "source_track_ids": [
+      84
+    ],
+    "class_name": "suitcase",
+    "alert_times_ms": [
+      11500.0
+    ],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_04",
+    "event_id": "E000033",
+    "event_kind": "risk",
+    "start_ms": 12650.0,
+    "end_ms": 13800.0,
+    "right_censored": false,
+    "alert_count": 1,
+    "source_track_ids": [
+      100
+    ],
+    "class_name": "bus",
+    "alert_times_ms": [
+      12900.0
+    ],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_04",
+    "event_id": "E000034",
+    "event_kind": "risk",
+    "start_ms": 13900.0,
+    "end_ms": 15000.000000000002,
+    "right_censored": true,
+    "alert_count": 1,
+    "source_track_ids": [
+      103,
+      117
+    ],
+    "class_name": "truck",
+    "alert_times_ms": [
+      14150.0
+    ],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15",
+      "multiple_track_ids"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_04",
+    "event_id": "E000013",
+    "event_kind": "risk",
+    "start_ms": 1000.0,
+    "end_ms": 1900.0000000000002,
+    "right_censored": false,
+    "alert_count": 0,
+    "source_track_ids": [
+      23
+    ],
+    "class_name": "train",
+    "alert_times_ms": [],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_04",
+    "event_id": "E000017",
+    "event_kind": "risk",
+    "start_ms": 2100.0,
+    "end_ms": 6950.0,
+    "right_censored": false,
+    "alert_count": 0,
+    "source_track_ids": [
+      30,
+      54,
+      61
+    ],
+    "class_name": "car",
+    "alert_times_ms": [],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15",
+      "multiple_track_ids",
+      "active_reentry"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_04",
+    "event_id": "E000025",
+    "event_kind": "risk",
+    "start_ms": 7400.0,
+    "end_ms": 8200.000000000002,
+    "right_censored": false,
+    "alert_count": 0,
+    "source_track_ids": [
+      85
+    ],
+    "class_name": "car",
+    "alert_times_ms": [],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_04",
+    "event_id": "E000029",
+    "event_kind": "risk",
+    "start_ms": 10500.0,
+    "end_ms": 11400.0,
+    "right_censored": false,
+    "alert_count": 0,
+    "source_track_ids": [
+      100
+    ],
+    "class_name": "train",
+    "alert_times_ms": [],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_04",
+    "event_id": "E000032",
+    "event_kind": "risk",
+    "start_ms": 11550.0,
+    "end_ms": 13400.0,
+    "right_censored": false,
+    "alert_count": 0,
+    "source_track_ids": [
+      100
+    ],
+    "class_name": "train",
+    "alert_times_ms": [],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_04",
+    "event_id": "E000036",
+    "event_kind": "risk",
+    "start_ms": 14700.000000000002,
+    "end_ms": 15000.000000000002,
+    "right_censored": true,
+    "alert_count": 0,
+    "source_track_ids": [
+      123
+    ],
+    "class_name": "train",
+    "alert_times_ms": [],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_04",
+    "event_id": "H000001",
+    "event_kind": "perception",
+    "start_ms": 3400.0000000000005,
+    "end_ms": 3450.0,
+    "right_censored": false,
+    "alert_count": 0,
+    "source_track_ids": [],
+    "class_name": null,
+    "alert_times_ms": [],
+    "flags": [
+      "perception_episode_no_alert"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_04",
+    "event_id": "H000002",
+    "event_kind": "perception",
+    "start_ms": 9400.0,
+    "end_ms": 9450.000000000002,
+    "right_censored": false,
+    "alert_count": 0,
+    "source_track_ids": [],
+    "class_name": null,
+    "alert_times_ms": [],
+    "flags": [
+      "perception_episode_no_alert"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_05",
+    "event_id": "E000002",
+    "event_kind": "risk",
+    "start_ms": 0.0,
+    "end_ms": 8200.000000000002,
+    "right_censored": false,
+    "alert_count": 2,
+    "source_track_ids": [
+      2,
+      69
+    ],
+    "class_name": "car",
+    "alert_times_ms": [
+      600.0000000000001,
+      5600.000000000001
+    ],
+    "flags": [
+      "multiple_alerts",
+      "score_level_change_or_delta_ge_0.15",
+      "multiple_track_ids",
+      "active_reentry"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_05",
+    "event_id": "E000003",
+    "event_kind": "risk",
+    "start_ms": 0.0,
+    "end_ms": 6350.000000000001,
+    "right_censored": false,
+    "alert_count": 2,
+    "source_track_ids": [
+      3
+    ],
+    "class_name": "car",
+    "alert_times_ms": [
+      750.0,
+      4900.0
+    ],
+    "flags": [
+      "multiple_alerts",
+      "score_level_change_or_delta_ge_0.15"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_05",
+    "event_id": "E000099",
+    "event_kind": "risk",
+    "start_ms": 12400.0,
+    "end_ms": 15000.000000000002,
+    "right_censored": true,
+    "alert_count": 2,
+    "source_track_ids": [
+      423
+    ],
+    "class_name": "chair",
+    "alert_times_ms": [
+      12650.0,
+      14000.0
+    ],
+    "flags": [
+      "multiple_alerts",
+      "score_level_change_or_delta_ge_0.15"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_05",
+    "event_id": "E000001",
+    "event_kind": "risk",
+    "start_ms": 0.0,
+    "end_ms": 2400.0000000000005,
+    "right_censored": false,
+    "alert_count": 1,
+    "source_track_ids": [
+      1
+    ],
+    "class_name": "car",
+    "alert_times_ms": [
+      250.0
+    ],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15",
+      "active_reentry"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_05",
+    "event_id": "E000004",
+    "event_kind": "risk",
+    "start_ms": 1100.0,
+    "end_ms": 8450.000000000002,
+    "right_censored": false,
+    "alert_count": 1,
+    "source_track_ids": [
+      7
+    ],
+    "class_name": "car",
+    "alert_times_ms": [
+      1350.0
+    ],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_05",
+    "event_id": "E000028",
+    "event_kind": "risk",
+    "start_ms": 6600.000000000001,
+    "end_ms": 9700.000000000002,
+    "right_censored": false,
+    "alert_count": 1,
+    "source_track_ids": [
+      79,
+      141
+    ],
+    "class_name": "chair",
+    "alert_times_ms": [
+      6850.000000000001
+    ],
+    "flags": [
+      "multiple_track_ids",
+      "active_reentry"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_05",
+    "event_id": "E000050",
+    "event_kind": "risk",
+    "start_ms": 8950.000000000002,
+    "end_ms": 10600.000000000002,
+    "right_censored": false,
+    "alert_count": 1,
+    "source_track_ids": [
+      173,
+      193,
+      212
+    ],
+    "class_name": "chair",
+    "alert_times_ms": [
+      9450.000000000002
+    ],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15",
+      "multiple_track_ids"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_05",
+    "event_id": "E000051",
+    "event_kind": "risk",
+    "start_ms": 9050.0,
+    "end_ms": 11250.0,
+    "right_censored": false,
+    "alert_count": 1,
+    "source_track_ids": [
+      213,
+      264
+    ],
+    "class_name": "person",
+    "alert_times_ms": [
+      9850.000000000002
+    ],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15",
+      "multiple_track_ids",
+      "active_reentry"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_05",
+    "event_id": "E000052",
+    "event_kind": "risk",
+    "start_ms": 9050.0,
+    "end_ms": 11000.0,
+    "right_censored": false,
+    "alert_count": 1,
+    "source_track_ids": [
+      160,
+      177,
+      214
+    ],
+    "class_name": "person",
+    "alert_times_ms": [
+      9350.0
+    ],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15",
+      "multiple_track_ids",
+      "active_reentry"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_05",
+    "event_id": "E000053",
+    "event_kind": "risk",
+    "start_ms": 9050.0,
+    "end_ms": 10750.0,
+    "right_censored": false,
+    "alert_count": 1,
+    "source_track_ids": [
+      173,
+      211
+    ],
+    "class_name": "chair",
+    "alert_times_ms": [
+      9300.0
+    ],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15",
+      "multiple_track_ids",
+      "active_reentry"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_05",
+    "event_id": "E000054",
+    "event_kind": "risk",
+    "start_ms": 9050.0,
+    "end_ms": 11800.0,
+    "right_censored": false,
+    "alert_count": 1,
+    "source_track_ids": [
+      215
+    ],
+    "class_name": "chair",
+    "alert_times_ms": [
+      10800.0
+    ],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_05",
+    "event_id": "E000055",
+    "event_kind": "risk",
+    "start_ms": 9100.0,
+    "end_ms": 11800.0,
+    "right_censored": false,
+    "alert_count": 1,
+    "source_track_ids": [
+      147,
+      201
+    ],
+    "class_name": "person",
+    "alert_times_ms": [
+      9400.0
+    ],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15",
+      "multiple_track_ids",
+      "active_reentry"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_05",
+    "event_id": "E000058",
+    "event_kind": "risk",
+    "start_ms": 9250.0,
+    "end_ms": 11800.0,
+    "right_censored": false,
+    "alert_count": 1,
+    "source_track_ids": [
+      229,
+      298
+    ],
+    "class_name": "chair",
+    "alert_times_ms": [
+      10150.0
+    ],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15",
+      "multiple_track_ids",
+      "active_reentry"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_05",
+    "event_id": "E000059",
+    "event_kind": "risk",
+    "start_ms": 9400.0,
+    "end_ms": 11800.0,
+    "right_censored": false,
+    "alert_count": 1,
+    "source_track_ids": [
+      241,
+      333
+    ],
+    "class_name": "chair",
+    "alert_times_ms": [
+      10700.000000000002
+    ],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15",
+      "multiple_track_ids",
+      "active_reentry"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_05",
+    "event_id": "E000060",
+    "event_kind": "risk",
+    "start_ms": 9550.0,
+    "end_ms": 11800.0,
+    "right_censored": false,
+    "alert_count": 1,
+    "source_track_ids": [
+      256
+    ],
+    "class_name": "chair",
+    "alert_times_ms": [
+      9800.0
+    ],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_05",
+    "event_id": "E000063",
+    "event_kind": "risk",
+    "start_ms": 9850.000000000002,
+    "end_ms": 11800.0,
+    "right_censored": false,
+    "alert_count": 1,
+    "source_track_ids": [
+      212
+    ],
+    "class_name": "chair",
+    "alert_times_ms": [
+      10750.0
+    ],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_05",
+    "event_id": "E000064",
+    "event_kind": "risk",
+    "start_ms": 9950.000000000002,
+    "end_ms": 11800.0,
+    "right_censored": false,
+    "alert_count": 1,
+    "source_track_ids": [
+      301
+    ],
+    "class_name": "person",
+    "alert_times_ms": [
+      10200.000000000002
+    ],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_05",
+    "event_id": "E000068",
+    "event_kind": "risk",
+    "start_ms": 10200.000000000002,
+    "end_ms": 11800.0,
+    "right_censored": false,
+    "alert_count": 1,
+    "source_track_ids": [
+      322
+    ],
+    "class_name": "person",
+    "alert_times_ms": [
+      10900.0
+    ],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_05",
+    "event_id": "E000069",
+    "event_kind": "risk",
+    "start_ms": 10300.0,
+    "end_ms": 11350.000000000002,
+    "right_censored": false,
+    "alert_count": 1,
+    "source_track_ids": [
+      211
+    ],
+    "class_name": "chair",
+    "alert_times_ms": [
+      10550.0
+    ],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_05",
+    "event_id": "E000070",
+    "event_kind": "risk",
+    "start_ms": 10400.0,
+    "end_ms": 11800.0,
+    "right_censored": false,
+    "alert_count": 1,
+    "source_track_ids": [
+      332
+    ],
+    "class_name": "chair",
+    "alert_times_ms": [
+      10650.0
+    ],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_05",
+    "event_id": "E000083",
+    "event_kind": "risk",
+    "start_ms": 11100.000000000002,
+    "end_ms": 12800.0,
+    "right_censored": false,
+    "alert_count": 1,
+    "source_track_ids": [
+      382
+    ],
+    "class_name": "car",
+    "alert_times_ms": [
+      11350.000000000002
+    ],
+    "flags": []
+  },
+  {
+    "video_id": "urbanego_run8_05",
+    "event_id": "E000085",
+    "event_kind": "risk",
+    "start_ms": 11200.000000000002,
+    "end_ms": 12600.000000000002,
+    "right_censored": false,
+    "alert_count": 1,
+    "source_track_ids": [
+      387
+    ],
+    "class_name": "car",
+    "alert_times_ms": [
+      11450.000000000002
+    ],
+    "flags": []
+  },
+  {
+    "video_id": "urbanego_run8_05",
+    "event_id": "E000087",
+    "event_kind": "risk",
+    "start_ms": 12100.000000000002,
+    "end_ms": 13750.0,
+    "right_censored": false,
+    "alert_count": 1,
+    "source_track_ids": [
+      395,
+      412
+    ],
+    "class_name": "chair",
+    "alert_times_ms": [
+      12350.000000000002
+    ],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15",
+      "multiple_track_ids",
+      "active_reentry"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_05",
+    "event_id": "E000089",
+    "event_kind": "risk",
+    "start_ms": 12150.0,
+    "end_ms": 15000.000000000002,
+    "right_censored": true,
+    "alert_count": 1,
+    "source_track_ids": [
+      402
+    ],
+    "class_name": "chair",
+    "alert_times_ms": [
+      12400.0
+    ],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15",
+      "active_reentry"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_05",
+    "event_id": "E000093",
+    "event_kind": "risk",
+    "start_ms": 12200.000000000002,
+    "end_ms": 14700.000000000002,
+    "right_censored": false,
+    "alert_count": 1,
+    "source_track_ids": [
+      413
+    ],
+    "class_name": "boat",
+    "alert_times_ms": [
+      13450.000000000002
+    ],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_05",
+    "event_id": "E000095",
+    "event_kind": "risk",
+    "start_ms": 12200.000000000002,
+    "end_ms": 13650.0,
+    "right_censored": false,
+    "alert_count": 1,
+    "source_track_ids": [
+      412,
+      454
+    ],
+    "class_name": "chair",
+    "alert_times_ms": [
+      12450.000000000002
+    ],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15",
+      "multiple_track_ids",
+      "active_reentry"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_05",
+    "event_id": "E000100",
+    "event_kind": "risk",
+    "start_ms": 12400.0,
+    "end_ms": 15000.000000000002,
+    "right_censored": true,
+    "alert_count": 1,
+    "source_track_ids": [
+      424,
+      456
+    ],
+    "class_name": "chair",
+    "alert_times_ms": [
+      13100.000000000002
+    ],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15",
+      "multiple_track_ids",
+      "active_reentry"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_05",
+    "event_id": "E000106",
+    "event_kind": "risk",
+    "start_ms": 12650.0,
+    "end_ms": 15000.000000000002,
+    "right_censored": true,
+    "alert_count": 1,
+    "source_track_ids": [
+      439,
+      486,
+      530
+    ],
+    "class_name": "chair",
+    "alert_times_ms": [
+      14350.000000000002
+    ],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15",
+      "multiple_track_ids"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_05",
+    "event_id": "E000109",
+    "event_kind": "risk",
+    "start_ms": 12850.000000000002,
+    "end_ms": 15000.000000000002,
+    "right_censored": true,
+    "alert_count": 1,
+    "source_track_ids": [
+      460
+    ],
+    "class_name": "chair",
+    "alert_times_ms": [
+      14200.000000000002
+    ],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_05",
+    "event_id": "E000116",
+    "event_kind": "risk",
+    "start_ms": 13500.0,
+    "end_ms": 14700.000000000002,
+    "right_censored": false,
+    "alert_count": 1,
+    "source_track_ids": [
+      500
+    ],
+    "class_name": "person",
+    "alert_times_ms": [
+      13850.000000000002
+    ],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_05",
+    "event_id": "E000122",
+    "event_kind": "risk",
+    "start_ms": 13900.0,
+    "end_ms": 15000.000000000002,
+    "right_censored": true,
+    "alert_count": 1,
+    "source_track_ids": [
+      526
+    ],
+    "class_name": "chair",
+    "alert_times_ms": [
+      14250.0
+    ],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15",
+      "active_reentry"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_05",
+    "event_id": "E000125",
+    "event_kind": "risk",
+    "start_ms": 14000.0,
+    "end_ms": 15000.000000000002,
+    "right_censored": true,
+    "alert_count": 1,
+    "source_track_ids": [
+      422
+    ],
+    "class_name": "chair",
+    "alert_times_ms": [
+      14400.0
+    ],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_05",
+    "event_id": "E000127",
+    "event_kind": "risk",
+    "start_ms": 14050.0,
+    "end_ms": 15000.000000000002,
+    "right_censored": true,
+    "alert_count": 1,
+    "source_track_ids": [
+      533
+    ],
+    "class_name": "chair",
+    "alert_times_ms": [
+      14300.0
+    ],
+    "flags": []
+  },
+  {
+    "video_id": "urbanego_run8_05",
+    "event_id": "E000005",
+    "event_kind": "risk",
+    "start_ms": 2600.0,
+    "end_ms": 3900.0000000000005,
+    "right_censored": false,
+    "alert_count": 0,
+    "source_track_ids": [
+      14
+    ],
+    "class_name": "person",
+    "alert_times_ms": [],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15",
+      "active_reentry"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_05",
+    "event_id": "E000008",
+    "event_kind": "risk",
+    "start_ms": 3000.0,
+    "end_ms": 3950.0,
+    "right_censored": false,
+    "alert_count": 0,
+    "source_track_ids": [
+      19
+    ],
+    "class_name": "person",
+    "alert_times_ms": [],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_05",
+    "event_id": "E000012",
+    "event_kind": "risk",
+    "start_ms": 3850.0,
+    "end_ms": 6100.000000000001,
+    "right_censored": false,
+    "alert_count": 0,
+    "source_track_ids": [
+      40
+    ],
+    "class_name": "stop sign",
+    "alert_times_ms": [],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15",
+      "active_reentry"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_05",
+    "event_id": "E000019",
+    "event_kind": "risk",
+    "start_ms": 5650.0,
+    "end_ms": 6600.000000000001,
+    "right_censored": false,
+    "alert_count": 0,
+    "source_track_ids": [
+      55
+    ],
+    "class_name": "chair",
+    "alert_times_ms": [],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_05",
+    "event_id": "E000023",
+    "event_kind": "risk",
+    "start_ms": 6200.0,
+    "end_ms": 7500.0,
+    "right_censored": false,
+    "alert_count": 0,
+    "source_track_ids": [
+      70
+    ],
+    "class_name": "person",
+    "alert_times_ms": [],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_05",
+    "event_id": "E000034",
+    "event_kind": "risk",
+    "start_ms": 7650.0,
+    "end_ms": 11050.0,
+    "right_censored": false,
+    "alert_count": 0,
+    "source_track_ids": [
+      123,
+      143,
+      193
+    ],
+    "class_name": "chair",
+    "alert_times_ms": [],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15",
+      "multiple_track_ids"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_05",
+    "event_id": "E000038",
+    "event_kind": "risk",
+    "start_ms": 8350.0,
+    "end_ms": 9600.000000000002,
+    "right_censored": false,
+    "alert_count": 0,
+    "source_track_ids": [
+      140
+    ],
+    "class_name": "person",
+    "alert_times_ms": [],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_05",
+    "event_id": "E000042",
+    "event_kind": "risk",
+    "start_ms": 8650.0,
+    "end_ms": 9750.0,
+    "right_censored": false,
+    "alert_count": 0,
+    "source_track_ids": [
+      160,
+      177
+    ],
+    "class_name": "person",
+    "alert_times_ms": [],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15",
+      "multiple_track_ids"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_05",
+    "event_id": "E000044",
+    "event_kind": "risk",
+    "start_ms": 8750.0,
+    "end_ms": 10250.0,
+    "right_censored": false,
+    "alert_count": 0,
+    "source_track_ids": [
+      173
+    ],
+    "class_name": "person",
+    "alert_times_ms": [],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_05",
+    "event_id": "E000045",
+    "event_kind": "risk",
+    "start_ms": 8750.0,
+    "end_ms": 9700.000000000002,
+    "right_censored": false,
+    "alert_count": 0,
+    "source_track_ids": [
+      174
+    ],
+    "class_name": "chair",
+    "alert_times_ms": [],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_05",
+    "event_id": "E000047",
+    "event_kind": "risk",
+    "start_ms": 8850.0,
+    "end_ms": 10200.000000000002,
+    "right_censored": false,
+    "alert_count": 0,
+    "source_track_ids": [
+      140
+    ],
+    "class_name": "chair",
+    "alert_times_ms": [],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_05",
+    "event_id": "E000057",
+    "event_kind": "risk",
+    "start_ms": 9250.0,
+    "end_ms": 11800.0,
+    "right_censored": false,
+    "alert_count": 0,
+    "source_track_ids": [
+      211,
+      230,
+      275,
+      372
+    ],
+    "class_name": "chair",
+    "alert_times_ms": [],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15",
+      "multiple_track_ids"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_05",
+    "event_id": "E000062",
+    "event_kind": "risk",
+    "start_ms": 9800.0,
+    "end_ms": 11000.0,
+    "right_censored": false,
+    "alert_count": 0,
+    "source_track_ids": [
+      147
+    ],
+    "class_name": "person",
+    "alert_times_ms": [],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_05",
+    "event_id": "E000092",
+    "event_kind": "risk",
+    "start_ms": 12200.000000000002,
+    "end_ms": 14100.000000000002,
+    "right_censored": false,
+    "alert_count": 0,
+    "source_track_ids": [
+      410,
+      459
+    ],
+    "class_name": "person",
+    "alert_times_ms": [],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15",
+      "multiple_track_ids",
+      "active_reentry"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_05",
+    "event_id": "E000102",
+    "event_kind": "risk",
+    "start_ms": 12450.000000000002,
+    "end_ms": 13450.000000000002,
+    "right_censored": false,
+    "alert_count": 0,
+    "source_track_ids": [
+      413
+    ],
+    "class_name": "truck",
+    "alert_times_ms": [],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_05",
+    "event_id": "E000105",
+    "event_kind": "risk",
+    "start_ms": 12650.0,
+    "end_ms": 13900.0,
+    "right_censored": false,
+    "alert_count": 0,
+    "source_track_ids": [
+      441
+    ],
+    "class_name": "person",
+    "alert_times_ms": [],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_05",
+    "event_id": "E000111",
+    "event_kind": "risk",
+    "start_ms": 12900.0,
+    "end_ms": 15000.000000000002,
+    "right_censored": true,
+    "alert_count": 0,
+    "source_track_ids": [
+      454,
+      512,
+      581
+    ],
+    "class_name": "person",
+    "alert_times_ms": [],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15",
+      "multiple_track_ids"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_05",
+    "event_id": "E000113",
+    "event_kind": "risk",
+    "start_ms": 12950.000000000002,
+    "end_ms": 14750.0,
+    "right_censored": false,
+    "alert_count": 0,
+    "source_track_ids": [
+      464
+    ],
+    "class_name": "person",
+    "alert_times_ms": [],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_05",
+    "event_id": "E000114",
+    "event_kind": "risk",
+    "start_ms": 13150.0,
+    "end_ms": 15000.000000000002,
+    "right_censored": true,
+    "alert_count": 0,
+    "source_track_ids": [
+      479,
+      511
+    ],
+    "class_name": "person",
+    "alert_times_ms": [],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15",
+      "multiple_track_ids"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_05",
+    "event_id": "E000118",
+    "event_kind": "risk",
+    "start_ms": 13650.0,
+    "end_ms": 14750.0,
+    "right_censored": false,
+    "alert_count": 0,
+    "source_track_ids": [
+      510
+    ],
+    "class_name": "person",
+    "alert_times_ms": [],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_05",
+    "event_id": "E000126",
+    "event_kind": "risk",
+    "start_ms": 14050.0,
+    "end_ms": 15000.000000000002,
+    "right_censored": true,
+    "alert_count": 0,
+    "source_track_ids": [
+      525
+    ],
+    "class_name": "umbrella",
+    "alert_times_ms": [],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_05",
+    "event_id": "E000128",
+    "event_kind": "risk",
+    "start_ms": 14100.000000000002,
+    "end_ms": 15000.000000000002,
+    "right_censored": true,
+    "alert_count": 0,
+    "source_track_ids": [
+      534,
+      536,
+      548
+    ],
+    "class_name": "chair",
+    "alert_times_ms": [],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15",
+      "multiple_track_ids"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_05",
+    "event_id": "E000129",
+    "event_kind": "risk",
+    "start_ms": 14100.000000000002,
+    "end_ms": 15000.000000000002,
+    "right_censored": true,
+    "alert_count": 0,
+    "source_track_ids": [
+      535
+    ],
+    "class_name": "dining table",
+    "alert_times_ms": [],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_05",
+    "event_id": "E000131",
+    "event_kind": "risk",
+    "start_ms": 14250.0,
+    "end_ms": 15000.000000000002,
+    "right_censored": true,
+    "alert_count": 0,
+    "source_track_ids": [
+      486,
+      537
+    ],
+    "class_name": "chair",
+    "alert_times_ms": [],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15",
+      "multiple_track_ids"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_05",
+    "event_id": "E000133",
+    "event_kind": "risk",
+    "start_ms": 14550.0,
+    "end_ms": 15000.000000000002,
+    "right_censored": true,
+    "alert_count": 0,
+    "source_track_ids": [
+      547
+    ],
+    "class_name": "chair",
+    "alert_times_ms": [],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_05",
+    "event_id": "E000137",
+    "event_kind": "risk",
+    "start_ms": 14850.000000000002,
+    "end_ms": 15000.000000000002,
+    "right_censored": true,
+    "alert_count": 0,
+    "source_track_ids": [
+      510,
+      568
+    ],
+    "class_name": "person",
+    "alert_times_ms": [],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15",
+      "multiple_track_ids"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_05",
+    "event_id": "H000001",
+    "event_kind": "perception",
+    "start_ms": 6700.0,
+    "end_ms": 6750.0,
+    "right_censored": false,
+    "alert_count": 0,
+    "source_track_ids": [],
+    "class_name": null,
+    "alert_times_ms": [],
+    "flags": [
+      "perception_episode_no_alert"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_05",
+    "event_id": "H000002",
+    "event_kind": "perception",
+    "start_ms": 12850.000000000002,
+    "end_ms": 12900.0,
+    "right_censored": false,
+    "alert_count": 0,
+    "source_track_ids": [],
+    "class_name": null,
+    "alert_times_ms": [],
+    "flags": [
+      "perception_episode_no_alert"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_05",
+    "event_id": "H000003",
+    "event_kind": "perception",
+    "start_ms": 13100.000000000002,
+    "end_ms": 13150.0,
+    "right_censored": false,
+    "alert_count": 0,
+    "source_track_ids": [],
+    "class_name": null,
+    "alert_times_ms": [],
+    "flags": [
+      "perception_episode_no_alert"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_05",
+    "event_id": "H000004",
+    "event_kind": "perception",
+    "start_ms": 13600.000000000002,
+    "end_ms": 13700.000000000002,
+    "right_censored": false,
+    "alert_count": 0,
+    "source_track_ids": [],
+    "class_name": null,
+    "alert_times_ms": [],
+    "flags": [
+      "perception_episode_no_alert"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_06",
+    "event_id": "E000011",
+    "event_kind": "risk",
+    "start_ms": 2450.0,
+    "end_ms": 6850.000000000001,
+    "right_censored": false,
+    "alert_count": 2,
+    "source_track_ids": [
+      36
+    ],
+    "class_name": "person",
+    "alert_times_ms": [
+      2700.0,
+      3700.0
+    ],
+    "flags": [
+      "multiple_alerts",
+      "score_level_change_or_delta_ge_0.15"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_06",
+    "event_id": "E000018",
+    "event_kind": "risk",
+    "start_ms": 4350.000000000001,
+    "end_ms": 10850.000000000002,
+    "right_censored": false,
+    "alert_count": 2,
+    "source_track_ids": [
+      82,
+      248
+    ],
+    "class_name": "chair",
+    "alert_times_ms": [
+      5750.0,
+      7100.000000000001
+    ],
+    "flags": [
+      "multiple_alerts",
+      "score_level_change_or_delta_ge_0.15",
+      "multiple_track_ids",
+      "active_reentry"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_06",
+    "event_id": "E000042",
+    "event_kind": "risk",
+    "start_ms": 8050.000000000001,
+    "end_ms": 15000.000000000002,
+    "right_censored": true,
+    "alert_count": 2,
+    "source_track_ids": [
+      4
+    ],
+    "class_name": "person",
+    "alert_times_ms": [
+      8350.0,
+      11800.0
+    ],
+    "flags": [
+      "multiple_alerts",
+      "score_level_change_or_delta_ge_0.15",
+      "active_reentry"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_06",
+    "event_id": "E000001",
+    "event_kind": "risk",
+    "start_ms": 0.0,
+    "end_ms": 2650.0000000000005,
+    "right_censored": false,
+    "alert_count": 1,
+    "source_track_ids": [
+      2,
+      25
+    ],
+    "class_name": "person",
+    "alert_times_ms": [
+      350.00000000000006
+    ],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15",
+      "multiple_track_ids",
+      "active_reentry"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_06",
+    "event_id": "E000002",
+    "event_kind": "risk",
+    "start_ms": 0.0,
+    "end_ms": 7800.000000000001,
+    "right_censored": false,
+    "alert_count": 1,
+    "source_track_ids": [
+      4
+    ],
+    "class_name": "person",
+    "alert_times_ms": [
+      500.0
+    ],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15",
+      "active_reentry"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_06",
+    "event_id": "E000003",
+    "event_kind": "risk",
+    "start_ms": 0.0,
+    "end_ms": 3750.0,
+    "right_censored": false,
+    "alert_count": 1,
+    "source_track_ids": [
+      1
+    ],
+    "class_name": "person",
+    "alert_times_ms": [
+      300.00000000000006
+    ],
+    "flags": []
+  },
+  {
+    "video_id": "urbanego_run8_06",
+    "event_id": "E000004",
+    "event_kind": "risk",
+    "start_ms": 0.0,
+    "end_ms": 4800.000000000001,
+    "right_censored": false,
+    "alert_count": 1,
+    "source_track_ids": [
+      3,
+      37
+    ],
+    "class_name": "person",
+    "alert_times_ms": [
+      250.0
+    ],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15",
+      "multiple_track_ids",
+      "active_reentry"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_06",
+    "event_id": "E000007",
+    "event_kind": "risk",
+    "start_ms": 1000.0,
+    "end_ms": 7800.000000000001,
+    "right_censored": false,
+    "alert_count": 1,
+    "source_track_ids": [
+      2,
+      12
+    ],
+    "class_name": "person",
+    "alert_times_ms": [
+      1250.0
+    ],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15",
+      "multiple_track_ids",
+      "active_reentry"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_06",
+    "event_id": "E000009",
+    "event_kind": "risk",
+    "start_ms": 2150.0,
+    "end_ms": 7150.0,
+    "right_censored": false,
+    "alert_count": 1,
+    "source_track_ids": [
+      12
+    ],
+    "class_name": "person",
+    "alert_times_ms": [
+      2400.0000000000005
+    ],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_06",
+    "event_id": "E000020",
+    "event_kind": "risk",
+    "start_ms": 4550.0,
+    "end_ms": 6550.000000000001,
+    "right_censored": false,
+    "alert_count": 1,
+    "source_track_ids": [
+      86
+    ],
+    "class_name": "person",
+    "alert_times_ms": [
+      5250.0
+    ],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_06",
+    "event_id": "E000025",
+    "event_kind": "risk",
+    "start_ms": 5450.0,
+    "end_ms": 6500.0,
+    "right_censored": false,
+    "alert_count": 1,
+    "source_track_ids": [
+      104
+    ],
+    "class_name": "person",
+    "alert_times_ms": [
+      5700.0
+    ],
+    "flags": []
+  },
+  {
+    "video_id": "urbanego_run8_06",
+    "event_id": "E000030",
+    "event_kind": "risk",
+    "start_ms": 5800.000000000001,
+    "end_ms": 8550.0,
+    "right_censored": false,
+    "alert_count": 1,
+    "source_track_ids": [
+      113
+    ],
+    "class_name": "chair",
+    "alert_times_ms": [
+      6600.000000000001
+    ],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15",
+      "active_reentry"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_06",
+    "event_id": "E000033",
+    "event_kind": "risk",
+    "start_ms": 6500.0,
+    "end_ms": 7850.000000000001,
+    "right_censored": false,
+    "alert_count": 1,
+    "source_track_ids": [
+      143
+    ],
+    "class_name": "train",
+    "alert_times_ms": [
+      7050.000000000001
+    ],
+    "flags": []
+  },
+  {
+    "video_id": "urbanego_run8_06",
+    "event_id": "E000037",
+    "event_kind": "risk",
+    "start_ms": 7850.000000000001,
+    "end_ms": 8950.000000000002,
+    "right_censored": false,
+    "alert_count": 1,
+    "source_track_ids": [
+      143
+    ],
+    "class_name": "train",
+    "alert_times_ms": [
+      8150.0
+    ],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_06",
+    "event_id": "E000038",
+    "event_kind": "risk",
+    "start_ms": 7850.000000000001,
+    "end_ms": 9850.000000000002,
+    "right_censored": false,
+    "alert_count": 1,
+    "source_track_ids": [
+      170,
+      212
+    ],
+    "class_name": "chair",
+    "alert_times_ms": [
+      8200.000000000002
+    ],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15",
+      "multiple_track_ids",
+      "active_reentry"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_06",
+    "event_id": "E000040",
+    "event_kind": "risk",
+    "start_ms": 7950.0,
+    "end_ms": 15000.000000000002,
+    "right_censored": true,
+    "alert_count": 1,
+    "source_track_ids": [
+      174
+    ],
+    "class_name": "person",
+    "alert_times_ms": [
+      8250.0
+    ],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15",
+      "active_reentry"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_06",
+    "event_id": "E000043",
+    "event_kind": "risk",
+    "start_ms": 8650.0,
+    "end_ms": 9700.000000000002,
+    "right_censored": false,
+    "alert_count": 1,
+    "source_track_ids": [
+      198
+    ],
+    "class_name": "handbag",
+    "alert_times_ms": [
+      8900.0
+    ],
+    "flags": []
+  },
+  {
+    "video_id": "urbanego_run8_06",
+    "event_id": "E000045",
+    "event_kind": "risk",
+    "start_ms": 9050.0,
+    "end_ms": 12000.0,
+    "right_censored": false,
+    "alert_count": 1,
+    "source_track_ids": [
+      213,
+      244
+    ],
+    "class_name": "chair",
+    "alert_times_ms": [
+      9650.0
+    ],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15",
+      "multiple_track_ids",
+      "active_reentry"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_06",
+    "event_id": "E000046",
+    "event_kind": "risk",
+    "start_ms": 9150.0,
+    "end_ms": 10750.0,
+    "right_censored": false,
+    "alert_count": 1,
+    "source_track_ids": [
+      172
+    ],
+    "class_name": "chair",
+    "alert_times_ms": [
+      9400.0
+    ],
+    "flags": []
+  },
+  {
+    "video_id": "urbanego_run8_06",
+    "event_id": "E000050",
+    "event_kind": "risk",
+    "start_ms": 9600.000000000002,
+    "end_ms": 10700.000000000002,
+    "right_censored": false,
+    "alert_count": 1,
+    "source_track_ids": [
+      232
+    ],
+    "class_name": "dining table",
+    "alert_times_ms": [
+      9850.000000000002
+    ],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_06",
+    "event_id": "E000052",
+    "event_kind": "risk",
+    "start_ms": 9850.000000000002,
+    "end_ms": 11700.000000000002,
+    "right_censored": false,
+    "alert_count": 1,
+    "source_track_ids": [
+      244
+    ],
+    "class_name": "dining table",
+    "alert_times_ms": [
+      10350.000000000002
+    ],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15",
+      "active_reentry"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_06",
+    "event_id": "E000062",
+    "event_kind": "risk",
+    "start_ms": 14250.0,
+    "end_ms": 15000.000000000002,
+    "right_censored": true,
+    "alert_count": 1,
+    "source_track_ids": [
+      323,
+      325
+    ],
+    "class_name": "handbag",
+    "alert_times_ms": [
+      14750.0
+    ],
+    "flags": [
+      "multiple_track_ids"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_06",
+    "event_id": "E000006",
+    "event_kind": "risk",
+    "start_ms": 450.0,
+    "end_ms": 2150.0,
+    "right_censored": false,
+    "alert_count": 0,
+    "source_track_ids": [
+      9
+    ],
+    "class_name": "person",
+    "alert_times_ms": [],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_06",
+    "event_id": "E000010",
+    "event_kind": "risk",
+    "start_ms": 2200.0,
+    "end_ms": 3100.0,
+    "right_censored": false,
+    "alert_count": 0,
+    "source_track_ids": [
+      33
+    ],
+    "class_name": "person",
+    "alert_times_ms": [],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_06",
+    "event_id": "E000021",
+    "event_kind": "risk",
+    "start_ms": 4600.000000000001,
+    "end_ms": 5500.0,
+    "right_censored": false,
+    "alert_count": 0,
+    "source_track_ids": [
+      88
+    ],
+    "class_name": "train",
+    "alert_times_ms": [],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_06",
+    "event_id": "E000028",
+    "event_kind": "risk",
+    "start_ms": 5650.0,
+    "end_ms": 6550.000000000001,
+    "right_censored": false,
+    "alert_count": 0,
+    "source_track_ids": [
+      111
+    ],
+    "class_name": "handbag",
+    "alert_times_ms": [],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_06",
+    "event_id": "E000044",
+    "event_kind": "risk",
+    "start_ms": 8750.0,
+    "end_ms": 10350.000000000002,
+    "right_censored": false,
+    "alert_count": 0,
+    "source_track_ids": [
+      204
+    ],
+    "class_name": "chair",
+    "alert_times_ms": [],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_06",
+    "event_id": "E000055",
+    "event_kind": "risk",
+    "start_ms": 12200.000000000002,
+    "end_ms": 13150.0,
+    "right_censored": false,
+    "alert_count": 0,
+    "source_track_ids": [
+      280
+    ],
+    "class_name": "person",
+    "alert_times_ms": [],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_06",
+    "event_id": "E000058",
+    "event_kind": "risk",
+    "start_ms": 13550.0,
+    "end_ms": 14650.0,
+    "right_censored": false,
+    "alert_count": 0,
+    "source_track_ids": [
+      306
+    ],
+    "class_name": "handbag",
+    "alert_times_ms": [],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_06",
+    "event_id": "E000063",
+    "event_kind": "risk",
+    "start_ms": 14300.0,
+    "end_ms": 15000.000000000002,
+    "right_censored": true,
+    "alert_count": 0,
+    "source_track_ids": [
+      324
+    ],
+    "class_name": "bench",
+    "alert_times_ms": [],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_06",
+    "event_id": "H000001",
+    "event_kind": "perception",
+    "start_ms": 9400.0,
+    "end_ms": 9450.000000000002,
+    "right_censored": false,
+    "alert_count": 0,
+    "source_track_ids": [],
+    "class_name": null,
+    "alert_times_ms": [],
+    "flags": [
+      "perception_episode_no_alert"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_07",
+    "event_id": "E000020",
+    "event_kind": "risk",
+    "start_ms": 1300.0,
+    "end_ms": 6850.000000000001,
+    "right_censored": false,
+    "alert_count": 2,
+    "source_track_ids": [
+      62
+    ],
+    "class_name": "person",
+    "alert_times_ms": [
+      1550.0,
+      3800.0000000000005
+    ],
+    "flags": [
+      "multiple_alerts",
+      "score_level_change_or_delta_ge_0.15",
+      "active_reentry"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_07",
+    "event_id": "E000027",
+    "event_kind": "risk",
+    "start_ms": 2050.0000000000005,
+    "end_ms": 7050.000000000001,
+    "right_censored": false,
+    "alert_count": 2,
+    "source_track_ids": [
+      91
+    ],
+    "class_name": "person",
+    "alert_times_ms": [
+      2950.0,
+      4100.000000000001
+    ],
+    "flags": [
+      "multiple_alerts",
+      "score_level_change_or_delta_ge_0.15",
+      "active_reentry"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_07",
+    "event_id": "E000041",
+    "event_kind": "risk",
+    "start_ms": 3500.0,
+    "end_ms": 6850.000000000001,
+    "right_censored": false,
+    "alert_count": 2,
+    "source_track_ids": [
+      86
+    ],
+    "class_name": "person",
+    "alert_times_ms": [
+      3850.0,
+      5000.0
+    ],
+    "flags": [
+      "multiple_alerts",
+      "score_level_change_or_delta_ge_0.15",
+      "active_reentry"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_07",
+    "event_id": "E000060",
+    "event_kind": "risk",
+    "start_ms": 6050.000000000001,
+    "end_ms": 11950.000000000002,
+    "right_censored": false,
+    "alert_count": 2,
+    "source_track_ids": [
+      242
+    ],
+    "class_name": "person",
+    "alert_times_ms": [
+      6400.0,
+      7500.0
+    ],
+    "flags": [
+      "multiple_alerts",
+      "score_level_change_or_delta_ge_0.15",
+      "active_reentry"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_07",
+    "event_id": "E000062",
+    "event_kind": "risk",
+    "start_ms": 6050.000000000001,
+    "end_ms": 12200.000000000002,
+    "right_censored": false,
+    "alert_count": 2,
+    "source_track_ids": [
+      244,
+      268
+    ],
+    "class_name": "chair",
+    "alert_times_ms": [
+      6450.0,
+      7950.0
+    ],
+    "flags": [
+      "multiple_alerts",
+      "score_level_change_or_delta_ge_0.15",
+      "multiple_track_ids",
+      "active_reentry"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_07",
+    "event_id": "E000077",
+    "event_kind": "risk",
+    "start_ms": 7450.0,
+    "end_ms": 12500.0,
+    "right_censored": false,
+    "alert_count": 2,
+    "source_track_ids": [
+      268,
+      298
+    ],
+    "class_name": "chair",
+    "alert_times_ms": [
+      8250.0,
+      9350.0
+    ],
+    "flags": [
+      "multiple_alerts",
+      "score_level_change_or_delta_ge_0.15",
+      "multiple_track_ids",
+      "active_reentry"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_07",
+    "event_id": "E000078",
+    "event_kind": "risk",
+    "start_ms": 7850.000000000001,
+    "end_ms": 10650.0,
+    "right_censored": false,
+    "alert_count": 2,
+    "source_track_ids": [
+      309,
+      358
+    ],
+    "class_name": "chair",
+    "alert_times_ms": [
+      8150.0,
+      9700.000000000002
+    ],
+    "flags": [
+      "multiple_alerts",
+      "score_level_change_or_delta_ge_0.15",
+      "multiple_track_ids",
+      "active_reentry"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_07",
+    "event_id": "E000092",
+    "event_kind": "risk",
+    "start_ms": 10650.0,
+    "end_ms": 15000.000000000002,
+    "right_censored": true,
+    "alert_count": 2,
+    "source_track_ids": [
+      377
+    ],
+    "class_name": "potted plant",
+    "alert_times_ms": [
+      11250.0,
+      12950.000000000002
+    ],
+    "flags": [
+      "multiple_alerts",
+      "score_level_change_or_delta_ge_0.15",
+      "active_reentry"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_07",
+    "event_id": "E000001",
+    "event_kind": "risk",
+    "start_ms": 0.0,
+    "end_ms": 4300.0,
+    "right_censored": false,
+    "alert_count": 1,
+    "source_track_ids": [
+      2
+    ],
+    "class_name": "person",
+    "alert_times_ms": [
+      300.00000000000006
+    ],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15",
+      "active_reentry"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_07",
+    "event_id": "E000002",
+    "event_kind": "risk",
+    "start_ms": 0.0,
+    "end_ms": 1450.0000000000002,
+    "right_censored": false,
+    "alert_count": 1,
+    "source_track_ids": [
+      1
+    ],
+    "class_name": "person",
+    "alert_times_ms": [
+      250.0
+    ],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_07",
+    "event_id": "E000003",
+    "event_kind": "risk",
+    "start_ms": 0.0,
+    "end_ms": 1800.0,
+    "right_censored": false,
+    "alert_count": 1,
+    "source_track_ids": [
+      5
+    ],
+    "class_name": "person",
+    "alert_times_ms": [
+      350.00000000000006
+    ],
+    "flags": [
+      "active_reentry"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_07",
+    "event_id": "E000004",
+    "event_kind": "risk",
+    "start_ms": 0.0,
+    "end_ms": 2550.0000000000005,
+    "right_censored": false,
+    "alert_count": 1,
+    "source_track_ids": [
+      4
+    ],
+    "class_name": "person",
+    "alert_times_ms": [
+      400.0
+    ],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15",
+      "active_reentry"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_07",
+    "event_id": "E000006",
+    "event_kind": "risk",
+    "start_ms": 0.0,
+    "end_ms": 3250.0,
+    "right_censored": false,
+    "alert_count": 1,
+    "source_track_ids": [
+      3
+    ],
+    "class_name": "umbrella",
+    "alert_times_ms": [
+      750.0
+    ],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15",
+      "active_reentry"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_07",
+    "event_id": "E000009",
+    "event_kind": "risk",
+    "start_ms": 500.0,
+    "end_ms": 2300.0000000000005,
+    "right_censored": false,
+    "alert_count": 1,
+    "source_track_ids": [
+      27,
+      74
+    ],
+    "class_name": "person",
+    "alert_times_ms": [
+      1200.0000000000002
+    ],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15",
+      "multiple_track_ids",
+      "active_reentry"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_07",
+    "event_id": "E000010",
+    "event_kind": "risk",
+    "start_ms": 500.0,
+    "end_ms": 2400.0000000000005,
+    "right_censored": false,
+    "alert_count": 1,
+    "source_track_ids": [
+      28,
+      75,
+      80
+    ],
+    "class_name": "chair",
+    "alert_times_ms": [
+      1650.0000000000002
+    ],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15",
+      "multiple_track_ids",
+      "active_reentry"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_07",
+    "event_id": "E000015",
+    "event_kind": "risk",
+    "start_ms": 750.0,
+    "end_ms": 2550.0000000000005,
+    "right_censored": false,
+    "alert_count": 1,
+    "source_track_ids": [
+      40
+    ],
+    "class_name": "person",
+    "alert_times_ms": [
+      1000.0
+    ],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_07",
+    "event_id": "E000022",
+    "event_kind": "risk",
+    "start_ms": 1550.0,
+    "end_ms": 4000.0,
+    "right_censored": false,
+    "alert_count": 1,
+    "source_track_ids": [
+      73
+    ],
+    "class_name": "person",
+    "alert_times_ms": [
+      2050.0000000000005
+    ],
+    "flags": []
+  },
+  {
+    "video_id": "urbanego_run8_07",
+    "event_id": "E000025",
+    "event_kind": "risk",
+    "start_ms": 1650.0000000000002,
+    "end_ms": 3000.0,
+    "right_censored": false,
+    "alert_count": 1,
+    "source_track_ids": [
+      81
+    ],
+    "class_name": "chair",
+    "alert_times_ms": [
+      1900.0000000000002
+    ],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15",
+      "active_reentry"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_07",
+    "event_id": "E000028",
+    "event_kind": "risk",
+    "start_ms": 2150.0,
+    "end_ms": 3550.0000000000005,
+    "right_censored": false,
+    "alert_count": 1,
+    "source_track_ids": [
+      80,
+      93
+    ],
+    "class_name": "person",
+    "alert_times_ms": [
+      2600.0
+    ],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15",
+      "multiple_track_ids"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_07",
+    "event_id": "E000029",
+    "event_kind": "risk",
+    "start_ms": 2550.0000000000005,
+    "end_ms": 9550.0,
+    "right_censored": false,
+    "alert_count": 1,
+    "source_track_ids": [
+      99,
+      111
+    ],
+    "class_name": "person",
+    "alert_times_ms": [
+      3550.0000000000005
+    ],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15",
+      "multiple_track_ids",
+      "active_reentry"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_07",
+    "event_id": "E000031",
+    "event_kind": "risk",
+    "start_ms": 2650.0000000000005,
+    "end_ms": 5050.000000000001,
+    "right_censored": false,
+    "alert_count": 1,
+    "source_track_ids": [
+      101
+    ],
+    "class_name": "chair",
+    "alert_times_ms": [
+      2900.0000000000005
+    ],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15",
+      "active_reentry"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_07",
+    "event_id": "E000040",
+    "event_kind": "risk",
+    "start_ms": 3300.0000000000005,
+    "end_ms": 6250.0,
+    "right_censored": false,
+    "alert_count": 1,
+    "source_track_ids": [
+      122,
+      145
+    ],
+    "class_name": "person",
+    "alert_times_ms": [
+      5350.000000000001
+    ],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15",
+      "multiple_track_ids"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_07",
+    "event_id": "E000045",
+    "event_kind": "risk",
+    "start_ms": 4250.0,
+    "end_ms": 6850.000000000001,
+    "right_censored": false,
+    "alert_count": 1,
+    "source_track_ids": [
+      172,
+      245
+    ],
+    "class_name": "tv",
+    "alert_times_ms": [
+      5700.0
+    ],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15",
+      "multiple_track_ids",
+      "active_reentry"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_07",
+    "event_id": "E000047",
+    "event_kind": "risk",
+    "start_ms": 4500.0,
+    "end_ms": 6750.0,
+    "right_censored": false,
+    "alert_count": 1,
+    "source_track_ids": [
+      181
+    ],
+    "class_name": "chair",
+    "alert_times_ms": [
+      4750.0
+    ],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15",
+      "active_reentry"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_07",
+    "event_id": "E000052",
+    "event_kind": "risk",
+    "start_ms": 4950.0,
+    "end_ms": 15000.000000000002,
+    "right_censored": true,
+    "alert_count": 1,
+    "source_track_ids": [
+      197
+    ],
+    "class_name": "person",
+    "alert_times_ms": [
+      5550.000000000001
+    ],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15",
+      "active_reentry"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_07",
+    "event_id": "E000061",
+    "event_kind": "risk",
+    "start_ms": 6050.000000000001,
+    "end_ms": 8400.0,
+    "right_censored": false,
+    "alert_count": 1,
+    "source_track_ids": [
+      243
+    ],
+    "class_name": "person",
+    "alert_times_ms": [
+      6300.000000000001
+    ],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15",
+      "active_reentry"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_07",
+    "event_id": "E000064",
+    "event_kind": "risk",
+    "start_ms": 6100.000000000001,
+    "end_ms": 7250.0,
+    "right_censored": false,
+    "alert_count": 1,
+    "source_track_ids": [
+      86
+    ],
+    "class_name": "chair",
+    "alert_times_ms": [
+      6350.000000000001
+    ],
+    "flags": []
+  },
+  {
+    "video_id": "urbanego_run8_07",
+    "event_id": "E000065",
+    "event_kind": "risk",
+    "start_ms": 6250.0,
+    "end_ms": 7850.000000000001,
+    "right_censored": false,
+    "alert_count": 1,
+    "source_track_ids": [
+      260
+    ],
+    "class_name": "chair",
+    "alert_times_ms": [
+      6650.0
+    ],
+    "flags": [
+      "active_reentry"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_07",
+    "event_id": "E000068",
+    "event_kind": "risk",
+    "start_ms": 6350.000000000001,
+    "end_ms": 7850.000000000001,
+    "right_censored": false,
+    "alert_count": 1,
+    "source_track_ids": [
+      266
+    ],
+    "class_name": "person",
+    "alert_times_ms": [
+      7050.000000000001
+    ],
+    "flags": []
+  },
+  {
+    "video_id": "urbanego_run8_07",
+    "event_id": "E000071",
+    "event_kind": "risk",
+    "start_ms": 6600.000000000001,
+    "end_ms": 11750.0,
+    "right_censored": false,
+    "alert_count": 1,
+    "source_track_ids": [
+      274
+    ],
+    "class_name": "person",
+    "alert_times_ms": [
+      7200.0
+    ],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_07",
+    "event_id": "E000076",
+    "event_kind": "risk",
+    "start_ms": 7300.000000000001,
+    "end_ms": 8700.000000000002,
+    "right_censored": false,
+    "alert_count": 1,
+    "source_track_ids": [
+      292
+    ],
+    "class_name": "chair",
+    "alert_times_ms": [
+      7550.000000000001
+    ],
+    "flags": [
+      "active_reentry"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_07",
+    "event_id": "E000079",
+    "event_kind": "risk",
+    "start_ms": 8100.0,
+    "end_ms": 9600.000000000002,
+    "right_censored": false,
+    "alert_count": 1,
+    "source_track_ids": [
+      314
+    ],
+    "class_name": "chair",
+    "alert_times_ms": [
+      8550.0
+    ],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15",
+      "active_reentry"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_07",
+    "event_id": "E000085",
+    "event_kind": "risk",
+    "start_ms": 9050.0,
+    "end_ms": 11150.0,
+    "right_censored": false,
+    "alert_count": 1,
+    "source_track_ids": [
+      341
+    ],
+    "class_name": "chair",
+    "alert_times_ms": [
+      9600.000000000002
+    ],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15",
+      "active_reentry"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_07",
+    "event_id": "E000091",
+    "event_kind": "risk",
+    "start_ms": 10650.0,
+    "end_ms": 15000.000000000002,
+    "right_censored": true,
+    "alert_count": 1,
+    "source_track_ids": [
+      347
+    ],
+    "class_name": "person",
+    "alert_times_ms": [
+      10900.0
+    ],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15",
+      "active_reentry"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_07",
+    "event_id": "E000099",
+    "event_kind": "risk",
+    "start_ms": 11500.0,
+    "end_ms": 14500.0,
+    "right_censored": false,
+    "alert_count": 1,
+    "source_track_ids": [
+      406
+    ],
+    "class_name": "person",
+    "alert_times_ms": [
+      11750.0
+    ],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15",
+      "active_reentry"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_07",
+    "event_id": "E000100",
+    "event_kind": "risk",
+    "start_ms": 11800.0,
+    "end_ms": 14800.0,
+    "right_censored": false,
+    "alert_count": 1,
+    "source_track_ids": [
+      413
+    ],
+    "class_name": "potted plant",
+    "alert_times_ms": [
+      12050.0
+    ],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15",
+      "active_reentry"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_07",
+    "event_id": "E000101",
+    "event_kind": "risk",
+    "start_ms": 12350.000000000002,
+    "end_ms": 13450.000000000002,
+    "right_censored": false,
+    "alert_count": 1,
+    "source_track_ids": [
+      422
+    ],
+    "class_name": "person",
+    "alert_times_ms": [
+      12600.000000000002
+    ],
+    "flags": []
+  },
+  {
+    "video_id": "urbanego_run8_07",
+    "event_id": "E000110",
+    "event_kind": "risk",
+    "start_ms": 13550.0,
+    "end_ms": 15000.000000000002,
+    "right_censored": true,
+    "alert_count": 1,
+    "source_track_ids": [
+      454
+    ],
+    "class_name": "person",
+    "alert_times_ms": [
+      13800.0
+    ],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_07",
+    "event_id": "E000114",
+    "event_kind": "risk",
+    "start_ms": 13800.0,
+    "end_ms": 15000.000000000002,
+    "right_censored": true,
+    "alert_count": 1,
+    "source_track_ids": [
+      463
+    ],
+    "class_name": "person",
+    "alert_times_ms": [
+      14050.0
+    ],
+    "flags": [
+      "active_reentry"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_07",
+    "event_id": "E000119",
+    "event_kind": "risk",
+    "start_ms": 14150.0,
+    "end_ms": 15000.000000000002,
+    "right_censored": true,
+    "alert_count": 1,
+    "source_track_ids": [
+      425
+    ],
+    "class_name": "person",
+    "alert_times_ms": [
+      14650.0
+    ],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_07",
+    "event_id": "E000005",
+    "event_kind": "risk",
+    "start_ms": 0.0,
+    "end_ms": 850.0000000000001,
+    "right_censored": false,
+    "alert_count": 0,
+    "source_track_ids": [
+      7
+    ],
+    "class_name": "umbrella",
+    "alert_times_ms": [],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_07",
+    "event_id": "E000012",
+    "event_kind": "risk",
+    "start_ms": 550.0,
+    "end_ms": 2550.0000000000005,
+    "right_censored": false,
+    "alert_count": 0,
+    "source_track_ids": [
+      35
+    ],
+    "class_name": "chair",
+    "alert_times_ms": [],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_07",
+    "event_id": "E000016",
+    "event_kind": "risk",
+    "start_ms": 1000.0,
+    "end_ms": 2850.0,
+    "right_censored": false,
+    "alert_count": 0,
+    "source_track_ids": [
+      55
+    ],
+    "class_name": "person",
+    "alert_times_ms": [],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_07",
+    "event_id": "E000019",
+    "event_kind": "risk",
+    "start_ms": 1100.0,
+    "end_ms": 3250.0,
+    "right_censored": false,
+    "alert_count": 0,
+    "source_track_ids": [
+      59,
+      98
+    ],
+    "class_name": "person",
+    "alert_times_ms": [],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15",
+      "multiple_track_ids"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_07",
+    "event_id": "E000026",
+    "event_kind": "risk",
+    "start_ms": 1750.0,
+    "end_ms": 3350.0,
+    "right_censored": false,
+    "alert_count": 0,
+    "source_track_ids": [
+      86
+    ],
+    "class_name": "person",
+    "alert_times_ms": [],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_07",
+    "event_id": "E000033",
+    "event_kind": "risk",
+    "start_ms": 2750.0,
+    "end_ms": 4550.0,
+    "right_censored": false,
+    "alert_count": 0,
+    "source_track_ids": [
+      105,
+      121
+    ],
+    "class_name": "person",
+    "alert_times_ms": [],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15",
+      "multiple_track_ids"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_07",
+    "event_id": "E000038",
+    "event_kind": "risk",
+    "start_ms": 3100.0,
+    "end_ms": 4000.0,
+    "right_censored": false,
+    "alert_count": 0,
+    "source_track_ids": [
+      112
+    ],
+    "class_name": "tv",
+    "alert_times_ms": [],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_07",
+    "event_id": "E000039",
+    "event_kind": "risk",
+    "start_ms": 3250.0,
+    "end_ms": 4250.0,
+    "right_censored": false,
+    "alert_count": 0,
+    "source_track_ids": [
+      81,
+      127
+    ],
+    "class_name": "person",
+    "alert_times_ms": [],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15",
+      "multiple_track_ids"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_07",
+    "event_id": "E000044",
+    "event_kind": "risk",
+    "start_ms": 4100.000000000001,
+    "end_ms": 5500.0,
+    "right_censored": false,
+    "alert_count": 0,
+    "source_track_ids": [
+      101,
+      113
+    ],
+    "class_name": "person",
+    "alert_times_ms": [],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15",
+      "multiple_track_ids"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_07",
+    "event_id": "E000049",
+    "event_kind": "risk",
+    "start_ms": 4550.0,
+    "end_ms": 5400.0,
+    "right_censored": false,
+    "alert_count": 0,
+    "source_track_ids": [
+      183
+    ],
+    "class_name": "train",
+    "alert_times_ms": [],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_07",
+    "event_id": "E000053",
+    "event_kind": "risk",
+    "start_ms": 4950.0,
+    "end_ms": 6550.000000000001,
+    "right_censored": false,
+    "alert_count": 0,
+    "source_track_ids": [
+      172
+    ],
+    "class_name": "suitcase",
+    "alert_times_ms": [],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_07",
+    "event_id": "E000059",
+    "event_kind": "risk",
+    "start_ms": 6000.0,
+    "end_ms": 7250.0,
+    "right_censored": false,
+    "alert_count": 0,
+    "source_track_ids": [
+      172
+    ],
+    "class_name": "laptop",
+    "alert_times_ms": [],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_07",
+    "event_id": "E000063",
+    "event_kind": "risk",
+    "start_ms": 6100.000000000001,
+    "end_ms": 7750.0,
+    "right_censored": false,
+    "alert_count": 0,
+    "source_track_ids": [
+      86,
+      181
+    ],
+    "class_name": "chair",
+    "alert_times_ms": [],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15",
+      "multiple_track_ids"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_07",
+    "event_id": "E000066",
+    "event_kind": "risk",
+    "start_ms": 6300.000000000001,
+    "end_ms": 7250.0,
+    "right_censored": false,
+    "alert_count": 0,
+    "source_track_ids": [
+      264,
+      270
+    ],
+    "class_name": "chair",
+    "alert_times_ms": [],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15",
+      "multiple_track_ids"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_07",
+    "event_id": "E000067",
+    "event_kind": "risk",
+    "start_ms": 6300.000000000001,
+    "end_ms": 7150.0,
+    "right_censored": false,
+    "alert_count": 0,
+    "source_track_ids": [
+      91
+    ],
+    "class_name": "chair",
+    "alert_times_ms": [],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_07",
+    "event_id": "E000073",
+    "event_kind": "risk",
+    "start_ms": 7050.000000000001,
+    "end_ms": 8550.0,
+    "right_censored": false,
+    "alert_count": 0,
+    "source_track_ids": [
+      286
+    ],
+    "class_name": "chair",
+    "alert_times_ms": [],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_07",
+    "event_id": "E000074",
+    "event_kind": "risk",
+    "start_ms": 7100.000000000001,
+    "end_ms": 8800.0,
+    "right_censored": false,
+    "alert_count": 0,
+    "source_track_ids": [
+      86
+    ],
+    "class_name": "chair",
+    "alert_times_ms": [],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_07",
+    "event_id": "E000080",
+    "event_kind": "risk",
+    "start_ms": 8150.0,
+    "end_ms": 9600.000000000002,
+    "right_censored": false,
+    "alert_count": 0,
+    "source_track_ids": [
+      317
+    ],
+    "class_name": "chair",
+    "alert_times_ms": [],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_07",
+    "event_id": "E000083",
+    "event_kind": "risk",
+    "start_ms": 8950.000000000002,
+    "end_ms": 9800.0,
+    "right_censored": false,
+    "alert_count": 0,
+    "source_track_ids": [
+      336
+    ],
+    "class_name": "chair",
+    "alert_times_ms": [],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_07",
+    "event_id": "E000094",
+    "event_kind": "risk",
+    "start_ms": 10800.0,
+    "end_ms": 11650.0,
+    "right_censored": false,
+    "alert_count": 0,
+    "source_track_ids": [
+      391
+    ],
+    "class_name": "person",
+    "alert_times_ms": [],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_07",
+    "event_id": "E000098",
+    "event_kind": "risk",
+    "start_ms": 11450.000000000002,
+    "end_ms": 12850.000000000002,
+    "right_censored": false,
+    "alert_count": 0,
+    "source_track_ids": [
+      268
+    ],
+    "class_name": "bench",
+    "alert_times_ms": [],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_07",
+    "event_id": "E000111",
+    "event_kind": "risk",
+    "start_ms": 13800.0,
+    "end_ms": 15000.000000000002,
+    "right_censored": true,
+    "alert_count": 0,
+    "source_track_ids": [
+      462
+    ],
+    "class_name": "person",
+    "alert_times_ms": [],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_07",
+    "event_id": "E000115",
+    "event_kind": "risk",
+    "start_ms": 13800.0,
+    "end_ms": 15000.000000000002,
+    "right_censored": true,
+    "alert_count": 0,
+    "source_track_ids": [
+      465,
+      470
+    ],
+    "class_name": "bench",
+    "alert_times_ms": [],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15",
+      "multiple_track_ids"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_07",
+    "event_id": "E000116",
+    "event_kind": "risk",
+    "start_ms": 13900.0,
+    "end_ms": 14900.0,
+    "right_censored": false,
+    "alert_count": 0,
+    "source_track_ids": [
+      469
+    ],
+    "class_name": "person",
+    "alert_times_ms": [],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_07",
+    "event_id": "H000001",
+    "event_kind": "perception",
+    "start_ms": 2700.0,
+    "end_ms": 2750.0,
+    "right_censored": false,
+    "alert_count": 0,
+    "source_track_ids": [],
+    "class_name": null,
+    "alert_times_ms": [],
+    "flags": [
+      "perception_episode_no_alert"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_07",
+    "event_id": "H000002",
+    "event_kind": "perception",
+    "start_ms": 3600.0,
+    "end_ms": 3650.0000000000005,
+    "right_censored": false,
+    "alert_count": 0,
+    "source_track_ids": [],
+    "class_name": null,
+    "alert_times_ms": [],
+    "flags": [
+      "perception_episode_no_alert"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_07",
+    "event_id": "H000003",
+    "event_kind": "perception",
+    "start_ms": 4750.0,
+    "end_ms": 4800.000000000001,
+    "right_censored": false,
+    "alert_count": 0,
+    "source_track_ids": [],
+    "class_name": null,
+    "alert_times_ms": [],
+    "flags": [
+      "perception_episode_no_alert"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_07",
+    "event_id": "H000004",
+    "event_kind": "perception",
+    "start_ms": 5550.000000000001,
+    "end_ms": 5600.000000000001,
+    "right_censored": false,
+    "alert_count": 0,
+    "source_track_ids": [],
+    "class_name": null,
+    "alert_times_ms": [],
+    "flags": [
+      "perception_episode_no_alert"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_07",
+    "event_id": "H000005",
+    "event_kind": "perception",
+    "start_ms": 5750.0,
+    "end_ms": 5800.000000000001,
+    "right_censored": false,
+    "alert_count": 0,
+    "source_track_ids": [],
+    "class_name": null,
+    "alert_times_ms": [],
+    "flags": [
+      "perception_episode_no_alert"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_07",
+    "event_id": "H000006",
+    "event_kind": "perception",
+    "start_ms": 6400.0,
+    "end_ms": 6450.0,
+    "right_censored": false,
+    "alert_count": 0,
+    "source_track_ids": [],
+    "class_name": null,
+    "alert_times_ms": [],
+    "flags": [
+      "perception_episode_no_alert"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_07",
+    "event_id": "H000007",
+    "event_kind": "perception",
+    "start_ms": 7200.0,
+    "end_ms": 7250.0,
+    "right_censored": false,
+    "alert_count": 0,
+    "source_track_ids": [],
+    "class_name": null,
+    "alert_times_ms": [],
+    "flags": [
+      "perception_episode_no_alert"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_07",
+    "event_id": "H000008",
+    "event_kind": "perception",
+    "start_ms": 8750.0,
+    "end_ms": 8800.0,
+    "right_censored": false,
+    "alert_count": 0,
+    "source_track_ids": [],
+    "class_name": null,
+    "alert_times_ms": [],
+    "flags": [
+      "perception_episode_no_alert"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_07",
+    "event_id": "H000009",
+    "event_kind": "perception",
+    "start_ms": 11750.0,
+    "end_ms": 11800.0,
+    "right_censored": false,
+    "alert_count": 0,
+    "source_track_ids": [],
+    "class_name": null,
+    "alert_times_ms": [],
+    "flags": [
+      "perception_episode_no_alert"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_08",
+    "event_id": "E000020",
+    "event_kind": "risk",
+    "start_ms": 3450.0,
+    "end_ms": 12550.0,
+    "right_censored": false,
+    "alert_count": 2,
+    "source_track_ids": [
+      91
+    ],
+    "class_name": "bench",
+    "alert_times_ms": [
+      3800.0000000000005,
+      7350.000000000001
+    ],
+    "flags": [
+      "multiple_alerts",
+      "score_level_change_or_delta_ge_0.15",
+      "active_reentry"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_08",
+    "event_id": "E000002",
+    "event_kind": "risk",
+    "start_ms": 0.0,
+    "end_ms": 3500.0,
+    "right_censored": false,
+    "alert_count": 1,
+    "source_track_ids": [
+      2
+    ],
+    "class_name": "bench",
+    "alert_times_ms": [
+      450.0
+    ],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15",
+      "active_reentry"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_08",
+    "event_id": "E000003",
+    "event_kind": "risk",
+    "start_ms": 650.0,
+    "end_ms": 5900.0,
+    "right_censored": false,
+    "alert_count": 1,
+    "source_track_ids": [
+      15,
+      96
+    ],
+    "class_name": "person",
+    "alert_times_ms": [
+      900.0
+    ],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15",
+      "multiple_track_ids",
+      "active_reentry"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_08",
+    "event_id": "E000053",
+    "event_kind": "risk",
+    "start_ms": 11850.000000000002,
+    "end_ms": 12900.0,
+    "right_censored": false,
+    "alert_count": 1,
+    "source_track_ids": [
+      238
+    ],
+    "class_name": "refrigerator",
+    "alert_times_ms": [
+      12100.000000000002
+    ],
+    "flags": []
+  },
+  {
+    "video_id": "urbanego_run8_08",
+    "event_id": "E000054",
+    "event_kind": "risk",
+    "start_ms": 11850.000000000002,
+    "end_ms": 13800.0,
+    "right_censored": false,
+    "alert_count": 1,
+    "source_track_ids": [
+      237,
+      253
+    ],
+    "class_name": "refrigerator",
+    "alert_times_ms": [
+      12400.0
+    ],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15",
+      "multiple_track_ids",
+      "active_reentry"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_08",
+    "event_id": "E000001",
+    "event_kind": "risk",
+    "start_ms": 0.0,
+    "end_ms": 2650.0000000000005,
+    "right_censored": false,
+    "alert_count": 0,
+    "source_track_ids": [
+      1
+    ],
+    "class_name": "person",
+    "alert_times_ms": [],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15",
+      "active_reentry"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_08",
+    "event_id": "E000004",
+    "event_kind": "risk",
+    "start_ms": 700.0000000000001,
+    "end_ms": 2800.0000000000005,
+    "right_censored": false,
+    "alert_count": 0,
+    "source_track_ids": [
+      16,
+      32
+    ],
+    "class_name": "person",
+    "alert_times_ms": [],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15",
+      "multiple_track_ids"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_08",
+    "event_id": "E000009",
+    "event_kind": "risk",
+    "start_ms": 1700.0000000000002,
+    "end_ms": 4550.0,
+    "right_censored": false,
+    "alert_count": 0,
+    "source_track_ids": [
+      38
+    ],
+    "class_name": "train",
+    "alert_times_ms": [],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_08",
+    "event_id": "E000010",
+    "event_kind": "risk",
+    "start_ms": 1800.0,
+    "end_ms": 2800.0000000000005,
+    "right_censored": false,
+    "alert_count": 0,
+    "source_track_ids": [
+      39
+    ],
+    "class_name": "train",
+    "alert_times_ms": [],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_08",
+    "event_id": "E000017",
+    "event_kind": "risk",
+    "start_ms": 2800.0000000000005,
+    "end_ms": 4900.0,
+    "right_censored": false,
+    "alert_count": 0,
+    "source_track_ids": [
+      66,
+      95
+    ],
+    "class_name": "car",
+    "alert_times_ms": [],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15",
+      "multiple_track_ids",
+      "active_reentry"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_08",
+    "event_id": "E000019",
+    "event_kind": "risk",
+    "start_ms": 3400.0000000000005,
+    "end_ms": 5700.0,
+    "right_censored": false,
+    "alert_count": 0,
+    "source_track_ids": [
+      90
+    ],
+    "class_name": "person",
+    "alert_times_ms": [],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_08",
+    "event_id": "E000029",
+    "event_kind": "risk",
+    "start_ms": 6050.000000000001,
+    "end_ms": 6950.0,
+    "right_censored": false,
+    "alert_count": 0,
+    "source_track_ids": [
+      125
+    ],
+    "class_name": "potted plant",
+    "alert_times_ms": [],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_08",
+    "event_id": "E000036",
+    "event_kind": "risk",
+    "start_ms": 7700.0,
+    "end_ms": 8550.0,
+    "right_censored": false,
+    "alert_count": 0,
+    "source_track_ids": [
+      167
+    ],
+    "class_name": "potted plant",
+    "alert_times_ms": [],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_08",
+    "event_id": "E000043",
+    "event_kind": "risk",
+    "start_ms": 10000.0,
+    "end_ms": 11150.0,
+    "right_censored": false,
+    "alert_count": 0,
+    "source_track_ids": [
+      210
+    ],
+    "class_name": "person",
+    "alert_times_ms": [],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15",
+      "active_reentry"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_08",
+    "event_id": "E000045",
+    "event_kind": "risk",
+    "start_ms": 10000.0,
+    "end_ms": 11150.0,
+    "right_censored": false,
+    "alert_count": 0,
+    "source_track_ids": [
+      212
+    ],
+    "class_name": "car",
+    "alert_times_ms": [],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_08",
+    "event_id": "E000055",
+    "event_kind": "risk",
+    "start_ms": 12000.0,
+    "end_ms": 13700.000000000002,
+    "right_censored": false,
+    "alert_count": 0,
+    "source_track_ids": [
+      241
+    ],
+    "class_name": "refrigerator",
+    "alert_times_ms": [],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_08",
+    "event_id": "E000057",
+    "event_kind": "risk",
+    "start_ms": 12550.0,
+    "end_ms": 13800.0,
+    "right_censored": false,
+    "alert_count": 0,
+    "source_track_ids": [
+      249,
+      250
+    ],
+    "class_name": "bottle",
+    "alert_times_ms": [],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15",
+      "multiple_track_ids"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_08",
+    "event_id": "E000058",
+    "event_kind": "risk",
+    "start_ms": 13050.0,
+    "end_ms": 14000.0,
+    "right_censored": false,
+    "alert_count": 0,
+    "source_track_ids": [
+      237
+    ],
+    "class_name": "refrigerator",
+    "alert_times_ms": [],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_08",
+    "event_id": "E000059",
+    "event_kind": "risk",
+    "start_ms": 14300.0,
+    "end_ms": 15000.000000000002,
+    "right_censored": true,
+    "alert_count": 0,
+    "source_track_ids": [
+      237
+    ],
+    "class_name": "umbrella",
+    "alert_times_ms": [],
+    "flags": [
+      "score_level_change_or_delta_ge_0.15"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_08",
+    "event_id": "H000001",
+    "event_kind": "perception",
+    "start_ms": 2100.0,
+    "end_ms": 2150.0,
+    "right_censored": false,
+    "alert_count": 0,
+    "source_track_ids": [],
+    "class_name": null,
+    "alert_times_ms": [],
+    "flags": [
+      "perception_episode_no_alert"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_08",
+    "event_id": "H000002",
+    "event_kind": "perception",
+    "start_ms": 7850.000000000001,
+    "end_ms": 7900.0,
+    "right_censored": false,
+    "alert_count": 0,
+    "source_track_ids": [],
+    "class_name": null,
+    "alert_times_ms": [],
+    "flags": [
+      "perception_episode_no_alert"
+    ]
+  },
+  {
+    "video_id": "urbanego_run8_08",
+    "event_id": "H000003",
+    "event_kind": "perception",
+    "start_ms": 14800.0,
+    "end_ms": 14850.000000000002,
+    "right_censored": false,
+    "alert_count": 0,
+    "source_track_ids": [],
+    "class_name": null,
+    "alert_times_ms": [],
+    "flags": [
+      "perception_episode_no_alert"
+    ]
+  }
+]

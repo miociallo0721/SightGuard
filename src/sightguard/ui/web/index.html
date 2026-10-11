@@ -25,7 +25,7 @@
 <header class="site-header">
  <div class="header-inner">
   <a class="brand" href="#home" aria-label="SightGuard 视界首页"><svg><use href="#i-eye"/></svg><strong>SightGuard<span>视界</span></strong></a>
-  <nav aria-label="主导航"><a class="active" href="#home">首页</a><a href="#product">产品介绍</a><a href="#features">功能特点</a><a href="#scenarios">使用场景</a><a href="#team">关于我们</a></nav>
+  <nav aria-label="主导航"><a class="active" href="#home">首页</a><a href="#demo">视频体验</a><a href="#live-experience">实时体验</a><a href="#product">产品介绍</a><a href="#features">功能特点</a><a href="#scenarios">使用场景</a><a href="#team">关于我们</a></nav>
   <a class="button small primary" href="#demo">开始体验 <span>↗</span></a>
  </div>
 </header>
@@ -103,6 +103,138 @@
     </aside>
    </div>
    <div class="demo-bottom"><span><i></i> 真实识别 · 可解释规则 · 同步回放</span><span>看见结果，也了解它的边界。</span></div>
+  </div>
+ </section>
+
+ <section id="live-experience" class="live-section">
+  <div class="demo-inner">
+   <div class="demo-heading">
+    <div><div class="eyebrow">LIVE VISION + SPATIAL AUDIO</div><h2>实时感知与空间音频。</h2><p>明确点击后才会打开本机摄像头。空间音频默认关闭，可单独试听测试音。</p></div>
+    <div class="service-pill" id="live-service-status"><i></i><span>等待本地服务</span></div>
+   </div>
+   <div class="demo-toolbar"><div class="demo-title"><svg><use href="#i-camera"/></svg> 本机实时体验 <span>LOCAL LIVE</span></div><div class="hardware-status">声音由运行 SightGuard 的服务器电脑播放 · 浏览器不会发声</div></div>
+   <div class="live-grid">
+    <aside class="panel live-panel">
+     <div class="panel-title"><span class="step-number">01</span><h3>摄像头与声音</h3></div>
+     <label class="live-field">选择本机摄像头<select id="live-camera" aria-label="选择本机摄像头"><option value="">正在读取摄像头…</option></select></label>
+     <label class="live-check"><input id="live-spatial-enabled" type="checkbox"><span><b>开启实时空间音频</b><small>默认关闭 · 仅在本次启动时生效</small></span></label>
+     <label class="live-field" for="live-gain">空间音频增益 <output id="live-gain-value" for="live-gain">0.12</output><input id="live-gain" type="range" min="0" max="1" step="0.01" value="0.12"></label>
+     <div class="live-actions"><button id="live-start" class="button primary full" disabled>开始实时体验</button><button id="live-stop" class="button ghost full" disabled>停止并释放设备</button><button id="live-mute" class="button ghost full" disabled>静音</button></div>
+     <div id="live-error" class="error-message" role="alert" hidden></div>
+     <p class="live-note">测试用原生音频由服务器电脑的当前输出设备播放。请从低音量开始；空间方向还没有验证听者辨向表现。</p>
+    </aside>
+    <div class="viewer-column live-view-column">
+     <div class="viewer-head"><span><i></i>实时摄像头画面</span><span id="live-badge">未启动</span></div>
+     <div class="live-image-stage" id="live-image"><div class="live-empty"><svg><use href="#i-eye"/></svg><b>摄像头尚未启动</b><small>开始实时体验后显示实际感知画面</small></div></div>
+     <div class="live-status" id="live-status" role="status" aria-live="polite">摄像头只在点击开始后打开。</div>
+     <div class="live-metrics" id="live-metrics"><span>等待实时指标</span></div>
+     <div id="live-audio-status" class="live-audio-status" aria-live="polite">
+      <div class="live-audio-row"><span>空间音频</span><b id="live-audio-state">默认关闭</b></div>
+      <div class="live-audio-row"><span>音频后端</span><b id="live-audio-backend">尚未初始化</b></div>
+      <div class="live-audio-row"><span>实际输出设备</span><b id="live-audio-device">尚未初始化</b></div>
+      <div class="live-audio-row"><span>HRTF</span><b id="live-audio-hrtf">尚未初始化</b></div>
+      <div class="live-audio-row"><span>静音状态</span><b id="live-audio-muted">未启动</b></div>
+      <div id="live-audio-error" class="live-audio-error" hidden></div>
+      <details class="live-audio-details"><summary>查看音频后端诊断</summary><pre id="live-audio-debug">等待实时状态</pre></details>
+     </div>
+     <div class="live-alert" id="live-alert"><span>最近实际提醒</span><p>尚无实时提醒</p></div>
+    </div>
+    <aside class="panel live-panel live-record-panel">
+     <div class="panel-title"><span class="step-number">02</span><h3>当前事件与提醒</h3></div>
+     <h4>实际观察事件</h4><div id="live-events" class="live-records"><p>尚无实时事件</p></div>
+     <h4>实际提醒记录</h4><div id="live-alerts" class="live-records"><p>尚无实时提醒</p></div>
+    </aside>
+   </div>
+
+   <article id="live-intelligence" class="panel live-intelligence-panel" aria-labelledby="live-intelligence-title">
+    <div class="live-intelligence-heading">
+     <div>
+      <div class="eyebrow">SHADOW DECISION RESEARCH</div>
+      <div class="panel-title"><h3 id="live-intelligence-title">Risk Intelligence</h3><span id="intelligence-status" class="intelligence-status" data-status="Unavailable">Unavailable</span></div>
+      <p class="panel-description">辅助模型结果仅用于影子对照，不会增加、取消或改变实际提醒。</p>
+     </div>
+     <div class="actual-alert-controller"><span>Actual Alert Controller</span><strong>Rule Engine</strong></div>
+    </div>
+    <div class="intelligence-controls">
+     <label class="live-field" for="intelligence-mode">研究模式
+      <select id="intelligence-mode" aria-label="Risk Intelligence 研究模式" disabled>
+       <option value="rule">Rule Engine</option>
+       <option value="laya">Laya Structured</option>
+       <option value="vision">Laya Vision</option>
+       <option value="hybrid">Hybrid Intelligence</option>
+      </select>
+     </label>
+     <label id="intelligence-auxiliary-field" class="live-field" for="intelligence-auxiliary" hidden>Hybrid 辅助模型
+      <select id="intelligence-auxiliary" aria-label="Hybrid 辅助模型" disabled><option value="laya">Laya Structured</option><option value="vision">Laya Vision</option></select>
+     </label>
+     <div class="live-actions intelligence-actions">
+      <button id="intelligence-load" class="button primary" disabled>加载辅助模型</button>
+      <button id="intelligence-unload" class="button ghost" disabled>卸载辅助模型</button>
+     </div>
+     <p id="intelligence-state-note" class="intelligence-state-note" role="status">当前实际提醒由 Rule Engine 负责；辅助模型仅用于研究对照。</p>
+     <div id="intelligence-error" class="error-message" role="alert" hidden></div>
+    </div>
+    <div class="intelligence-grid">
+     <section class="intelligence-card" aria-label="辅助模型状态">
+      <h4>辅助模型</h4>
+      <dl class="intelligence-details">
+       <div><dt>模型</dt><dd id="intelligence-model-id">—</dd></div>
+       <div><dt>Revision</dt><dd id="intelligence-revision">—</dd></div>
+       <div><dt>运行设备</dt><dd id="intelligence-device">—</dd></div>
+       <div><dt>精度 / 格式</dt><dd id="intelligence-precision">—</dd></div>
+       <div><dt>推理延迟</dt><dd id="intelligence-latency">—</dd></div>
+       <div><dt>最近有效决策</dt><dd id="intelligence-latest">暂无有效结果</dd></div>
+      </dl>
+     </section>
+     <section class="intelligence-card" aria-label="规则与辅助模型比较">
+      <h4>同一事件的判断对照</h4>
+      <div class="intelligence-comparison">
+       <div><span>Rule Engine</span><strong id="intelligence-rule-level">—</strong></div>
+       <div><span id="intelligence-auxiliary-name">辅助模型</span><strong id="intelligence-auxiliary-level">—</strong></div>
+      </div>
+      <p id="intelligence-agreement" class="intelligence-agreement">等待有效且可比较的判断</p>
+      <p class="intelligence-fusion"><span>实验性融合候选等级</span><strong id="intelligence-fusion-level">—</strong></p>
+      <small id="intelligence-comparison-context">Frame / Event：—</small>
+      <details class="intelligence-output-details"><summary>原始模型输出与不可比较原因</summary><pre id="intelligence-raw-output">暂无模型输出</pre></details>
+     </section>
+     <section class="intelligence-card intelligence-performance" aria-label="辅助模型性能统计">
+      <h4>研究性能统计</h4>
+      <dl class="intelligence-details">
+       <div><dt>P50 / P95</dt><dd id="intelligence-percentiles">—</dd></div>
+       <div><dt>调用 / 超时</dt><dd id="intelligence-calls">—</dd></div>
+       <div><dt>过期结果</dt><dd id="intelligence-stale">—</dd></div>
+       <div><dt>模型加载耗时</dt><dd id="intelligence-load-time">—</dd></div>
+       <div><dt>峰值显存</dt><dd id="intelligence-vram">—</dd></div>
+       <div><dt>Fast Path FPS（加载前）</dt><dd id="intelligence-fast-fps-before">—</dd></div>
+       <div><dt>Fast Path FPS（加载后）</dt><dd id="intelligence-fast-fps-after">—</dd></div>
+      </dl>
+     </section>
+    </div>
+   </article>
+
+   <div class="live-lab-grid">
+    <article class="panel live-lab-panel">
+     <div class="panel-title"><span class="step-number">03</span><h3>手动空间音频试听</h3><span class="live-label">SYSTEM TEST TONE</span></div>
+     <p class="panel-description">左／前／右按钮播放一次系统测试音，不代表实时风险提醒。声音从服务器电脑播放。</p>
+     <label class="live-field" for="spatial-gain">试听增益 <output id="spatial-gain-value" for="spatial-gain">0.12</output><input id="spatial-gain" type="range" min="0" max="1" step="0.01" value="0.12"></label>
+     <label class="live-field" for="spatial-device">OpenAL 设备名称 <input id="spatial-device" type="text" placeholder="留空使用系统默认设备"></label>
+     <label class="live-check"><input id="spatial-hrtf" type="checkbox" checked><span><b>请求 HRTF</b><small>是否启用以实际后端状态为准</small></span></label>
+     <div class="live-actions live-audition-buttons"><button class="button primary" data-spatial-angle="-90">左侧试听</button><button class="button primary" data-spatial-angle="0">前方试听</button><button class="button primary" data-spatial-angle="90">右侧试听</button></div>
+     <div class="live-actions"><button id="spatial-stop" class="button ghost">停止当前测试音</button><button id="spatial-release" class="button ghost">释放音频设备</button></div>
+     <div id="spatial-status" class="live-status" role="status" aria-live="polite">未播放 · 点击试听后才会初始化音频设备</div>
+     <pre id="spatial-backend-status" class="live-backend-status">等待真实后端状态</pre>
+     <div id="spatial-error" class="error-message" role="alert" hidden></div>
+    </article>
+    <article class="panel live-lab-panel">
+     <div class="panel-title"><span class="step-number">04</span><h3>导航方向模拟</h3><span class="live-label">MANUAL MOCK GOAL</span></div>
+     <p class="panel-description">不使用地图、不计算路线，也不自动重复播放。只有提交时才会发送此模拟方向；goal_id 仅是测试标识。</p>
+     <p class="nav-goal-note">模拟方向与实际风险共用提示队列，不连接地图或生成路线。</p>
+     <label class="live-field" for="nav-angle">模拟方位 <output id="nav-angle-value" for="nav-angle">45°</output><input id="nav-angle" type="range" min="-180" max="180" step="1" value="45"></label>
+     <div class="live-actions nav-actions"><button id="nav-submit" class="button primary" disabled>播放一次导航模拟</button><button id="nav-pause" class="button ghost" disabled>暂停</button><button id="nav-resume" class="button ghost" disabled>恢复</button><button id="nav-cancel" class="button ghost" disabled>取消</button></div>
+     <div id="nav-status" class="live-status" role="status" aria-live="polite">请先启动实时体验并开启空间音频。</div>
+    </article>
+   </div>
+   <p class="live-safety-note"><svg><use href="#i-shield"/></svg>本页用于本机原型验证。测试音和模拟导航不构成实时风险识别、碰撞预测或安全保证；请继续使用盲杖或导盲犬。</p>
   </div>
  </section>
 

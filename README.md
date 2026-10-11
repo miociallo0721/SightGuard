@@ -1,5 +1,90 @@
 # SightGuard（视界）
 
+## 当前运行架构（2026-10-11）
+
+正式结构化提醒主链路为 **YOLO26n / BoT-SORT → FrameRecord → AssessmentEngine
+（风险特征、评分、事件与感知状态）→ AlertScheduler → AlertEvent**。
+实时摄像头和离线 tracks 重放复用同一核心；空间音频需要显式启用，再由
+RiskCueAdapter / CueScheduler / AudioWorker 提交到 PC 的 OpenAL Soft。
+存在 AlertEvent 不代表声音已播放或用户已听到。
+
+- `sightguard ui`：默认 FastAPI 产品演示页；`sightguard ui --research`：Gradio Research Console。
+  当前 CLI 总帮助仍将 `ui` 描述为 Research Console，实际路由以上述开关为准。
+- `sightguard live`：OpenCV 摄像头规则演示；`analyze`：仅 MP4 感知；`assess`：已有 tracks
+  的正式规则评估；`replay`：仅校验与摘要。产品上传任务顺序执行 analyze 和 assess。
+- SegFormer / Path Relevance v1：独立 `path-relevance` 离线 Shadow，未进入默认实时摄像头；
+  Research Console 只浏览其产物。最新权威研究批次是 `outputs/path_relevance/v04/`，
+  CLI 默认目录 v01 不表示最新结果。
+- Event Association v2：`allow_class_switch_for_track_id` 默认 false，只有显式实验配置启用。
+  Laya Structured / Vision / Hybrid 均为按需加载的 Shadow，不控制正式提醒或 HRTF。
+- 产品 MP4 的 DemoGuidance 方向建议、语音试听及手动 NavigationCue 是演示/模拟来源，
+  不等于正式 AlertEvent，更不证明通行安全。
+
+架构整理阶段只修改文档。随后 Depth Integration v1 新增独立的本地相对深度研究入口，
+不改变上述默认主链路；尚未实现统一 SceneEvidence、Corridor Grid、度量深度或可靠走廊决策。
+接手开发先阅读
+[实际架构审计](docs/architecture_audit_2026-10-11.md)、
+[Roana 源码对照](docs/roana_architecture_comparison.md)和
+[契约与分阶段迁移计划](docs/architecture_consolidation_plan.md)。
+
+## Depth Integration v1
+
+Depth Anything V2 Small 的真实 CPU/CUDA 推理、原生预测和原图对齐 float32 NPZ、
+帧级 JSONL、近远语义及 UNKNOWN 检查均独立于提醒。UrbanEgo 八段各 30 个采样帧；
+当前完整批次在 `outputs/depth_integration/v03/`。较大值表示画面内相对更近，没有米制距离。
+入口为 `scripts/run_depth.py`，不加载 YOLO/SegFormer/Laya，不发音频。
+详见[模型与数据契约](docs/depth_integration_v1.md)和[真实验证记录](docs/depth_integration_validation.md)。
+
+## Annotation Studio
+
+`uv run sightguard ui --research --port 7861` → Annotation Studio：原视频 PTS 逐帧查看、
+可点击人工时间轴、事件/提醒机会/排除区间编辑、Schema 3.0 保存及显式二次审核。
+不会自动生成真值；八段真实数据仍待人工标注。
+使用步骤见[标注工具文档](docs/annotation_studio.md)，实测记录见[验证文档](docs/annotation_studio_validation.md)。
+
+## Real-World Benchmark v0.1
+
+已准备 UrbanEgo 同一次步行记录的 8 段开发视频，完成本地感知、风险日志和
+Phase 3 draft 导入。人工真值尚未完成，不提供真实监督指标；数据仅保存在 D 盘。
+来源、许可、复现命令及独立标注步骤见[数据集阶段文档](docs/real_world_benchmark_v01.md)。
+
+## Hybrid Intelligence（影子研究）
+
+已有产品网页的“实时体验”新增 Risk Intelligence 面板，支持 Rule / Laya / Vision /
+Hybrid 四种研究模式。**Actual Alert Controller 始终是 Rule Engine**；辅助判断与实验性融合
+不会控制实际提醒或空间音频。先启动摄像头，再选模式并主动点击“加载辅助模型”；
+切换模式会卸载旧辅助模型，随后可加载新模型，摄像头、YOLO 和现有风险事件保持连续。
+
+本机历史记录已验证 Laya CPU INT8 ONNX、Vision CPU FP32，以及隔离环境的 Vision CUDA
+混合精度前向；Structured CUDA 仍有核心量化运算回退 CPU。它们是研究验证，不是风险准确率验证。
+`configs/hybrid.yaml` 配置本地权重、隔离解释器、设备、限频、超时、有效期和融合策略。
+默认不下载、不启动辅助模型；当前配置 Structured 为 CPU INT8 ONNX，Vision 为
+`device: auto` / FP32（实际设备由隔离解释器能力决定）。两套上游包同名 `laya`，
+使用独立环境与单一辅助子进程。真实 GPU 研究记录见 [GPU 可行性记录](docs/hybrid_gpu_feasibility.md)。
+
+```powershell
+# 从项目根目录执行；本次所有临时与缓存文件均使用 D 盘
+New-Item -ItemType Directory -Force models/hybrid/tmp,models/hybrid/cache | Out-Null
+$env:TEMP = "$PWD/models/hybrid/tmp"
+$env:TMP = $env:TEMP
+$env:TMPDIR = $env:TEMP
+$env:UV_CACHE_DIR = "$PWD/models/hybrid/cache/uv"
+$env:HF_HOME = "$PWD/models/hybrid/cache/hf"
+$env:TORCH_HOME = "$PWD/models/hybrid/cache/torch"
+uv run sightguard ui --port 7860
+# 独立真实模型测试：必须已准备本地权重，不会自动下载
+$env:SIGHTGUARD_TEST_HYBRID = '1'
+uv run pytest tests/test_hybrid_integration.py -q --basetemp models/hybrid/tmp/pytest-real
+uv run python scripts/verify_hybrid_live.py --camera 1
+```
+
+运行记录保存于新的 `outputs/hybrid/session-*`；包含原始输出、同源帧比较、实际规则提醒、
+配置/权重哈希及性能统计。规则日志仅记录语义任务采样帧，不是完整视频；Vision 原图默认
+只存像素哈希，需精确离线重放图像时显式设 `retain_images: true`，注意磁盘占用与隐私。
+候选得分未校准，模型间一致率不是准确率。Vision 权重 CC-BY-NC-SA-4.0，发布需审查许可。
+环境重建、固定来源和限制见[架构文档](docs/hybrid_intelligence_architecture.md)，
+真实验证数据与兼容性见[验证记录](docs/hybrid_intelligence_validation.md)。
+
 ## 智能辅助眼镜展示网页
 
 面向高中科创展示的产品介绍与视频模型演示现作为默认网页入口：
@@ -107,7 +192,8 @@ Ultralytics 使用前应阅读其 [许可说明](https://www.ultralytics.com/lic
 ## 后续阶段
 
 Phase 3 和 Phase 4 的研究功能已实现。后续可研究性能优化、ONNX/Core ML 与 iOS 部署；
-当前不播放提醒音频，不提供导航或移动端功能。
+`assess` 仅导出结构化提醒，不播放音频；实时链路可显式启用 PC 空间音频，见下文 Spatial。
+不提供经验证的导航或移动端功能。
 
 ## Phase 2：离线风险分析
 
@@ -278,3 +364,56 @@ uv run sightguard ui --research --port 7860
 同一控制台只运行一个摄像头会话，其他页面不能抢占或读取该会话画面。
 摄像头由本机 Python 读取，JPEG 通过内存更新，不创建摄像头视频或逐帧磁盘缓存。
 原有 OpenCV `live` 命令继续可用。使用限制及验证见 [实时 Demo 文档](docs/live.md)。
+
+
+## Spatial：PC 空间音频与模拟导航
+
+音频默认关闭，声音由服务所在 PC 的 OpenAL Soft 输出，不通过浏览器播放器。
+请先连接双耳耳机，在试听页面确认输出设备和实际 HRTF 状态。
+
+```powershell
+# 首次安装原生运行库（显式下载官方 Windows x64 发行包）
+uv run python scripts/prepare_openal.py
+# 独立试听页面
+uv run sightguard spatial-demo --port 7862
+# 研究控制台：Spatial Audio Lab 与实时体验页
+uv run sightguard ui --research --port 7861
+# Xiaomi 摄像头，本机 DirectShow 编号 1；其他机器需重新确认编号
+uv run sightguard live --camera 1 --device cpu --spatial-audio
+```
+
+产品网页 `uv run sightguard ui --port 7860` 的“实时体验”区可直接选择摄像头、
+开启空间音频、试听左/前/右方向，并查看实际 HRTF/设备/错误。
+研究台实时页的高级设置也可开启音频并设置增益；运行中可静音。
+模拟导航与该实时会话的风险提醒共享队列，支持播放、暂停、恢复和取消。
+首次提醒、升级和感知受限只来自现有 AlertEvent；试听页手动风险音是测试音。
+音频不可用会显示错误，视觉流程继续运行。未知方向使用中性正前方提示，
+默认屏幕位置映射只是近似方向，不表示测得的世界方位、距离或碰撞概率。
+同进程只允许一个音频会话；不要同时在独立 Lab 和其他服务进程中播放。
+
+原生 DLL、下载包、试听记录均在 Git 忽略目录内。Windows x64 自动准备脚本
+保留官方许可、版本与哈希；Linux/macOS 需要安装系统 OpenAL Soft 或配置
+`SIGHTGUARD_OPENAL_LIBRARY` / `configs/spatial.yaml` 的 `library_path`。
+详见 [空间音频架构](docs/spatial_audio_architecture.md)与
+[验证记录](docs/spatial_audio_validation.md)。前后/高度定位、头部跟踪、实际导航及道路效果尚未验证。
+
+本机 Xiaomi 黑屏/横纹问题已通过先设置尺寸与帧率、最后设置 MJPG 修复。
+采集格式与请求帧率由 `configs/live.yaml` 配置；时间戳仍使用 monotonic，不按请求 FPS 推算。
+
+Hybrid GPU 研究工具与实际限制见 [GPU 可行性记录](docs/hybrid_gpu_feasibility.md)。
+2026-10-11 已完成 RTX 2050 上 Vision 混合精度真实推理；默认不加载辅助模型。
+按需加载仍为 Shadow，设备以当前配置及隔离解释器能力为准，见本文开头的运行状态说明。
+原风险任务仍全部 UNKNOWN，GPU 加速不等于风险判断有效；见 [UNKNOWN 调查](docs/laya_vision_unknown_investigation.md)。
+
+提醒行为诊断：`uv run python scripts/diagnose_alert_behavior.py` 只读取现有真实运行日志，
+输出逐视频统计、事件异常索引与原始评分轨迹，不重新推理或改变策略。
+Research Console 的视频回放页提供事件筛选、原始曲线、实际 AlertEvent 标记与关键帧定位。
+统计口径、证据和下一阶段建议见 [诊断报告](docs/alert_behavior_diagnosis.md)。
+
+Spatial Grid Fusion v1 提供独立离线 Shadow：YOLO 跟踪、SegFormer 地面语义与
+Depth 相对深度在同一原图坐标下形成可配置 15×15 证据网格，保留 UNKNOWN、MIXED 和溯源。
+它不是米制占用地图或导航，不改变正式风险、提醒和音频。
+运行 `uv run --no-sync python scripts/run_spatial_grid.py --output outputs/spatial_grid/new-run`，
+输出目录必须不存在；首次缺少原始语义缓存时使用 `scripts/prepare_spatial_semantics.py`。
+设计、上游参考与数据契约见 [实现说明](docs/spatial_grid_fusion_v1.md)，
+240 帧真实融合、A/B/C/D、性能、限制与复现见 [验证报告](docs/spatial_grid_validation.md)。
