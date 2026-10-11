@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "max_flow_ms": 40,
+  "automatic_alert_enabled": false,
+  "max_source_age_ms": 500,
+  "min_pair_ms": 100,
+  "max_pair_ms": 1600,
+  "max_features": 48,
+  "min_features": 16,
+  "feature_score": 0.001,
+  "max_patch_residual": 0.08,
+  "max_fit_residual": 1.25,
+  "min_inlier_fraction": 0.7,
+  "max_gyro_rad_s": 0.08,
+  "max_rotation_rad": 0.015,
+  "min_expansion": 1.012,
+  "max_expansion": 1.15,
+  "confirmation_windows": 3
+}

@@ -21,6 +21,27 @@ $prompts.Add([pscustomobject]@{ Name = 'perception_limited'; Text = '感知暂�
 $prompts.Add([pscustomobject]@{ Name = 'perception_recovered'; Text = '感知已恢复' })
 $prompts.Add([pscustomobject]@{ Name = 'camera_stopped'; Text = '摄像头已停止' })
 
+$prompts.Add([pscustomobject]@{ Name = 'environment_wall'; Text = '前方检测到墙面。' })
+$prompts.Add([pscustomobject]@{ Name = 'environment_stairs'; Text = '前方检测到楼梯。' })
+$prompts.Add([pscustomobject]@{ Name = 'environment_step'; Text = '前方检测到台阶。' })
+$prompts.Add([pscustomobject]@{ Name = 'environment_pole'; Text = '前方检测到杆柱。' })
+
+$prompts.Add([pscustomobject]@{ Name = 'environment_wall_left'; Text = '左侧检测到墙面。' })
+$prompts.Add([pscustomobject]@{ Name = 'environment_wall_center'; Text = '前方检测到墙面。' })
+$prompts.Add([pscustomobject]@{ Name = 'environment_wall_right'; Text = '右侧检测到墙面。' })
+$prompts.Add([pscustomobject]@{ Name = 'environment_stairs_left'; Text = '左侧检测到楼梯。' })
+$prompts.Add([pscustomobject]@{ Name = 'environment_stairs_center'; Text = '前方检测到楼梯。' })
+$prompts.Add([pscustomobject]@{ Name = 'environment_stairs_right'; Text = '右侧检测到楼梯。' })
+$prompts.Add([pscustomobject]@{ Name = 'environment_step_left'; Text = '左侧检测到台阶，请注意。' })
+$prompts.Add([pscustomobject]@{ Name = 'environment_step_center'; Text = '前方检测到台阶，请注意。' })
+$prompts.Add([pscustomobject]@{ Name = 'environment_step_right'; Text = '右侧检测到台阶，请注意。' })
+$prompts.Add([pscustomobject]@{ Name = 'environment_pole_left'; Text = '左侧检测到杆状结构。' })
+$prompts.Add([pscustomobject]@{ Name = 'environment_pole_center'; Text = '前方检测到杆状结构。' })
+$prompts.Add([pscustomobject]@{ Name = 'environment_pole_right'; Text = '右侧检测到杆状结构。' })
+$prompts.Add([pscustomobject]@{ Name = 'environment_railing_left'; Text = '左侧检测到栏杆或扶手。' })
+$prompts.Add([pscustomobject]@{ Name = 'environment_railing_center'; Text = '前方检测到栏杆或扶手。' })
+$prompts.Add([pscustomobject]@{ Name = 'environment_railing_right'; Text = '右侧检测到栏杆或扶手。' })
+
 $categories = @(
     [pscustomobject]@{ Key = 'pedestrian'; Text = '行人' },
     [pscustomobject]@{ Key = 'bicycle'; Text = '自行车' },

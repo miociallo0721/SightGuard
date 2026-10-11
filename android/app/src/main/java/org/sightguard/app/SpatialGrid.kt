@@ -4,7 +4,7 @@ import kotlin.math.max
 import kotlin.math.min
 
 enum class MotionQuality { STABLE, MODERATE, RAPID, LIMITED, UNKNOWN }
-data class MotionEvidence(val quality: MotionQuality, val reason: String, val gyroRadPerSecond: Float? = null, val pitchDegrees: Float? = null, val rollDegrees: Float? = null, val synchronized: Boolean = false, val sampleCount: Int = 0)
+data class MotionEvidence(val quality: MotionQuality, val reason: String, val gyroRadPerSecond: Float? = null, val pitchDegrees: Float? = null, val rollDegrees: Float? = null, val synchronized: Boolean = false, val sampleCount: Int = 0, val intervalStartNs: Long? = null, val intervalEndNs: Long? = null, val rotationMagnitudeRad: Float? = null)
 data class MotionConfig(val stableGyro: Float = .15f, val rapidGyro: Float = 1.5f, val maxSampleGapNs: Long = 200_000_000L, val moderateOrientationDelta: Float = 10f, val rapidOrientationDelta: Float = 30f)
 object MotionRules {
     fun classify(gyro: Float?, gapNs: Long?, synchronized: Boolean, pitch: Float? = null, roll: Float? = null, config: MotionConfig = MotionConfig(), orientationDeltaDegrees: Float? = null): MotionEvidence {
@@ -27,9 +27,38 @@ data class GridDepthSource(val key: SpatialFrameKey, val width: Int, val height:
 data class GridDetectionSource(val key: SpatialFrameKey, val detections: List<Detection>, val modelSha: String)
 data class GridCell(val row: Int, val col: Int, val left: Float, val top: Float, val right: Float, val bottom: Float, val ground: Float?, val wall: Float?, val vegetation: Float?, val occupancy: Float?, val depth: DepthStatistics?, val state: String, val quality: String, val reasons: List<String>, val sources: Map<String,String>)
 data class SpatialGridEvidence(val key: SpatialFrameKey, val cells: List<GridCell>, val motion: MotionEvidence, val state: String, val failures: List<String>, val productionDecisionChanged: Boolean = false)
+data class SemanticGridSummary(val wallCells: Int,val groundCells: Int,val boundaryAdjacencies: Int)
 
 /** Stateless 15x15 image evidence. PC thresholds retained; no temporal reuse or risk imports. */
 class SpatialGridFusion(private val config: GridConfig = GridConfig()) {
+    /** Same semantic overlap rules, rasterized sparsely without per-cell diagnostic allocations. */
+    fun semanticSummary(key: SpatialFrameKey,cells: List<SemanticCell>): SemanticGridSummary {
+        val walls=FloatArray(config.rows*config.cols);val grounds=FloatArray(walls.size)
+        for(c in cells) {
+            if(!c.confidence.isFinite() || c.confidence<config.minConfidence || c.classId!=0 && c.classId !in SemanticEvidence.groundClassIds) continue
+            if(!c.left.isFinite() || !c.top.isFinite() || !c.right.isFinite() || !c.bottom.isFinite() || c.right<=c.left || c.bottom<=c.top) continue
+            val colStart=(c.left*config.cols).toInt().coerceIn(0,config.cols-1);val colEnd=kotlin.math.ceil(c.right*config.cols).toInt().coerceIn(1,config.cols)
+            val rowStart=(c.top*config.rows).toInt().coerceIn(0,config.rows-1);val rowEnd=kotlin.math.ceil(c.bottom*config.rows).toInt().coerceIn(1,config.rows)
+            // Include neighboring partitions for integer pixel rounding on odd source dimensions.
+            for(row in (rowStart-1).coerceAtLeast(0)..rowEnd.coerceAtMost(config.rows-1)) for(col in (colStart-1).coerceAtLeast(0)..colEnd.coerceAtMost(config.cols-1)) {
+                val l=(col*key.width/config.cols).toFloat()/key.width;val r=((col+1)*key.width/config.cols).toFloat()/key.width
+                val t=(row*key.height/config.rows).toFloat()/key.height;val b=((row+1)*key.height/config.rows).toFloat()/key.height
+                val area=(r-l)*(b-t);if(area<=0) continue
+                val fraction=max(0f,min(r,c.right)-max(l,c.left))*max(0f,min(b,c.bottom)-max(t,c.top))/area
+                if(c.classId==0) walls[row*config.cols+col]+=fraction else grounds[row*config.cols+col]+=fraction
+            }
+        }
+        val wall=walls.map {it>=config.supportThreshold};val ground=grounds.indices.map {!wall[it] && grounds[it]>=config.supportThreshold}
+        var boundary=0
+        for(i in wall.indices) if(wall[i]) {
+            val row=i/config.cols;val col=i%config.cols
+            for((dr,dc) in listOf(-1 to 0,1 to 0,0 to -1,0 to 1)) {
+                val r=row+dr;val c=col+dc
+                if(r in 0 until config.rows && c in 0 until config.cols && ground[r*config.cols+c]) boundary++
+            }
+        }
+        return SemanticGridSummary(wall.count {it},ground.count {it},boundary)
+    }
     fun fuse(key: SpatialFrameKey, semantics: GridSemanticSource?, depth: GridDepthSource?, detections: GridDetectionSource?, motion: MotionEvidence): SpatialGridEvidence {
         require(key.width >= config.cols && key.height >= config.rows) { "image too small for grid" }
         val failures = mutableListOf<String>()

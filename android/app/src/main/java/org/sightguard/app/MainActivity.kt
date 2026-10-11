@@ -67,18 +67,37 @@ class MainActivity : ComponentActivity() {
     private var muted by mutableStateOf(false)
     private var boxesEnabled by mutableStateOf(true)
     private var riskEnabled by mutableStateOf(true)
-    private var depthEnabled by mutableStateOf(false)
-    private var spatialEnabled by mutableStateOf(false)
+    private var depthEnabled by mutableStateOf(true)
+    private var spatialEnabled by mutableStateOf(true)
+    private var ignoreAuxThermalForTest = false
+    private lateinit var environmentEngine: SemanticEnvironmentEngine
+    private var environmentStatus by mutableStateOf("墙面：等待有效语义观测")
+    private val semanticPending = mutableSetOf<String>()
+    private var lastRapidAtMs = -1L
     private var gridEnabled by mutableStateOf(false)
     private var imuEnabled by mutableStateOf(true)
     @Volatile private var imuMonitor: ImuMonitor? = null
     @Volatile private var cameraTimestampClock = "UNKNOWN"
     private var spatialPanel by mutableStateOf(false)
+    private var settingsPanel by mutableStateOf(false)
+    private val diagnostics=AwarenessDiagnostics()
+    private val exportDocument=registerForActivityResult(ActivityResultContracts.CreateDocument("application/json")) { uri ->
+        if(uri!=null) {
+            val data=diagnostics.snapshot(sessionDiagnostics())
+            Thread {
+                runCatching { contentResolver.openOutputStream(uri)?.bufferedWriter()?.use { it.write(data) } }
+                    .onSuccess { handler.post { speechStatus="诊断已导出" } }
+                    .onFailure { error -> handler.post { speechStatus="导出失败：${error.message}" } }
+            }.start()
+        }
+    }
     private var spaceView by mutableStateOf("原始画面")
     private var semanticLayer by mutableStateOf("All Semantics")
     private var layerAlpha by mutableFloatStateOf(.4f)
     private var spatialStatus by mutableStateOf("空间模型关闭")
     private var environmentOverview by mutableStateOf("当前环境信息不足。")
+    private var overviewSpeechNote by mutableStateOf("")
+    private var wallShadowStatus by mutableStateOf("ABSTAIN：等待研究证据")
     private var spatialSnapshot by mutableStateOf<SpatialSnapshot?>(null)
     @Volatile private var spatialSession: SpatialSessionAnalyzer? = null
     private var spatialReleasePending = false
@@ -138,6 +157,7 @@ class MainActivity : ComponentActivity() {
     private val watchdog = object : Runnable {
         override fun run() {
             displayNow = SystemClock.elapsedRealtime()
+            if(running) serviceEnvironment()
             val snapshot = spatialSnapshot
             if (snapshot != null && !(videoMode && !videoPlaying && frame?.vision?.records?.frameIndex == snapshot.key.frameIndex) && SystemClock.elapsedRealtime() - snapshot.key.capturedAtMs > SpatialSessionAnalyzer.RESULT_TTL_MS) {
                 spatialSnapshot = null; environmentOverview = "当前环境信息不足。"
@@ -162,7 +182,11 @@ class MainActivity : ComponentActivity() {
     }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        ignoreAuxThermalForTest = applicationInfo.flags and android.content.pm.ApplicationInfo.FLAG_DEBUGGABLE != 0 &&
+            intent.getBooleanExtra("ignore_aux_thermal_for_test",false)
+        environmentEngine = SemanticEnvironmentEngine(loadEnvironmentConfig(this))
         autoStart = getSharedPreferences("perception", MODE_PRIVATE).getBoolean("auto_start", true)
+        muted = getSharedPreferences("perception", MODE_PRIVATE).getBoolean("muted", false)
         videoMode = savedInstanceState?.getBoolean("video_mode") ?: false
         videoUri = savedInstanceState?.getString("video_uri")?.let(Uri::parse)
         videoPosition = savedInstanceState?.getLong("video_position") ?: 0
@@ -183,6 +207,7 @@ class MainActivity : ComponentActivity() {
         if (running || isFinishing || isDestroyed || !lifecycle.currentState.isAtLeast(androidx.lifecycle.Lifecycle.State.STARTED)) return
         if(primaryReleasePending) { restartAfterRelease=true; status="正在释放旧会话，随后启动…"; return }
         val token = ++generation
+        environmentEngine.reset(); semanticPending.clear(); lastRapidAtMs=-1L
         running = true; active = true; frame = null; videoBitmap = null; fps = 0f; latencyMs = 0; lastValidAtMs = 0
         interrupted = false; pendingSpeech.clear(); startedAtMs = SystemClock.elapsedRealtime(); videoRateStart = 0; videoRateFrames = 0
         status = "正在加载本地 YOLO26n…"; inputStatus = if (videoMode) "读取本地视频" else "等待后置摄像头"
@@ -209,7 +234,7 @@ class MainActivity : ComponentActivity() {
                 }
             } catch (error: Exception) { Log.e("SG_MODEL", "session load failed", error); handler.post { if (generation == token) fail("输入或模型加载失败：${error.message}") } }
         }
-        Log.i("SG_SESSION", "start generation=$token source=${if (isVideo) "video" else "CameraX"}")
+        Log.i("SG_SESSION", "start generation=$token source=${if (isVideo) "video" else "CameraX"} thermalOverride=$ignoreAuxThermalForTest")
     }
     @Suppress("DEPRECATION")
     @androidx.annotation.OptIn(markerClass = [androidx.camera.camera2.interop.ExperimentalCamera2Interop::class])
@@ -311,6 +336,7 @@ class MainActivity : ComponentActivity() {
         }
     }
     private fun publish(result: VisionResult, width: Int, height: Int, receivedAt: Long, latency: Long, rate: Float, vision: VisionStage, token: Long, epoch: Long) {
+        if(result.records.frameIndex%30==0) diagnostics.record("performance",JSONObject().put("source",if(videoMode) "video" else "camera").put("fps",rate).put("frame_latency_ms",latency).put("yolo_ms",result.detectionLatencyMs).put("pss_kb",android.os.Debug.getPss()))
         frame = FrameResult(result, width, height, receivedAt); lastValidAtMs = SystemClock.elapsedRealtime(); latencyMs = latency; fps = rate
         if(result.records.frameIndex % 10 == 0) Log.i("SG_RISK", "frame=${result.records.frameIndex} raw=${result.raw.size} eligible=${result.relevance.count{it.eligible}} contextual=${result.relevance.count{it.category==RelevanceCategory.CONTEXTUAL}} quality=${result.risk.frame.perception.status} levels=${result.risk.frame.events.filter{it.observedNow}.map{it.assessment?.level}}")
         status = if (videoMode && !videoPlaying) "视频已暂停" else "感知运行中"
@@ -328,6 +354,15 @@ class MainActivity : ComponentActivity() {
         if (!speech.offer(proposal.text, proposal.important, key, vision.presenter.deadline(now), direction = proposal.direction)) pendingSpeech.remove(key)
     }
     private fun onPlayback(event: SpeechPlaybackEvent) {
+        diagnostics.record("audio",JSONObject().put("phase",event.phase.logName).put("event_id",event.eventId).put("requested_text",event.requestedText).put("spoken_text",event.spokenText).put("deadline_ms",event.validUntilElapsedMs).put("detail",event.detail).put("resource",event.resourceName))
+        if(event.eventId?.startsWith("semantic:")==true) {
+            if(event.phase==SpeechPlaybackPhase.ON_START) {
+                environmentEngine.playbackStarted(event.eventId)
+                Log.i("SG_ENV", "onStart event=${event.eventId} text=${event.spokenText} resource=${event.resourceName}")
+            }
+            if(event.phase in setOf(SpeechPlaybackPhase.ON_START,SpeechPlaybackPhase.SUPPRESSED,SpeechPlaybackPhase.CANCELLED)) semanticPending.remove(event.eventId)
+            return
+        }
         val pending = pendingSpeech[event.eventId] ?: return
         when (event.phase) {
             SpeechPlaybackPhase.ON_START -> {
@@ -342,6 +377,7 @@ class MainActivity : ComponentActivity() {
         }
     }
     private fun seekVideo(position: Long) {
+        environmentEngine.reset(); semanticPending.clear()
         spatialSnapshot = null; environmentOverview = "当前环境信息不足。"
         videoEpoch++; pendingSpeech.clear(); speech.cancelAlerts("video_seek")
         videoPosition = position.coerceIn(0, (videoDuration - 1).coerceAtLeast(0)); frame = null; videoBitmap = null; fps = 0f
@@ -369,6 +405,7 @@ class MainActivity : ComponentActivity() {
     private fun stopPerception(announce: Boolean = true, stopSpeech: Boolean = true) {
         restartAfterRelease = false
         if (!running) { if (stopSpeech) speech.stop(false); return }
+        environmentEngine.reset(); semanticPending.clear(); environmentStatus="墙面：感知已停止"
         running = false; active = false; generation++; pendingSpeech.clear(); videoPlaying = false; videoEpoch++
         spatialSession?.let { old -> spatialReleasePending=true; old.release { spatialReleasePending=false; if(running) startSpatialSession() } }; spatialSession = null; spatialSnapshot = null; spatialStatus = "空间资源已释放"; environmentOverview = "当前环境信息不足。"
         imuMonitor?.close(); imuMonitor = null; cameraTimestampClock = "UNKNOWN"
@@ -399,9 +436,16 @@ class MainActivity : ComponentActivity() {
     }
     override fun onSaveInstanceState(outState: Bundle) { outState.putBoolean("explicit_stop", autoPolicy.explicitlyStopped); outState.putBoolean("video_mode",videoMode); outState.putString("video_uri",videoUri?.toString()); outState.putLong("video_position",videoPosition); outState.putString("video_name",videoName); super.onSaveInstanceState(outState) }
     override fun onStop() { autoPolicy.leave(running, restartAfterRelease); stopPerception(false); super.onStop() }
+    override fun onConfigurationChanged(newConfig: android.content.res.Configuration) {
+        super.onConfigurationChanged(newConfig)
+        // The existing release barrier serializes model ownership when CameraX geometry changes.
+        if(running) { stopPerception(false); startPerception() }
+    }
     override fun onDestroy() { stopPerception(false); handler.removeCallbacksAndMessages(null); speech.close(); super.onDestroy() }
 
     private fun startSpatialSession() {
+        environmentEngine.reset(); semanticPending.clear(); speech.cancelSemanticExcept(emptySet(),"semantic_settings_changed")
+        environmentStatus=if(spatialEnabled) "墙面：等待有效语义观测" else "墙面：语义提示关闭"
         spatialSnapshot = null; environmentOverview = "当前环境信息不足。"
         imuMonitor?.close(); imuMonitor = null
         if(spatialReleasePending) return
@@ -415,7 +459,7 @@ class MainActivity : ComponentActivity() {
         if(imuEnabled && !videoMode) imuMonitor = ImuMonitor(this)
         spatialStatus = "正在加载本地空间模型…"
         val token = generation
-        spatialSession = SpatialSessionAnalyzer(this, SpatialSettings(depthEnabled, spatialEnabled, gridEnabled), { result ->
+        spatialSession = SpatialSessionAnalyzer(this, SpatialSettings(depthEnabled, spatialEnabled, gridEnabled,ignoreAuxThermalForTest), { result ->
             val key = result.key
             if (running && generation == key.generation && (!videoMode || videoEpoch == key.epoch)) {
                 val pausedExact = videoMode && !videoPlaying && frame?.vision?.records?.frameIndex == key.frameIndex
@@ -427,12 +471,57 @@ class MainActivity : ComponentActivity() {
             if (running && generation == token) {
                 spatialStatus = state
                 val bitmap = videoBitmap; val records = frame?.vision?.records
-                if (videoMode && !videoPlaying && bitmap != null && records != null) spatialSession?.offer(bitmap, SpatialFrameKey(token, videoEpoch, records.frameIndex, records.timestampMs, bitmap.width, bitmap.height, SystemClock.elapsedRealtime()), frame!!.vision.raw, force = true)
+                // Only the one model-ready notification requests an initial paused snapshot.
+                // Error/thermal status must not recursively force another rejected request.
+                if (state.endsWith("同帧低频分析") && videoMode && !videoPlaying && bitmap != null && records != null) spatialSession?.offer(bitmap, SpatialFrameKey(token, videoEpoch, records.frameIndex, records.timestampMs, bitmap.width, bitmap.height, SystemClock.elapsedRealtime()), frame!!.vision.raw, force = true)
             }
-        }, { key -> imuMonitor?.evidence(key) ?: MotionEvidence(MotionQuality.UNKNOWN, if(videoMode) "video not synchronized to device IMU" else "IMU disabled") })
+        }, { key -> imuMonitor?.evidence(key) ?: MotionEvidence(MotionQuality.UNKNOWN, if(videoMode) "video not synchronized to device IMU" else "IMU disabled") }, ::onSemanticEvidence, {
+            if(running && generation==token) {
+                environmentEngine.invalidate(SystemClock.elapsedRealtime(),"墙面：画面变化，等待重新确认")
+                speech.cancelSemanticExcept(emptySet(),"semantic_scene_changed")
+                environmentStatus=environmentEngine.status
+            }
+        }, { record ->
+            if(running && generation==record.key.generation && (!videoMode || videoEpoch==record.key.epoch)) {
+                wallShadowStatus="${record.state} · ${record.abstainReason ?: "研究候选"} · features ${record.flow?.inliers ?: 0} · ${record.flowLatencyMs}ms"
+                diagnostics.record("wall_shadow",wallRecordJson(record))
+            }
+        }, { key,previous -> imuMonitor?.evidence(key,windowStartNs=previous?.captureTimestampNs) ?: MotionEvidence(MotionQuality.UNKNOWN,"source not synchronized to device IMU") })
+    }
+
+    private fun onSemanticEvidence(evidence: GroundEvidence, sceneCurrent: Boolean, motion: MotionEvidence) {
+        val key=evidence.key; val now=SystemClock.elapsedRealtime()
+        if(!running || generation!=key.generation || (videoMode && (videoEpoch!=key.epoch || !videoPlaying))) return
+        val rapid=motion.quality==MotionQuality.RAPID || imuMonitor?.currentDeviceMotion()?.quality==MotionQuality.RAPID || lastRapidAtMs>=key.capturedAtMs
+        environmentEngine.observe(evidence,now,sceneCurrent,rapid)
+        diagnostics.record("semantic",JSONObject().put("source_frame_key","${key.generation}:${key.epoch}:${key.frameIndex}").put("source_ms",key.timestampMs).put("source_age_ms",now-key.capturedAtMs).put("model_sha256",SpatialDetector.MODEL_SHA).put("latency_ms",evidence.latencyMs).put("motion_quality",motion.quality.name).put("synchronized",motion.synchronized).put("scene_current",sceneCurrent).put("class_counts",JSONObject(evidence.cells.groupingBy{it.classId.toString()}.eachCount())).put("structures",JSONArray(environmentEngine.supports.map {environmentSupportJson(it)})).put("silence_reason",environmentEngine.silenceReason))
+        Log.i("SG_ENV", "observed frame=${key.frameIndex} sourceMs=${key.timestampMs} ageMs=${now-key.capturedAtMs} sceneCurrent=$sceneCurrent rapid=$rapid classes=${evidence.cells.groupingBy{it.classId}.eachCount()} support=${environmentEngine.supports.map{environmentSupportJson(it)}} status=${environmentEngine.status} approach=false")
+        if(!sceneCurrent || rapid) speech.cancelSemanticExcept(emptySet(),"semantic_scene_changed")
+        else speech.cancelSemanticExcept(environmentEngine.validIds(now),if(now-key.capturedAtMs>environmentEngine.config.maxSourceAgeMs) "semantic_expired" else "semantic_absent")
+        serviceEnvironment()
+    }
+    private fun serviceEnvironment() {
+        val now=SystemClock.elapsedRealtime()
+        if(!spatialEnabled) return
+        if(imuMonitor?.currentDeviceMotion()?.quality==MotionQuality.RAPID) {
+            lastRapidAtMs=now
+            environmentEngine.invalidate(now,"墙面：设备快速转动，等待新鲜证据")
+            speech.cancelSemanticExcept(emptySet(),"semantic_rapid_motion")
+        }
+        val notices=environmentEngine.pending(now)
+        environmentStatus=environmentEngine.status
+        speech.cancelSemanticExcept(environmentEngine.validIds(now),"semantic_expired")
+        if(!speech.isReady || muted || (videoMode && !videoPlaying) || pendingSpeech.isNotEmpty()) return
+        for(notice in notices) {
+            if(notice.id in semanticPending || !speech.canQueueOrdinaryAlert) continue
+            semanticPending.add(notice.id)
+            Log.i("SG_ENV", "proposed event=${notice.id} frame=${notice.frameIndex} sourceMs=${notice.sourceMs} deadline=${notice.validUntilMs} text=${notice.text} riskScore=unchanged")
+            if(!speech.offer(notice.text,false,notice.id,notice.validUntilMs,notice.direction,requireExactSpeech=false)) semanticPending.remove(notice.id)
+        }
     }
 
     private fun describeEnvironment() {
+        overviewSpeechNote=""
         if(imuMonitor?.currentDeviceMotion()?.quality==MotionQuality.RAPID) { spatialSnapshot=null; environmentOverview="当前环境信息不足。"; spatialStatus="UNKNOWN：设备快速转动"; return }
         val snapshot = spatialSnapshot
         val exactPaused = snapshot != null && videoMode && !videoPlaying && frame?.vision?.records?.frameIndex == snapshot.key.frameIndex
@@ -442,12 +531,13 @@ class MainActivity : ComponentActivity() {
         Log.i("SG_OVERVIEW", "sourceFrame=${snapshot?.key?.frameIndex} current=$current text=$environmentOverview")
         if(running && !muted && environmentOverview!="当前环境信息不足。") {
             if(speech.canSpeakDynamic) speech.offer(environmentOverview,false,"overview-$generation-${SystemClock.elapsedRealtime()}",SystemClock.elapsedRealtime()+2500,requireExactSpeech=true)
-            else speechStatus = "无离线动态中文 TTS，环境概览显示文字；风险仍使用本地提示音"
+            else { overviewSpeechNote="缺少离线动态中文语音，当前描述无法朗读。"; speechStatus=overviewSpeechNote }
         }
+        if(muted) overviewSpeechNote="提醒已静音，仅显示描述文本。"
     }
 
     @Composable private fun SpatialPanel() {
-        AlertDialog(onDismissRequest = { spatialPanel = false }, title = { Text("空间感知 · 研究证据") }, confirmButton = { TextButton({ spatialPanel = false }) { Text("返回画面") } },
+        AlertDialog(onDismissRequest = { spatialPanel = false }, title = { Text("开发者工具 · 研究证据") }, confirmButton = { TextButton({ spatialPanel = false }) { Text("返回画面") } },
             text = { Column(Modifier.verticalScroll(rememberScrollState()), verticalArrangement = Arrangement.spacedBy(6.dp)) {
                 Row(verticalAlignment=Alignment.CenterVertically) { Text("打开应用自动感知",Modifier.weight(1f),fontSize=12.sp); Switch(autoStart,{autoStart=it; autoPolicy.enabled=it; getSharedPreferences("perception",MODE_PRIVATE).edit().putBoolean("auto_start",it).apply()},Modifier.semantics{contentDescription="前台自动启动感知"}) }
                 Row(verticalAlignment = Alignment.CenterVertically) { Text("Depth Anything V2 Small", Modifier.weight(1f), fontSize = 12.sp); Switch(depthEnabled, { depthEnabled=it; startSpatialSession() }, Modifier.semantics { contentDescription = "启用相对深度" }) }
@@ -461,89 +551,99 @@ class MainActivity : ComponentActivity() {
                 Slider(layerAlpha, { layerAlpha=it }, valueRange=.1f.. .75f)
                 Text("画面使用模型实际源帧快照；超期显示 UNKNOWN。暖色相对较近，冷色较远；不是米制距离。语义不是安全或碰撞判断。",fontSize=11.sp)
                 Text(spatialStatus,fontSize=11.sp)
+                Text(wallShadowStatus,fontSize=12.sp)
+                Text("墙面接近：仅研究记录，自动播报关闭")
+                Text("单级台阶与路缘：模型识别能力尚未验证，自动提醒关闭")
                 Text(imuMonitor?.diagnostic() ?: "IMU UNKNOWN：未采集或文件时钟无法同步",fontSize=11.sp)
                 spatialSnapshot?.let { snapshot ->
                     Text("源帧 ${snapshot.key.generation}:${snapshot.key.epoch}:${snapshot.key.frameIndex} · ${snapshot.key.width}×${snapshot.key.height} · 年龄 ${SystemClock.elapsedRealtime()-snapshot.key.capturedAtMs}ms · 时钟 ${snapshot.key.timestampClock}",fontSize=11.sp)
                     snapshot.detections.take(3).forEach { detection -> snapshot.depth?.region(detection)?.let { stats -> Text("${Labels.coco80.getOrElse(detection.classId){"目标"}}：${stats.relation} · 中位 ${stats.median?.let { "%.2f".format(it) } ?: "UNKNOWN"} · 有效 ${(stats.validFraction*100).toInt()}% · 框内可能混入背景",fontSize=10.sp) } }
+                }
+                Text("运行：$status · $inputStatus · %.1f FPS · ${latencyMs}ms".format(fps))
+                Text("语音：$speechStatus")
+                Text("最近事件：$lastEvent")
+                Text("环境：$environmentStatus")
+                OutlinedButton(::exportDiagnostics,Modifier.fillMaxWidth().heightIn(min=52.dp)) {Text("导出诊断记录")}
+                if(videoMode) {
+                    Text(videoName)
+                    Button(::togglePlayback) {Text(if(videoPlaying) "暂停视频" else "播放视频")}
+                    Text("${timeLabel(videoPosition)} / ${timeLabel(videoDuration)}")
+                    Slider(videoPosition.toFloat(),{if(running) seekVideo(it.toLong()) else videoPosition=it.toLong()},valueRange=0f..videoDuration.coerceAtLeast(1).toFloat(),modifier=Modifier.semantics{contentDescription="视频分析时间轴"})
                 }
                 Button({ describeEnvironment() }) { Text("描述周围环境") }
                 Text(environmentOverview,fontSize=12.sp)
             } })
     }
 
+    @Composable private fun SettingsPanel() {
+        AlertDialog(onDismissRequest={settingsPanel=false},title={Text("设置")},confirmButton={TextButton({settingsPanel=false}) {Text("返回")}},
+            text={Column(Modifier.verticalScroll(rememberScrollState()),verticalArrangement=Arrangement.spacedBy(10.dp)) {
+                Row(verticalAlignment=Alignment.CenterVertically) { Text("打开应用自动感知",Modifier.weight(1f)); Switch(autoStart,{autoStart=it;autoPolicy.enabled=it;getSharedPreferences("perception",MODE_PRIVATE).edit().putBoolean("auto_start",it).apply()},Modifier.semantics{contentDescription="前台自动启动感知"}) }
+                Text("摄像头权限："+if(checkSelfPermission(Manifest.permission.CAMERA)==PackageManager.PERMISSION_GRANTED) "已授权" else "未授权")
+                OutlinedButton({startActivity(Intent(android.provider.Settings.ACTION_APPLICATION_DETAILS_SETTINGS,Uri.parse("package:$packageName")))},Modifier.fillMaxWidth().heightIn(min=52.dp)) {Text("管理摄像头权限")}
+                OutlinedButton({autoPolicy.sourceChanged(true);videoPicker.launch(arrayOf("video/*"));settingsPanel=false},Modifier.fillMaxWidth().heightIn(min=52.dp)) {Text("分析本地视频")}
+                if(videoMode) OutlinedButton({stopPerception(false);videoMode=false;autoPolicy.sourceChanged(false);settingsPanel=false;requestStart()},Modifier.fillMaxWidth().heightIn(min=52.dp)) {Text("返回实时相机")}
+                OutlinedButton({settingsPanel=false;spatialPanel=true},Modifier.fillMaxWidth().heightIn(min=52.dp)) {Text("开发者工具")}
+                Text("图像在本地处理。环境提示补充盲杖与导盲犬；未提醒不代表前方没有障碍。单级台阶、路缘、墙面距离及接近自动播报尚未启用。",style=MaterialTheme.typography.bodyMedium)
+            }})
+    }
+    private fun exportDiagnostics() { exportDocument.launch("SightGuard-0.4-diagnostics.json") }
+    private fun perceptionState(): String = when {
+        !running -> if(status.contains("权限") || status.contains("失败")) "感知暂时受限。" else "感知已停止。"
+        frame==null && !interrupted -> "正在启动。"
+        interrupted || frame?.vision?.risk?.frame?.perception?.status!="available" || ((spatialEnabled || depthEnabled) && spatialStatus.startsWith("UNKNOWN")) -> "感知暂时受限。"
+        else -> "正在感知。"
+    }
+    private fun currentAlertText(): String {
+        if(!running) return if(status.contains("权限") || status.contains("失败")) "当前感知受限。" else "感知已停止。"
+        val now=SystemClock.elapsedRealtime()
+        val current=frame?.takeIf { ResultFreshness.isCurrent(it.receivedAtMs,now) }
+        val risk=current?.vision?.risk?.frame?.events?.filter { it.observedNow && it.state==EventState.ACTIVE && it.assessment?.level in setOf(org.sightguard.app.core.RiskLevel.MEDIUM,org.sightguard.app.core.RiskLevel.HIGH) }?.maxByOrNull { it.assessment?.score ?: 0.0 }
+        val environment=environmentEngine.currentNotices(now).take(2).map { it.text }
+        val texts=mutableListOf<String>()
+        if(risk!=null) texts.add("检测到${Labels.coco80.getOrElse(risk.classId){"目标"}}，请注意。")
+        texts.addAll(environment)
+        return texts.joinToString("\n").ifBlank { if(current==null || interrupted) "当前感知受限。" else "暂无已确认的提醒。" }
+    }
     @Composable private fun Screen() {
-        if (permissionExplanation) AlertDialog(onDismissRequest = { permissionExplanation=false; autoPolicy.manualStop() }, title={Text("摄像头权限用途")}, text={Text("SightGuard 使用后置摄像头在设备本地识别目标，不上传画面。默认开启前台自动感知；可在空间感知设置关闭。授权后自动启用离线提醒，进入后台即释放摄像头。")}, confirmButton={TextButton({ permissionExplanation=false; permission.launch(Manifest.permission.CAMERA) }) {Text("继续授权")}}, dismissButton={TextButton({permissionExplanation=false; autoPolicy.manualStop()}) {Text("暂不开启")}})
-        if (spatialPanel) SpatialPanel()
-        Surface(Modifier.fillMaxSize()) {
-            Column(Modifier.fillMaxSize().safeDrawingPadding().padding(14.dp), verticalArrangement = Arrangement.spacedBy(7.dp)) {
-                Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
-                    Column(Modifier.weight(1f)) { Text("SightGuard", style = MaterialTheme.typography.headlineSmall, color = MaterialTheme.colorScheme.primary); Text("视界 · 本地感知", fontSize = 12.sp) }
-                    Text("研究原型", color = Color(0xFFFFCB85), fontSize = 12.sp)
-                }
-                Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                    FilterChip(selected = !videoMode, onClick = { if (videoMode) { autoPolicy.sourceChanged(false); stopPerception(false); videoMode = false; status = "待启动" } }, label = { Text("实时相机") })
-                    FilterChip(selected = videoMode, onClick = { if (!videoMode) { autoPolicy.sourceChanged(true); stopPerception(false); videoMode = true; status = "选择本地视频" } }, label = { Text("文件分析") })
-                    if (videoMode) TextButton(onClick = { autoPolicy.sourceChanged(true); videoPicker.launch(arrayOf("video/*")) }) { Text("选择视频") }
-                }
-                Text(status, style = MaterialTheme.typography.titleSmall)
-                Box(Modifier.weight(1f).fillMaxWidth().clip(RoundedCornerShape(16.dp)).background(Color.Black)) {
-                    if (videoMode) { videoBitmap?.let { Image(it.asImageBitmap(), "当前实际分析的视频帧", Modifier.fillMaxSize(), contentScale = ContentScale.Fit) } }
-                    else AndroidView(factory = { previewView }, modifier = Modifier.fillMaxSize().semantics { contentDescription = "后置摄像头实时预览" })
-                    val snapshot = spatialSnapshot
-                    if (spaceView != "原始画面") {
-                        if (snapshot != null) {
-                            Image(snapshot.bitmap.asImageBitmap(), "空间模型真实源帧快照", Modifier.fillMaxSize(), contentScale=ContentScale.Fit)
-                            if (spaceView.startsWith("深度")) snapshot.heatmap?.let { Image(it.asImageBitmap(), "真实相对逆深度", Modifier.fillMaxSize(), contentScale=ContentScale.Fit, alpha=if(spaceView=="深度热图") 1f else layerAlpha) }
-                            if(spaceView.startsWith("深度") && snapshot.depth?.quality!="VALID") Text("UNKNOWN：缺少有效相对深度",Modifier.align(Alignment.Center).background(Color.Black).padding(8.dp),color=Color.White,fontSize=12.sp)
-                            if (spaceView=="环境语义") SemanticOverlay(snapshot.semantics, snapshot.key.width, snapshot.key.height)
-                            if(spaceView=="环境语义" && snapshot.semantics==null) Text("UNKNOWN：缺少语义输出",Modifier.align(Alignment.Center).background(Color.Black).padding(8.dp),color=Color.White,fontSize=12.sp)
-                            if (spaceView=="Spatial Grid") GridOverlay(snapshot.grid,snapshot.key.width,snapshot.key.height)
-                            if (boxesEnabled) BoxesOverlay(snapshot.detections,snapshot.key.width,snapshot.key.height)
-                            Text("同源快照 #${snapshot.key.frameIndex} · ${snapshot.key.timestampMs.toLong()}ms", Modifier.align(Alignment.TopStart).padding(8.dp), fontSize=11.sp, color=Color.White)
-                        } else Text("UNKNOWN：当前空间证据不可用", Modifier.align(Alignment.Center).background(Color.Black).padding(12.dp), color=Color.White,fontSize=12.sp)
-                    } else if (boxesEnabled) DetectionOverlay(frame)
-                    if (frame == null && (!running || videoMode)) Text(if (videoMode) videoName else "点击开始感知", Modifier.align(Alignment.Center).padding(20.dp), color = Color.LightGray)
-                    Column(Modifier.align(Alignment.BottomStart).padding(10.dp).background(Color(0xD0090E17)).padding(6.dp)) {
-                        Text("YOLO26n · ONNX CPU · 离线", color = Color.White, fontSize = 11.sp)
-                        if (riskEnabled) {
-                            val highest = frame?.vision?.risk?.frame?.events?.filter { it.observedNow && it.state == EventState.ACTIVE }?.maxByOrNull { it.assessment!!.score }
-                            val quality = when(frame?.vision?.risk?.frame?.perception?.status) { "available" -> "VALID"; "limited" -> "LIMITED"; "unavailable" -> "UNAVAILABLE"; else -> if(running) "UNKNOWN" else "UNAVAILABLE" }
-                            val low = frame?.vision?.risk?.frame?.observations?.mapNotNull { it.assessment }?.filter { it.level == org.sightguard.app.core.RiskLevel.LOW }?.maxByOrNull { it.score }
-                            val assessment = highest?.assessment ?: low
-                            val riskText = if(quality != "VALID") "当前风险：待有效感知确认" else if(assessment==null) "当前风险 NONE · 无已确认提醒事件" else "当前风险 ${assessment.level} · %.2f".format(assessment.score)
-                            val riskColor = when(assessment?.level) { org.sightguard.app.core.RiskLevel.HIGH -> Color(0xFFFFA1A5); org.sightguard.app.core.RiskLevel.MEDIUM -> Color(0xFFFFCB85); else -> Color(0xFFB2D6E0) }
-                            Text(riskText,color=riskColor,fontSize=12.sp)
-                            Text("感知 $quality", color=Color.LightGray,fontSize=10.sp)
-                        }
-                    }
-                }
-                if (videoMode) {
-                    Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) { TextButton(::togglePlayback, enabled = videoUri != null) { Text(if (videoPlaying) "暂停" else "播放") }; Text("${timeLabel(videoPosition)} / ${timeLabel(videoDuration)}", fontSize = 12.sp, modifier = Modifier.weight(1f)) }
-                    var slider by remember(videoDuration) { mutableFloatStateOf(videoPosition.toFloat()) }
-                    var dragging by remember { mutableStateOf(false) }
-                    LaunchedEffect(videoPosition) { if (!dragging) slider = videoPosition.toFloat() }
-                    Slider(slider, { dragging = true; slider = it }, onValueChangeFinished = { dragging = false; if (running) seekVideo(slider.toLong()) else videoPosition = slider.toLong() }, valueRange = 0f..videoDuration.coerceAtLeast(1).toFloat(), enabled = videoDuration > 0, modifier = Modifier.heightIn(min = 48.dp).semantics { contentDescription = "视频分析时间轴" })
-                }
-                Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) { Text("目标 ${frame?.vision?.raw?.size ?: 0}", fontSize = 12.sp); Text("%.1f FPS".format(fps), fontSize = 12.sp); Text("${latencyMs} ms", fontSize = 12.sp) }
-                Text(inputStatus, color = Color.LightGray, fontSize = 10.sp, maxLines = 1)
-                if (depthEnabled || spatialEnabled || gridEnabled) Text(spatialStatus, color = Color(0xFFFFCB85), fontSize = 10.sp, maxLines = 1)
-                Card(Modifier.fillMaxWidth()) { Column(Modifier.padding(10.dp), verticalArrangement = Arrangement.spacedBy(3.dp)) { Text("最近播报：$lastSpeech" + if(lastSpokenAtMs>0) " · ${((displayNow-lastSpokenAtMs).coerceAtLeast(0)/1000)}秒前" else "", fontSize = 14.sp, maxLines = 1); Text(speechStatus, fontSize = 10.sp, color = MaterialTheme.colorScheme.primary, maxLines = 2); Text(lastEvent, fontSize = 10.sp, color = Color.LightGray, maxLines = 1) } }
-                Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
-                    FilterChip(boxesEnabled, { boxesEnabled = !boxesEnabled }, label = { Text("检测框", fontSize = 11.sp) }); Spacer(Modifier.width(6.dp))
-                    FilterChip(riskEnabled, { riskEnabled = !riskEnabled }, label = { Text("风险", fontSize = 11.sp) }); Spacer(Modifier.weight(1f)); Text("静音", fontSize = 12.sp)
-                    Switch(muted, { muted = it; speech.setMuted(it) }, Modifier.semantics { contentDescription = "静音语音提醒" })
-                }
-                Row(Modifier.fillMaxWidth(), horizontalArrangement=Arrangement.SpaceBetween) {
-                    OutlinedButton({ spatialPanel=true }) { Text("空间感知",fontSize=12.sp) }
-                    TextButton({ describeEnvironment() }) { Text("描述周围环境",fontSize=12.sp) }
-                }
-                if (environmentOverview != "当前环境信息不足。") Text(environmentOverview,fontSize=11.sp,maxLines=2)
-                Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(10.dp)) {
-                    Button(::requestStart, Modifier.weight(1f).heightIn(min = 52.dp), enabled = !running) { Text(if (videoMode) "开始分析" else "开始感知") }
-                    OutlinedButton({ autoPolicy.manualStop(); stopPerception() }, Modifier.weight(1f).heightIn(min = 52.dp), enabled = running) { Text("停止感知") }
-                }
-                Text("图像启发式风险分数，非碰撞概率；辅助盲杖与导盲犬，不提供安全导航保证。", fontSize = 10.sp, color = Color(0xFFABB8C8))
-            }
+        if(permissionExplanation) AlertDialog(onDismissRequest={permissionExplanation=false;autoPolicy.manualStop()},title={Text("摄像头权限用途")},
+            text={Text("SightGuard 使用后置摄像头在设备本地识别环境，不上传画面。授权后前台自动感知；可随时停止、静音或在设置中修改权限。")},
+            confirmButton={TextButton({permissionExplanation=false;permission.launch(Manifest.permission.CAMERA)}) {Text("继续授权")}},
+            dismissButton={TextButton({permissionExplanation=false;autoPolicy.manualStop()}) {Text("暂不开启")}})
+        if(settingsPanel) SettingsPanel()
+        if(spatialPanel) SpatialPanel()
+        // Reading displayNow subscribes to freshness changes; no automatic accessibility announcement.
+        val now=displayNow
+        val silence=when {
+            muted -> "用户已静音。"
+            !running -> status
+            spatialStatus.startsWith("UNKNOWN") -> "当前模型运行受限。"
+            now-lastValidAtMs>3500 && lastValidAtMs>0 -> "感知结果已过期。"
+            else -> environmentEngine.silenceReason
+        }
+        AccessibleHome(perceptionState(),currentAlertText(),silence,lastSpeech,
+            environmentOverview.takeIf { it!="当前环境信息不足。" }?.let {it+if(overviewSpeechNote.isBlank()) "" else "\n$overviewSpeechNote"},running,muted,
+            ::describeEnvironment,{muted=!muted;speech.setMuted(muted);getSharedPreferences("perception",MODE_PRIVATE).edit().putBoolean("muted",muted).apply()},
+            {if(running) {autoPolicy.manualStop();stopPerception()} else requestStart()}, {settingsPanel=true}) { PreviewContent() }
+    }
+    @Composable private fun PreviewContent() {
+        val snapshot=spatialSnapshot
+        val available=when(spaceView) {
+            "深度热图","深度叠层" -> snapshot?.depth?.quality=="VALID" && snapshot.heatmap!=null
+            "环境语义" -> snapshot?.semantics!=null
+            "Spatial Grid" -> snapshot?.grid!=null
+            else -> false
+        }
+        Box(Modifier.fillMaxSize()) {
+            if(videoMode) videoBitmap?.let {Image(it.asImageBitmap(),null,Modifier.fillMaxSize(),contentScale=ContentScale.Fit)}
+            else AndroidView(factory={previewView},modifier=Modifier.fillMaxSize())
+            if(spaceView!="原始画面" && available && snapshot!=null) {
+                Image(snapshot.bitmap.asImageBitmap(),null,Modifier.fillMaxSize(),contentScale=ContentScale.Fit)
+                if(spaceView.startsWith("深度")) snapshot.heatmap?.let {Image(it.asImageBitmap(),null,Modifier.fillMaxSize(),contentScale=ContentScale.Fit,alpha=if(spaceView=="深度热图") 1f else layerAlpha)}
+                if(spaceView=="环境语义") SemanticOverlay(snapshot.semantics,snapshot.key.width,snapshot.key.height)
+                if(spaceView=="Spatial Grid") GridOverlay(snapshot.grid,snapshot.key.width,snapshot.key.height)
+                if(boxesEnabled) BoxesOverlay(snapshot.detections,snapshot.key.width,snapshot.key.height)
+            } else if(boxesEnabled) DetectionOverlay(frame)
         }
     }
     @Composable private fun DetectionOverlay(result: FrameResult?) {
@@ -574,7 +674,7 @@ class MainActivity : ComponentActivity() {
                     "Wall" -> cell.classId==0
                     "Door" -> cell.classId==14
                     "Tree / Vegetation" -> cell.classId in setOf(4,9,17)
-                    "Static Structures" -> cell.classId in setOf(1,10,15,19,32,53,59,93,121)
+                    "Static Structures" -> cell.classId in setOf(1,10,15,19,32,34,38,42,53,59,87,93,95,96,121)
                     else -> true
                 }
                 if (selected) {
@@ -591,7 +691,7 @@ class MainActivity : ComponentActivity() {
         }
     }
     @Composable private fun GridOverlay(grid: SpatialGridEvidence?, sourceWidth:Int, sourceHeight:Int) {
-        if(grid==null) { Text("UNKNOWN：网格证据缺失",fontSize=12.sp,color=Color.White); return }
+        if(grid==null) return
         Box(Modifier.fillMaxSize()) {
             Canvas(Modifier.fillMaxSize().semantics { contentDescription="15乘15图像证据网格，不表示安全路径" }) {
                 val fit=fitImage(sourceWidth,sourceHeight,size.width,size.height)
@@ -606,7 +706,7 @@ class MainActivity : ComponentActivity() {
             Text("${grid.state} · 运动 ${grid.motion.quality}\n黄=地面 紫=墙 红=框占用 粉=冲突 青=植被 灰=UNKNOWN/降级\n同帧研究证据，非安全通行网格",Modifier.align(Alignment.TopStart).padding(top=30.dp,start=8.dp).background(Color(0xCC090E17)).padding(5.dp),fontSize=9.sp,color=Color.White)
         }
     }
-    internal fun sessionDiagnostics(): JSONObject = JSONObject().put("running",running).put("generation",generation).put("modelReady",stage!=null).put("frameIndex",frame?.vision?.records?.frameIndex ?: -1).put("source",if(videoMode) "video" else "camera").put("explicitStop",autoPolicy.explicitlyStopped).put("releasePending",primaryReleasePending)
+    internal fun sessionDiagnostics(): JSONObject = JSONObject().put("running",running).put("generation",generation).put("modelReady",stage!=null).put("frameIndex",frame?.vision?.records?.frameIndex ?: -1).put("source",if(videoMode) "video" else "camera").put("explicitStop",autoPolicy.explicitlyStopped).put("releasePending",primaryReleasePending).put("spatialReleasePending",spatialReleasePending).put("semanticEnabled",spatialEnabled).put("debugThermalOverride",ignoreAuxThermalForTest).put("muted",muted).put("settingsPanel",settingsPanel).put("developerPanel",spatialPanel).put("currentAlert",currentAlertText()).put("environmentStatus",environmentStatus).put("fps",fps).put("latencyMs",latencyMs).put("speechStatus",speechStatus).put("lastSpeech",lastSpeech)
     private fun timeLabel(ms: Long) = "%02d:%02d".format(ms / 60000, ms / 1000 % 60)
     private fun recordJson(result: VisionResult): JSONObject = JSONObject()
         .put("android_relevance_policy", "android-relevance-1.0")

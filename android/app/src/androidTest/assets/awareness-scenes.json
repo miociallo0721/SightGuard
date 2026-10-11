@@ -1,0 +1,351 @@
+{
+  "schema_version": 1,
+  "selection": "illustrative positives, misses and negatives; selected after PC exploration, not an accuracy benchmark",
+  "cases": [
+    {
+      "file": "v03-room.jpg",
+      "scenario": "室内墙面，既有CC0验证输入",
+      "target_class_ids": [
+        0
+      ],
+      "preferred_kind": "WALL",
+      "sha256": "26d14443b40affb0211180bcde069065ad8b22889374b6e658ec530269554264",
+      "source": {
+        "file": "v03-room.jpg",
+        "sourcePage": "https://commons.wikimedia.org/wiki/File:Wooden_table_with_two_chairs.jpg",
+        "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/5/57/Wooden_table_with_two_chairs.jpg",
+        "author": "JesusisGreat7",
+        "license": "CC0-1.0",
+        "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "changes": "none; original JPEG bytes",
+        "sha256": "26d14443b40affb0211180bcde069065ad8b22889374b6e658ec530269554264",
+        "status": "downloaded"
+      }
+    },
+    {
+      "file": "ade-val-1529.jpg",
+      "scenario": "室内上行楼梯，仅提示楼梯存在",
+      "target_class_ids": [
+        53,
+        59
+      ],
+      "preferred_kind": "STAIRS",
+      "sha256": "b44971a9a583e37ab419c2625b704c0583acf55dc6b6e6c316370df1c3a1b9bb",
+      "source": {
+        "dataset": "danjacobellis/scene_parse_150",
+        "revision": "bbcc97e31fc582a2fe51f836cd6dccc472232aba",
+        "split": "validation",
+        "row_index": 1529,
+        "source_page": "https://huggingface.co/datasets/danjacobellis/scene_parse_150"
+      }
+    },
+    {
+      "file": "ade-val-0780.jpg",
+      "scenario": "室内下行楼梯，不判断下行",
+      "target_class_ids": [
+        53,
+        59,
+        95
+      ],
+      "preferred_kind": "STAIRS",
+      "sha256": "400bc8c75054c80777fb941c60cf10b3d86a656677d9fe0f1942dd626437713a",
+      "source": {
+        "dataset": "danjacobellis/scene_parse_150",
+        "revision": "bbcc97e31fc582a2fe51f836cd6dccc472232aba",
+        "split": "validation",
+        "row_index": 780,
+        "source_page": "https://huggingface.co/datasets/danjacobellis/scene_parse_150"
+      }
+    },
+    {
+      "file": "ade-val-0073.jpg",
+      "scenario": "室外狭窄楼梯",
+      "target_class_ids": [
+        53,
+        59
+      ],
+      "preferred_kind": "STAIRS",
+      "sha256": "7910a7006b75f736e47aa93b6786a299c7a3597cb1aec61729d3edb0cb84aeb5",
+      "source": {
+        "dataset": "danjacobellis/scene_parse_150",
+        "revision": "bbcc97e31fc582a2fe51f836cd6dccc472232aba",
+        "split": "validation",
+        "row_index": 73,
+        "source_page": "https://huggingface.co/datasets/danjacobellis/scene_parse_150"
+      }
+    },
+    {
+      "file": "whitney-stairs.png",
+      "scenario": "夜间倾斜室外楼梯，实际模型误分成墙面",
+      "target_class_ids": [
+        53,
+        59
+      ],
+      "preferred_kind": "STAIRS",
+      "sha256": "4618311f97d3f86d2fc8aff3478fa8eddc887d92bb9eea4ce34d87cb8ecf7149",
+      "source": {
+        "file": "whitney-stairs.png",
+        "source_page": "https://commons.wikimedia.org/wiki/File:Whitney_Stairs.png",
+        "url": "https://upload.wikimedia.org/wikipedia/commons/b/be/Whitney_Stairs.png",
+        "author": "Joe deylamipour",
+        "license": "CC-BY-SA-4.0",
+        "changes": "none",
+        "status": "downloaded",
+        "sha256": "4618311f97d3f86d2fc8aff3478fa8eddc887d92bb9eea4ce34d87cb8ecf7149"
+      }
+    },
+    {
+      "file": "doorstep.jpg",
+      "scenario": "门前单级台阶与奶瓶",
+      "target_class_ids": [
+        121
+      ],
+      "preferred_kind": "",
+      "sha256": "8002eacf4d5ede6fa40911cf54b555bac95970eb70afaf9b71b63f60bfc038c4",
+      "source": {
+        "file": "doorstep.jpg",
+        "source_page": "https://commons.wikimedia.org/wiki/File:Doorstep_milk_bottles.JPG",
+        "url": "https://upload.wikimedia.org/wikipedia/commons/8/8a/Doorstep_milk_bottles.JPG",
+        "author": "PookieFugglestein",
+        "license": "CC0-1.0",
+        "changes": "none",
+        "status": "downloaded",
+        "sha256": "8002eacf4d5ede6fa40911cf54b555bac95970eb70afaf9b71b63f60bfc038c4"
+      }
+    },
+    {
+      "file": "kerb_height_raised_original.jpg",
+      "scenario": "路缘高差",
+      "target_class_ids": [
+        121
+      ],
+      "preferred_kind": "",
+      "sha256": "0cb3711bd9849a7a1f23f9c99d387ff1e81e2ecae1fd1714b76a0a1464c6038f",
+      "source": {
+        "source_page": "https://github.com/streetcomplete/StreetComplete/tree/master/res/graphics/kerbs",
+        "license": "CC0",
+        "url": "https://raw.githubusercontent.com/streetcomplete/StreetComplete/master/res/graphics/kerbs/kerb_height_raised_original.jpg",
+        "author": "Mateusz Konieczny",
+        "attribution_source": "https://github.com/streetcomplete/StreetComplete/blob/master/res/graphics/authors.txt"
+      }
+    },
+    {
+      "file": "ade-val-1475.jpg",
+      "scenario": "雕刻石立柱",
+      "target_class_ids": [
+        42,
+        93
+      ],
+      "preferred_kind": "POLE",
+      "sha256": "ac9d0e929477aa65234c2c49b26afebc16cd5cae06eed0d4f32ee25bce7edb88",
+      "source": {
+        "dataset": "danjacobellis/scene_parse_150",
+        "revision": "bbcc97e31fc582a2fe51f836cd6dccc472232aba",
+        "split": "validation",
+        "row_index": 1475,
+        "source_page": "https://huggingface.co/datasets/danjacobellis/scene_parse_150"
+      }
+    },
+    {
+      "file": "ade-val-1016.jpg",
+      "scenario": "回廊立柱与地砖，保留漏检",
+      "target_class_ids": [
+        42,
+        93,
+        121
+      ],
+      "preferred_kind": "POLE",
+      "sha256": "5fe240adfee4eec7799de94f111ff97c87d08777dfd7e16ac33ad77db6105176",
+      "source": {
+        "dataset": "danjacobellis/scene_parse_150",
+        "revision": "bbcc97e31fc582a2fe51f836cd6dccc472232aba",
+        "split": "validation",
+        "row_index": 1016,
+        "source_page": "https://huggingface.co/datasets/danjacobellis/scene_parse_150"
+      }
+    },
+    {
+      "file": "ade-val-1662.jpg",
+      "scenario": "近处路灯杆，保留漏检",
+      "target_class_ids": [
+        87,
+        93
+      ],
+      "preferred_kind": "POLE",
+      "sha256": "cfeb0d15d4442b88e1e0eb992f125fd502cde8a1a9c111c888e191dc292e271a",
+      "source": {
+        "dataset": "danjacobellis/scene_parse_150",
+        "revision": "bbcc97e31fc582a2fe51f836cd6dccc472232aba",
+        "split": "validation",
+        "row_index": 1662,
+        "source_page": "https://huggingface.co/datasets/danjacobellis/scene_parse_150"
+      }
+    },
+    {
+      "file": "ade-val-0031.jpg",
+      "scenario": "阳台栏杆",
+      "target_class_ids": [
+        38,
+        95
+      ],
+      "preferred_kind": "RAILING",
+      "sha256": "b2a0deab05ddaf79ca5267b3be5e3e545853c5fb70924175a4f1fc201e3db75f",
+      "source": {
+        "dataset": "danjacobellis/scene_parse_150",
+        "revision": "bbcc97e31fc582a2fe51f836cd6dccc472232aba",
+        "split": "validation",
+        "row_index": 31,
+        "source_page": "https://huggingface.co/datasets/danjacobellis/scene_parse_150"
+      }
+    },
+    {
+      "file": "ade-val-1781.jpg",
+      "scenario": "楼梯扶手",
+      "target_class_ids": [
+        38,
+        95
+      ],
+      "preferred_kind": "RAILING",
+      "sha256": "6294cc6be9fc33beae5c7a4c738caef1aeedb1103528dada4265f11f408d2613",
+      "source": {
+        "dataset": "danjacobellis/scene_parse_150",
+        "revision": "bbcc97e31fc582a2fe51f836cd6dccc472232aba",
+        "split": "validation",
+        "row_index": 1781,
+        "source_page": "https://huggingface.co/datasets/danjacobellis/scene_parse_150"
+      }
+    },
+    {
+      "file": "ade-val-0002.jpg",
+      "scenario": "门，仅环境概览",
+      "target_class_ids": [
+        14
+      ],
+      "preferred_kind": "",
+      "sha256": "618e668d5011d8022babde29d4075643f1060eeb7736f99cdf7e46dc5f3b5efc",
+      "source": {
+        "dataset": "danjacobellis/scene_parse_150",
+        "revision": "bbcc97e31fc582a2fe51f836cd6dccc472232aba",
+        "split": "validation",
+        "row_index": 2,
+        "source_page": "https://huggingface.co/datasets/danjacobellis/scene_parse_150"
+      }
+    },
+    {
+      "file": "ade-val-0041.jpg",
+      "scenario": "园林围栏，仅环境概览",
+      "target_class_ids": [
+        32
+      ],
+      "preferred_kind": "",
+      "sha256": "cd83e43eb67993680696f1171893df90dcaf2af0bfbe3d076829f87a3be170e2",
+      "source": {
+        "dataset": "danjacobellis/scene_parse_150",
+        "revision": "bbcc97e31fc582a2fe51f836cd6dccc472232aba",
+        "split": "validation",
+        "row_index": 41,
+        "source_page": "https://huggingface.co/datasets/danjacobellis/scene_parse_150"
+      }
+    },
+    {
+      "file": "ade-val-0027.jpg",
+      "scenario": "地面树影负例",
+      "target_class_ids": [
+        53,
+        59,
+        121
+      ],
+      "preferred_kind": "",
+      "sha256": "538cf6489d7785a5de43d39a30c3bc8e1d05bf4c2d04aa253adeaa9db1b25422",
+      "source": {
+        "dataset": "danjacobellis/scene_parse_150",
+        "revision": "bbcc97e31fc582a2fe51f836cd6dccc472232aba",
+        "split": "validation",
+        "row_index": 27,
+        "source_page": "https://huggingface.co/datasets/danjacobellis/scene_parse_150"
+      }
+    },
+    {
+      "file": "ade-val-0078.jpg",
+      "scenario": "地砖条纹与明暗负例",
+      "target_class_ids": [
+        53,
+        59,
+        121
+      ],
+      "preferred_kind": "",
+      "sha256": "59fbb52326204d12d3621a2092704692808b5e903b66ea42feef601313c7cb7a",
+      "source": {
+        "dataset": "danjacobellis/scene_parse_150",
+        "revision": "bbcc97e31fc582a2fe51f836cd6dccc472232aba",
+        "split": "validation",
+        "row_index": 78,
+        "source_page": "https://huggingface.co/datasets/danjacobellis/scene_parse_150"
+      }
+    },
+    {
+      "file": "ade-val-0411.jpg",
+      "scenario": "围栏正例，仅环境概览",
+      "target_class_ids": [
+        32
+      ],
+      "preferred_kind": "",
+      "sha256": "4109047ed5790efb3499316bae4c26e61c5bb9b4f93db6f67bf41076243e9b0c",
+      "source": {
+        "dataset": "danjacobellis/scene_parse_150",
+        "revision": "bbcc97e31fc582a2fe51f836cd6dccc472232aba",
+        "split": "validation",
+        "row_index": 411,
+        "source_page": "https://huggingface.co/datasets/danjacobellis/scene_parse_150"
+      }
+    },
+    {
+      "file": "ade-val-0051.jpg",
+      "scenario": "自动扶梯，仅环境概览",
+      "target_class_ids": [
+        96
+      ],
+      "preferred_kind": "",
+      "sha256": "af5021c891e2981137116883032232feedb54789d435782e2ed14d36980ca99f",
+      "source": {
+        "dataset": "danjacobellis/scene_parse_150",
+        "revision": "bbcc97e31fc582a2fe51f836cd6dccc472232aba",
+        "split": "validation",
+        "row_index": 51,
+        "source_page": "https://huggingface.co/datasets/danjacobellis/scene_parse_150"
+      }
+    },
+    {
+      "file": "ade-val-0022.jpg",
+      "scenario": "湿地水面，仅环境概览，不解释为脚下水坑",
+      "target_class_ids": [
+        21
+      ],
+      "preferred_kind": "",
+      "sha256": "f1a45d5560b8612888eee08f0f273cf76372379e433092c1a65ff1326db02683",
+      "source": {
+        "dataset": "danjacobellis/scene_parse_150",
+        "revision": "bbcc97e31fc582a2fe51f836cd6dccc472232aba",
+        "split": "validation",
+        "row_index": 22,
+        "source_page": "https://huggingface.co/datasets/danjacobellis/scene_parse_150"
+      }
+    },
+    {
+      "file": "ade-val-0064.jpg",
+      "scenario": "岩石，仅环境概览",
+      "target_class_ids": [
+        34
+      ],
+      "preferred_kind": "",
+      "sha256": "8dedbc7bc58493a87030b801528d722ad235386e617d618e802eb98be25152f7",
+      "source": {
+        "dataset": "danjacobellis/scene_parse_150",
+        "revision": "bbcc97e31fc582a2fe51f836cd6dccc472232aba",
+        "split": "validation",
+        "row_index": 64,
+        "source_page": "https://huggingface.co/datasets/danjacobellis/scene_parse_150"
+      }
+    }
+  ]
+}
