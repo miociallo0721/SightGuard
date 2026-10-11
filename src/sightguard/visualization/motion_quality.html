@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="zh"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Stage 4A · __VIDEO__</title>
+<style>
+*{box-sizing:border-box}body{background:#111a24;color:#e4edf3;font:15px system-ui;margin:20px}h1{font-size:22px}a{color:#64d7ca}header p{color:#9fb3c4}select,input,button{background:#233443;color:white;padding:7px;border:1px solid #547181;border-radius:5px}label{margin-right:15px}main{display:grid;grid-template-columns:minmax(500px,1.5fr) minmax(330px,1fr);gap:18px}.panel{background:#192734;padding:14px;border-radius:8px}canvas{width:100%;height:auto;background:#000}pre{white-space:pre-wrap;overflow-wrap:anywhere;font:12px ui-monospace;max-height:340px;overflow:auto}.stats{line-height:1.8}#quality{font-weight:bold;color:#70ded1}#freshness{font-weight:bold;color:#ffd88d}table{width:100%;border-collapse:collapse;font-size:13px}td,th{padding:5px;text-align:left;border-bottom:1px solid #3c4b57}.controls{margin:15px 0;display:flex;flex-wrap:wrap;gap:8px}.muted{color:#9fb3c4}@media(max-width:900px){main{display:block}.panel{margin-bottom:15px}}
+</style>
+<header><a href="../index.html">八段视频</a><h1>Stage 4A · __VIDEO__</h1><p>真实 UrbanEgo RGB · 20 FPS 相邻运动 → 过去 500 ms 窗口 · 原 Corridor 只读 · absolute camera pose UNKNOWN</p></header>
+<div class="controls"><label>采样 <input id="sample" type="range" min="0" value="0"></label><button id="prev">上一帧</button><button id="next">下一帧</button><label>原组 <select id="ablation"><option>B</option><option selected>C</option><option>D</option></select></label><label>估计 <select id="mode"><option value="primary">检测框排除</option><option value="control">未遮罩对照</option></select></label><label><input id="grid" type="checkbox" checked>原 Spatial Grid</label><label><input id="flow" type="checkbox" checked>匹配点 / 线</label><label><input id="boxes" type="checkbox" checked>排除框</label><label>模拟年龄 <select id="delay"><option>0</option><option>100</option><option>250</option><option>500</option><option>1000</option></select>ms</label></div>
+<main><section class="panel"><canvas id="image" width="1280" height="720"></canvas><p id="frame"></p><p class="muted">网格、候选带和线段均在图像坐标中；线段表示像素匹配，无导航箭头。剩余区域不是已验证的静态背景。</p><details><summary>来源、帧级质量及 UNKNOWN 原因</summary><pre id="source"></pre></details></section><section class="panel"><div id="quality"></div><div class="stats" id="motion"></div><p id="window"></p><p id="freshness"></p><p class="muted">消费时间为模拟视频 PTS，TTL 为未校准工程参数；不是在线或音频延迟。</p><p id="corridor"></p><table><thead><tr><th>图像候选</th><th>原成本</th><th>资格</th></tr></thead><tbody id="costs"></tbody></table><p id="changes"></p><details open><summary>窗口、失效与时序原因</summary><pre id="reasons"></pre></details><p class="muted">Temporal Stabilization：NOT_RUN；无跨帧对应和独立通行真值。严格原 D 姿态门禁保持。</p></section></main>
+<script>
+const samples=__DATA__, byId=id=>document.getElementById(id), canvas=byId('image'), ctx=canvas.getContext('2d');
+byId('sample').max=samples.length-1;
+const number=x=>x===null?'UNKNOWN':Number(x).toFixed(4);
+let generation=0;
+function show(){
+ const ticket=++generation,s=samples[Number(byId('sample').value)],m=s[byId('mode').value],t=s.temporal.find(x=>x.ablation===byId('ablation').value),w=t.motion_window,c=t.source_corridor,f=t.freshness.find(x=>x.simulated_delay_ms===Number(byId('delay').value));
+ byId('frame').textContent=`frame ${m.key.frame_index} · PTS ${m.key.timestamp_ms.toFixed(1)} ms · 相邻 dt ${m.dt_ms} ms`;
+ byId('quality').textContent=`帧级 ${m.quality.label} · 窗口 ${w.quality.label}`;
+ byId('motion').textContent=`features ${m.feature_count} · matches ${m.match_count} · inliers ${m.inlier_count} (${number(m.inlier_ratio)}) · 2D 旋转 ${number(m.rotation_2d_degrees)}° · 尺度 ${number(m.scale_2d_ratio)} · 图像运动 ${number(m.motion_diagonals_per_second)} diagonal/s · 残差 P95 ${number(m.residual_inlier_p95_pixels)} work px`;
+ byId('window').textContent=`窗口 (${w.start_ms}, ${w.end_ms}] ms · 有效 ${w.valid_count}/${w.sample_count} · 时间覆盖 ${number(w.time_coverage_fraction)} · 最大缺口 ${w.maximum_gap_ms} ms`;
+ byId('freshness').textContent=`${f.status} · 模拟 age ${f.age_ms} ms · TTL ${f.ttl_ms??'UNKNOWN'} · 研究结果 ${f.gated_research_status}`;
+ byId('corridor').textContent=`原 ${c.ablation}: ${c.status} · best ${c.best_supported_candidate??'null'} · ranking ${c.ranking.join(', ')||'none'}`;
+ byId('costs').replaceChildren(...c.candidates.map(v=>{const tr=document.createElement('tr');for(const text of [v.candidate.candidate_id,number(v.total_cost),v.evaluation_status]){const td=document.createElement('td');td.textContent=text;tr.append(td)}return tr}));
+ byId('changes').textContent=t.change.types.join(' · ');
+ byId('reasons').textContent=JSON.stringify({window_quality:w.quality,freshness:f.reasons,original_abstain:c.abstain_reasons,candidate_changes:t.change.candidate_deltas,source_references:w.source_references},null,2);
+ byId('source').textContent=JSON.stringify({quality:m.quality,provenance:m.provenance,source_corridor:t.source_reference,source_sha256:t.source_sha256},null,2);
+ const img=new Image();img.onload=()=>{if(ticket!==generation)return;ctx.clearRect(0,0,canvas.width,canvas.height);ctx.drawImage(img,0,0,canvas.width,canvas.height);
+ if(byId('grid').checked){const colors={GROUND_SUPPORTED:'rgba(50,205,140,.16)',OBJECT_COVERED:'rgba(250,100,80,.2)',CONFLICT:'rgba(240,170,50,.2)',UNKNOWN:'rgba(160,170,185,.12)'};for(const cell of s.spatial.cells){const [x,y,r,b]=cell.bounds_xyxy;ctx.fillStyle=colors[cell.state]??'rgba(100,160,200,.1)';ctx.fillRect(x,y,r-x,b-y);ctx.strokeStyle='rgba(130,220,210,.3)';ctx.lineWidth=1;ctx.strokeRect(x,y,r-x,b-y)}for(const [i,v] of c.candidates.entries()){ctx.strokeStyle=['#e8ae55','#65ded2','#bfa0ef'][i];ctx.lineWidth=3;ctx.beginPath();v.candidate.polygon_xy.forEach(([x,y],j)=>j?ctx.lineTo(x,y):ctx.moveTo(x,y));ctx.closePath();ctx.stroke()}}
+ if(byId('boxes').checked&&byId('mode').value==='primary'){ctx.strokeStyle='#f17b92';ctx.lineWidth=2;for(const box of s.exclusion_boxes??[]){ctx.strokeRect(box[0],box[1],box[2]-box[0],box[3]-box[1])}}
+ if(byId('flow').checked){for(const p of m.flow_samples){ctx.strokeStyle=p.inlier?'#70ff8c':'#ff6f70';ctx.fillStyle=ctx.strokeStyle;ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(...p.previous_xy);ctx.lineTo(...p.current_xy);ctx.stroke();ctx.beginPath();ctx.arc(...p.current_xy,3,0,Math.PI*2);ctx.fill()}}};img.src=s.image;
+}
+document.querySelectorAll('input,select').forEach(x=>x.addEventListener('input',show));
+byId('prev').onclick=()=>{byId('sample').value=Math.max(0,Number(byId('sample').value)-1);show()};byId('next').onclick=()=>{byId('sample').value=Math.min(samples.length-1,Number(byId('sample').value)+1);show()};show();
+</script></html>
