@@ -21,7 +21,7 @@ data class GroundEvidence(val key: SpatialFrameKey, val cells: List<SemanticCell
 data class SpatialInput(val values: FloatArray, val resizedWidth: Int, val resizedHeight: Int, val padLeft: Int, val padTop: Int)
 
 /** Real ADE20K semantics only. Own CPU session and thread; never enters risk scoring. */
-class SpatialDetector(context: Context) : AutoCloseable {
+class SpatialDetector(context: Context, private val intraOpThreads: Int = 1) : AutoCloseable {
     private val environment = OrtEnvironment.getEnvironment()
     private val session: OrtSession
     init {
@@ -33,14 +33,15 @@ class SpatialDetector(context: Context) : AutoCloseable {
         val sha = MessageDigest.getInstance("SHA-256").digest(bytes).joinToString("") { "%02x".format(it) }
         require(sha == MODEL_SHA) { "SegFormer SHA mismatch" }
         OrtSession.SessionOptions().use { options ->
-            options.setIntraOpNumThreads(1); options.setInterOpNumThreads(1)
+            require(intraOpThreads in 1..2)
+            options.setIntraOpNumThreads(intraOpThreads); options.setInterOpNumThreads(1)
             session = environment.createSession(bytes, options)
         }
         try {
             require((session.inputInfo.getValue("pixel_values").info as TensorInfo).shape.contentEquals(longArrayOf(1, 3, 256, 256)))
             require((session.outputInfo.getValue("class_logits").info as TensorInfo).shape.contentEquals(longArrayOf(1, 150, 64, 64)))
         } catch (error: Exception) { session.close(); throw error }
-        Log.i("SG_SPATIAL", "loaded real SegFormer MiT-B0 sha=$sha input=[1,3,256,256] output=[1,150,64,64] threads=1")
+        Log.i("SG_SPATIAL", "loaded real SegFormer MiT-B0 sha=$sha input=[1,3,256,256] output=[1,150,64,64] threads=$intraOpThreads")
     }
     fun prepare(bitmap: Bitmap): SpatialInput {
         val ratio = minOf(256f / bitmap.width, 256f / bitmap.height)
@@ -63,34 +64,51 @@ class SpatialDetector(context: Context) : AutoCloseable {
         require(values.size == 3 * 256 * 256)
         OnnxTensor.createTensor(environment, FloatBuffer.wrap(values), longArrayOf(1, 3, 256, 256)).use { input ->
             session.run(mapOf("pixel_values" to input)).use { result ->
-                @Suppress("UNCHECKED_CAST")
-                val classes = (result[0].value as Array<Array<Array<FloatArray>>>)[0]
-                return Array(150) { cls -> FloatArray(4096) { pixel -> classes[cls][pixel / 64][pixel % 64] } }
+                val tensor=result[0] as OnnxTensor
+                val flat=FloatArray(150*4096)
+                tensor.floatBuffer.get(flat)
+                return Array(150) {cls -> flat.copyOfRange(cls*4096,(cls+1)*4096)}
             }
         }
     }
     fun analyze(bitmap: Bitmap, key: SpatialFrameKey): GroundEvidence = analyzeClasses(bitmap, key, GROUND_CLASSES)
     fun analyzeAll(bitmap: Bitmap, key: SpatialFrameKey): GroundEvidence = analyzeClasses(bitmap, key, (0 until 150).toSet())
     private fun analyzeClasses(bitmap: Bitmap, key: SpatialFrameKey, allowedClasses: Set<Int>): GroundEvidence {
-        val started = SystemClock.elapsedRealtime(); val input = prepare(bitmap); val logits = infer(input.values)
+        val started = SystemClock.elapsedRealtime(); val input = prepare(bitmap); val prepared=SystemClock.elapsedRealtime(); val logits = infer(input.values);val inferred=SystemClock.elapsedRealtime()
         val cells = mutableListOf<SemanticCell>()
+        // Traverse contiguous class planes rather than jumping between 150 distant
+        // arrays per pixel. Keep the exact argmax and softmax accumulation order.
+        val best=IntArray(4096);val maxima=logits[0].copyOf()
+        for(cls in 1 until 150) {
+            val scores=logits[cls]
+            for(pixel in 0 until 4096) if(scores[pixel]>maxima[pixel]) {maxima[pixel]=scores[pixel];best[pixel]=cls}
+        }
+        val eligible=BooleanArray(4096) {pixel ->
+            val x=pixel%64*4;val y=pixel/64*4
+            best[pixel] in allowedClasses && maxima[pixel].isFinite() && x+4>input.padLeft && x<input.padLeft+input.resizedWidth && y+4>input.padTop && y<input.padTop+input.resizedHeight
+        }
+        val denominators=DoubleArray(4096)
+        for(cls in 0 until 150) {
+            val scores=logits[cls]
+            for(pixel in 0 until 4096) if(eligible[pixel]) {
+                denominators[pixel]+=exp((scores[pixel]-maxima[pixel]).toDouble())
+                // Positive terms cannot recover a pixel already below the confidence gate.
+                if((1.0/denominators[pixel]).toFloat()<MIN_CONFIDENCE) eligible[pixel]=false
+            }
+        }
         for (pixel in 0 until 4096) {
-            var best = 0
-            for (cls in 1 until 150) if (logits[cls][pixel] > logits[best][pixel]) best = cls
-            if (best !in allowedClasses || !logits[best][pixel].isFinite()) continue
-            val max = logits[best][pixel]; var denominator = 0.0
-            for (cls in 0 until 150) denominator += exp((logits[cls][pixel] - max).toDouble())
-            val confidence = (1.0 / denominator).toFloat()
-            if (!confidence.isFinite() || confidence < MIN_CONFIDENCE) continue
+            if(!eligible[pixel]) continue
+            val confidence=(1.0/denominators[pixel]).toFloat()
+            if(!confidence.isFinite() || confidence<MIN_CONFIDENCE) continue
             val left = ((pixel % 64 * 4f - input.padLeft) / input.resizedWidth).coerceIn(0f, 1f)
             val top = ((pixel / 64 * 4f - input.padTop) / input.resizedHeight).coerceIn(0f, 1f)
             val right = (((pixel % 64 + 1) * 4f - input.padLeft) / input.resizedWidth).coerceIn(0f, 1f)
             val bottom = (((pixel / 64 + 1) * 4f - input.padTop) / input.resizedHeight).coerceIn(0f, 1f)
-            if (right > left && bottom > top) cells += SemanticCell(left, top, right, bottom, best, confidence)
+            if (right > left && bottom > top) cells += SemanticCell(left, top, right, bottom, best[pixel], confidence)
         }
         val completed = SystemClock.elapsedRealtime()
         val evidence = GroundEvidence(key, cells, completed - started, completed, if (cells.isEmpty()) "ABSTAIN：缺少可信语义" else "真实语义 · 非安全区域")
-        Log.i("SG_SPATIAL", "frame=${key.frameIndex} sourceMs=${key.timestampMs} cells=${cells.size} latencyMs=${evidence.latencyMs} evidenceAgeMs=${completed - key.capturedAtMs} state=${evidence.state}")
+        Log.i("SG_SPATIAL", "frame=${key.frameIndex} sourceMs=${key.timestampMs} cells=${cells.size} prepareMs=${prepared-started} inferMs=${inferred-prepared} postMs=${completed-inferred} latencyMs=${evidence.latencyMs} evidenceAgeMs=${completed - key.capturedAtMs} state=${evidence.state}")
         return evidence
     }
     override fun close() { session.close() }

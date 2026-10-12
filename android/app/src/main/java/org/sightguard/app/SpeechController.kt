@@ -63,6 +63,7 @@ internal object SpeechRequestRules {
         request.important -> 5
         request.eventId?.startsWith("semantic:")==true -> 3
         request.eventId?.startsWith("overview-")==true -> 2
+        request.eventId?.startsWith("research:")==true -> 2
         request.eventId?.startsWith("status-")==true -> 1
         else -> 4
     }
@@ -139,6 +140,11 @@ internal object SpeechPromptCatalog {
             "前方检测到楼梯。" to "environment_stairs",
             "前方检测到台阶。" to "environment_step",
             "前方检测到杆柱。" to "environment_pole",
+            "前方墙面可能较近，请注意。" to "ar_wall_near",
+            "相机可能正在靠近前方墙面，请注意。" to "ar_wall_approaching",
+            "画面左侧可见地面较连续，通行条件尚未确认。" to "ar_corridor_left",
+            "画面中央可见地面较连续，通行条件尚未确认。" to "ar_corridor_center",
+            "画面右侧可见地面较连续，通行条件尚未确认。" to "ar_corridor_right",
         )
         fixed[text]?.let { return SpeechPromptSelection(it, text, usedGeneric = false) }
         for(kind in EnvironmentKind.entries) for((key,direction) in listOf("left" to Direction.LEFT,"center" to Direction.CENTER,"right" to Direction.RIGHT)) {
@@ -281,6 +287,14 @@ class SpeechController(
     }
 
     /** Returns true when this request is now active or occupies the single waiting slot. */
+    fun cancelResearch(reason: String) {
+        checkMainThread()
+        if(requestQueue.peek()?.eventId?.startsWith("research:")==true) cancelQueued(reason)
+        if(activeRequest?.eventId?.startsWith("research:")==true && (!activePlaybackStarted || reason!="research_expired")) {
+            cancelCurrent(reason,keepAudioFocus=true);startNextQueuedRequest()
+        }
+    }
+
     fun offer(
         text: String,
         important: Boolean,
@@ -770,6 +784,11 @@ class SpeechController(
 
     private fun promptResourceByName(name: String): Int {
         when (name) {
+            "ar_wall_near" -> return R.raw.ar_wall_near
+            "ar_wall_approaching" -> return R.raw.ar_wall_approaching
+            "ar_corridor_left" -> return R.raw.ar_corridor_left
+            "ar_corridor_center" -> return R.raw.ar_corridor_center
+            "ar_corridor_right" -> return R.raw.ar_corridor_right
             "perception_started" -> return R.raw.perception_started
             "perception_stopped" -> return R.raw.perception_stopped
             "perception_interrupted" -> return R.raw.perception_interrupted

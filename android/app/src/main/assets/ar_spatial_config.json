@@ -1,0 +1,18 @@
+{
+  "schema_version": "sightguard.ar-spatial.v1",
+  "max_source_age_ms": 500,
+  "max_raw_depth_age_ms": 100,
+  "max_pair_ms": 1600,
+  "confirmations": 3,
+  "minimum_points": 30,
+  "minimum_confidence": 0.78,
+  "plane_residual_m": 0.06,
+  "minimum_inlier_fraction": 0.8,
+  "near_m": 1.5,
+  "approach_delta_m": 0.15,
+  "cooldown_ms": 15000,
+  "recovery_ms": 2500,
+  "physical_phone_calibrated": false,
+  "numeric_distance_speech": false,
+  "navigation_instructions": false
+}

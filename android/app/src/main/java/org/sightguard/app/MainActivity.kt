@@ -69,6 +69,13 @@ class MainActivity : ComponentActivity() {
     private var riskEnabled by mutableStateOf(true)
     private var depthEnabled by mutableStateOf(true)
     private var metricResearchEnabled by mutableStateOf(false)
+    private var arEnabled by mutableStateOf(true)
+    private var arSource by mutableStateOf<ArCameraSource?>(null)
+    private var arFailed = false
+    private var arStatus by mutableStateOf("空间测量：正在检查 ARCore")
+    private var arRecord: ArSpatialRecord? = null
+    private var arInvalidatedAtMs = -1L
+    private lateinit var arSpeech: ArSpeechPolicy
     private var metricResearchStatus by mutableStateOf("米制墙距研究关闭 · 未进行手机卷尺量测")
     private var spatialEnabled by mutableStateOf(true)
     private var ignoreAuxThermalForTest = false
@@ -187,8 +194,10 @@ class MainActivity : ComponentActivity() {
         ignoreAuxThermalForTest = applicationInfo.flags and android.content.pm.ApplicationInfo.FLAG_DEBUGGABLE != 0 &&
             intent.getBooleanExtra("ignore_aux_thermal_for_test",false)
         environmentEngine = SemanticEnvironmentEngine(loadEnvironmentConfig(this))
+        arSpeech=ArSpeechPolicy(loadArSpeechConfig(this))
         autoStart = getSharedPreferences("perception", MODE_PRIVATE).getBoolean("auto_start", true)
         muted = getSharedPreferences("perception", MODE_PRIVATE).getBoolean("muted", false)
+        arEnabled = getSharedPreferences("perception", MODE_PRIVATE).getBoolean("ar_enabled", true)
         videoMode = savedInstanceState?.getBoolean("video_mode") ?: false
         videoUri = savedInstanceState?.getString("video_uri")?.let(Uri::parse)
         videoPosition = savedInstanceState?.getLong("video_position") ?: 0
@@ -232,7 +241,7 @@ class MainActivity : ComponentActivity() {
                         videoPosition = videoPosition.coerceIn(0, (videoDuration - 1).coerceAtLeast(0))
                         nextVideoPosition = videoPosition
                         inputStatus = "本地解码 · 请求位置估计时间 · CPU"; pumpVideo(token)
-                    } else bindCamera(token, executor, ownedStage!!)
+                    } else if(!bindArCamera(token,executor,ownedStage!!)) bindCamera(token, executor, ownedStage!!)
                 }
             } catch (error: Exception) { Log.e("SG_MODEL", "session load failed", error); handler.post { if (generation == token) fail("输入或模型加载失败：${error.message}") } }
         }
@@ -299,6 +308,57 @@ class MainActivity : ComponentActivity() {
             } catch (error: Exception) { Log.e("SG_CAMERA", "bind failed", error); fail("摄像头连接失败：${error.message}") }
         }, ContextCompat.getMainExecutor(this))
     }
+    private fun bindArCamera(token: Long,executor: ExecutorService,vision: VisionStage): Boolean {
+        if(!arEnabled || arFailed) return false
+        val availability=com.google.ar.core.ArCoreApk.getInstance().checkAvailability(this)
+        Log.i("SG_AR","availability=$availability")
+        if(availability!=com.google.ar.core.ArCoreApk.Availability.SUPPORTED_INSTALLED) {
+            arStatus="空间测量暂不可用：$availability";return false
+        }
+        return try {
+            var first=0L;var count=0;var rateStart=SystemClock.elapsedRealtime();var rateFrames=0
+            arSource=ArCameraSource(this,{bitmap,geometry,release ->
+                if(!active || generation!=token) release() else executor.execute {
+                    try {
+                        if(!active || generation!=token) return@execute
+                        if(first==0L) first=geometry.timestampNs
+                        val sourceMs=(geometry.timestampNs-first)/1_000_000
+                        val key=SpatialFrameKey(token,0,count,sourceMs.toDouble(),bitmap.width,bitmap.height,
+                            geometry.captureElapsedMs,geometry.timestampNs,"ARCORE",geometry.rotation)
+                        val sameFrameDetections=java.util.concurrent.atomic.AtomicReference<List<Detection>?>(null)
+                        // Start independent semantic inference without waiting for YOLO. The
+                        // geometry consumer still requires this exact frame's completed detections.
+                        spatialSession?.offer(bitmap,key,emptyList(),arGeometry=geometry,deferredDetections={sameFrameDetections.get()})
+                        val result=vision.process(bitmap,sourceMs,"monotonic")
+                        check(result.records.frameIndex==key.frameIndex) {"AR source frame counter mismatch"}
+                        sameFrameDetections.set(result.raw)
+                        val completed=SystemClock.elapsedRealtime();val latency=completed-geometry.receivedAtMs
+                        spatialSession?.notePrimaryLatency(latency);rateFrames++;count++
+                        val rate=rateFrames*1000f/(completed-rateStart).coerceAtLeast(1)
+                        if(completed-rateStart>3000) {rateStart=completed;rateFrames=0}
+                        if(count%30==1) Log.i("SG_AR","frame=$count tracking=${geometry.tracking} reason=${geometry.trackingFailure} points=${geometry.points.size} captureToReceiveMs=${geometry.receivedAtMs-geometry.captureElapsedMs} depthAgeMs=${if(geometry.depthTimestampNs>0) (geometry.timestampNs-geometry.depthTimestampNs)/1000000 else -1} latencyMs=$latency yoloMs=${result.detectionLatencyMs} fps=$rate pssKb=${android.os.Debug.getPss()}")
+                        handler.post {
+                            if(running && generation==token && ResultFreshness.isCurrent(geometry.receivedAtMs,SystemClock.elapsedRealtime())) {
+                                if(geometry.tracking!="TRACKING") invalidateAr("tracking_lost")
+                                publish(result,key.width,key.height,completed,latency,rate,vision,token,0)
+                            }
+                        }
+                    } catch(error: Exception) {Log.e("SG_AR","primary inference failed",error);handler.post {if(running && generation==token) fail("视觉感知失败：${error.message}")}}
+                    finally {release()}
+                }
+            },{reason ->
+                if(running && generation==token) {
+                    arFailed=true;arStatus="空间测量受限：$reason；已恢复基础感知"
+                    stopPerception(false);startPerception()
+                }
+            })
+            inputStatus="ARCore 相机 · 离线图像分析";arStatus="空间测量：等待跟踪与深度";true
+        } catch(error: Exception) {Log.w("SG_AR","fallback to CameraX",error);arFailed=true;arStatus="空间测量暂不可用：${error.javaClass.simpleName}";false}
+    }
+    private fun invalidateAr(reason: String) {
+        arInvalidatedAtMs=SystemClock.elapsedRealtime();spatialSession?.invalidateArEvidence()
+        arRecord=null;arSpeech.invalidate();speech.cancelResearch(reason)
+    }
     /** At most one decode/inference job. A seek replaces the request rather than queuing frames. */
     private fun pumpVideo(token: Long, snapshot: Boolean = false) {
         if (!running || generation != token || videoBusy || (!videoPlaying && !snapshot)) return
@@ -357,6 +417,11 @@ class MainActivity : ComponentActivity() {
     }
     private fun onPlayback(event: SpeechPlaybackEvent) {
         diagnostics.record("audio",JSONObject().put("phase",event.phase.logName).put("event_id",event.eventId).put("requested_text",event.requestedText).put("spoken_text",event.spokenText).put("deadline_ms",event.validUntilElapsedMs).put("detail",event.detail).put("resource",event.resourceName))
+        if(event.eventId?.startsWith("research:")==true) {
+            if(event.phase in setOf(SpeechPlaybackPhase.ON_START,SpeechPlaybackPhase.SUPPRESSED,SpeechPlaybackPhase.CANCELLED))
+                arSpeech.playback(event.eventId,event.phase==SpeechPlaybackPhase.ON_START,event.elapsedRealtimeMs)
+            return
+        }
         if(event.eventId?.startsWith("semantic:")==true) {
             if(event.phase==SpeechPlaybackPhase.ON_START) {
                 environmentEngine.playbackStarted(event.eventId)
@@ -407,6 +472,7 @@ class MainActivity : ComponentActivity() {
     private fun stopPerception(announce: Boolean = true, stopSpeech: Boolean = true) {
         restartAfterRelease = false
         if (!running) { if (stopSpeech) speech.stop(false); return }
+        invalidateAr("session_stopped");arSpeech.reset();arSource?.close();arSource=null
         environmentEngine.reset(); semanticPending.clear(); environmentStatus="墙面：感知已停止"
         metricResearchStatus="米制研究：感知已停止，旧结果不再有效"
         running = false; active = false; generation++; pendingSpeech.clear(); videoPlaying = false; videoEpoch++
@@ -447,6 +513,7 @@ class MainActivity : ComponentActivity() {
     override fun onDestroy() { stopPerception(false); handler.removeCallbacksAndMessages(null); speech.close(); super.onDestroy() }
 
     private fun startSpatialSession() {
+        invalidateAr("spatial_session_changed")
         environmentEngine.reset(); semanticPending.clear(); speech.cancelSemanticExcept(emptySet(),"semantic_settings_changed")
         environmentStatus=if(spatialEnabled) "墙面：等待有效语义观测" else "墙面：语义提示关闭"
         spatialSnapshot = null; environmentOverview = "当前环境信息不足。"
@@ -462,7 +529,7 @@ class MainActivity : ComponentActivity() {
         if(imuEnabled && !videoMode) imuMonitor = ImuMonitor(this)
         spatialStatus = "正在加载本地空间模型…"
         val token = generation
-        spatialSession = SpatialSessionAnalyzer(this, SpatialSettings(depthEnabled, spatialEnabled, gridEnabled,ignoreAuxThermalForTest,metricResearchEnabled), { result ->
+        spatialSession = SpatialSessionAnalyzer(this, SpatialSettings(depthEnabled, spatialEnabled, gridEnabled,ignoreAuxThermalForTest,metricResearchEnabled,if(arEnabled && !arFailed) 2 else 1), { result ->
             val key = result.key
             if (running && generation == key.generation && (!videoMode || videoEpoch == key.epoch)) {
                 val pausedExact = videoMode && !videoPlaying && frame?.vision?.records?.frameIndex == key.frameIndex
@@ -482,6 +549,7 @@ class MainActivity : ComponentActivity() {
             if(running && generation==token) {
                 environmentEngine.invalidate(SystemClock.elapsedRealtime(),"墙面：画面变化，等待重新确认")
                 speech.cancelSemanticExcept(emptySet(),"semantic_scene_changed")
+                invalidateAr("scene_changed")
                 environmentStatus=environmentEngine.status
             }
         }, { record ->
@@ -494,7 +562,46 @@ class MainActivity : ComponentActivity() {
                 metricResearchStatus="最近米制研究记录：${record.status} · 预测光轴深度 ${record.median?.let {"%.2f m".format(it)} ?: "UNKNOWN"} · 完成时年龄 ${record.sourceAgeMs}ms · ${record.rejectionReasons.joinToString()} · 未标定"
                 diagnostics.record("wall_metric",metricWallJson(record))
             }
-        }, { imuMonitor?.currentDeviceMotion() ?: MotionEvidence(MotionQuality.UNKNOWN,"current device motion unavailable") })
+        }, { imuMonitor?.currentDeviceMotion() ?: MotionEvidence(MotionQuality.UNKNOWN,"current device motion unavailable") }).also {session ->
+            session.onArEvidence={incoming ->
+                val record=if(incoming.key.capturedAtMs<=arInvalidatedAtMs) incoming.copy(state="ABSTAIN",wallDistanceM=null,near=false,approaching=false,candidateDirection=null,reasons=incoming.reasons+"invalidated_after_capture") else incoming
+                if(running && generation==record.key.generation && !videoMode) {
+                    arRecord=record
+                    arStatus=when {
+                        record.geometry.tracking!="TRACKING" -> "空间测量暂不可用："+when(record.geometry.trackingFailure) {
+                            "INSUFFICIENT_LIGHT" -> "光线不足。"
+                            "INSUFFICIENT_FEATURES" -> "可跟踪纹理不足。"
+                            "EXCESSIVE_MOTION" -> "相机移动过快。"
+                            else -> "等待稳定跟踪。"
+                        }
+                        record.wallDistanceM!=null -> "墙面测距估计 %.1f 米 · %s".format(record.wallDistanceM,if(record.approaching) "相机接近候选" else "正在连续确认")
+                        else -> "空间测量：暂无法判断"
+                    }
+                    val json=JSONObject().put("frame",record.key.frameIndex).put("state",record.state).put("source_age_ms",SystemClock.elapsedRealtime()-record.key.capturedAtMs)
+                        .put("tracking",record.geometry.tracking).put("tracking_failure",record.geometry.trackingFailure).put("points",record.geometry.points.size)
+                        .put("ar_timestamp_ns",record.geometry.timestampNs).put("android_camera_timestamp_ns",record.geometry.androidCameraTimestampNs).put("capture_to_receive_ms",record.geometry.receivedAtMs-record.key.capturedAtMs).put("processing_age_ms",SystemClock.elapsedRealtime()-record.geometry.receivedAtMs)
+                        .put("wall_perpendicular_distance_m",record.wallDistanceM).put("near",record.near).put("camera_approaching_candidate",record.approaching)
+                        .put("candidate_direction",record.candidateDirection?.name).put("temporal_support",record.temporalSupport).put("reasons",JSONArray(record.reasons))
+                        .put("corridor_reasons",JSONArray(record.corridorReasons)).put("physical_calibration",false).put("risk_changed",false)
+                    diagnostics.record("ar_spatial",json);Log.i("SG_AR_EVIDENCE",json.toString())
+                    if(!record.near && !record.approaching && record.candidateDirection==null) speech.cancelResearch("research_evidence_lost")
+                    serviceArSpeech()
+                }
+            }
+        }
+    }
+    private fun serviceArSpeech() {
+        if(arSource==null || !running || muted || videoMode) return
+        val record=arRecord ?: return
+        val now=SystemClock.elapsedRealtime()
+        if(now-record.key.capturedAtMs>=500) {speech.cancelResearch("research_expired");return}
+        if(imuMonitor?.currentDeviceMotion()?.quality==MotionQuality.RAPID) {invalidateAr("rapid_motion");return}
+        if(!speech.isReady || pendingSpeech.isNotEmpty()) return
+        for(notice in arSpeech.notices(record,now)) {
+            if(!speech.canQueueOrdinaryAlert) break
+            arSpeech.offered(notice.id)
+            if(!speech.offer(notice.text,false,notice.id,notice.validUntilMs,notice.direction)) arSpeech.playback(notice.id,false,now)
+        }
     }
 
     private fun onSemanticEvidence(evidence: GroundEvidence, sceneCurrent: Boolean, motion: MotionEvidence) {
@@ -509,6 +616,7 @@ class MainActivity : ComponentActivity() {
         serviceEnvironment()
     }
     private fun serviceEnvironment() {
+        serviceArSpeech()
         val now=SystemClock.elapsedRealtime()
         if(!spatialEnabled) return
         if(imuMonitor?.currentDeviceMotion()?.quality==MotionQuality.RAPID) {
@@ -595,7 +703,11 @@ class MainActivity : ComponentActivity() {
                 OutlinedButton({autoPolicy.sourceChanged(true);videoPicker.launch(arrayOf("video/*"));settingsPanel=false},Modifier.fillMaxWidth().heightIn(min=52.dp)) {Text("分析本地视频")}
                 if(videoMode) OutlinedButton({stopPerception(false);videoMode=false;autoPolicy.sourceChanged(false);settingsPanel=false;requestStart()},Modifier.fillMaxWidth().heightIn(min=52.dp)) {Text("返回实时相机")}
                 OutlinedButton({settingsPanel=false;spatialPanel=true},Modifier.fillMaxWidth().heightIn(min=52.dp)) {Text("开发者工具")}
-                Text("图像在本地处理。环境提示补充盲杖与导盲犬；未提醒不代表前方没有障碍。单级台阶、路缘、墙面距离及接近自动播报尚未启用。",style=MaterialTheme.typography.bodyMedium)
+                Row(verticalAlignment=Alignment.CenterVertically) {Text("实验性空间提醒",Modifier.weight(1f));Switch(arEnabled,{arEnabled=it;arFailed=false;getSharedPreferences("perception",MODE_PRIVATE).edit().putBoolean("ar_enabled",it).apply();if(running) {stopPerception(false);startPerception()}},Modifier.semantics {contentDescription="墙面较近、相机接近与可见地面候选提醒"})}
+                Text(arStatus,style=MaterialTheme.typography.bodyMedium)
+                Text("空间提醒尚未完成卷尺标定和真实行走验收；不提供安全通行或转向指令。AR 功能使用 Google Play Services for AR，其数据处理遵循 Google 隐私政策。",style=MaterialTheme.typography.bodySmall)
+                OutlinedButton({startActivity(Intent(Intent.ACTION_VIEW,Uri.parse("https://policies.google.com/privacy")))},Modifier.fillMaxWidth().heightIn(min=52.dp)) {Text("Google AR 服务隐私政策")}
+                Text("图像在本地处理。环境提示补充盲杖与导盲犬；未提醒不代表前方没有障碍。单级台阶、路缘及数值距离自动播报尚未启用。",style=MaterialTheme.typography.bodyMedium)
             }})
     }
     private fun exportDiagnostics() { exportDocument.launch("SightGuard-0.4-diagnostics.json") }
@@ -614,6 +726,11 @@ class MainActivity : ComponentActivity() {
         val texts=mutableListOf<String>()
         if(risk!=null) texts.add("检测到${Labels.coco80.getOrElse(risk.classId){"目标"}}，请注意。")
         texts.addAll(environment)
+        if(arEnabled && arStatus.startsWith("空间测量暂不可用")) texts.add(arStatus)
+        arRecord?.takeIf {now-it.key.capturedAtMs in 0..500}?.let {record ->
+            if(record.wallDistanceM!=null) texts.add("墙面测距估计 %.1f 米（尚未实测标定）".format(record.wallDistanceM))
+            if(record.approaching) texts.add("相机可能正在靠近墙面。")
+        }
         return texts.joinToString("\n").ifBlank { if(current==null || interrupted) "当前感知受限。" else "暂无已确认的提醒。" }
     }
     @Composable private fun Screen() {
@@ -647,7 +764,7 @@ class MainActivity : ComponentActivity() {
         }
         Box(Modifier.fillMaxSize()) {
             if(videoMode) videoBitmap?.let {Image(it.asImageBitmap(),null,Modifier.fillMaxSize(),contentScale=ContentScale.Fit)}
-            else AndroidView(factory={previewView},modifier=Modifier.fillMaxSize())
+            else arSource?.let {source -> androidx.compose.runtime.key(source) {AndroidView(factory={source.view},modifier=Modifier.fillMaxSize())}} ?: AndroidView(factory={previewView},modifier=Modifier.fillMaxSize())
             if(spaceView!="原始画面" && available && snapshot!=null) {
                 Image(snapshot.bitmap.asImageBitmap(),null,Modifier.fillMaxSize(),contentScale=ContentScale.Fit)
                 if(spaceView.startsWith("深度")) snapshot.heatmap?.let {Image(it.asImageBitmap(),null,Modifier.fillMaxSize(),contentScale=ContentScale.Fit,alpha=if(spaceView=="深度热图") 1f else layerAlpha)}
@@ -658,18 +775,26 @@ class MainActivity : ComponentActivity() {
         }
     }
     @Composable private fun DetectionOverlay(result: FrameResult?) {
-        if (result != null) BoxesOverlay(result.vision.raw, result.width, result.height)
+        if (result != null) BoxesOverlay(result.vision.raw, result.width, result.height,if(!videoMode) arSource?.previewMapping else null)
     }
-    @Composable private fun BoxesOverlay(detections: List<Detection>, sourceWidth: Int, sourceHeight: Int) {
+    @Composable private fun BoxesOverlay(detections: List<Detection>, sourceWidth: Int, sourceHeight: Int, arMapping: ArPreviewMapping?=null) {
         Canvas(Modifier.fillMaxSize().semantics { contentDescription = "${detections.size} 个检测目标" }) {
             val fit = fitImage(sourceWidth, sourceHeight, size.width, size.height)
             val width = sourceWidth * fit.scale; val height = sourceHeight * fit.scale
             val dx = fit.offsetX; val dy = fit.offsetY
             val paint = Paint(Paint.ANTI_ALIAS_FLAG).apply { color = android.graphics.Color.WHITE; textSize = 11.sp.toPx(); setShadowLayer(3f, 0f, 1f, android.graphics.Color.BLACK) }
             detections.forEach { d ->
-                val x = dx + d.left * width; val y = dy + d.top * height
-                drawRect(Color(0xFFFF4E62), Offset(x, y), Size((d.right - d.left) * width, (d.bottom - d.top) * height), style = Stroke(2.dp.toPx()))
-                drawContext.canvas.nativeCanvas.drawText("${Labels.coco80[d.classId]}${if(d.classId==43) "（类别不确定）" else ""} ${(d.confidence * 100).toInt()}%", x, (y - 4.dp.toPx()).coerceAtLeast(16.sp.toPx()), paint)
+                val mapped=arMapping?.point(d.left,d.top);val end=arMapping?.point(d.right,d.bottom)
+                val x = mapped?.first?.times(size.width) ?: (dx + d.left * width); val y = mapped?.second?.times(size.height) ?: (dy + d.top * height)
+                val right=end?.first?.times(size.width) ?: (dx+d.right*width);val bottom=end?.second?.times(size.height) ?: (dy+d.bottom*height)
+                val leftLimit=(1-(arMapping?.widthFraction ?: 1f))*size.width/2
+                val topLimit=(1-(arMapping?.heightFraction ?: 1f))*size.height/2
+                val l=x.coerceIn(leftLimit,size.width-leftLimit);val t=y.coerceIn(topLimit,size.height-topLimit)
+                val r=right.coerceIn(leftLimit,size.width-leftLimit);val b=bottom.coerceIn(topLimit,size.height-topLimit)
+                if(r>l && b>t) {
+                    drawRect(Color(0xFFFF4E62),Offset(l,t),Size(r-l,b-t),style=Stroke(2.dp.toPx()))
+                    drawContext.canvas.nativeCanvas.drawText("${Labels.coco80[d.classId]}${if(d.classId==43) "（类别不确定）" else ""} ${(d.confidence*100).toInt()}%",l,(t-4.dp.toPx()).coerceAtLeast(topLimit+16.sp.toPx()),paint)
+                }
             }
         }
     }
@@ -717,7 +842,7 @@ class MainActivity : ComponentActivity() {
             Text("${grid.state} · 运动 ${grid.motion.quality}\n黄=地面 紫=墙 红=框占用 粉=冲突 青=植被 灰=UNKNOWN/降级\n同帧研究证据，非安全通行网格",Modifier.align(Alignment.TopStart).padding(top=30.dp,start=8.dp).background(Color(0xCC090E17)).padding(5.dp),fontSize=9.sp,color=Color.White)
         }
     }
-    internal fun sessionDiagnostics(): JSONObject = JSONObject().put("running",running).put("generation",generation).put("modelReady",stage!=null).put("frameIndex",frame?.vision?.records?.frameIndex ?: -1).put("source",if(videoMode) "video" else "camera").put("explicitStop",autoPolicy.explicitlyStopped).put("releasePending",primaryReleasePending).put("spatialReleasePending",spatialReleasePending).put("semanticEnabled",spatialEnabled).put("debugThermalOverride",ignoreAuxThermalForTest).put("muted",muted).put("settingsPanel",settingsPanel).put("developerPanel",spatialPanel).put("currentAlert",currentAlertText()).put("environmentStatus",environmentStatus).put("fps",fps).put("latencyMs",latencyMs).put("speechStatus",speechStatus).put("lastSpeech",lastSpeech)
+    internal fun sessionDiagnostics(): JSONObject = JSONObject().put("arActive",arSource!=null).put("arStatus",arStatus).put("arTracking",arRecord?.geometry?.tracking).put("arPoints",arRecord?.geometry?.points?.size).put("running",running).put("generation",generation).put("modelReady",stage!=null).put("frameIndex",frame?.vision?.records?.frameIndex ?: -1).put("source",if(videoMode) "video" else "camera").put("explicitStop",autoPolicy.explicitlyStopped).put("releasePending",primaryReleasePending).put("spatialReleasePending",spatialReleasePending).put("semanticEnabled",spatialEnabled).put("debugThermalOverride",ignoreAuxThermalForTest).put("muted",muted).put("settingsPanel",settingsPanel).put("developerPanel",spatialPanel).put("currentAlert",currentAlertText()).put("environmentStatus",environmentStatus).put("fps",fps).put("latencyMs",latencyMs).put("speechStatus",speechStatus).put("lastSpeech",lastSpeech)
     private fun timeLabel(ms: Long) = "%02d:%02d".format(ms / 60000, ms / 1000 % 60)
     private fun recordJson(result: VisionResult): JSONObject = JSONObject()
         .put("android_relevance_policy", "android-relevance-1.0")
