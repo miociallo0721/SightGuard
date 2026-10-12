@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "baseline_sha": "ece5864",
+  "branch": "codex/local-space-preview-band",
+  "version_name": "0.8.1-preview-band",
+  "version_code": 10,
+  "apk_sha256": "2e842ee049256e65a5dab8eaeb726f0e28fd0293bf7d5022ff6d3cc4ef8a53fb",
+  "apk_bytes": 365294361,
+  "jvm": {
+    "tests": 172,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "new_preview_tests": 4
+  },
+  "build": {
+    "release": "passed",
+    "debug": "passed",
+    "android_test": "passed"
+  },
+  "device": {
+    "model": "REDMI Turbo 4 Pro (25053RT47C)",
+    "android": "16",
+    "install": "Success",
+    "launch": "Status: ok",
+    "cold_start_ms": 232,
+    "candidate_render_validation": "not_completed",
+    "instrumentation_attempts": 2,
+    "instrumentation_failures": 2,
+    "failure": "startActivitySync MainActivity timeout after 45000ms; model/render stage not reached",
+    "live_camera_regression": "not_completed_before_disconnect"
+  },
+  "test_cleanup": {
+    "original_failure": "auto_start preference remained false when launch failed before try/finally",
+    "fix": "launch moved inside try; preferences restore in finally",
+    "fix_compile": "passed",
+    "fix_device_execution": "not_validated_after_disconnect",
+    "delivered_device_state": "auto_start false; user notified to start perception / restore in settings"
+  },
+  "scope": {
+    "new_model": false,
+    "risk_scoring_changed": false,
+    "automatic_speech_changed": false,
+    "metric_clearance": false,
+    "safe_passage_claim": false
+  },
+  "remaining": [
+    "Actual candidate overlay and expiry screenshots on device",
+    "Live camera motion/obstacle withdrawal validation",
+    "Overlay-active FPS and memory delta",
+    "Test harness launch issue diagnosis"
+  ]
+}

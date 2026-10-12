@@ -17,7 +17,8 @@ data class LocalSpaceBand(val direction: Direction, val connectedFraction: Float
 data class LocalSpaceRecord(val key: SpatialFrameKey, val status: String, val reason: String,
     val bands: List<LocalSpaceBand> = emptyList(), val direction: Direction? = null,
     val support: Int = 0, val validUntilMs: Long = 0, val eventId: String? = null,
-    val supportedCells: List<GridCell> = emptyList()) {
+    val supportedCells: List<GridCell> = emptyList(),
+    val previewCells: List<SemanticCell> = emptyList()) {
     val text: String? get() = direction?.let {
         "画面${when(it) {Direction.LEFT->"左侧";Direction.CENTER->"中央";Direction.RIGHT->"右侧"}}可见地面较连续，通行条件尚未确认。"
     }
@@ -102,7 +103,8 @@ class LocalSpaceCandidateEvaluator(val config: LocalSpaceConfig = LocalSpaceConf
         if(support>=config.confirmations && activeId==null) activeId="local-space:${key.generation}:${key.epoch}:${++serial}"
         return LocalSpaceRecord(key,if(activeId!=null) "SUPPORTED_CANDIDATE" else "CONFIRMING",
             "image_only_pose_body_clearance_unknown;motion=${grid.motion.quality}",bands,winner.direction,support,key.capturedAtMs+config.maxAgeMs,activeId,
-            connectedByDirection.getValue(winner.direction)).also {current=it}
+            connectedByDirection.getValue(winner.direction),
+            if(activeId!=null) LocalSpacePreview.clip(semantics.cells,connectedByDirection.getValue(winner.direction)) else emptyList()).also {current=it}
     }
     companion object { private val HAZARDS=setOf(21,38,53,59,95,96,121) }
 }
