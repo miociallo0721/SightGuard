@@ -2,7 +2,9 @@
 
 原生 Kotlin / Compose / CameraX / ONNX Runtime Android 1.24.3，Android 8.0（API 26）以上，前台运行。YOLO 主链和 SegFormer 环境语义按系统策略运行，用户无需开启研究图层。应用无 INTERNET 权限。
 
-当前 **0.7 YOLOE + CameraX**：[替换包与真机验证](docs/yoloe_camerax_v07.md)。默认使用 YOLOE-26n 固定类别模型；ARCore SDK、相机入口及相关距离/接近/空间候选语音已移除。设置可切换旧版目标模型。
+当前 **0.8 局部空间候选**：[实现与公开数据/AVD 验证](docs/local_space_v08.md)。复用 SegFormer、YOLO 与网格；只描述画面地面连续性，连续确认、去重、过期取消，不判断安全可通。无新模型或 ARCore。
+
+继承 **0.7 YOLOE + CameraX**：[替换包与真机验证](docs/yoloe_camerax_v07.md)。默认使用 YOLOE-26n 固定类别模型；ARCore SDK、相机入口及相关距离/接近/空间候选语音已移除。设置可切换旧版目标模型。
 
 继承 **0.6 家具语义增量**：[实现与验证](docs/semantic_furniture_v06.md)。新增 8 个家具组的概览、连通区域证据、网格占用与独立语音资源。自动播报仅按实际模型与类别验证结果开放；正式 YOLO 风险评分不变。384 输入推理不及时或主链负载过高时，单会话退回原 256 模型，新增床/冰箱自动提醒随之关闭。
 

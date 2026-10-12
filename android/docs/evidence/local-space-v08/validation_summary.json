@@ -1,0 +1,2335 @@
+{
+  "schema_version": 1,
+  "baseline_git": "a2ecc36",
+  "branch": "codex/local-space-candidates",
+  "scope": "IMAGE_CANDIDATE_ONLY; no route, metric clearance or safe passage",
+  "production_risk_changed": false,
+  "arcore_packaged": false,
+  "new_models": false,
+  "automatic_local_image_description": true,
+  "distance_approach_navigation_speech": false,
+  "jvm": {
+    "tests": 168,
+    "failures": 0,
+    "skipped": 0
+  },
+  "python_regression": {
+    "tests": 64,
+    "failures": 0
+  },
+  "ruff": "passed",
+  "android": {
+    "device": "medium_phone AVD / Android 16 API 36 x86_64",
+    "ram_mb": 1536,
+    "cores": 2,
+    "physical_phone_used": false,
+    "unique_scenarios": 12,
+    "initial_passed": 11,
+    "initial_failed": 1,
+    "failed_case": "AccessibleHome ordinary-mode fresh-frame assertion",
+    "isolated_retry": "passed; original failure retained",
+    "extra_384_model_test": "passed",
+    "final_active_candidate_cancellation_test": "passed",
+    "host_audio": "disabled; Android MediaPlayer onStart checked, not human audibility",
+    "release_install": "Success",
+    "release_cold_launch_ms": 1198,
+    "release_camera": "actual virtual CameraX frames, auxiliary overload and stale results suppressed",
+    "release_stop_check": "blocked by Android Accessibility Suite notification permission dialog; no unrelated permission changed. Debug 3-cycle lifecycle test passed.",
+    "avd_shutdown": true
+  },
+  "public_dataset": {
+    "source": "https://data.csail.mit.edu/places/ADEchallenge/ADEChallengeData2016.zip",
+    "split": "fixed 28+60 validation images",
+    "cases": 88,
+    "supported_candidates": 2,
+    "insufficient_evidence": 86,
+    "annotation_supported_candidates": 2,
+    "physical_route_ground_truth": false,
+    "replay_timing": "synthetic repeated static observations, not live video",
+    "image_terms": "https://ade20k.csail.mit.edu/terms/",
+    "image_license_note": "Non-commercial research/education; image rights distinct from BSD annotations"
+  },
+  "android_actual_models": [
+    {
+      "input_size": 256,
+      "cases": 6,
+      "model_derived_onStart": [
+        {
+          "phase": "onStart",
+          "text": "画面左侧可见地面较连续，通行条件尚未确认。",
+          "detail": "local_media_player",
+          "resource": "ar_corridor_left",
+          "event_id": "local-space:1:0:1",
+          "elapsed_ms": 82398,
+          "deadline_ms": 83407
+        },
+        {
+          "phase": "onStart",
+          "text": "画面中央可见地面较连续，通行条件尚未确认。",
+          "detail": "local_media_player",
+          "resource": "ar_corridor_center",
+          "event_id": "local-space:2:0:1",
+          "elapsed_ms": 88436,
+          "deadline_ms": 89481
+        }
+      ],
+      "performance": {
+        "semantic_ms": {
+          "median": 105.5,
+          "max": 137,
+          "samples": 18
+        },
+        "source_age_ms": {
+          "median": 141.0,
+          "max": 273,
+          "samples": 18
+        },
+        "local_ms": {
+          "median": 25.5,
+          "max": 103,
+          "samples": 18
+        },
+        "pss_kb": {
+          "median": 255090.0,
+          "max": 263231,
+          "samples": 18
+        }
+      },
+      "cases_results": [
+        {
+          "image": "ADE_val_00000186.jpg",
+          "observations": [
+            {
+              "schema_version": 1,
+              "source_frame_key": "1:0:1",
+              "source_ms": 81332,
+              "status": "CONFIRMING",
+              "reason": "image_only_pose_body_clearance_unknown;motion=UNKNOWN",
+              "scope": "IMAGE_CANDIDATE_ONLY",
+              "direction": "LEFT",
+              "support": 1,
+              "deadline_ms": 82532,
+              "event_id": null,
+              "text": "画面左侧可见地面较连续，通行条件尚未确认。",
+              "bands": [
+                {
+                  "direction": "LEFT",
+                  "connected_fraction": 0.85714287,
+                  "reaches_top": true,
+                  "unknown_fraction": 0.08571429,
+                  "eligible": true
+                },
+                {
+                  "direction": "CENTER",
+                  "connected_fraction": 0.34285715,
+                  "reaches_top": false,
+                  "unknown_fraction": 0.5714286,
+                  "eligible": false
+                },
+                {
+                  "direction": "RIGHT",
+                  "connected_fraction": 0.17142858,
+                  "reaches_top": false,
+                  "unknown_fraction": 0.2,
+                  "eligible": false
+                }
+              ],
+              "physical_width_m": null,
+              "body_alignment": "UNKNOWN",
+              "risk_score_changed": false,
+              "source_age_ms": 273,
+              "semantic_ms": 137,
+              "local_ms": 103,
+              "pss_kb": 205383
+            },
+            {
+              "schema_version": 1,
+              "source_frame_key": "1:0:2",
+              "source_ms": 81811,
+              "status": "CONFIRMING",
+              "reason": "image_only_pose_body_clearance_unknown;motion=UNKNOWN",
+              "scope": "IMAGE_CANDIDATE_ONLY",
+              "direction": "LEFT",
+              "support": 2,
+              "deadline_ms": 83011,
+              "event_id": null,
+              "text": "画面左侧可见地面较连续，通行条件尚未确认。",
+              "bands": [
+                {
+                  "direction": "LEFT",
+                  "connected_fraction": 0.85714287,
+                  "reaches_top": true,
+                  "unknown_fraction": 0.08571429,
+                  "eligible": true
+                },
+                {
+                  "direction": "CENTER",
+                  "connected_fraction": 0.34285715,
+                  "reaches_top": false,
+                  "unknown_fraction": 0.5714286,
+                  "eligible": false
+                },
+                {
+                  "direction": "RIGHT",
+                  "connected_fraction": 0.17142858,
+                  "reaches_top": false,
+                  "unknown_fraction": 0.2,
+                  "eligible": false
+                }
+              ],
+              "physical_width_m": null,
+              "body_alignment": "UNKNOWN",
+              "risk_score_changed": false,
+              "source_age_ms": 189,
+              "semantic_ms": 117,
+              "local_ms": 52,
+              "pss_kb": 252490
+            },
+            {
+              "schema_version": 1,
+              "source_frame_key": "1:0:3",
+              "source_ms": 82207,
+              "status": "SUPPORTED_CANDIDATE",
+              "reason": "image_only_pose_body_clearance_unknown;motion=UNKNOWN",
+              "scope": "IMAGE_CANDIDATE_ONLY",
+              "direction": "LEFT",
+              "support": 3,
+              "deadline_ms": 83407,
+              "event_id": "local-space:1:0:1",
+              "text": "画面左侧可见地面较连续，通行条件尚未确认。",
+              "bands": [
+                {
+                  "direction": "LEFT",
+                  "connected_fraction": 0.85714287,
+                  "reaches_top": true,
+                  "unknown_fraction": 0.08571429,
+                  "eligible": true
+                },
+                {
+                  "direction": "CENTER",
+                  "connected_fraction": 0.34285715,
+                  "reaches_top": false,
+                  "unknown_fraction": 0.5714286,
+                  "eligible": false
+                },
+                {
+                  "direction": "RIGHT",
+                  "connected_fraction": 0.17142858,
+                  "reaches_top": false,
+                  "unknown_fraction": 0.2,
+                  "eligible": false
+                }
+              ],
+              "physical_width_m": null,
+              "body_alignment": "UNKNOWN",
+              "risk_score_changed": false,
+              "source_age_ms": 173,
+              "semantic_ms": 119,
+              "local_ms": 36,
+              "pss_kb": 251902
+            }
+          ]
+        },
+        {
+          "image": "ADE_val_00000065.jpg",
+          "observations": [
+            {
+              "schema_version": 1,
+              "source_frame_key": "2:0:1",
+              "source_ms": 87596,
+              "status": "CONFIRMING",
+              "reason": "image_only_pose_body_clearance_unknown;motion=UNKNOWN",
+              "scope": "IMAGE_CANDIDATE_ONLY",
+              "direction": "CENTER",
+              "support": 1,
+              "deadline_ms": 88796,
+              "event_id": null,
+              "text": "画面中央可见地面较连续，通行条件尚未确认。",
+              "bands": [
+                {
+                  "direction": "LEFT",
+                  "connected_fraction": 0.2857143,
+                  "reaches_top": false,
+                  "unknown_fraction": 0.2,
+                  "eligible": false
+                },
+                {
+                  "direction": "CENTER",
+                  "connected_fraction": 0.82857144,
+                  "reaches_top": true,
+                  "unknown_fraction": 0.114285715,
+                  "eligible": true
+                },
+                {
+                  "direction": "RIGHT",
+                  "connected_fraction": 0.028571429,
+                  "reaches_top": false,
+                  "unknown_fraction": 0.74285716,
+                  "eligible": false
+                }
+              ],
+              "physical_width_m": null,
+              "body_alignment": "UNKNOWN",
+              "risk_score_changed": false,
+              "source_age_ms": 135,
+              "semantic_ms": 103,
+              "local_ms": 15,
+              "pss_kb": 261758
+            },
+            {
+              "schema_version": 1,
+              "source_frame_key": "2:0:2",
+              "source_ms": 87937,
+              "status": "CONFIRMING",
+              "reason": "image_only_pose_body_clearance_unknown;motion=UNKNOWN",
+              "scope": "IMAGE_CANDIDATE_ONLY",
+              "direction": "CENTER",
+              "support": 2,
+              "deadline_ms": 89137,
+              "event_id": null,
+              "text": "画面中央可见地面较连续，通行条件尚未确认。",
+              "bands": [
+                {
+                  "direction": "LEFT",
+                  "connected_fraction": 0.2857143,
+                  "reaches_top": false,
+                  "unknown_fraction": 0.2,
+                  "eligible": false
+                },
+                {
+                  "direction": "CENTER",
+                  "connected_fraction": 0.82857144,
+                  "reaches_top": true,
+                  "unknown_fraction": 0.114285715,
+                  "eligible": true
+                },
+                {
+                  "direction": "RIGHT",
+                  "connected_fraction": 0.028571429,
+                  "reaches_top": false,
+                  "unknown_fraction": 0.74285716,
+                  "eligible": false
+                }
+              ],
+              "physical_width_m": null,
+              "body_alignment": "UNKNOWN",
+              "risk_score_changed": false,
+              "source_age_ms": 134,
+              "semantic_ms": 102,
+              "local_ms": 16,
+              "pss_kb": 261794
+            },
+            {
+              "schema_version": 1,
+              "source_frame_key": "2:0:3",
+              "source_ms": 88281,
+              "status": "SUPPORTED_CANDIDATE",
+              "reason": "image_only_pose_body_clearance_unknown;motion=UNKNOWN",
+              "scope": "IMAGE_CANDIDATE_ONLY",
+              "direction": "CENTER",
+              "support": 3,
+              "deadline_ms": 89481,
+              "event_id": "local-space:2:0:1",
+              "text": "画面中央可见地面较连续，通行条件尚未确认。",
+              "bands": [
+                {
+                  "direction": "LEFT",
+                  "connected_fraction": 0.2857143,
+                  "reaches_top": false,
+                  "unknown_fraction": 0.2,
+                  "eligible": false
+                },
+                {
+                  "direction": "CENTER",
+                  "connected_fraction": 0.82857144,
+                  "reaches_top": true,
+                  "unknown_fraction": 0.114285715,
+                  "eligible": true
+                },
+                {
+                  "direction": "RIGHT",
+                  "connected_fraction": 0.028571429,
+                  "reaches_top": false,
+                  "unknown_fraction": 0.74285716,
+                  "eligible": false
+                }
+              ],
+              "physical_width_m": null,
+              "body_alignment": "UNKNOWN",
+              "risk_score_changed": false,
+              "source_age_ms": 136,
+              "semantic_ms": 101,
+              "local_ms": 14,
+              "pss_kb": 261258
+            }
+          ]
+        },
+        {
+          "image": "ADE_val_00000165.jpg",
+          "observations": [
+            {
+              "schema_version": 1,
+              "source_frame_key": "3:0:1",
+              "source_ms": 93638,
+              "status": "INSUFFICIENT_EVIDENCE",
+              "reason": "no_unique_connected_ground_band",
+              "scope": "IMAGE_CANDIDATE_ONLY",
+              "direction": null,
+              "support": 0,
+              "deadline_ms": 0,
+              "event_id": null,
+              "text": null,
+              "bands": [
+                {
+                  "direction": "LEFT",
+                  "connected_fraction": 0,
+                  "reaches_top": false,
+                  "unknown_fraction": 0,
+                  "eligible": false
+                },
+                {
+                  "direction": "CENTER",
+                  "connected_fraction": 0,
+                  "reaches_top": false,
+                  "unknown_fraction": 0.057142857,
+                  "eligible": false
+                },
+                {
+                  "direction": "RIGHT",
+                  "connected_fraction": 0.4857143,
+                  "reaches_top": false,
+                  "unknown_fraction": 0.34285715,
+                  "eligible": false
+                }
+              ],
+              "physical_width_m": null,
+              "body_alignment": "UNKNOWN",
+              "risk_score_changed": false,
+              "source_age_ms": 176,
+              "semantic_ms": 125,
+              "local_ms": 32,
+              "pss_kb": 255262
+            },
+            {
+              "schema_version": 1,
+              "source_frame_key": "3:0:2",
+              "source_ms": 94020,
+              "status": "INSUFFICIENT_EVIDENCE",
+              "reason": "no_unique_connected_ground_band",
+              "scope": "IMAGE_CANDIDATE_ONLY",
+              "direction": null,
+              "support": 0,
+              "deadline_ms": 0,
+              "event_id": null,
+              "text": null,
+              "bands": [
+                {
+                  "direction": "LEFT",
+                  "connected_fraction": 0,
+                  "reaches_top": false,
+                  "unknown_fraction": 0,
+                  "eligible": false
+                },
+                {
+                  "direction": "CENTER",
+                  "connected_fraction": 0,
+                  "reaches_top": false,
+                  "unknown_fraction": 0.057142857,
+                  "eligible": false
+                },
+                {
+                  "direction": "RIGHT",
+                  "connected_fraction": 0.4857143,
+                  "reaches_top": false,
+                  "unknown_fraction": 0.34285715,
+                  "eligible": false
+                }
+              ],
+              "physical_width_m": null,
+              "body_alignment": "UNKNOWN",
+              "risk_score_changed": false,
+              "source_age_ms": 159,
+              "semantic_ms": 110,
+              "local_ms": 29,
+              "pss_kb": 254918
+            },
+            {
+              "schema_version": 1,
+              "source_frame_key": "3:0:3",
+              "source_ms": 94389,
+              "status": "INSUFFICIENT_EVIDENCE",
+              "reason": "no_unique_connected_ground_band",
+              "scope": "IMAGE_CANDIDATE_ONLY",
+              "direction": null,
+              "support": 0,
+              "deadline_ms": 0,
+              "event_id": null,
+              "text": null,
+              "bands": [
+                {
+                  "direction": "LEFT",
+                  "connected_fraction": 0,
+                  "reaches_top": false,
+                  "unknown_fraction": 0,
+                  "eligible": false
+                },
+                {
+                  "direction": "CENTER",
+                  "connected_fraction": 0,
+                  "reaches_top": false,
+                  "unknown_fraction": 0.057142857,
+                  "eligible": false
+                },
+                {
+                  "direction": "RIGHT",
+                  "connected_fraction": 0.4857143,
+                  "reaches_top": false,
+                  "unknown_fraction": 0.34285715,
+                  "eligible": false
+                }
+              ],
+              "physical_width_m": null,
+              "body_alignment": "UNKNOWN",
+              "risk_score_changed": false,
+              "source_age_ms": 151,
+              "semantic_ms": 103,
+              "local_ms": 28,
+              "pss_kb": 255402
+            }
+          ]
+        },
+        {
+          "image": "ADE_val_00000190.jpg",
+          "observations": [
+            {
+              "schema_version": 1,
+              "source_frame_key": "4:0:1",
+              "source_ms": 99751,
+              "status": "INSUFFICIENT_EVIDENCE",
+              "reason": "no_unique_connected_ground_band",
+              "scope": "IMAGE_CANDIDATE_ONLY",
+              "direction": null,
+              "support": 0,
+              "deadline_ms": 0,
+              "event_id": null,
+              "text": null,
+              "bands": [
+                {
+                  "direction": "LEFT",
+                  "connected_fraction": 0,
+                  "reaches_top": false,
+                  "unknown_fraction": 0.8,
+                  "eligible": false
+                },
+                {
+                  "direction": "CENTER",
+                  "connected_fraction": 0,
+                  "reaches_top": false,
+                  "unknown_fraction": 0.8857143,
+                  "eligible": false
+                },
+                {
+                  "direction": "RIGHT",
+                  "connected_fraction": 0,
+                  "reaches_top": false,
+                  "unknown_fraction": 0.71428573,
+                  "eligible": false
+                }
+              ],
+              "physical_width_m": null,
+              "body_alignment": "UNKNOWN",
+              "risk_score_changed": false,
+              "source_age_ms": 126,
+              "semantic_ms": 87,
+              "local_ms": 22,
+              "pss_kb": 251938
+            },
+            {
+              "schema_version": 1,
+              "source_frame_key": "4:0:2",
+              "source_ms": 100082,
+              "status": "INSUFFICIENT_EVIDENCE",
+              "reason": "no_unique_connected_ground_band",
+              "scope": "IMAGE_CANDIDATE_ONLY",
+              "direction": null,
+              "support": 0,
+              "deadline_ms": 0,
+              "event_id": null,
+              "text": null,
+              "bands": [
+                {
+                  "direction": "LEFT",
+                  "connected_fraction": 0,
+                  "reaches_top": false,
+                  "unknown_fraction": 0.8,
+                  "eligible": false
+                },
+                {
+                  "direction": "CENTER",
+                  "connected_fraction": 0,
+                  "reaches_top": false,
+                  "unknown_fraction": 0.8857143,
+                  "eligible": false
+                },
+                {
+                  "direction": "RIGHT",
+                  "connected_fraction": 0,
+                  "reaches_top": false,
+                  "unknown_fraction": 0.71428573,
+                  "eligible": false
+                }
+              ],
+              "physical_width_m": null,
+              "body_alignment": "UNKNOWN",
+              "risk_score_changed": false,
+              "source_age_ms": 137,
+              "semantic_ms": 94,
+              "local_ms": 22,
+              "pss_kb": 252194
+            },
+            {
+              "schema_version": 1,
+              "source_frame_key": "4:0:3",
+              "source_ms": 100424,
+              "status": "INSUFFICIENT_EVIDENCE",
+              "reason": "no_unique_connected_ground_band",
+              "scope": "IMAGE_CANDIDATE_ONLY",
+              "direction": null,
+              "support": 0,
+              "deadline_ms": 0,
+              "event_id": null,
+              "text": null,
+              "bands": [
+                {
+                  "direction": "LEFT",
+                  "connected_fraction": 0,
+                  "reaches_top": false,
+                  "unknown_fraction": 0.8,
+                  "eligible": false
+                },
+                {
+                  "direction": "CENTER",
+                  "connected_fraction": 0,
+                  "reaches_top": false,
+                  "unknown_fraction": 0.8857143,
+                  "eligible": false
+                },
+                {
+                  "direction": "RIGHT",
+                  "connected_fraction": 0,
+                  "reaches_top": false,
+                  "unknown_fraction": 0.71428573,
+                  "eligible": false
+                }
+              ],
+              "physical_width_m": null,
+              "body_alignment": "UNKNOWN",
+              "risk_score_changed": false,
+              "source_age_ms": 135,
+              "semantic_ms": 93,
+              "local_ms": 23,
+              "pss_kb": 252042
+            }
+          ]
+        },
+        {
+          "image": "ADE_val_00000218.jpg",
+          "observations": [
+            {
+              "schema_version": 1,
+              "source_frame_key": "5:0:1",
+              "source_ms": 105768,
+              "status": "INSUFFICIENT_EVIDENCE",
+              "reason": "no_unique_connected_ground_band",
+              "scope": "IMAGE_CANDIDATE_ONLY",
+              "direction": null,
+              "support": 0,
+              "deadline_ms": 0,
+              "event_id": null,
+              "text": null,
+              "bands": [
+                {
+                  "direction": "LEFT",
+                  "connected_fraction": 0,
+                  "reaches_top": false,
+                  "unknown_fraction": 0.9714286,
+                  "eligible": false
+                },
+                {
+                  "direction": "CENTER",
+                  "connected_fraction": 0,
+                  "reaches_top": false,
+                  "unknown_fraction": 0.9714286,
+                  "eligible": false
+                },
+                {
+                  "direction": "RIGHT",
+                  "connected_fraction": 0,
+                  "reaches_top": false,
+                  "unknown_fraction": 0.94285715,
+                  "eligible": false
+                }
+              ],
+              "physical_width_m": null,
+              "body_alignment": "UNKNOWN",
+              "risk_score_changed": false,
+              "source_age_ms": 138,
+              "semantic_ms": 112,
+              "local_ms": 8,
+              "pss_kb": 263219
+            },
+            {
+              "schema_version": 1,
+              "source_frame_key": "5:0:2",
+              "source_ms": 106110,
+              "status": "INSUFFICIENT_EVIDENCE",
+              "reason": "no_unique_connected_ground_band",
+              "scope": "IMAGE_CANDIDATE_ONLY",
+              "direction": null,
+              "support": 0,
+              "deadline_ms": 0,
+              "event_id": null,
+              "text": null,
+              "bands": [
+                {
+                  "direction": "LEFT",
+                  "connected_fraction": 0,
+                  "reaches_top": false,
+                  "unknown_fraction": 0.9714286,
+                  "eligible": false
+                },
+                {
+                  "direction": "CENTER",
+                  "connected_fraction": 0,
+                  "reaches_top": false,
+                  "unknown_fraction": 0.9714286,
+                  "eligible": false
+                },
+                {
+                  "direction": "RIGHT",
+                  "connected_fraction": 0,
+                  "reaches_top": false,
+                  "unknown_fraction": 0.94285715,
+                  "eligible": false
+                }
+              ],
+              "physical_width_m": null,
+              "body_alignment": "UNKNOWN",
+              "risk_score_changed": false,
+              "source_age_ms": 134,
+              "semantic_ms": 107,
+              "local_ms": 7,
+              "pss_kb": 263227
+            },
+            {
+              "schema_version": 1,
+              "source_frame_key": "5:0:3",
+              "source_ms": 106450,
+              "status": "INSUFFICIENT_EVIDENCE",
+              "reason": "no_unique_connected_ground_band",
+              "scope": "IMAGE_CANDIDATE_ONLY",
+              "direction": null,
+              "support": 0,
+              "deadline_ms": 0,
+              "event_id": null,
+              "text": null,
+              "bands": [
+                {
+                  "direction": "LEFT",
+                  "connected_fraction": 0,
+                  "reaches_top": false,
+                  "unknown_fraction": 0.9714286,
+                  "eligible": false
+                },
+                {
+                  "direction": "CENTER",
+                  "connected_fraction": 0,
+                  "reaches_top": false,
+                  "unknown_fraction": 0.9714286,
+                  "eligible": false
+                },
+                {
+                  "direction": "RIGHT",
+                  "connected_fraction": 0,
+                  "reaches_top": false,
+                  "unknown_fraction": 0.94285715,
+                  "eligible": false
+                }
+              ],
+              "physical_width_m": null,
+              "body_alignment": "UNKNOWN",
+              "risk_score_changed": false,
+              "source_age_ms": 139,
+              "semantic_ms": 111,
+              "local_ms": 9,
+              "pss_kb": 263231
+            }
+          ]
+        },
+        {
+          "image": "ADE_val_00000002.jpg",
+          "observations": [
+            {
+              "schema_version": 1,
+              "source_frame_key": "6:0:1",
+              "source_ms": 111797,
+              "status": "INSUFFICIENT_EVIDENCE",
+              "reason": "no_unique_connected_ground_band",
+              "scope": "IMAGE_CANDIDATE_ONLY",
+              "direction": null,
+              "support": 0,
+              "deadline_ms": 0,
+              "event_id": null,
+              "text": null,
+              "bands": [
+                {
+                  "direction": "LEFT",
+                  "connected_fraction": 0,
+                  "reaches_top": false,
+                  "unknown_fraction": 0.82857144,
+                  "eligible": false
+                },
+                {
+                  "direction": "CENTER",
+                  "connected_fraction": 0,
+                  "reaches_top": false,
+                  "unknown_fraction": 1,
+                  "eligible": false
+                },
+                {
+                  "direction": "RIGHT",
+                  "connected_fraction": 0,
+                  "reaches_top": false,
+                  "unknown_fraction": 0.9142857,
+                  "eligible": false
+                }
+              ],
+              "physical_width_m": null,
+              "body_alignment": "UNKNOWN",
+              "risk_score_changed": false,
+              "source_age_ms": 154,
+              "semantic_ms": 108,
+              "local_ms": 30,
+              "pss_kb": 254762
+            },
+            {
+              "schema_version": 1,
+              "source_frame_key": "6:0:2",
+              "source_ms": 112159,
+              "status": "INSUFFICIENT_EVIDENCE",
+              "reason": "no_unique_connected_ground_band",
+              "scope": "IMAGE_CANDIDATE_ONLY",
+              "direction": null,
+              "support": 0,
+              "deadline_ms": 0,
+              "event_id": null,
+              "text": null,
+              "bands": [
+                {
+                  "direction": "LEFT",
+                  "connected_fraction": 0,
+                  "reaches_top": false,
+                  "unknown_fraction": 0.82857144,
+                  "eligible": false
+                },
+                {
+                  "direction": "CENTER",
+                  "connected_fraction": 0,
+                  "reaches_top": false,
+                  "unknown_fraction": 1,
+                  "eligible": false
+                },
+                {
+                  "direction": "RIGHT",
+                  "connected_fraction": 0,
+                  "reaches_top": false,
+                  "unknown_fraction": 0.9142857,
+                  "eligible": false
+                }
+              ],
+              "physical_width_m": null,
+              "body_alignment": "UNKNOWN",
+              "risk_score_changed": false,
+              "source_age_ms": 150,
+              "semantic_ms": 104,
+              "local_ms": 29,
+              "pss_kb": 259062
+            },
+            {
+              "schema_version": 1,
+              "source_frame_key": "6:0:3",
+              "source_ms": 112516,
+              "status": "INSUFFICIENT_EVIDENCE",
+              "reason": "no_unique_connected_ground_band",
+              "scope": "IMAGE_CANDIDATE_ONLY",
+              "direction": null,
+              "support": 0,
+              "deadline_ms": 0,
+              "event_id": null,
+              "text": null,
+              "bands": [
+                {
+                  "direction": "LEFT",
+                  "connected_fraction": 0,
+                  "reaches_top": false,
+                  "unknown_fraction": 0.82857144,
+                  "eligible": false
+                },
+                {
+                  "direction": "CENTER",
+                  "connected_fraction": 0,
+                  "reaches_top": false,
+                  "unknown_fraction": 1,
+                  "eligible": false
+                },
+                {
+                  "direction": "RIGHT",
+                  "connected_fraction": 0,
+                  "reaches_top": false,
+                  "unknown_fraction": 0.9142857,
+                  "eligible": false
+                }
+              ],
+              "physical_width_m": null,
+              "body_alignment": "UNKNOWN",
+              "risk_score_changed": false,
+              "source_age_ms": 143,
+              "semantic_ms": 95,
+              "local_ms": 29,
+              "pss_kb": 254646
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "input_size": 384,
+      "cases": 6,
+      "model_derived_onStart": [
+        {
+          "phase": "onStart",
+          "text": "画面中央可见地面较连续，通行条件尚未确认。",
+          "detail": "local_media_player",
+          "resource": "ar_corridor_center",
+          "event_id": "local-space:2:0:1",
+          "elapsed_ms": 196095,
+          "deadline_ms": 196976
+        }
+      ],
+      "performance": {
+        "semantic_ms": {
+          "median": 233.5,
+          "max": 281,
+          "samples": 18
+        },
+        "source_age_ms": {
+          "median": 287.0,
+          "max": 449,
+          "samples": 18
+        },
+        "local_ms": {
+          "median": 45.5,
+          "max": 131,
+          "samples": 18
+        },
+        "pss_kb": {
+          "median": 355632.0,
+          "max": 487062,
+          "samples": 18
+        }
+      },
+      "cases_results": [
+        {
+          "image": "ADE_val_00000186.jpg",
+          "observations": [
+            {
+              "schema_version": 1,
+              "source_frame_key": "1:0:1",
+              "source_ms": 188102,
+              "status": "INSUFFICIENT_EVIDENCE",
+              "reason": "no_unique_connected_ground_band",
+              "scope": "IMAGE_CANDIDATE_ONLY",
+              "direction": null,
+              "support": 0,
+              "deadline_ms": 0,
+              "event_id": null,
+              "text": null,
+              "bands": [
+                {
+                  "direction": "LEFT",
+                  "connected_fraction": 0.7714286,
+                  "reaches_top": false,
+                  "unknown_fraction": 0.114285715,
+                  "eligible": false
+                },
+                {
+                  "direction": "CENTER",
+                  "connected_fraction": 0.4,
+                  "reaches_top": false,
+                  "unknown_fraction": 0.37142858,
+                  "eligible": false
+                },
+                {
+                  "direction": "RIGHT",
+                  "connected_fraction": 0,
+                  "reaches_top": false,
+                  "unknown_fraction": 0.2,
+                  "eligible": false
+                }
+              ],
+              "physical_width_m": null,
+              "body_alignment": "UNKNOWN",
+              "risk_score_changed": false,
+              "source_age_ms": 449,
+              "semantic_ms": 281,
+              "local_ms": 131,
+              "pss_kb": 359424
+            },
+            {
+              "schema_version": 1,
+              "source_frame_key": "1:0:2",
+              "source_ms": 188758,
+              "status": "INSUFFICIENT_EVIDENCE",
+              "reason": "no_unique_connected_ground_band",
+              "scope": "IMAGE_CANDIDATE_ONLY",
+              "direction": null,
+              "support": 0,
+              "deadline_ms": 0,
+              "event_id": null,
+              "text": null,
+              "bands": [
+                {
+                  "direction": "LEFT",
+                  "connected_fraction": 0.7714286,
+                  "reaches_top": false,
+                  "unknown_fraction": 0.114285715,
+                  "eligible": false
+                },
+                {
+                  "direction": "CENTER",
+                  "connected_fraction": 0.4,
+                  "reaches_top": false,
+                  "unknown_fraction": 0.37142858,
+                  "eligible": false
+                },
+                {
+                  "direction": "RIGHT",
+                  "connected_fraction": 0,
+                  "reaches_top": false,
+                  "unknown_fraction": 0.2,
+                  "eligible": false
+                }
+              ],
+              "physical_width_m": null,
+              "body_alignment": "UNKNOWN",
+              "risk_score_changed": false,
+              "source_age_ms": 311,
+              "semantic_ms": 243,
+              "local_ms": 47,
+              "pss_kb": 487062
+            },
+            {
+              "schema_version": 1,
+              "source_frame_key": "1:0:3",
+              "source_ms": 189276,
+              "status": "INSUFFICIENT_EVIDENCE",
+              "reason": "no_unique_connected_ground_band",
+              "scope": "IMAGE_CANDIDATE_ONLY",
+              "direction": null,
+              "support": 0,
+              "deadline_ms": 0,
+              "event_id": null,
+              "text": null,
+              "bands": [
+                {
+                  "direction": "LEFT",
+                  "connected_fraction": 0.7714286,
+                  "reaches_top": false,
+                  "unknown_fraction": 0.114285715,
+                  "eligible": false
+                },
+                {
+                  "direction": "CENTER",
+                  "connected_fraction": 0.4,
+                  "reaches_top": false,
+                  "unknown_fraction": 0.37142858,
+                  "eligible": false
+                },
+                {
+                  "direction": "RIGHT",
+                  "connected_fraction": 0,
+                  "reaches_top": false,
+                  "unknown_fraction": 0.2,
+                  "eligible": false
+                }
+              ],
+              "physical_width_m": null,
+              "body_alignment": "UNKNOWN",
+              "risk_score_changed": false,
+              "source_age_ms": 325,
+              "semantic_ms": 243,
+              "local_ms": 62,
+              "pss_kb": 350687
+            }
+          ]
+        },
+        {
+          "image": "ADE_val_00000065.jpg",
+          "observations": [
+            {
+              "schema_version": 1,
+              "source_frame_key": "2:0:1",
+              "source_ms": 194814,
+              "status": "CONFIRMING",
+              "reason": "image_only_pose_body_clearance_unknown;motion=UNKNOWN",
+              "scope": "IMAGE_CANDIDATE_ONLY",
+              "direction": "CENTER",
+              "support": 1,
+              "deadline_ms": 196014,
+              "event_id": null,
+              "text": "画面中央可见地面较连续，通行条件尚未确认。",
+              "bands": [
+                {
+                  "direction": "LEFT",
+                  "connected_fraction": 0.45714286,
+                  "reaches_top": false,
+                  "unknown_fraction": 0.2,
+                  "eligible": false
+                },
+                {
+                  "direction": "CENTER",
+                  "connected_fraction": 0.82857144,
+                  "reaches_top": true,
+                  "unknown_fraction": 0.08571429,
+                  "eligible": true
+                },
+                {
+                  "direction": "RIGHT",
+                  "connected_fraction": 0.2,
+                  "reaches_top": false,
+                  "unknown_fraction": 0.54285717,
+                  "eligible": false
+                }
+              ],
+              "physical_width_m": null,
+              "body_alignment": "UNKNOWN",
+              "risk_score_changed": false,
+              "source_age_ms": 273,
+              "semantic_ms": 215,
+              "local_ms": 42,
+              "pss_kb": 352330
+            },
+            {
+              "schema_version": 1,
+              "source_frame_key": "2:0:2",
+              "source_ms": 195293,
+              "status": "CONFIRMING",
+              "reason": "image_only_pose_body_clearance_unknown;motion=UNKNOWN",
+              "scope": "IMAGE_CANDIDATE_ONLY",
+              "direction": "CENTER",
+              "support": 2,
+              "deadline_ms": 196493,
+              "event_id": null,
+              "text": "画面中央可见地面较连续，通行条件尚未确认。",
+              "bands": [
+                {
+                  "direction": "LEFT",
+                  "connected_fraction": 0.45714286,
+                  "reaches_top": false,
+                  "unknown_fraction": 0.2,
+                  "eligible": false
+                },
+                {
+                  "direction": "CENTER",
+                  "connected_fraction": 0.82857144,
+                  "reaches_top": true,
+                  "unknown_fraction": 0.08571429,
+                  "eligible": true
+                },
+                {
+                  "direction": "RIGHT",
+                  "connected_fraction": 0.2,
+                  "reaches_top": false,
+                  "unknown_fraction": 0.54285717,
+                  "eligible": false
+                }
+              ],
+              "physical_width_m": null,
+              "body_alignment": "UNKNOWN",
+              "risk_score_changed": false,
+              "source_age_ms": 278,
+              "semantic_ms": 217,
+              "local_ms": 41,
+              "pss_kb": 352266
+            },
+            {
+              "schema_version": 1,
+              "source_frame_key": "2:0:3",
+              "source_ms": 195776,
+              "status": "SUPPORTED_CANDIDATE",
+              "reason": "image_only_pose_body_clearance_unknown;motion=UNKNOWN",
+              "scope": "IMAGE_CANDIDATE_ONLY",
+              "direction": "CENTER",
+              "support": 3,
+              "deadline_ms": 196976,
+              "event_id": "local-space:2:0:1",
+              "text": "画面中央可见地面较连续，通行条件尚未确认。",
+              "bands": [
+                {
+                  "direction": "LEFT",
+                  "connected_fraction": 0.45714286,
+                  "reaches_top": false,
+                  "unknown_fraction": 0.2,
+                  "eligible": false
+                },
+                {
+                  "direction": "CENTER",
+                  "connected_fraction": 0.82857144,
+                  "reaches_top": true,
+                  "unknown_fraction": 0.08571429,
+                  "eligible": true
+                },
+                {
+                  "direction": "RIGHT",
+                  "connected_fraction": 0.2,
+                  "reaches_top": false,
+                  "unknown_fraction": 0.54285717,
+                  "eligible": false
+                }
+              ],
+              "physical_width_m": null,
+              "body_alignment": "UNKNOWN",
+              "risk_score_changed": false,
+              "source_age_ms": 274,
+              "semantic_ms": 221,
+              "local_ms": 36,
+              "pss_kb": 355606
+            }
+          ]
+        },
+        {
+          "image": "ADE_val_00000165.jpg",
+          "observations": [
+            {
+              "schema_version": 1,
+              "source_frame_key": "3:0:1",
+              "source_ms": 201288,
+              "status": "INSUFFICIENT_EVIDENCE",
+              "reason": "no_unique_connected_ground_band",
+              "scope": "IMAGE_CANDIDATE_ONLY",
+              "direction": null,
+              "support": 0,
+              "deadline_ms": 0,
+              "event_id": null,
+              "text": null,
+              "bands": [
+                {
+                  "direction": "LEFT",
+                  "connected_fraction": 0,
+                  "reaches_top": false,
+                  "unknown_fraction": 0,
+                  "eligible": false
+                },
+                {
+                  "direction": "CENTER",
+                  "connected_fraction": 0,
+                  "reaches_top": false,
+                  "unknown_fraction": 0.028571429,
+                  "eligible": false
+                },
+                {
+                  "direction": "RIGHT",
+                  "connected_fraction": 0.4857143,
+                  "reaches_top": false,
+                  "unknown_fraction": 0.2857143,
+                  "eligible": false
+                }
+              ],
+              "physical_width_m": null,
+              "body_alignment": "UNKNOWN",
+              "risk_score_changed": false,
+              "source_age_ms": 349,
+              "semantic_ms": 261,
+              "local_ms": 72,
+              "pss_kb": 359731
+            },
+            {
+              "schema_version": 1,
+              "source_frame_key": "3:0:2",
+              "source_ms": 201845,
+              "status": "INSUFFICIENT_EVIDENCE",
+              "reason": "no_unique_connected_ground_band",
+              "scope": "IMAGE_CANDIDATE_ONLY",
+              "direction": null,
+              "support": 0,
+              "deadline_ms": 0,
+              "event_id": null,
+              "text": null,
+              "bands": [
+                {
+                  "direction": "LEFT",
+                  "connected_fraction": 0,
+                  "reaches_top": false,
+                  "unknown_fraction": 0,
+                  "eligible": false
+                },
+                {
+                  "direction": "CENTER",
+                  "connected_fraction": 0,
+                  "reaches_top": false,
+                  "unknown_fraction": 0.028571429,
+                  "eligible": false
+                },
+                {
+                  "direction": "RIGHT",
+                  "connected_fraction": 0.4857143,
+                  "reaches_top": false,
+                  "unknown_fraction": 0.2857143,
+                  "eligible": false
+                }
+              ],
+              "physical_width_m": null,
+              "body_alignment": "UNKNOWN",
+              "risk_score_changed": false,
+              "source_age_ms": 325,
+              "semantic_ms": 236,
+              "local_ms": 67,
+              "pss_kb": 355658
+            },
+            {
+              "schema_version": 1,
+              "source_frame_key": "3:0:3",
+              "source_ms": 202376,
+              "status": "INSUFFICIENT_EVIDENCE",
+              "reason": "no_unique_connected_ground_band",
+              "scope": "IMAGE_CANDIDATE_ONLY",
+              "direction": null,
+              "support": 0,
+              "deadline_ms": 0,
+              "event_id": null,
+              "text": null,
+              "bands": [
+                {
+                  "direction": "LEFT",
+                  "connected_fraction": 0,
+                  "reaches_top": false,
+                  "unknown_fraction": 0,
+                  "eligible": false
+                },
+                {
+                  "direction": "CENTER",
+                  "connected_fraction": 0,
+                  "reaches_top": false,
+                  "unknown_fraction": 0.028571429,
+                  "eligible": false
+                },
+                {
+                  "direction": "RIGHT",
+                  "connected_fraction": 0.4857143,
+                  "reaches_top": false,
+                  "unknown_fraction": 0.2857143,
+                  "eligible": false
+                }
+              ],
+              "physical_width_m": null,
+              "body_alignment": "UNKNOWN",
+              "risk_score_changed": false,
+              "source_age_ms": 320,
+              "semantic_ms": 236,
+              "local_ms": 66,
+              "pss_kb": 356038
+            }
+          ]
+        },
+        {
+          "image": "ADE_val_00000190.jpg",
+          "observations": [
+            {
+              "schema_version": 1,
+              "source_frame_key": "4:0:1",
+              "source_ms": 207906,
+              "status": "INSUFFICIENT_EVIDENCE",
+              "reason": "no_unique_connected_ground_band",
+              "scope": "IMAGE_CANDIDATE_ONLY",
+              "direction": null,
+              "support": 0,
+              "deadline_ms": 0,
+              "event_id": null,
+              "text": null,
+              "bands": [
+                {
+                  "direction": "LEFT",
+                  "connected_fraction": 0,
+                  "reaches_top": false,
+                  "unknown_fraction": 0.71428573,
+                  "eligible": false
+                },
+                {
+                  "direction": "CENTER",
+                  "connected_fraction": 0,
+                  "reaches_top": false,
+                  "unknown_fraction": 0.8,
+                  "eligible": false
+                },
+                {
+                  "direction": "RIGHT",
+                  "connected_fraction": 0,
+                  "reaches_top": false,
+                  "unknown_fraction": 0.6857143,
+                  "eligible": false
+                }
+              ],
+              "physical_width_m": null,
+              "body_alignment": "UNKNOWN",
+              "risk_score_changed": false,
+              "source_age_ms": 261,
+              "semantic_ms": 201,
+              "local_ms": 44,
+              "pss_kb": 353827
+            },
+            {
+              "schema_version": 1,
+              "source_frame_key": "4:0:2",
+              "source_ms": 208372,
+              "status": "INSUFFICIENT_EVIDENCE",
+              "reason": "no_unique_connected_ground_band",
+              "scope": "IMAGE_CANDIDATE_ONLY",
+              "direction": null,
+              "support": 0,
+              "deadline_ms": 0,
+              "event_id": null,
+              "text": null,
+              "bands": [
+                {
+                  "direction": "LEFT",
+                  "connected_fraction": 0,
+                  "reaches_top": false,
+                  "unknown_fraction": 0.71428573,
+                  "eligible": false
+                },
+                {
+                  "direction": "CENTER",
+                  "connected_fraction": 0,
+                  "reaches_top": false,
+                  "unknown_fraction": 0.8,
+                  "eligible": false
+                },
+                {
+                  "direction": "RIGHT",
+                  "connected_fraction": 0,
+                  "reaches_top": false,
+                  "unknown_fraction": 0.6857143,
+                  "eligible": false
+                }
+              ],
+              "physical_width_m": null,
+              "body_alignment": "UNKNOWN",
+              "risk_score_changed": false,
+              "source_age_ms": 264,
+              "semantic_ms": 205,
+              "local_ms": 41,
+              "pss_kb": 359231
+            },
+            {
+              "schema_version": 1,
+              "source_frame_key": "4:0:3",
+              "source_ms": 208846,
+              "status": "INSUFFICIENT_EVIDENCE",
+              "reason": "no_unique_connected_ground_band",
+              "scope": "IMAGE_CANDIDATE_ONLY",
+              "direction": null,
+              "support": 0,
+              "deadline_ms": 0,
+              "event_id": null,
+              "text": null,
+              "bands": [
+                {
+                  "direction": "LEFT",
+                  "connected_fraction": 0,
+                  "reaches_top": false,
+                  "unknown_fraction": 0.71428573,
+                  "eligible": false
+                },
+                {
+                  "direction": "CENTER",
+                  "connected_fraction": 0,
+                  "reaches_top": false,
+                  "unknown_fraction": 0.8,
+                  "eligible": false
+                },
+                {
+                  "direction": "RIGHT",
+                  "connected_fraction": 0,
+                  "reaches_top": false,
+                  "unknown_fraction": 0.6857143,
+                  "eligible": false
+                }
+              ],
+              "physical_width_m": null,
+              "body_alignment": "UNKNOWN",
+              "risk_score_changed": false,
+              "source_age_ms": 264,
+              "semantic_ms": 202,
+              "local_ms": 44,
+              "pss_kb": 353683
+            }
+          ]
+        },
+        {
+          "image": "ADE_val_00000218.jpg",
+          "observations": [
+            {
+              "schema_version": 1,
+              "source_frame_key": "5:0:1",
+              "source_ms": 214321,
+              "status": "INSUFFICIENT_EVIDENCE",
+              "reason": "no_unique_connected_ground_band",
+              "scope": "IMAGE_CANDIDATE_ONLY",
+              "direction": null,
+              "support": 0,
+              "deadline_ms": 0,
+              "event_id": null,
+              "text": null,
+              "bands": [
+                {
+                  "direction": "LEFT",
+                  "connected_fraction": 0,
+                  "reaches_top": false,
+                  "unknown_fraction": 0.9714286,
+                  "eligible": false
+                },
+                {
+                  "direction": "CENTER",
+                  "connected_fraction": 0,
+                  "reaches_top": false,
+                  "unknown_fraction": 0.94285715,
+                  "eligible": false
+                },
+                {
+                  "direction": "RIGHT",
+                  "connected_fraction": 0,
+                  "reaches_top": false,
+                  "unknown_fraction": 1,
+                  "eligible": false
+                }
+              ],
+              "physical_width_m": null,
+              "body_alignment": "UNKNOWN",
+              "risk_score_changed": false,
+              "source_age_ms": 278,
+              "semantic_ms": 237,
+              "local_ms": 22,
+              "pss_kb": 366679
+            },
+            {
+              "schema_version": 1,
+              "source_frame_key": "5:0:2",
+              "source_ms": 214808,
+              "status": "INSUFFICIENT_EVIDENCE",
+              "reason": "no_unique_connected_ground_band",
+              "scope": "IMAGE_CANDIDATE_ONLY",
+              "direction": null,
+              "support": 0,
+              "deadline_ms": 0,
+              "event_id": null,
+              "text": null,
+              "bands": [
+                {
+                  "direction": "LEFT",
+                  "connected_fraction": 0,
+                  "reaches_top": false,
+                  "unknown_fraction": 0.9714286,
+                  "eligible": false
+                },
+                {
+                  "direction": "CENTER",
+                  "connected_fraction": 0,
+                  "reaches_top": false,
+                  "unknown_fraction": 0.94285715,
+                  "eligible": false
+                },
+                {
+                  "direction": "RIGHT",
+                  "connected_fraction": 0,
+                  "reaches_top": false,
+                  "unknown_fraction": 1,
+                  "eligible": false
+                }
+              ],
+              "physical_width_m": null,
+              "body_alignment": "UNKNOWN",
+              "risk_score_changed": false,
+              "source_age_ms": 273,
+              "semantic_ms": 235,
+              "local_ms": 21,
+              "pss_kb": 379423
+            },
+            {
+              "schema_version": 1,
+              "source_frame_key": "5:0:3",
+              "source_ms": 215292,
+              "status": "INSUFFICIENT_EVIDENCE",
+              "reason": "no_unique_connected_ground_band",
+              "scope": "IMAGE_CANDIDATE_ONLY",
+              "direction": null,
+              "support": 0,
+              "deadline_ms": 0,
+              "event_id": null,
+              "text": null,
+              "bands": [
+                {
+                  "direction": "LEFT",
+                  "connected_fraction": 0,
+                  "reaches_top": false,
+                  "unknown_fraction": 0.9714286,
+                  "eligible": false
+                },
+                {
+                  "direction": "CENTER",
+                  "connected_fraction": 0,
+                  "reaches_top": false,
+                  "unknown_fraction": 0.94285715,
+                  "eligible": false
+                },
+                {
+                  "direction": "RIGHT",
+                  "connected_fraction": 0,
+                  "reaches_top": false,
+                  "unknown_fraction": 1,
+                  "eligible": false
+                }
+              ],
+              "physical_width_m": null,
+              "body_alignment": "UNKNOWN",
+              "risk_score_changed": false,
+              "source_age_ms": 275,
+              "semantic_ms": 232,
+              "local_ms": 24,
+              "pss_kb": 372159
+            }
+          ]
+        },
+        {
+          "image": "ADE_val_00000002.jpg",
+          "observations": [
+            {
+              "schema_version": 1,
+              "source_frame_key": "6:0:1",
+              "source_ms": 220779,
+              "status": "INSUFFICIENT_EVIDENCE",
+              "reason": "no_unique_connected_ground_band",
+              "scope": "IMAGE_CANDIDATE_ONLY",
+              "direction": null,
+              "support": 0,
+              "deadline_ms": 0,
+              "event_id": null,
+              "text": null,
+              "bands": [
+                {
+                  "direction": "LEFT",
+                  "connected_fraction": 0,
+                  "reaches_top": false,
+                  "unknown_fraction": 0.8,
+                  "eligible": false
+                },
+                {
+                  "direction": "CENTER",
+                  "connected_fraction": 0,
+                  "reaches_top": false,
+                  "unknown_fraction": 1,
+                  "eligible": false
+                },
+                {
+                  "direction": "RIGHT",
+                  "connected_fraction": 0,
+                  "reaches_top": false,
+                  "unknown_fraction": 0.9142857,
+                  "eligible": false
+                }
+              ],
+              "physical_width_m": null,
+              "body_alignment": "UNKNOWN",
+              "risk_score_changed": false,
+              "source_age_ms": 300,
+              "semantic_ms": 229,
+              "local_ms": 55,
+              "pss_kb": 354539
+            },
+            {
+              "schema_version": 1,
+              "source_frame_key": "6:0:2",
+              "source_ms": 221285,
+              "status": "INSUFFICIENT_EVIDENCE",
+              "reason": "no_unique_connected_ground_band",
+              "scope": "IMAGE_CANDIDATE_ONLY",
+              "direction": null,
+              "support": 0,
+              "deadline_ms": 0,
+              "event_id": null,
+              "text": null,
+              "bands": [
+                {
+                  "direction": "LEFT",
+                  "connected_fraction": 0,
+                  "reaches_top": false,
+                  "unknown_fraction": 0.8,
+                  "eligible": false
+                },
+                {
+                  "direction": "CENTER",
+                  "connected_fraction": 0,
+                  "reaches_top": false,
+                  "unknown_fraction": 1,
+                  "eligible": false
+                },
+                {
+                  "direction": "RIGHT",
+                  "connected_fraction": 0,
+                  "reaches_top": false,
+                  "unknown_fraction": 0.9142857,
+                  "eligible": false
+                }
+              ],
+              "physical_width_m": null,
+              "body_alignment": "UNKNOWN",
+              "risk_score_changed": false,
+              "source_age_ms": 326,
+              "semantic_ms": 255,
+              "local_ms": 53,
+              "pss_kb": 354249
+            },
+            {
+              "schema_version": 1,
+              "source_frame_key": "6:0:3",
+              "source_ms": 221817,
+              "status": "INSUFFICIENT_EVIDENCE",
+              "reason": "no_unique_connected_ground_band",
+              "scope": "IMAGE_CANDIDATE_ONLY",
+              "direction": null,
+              "support": 0,
+              "deadline_ms": 0,
+              "event_id": null,
+              "text": null,
+              "bands": [
+                {
+                  "direction": "LEFT",
+                  "connected_fraction": 0,
+                  "reaches_top": false,
+                  "unknown_fraction": 0.8,
+                  "eligible": false
+                },
+                {
+                  "direction": "CENTER",
+                  "connected_fraction": 0,
+                  "reaches_top": false,
+                  "unknown_fraction": 1,
+                  "eligible": false
+                },
+                {
+                  "direction": "RIGHT",
+                  "connected_fraction": 0,
+                  "reaches_top": false,
+                  "unknown_fraction": 0.9142857,
+                  "eligible": false
+                }
+              ],
+              "physical_width_m": null,
+              "body_alignment": "UNKNOWN",
+              "risk_score_changed": false,
+              "source_age_ms": 296,
+              "semantic_ms": 221,
+              "local_ms": 52,
+              "pss_kb": 353873
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "lifecycle": {
+    "schema_version": 1,
+    "cycles": [
+      {
+        "cycle": 0,
+        "running_pss_kb": 310632,
+        "released_pss_kb": 177697
+      },
+      {
+        "cycle": 1,
+        "running_pss_kb": 265699,
+        "released_pss_kb": 231298
+      },
+      {
+        "cycle": 2,
+        "running_pss_kb": 217870,
+        "released_pss_kb": 179540
+      }
+    ]
+  },
+  "apk": {
+    "path": "android\\deliveries\\local-space\\SightGuard-0.8-local-space.apk",
+    "sha256": "bab43c6c4fbb119a769942b7d8e7b34ed09c4ade4568b58847d4c2d4d186712f",
+    "bytes": 365277973,
+    "version_code": 9,
+    "version_name": "0.8-local-space",
+    "installed_on": "AVD only; user phone unchanged"
+  },
+  "model_sha256": {
+    "segformer_256": "85913f7adae1b787da8cbe4a046e6d8a22bae901340d548be2fea46ec7ff2e0f",
+    "segformer_384": "49166600bda475ede43b413e8b145b735fe4532361fa663646e237f19e7dad69",
+    "yoloe": "07bb23a0d1d8ff463d19276a1a12ac007ac171487ced6dc8924e24476031ac17"
+  },
+  "local_evidence_sha256": {
+    "pc_model_results.json": "289e0c012c085a87ada0236c6a028263684edf702c2e55ca05398e5cfbe6b9ae",
+    "public-replay.json": "b2b3b85a4fb09ac4856f981c29d2d4f29d6bbff102600f19d077eab4af7e05ba",
+    "actual-256.json": "312466e86abfb5245f6ee9cea134665a1ec74ec9ea4ae85ade5db97e6becdb36",
+    "actual-384.json": "ea6d466a5a30eb095398b53b41378b96b5ba634f079e3028b2192d5e24f366a3",
+    "audio-final.json": "13c84f24f04950a1fa242a0a1e0949198c1824762f45fcf493c77d87a825d60b",
+    "avd-lifecycle.json": "79b6df93f083477d899262d0b860f65a805510de903c2b73db4354d3cb5a2773",
+    "avd-regression.log": "95053e68e7d36b8880cae80af159f868f02d04129587649cfbee316c7dbf6359",
+    "avd-ui-retry.log": "dbe7bc52d416eeb97efa2213221a13b824162e64c68698683aaffeba677bf22a",
+    "avd-final-cancel.log": "3c33911cd5e342378add5de4b6710f5a7d92c4a829ee7a6bb605b6b3160ed7ed",
+    "build-verified.log": "3a559dbb7e4b1c700c4ed294404984cfd1e5452c75eb7d879ef9bac40f6b86f1"
+  },
+  "limitations": [
+    "No real-phone walking or rotation validation",
+    "No new full TalkBack/large-font validation",
+    "Low candidate yield; transparent and missed obstacles remain possible",
+    "PC vs Android preprocessing and model-size differences retained",
+    "No human body clearance, intent, metric distance or safety inference"
+  ],
+  "pc_runtime": {
+    "onnxruntime": "1.24.4",
+    "threads": 1
+  },
+  "input_samples": [
+    {
+      "image": "ADE_val_00000001.jpg",
+      "image_sha256": "99f7af15a7bd66f3d2ad8b98f1b41941c27407a35d303f9b70724cb231a36098",
+      "mask_sha256": "7724c8b985ba9978e968fed231d74fb9e72abd4179f3c4b58bb87c525efb9ae7",
+      "split": "ade20k-furniture-v06"
+    },
+    {
+      "image": "ADE_val_00000002.jpg",
+      "image_sha256": "ce373a18513e5a357d7fd2d2f70e1db2249417635068e108cd85ddca08195f30",
+      "mask_sha256": "db1497cd6acd98c61178fbff5611da0604877f55cb7b72655d4e4ecac386904f",
+      "split": "ade20k-furniture-v06"
+    },
+    {
+      "image": "ADE_val_00000003.jpg",
+      "image_sha256": "d5dc6cad44ed8f9bee5888ac297db36a174c1f480a557746312a7e928aa83620",
+      "mask_sha256": "1d0666d9aa18debc7cdff5b880394f4e0c6e7e5db79711e93156fa72f5697927",
+      "split": "ade20k-furniture-v06"
+    },
+    {
+      "image": "ADE_val_00000004.jpg",
+      "image_sha256": "18149fc07edb47f6aa7999d6def64546fc4177e0671805da8018abdb50bb1199",
+      "mask_sha256": "9ae9ec774825f7bb7ec3fc7803e561308d660fcbcd2ec61c62fd8bdf866528ff",
+      "split": "ade20k-furniture-v06"
+    },
+    {
+      "image": "ADE_val_00000005.jpg",
+      "image_sha256": "ad961991f861facbac064df684fb3399044139280b12ed9504a387746638dfdf",
+      "mask_sha256": "54a21962a70fad633e87190957015a29d18f37633026d61b66b16cad9687aaba",
+      "split": "ade20k-furniture-v06"
+    },
+    {
+      "image": "ADE_val_00000006.jpg",
+      "image_sha256": "a4f4305f30b51d2bf1daa269ad306315934169e5cf03aa97efbd51a935383262",
+      "mask_sha256": "428a52252ec021ab681d506716c5ff92924cd5f7a9531e4c6668c1dfad0277ac",
+      "split": "ade20k-furniture-v06"
+    },
+    {
+      "image": "ADE_val_00000007.jpg",
+      "image_sha256": "3aa5ff1edfcf4f94e02f4d24265ce13a675260ff4c248c1f1155305f0011eddd",
+      "mask_sha256": "f4ac85d20c35c69aaa6a35d50bf5e3d3ca0a976487bdccbdf67f721a00d5f1e3",
+      "split": "ade20k-furniture-v06"
+    },
+    {
+      "image": "ADE_val_00000008.jpg",
+      "image_sha256": "ebbe333b80ae504d2cc55a26351247e65d9303494fc340d16d4f67a61b26458f",
+      "mask_sha256": "c263624146643abdee04fb0c3fed1aefd8aeb5380201effcd6070be405d67864",
+      "split": "ade20k-furniture-v06"
+    },
+    {
+      "image": "ADE_val_00000009.jpg",
+      "image_sha256": "c37754db05c11784d13a5d7b75089368d9641272b9843e1838074f02419b0f7e",
+      "mask_sha256": "3e2659956ac4f7ab3f2a36d813a1cffc8a96dd02c121cc8649e98521a7ff9910",
+      "split": "ade20k-furniture-v06"
+    },
+    {
+      "image": "ADE_val_00000010.jpg",
+      "image_sha256": "fc24a69f5fe212f716a3503bd5b90b585e8654aac1410f332cf7f3fd6635d39d",
+      "mask_sha256": "8105687d0f5819c35300f819d2cea122499b9334defcc7b58ce0c9c83cab1504",
+      "split": "ade20k-furniture-v06"
+    },
+    {
+      "image": "ADE_val_00000013.jpg",
+      "image_sha256": "031cb32b667b318dcb48c43d3acebeee314e9f0d8dcbe75f31076d32dc55198e",
+      "mask_sha256": "2c3a772d3338a30e5cfe31c0ff36f62f0eb0be314302ab35aa0dc5736689a7fc",
+      "split": "ade20k-furniture-v06"
+    },
+    {
+      "image": "ADE_val_00000019.jpg",
+      "image_sha256": "0b1c6e1fbfb932a2d2242a47b6c220a66179e98c66dd97338383b046c42f943d",
+      "mask_sha256": "43667b40676b0f2cdd49ecc95196312d2c93ea732819c2e402f4bb85fc9bc7b6",
+      "split": "ade20k-furniture-v06"
+    },
+    {
+      "image": "ADE_val_00000029.jpg",
+      "image_sha256": "54b3ad3c34fdde5f60c5ea9f5fc321f46ae708d38f6e9bb736f79a7999d5bc66",
+      "mask_sha256": "c3c220bd3faa1639a2bcc4d21ae94dee05be115243666dc2609e895566e07c18",
+      "split": "ade20k-furniture-v06"
+    },
+    {
+      "image": "ADE_val_00000036.jpg",
+      "image_sha256": "e341bfe721b58465895b610e7f47a7d2858b471f00a706baeb8d54fe93be4707",
+      "mask_sha256": "e88fda9f528de7e26d0a268e3a229c7298f4a5588ceed43738d1cf5909fda65d",
+      "split": "ade20k-furniture-v06"
+    },
+    {
+      "image": "ADE_val_00000038.jpg",
+      "image_sha256": "e1bcbad86f6ffbf978b0ae0e50921383e190dfa705b77baf39af746a2861e312",
+      "mask_sha256": "3d40b32680f7cd3c20001cb36b118c9540f8294d8099e2f6bf7b5a4cd51df657",
+      "split": "ade20k-furniture-v06"
+    },
+    {
+      "image": "ADE_val_00000039.jpg",
+      "image_sha256": "efd451cc6e919bdea97109c77410a7c4e285167c93beb675536f27b77b4b7ea7",
+      "mask_sha256": "bc4c98be19e7ed2cdd1cc5132aac4e7cc32368d205202d6394cb8a0e067e6570",
+      "split": "ade20k-furniture-v06"
+    },
+    {
+      "image": "ADE_val_00000040.jpg",
+      "image_sha256": "32015bff387015ac0c75fc1b8261a54107873ed2fb26103a88a56f453fab2315",
+      "mask_sha256": "2eb8539473ea8f5c76dc15e782059596eab5d3f0b58850d416bbf4c95eadae3e",
+      "split": "ade20k-furniture-v06"
+    },
+    {
+      "image": "ADE_val_00000045.jpg",
+      "image_sha256": "41da8f4a1d07ece087e65ea78ae6e6feda7d5a6b090a32468731b5b73891f8de",
+      "mask_sha256": "6ed2332dda58ce01fdedc689cc978cd4a250fc21892d405dc584e643124b7960",
+      "split": "ade20k-furniture-v06"
+    },
+    {
+      "image": "ADE_val_00000049.jpg",
+      "image_sha256": "be708bd3941fc6a4281513c437882d6cbb113bdc24c5d88407e12115084a364f",
+      "mask_sha256": "29de4523fa26b04dc6ad901d9e2fb8c669da196e051891ddc08408c63245b414",
+      "split": "ade20k-furniture-v06"
+    },
+    {
+      "image": "ADE_val_00000065.jpg",
+      "image_sha256": "5b5cedd3d7f6358f4604095f42a0f3ed27943a6b5c0c02b7eb928349597b71f9",
+      "mask_sha256": "aeabf401332f4601b72c4825c766b89579421531abdaff0af5ac3f6da90959fc",
+      "split": "ade20k-furniture-v06"
+    },
+    {
+      "image": "ADE_val_00000067.jpg",
+      "image_sha256": "acff15c11d53cd9067bc81029abfd96a09af915d3a5bb365bcf022790eba2cba",
+      "mask_sha256": "011c9b0c6bc08f14277d11a023ce183abca71624cfa93f7f263f03a15eeb933f",
+      "split": "ade20k-furniture-v06"
+    },
+    {
+      "image": "ADE_val_00000077.jpg",
+      "image_sha256": "c7bb2fbb2cd6761c5dfd394ee73c12e102f6389c851e95fb1b67144f3eac6b7f",
+      "mask_sha256": "58e87f82376f130a4ac047d6f86dc05eab042ce04e339d12bc9333e606785123",
+      "split": "ade20k-furniture-v06"
+    },
+    {
+      "image": "ADE_val_00000081.jpg",
+      "image_sha256": "1e786614699713ad277877bb194c76793133865904664f58e50201e42af3fec1",
+      "mask_sha256": "4b2b8d023d6d328fb67870ff19f205974299b12037e39acbda4348873835c4b1",
+      "split": "ade20k-furniture-v06"
+    },
+    {
+      "image": "ADE_val_00000083.jpg",
+      "image_sha256": "11e799575d572118b7b2c971b4bf3f48878c7accdede2717fd17a64b6bf6b220",
+      "mask_sha256": "df3441646d7855a2e44343fe97ec9415a5ff6133acdcf281bf20ee4dd3a56c7c",
+      "split": "ade20k-furniture-v06"
+    },
+    {
+      "image": "ADE_val_00000092.jpg",
+      "image_sha256": "782a60857cf6473231169b014d04c6e0e70b687d10e019e6bd0c370fb567d025",
+      "mask_sha256": "595a25380dfbb15cbc6dadb350ea4df1784c6518595850f7ac685424e780f9e5",
+      "split": "ade20k-furniture-v06"
+    },
+    {
+      "image": "ADE_val_00000102.jpg",
+      "image_sha256": "9ce522fcbcbd754b44f0cee242fcf6027b8f7b63cf947458c87ecb5e28e764c5",
+      "mask_sha256": "e64bafb4c5035a3fe18089cd2ab87ebd9d2c26ad3ec304c80c51e37baba588d4",
+      "split": "ade20k-furniture-v06"
+    },
+    {
+      "image": "ADE_val_00000118.jpg",
+      "image_sha256": "950cdd1d48a5db91c9837f4078d517b097a144c95d5d6109e54bd22668f1e807",
+      "mask_sha256": "96124144088c6bff0f3fd909f42d4333bee88f64004abb2dca039b252a4283ad",
+      "split": "ade20k-furniture-v06"
+    },
+    {
+      "image": "ADE_val_00000137.jpg",
+      "image_sha256": "4cdab2551eafe5b5f505f64f9997160cae18c3a032c395c521d768f8c2b0cb20",
+      "mask_sha256": "4f6a667cdbdf233c287e81d3a0a58b49a04537bf07d78d17054a396037a5b535",
+      "split": "ade20k-furniture-v06"
+    },
+    {
+      "image": "ADE_val_00000161.jpg",
+      "image_sha256": "91f73902fe5ad89d9e5a716a9bd21a0f63f951e9f1cc34e86476e41d68d37c32",
+      "mask_sha256": "50b062d7f697b81fd1d999dd80728431ac67e62d22d3a7cbef21cba9c3f0681f",
+      "split": "ade20k-furniture-v06-holdout"
+    },
+    {
+      "image": "ADE_val_00000162.jpg",
+      "image_sha256": "c9aa63676447f23ed8328e27f12263516c6b1e4351ad2acc453f3c3f8d3e15d4",
+      "mask_sha256": "be6ea8d400cc71b791b6578ac3502492f4571e0572194c209cb9dd4727ca068e",
+      "split": "ade20k-furniture-v06-holdout"
+    },
+    {
+      "image": "ADE_val_00000163.jpg",
+      "image_sha256": "d78666c461b8d31d4a6533163501988f9420981917f6043bacf85aabf09c8a4b",
+      "mask_sha256": "27169dcc9a5a746649e3af8af6685c6c39087a6fd5cb1124dfab9a7e4134180e",
+      "split": "ade20k-furniture-v06-holdout"
+    },
+    {
+      "image": "ADE_val_00000164.jpg",
+      "image_sha256": "f35e180103c579f7b3207fa7dc5e4f1e58c3739f901fa6347cad8acd81b781f0",
+      "mask_sha256": "4bc45605c35624e21cfc2b87938f99097069612b35dfad743822ee6bbfc39fb1",
+      "split": "ade20k-furniture-v06-holdout"
+    },
+    {
+      "image": "ADE_val_00000165.jpg",
+      "image_sha256": "1ec0d52cb7e88a7c4fe617fdcd02782fdc71346c2f5b71e2b6a8201716345685",
+      "mask_sha256": "cf9f0bb8f956d335432ce9cd4a35d1cded900b83659de7847b8b902ae1ff2464",
+      "split": "ade20k-furniture-v06-holdout"
+    },
+    {
+      "image": "ADE_val_00000166.jpg",
+      "image_sha256": "e3f156186177c5f15009788fa2edef95841190641e9ba17431d12d748e462f24",
+      "mask_sha256": "bb7e3cb59a443b72d4ebfacbf726fe3e47479dc072407a2b5a556abbea77fe28",
+      "split": "ade20k-furniture-v06-holdout"
+    },
+    {
+      "image": "ADE_val_00000167.jpg",
+      "image_sha256": "ed99690ade4c78d8e72ad902e5ba451132a13f1e934274f82b0fa64e554824e8",
+      "mask_sha256": "65fe9c207003141f69844aadb28032f559bd080257f3953e4ff7b8b36457a65f",
+      "split": "ade20k-furniture-v06-holdout"
+    },
+    {
+      "image": "ADE_val_00000168.jpg",
+      "image_sha256": "f95792e0c87db99e6e16288ecdd5de01afd064f673840a1d79dde6f1f2d8c94e",
+      "mask_sha256": "3b12b7d080b6f177d6a4fe3874466d9be9b8d1c2df9f43423e34c2fb1417cd93",
+      "split": "ade20k-furniture-v06-holdout"
+    },
+    {
+      "image": "ADE_val_00000171.jpg",
+      "image_sha256": "8444b61e1a8cd4ae1adc0470e03df342fc285695f0fdfd44d18f04108d2ee7e4",
+      "mask_sha256": "13ec31598547fa6f0ed66d3bbf9a533f26860a3be66221d68ca8862143ec24f6",
+      "split": "ade20k-furniture-v06-holdout"
+    },
+    {
+      "image": "ADE_val_00000172.jpg",
+      "image_sha256": "60c9b4cb025f87c4456b080e58f7e696951c7dce11dc08ee5610000edca9eafe",
+      "mask_sha256": "0d3074fc5876ad2ff8de50444f7ebbad43e73c2db953993594b11c8610576c99",
+      "split": "ade20k-furniture-v06-holdout"
+    },
+    {
+      "image": "ADE_val_00000175.jpg",
+      "image_sha256": "b8b72c095c61c8e61c26adb7689e3f2a74bb78047ce24cc96d1fa961b8afe097",
+      "mask_sha256": "4417c3fc41169d4f92e0eb23aec19374c8d55c8a6c57cddb9973b6a1fca1dee3",
+      "split": "ade20k-furniture-v06-holdout"
+    },
+    {
+      "image": "ADE_val_00000176.jpg",
+      "image_sha256": "665390fd62be6ca2dccfed8bda0db2221d5bf6ab70a37d8606f64b1ab2af80a5",
+      "mask_sha256": "5e484cd724e8f13e3a4ecc9f4b34b61707d4566366466cd97768d852e020246c",
+      "split": "ade20k-furniture-v06-holdout"
+    },
+    {
+      "image": "ADE_val_00000179.jpg",
+      "image_sha256": "5bbaa0b6ab60e1e316967873fb845090583849d4c0ffed47328da3678824d69b",
+      "mask_sha256": "eeedf0102bd874a783ee772babed978afdae1c83cba31e84330fb2f6563d04f2",
+      "split": "ade20k-furniture-v06-holdout"
+    },
+    {
+      "image": "ADE_val_00000181.jpg",
+      "image_sha256": "9bbecc7419e28cdc8efea5b36a305d758493f9647402fc4faa016fe2fed8006c",
+      "mask_sha256": "69bba6500e5f0f4c0b8a4d591e590d10ef6a56853dd20b6d6c3f16be24906fef",
+      "split": "ade20k-furniture-v06-holdout"
+    },
+    {
+      "image": "ADE_val_00000182.jpg",
+      "image_sha256": "ee44c266326c957191b19d25df1b03bbcf0ff801020112bd2b7fccc7fa013a07",
+      "mask_sha256": "bc8c3680f300efb0c5cb81b260d9117df79d4bdabf0bc560af35e0707c40ed63",
+      "split": "ade20k-furniture-v06-holdout"
+    },
+    {
+      "image": "ADE_val_00000185.jpg",
+      "image_sha256": "8ba79fc475e2782ed531cf5981d01ba8361fd41276c5cc7f631238fc43cae055",
+      "mask_sha256": "1546b6e17e75742cf8f7ad9f9b4c9dbaef7eb3abb4a2b246cbd7f6eb2b81652d",
+      "split": "ade20k-furniture-v06-holdout"
+    },
+    {
+      "image": "ADE_val_00000186.jpg",
+      "image_sha256": "abf7200405574ee44c1e5bf2065d8ae221a5a6a3bc2b1d8cc97d308d1a86095b",
+      "mask_sha256": "a9eb7a9798e460c1ed13f1d988eb115aafa115105bcc41a96c4d53dd198d507a",
+      "split": "ade20k-furniture-v06-holdout"
+    },
+    {
+      "image": "ADE_val_00000188.jpg",
+      "image_sha256": "c20b099e49475794ca4f44eef5ac72da760896b5c43474c33185cf5171e98e00",
+      "mask_sha256": "dce9475023044eb92bd38c595ec73dab265cc9b296e257ac33185e717d412045",
+      "split": "ade20k-furniture-v06-holdout"
+    },
+    {
+      "image": "ADE_val_00000189.jpg",
+      "image_sha256": "8ff3a7d8a00201861e0bca56651a64b8190493b16c764ba306d4ab5fcb2148f5",
+      "mask_sha256": "d241b4e6de8e51cf0cae9403be84ae7ffeb8548280f4399efca42cc953839258",
+      "split": "ade20k-furniture-v06-holdout"
+    },
+    {
+      "image": "ADE_val_00000190.jpg",
+      "image_sha256": "dd329942599649f1bfb6eac70d9eb2c8d7ee6176e8e3bd47327e93e618495ee1",
+      "mask_sha256": "7987f8df4a2983bebc72e79163dc167adb1b9225e16ef01f2bb7b55873dec950",
+      "split": "ade20k-furniture-v06-holdout"
+    },
+    {
+      "image": "ADE_val_00000191.jpg",
+      "image_sha256": "914581b9499e0214e523801e0d755877e0b0a0d6785542172a30492148d8a11f",
+      "mask_sha256": "164725a3749e7377cb3e29dfb0ba948b8663ebf51d839ebb8a2edec02661253b",
+      "split": "ade20k-furniture-v06-holdout"
+    },
+    {
+      "image": "ADE_val_00000192.jpg",
+      "image_sha256": "7cdc1b17ae3bf6fdeb4fccfcf3ea317809ee8f636ccb9a5293e3bae0ba81fc1f",
+      "mask_sha256": "9bb3dc2abdb7ba2d2c37723c845bf45007eff6bd77ea091210fa39788699d105",
+      "split": "ade20k-furniture-v06-holdout"
+    },
+    {
+      "image": "ADE_val_00000193.jpg",
+      "image_sha256": "71aa454e6d66b89e763cac41cc2274d34d64d282b7a81d51b6b1ee7610a23fad",
+      "mask_sha256": "9da97e8a4244f14a7e8b1a50d7782f6a01bb4cd0c7ae1198ef8253e476438adb",
+      "split": "ade20k-furniture-v06-holdout"
+    },
+    {
+      "image": "ADE_val_00000194.jpg",
+      "image_sha256": "4e84799ee23a1e7a198579f043be92a2fd57babf86e7fdc818dcf315e76970cc",
+      "mask_sha256": "9f82dae89056fa74686f0a70811ca2a04504279d7cba460541f5ec71cf11b07d",
+      "split": "ade20k-furniture-v06-holdout"
+    },
+    {
+      "image": "ADE_val_00000195.jpg",
+      "image_sha256": "b4e3be03e86ef5e7ee195855dff04de6afec6e6eace70ce1f418d176d3cbb92b",
+      "mask_sha256": "916125e63500375585232fca04dcf8b2fb401cf69c3fb425d6255c1c6fdcec4b",
+      "split": "ade20k-furniture-v06-holdout"
+    },
+    {
+      "image": "ADE_val_00000196.jpg",
+      "image_sha256": "2dd64970e99ec5851230e2f7069dc858626c0439bbd43b6b475dfcd7c1cbf178",
+      "mask_sha256": "2d86c736e901b09df5309f8e8bb1c0d0ca041b5cbcce5ee805a403dfc206eccd",
+      "split": "ade20k-furniture-v06-holdout"
+    },
+    {
+      "image": "ADE_val_00000197.jpg",
+      "image_sha256": "29ce71ed4fadf8104b1788d9e2435b6b2f9fee61ceabf6a10a3fafd35099fba0",
+      "mask_sha256": "9d7766a390f0f32e0dd30461e7e9f529d04b02ff26a9b5d34836a449a57cd1dc",
+      "split": "ade20k-furniture-v06-holdout"
+    },
+    {
+      "image": "ADE_val_00000198.jpg",
+      "image_sha256": "d0ad17edf201b27b138e27bf801ac1f62368e4b38ccd530ecaed86c29aa3dda3",
+      "mask_sha256": "625b985e1cde5651c155a31bcd8ecec556d737af5f4474267ea804d80b5cfb0c",
+      "split": "ade20k-furniture-v06-holdout"
+    },
+    {
+      "image": "ADE_val_00000199.jpg",
+      "image_sha256": "0269b2bdac195246207199af817003db9bcc6a0d0bcbddc0a97cb450f5e4030e",
+      "mask_sha256": "caf54a117093cecff96cabb38e6ad8994f0a3bf2e4dc2edacc3a0b8f2b1c741f",
+      "split": "ade20k-furniture-v06-holdout"
+    },
+    {
+      "image": "ADE_val_00000200.jpg",
+      "image_sha256": "ab5852ac864d4d1930942f58e139ec851b627c329b27df9c42b97ad4b660cf5d",
+      "mask_sha256": "a17b289a3c1d2b2dac0adc966bab89f6333b0f92d65807ff42c97b1b5dfdfcf5",
+      "split": "ade20k-furniture-v06-holdout"
+    },
+    {
+      "image": "ADE_val_00000201.jpg",
+      "image_sha256": "f7d57bd0211e05c3f723e5e01c23a77eb55db436cc3e7f588532f49b4cb592e1",
+      "mask_sha256": "1c691d817a7d9e426bf356861eca37d8f97f718c65b80c64e76c01ee71d071f6",
+      "split": "ade20k-furniture-v06-holdout"
+    },
+    {
+      "image": "ADE_val_00000202.jpg",
+      "image_sha256": "ed5011e7cc6d31991948408777dea520422868ca37aafb42ff12f3d08afc3574",
+      "mask_sha256": "d9acd8cdfe5a3d7f27953f53e0232a3bc644d2879441fdf04459023eb4c19716",
+      "split": "ade20k-furniture-v06-holdout"
+    },
+    {
+      "image": "ADE_val_00000203.jpg",
+      "image_sha256": "4ebbf4f0678e620c65c2f73382dbce692e79f651aaf4b6fd910755cbb26adfd6",
+      "mask_sha256": "dd0179d28ad6e8f6ce4d0bbb7ec10b407c88d8b4de022f7d9297a5af848f1aa7",
+      "split": "ade20k-furniture-v06-holdout"
+    },
+    {
+      "image": "ADE_val_00000204.jpg",
+      "image_sha256": "3f306900e682ff43b650659e65590f290e2961d67d26bcfec7c0b0577d85365a",
+      "mask_sha256": "e25be96071f0d937b378da751b7a9b8cf8d805404767ca700eb0fdce62f4e7df",
+      "split": "ade20k-furniture-v06-holdout"
+    },
+    {
+      "image": "ADE_val_00000205.jpg",
+      "image_sha256": "229cc42b54c1246df8c6e4cd9725611a7f4dad6d7eb3383f982353d5ba7b5e05",
+      "mask_sha256": "20fb1f97b5d0dd849a8d668e38bd42d6eaa59e787a9253a46b14acc542e72c60",
+      "split": "ade20k-furniture-v06-holdout"
+    },
+    {
+      "image": "ADE_val_00000206.jpg",
+      "image_sha256": "553a0e7c6632f9ae5b7a9648356210eea5e326d3f9e3e586f301398e2f93f584",
+      "mask_sha256": "001411ad198ff2126f43dc4b490200ad839295383887e834aa56f9a2dd074a8d",
+      "split": "ade20k-furniture-v06-holdout"
+    },
+    {
+      "image": "ADE_val_00000218.jpg",
+      "image_sha256": "f722fb748490590eafe042ad5d61774ff79d47cb00fd7ce1fd2ba659f9fec703",
+      "mask_sha256": "6354666f942b98958f6c1336a98713c06a2ae09a32d2cc41fadab99fe3493e5e",
+      "split": "ade20k-furniture-v06-holdout"
+    },
+    {
+      "image": "ADE_val_00000223.jpg",
+      "image_sha256": "dbcece819a301d2d3205ff60c1e7404cc1d2984758871797fcb40dcf965b0a5f",
+      "mask_sha256": "e75978f7405c6be55454781166b69aea8a03460a23b19fe4027a297eefd0bbe0",
+      "split": "ade20k-furniture-v06-holdout"
+    },
+    {
+      "image": "ADE_val_00000244.jpg",
+      "image_sha256": "7fbfcb0f7d674d2103db7f38a8c9624255ceb0d6ee9f4e25c98ab132693fd88f",
+      "mask_sha256": "8ea3f4fc0a07e584ae5693aef9c53b54ea89963daac5b13b1221ab8c472d021c",
+      "split": "ade20k-furniture-v06-holdout"
+    },
+    {
+      "image": "ADE_val_00000255.jpg",
+      "image_sha256": "764c80f3763581fee5652a2c369bedb405677df5af139a076b0d67c1ff98bbf1",
+      "mask_sha256": "5fbc352d72de31c84b1718632d815bbee2d52dc28aeb1029d821917e5a212729",
+      "split": "ade20k-furniture-v06-holdout"
+    },
+    {
+      "image": "ADE_val_00000297.jpg",
+      "image_sha256": "8577307c74d8ed4e836a73254bda0bd8c39e6819b378caa22634bfdca2c08680",
+      "mask_sha256": "6ff11dae98d440646123de895cf9174e187f559fba9efac926700f08358f2c0b",
+      "split": "ade20k-furniture-v06-holdout"
+    },
+    {
+      "image": "ADE_val_00000300.jpg",
+      "image_sha256": "73c44c2ccb6dbec0236ac364a6702fbfeb6744da8738ab54ba834ca13629027f",
+      "mask_sha256": "afb8486cb713f088a6312edb99a1e124537b903b37e6d20948b3f86b6be2df4f",
+      "split": "ade20k-furniture-v06-holdout"
+    },
+    {
+      "image": "ADE_val_00000303.jpg",
+      "image_sha256": "c041fddbb142c848e5fa70e1fabb9275a6466ab7337cff7cb6edc8ddeb9418a1",
+      "mask_sha256": "b613916745551477ee82652ac2a8e05554cbac589b30af2822a920cd40a2d4b8",
+      "split": "ade20k-furniture-v06-holdout"
+    },
+    {
+      "image": "ADE_val_00000318.jpg",
+      "image_sha256": "402bea59567d5e35d9d8d85cd51e02e51453db40865194214d1a78b2c858e758",
+      "mask_sha256": "86288e22af8b7002c788f9114be8074dbfa4fc90b233784171f39d4bc5ef7292",
+      "split": "ade20k-furniture-v06-holdout"
+    },
+    {
+      "image": "ADE_val_00000324.jpg",
+      "image_sha256": "025ce5f56a23cd63d52446a455a1710530cb30ba90859e12191e5be9c1ff7091",
+      "mask_sha256": "1f75e5f1efb1e0c8190dabfab706200f6bc93354c5f5f0264c2ac2e6bff2aafd",
+      "split": "ade20k-furniture-v06-holdout"
+    },
+    {
+      "image": "ADE_val_00000336.jpg",
+      "image_sha256": "ec7b4afb70d2b25212c96c3a174d7afdd3a3b0e35680b727f393c3bee286230d",
+      "mask_sha256": "e3cc4b43b1a1a11304f1c2df2e0e27e0eecd488ede148a07ae4867d67067c6d6",
+      "split": "ade20k-furniture-v06-holdout"
+    },
+    {
+      "image": "ADE_val_00000353.jpg",
+      "image_sha256": "216c17d7e0aced8caa0e3f17f4b71c54f3a45a66a435fcf132930c3859faff9a",
+      "mask_sha256": "f5c5f45cb24eb3319a290570a05a0f0949b712536e32d9a2833c723e77d8bf2f",
+      "split": "ade20k-furniture-v06-holdout"
+    },
+    {
+      "image": "ADE_val_00000372.jpg",
+      "image_sha256": "e3c2b31d2c34846a0d1268cd28cef66d9df4800d19a6248f087108ecb20792d5",
+      "mask_sha256": "baf5728bb3461bde7d334691e06270b645150c9ce4f7d16b579e0d59551f11b4",
+      "split": "ade20k-furniture-v06-holdout"
+    },
+    {
+      "image": "ADE_val_00000373.jpg",
+      "image_sha256": "ac06967734ed0a3d73737620fe5ae1098bc5da873c222f3f13430544dd683389",
+      "mask_sha256": "a7f26ebeb68048853a554c006da577e2ddc9314bf34082e31e0de174ad3ab99a",
+      "split": "ade20k-furniture-v06-holdout"
+    },
+    {
+      "image": "ADE_val_00000375.jpg",
+      "image_sha256": "5c02f09366bf68a97865d95f32a9d4ff01d9cae52572f1327ded039c50734338",
+      "mask_sha256": "ca75f3331a95a820cfeec21856b191b4504444ee5c228b8868e09b52cf92aa9b",
+      "split": "ade20k-furniture-v06-holdout"
+    },
+    {
+      "image": "ADE_val_00000376.jpg",
+      "image_sha256": "00892dd6704eb701f303fbc9e2cb02d13e84f44febe87f32e129ceef0f1aa2a6",
+      "mask_sha256": "bf33301096e4e6fc7ee26d2f83a7b0cf210e09a4a608a27831cd4faddff5ae53",
+      "split": "ade20k-furniture-v06-holdout"
+    },
+    {
+      "image": "ADE_val_00000385.jpg",
+      "image_sha256": "ed4b73a5f3846ba547ddf27627f58deadd3e0f92888ba293b8f1a38ea949a016",
+      "mask_sha256": "55807f11c2c241f1ecd98a5d7fee195f2a40ce60533fd399371a54974189625d",
+      "split": "ade20k-furniture-v06-holdout"
+    },
+    {
+      "image": "ADE_val_00000460.jpg",
+      "image_sha256": "57ee8c7e7ce82427157738827b8a3e6445d4b08d9fc5a85ceb1c73614883da79",
+      "mask_sha256": "beb92157a48b17a3a99c0767622271e0fe1819a02c2fbf0a82a42c31e2686b61",
+      "split": "ade20k-furniture-v06-holdout"
+    },
+    {
+      "image": "ADE_val_00000461.jpg",
+      "image_sha256": "9bc9cacb6d1d370460aaf83f984ebdcb7920350762d195745bf516484e31ffa8",
+      "mask_sha256": "366134540aff409f30c2897b2ef35abf3c5fe4b9b2c390b8df371ef7fb369242",
+      "split": "ade20k-furniture-v06-holdout"
+    },
+    {
+      "image": "ADE_val_00000462.jpg",
+      "image_sha256": "eb305b69a00bf1f4daecd3dd43996c5be1c135d1599737479c8b0f259e5c25e9",
+      "mask_sha256": "c8e613aa6a4c1a01e98ba663adc20569580df063abc4579b9264ff604ce7b638",
+      "split": "ade20k-furniture-v06-holdout"
+    },
+    {
+      "image": "ADE_val_00000463.jpg",
+      "image_sha256": "edc18db308c7e925e8c04b0663936b664fcc8cd71420bef754933aef00fba10a",
+      "mask_sha256": "150663148b082101d106b712e282b29585bbd0642a9d54136ad47fd10003a158",
+      "split": "ade20k-furniture-v06-holdout"
+    },
+    {
+      "image": "ADE_val_00000466.jpg",
+      "image_sha256": "fdc121d0e7a9eb2fc67d11d2b421040a38bc1165da3034cb285b18038b2b8299",
+      "mask_sha256": "79c9645b95a7e0b1a43a936526dd5592df11342c56f8717c31d5e3bb189612d6",
+      "split": "ade20k-furniture-v06-holdout"
+    },
+    {
+      "image": "ADE_val_00000468.jpg",
+      "image_sha256": "2570250d0babe5e91018ab06d4df47801822f64b838cc184b1689cc445bec907",
+      "mask_sha256": "c49d5e673d5b07aeebaaff3a1509d35246f74d40910696e244fcd69f78313ca9",
+      "split": "ade20k-furniture-v06-holdout"
+    },
+    {
+      "image": "ADE_val_00000471.jpg",
+      "image_sha256": "617f43db499585c545da96562717ef01c57863770b049a6febc8d6a8a86f4901",
+      "mask_sha256": "f3d442644583715ad6720d87188de865563282c2d4c00b5a179747c8f4fcac7e",
+      "split": "ade20k-furniture-v06-holdout"
+    },
+    {
+      "image": "ADE_val_00000476.jpg",
+      "image_sha256": "fa10c32d6526b41321bd6aacb6fcd797f8a2d5150e6e2613e217875e3e272039",
+      "mask_sha256": "5d5c1cf4265e7f9bda7da4d82f13716cd9a1b591da83ea6fa3a4a49f8178e538",
+      "split": "ade20k-furniture-v06-holdout"
+    }
+  ]
+}

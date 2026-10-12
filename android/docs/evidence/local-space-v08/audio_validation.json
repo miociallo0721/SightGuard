@@ -1,0 +1,125 @@
+[
+  {
+    "phase": "requested",
+    "event_id": "local-space:audio:LEFT"
+  },
+  {
+    "phase": "accepted",
+    "event_id": "local-space:audio:LEFT",
+    "detail": "started"
+  },
+  {
+    "phase": "onStart",
+    "text": "画面左侧可见地面较连续，通行条件尚未确认。",
+    "event_id": "local-space:audio:LEFT",
+    "detail": "local_media_player"
+  },
+  {
+    "phase": "requested",
+    "event_id": "local-space:audio:CENTER"
+  },
+  {
+    "phase": "accepted",
+    "event_id": "local-space:audio:CENTER",
+    "detail": "queued"
+  },
+  {
+    "phase": "completed",
+    "text": "画面左侧可见地面较连续，通行条件尚未确认。",
+    "event_id": "local-space:audio:LEFT",
+    "detail": "local_media_player"
+  },
+  {
+    "phase": "accepted",
+    "event_id": "local-space:audio:CENTER",
+    "detail": "started"
+  },
+  {
+    "phase": "onStart",
+    "text": "画面中央可见地面较连续，通行条件尚未确认。",
+    "event_id": "local-space:audio:CENTER",
+    "detail": "local_media_player"
+  },
+  {
+    "phase": "completed",
+    "text": "画面中央可见地面较连续，通行条件尚未确认。",
+    "event_id": "local-space:audio:CENTER",
+    "detail": "local_media_player"
+  },
+  {
+    "phase": "requested",
+    "event_id": "local-space:audio:RIGHT"
+  },
+  {
+    "phase": "accepted",
+    "event_id": "local-space:audio:RIGHT",
+    "detail": "started"
+  },
+  {
+    "phase": "onStart",
+    "text": "画面右侧可见地面较连续，通行条件尚未确认。",
+    "event_id": "local-space:audio:RIGHT",
+    "detail": "local_media_player"
+  },
+  {
+    "phase": "completed",
+    "text": "画面右侧可见地面较连续，通行条件尚未确认。",
+    "event_id": "local-space:audio:RIGHT",
+    "detail": "local_media_player"
+  },
+  {
+    "phase": "requested",
+    "event_id": "risk"
+  },
+  {
+    "phase": "accepted",
+    "event_id": "risk",
+    "detail": "started"
+  },
+  {
+    "phase": "requested",
+    "event_id": "local-space:obsolete"
+  },
+  {
+    "phase": "accepted",
+    "event_id": "local-space:obsolete",
+    "detail": "queued"
+  },
+  {
+    "phase": "cancelled",
+    "event_id": "local-space:obsolete",
+    "detail": "obstacle_entered"
+  },
+  {
+    "phase": "onStart",
+    "text": "前方有行人",
+    "event_id": "risk",
+    "detail": "local_media_player"
+  },
+  {
+    "phase": "completed",
+    "text": "前方有行人",
+    "event_id": "risk",
+    "detail": "local_media_player"
+  },
+  {
+    "phase": "requested",
+    "event_id": "local-space:revoked"
+  },
+  {
+    "phase": "accepted",
+    "event_id": "local-space:revoked",
+    "detail": "started"
+  },
+  {
+    "phase": "onStart",
+    "text": "画面左侧可见地面较连续，通行条件尚未确认。",
+    "event_id": "local-space:revoked",
+    "detail": "local_media_player"
+  },
+  {
+    "phase": "cancelled",
+    "event_id": "local-space:revoked",
+    "detail": "candidate_changed"
+  }
+]

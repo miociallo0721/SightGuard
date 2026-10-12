@@ -72,6 +72,20 @@ class SpatialGridFusion(private val config: GridConfig = GridConfig()) {
         val detectionValid = same(detections?.key,"detection")
         if (depthValid && (depth!!.width < 1 || depth.height < 1 || depth.values.size != depth.width * depth.height)) { failures += "depth:invalid_dimensions"; depthValid = false }
         val finiteScene = if(depthValid) depth!!.values.filter { it.isFinite() && it >= 0 }.sorted() else emptyList()
+        // Sparse source index preserves the exact overlap arithmetic below. Include
+        // adjacent bins because grid boundaries are rounded to source-image pixels.
+        val semanticBuckets=Array(config.rows*config.cols) {mutableListOf<SemanticCell>()}
+        if(semanticValid) for(cell in semantics!!.cells) {
+            if(!cell.confidence.isFinite() || cell.confidence<config.minConfidence ||
+                !cell.left.isFinite() || !cell.top.isFinite() || !cell.right.isFinite() || !cell.bottom.isFinite() ||
+                cell.right<=cell.left || cell.bottom<=cell.top) continue
+            val c0=(cell.left*config.cols).toInt().coerceIn(0,config.cols-1)
+            val c1=kotlin.math.ceil(cell.right*config.cols).toInt().coerceIn(0,config.cols-1)
+            val r0=(cell.top*config.rows).toInt().coerceIn(0,config.rows-1)
+            val r1=kotlin.math.ceil(cell.bottom*config.rows).toInt().coerceIn(0,config.rows-1)
+            for(row in (r0-1).coerceAtLeast(0)..r1) for(col in (c0-1).coerceAtLeast(0)..c1)
+                semanticBuckets[row*config.cols+col].add(cell)
+        }
         val cells = mutableListOf<GridCell>()
         for (row in 0 until config.rows) for (col in 0 until config.cols) {
             // Pixel half-open partition, matching PC grid_bounds for odd source dimensions.
@@ -84,7 +98,7 @@ class SpatialGridFusion(private val config: GridConfig = GridConfig()) {
             val furnitureIds=mutableSetOf<Int>()
             if(semanticValid) {
                 sources["semantic"]=semantics!!.modelSha
-                semantics.cells.forEach { cell ->
+                semanticBuckets[row*config.cols+col].forEach { cell ->
                     if(cell.confidence.isFinite() && cell.confidence>=config.minConfidence && listOf(cell.left,cell.top,cell.right,cell.bottom).all { it.isFinite() } && cell.right>cell.left && cell.bottom>cell.top) {
                         val fraction=overlap(cell.left,cell.top,cell.right,cell.bottom)
                         if(cell.classId in SemanticEvidence.groundClassIds) ground=ground!!+fraction

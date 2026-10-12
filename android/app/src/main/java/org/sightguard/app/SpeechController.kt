@@ -64,6 +64,7 @@ internal object SpeechRequestRules {
         request.eventId?.startsWith("semantic:")==true -> 3
         request.eventId?.startsWith("overview-")==true -> 2
         request.eventId?.startsWith("research:")==true -> 2
+        request.eventId?.startsWith("local-space:")==true -> 2
         request.eventId?.startsWith("status-")==true -> 1
         else -> 4
     }
@@ -292,6 +293,15 @@ class SpeechController(
         if(requestQueue.peek()?.eventId?.startsWith("research:")==true) cancelQueued(reason)
         if(activeRequest?.eventId?.startsWith("research:")==true && (!activePlaybackStarted || reason!="research_expired")) {
             cancelCurrent(reason,keepAudioFocus=true);startNextQueuedRequest()
+        }
+    }
+
+    fun cancelLocalSpaceExcept(validIds: Set<String>, reason: String) {
+        checkMainThread()
+        fun obsolete(request: SpeechRequest?) = request?.eventId?.let {it.startsWith("local-space:") && it !in validIds}==true
+        if(obsolete(requestQueue.peek())) cancelQueued(reason)
+        if(obsolete(activeRequest) && (!activePlaybackStarted || reason!="local_space_expired")) {
+            cancelCurrent(reason,keepAudioFocus=true); startNextQueuedRequest()
         }
     }
 

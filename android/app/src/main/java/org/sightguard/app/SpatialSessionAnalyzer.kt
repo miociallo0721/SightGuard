@@ -13,7 +13,7 @@ data class SpatialSettings(val depth: Boolean, val semantics: Boolean, val grid:
 data class SpatialSnapshot(val key: SpatialFrameKey, val bitmap: Bitmap, val detections: List<Detection>, val depth: DepthEvidence?, val heatmap: Bitmap?, val semantics: GroundEvidence?, val completedAtMs: Long, val grid: SpatialGridEvidence? = null)
 
 /** YOLO remains on its own priority chain. Auxiliary models run sequentially on ONE source snapshot. */
-class SpatialSessionAnalyzer(context: Context, private val settings: SpatialSettings, private val onResult: (SpatialSnapshot) -> Unit, private val onStatus: (String) -> Unit, private val motionProvider: (SpatialFrameKey) -> MotionEvidence = { MotionEvidence(MotionQuality.UNKNOWN,"IMU unavailable") }, private val onSemantic: (GroundEvidence, Boolean, MotionEvidence) -> Unit = { _, _, _ -> }, private val onSceneChanged: () -> Unit = {}, private val onShadow: (WallApproachRecord) -> Unit = {}, private val motionIntervalProvider: (SpatialFrameKey,SpatialFrameKey?) -> MotionEvidence = { key,_ -> motionProvider(key) }, private val onMetric: (WallMetricRecord) -> Unit = {}, private val currentMotionProvider: () -> MotionEvidence = { MotionEvidence(MotionQuality.UNKNOWN,"current device motion unavailable") }) : AutoCloseable {
+class SpatialSessionAnalyzer(context: Context, private val settings: SpatialSettings, private val onResult: (SpatialSnapshot) -> Unit, private val onStatus: (String) -> Unit, private val motionProvider: (SpatialFrameKey) -> MotionEvidence = { MotionEvidence(MotionQuality.UNKNOWN,"IMU unavailable") }, private val onSemantic: (GroundEvidence, Boolean, MotionEvidence) -> Unit = { _, _, _ -> }, private val onSceneChanged: () -> Unit = {}, private val onShadow: (WallApproachRecord) -> Unit = {}, private val motionIntervalProvider: (SpatialFrameKey,SpatialFrameKey?) -> MotionEvidence = { key,_ -> motionProvider(key) }, private val onMetric: (WallMetricRecord) -> Unit = {}, private val onLocalSpace: (SpatialGridEvidence, GroundEvidence, Boolean) -> Unit = { _, _, _ -> }, private val currentMotionProvider: () -> MotionEvidence = { MotionEvidence(MotionQuality.UNKNOWN,"current device motion unavailable") }) : AutoCloseable {
     private val worker = Executors.newSingleThreadExecutor()
     private val handler = Handler(Looper.getMainLooper())
     private val busy = AtomicBoolean(false)
@@ -101,12 +101,15 @@ class SpatialSessionAnalyzer(context: Context, private val settings: SpatialSett
                 }
                 val sourceDetections=detections
                 val sourceSignature = semanticSceneSignature(copy)
+                val localGridStarted=SystemClock.elapsedRealtime()
+                val localGrid=s?.let { SpatialGridFusion(GridConfig(minConfidence=.65f,includeFurniture=true)).fuse(key,GridSemanticSource(key,it.cells,it.modelSha),null,GridDetectionSource(key,sourceDetections,yoloSha),motionProvider(key)) }
+                if(localGrid!=null) Log.i("SG_LOCAL_SPACE_PERF","gridMs=${SystemClock.elapsedRealtime()-localGridStarted} sourceAgeMs=${SystemClock.elapsedRealtime()-key.capturedAtMs}")
                 if (s != null) handler.post {
                     val latest=latestKey
                     val current=latest != null && latest.generation==key.generation && latest.epoch==key.epoch &&
-                        latest.width==key.width && latest.height==key.height &&
+                        latest.width==key.width && latest.height==key.height && latest.rotationDegrees==key.rotationDegrees &&
                         SemanticSceneContinuity.matches(sourceSignature,latestSignature,environmentConfig.maxSceneDifference)
-                    if(!closed) { if(current) acceptedSignature=sourceSignature; onSemantic(s,current,motionProvider(key)) }
+                    if(!closed) { if(current) acceptedSignature=sourceSignature; onSemantic(s,current,motionProvider(key)); if(localGrid!=null) onLocalSpace(localGrid,s,current) }
                 }
                 val currentThermal=if(android.os.Build.VERSION.SDK_INT>=29) power.currentThermalStatus else 0
                 val metricMemory=android.app.ActivityManager.MemoryInfo()
