@@ -63,10 +63,10 @@ object SemanticEvidence {
             directionText(it.direction) + (family?.label ?: sceneName(it))
         }.distinct().take(config.maxOverviewItems)
         val objects = detections.filter {
-            it.classId in Labels.coco80.indices && it.confidence.isFinite() && it.confidence in config.minConfidence..1f &&
+            it.classId in Labels.detectionNames.indices && it.confidence.isFinite() && it.confidence in config.minConfidence..1f &&
                 listOf(it.left, it.top, it.right, it.bottom).all { v -> v.isFinite() && v in 0f..1f } && it.right > it.left && it.bottom > it.top
         }.map { it.classId to direction((it.left + it.right) / 2f) }.distinct().sortedWith(compareBy<Pair<Int, Direction>> { it.first }.thenBy { it.second.ordinal })
-            .map { directionText(it.second) + (EnvironmentTaxonomy.yoloKind(it.first)?.label ?: Labels.coco80[it.first]) }
+            .map { directionText(it.second) + (EnvironmentTaxonomy.yoloKind(it.first)?.label ?: Labels.detectionNames[it.first]) }
             .distinct().filter {it !in scene}.take(config.maxOverviewItems)
         val parts = listOfNotNull(scene.takeIf { it.isNotEmpty() }?.joinToString("、"), objects.takeIf { it.isNotEmpty() }?.let { "检测到" + it.joinToString("、") })
         return if (parts.isEmpty()) SemanticSummary(regions, "当前环境信息不足。", "缺少达到阈值的语义和检测证据")

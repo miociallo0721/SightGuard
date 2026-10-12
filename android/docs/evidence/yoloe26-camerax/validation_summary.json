@@ -1,0 +1,85 @@
+{
+  "schema_version": 1,
+  "device": "REDMI Turbo 4 Pro / 25053RT47C / Android 16 API36",
+  "apk": {
+    "path": "D:\\program\\SightGuard-metric-corridor\\android\\deliveries\\yoloe26-camerax\\SightGuard-0.7-YOLOE-CameraX.apk",
+    "sha256": "5315f7c4aba7c344c341e11aa7976674ae1ff254bc94d06f7ec4bb95e6a01310",
+    "bytes": 365261321,
+    "version_code": 8,
+    "installed": "ADB install Success; cold launch Status ok 374ms; package version verified"
+  },
+  "model_sha256": "07bb23a0d1d8ff463d19276a1a12ac007ac171487ced6dc8924e24476031ac17",
+  "camera_backend": "CameraX",
+  "arcore_sdk_packaged": false,
+  "internet_permission": false,
+  "new_distance_or_navigation_speech": false,
+  "jvm": {
+    "tests": 161,
+    "failures": 0
+  },
+  "android_instrumentation": {
+    "unique_tests": 10,
+    "passed": 8,
+    "failed": 2,
+    "failures": "AccessibleHome launch waiting timeout on phone; alternative ActivityMonitor retry also failed. Original tests retained, not weakened. Main camera was running; precise harness cause not diagnosed."
+  },
+  "adb_controls": {
+    "mute_unmute": "passed UI label assertions",
+    "stop_start_cycles": 2,
+    "explicit_stop_holds": "passed two repeated checks",
+    "baseline_switch": "automation checked-node assertion failed; actual release logs subsequently confirm both YOLO26n and YOLOE loads; last observed model is YOLOE26n",
+    "last_observed_model": {
+      "kind": "YOLOE26n",
+      "sha256": "07bb23a0d1d8ff463d19276a1a12ac007ac171487ced6dc8924e24476031ac17"
+    }
+  },
+  "phone_release_yoloe": {
+    "fps": {
+      "n": 337,
+      "median": 16.90141,
+      "p95": 19.607843,
+      "max": 22.222221
+    },
+    "yoloMs": {
+      "n": 337,
+      "median": 41.0,
+      "p95": 58.0,
+      "max": 67.0
+    },
+    "latencyMs": {
+      "n": 337,
+      "median": 58.0,
+      "p95": 80.0,
+      "max": 169.0
+    },
+    "sourceAgeMs": {
+      "n": 337,
+      "median": 194.0,
+      "p95": 224.0,
+      "max": 362.0
+    },
+    "pssKb": {
+      "n": 337,
+      "median": 473258.0,
+      "p95": 514505.0,
+      "max": 591123.0
+    }
+  },
+  "semantic_fallback_count": 5,
+  "release_model_release_events": 5,
+  "audio_onstart_counts": {
+    "前方有桌子": 5,
+    "前方检测到墙面。": 4,
+    "右侧有椅子": 4,
+    "感知已停止": 2,
+    "感知已开启": 5
+  },
+  "limitations": [
+    "Short uncontrolled real-camera observation; no annotated live-scene accuracy or metric distance validation.",
+    "Inference timing probe serial baseline/new in one process; allocator retention means PSS difference is not isolated model memory.",
+    "Large semantic model can still fall back to 256, disabling BED/APPLIANCE automatic semantics under existing contract.",
+    "No full TalkBack or large-font rerun in this task.",
+    "Phone disconnected by user after installation; no device interactions after notice. Raw logs/images remain local."
+  ],
+  "local_log_sha256": "d6f33483ca6bf84fc4843fbd377f6b0cd4875ce84e716589dedb9136dc780aac"
+}

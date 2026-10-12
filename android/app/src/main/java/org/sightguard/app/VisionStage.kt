@@ -25,7 +25,7 @@ class VisionStage(context: Context, private val source: String) : AutoCloseable 
         val raw = detector.detect(bitmap)
         val detectionLatency = android.os.SystemClock.elapsedRealtime() - detectionStarted
         val tracked = tracker.update(raw, timestampMs)
-        val detections = tracked.map { t -> val d = t.detection; PDetection(t.trackId, d.classId, Labels.coco80[d.classId], d.confidence.toDouble(),
+        val detections = tracked.map { t -> val d = t.detection; PDetection(t.trackId, d.classId, Labels.detectionNames[d.classId], d.confidence.toDouble(),
             listOf(d.left * bitmap.width.toDouble(), d.top * bitmap.height.toDouble(), d.right * bitmap.width.toDouble(), d.bottom * bitmap.height.toDouble())) }
         val frame = PFrame(frameIndex++, timestampMs.toDouble(), bitmap.width, bitmap.height, detections, timestampSource = timestampSource)
         val filtered = relevance.apply(frame)

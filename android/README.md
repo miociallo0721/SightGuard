@@ -2,15 +2,17 @@
 
 原生 Kotlin / Compose / CameraX / ONNX Runtime Android 1.24.3，Android 8.0（API 26）以上，前台运行。YOLO 主链和 SegFormer 环境语义按系统策略运行，用户无需开启研究图层。应用无 INTERNET 权限。
 
-当前 **0.6 家具语义增量**：[实现与验证](docs/semantic_furniture_v06.md)。新增 8 个家具组的概览、连通区域证据、网格占用与独立语音资源。自动播报仅按实际模型与类别验证结果开放；正式 YOLO 风险评分不变。384 输入推理不及时或主链负载过高时，单会话退回原 256 模型，新增床/冰箱自动提醒随之关闭。
+当前 **0.7 YOLOE + CameraX**：[替换包与真机验证](docs/yoloe_camerax_v07.md)。默认使用 YOLOE-26n 固定类别模型；ARCore SDK、相机入口及相关距离/接近/空间候选语音已移除。设置可切换旧版目标模型。
+
+继承 **0.6 家具语义增量**：[实现与验证](docs/semantic_furniture_v06.md)。新增 8 个家具组的概览、连通区域证据、网格占用与独立语音资源。自动播报仅按实际模型与类别验证结果开放；正式 YOLO 风险评分不变。384 输入推理不及时或主链负载过高时，单会话退回原 256 模型，新增床/冰箱自动提醒随之关闭。
 
 0.6 构建需要额外的 `app/src/main/assets/segformer_mit_b0_ade20k_384.onnx`。它使用原冻结权重、同一预处理和单独 SHA 契约；导出及验证命令见 0.6 文档。两个模型不会同时持有 ONNX Session。缺少较大模型时可以降级，但这样的构建不能声称包含已验证的新家具自动提醒。
 
-本分支新增 **0.5 ARCore 实验接入**：见 [红米实测、失败记录及回退说明](docs/arcore_awareness_v05.md)。可用设备启用 ARCore 相机和空间证据；不支持或关闭实验开关时使用 CameraX。墙面距离、相机接近与地面候选尚未通过受控实景验收，不提供安全路径或数值距离播报。不要将新增语音素材播放成功等同实际测距成功。
+历史 **0.5 ARCore** 实验见 [原验证报告](docs/arcore_awareness_v05.md)，不代表本分支当前具备 ARCore 功能。纯几何研究代码与历史测试保留，不实例化 AR 会话。
 
 应用默认在前台自动感知，保留显式停止与静音；离线中文 TTS 不可用时，固定环境提示有匹配的本地音频。0.4 功能记录见 [Accessible Awareness](docs/accessible_awareness_v04.md)。早期 MVP 验证见 `../docs/android_pc_parity_delivery.md`，原副本保留在 `deliveries/mvp-verified/`。
 
-ARCore 非调试实验包使用 `:app:assembleRelease` 构建，仍为本地开发签名。真机性能与调试包明显不同；对照条件、源帧年龄和局限见上述报告。旧 APK 不覆盖，设置中关闭实验性空间提醒即可回到基础感知。
+0.7 使用 `:app:assembleRelease` 构建，仍为本地开发签名。保留旧 APK；同包内切换旧目标模型无需卸载，完整旧 APK 因版本号较低不能保证直接降级安装。模型导出步骤与限制见 0.7 报告。
 
 ## 构建与设备测试
 

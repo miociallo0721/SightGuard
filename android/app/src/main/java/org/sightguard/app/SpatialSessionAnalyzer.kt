@@ -9,7 +9,7 @@ import android.util.Log
 import java.util.concurrent.Executors
 import java.util.concurrent.atomic.AtomicBoolean
 
-data class SpatialSettings(val depth: Boolean, val semantics: Boolean, val grid: Boolean = false, val ignoreThermalForTest: Boolean = false, val metricResearch: Boolean = false, val semanticThreads: Int = 1)
+data class SpatialSettings(val depth: Boolean, val semantics: Boolean, val grid: Boolean = false, val ignoreThermalForTest: Boolean = false, val metricResearch: Boolean = false, val semanticThreads: Int = 1, val detectorModelSha: String = "unavailable")
 data class SpatialSnapshot(val key: SpatialFrameKey, val bitmap: Bitmap, val detections: List<Detection>, val depth: DepthEvidence?, val heatmap: Bitmap?, val semantics: GroundEvidence?, val completedAtMs: Long, val grid: SpatialGridEvidence? = null)
 
 /** YOLO remains on its own priority chain. Auxiliary models run sequentially on ONE source snapshot. */
@@ -38,7 +38,7 @@ class SpatialSessionAnalyzer(context: Context, private val settings: SpatialSett
     private val application = context.applicationContext
     private val ignoreThermalForTest = settings.ignoreThermalForTest &&
         application.applicationInfo.flags and android.content.pm.ApplicationInfo.FLAG_DEBUGGABLE != 0
-    private val yoloSha = org.json.JSONObject(context.assets.open("model_manifest.json").bufferedReader().use { it.readText() }).getString("onnx_sha256")
+    private val yoloSha = settings.detectorModelSha
     @Volatile private var primarySlowFrames = 0
     fun notePrimaryLatency(latencyMs: Long) { primarySlowFrames = if (latencyMs > 180) (primarySlowFrames + 1).coerceAtMost(20) else (primarySlowFrames - 1).coerceAtLeast(0) }
     init {
@@ -66,11 +66,7 @@ class SpatialSessionAnalyzer(context: Context, private val settings: SpatialSett
         semantics?.close();semantics=null
         if(!closed) semantics=SpatialDetector(application,settings.semanticThreads,256)
     }
-    var onArEvidence: (ArSpatialRecord) -> Unit = {}
-    private val arEvaluator = ArSpatialEvaluator(loadArSpeechConfig(context))
-    @Volatile private var resetArRequested = false
-    fun invalidateArEvidence() { resetArRequested=true }
-    @Synchronized fun offer(bitmap: Bitmap, key: SpatialFrameKey, detections: List<Detection>, force: Boolean = false, arGeometry: ArGeometry? = null, deferredDetections: (() -> List<Detection>?)? = null) {
+    @Synchronized fun offer(bitmap: Bitmap, key: SpatialFrameKey, detections: List<Detection>, force: Boolean = false) {
         val now = SystemClock.elapsedRealtime()
         if (closed) return
         latestSignature = semanticSceneSignature(bitmap); latestKey = key
@@ -103,8 +99,7 @@ class SpatialSessionAnalyzer(context: Context, private val settings: SpatialSett
                     try {loadFallback("late_or_primary_load")} catch(error: Exception) {Log.e("SG_SPATIAL","fallback failed",error)}
                     catch(error: OutOfMemoryError) {Log.e("SG_SPATIAL","fallback memory failure",error)}
                 }
-                val completedDetections=if(deferredDetections!=null) deferredDetections() else detections
-                val sourceDetections=completedDetections ?: emptyList()
+                val sourceDetections=detections
                 val sourceSignature = semanticSceneSignature(copy)
                 if (s != null) handler.post {
                     val latest=latestKey
@@ -113,18 +108,10 @@ class SpatialSessionAnalyzer(context: Context, private val settings: SpatialSett
                         SemanticSceneContinuity.matches(sourceSignature,latestSignature,environmentConfig.maxSceneDifference)
                     if(!closed) { if(current) acceptedSignature=sourceSignature; onSemantic(s,current,motionProvider(key)) }
                 }
-                if(s!=null && arGeometry!=null && !closed) {
-                    if(resetArRequested) {arEvaluator.reset();resetArRequested=false}
-                    val latest=latestKey
-                    val current=completedDetections!=null && latest!=null && latest.generation==key.generation && latest.epoch==key.epoch && latest.rotationDegrees==key.rotationDegrees &&
-                        SemanticSceneContinuity.matches(sourceSignature,latestSignature,environmentConfig.maxSceneDifference) && currentMotionProvider().quality!=MotionQuality.RAPID
-                    val record=arEvaluator.evaluate(key,s,arGeometry,sourceDetections,SystemClock.elapsedRealtime(),current)
-                    handler.post {if(!closed) onArEvidence(record)}
-                }
                 val currentThermal=if(android.os.Build.VERSION.SDK_INT>=29) power.currentThermalStatus else 0
                 val metricMemory=android.app.ActivityManager.MemoryInfo()
                 (application.getSystemService(Context.ACTIVITY_SERVICE) as android.app.ActivityManager).getMemoryInfo(metricMemory)
-                val useMetric=arGeometry==null && settings.metricResearch && plan.depthAllowed && currentThermal<2 && now-lastMetricAt>=metricSettings.intervalMs && primarySlowFrames==0 && !metricMemory.lowMemory && metricMemory.availMem/1048576>=metricSettings.minimumMemoryMb
+                val useMetric=settings.metricResearch && plan.depthAllowed && currentThermal<2 && now-lastMetricAt>=metricSettings.intervalMs && primarySlowFrames==0 && !metricMemory.lowMemory && metricMemory.availMem/1048576>=metricSettings.minimumMemoryMb
                 if(useMetric && !closed) {
                     lastMetricAt=now
                     val evidence=try {
@@ -138,7 +125,7 @@ class SpatialSessionAnalyzer(context: Context, private val settings: SpatialSett
                     Log.i("SG_METRIC_WALL",metricWallJson(record).toString())
                     handler.post {if(!closed) onMetric(record)}
                 }
-                val useDepth=arGeometry==null && settings.depth && !useMetric && plan.depthAllowed && (ignoreThermalForTest || currentThermal<2) && now-lastDepthAt>=6000 && primarySlowFrames==0
+                val useDepth=settings.depth && !useMetric && plan.depthAllowed && (ignoreThermalForTest || currentThermal<2) && now-lastDepthAt>=6000 && primarySlowFrames==0
                 if(useDepth) lastDepthAt=now
                 if(useDepth && depth==null && !closed) try {
                     val start=SystemClock.elapsedRealtime();depth=DepthDetector(application)

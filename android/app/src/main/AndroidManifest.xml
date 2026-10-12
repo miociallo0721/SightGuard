@@ -1,9 +1,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-feature android:name="android.hardware.camera.any" android:required="false" />
-    <queries><package android:name="com.google.ar.core" /><intent><action android:name="android.intent.action.TTS_SERVICE" /></intent></queries>
+    <queries><intent><action android:name="android.intent.action.TTS_SERVICE" /></intent></queries>
     <application android:label="SightGuard（视界）" android:icon="@drawable/ic_sightguard" android:theme="@android:style/Theme.Material.NoActionBar" android:allowBackup="false" android:supportsRtl="true">
-        <meta-data android:name="com.google.ar.core" android:value="optional" />
         <activity android:name=".MainActivity" android:exported="true" android:configChanges="orientation|screenSize">
             <intent-filter><action android:name="android.intent.action.MAIN" /><category android:name="android.intent.category.LAUNCHER" /></intent-filter>
         </activity>

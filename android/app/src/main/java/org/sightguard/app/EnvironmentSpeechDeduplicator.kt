@@ -13,7 +13,7 @@ class EnvironmentSpeechDeduplicator(private val recoveryMs: Long = 4000) {
     /** Call only after actual YOLO speech onStart, never when a proposal is queued. */
     fun yoloStarted(generation: Long, epoch: Long, classId: Int, bounds: List<Double>, nowMs: Long, spokenText: String) {
         val kind = EnvironmentTaxonomy.yoloKind(classId) ?: return
-        val className = Labels.coco80.getOrNull(classId) ?: return
+        val className = Labels.detectionNames.getOrNull(classId) ?: return
         if (!spokenText.contains(className)) return // Generic fallback did not name this structure.
         val box = bounds.map { it.toFloat() }
         if (box.size != 4 || box.any { !it.isFinite() || it !in 0f..1f } || box[2] <= box[0] || box[3] <= box[1]) return

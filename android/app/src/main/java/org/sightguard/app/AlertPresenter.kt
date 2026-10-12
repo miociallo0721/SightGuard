@@ -46,7 +46,7 @@ class AlertPresenter(private val config: PresentationConfig = PresentationConfig
         val text = when {
             upgrade -> "${prefix}目标风险升高，请注意"
             event.classId == 0 && eligiblePeers.size > 1 -> "${prefix}有多名行人"
-            else -> "${prefix}有${Labels.coco80.getOrElse(event.classId) { "目标" }}"
+            else -> "${prefix}有${Labels.detectionNames.getOrElse(event.classId) { "目标" }}"
         }
         return PresentedAlert(selected, text, important, if (event.classId == 0 && eligiblePeers.size > 1) result.alerts.filter { it.eventId != selected.eventId && it.eventId in eligiblePeers.map(EventSnapshot::eventId) } else emptyList(), direction = dir)
     }

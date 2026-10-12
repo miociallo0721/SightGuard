@@ -8,6 +8,7 @@ data class Detection(
     val top: Float,
     val right: Float,
     val bottom: Float,
+    val sourceClassId: Int? = null,
 )
 
 enum class Direction { LEFT, CENTER, RIGHT }
@@ -26,6 +27,7 @@ object Labels {
         "餐桌", "马桶", "电视", "笔记本电脑", "鼠标", "遥控器", "键盘", "手机", "微波炉", "烤箱",
         "烤面包机", "水槽", "冰箱", "书", "时钟", "花瓶", "剪刀", "泰迪熊", "吹风机", "牙刷",
     )
+    val detectionNames: List<String> = coco80.mapIndexed { id, name -> if(id==60) "桌子" else name } + listOf("柜子", "架子", "柜台", "显示器")
 }
 
 /**
@@ -145,7 +147,7 @@ class RiskPolicy {
             }
             lastAlertMs = timestampMs
             lastAlertImportant = isImportant(track)
-            val label = Labels.coco80.getOrNull(track.classId) ?: "目标"
+            val label = Labels.detectionNames.getOrNull(track.classId) ?: "目标"
             val text = if (isUpgrade) {
                 "${track.direction.label()}有${label}，请注意"
             } else {
@@ -194,7 +196,7 @@ class RiskPolicy {
     }
 
     private fun isUsable(d: Detection): Boolean =
-        d.classId in Labels.coco80.indices &&
+        d.classId in Labels.detectionNames.indices &&
             d.confidence.isFinite() && d.confidence in MIN_CONFIDENCE..1f &&
             d.left.isFinite() && d.top.isFinite() && d.right.isFinite() && d.bottom.isFinite() &&
             d.left >= 0f && d.top >= 0f && d.right <= 1f && d.bottom <= 1f &&
