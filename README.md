@@ -57,3 +57,9 @@ datasets/    数据说明和可重建的小型样例
 ## 参与项目
 
 开发流程见 [CONTRIBUTING](CONTRIBUTING.md)，版本变化见 [CHANGELOG](CHANGELOG.md)。提交问题时请说明版本、设备和复现步骤，避免上传私人画面。模型与第三方组件的来源和使用条件见[第三方说明](THIRD_PARTY_NOTICES.md)。
+
+## 开源协议
+
+Copyright © 2026 SightGuard contributors.
+
+本项目有权授权的原创源码采用 **[GNU AGPL-3.0-only](LICENSE)**（仅第 3 版）。第三方代码、模型权重及数据保留各自许可，不因本项目协议而重新授权，详见[第三方说明](THIRD_PARTY_NOTICES.md)。SegFormer 上游的非商业研究/评估限制仍需单独处理；本声明不代表包含全部模型的 APK 已获得商业分发授权或完成许可证兼容性审查。

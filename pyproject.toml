@@ -7,6 +7,8 @@ name = "sightguard"
 version = "0.4.0"
 description = "Reproducible offline visual perception for SightGuard research"
 readme = "README.md"
+license = "AGPL-3.0-only"
+license-files = ["LICENSE", "THIRD_PARTY_NOTICES.md"]
 requires-python = ">=3.12,<3.13"
 dependencies = [
   "numpy>=2.0,<3",

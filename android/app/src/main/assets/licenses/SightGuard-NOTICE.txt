@@ -1,0 +1,15 @@
+SightGuard
+Copyright (C) 2026 SightGuard contributors.
+
+Original source code that the SightGuard contributors are entitled to license is
+licensed under the GNU Affero General Public License, version 3 only
+(SPDX-License-Identifier: AGPL-3.0-only). See SightGuard-AGPL-3.0.txt.
+
+Source repository: https://github.com/miociallo0721/SightGuard
+Distributors must provide the corresponding source and required materials for
+the version they distribute in accordance with the applicable license terms.
+
+Third-party code, model weights, datasets and separately licensed assets retain
+their own licenses. This notice does not relicense those materials or establish
+license compatibility for a combined distribution. In particular, the included
+SegFormer notices retain their upstream research/evaluation restrictions.
