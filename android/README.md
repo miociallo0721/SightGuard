@@ -2,6 +2,10 @@
 
 原生 Kotlin / Compose / CameraX / ONNX Runtime Android 1.24.3，Android 8.0（API 26）以上，前台运行。YOLO 主链和 SegFormer 环境语义按系统策略运行，用户无需开启研究图层。应用无 INTERNET 权限。
 
+当前 **0.6 家具语义增量**：[实现与验证](docs/semantic_furniture_v06.md)。新增 8 个家具组的概览、连通区域证据、网格占用与独立语音资源。自动播报仅按实际模型与类别验证结果开放；正式 YOLO 风险评分不变。384 输入推理不及时或主链负载过高时，单会话退回原 256 模型，新增床/冰箱自动提醒随之关闭。
+
+0.6 构建需要额外的 `app/src/main/assets/segformer_mit_b0_ade20k_384.onnx`。它使用原冻结权重、同一预处理和单独 SHA 契约；导出及验证命令见 0.6 文档。两个模型不会同时持有 ONNX Session。缺少较大模型时可以降级，但这样的构建不能声称包含已验证的新家具自动提醒。
+
 本分支新增 **0.5 ARCore 实验接入**：见 [红米实测、失败记录及回退说明](docs/arcore_awareness_v05.md)。可用设备启用 ARCore 相机和空间证据；不支持或关闭实验开关时使用 CameraX。墙面距离、相机接近与地面候选尚未通过受控实景验收，不提供安全路径或数值距离播报。不要将新增语音素材播放成功等同实际测距成功。
 
 应用默认在前台自动感知，保留显式停止与静音；离线中文 TTS 不可用时，固定环境提示有匹配的本地音频。0.4 功能记录见 [Accessible Awareness](docs/accessible_awareness_v04.md)。早期 MVP 验证见 `../docs/android_pc_parity_delivery.md`，原副本保留在 `deliveries/mvp-verified/`。

@@ -19,13 +19,13 @@ object MotionRules {
     }
 }
 
-data class GridConfig(val rows: Int = 15, val cols: Int = 15, val minConfidence: Float = .35f, val supportThreshold: Float = .25f, val occupancyThreshold: Float = .25f) {
+data class GridConfig(val rows: Int = 15, val cols: Int = 15, val minConfidence: Float = .35f, val supportThreshold: Float = .25f, val occupancyThreshold: Float = .25f, val includeFurniture: Boolean = false) {
     init { require(rows in 1..128 && cols in 1..128); require(listOf(minConfidence,supportThreshold,occupancyThreshold).all { it.isFinite() && it in 0f..1f }) }
 }
 data class GridSemanticSource(val key: SpatialFrameKey, val cells: List<SemanticCell>, val modelSha: String)
 data class GridDepthSource(val key: SpatialFrameKey, val width: Int, val height: Int, val values: FloatArray, val modelSha: String)
 data class GridDetectionSource(val key: SpatialFrameKey, val detections: List<Detection>, val modelSha: String)
-data class GridCell(val row: Int, val col: Int, val left: Float, val top: Float, val right: Float, val bottom: Float, val ground: Float?, val wall: Float?, val vegetation: Float?, val occupancy: Float?, val depth: DepthStatistics?, val state: String, val quality: String, val reasons: List<String>, val sources: Map<String,String>)
+data class GridCell(val row: Int, val col: Int, val left: Float, val top: Float, val right: Float, val bottom: Float, val ground: Float?, val wall: Float?, val vegetation: Float?, val occupancy: Float?, val depth: DepthStatistics?, val state: String, val quality: String, val reasons: List<String>, val sources: Map<String,String>, val semanticObjects: Float? = null, val semanticObjectClassIds: Set<Int> = emptySet())
 data class SpatialGridEvidence(val key: SpatialFrameKey, val cells: List<GridCell>, val motion: MotionEvidence, val state: String, val failures: List<String>, val productionDecisionChanged: Boolean = false)
 data class SemanticGridSummary(val wallCells: Int,val groundCells: Int,val boundaryAdjacencies: Int)
 
@@ -80,6 +80,8 @@ class SpatialGridFusion(private val config: GridConfig = GridConfig()) {
             val area=(r-l)*(b-t); val reasons=mutableListOf<String>(); val sources=linkedMapOf<String,String>()
             fun overlap(left: Float,top: Float,right: Float,bottom: Float)=max(0f,min(r,right)-max(l,left))*max(0f,min(b,bottom)-max(t,top)) / area
             var ground=if(semanticValid) 0f else null; var wall=if(semanticValid) 0f else null; var vegetation=if(semanticValid) 0f else null
+            var furniture=if(semanticValid && config.includeFurniture) 0f else null
+            val furnitureIds=mutableSetOf<Int>()
             if(semanticValid) {
                 sources["semantic"]=semantics!!.modelSha
                 semantics.cells.forEach { cell ->
@@ -88,6 +90,9 @@ class SpatialGridFusion(private val config: GridConfig = GridConfig()) {
                         if(cell.classId in SemanticEvidence.groundClassIds) ground=ground!!+fraction
                         if(cell.classId==0) wall=wall!!+fraction
                         if(cell.classId in setOf(4,9,17)) vegetation=vegetation!!+fraction
+                        if(config.includeFurniture && fraction>0 && cell.classId in EnvironmentTaxonomy.furnitureClassIds) {
+                            furniture=furniture!!+fraction; furnitureIds.add(cell.classId)
+                        }
                     }
                 }
                 ground=ground!!.coerceAtMost(1f); wall=wall!!.coerceAtMost(1f); vegetation=vegetation!!.coerceAtMost(1f)
@@ -110,13 +115,16 @@ class SpatialGridFusion(private val config: GridConfig = GridConfig()) {
                 if(stats.framePercentile==null || stats.validFraction<.8f) reasons += "depth_unknown"
             } else reasons += "depth_unknown"
             if(motion.quality in setOf(MotionQuality.RAPID,MotionQuality.LIMITED,MotionQuality.UNKNOWN)) reasons += "motion_${motion.quality}"
-            val groundSupported=(ground?:0f)>=config.supportThreshold; val occupied=(occupancy?:0f)>=config.occupancyThreshold
+            furniture=furniture?.coerceAtMost(1f)
+            val furnitureSupported=(furniture?:0f)>=config.supportThreshold
+            if(furnitureSupported) reasons += "semantic_furniture_image_surface_not_metric_clearance"
+            val groundSupported=(ground?:0f)>=config.supportThreshold; val occupied=(occupancy?:0f)>=config.occupancyThreshold || furnitureSupported
             val conflict=groundSupported && occupied
-            if(conflict) reasons += "ground_and_bbox_overlap"
+            if(conflict) reasons += if(furnitureSupported) "ground_and_semantic_furniture_overlap" else "ground_and_bbox_overlap"
             val state=when { conflict->"CONFLICT"; occupied->"OBJECT"; (wall?:0f)>=config.supportThreshold->"WALL"; groundSupported->"GROUND"; (vegetation?:0f)>=config.supportThreshold->"VEGETATION"; else->"UNKNOWN" }
             if(state=="UNKNOWN") reasons += "insufficient_cell_support"
             val quality=when { motion.quality==MotionQuality.RAPID->"DEGRADED"; state=="UNKNOWN"->"UNKNOWN"; reasons.isNotEmpty()->"LIMITED"; else->"VALID" }
-            cells += GridCell(row,col,l,t,r,b,ground,wall,vegetation,occupancy,stats,state,quality,reasons,sources)
+            cells += GridCell(row,col,l,t,r,b,ground,wall,vegetation,occupancy,stats,state,quality,reasons,sources,furniture,furnitureIds)
         }
         return SpatialGridEvidence(key,cells,motion,if(failures.isEmpty() && motion.synchronized) "SAME_FRAME_RESEARCH" else "PARTIAL",failures)
     }

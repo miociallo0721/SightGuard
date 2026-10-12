@@ -1,0 +1,40 @@
+{
+  "device": "sdk_gphone64_x86_64",
+  "model_sha256": "85913f7adae1b787da8cbe4a046e6d8a22bae901340d548be2fea46ec7ff2e0f",
+  "input_size": 256,
+  "all_kinds_enabled_for_test_only": false,
+  "audio": [],
+  "cases": [
+    {
+      "image": "ADE_val_00000161.jpg",
+      "observations": [
+        {
+          "latency_ms": 114,
+          "source_age_ms": 284,
+          "events": []
+        },
+        {
+          "latency_ms": 83,
+          "source_age_ms": 121,
+          "events": [
+            "semantic:10000:0:WALL:1"
+          ]
+        },
+        {
+          "latency_ms": 89,
+          "source_age_ms": 114,
+          "events": [
+            "semantic:10000:0:WALL:1"
+          ]
+        },
+        {
+          "latency_ms": 89,
+          "source_age_ms": 112,
+          "events": [
+            "semantic:10000:0:WALL:1"
+          ]
+        }
+      ]
+    }
+  ]
+}

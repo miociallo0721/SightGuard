@@ -1,0 +1,301 @@
+{
+  "schema": "sightguard.furniture-validation-summary.v1",
+  "device": "sdk_gphone64_x86_64",
+  "sdk": 36,
+  "model_sha256": "49166600bda475ede43b413e8b145b735fe4532361fa663646e237f19e7dad69",
+  "model_input_size": 384,
+  "family_confidence": true,
+  "case_count": 60,
+  "scope": "real Android ONNX on labelled validation stills; not live camera or field accuracy",
+  "metric_definition": "128x128 normalized pixel-center sampling; annotation 0 ignored; confidence-filtered model masks; missed cells count as FN",
+  "groups": {
+    "TABLE": {
+      "pixels": {
+        "tp": 8898,
+        "fp": 8939,
+        "fn": 9558,
+        "tn": 874926
+      },
+      "precision": 0.49885070359365363,
+      "recall": 0.48211963589076723,
+      "iou": 0.32480379631319584,
+      "gt_positive_images": 20,
+      "fresh_event_images": [
+        "ADE_val_00000163.jpg",
+        "ADE_val_00000168.jpg",
+        "ADE_val_00000172.jpg",
+        "ADE_val_00000188.jpg",
+        "ADE_val_00000324.jpg",
+        "ADE_val_00000375.jpg"
+      ],
+      "missed_positive_images": [
+        "ADE_val_00000161.jpg",
+        "ADE_val_00000166.jpg",
+        "ADE_val_00000167.jpg",
+        "ADE_val_00000175.jpg",
+        "ADE_val_00000176.jpg",
+        "ADE_val_00000179.jpg",
+        "ADE_val_00000181.jpg",
+        "ADE_val_00000182.jpg",
+        "ADE_val_00000218.jpg",
+        "ADE_val_00000244.jpg",
+        "ADE_val_00000300.jpg",
+        "ADE_val_00000303.jpg",
+        "ADE_val_00000318.jpg",
+        "ADE_val_00000385.jpg"
+      ],
+      "false_event_images": [],
+      "pilot_gate_pass": false,
+      "rejection_reasons": [
+        "fewer_than_half_positive_images_have_fresh_confirmed_event",
+        "pixel_precision_below_060"
+      ]
+    },
+    "CHAIR": {
+      "pixels": {
+        "tp": 10252,
+        "fp": 5097,
+        "fn": 7164,
+        "tn": 879808
+      },
+      "precision": 0.6679262492670532,
+      "recall": 0.5886541111621497,
+      "iou": 0.45538133522853463,
+      "gt_positive_images": 19,
+      "fresh_event_images": [
+        "ADE_val_00000163.jpg",
+        "ADE_val_00000164.jpg",
+        "ADE_val_00000188.jpg",
+        "ADE_val_00000195.jpg",
+        "ADE_val_00000300.jpg",
+        "ADE_val_00000303.jpg",
+        "ADE_val_00000318.jpg",
+        "ADE_val_00000375.jpg",
+        "ADE_val_00000461.jpg"
+      ],
+      "missed_positive_images": [
+        "ADE_val_00000172.jpg",
+        "ADE_val_00000175.jpg",
+        "ADE_val_00000176.jpg",
+        "ADE_val_00000185.jpg",
+        "ADE_val_00000244.jpg",
+        "ADE_val_00000255.jpg",
+        "ADE_val_00000324.jpg",
+        "ADE_val_00000460.jpg",
+        "ADE_val_00000463.jpg",
+        "ADE_val_00000471.jpg"
+      ],
+      "false_event_images": [],
+      "pilot_gate_pass": false,
+      "rejection_reasons": [
+        "fewer_than_half_positive_images_have_fresh_confirmed_event"
+      ]
+    },
+    "CABINET": {
+      "pixels": {
+        "tp": 45467,
+        "fp": 17484,
+        "fn": 14569,
+        "tn": 824801
+      },
+      "precision": 0.7222601706088863,
+      "recall": 0.7573289359717503,
+      "iou": 0.5865196078431373,
+      "gt_positive_images": 20,
+      "fresh_event_images": [
+        "ADE_val_00000166.jpg",
+        "ADE_val_00000172.jpg",
+        "ADE_val_00000179.jpg",
+        "ADE_val_00000181.jpg",
+        "ADE_val_00000255.jpg",
+        "ADE_val_00000372.jpg",
+        "ADE_val_00000460.jpg",
+        "ADE_val_00000461.jpg",
+        "ADE_val_00000462.jpg",
+        "ADE_val_00000463.jpg",
+        "ADE_val_00000466.jpg",
+        "ADE_val_00000468.jpg",
+        "ADE_val_00000471.jpg",
+        "ADE_val_00000476.jpg"
+      ],
+      "missed_positive_images": [
+        "ADE_val_00000163.jpg",
+        "ADE_val_00000171.jpg",
+        "ADE_val_00000182.jpg",
+        "ADE_val_00000192.jpg",
+        "ADE_val_00000324.jpg",
+        "ADE_val_00000336.jpg"
+      ],
+      "false_event_images": [
+        "ADE_val_00000164.jpg"
+      ],
+      "pilot_gate_pass": false,
+      "rejection_reasons": [
+        "event_on_image_without_any_gt_class_pixels"
+      ]
+    },
+    "SOFA": {
+      "pixels": {
+        "tp": 3082,
+        "fp": 984,
+        "fn": 5438,
+        "tn": 892817
+      },
+      "precision": 0.7579931136251845,
+      "recall": 0.3617370892018779,
+      "iou": 0.3242845117845118,
+      "gt_positive_images": 9,
+      "fresh_event_images": [
+        "ADE_val_00000171.jpg"
+      ],
+      "missed_positive_images": [
+        "ADE_val_00000167.jpg",
+        "ADE_val_00000218.jpg",
+        "ADE_val_00000303.jpg",
+        "ADE_val_00000318.jpg",
+        "ADE_val_00000324.jpg",
+        "ADE_val_00000373.jpg",
+        "ADE_val_00000375.jpg",
+        "ADE_val_00000376.jpg"
+      ],
+      "false_event_images": [],
+      "pilot_gate_pass": false,
+      "rejection_reasons": [
+        "fewer_than_half_positive_images_have_fresh_confirmed_event"
+      ]
+    },
+    "BED": {
+      "pixels": {
+        "tp": 35545,
+        "fp": 9243,
+        "fn": 4133,
+        "tn": 853400
+      },
+      "precision": 0.7936277574350272,
+      "recall": 0.8958364836937346,
+      "iou": 0.7265795874982114,
+      "gt_positive_images": 16,
+      "fresh_event_images": [
+        "ADE_val_00000161.jpg",
+        "ADE_val_00000162.jpg",
+        "ADE_val_00000163.jpg",
+        "ADE_val_00000165.jpg",
+        "ADE_val_00000166.jpg",
+        "ADE_val_00000167.jpg",
+        "ADE_val_00000168.jpg",
+        "ADE_val_00000175.jpg",
+        "ADE_val_00000181.jpg",
+        "ADE_val_00000182.jpg",
+        "ADE_val_00000244.jpg"
+      ],
+      "missed_positive_images": [
+        "ADE_val_00000164.jpg",
+        "ADE_val_00000171.jpg",
+        "ADE_val_00000172.jpg",
+        "ADE_val_00000179.jpg",
+        "ADE_val_00000218.jpg"
+      ],
+      "false_event_images": [],
+      "pilot_gate_pass": true,
+      "rejection_reasons": []
+    },
+    "SHELF": {
+      "pixels": {
+        "tp": 13574,
+        "fp": 12274,
+        "fn": 11290,
+        "tn": 865183
+      },
+      "precision": 0.5251470133085732,
+      "recall": 0.5459298584298584,
+      "iou": 0.3655016425224837,
+      "gt_positive_images": 9,
+      "fresh_event_images": [
+        "ADE_val_00000191.jpg",
+        "ADE_val_00000336.jpg",
+        "ADE_val_00000385.jpg"
+      ],
+      "missed_positive_images": [
+        "ADE_val_00000161.jpg",
+        "ADE_val_00000179.jpg",
+        "ADE_val_00000223.jpg",
+        "ADE_val_00000244.jpg",
+        "ADE_val_00000255.jpg",
+        "ADE_val_00000300.jpg"
+      ],
+      "false_event_images": [
+        "ADE_val_00000192.jpg"
+      ],
+      "pilot_gate_pass": false,
+      "rejection_reasons": [
+        "fewer_than_half_positive_images_have_fresh_confirmed_event",
+        "pixel_precision_below_060",
+        "event_on_image_without_any_gt_class_pixels"
+      ]
+    },
+    "COUNTER": {
+      "pixels": {
+        "tp": 1519,
+        "fp": 259,
+        "fn": 11242,
+        "tn": 889301
+      },
+      "precision": 0.8543307086614174,
+      "recall": 0.11903455842018651,
+      "iou": 0.11666666666666667,
+      "gt_positive_images": 6,
+      "fresh_event_images": [],
+      "missed_positive_images": [
+        "ADE_val_00000297.jpg",
+        "ADE_val_00000303.jpg",
+        "ADE_val_00000353.jpg",
+        "ADE_val_00000376.jpg",
+        "ADE_val_00000385.jpg",
+        "ADE_val_00000476.jpg"
+      ],
+      "false_event_images": [],
+      "pilot_gate_pass": false,
+      "rejection_reasons": [
+        "fewer_than_half_positive_images_have_fresh_confirmed_event",
+        "pixel_iou_below_030",
+        "no_real_model_event_audio_onStart"
+      ]
+    },
+    "APPLIANCE": {
+      "pixels": {
+        "tp": 8698,
+        "fp": 2099,
+        "fn": 4327,
+        "tn": 887197
+      },
+      "precision": 0.8055941465221821,
+      "recall": 0.6677927063339731,
+      "iou": 0.5751124041258926,
+      "gt_positive_images": 8,
+      "fresh_event_images": [
+        "ADE_val_00000372.jpg",
+        "ADE_val_00000461.jpg",
+        "ADE_val_00000462.jpg",
+        "ADE_val_00000466.jpg",
+        "ADE_val_00000468.jpg",
+        "ADE_val_00000471.jpg"
+      ],
+      "missed_positive_images": [
+        "ADE_val_00000460.jpg",
+        "ADE_val_00000463.jpg"
+      ],
+      "false_event_images": [],
+      "pilot_gate_pass": true,
+      "rejection_reasons": []
+    }
+  },
+  "model_load_ms": 145,
+  "latency_ms_p50": 186,
+  "latency_ms_p95": 235,
+  "source_age_ms_p95": 386,
+  "component_measure_ms_p95": 43,
+  "peak_sampled_pss_kb": 368546,
+  "fresh_observation_fraction": 1.0,
+  "audio_onStart_count": 39,
+  "warning": "Repeated validation stills, same ADE20K domain used for model training. No live field accuracy, metric ranging, motion, or body clearance validation."
+}

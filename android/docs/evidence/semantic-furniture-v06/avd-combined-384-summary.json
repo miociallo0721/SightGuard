@@ -1,0 +1,342 @@
+{
+  "schema": "sightguard.furniture-validation-summary.v1",
+  "device": "sdk_gphone64_x86_64",
+  "sdk": 36,
+  "model_sha256": "49166600bda475ede43b413e8b145b735fe4532361fa663646e237f19e7dad69",
+  "model_input_size": 384,
+  "family_confidence": true,
+  "case_count": 88,
+  "scope": "real Android ONNX on labelled validation stills; not live camera or field accuracy",
+  "metric_definition": "128x128 normalized pixel-center sampling; annotation 0 ignored; confidence-filtered model masks; missed cells count as FN",
+  "groups": {
+    "TABLE": {
+      "pixels": {
+        "tp": 11227,
+        "fp": 9987,
+        "fn": 13741,
+        "tn": 1289570
+      },
+      "precision": 0.5292259828415198,
+      "recall": 0.44965555911566807,
+      "iou": 0.3211843799170362,
+      "gt_positive_images": 27,
+      "fresh_event_images": [
+        "ADE_val_00000036.jpg",
+        "ADE_val_00000039.jpg",
+        "ADE_val_00000163.jpg",
+        "ADE_val_00000168.jpg",
+        "ADE_val_00000172.jpg",
+        "ADE_val_00000188.jpg",
+        "ADE_val_00000324.jpg",
+        "ADE_val_00000375.jpg"
+      ],
+      "missed_positive_images": [
+        "ADE_val_00000009.jpg",
+        "ADE_val_00000029.jpg",
+        "ADE_val_00000049.jpg",
+        "ADE_val_00000118.jpg",
+        "ADE_val_00000137.jpg",
+        "ADE_val_00000161.jpg",
+        "ADE_val_00000166.jpg",
+        "ADE_val_00000167.jpg",
+        "ADE_val_00000175.jpg",
+        "ADE_val_00000176.jpg",
+        "ADE_val_00000179.jpg",
+        "ADE_val_00000181.jpg",
+        "ADE_val_00000182.jpg",
+        "ADE_val_00000218.jpg",
+        "ADE_val_00000244.jpg",
+        "ADE_val_00000300.jpg",
+        "ADE_val_00000303.jpg",
+        "ADE_val_00000318.jpg",
+        "ADE_val_00000385.jpg"
+      ],
+      "false_event_images": [],
+      "pilot_gate_pass": false,
+      "rejection_reasons": [
+        "fewer_than_half_positive_images_have_fresh_confirmed_event",
+        "pixel_precision_below_060"
+      ]
+    },
+    "CHAIR": {
+      "pixels": {
+        "tp": 18851,
+        "fp": 6691,
+        "fn": 13423,
+        "tn": 1285560
+      },
+      "precision": 0.7380393078067496,
+      "recall": 0.5840924583255872,
+      "iou": 0.4837931476966508,
+      "gt_positive_images": 27,
+      "fresh_event_images": [
+        "ADE_val_00000005.jpg",
+        "ADE_val_00000040.jpg",
+        "ADE_val_00000163.jpg",
+        "ADE_val_00000164.jpg",
+        "ADE_val_00000188.jpg",
+        "ADE_val_00000195.jpg",
+        "ADE_val_00000300.jpg",
+        "ADE_val_00000303.jpg",
+        "ADE_val_00000318.jpg",
+        "ADE_val_00000375.jpg",
+        "ADE_val_00000461.jpg"
+      ],
+      "missed_positive_images": [
+        "ADE_val_00000019.jpg",
+        "ADE_val_00000036.jpg",
+        "ADE_val_00000038.jpg",
+        "ADE_val_00000065.jpg",
+        "ADE_val_00000067.jpg",
+        "ADE_val_00000137.jpg",
+        "ADE_val_00000172.jpg",
+        "ADE_val_00000175.jpg",
+        "ADE_val_00000176.jpg",
+        "ADE_val_00000185.jpg",
+        "ADE_val_00000244.jpg",
+        "ADE_val_00000255.jpg",
+        "ADE_val_00000324.jpg",
+        "ADE_val_00000460.jpg",
+        "ADE_val_00000463.jpg",
+        "ADE_val_00000471.jpg"
+      ],
+      "false_event_images": [],
+      "pilot_gate_pass": false,
+      "rejection_reasons": [
+        "fewer_than_half_positive_images_have_fresh_confirmed_event"
+      ]
+    },
+    "CABINET": {
+      "pixels": {
+        "tp": 51463,
+        "fp": 18971,
+        "fn": 21300,
+        "tn": 1232791
+      },
+      "precision": 0.7306556492603005,
+      "recall": 0.7072688041999368,
+      "iou": 0.5610024636448863,
+      "gt_positive_images": 29,
+      "fresh_event_images": [
+        "ADE_val_00000045.jpg",
+        "ADE_val_00000092.jpg",
+        "ADE_val_00000166.jpg",
+        "ADE_val_00000172.jpg",
+        "ADE_val_00000179.jpg",
+        "ADE_val_00000181.jpg",
+        "ADE_val_00000255.jpg",
+        "ADE_val_00000372.jpg",
+        "ADE_val_00000460.jpg",
+        "ADE_val_00000461.jpg",
+        "ADE_val_00000462.jpg",
+        "ADE_val_00000463.jpg",
+        "ADE_val_00000466.jpg",
+        "ADE_val_00000468.jpg",
+        "ADE_val_00000471.jpg",
+        "ADE_val_00000476.jpg"
+      ],
+      "missed_positive_images": [
+        "ADE_val_00000038.jpg",
+        "ADE_val_00000040.jpg",
+        "ADE_val_00000067.jpg",
+        "ADE_val_00000081.jpg",
+        "ADE_val_00000102.jpg",
+        "ADE_val_00000118.jpg",
+        "ADE_val_00000137.jpg",
+        "ADE_val_00000163.jpg",
+        "ADE_val_00000171.jpg",
+        "ADE_val_00000182.jpg",
+        "ADE_val_00000192.jpg",
+        "ADE_val_00000324.jpg",
+        "ADE_val_00000336.jpg"
+      ],
+      "false_event_images": [
+        "ADE_val_00000164.jpg"
+      ],
+      "pilot_gate_pass": false,
+      "rejection_reasons": [
+        "event_on_image_without_any_gt_class_pixels"
+      ]
+    },
+    "SOFA": {
+      "pixels": {
+        "tp": 4188,
+        "fp": 3088,
+        "fn": 5749,
+        "tn": 1311500
+      },
+      "precision": 0.5755909840571742,
+      "recall": 0.4214551675556003,
+      "iou": 0.32153550863723607,
+      "gt_positive_images": 10,
+      "fresh_event_images": [
+        "ADE_val_00000137.jpg",
+        "ADE_val_00000171.jpg"
+      ],
+      "missed_positive_images": [
+        "ADE_val_00000167.jpg",
+        "ADE_val_00000218.jpg",
+        "ADE_val_00000303.jpg",
+        "ADE_val_00000318.jpg",
+        "ADE_val_00000324.jpg",
+        "ADE_val_00000373.jpg",
+        "ADE_val_00000375.jpg",
+        "ADE_val_00000376.jpg"
+      ],
+      "false_event_images": [],
+      "pilot_gate_pass": false,
+      "rejection_reasons": [
+        "fewer_than_half_positive_images_have_fresh_confirmed_event",
+        "pixel_precision_below_060"
+      ]
+    },
+    "BED": {
+      "pixels": {
+        "tp": 50746,
+        "fp": 10721,
+        "fn": 4868,
+        "tn": 1258190
+      },
+      "precision": 0.8255812061756715,
+      "recall": 0.912468083576078,
+      "iou": 0.7649958543755182,
+      "gt_positive_images": 21,
+      "fresh_event_images": [
+        "ADE_val_00000013.jpg",
+        "ADE_val_00000045.jpg",
+        "ADE_val_00000049.jpg",
+        "ADE_val_00000118.jpg",
+        "ADE_val_00000161.jpg",
+        "ADE_val_00000162.jpg",
+        "ADE_val_00000163.jpg",
+        "ADE_val_00000165.jpg",
+        "ADE_val_00000166.jpg",
+        "ADE_val_00000167.jpg",
+        "ADE_val_00000168.jpg",
+        "ADE_val_00000175.jpg",
+        "ADE_val_00000181.jpg",
+        "ADE_val_00000182.jpg",
+        "ADE_val_00000244.jpg"
+      ],
+      "missed_positive_images": [
+        "ADE_val_00000137.jpg",
+        "ADE_val_00000164.jpg",
+        "ADE_val_00000171.jpg",
+        "ADE_val_00000172.jpg",
+        "ADE_val_00000179.jpg",
+        "ADE_val_00000218.jpg"
+      ],
+      "false_event_images": [],
+      "pilot_gate_pass": true,
+      "rejection_reasons": []
+    },
+    "SHELF": {
+      "pixels": {
+        "tp": 13836,
+        "fp": 13357,
+        "fn": 13671,
+        "tn": 1283661
+      },
+      "precision": 0.5088074136726364,
+      "recall": 0.5029992365579671,
+      "iou": 0.3385865309318716,
+      "gt_positive_images": 13,
+      "fresh_event_images": [
+        "ADE_val_00000191.jpg",
+        "ADE_val_00000336.jpg",
+        "ADE_val_00000385.jpg"
+      ],
+      "missed_positive_images": [
+        "ADE_val_00000013.jpg",
+        "ADE_val_00000077.jpg",
+        "ADE_val_00000083.jpg",
+        "ADE_val_00000102.jpg",
+        "ADE_val_00000161.jpg",
+        "ADE_val_00000179.jpg",
+        "ADE_val_00000223.jpg",
+        "ADE_val_00000244.jpg",
+        "ADE_val_00000255.jpg",
+        "ADE_val_00000300.jpg"
+      ],
+      "false_event_images": [
+        "ADE_val_00000029.jpg",
+        "ADE_val_00000192.jpg"
+      ],
+      "pilot_gate_pass": false,
+      "rejection_reasons": [
+        "fewer_than_half_positive_images_have_fresh_confirmed_event",
+        "pixel_precision_below_060",
+        "event_on_image_without_any_gt_class_pixels"
+      ]
+    },
+    "COUNTER": {
+      "pixels": {
+        "tp": 4848,
+        "fp": 2359,
+        "fn": 13334,
+        "tn": 1303984
+      },
+      "precision": 0.6726793395310116,
+      "recall": 0.26663733362666375,
+      "iou": 0.23601577333138601,
+      "gt_positive_images": 11,
+      "fresh_event_images": [
+        "ADE_val_00000077.jpg",
+        "ADE_val_00000102.jpg"
+      ],
+      "missed_positive_images": [
+        "ADE_val_00000065.jpg",
+        "ADE_val_00000081.jpg",
+        "ADE_val_00000092.jpg",
+        "ADE_val_00000297.jpg",
+        "ADE_val_00000303.jpg",
+        "ADE_val_00000353.jpg",
+        "ADE_val_00000376.jpg",
+        "ADE_val_00000385.jpg",
+        "ADE_val_00000476.jpg"
+      ],
+      "false_event_images": [],
+      "pilot_gate_pass": false,
+      "rejection_reasons": [
+        "fewer_than_half_positive_images_have_fresh_confirmed_event",
+        "pixel_iou_below_030"
+      ]
+    },
+    "APPLIANCE": {
+      "pixels": {
+        "tp": 8698,
+        "fp": 2105,
+        "fn": 4327,
+        "tn": 1309395
+      },
+      "precision": 0.8051467185041192,
+      "recall": 0.6677927063339731,
+      "iou": 0.5748843357567747,
+      "gt_positive_images": 8,
+      "fresh_event_images": [
+        "ADE_val_00000372.jpg",
+        "ADE_val_00000461.jpg",
+        "ADE_val_00000462.jpg",
+        "ADE_val_00000466.jpg",
+        "ADE_val_00000468.jpg",
+        "ADE_val_00000471.jpg"
+      ],
+      "missed_positive_images": [
+        "ADE_val_00000460.jpg",
+        "ADE_val_00000463.jpg"
+      ],
+      "false_event_images": [],
+      "pilot_gate_pass": true,
+      "rejection_reasons": []
+    }
+  },
+  "model_load_ms": 169,
+  "latency_ms_p50": 184,
+  "latency_ms_p95": 235,
+  "source_age_ms_p95": 391,
+  "component_measure_ms_p95": 41,
+  "peak_sampled_pss_kb": 368546,
+  "fresh_observation_fraction": 0.9971590909090909,
+  "audio_onStart_count": 52,
+  "warning": "Repeated validation stills, same ADE20K domain used for model training. No live field accuracy, metric ranging, motion, or body clearance validation."
+}

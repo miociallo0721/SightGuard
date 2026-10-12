@@ -26,6 +26,8 @@ class SpatialSessionAnalyzer(context: Context, private val settings: SpatialSett
     private var lastMetricAt = -metricSettings.intervalMs
     private var semantics: SpatialDetector? = null
     private val environmentConfig = loadEnvironmentConfig(context)
+    private val semanticResolution = SemanticResolutionPolicy(environmentConfig.resolutionFallbackAgeMs,
+        environmentConfig.resolutionFallbackCount,environmentConfig.resolutionFallbackPrimarySlow)
     private val shadow = WallShadowAnalyzer(loadWallResearchConfig(context))
     private var lastDepthAt = -6000L
     @Volatile private var latestSignature: FloatArray = floatArrayOf()
@@ -43,7 +45,7 @@ class SpatialSessionAnalyzer(context: Context, private val settings: SpatialSett
         if(ignoreThermalForTest) Log.w("SG_SPACE","debug thermal gate override enabled; system protection unchanged")
         worker.execute {
             if (settings.semantics && !closed) try {
-                val start = SystemClock.elapsedRealtime(); semantics = SpatialDetector(context.applicationContext,settings.semanticThreads)
+                val start = SystemClock.elapsedRealtime(); loadSemantics(environmentConfig.preferredInputSize)
                 Log.i("SG_SPATIAL", "loadMs=${SystemClock.elapsedRealtime()-start}")
             } catch (error: Exception) { Log.e("SG_SPATIAL", "load failed", error); status("UNKNOWN：语义加载失败 ${error.message}") }
               catch (error: OutOfMemoryError) { Log.e("SG_SPATIAL", "load memory failure", error); status("UNKNOWN：语义加载内存不足") }
@@ -52,6 +54,18 @@ class SpatialSessionAnalyzer(context: Context, private val settings: SpatialSett
         }
     }
     private fun status(message: String) { handler.post { if (!closed) onStatus(message) } }
+    private fun loadSemantics(size: Int) {
+        semantics?.close(); semantics=null
+        try { semantics=SpatialDetector(application,settings.semanticThreads,size) }
+        catch(error: Exception) { if(size==256) throw error else loadFallback(error.javaClass.simpleName) }
+        catch(error: OutOfMemoryError) { if(size==256) throw error else loadFallback("memory") }
+    }
+    private fun loadFallback(reason: String) {
+        semanticResolution.observe(0,0,true)
+        Log.w("SG_SPATIAL","resolution fallback=256 reason=$reason; restricted furniture speech disabled by model contract")
+        semantics?.close();semantics=null
+        if(!closed) semantics=SpatialDetector(application,settings.semanticThreads,256)
+    }
     var onArEvidence: (ArSpatialRecord) -> Unit = {}
     private val arEvaluator = ArSpatialEvaluator(loadArSpeechConfig(context))
     @Volatile private var resetArRequested = false
@@ -85,6 +99,10 @@ class SpatialSessionAnalyzer(context: Context, private val settings: SpatialSett
             try {
                 if (closed) return@execute
                 val s = try { semantics?.analyzeAll(copy,key) } catch(error: Exception) { Log.e("SG_SPATIAL","infer failed",error); status("UNKNOWN：语义推理失败"); null } catch(error: OutOfMemoryError) { Log.e("SG_SPATIAL","infer memory failure",error); status("UNKNOWN：语义推理内存不足"); null }
+                if((semantics?.inputSize ?: 256)>256 && semanticResolution.observe(SystemClock.elapsedRealtime()-key.capturedAtMs,primarySlowFrames,s==null)) {
+                    try {loadFallback("late_or_primary_load")} catch(error: Exception) {Log.e("SG_SPATIAL","fallback failed",error)}
+                    catch(error: OutOfMemoryError) {Log.e("SG_SPATIAL","fallback memory failure",error)}
+                }
                 val completedDetections=if(deferredDetections!=null) deferredDetections() else detections
                 val sourceDetections=completedDetections ?: emptyList()
                 val sourceSignature = semanticSceneSignature(copy)
@@ -140,7 +158,7 @@ class SpatialSessionAnalyzer(context: Context, private val settings: SpatialSett
                 val motion=motionProvider(key)
                 val grid=if(settings.grid) {
                     val depthSource=if(d?.quality=="VALID") GridDepthSource(key,64,64,FloatArray(4096) { i -> d.sample((i%64+.5f)/64,(i/64+.5f)/64) },d.modelSha) else null
-                    SpatialGridFusion().fuse(key,s?.let { GridSemanticSource(it.key,it.cells,SpatialDetector.MODEL_SHA) },depthSource,GridDetectionSource(key,sourceDetections,yoloSha),motion)
+                    SpatialGridFusion(GridConfig(includeFurniture=true)).fuse(key,s?.let { GridSemanticSource(it.key,it.cells,it.modelSha) },depthSource,GridDetectionSource(key,sourceDetections,yoloSha),motion)
                 } else null
                 val snapshot = SpatialSnapshot(key,copy,sourceDetections.toList(),d,d?.heatmap(),s,completed,grid)
                 if(grid!=null) Log.i("SG_GRID","frame=${key.frameIndex} sourceMs=${key.timestampMs} captureNs=${key.captureTimestampNs} clock=${key.timestampClock} rotation=${key.rotationDegrees} processedAtMs=$completed state=${grid.state} cells=${grid.cells.size} motion=${motion.quality} gyro=${motion.gyroRadPerSecond} synced=${motion.synchronized} samples=${motion.sampleCount} states=${grid.cells.groupingBy{it.state}.eachCount()} failures=${grid.failures} riskChanged=${grid.productionDecisionChanged}")

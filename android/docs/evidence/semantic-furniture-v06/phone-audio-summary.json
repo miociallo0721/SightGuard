@@ -1,0 +1,318 @@
+{
+  "scope": "explicit resource playback only; STEP automatic alerts remain disabled",
+  "onStart": [
+    {
+      "event": "semantic:resource-validation:WALL:LEFT",
+      "phase": "onStart",
+      "text": "左侧检测到墙面。",
+      "resource": "environment_wall_left",
+      "elapsed_ms": 428067928,
+      "deadline_ms": 428070380
+    },
+    {
+      "event": "semantic:resource-validation:WALL:CENTER",
+      "phase": "onStart",
+      "text": "前方检测到墙面。",
+      "resource": "environment_wall",
+      "elapsed_ms": 428070889,
+      "deadline_ms": 428073337
+    },
+    {
+      "event": "semantic:resource-validation:WALL:RIGHT",
+      "phase": "onStart",
+      "text": "右侧检测到墙面。",
+      "resource": "environment_wall_right",
+      "elapsed_ms": 428073819,
+      "deadline_ms": 428076277
+    },
+    {
+      "event": "semantic:resource-validation:STAIRS:LEFT",
+      "phase": "onStart",
+      "text": "左侧检测到楼梯。",
+      "resource": "environment_stairs_left",
+      "elapsed_ms": 428076633,
+      "deadline_ms": 428079087
+    },
+    {
+      "event": "semantic:resource-validation:STAIRS:CENTER",
+      "phase": "onStart",
+      "text": "前方检测到楼梯。",
+      "resource": "environment_stairs",
+      "elapsed_ms": 428079322,
+      "deadline_ms": 428081779
+    },
+    {
+      "event": "semantic:resource-validation:STAIRS:RIGHT",
+      "phase": "onStart",
+      "text": "右侧检测到楼梯。",
+      "resource": "environment_stairs_right",
+      "elapsed_ms": 428082085,
+      "deadline_ms": 428084534
+    },
+    {
+      "event": "semantic:resource-validation:STEP:LEFT",
+      "phase": "onStart",
+      "text": "左侧检测到台阶，请注意。",
+      "resource": "environment_step_left",
+      "elapsed_ms": 428084772,
+      "deadline_ms": 428087230
+    },
+    {
+      "event": "semantic:resource-validation:STEP:CENTER",
+      "phase": "onStart",
+      "text": "前方检测到台阶，请注意。",
+      "resource": "environment_step_center",
+      "elapsed_ms": 428088610,
+      "deadline_ms": 428091052
+    },
+    {
+      "event": "semantic:resource-validation:STEP:RIGHT",
+      "phase": "onStart",
+      "text": "右侧检测到台阶，请注意。",
+      "resource": "environment_step_right",
+      "elapsed_ms": 428092481,
+      "deadline_ms": 428094930
+    },
+    {
+      "event": "semantic:resource-validation:POLE:LEFT",
+      "phase": "onStart",
+      "text": "左侧检测到杆状结构。",
+      "resource": "environment_pole_left",
+      "elapsed_ms": 428096359,
+      "deadline_ms": 428098782
+    },
+    {
+      "event": "semantic:resource-validation:POLE:CENTER",
+      "phase": "onStart",
+      "text": "前方检测到杆状结构。",
+      "resource": "environment_pole_center",
+      "elapsed_ms": 428099595,
+      "deadline_ms": 428102049
+    },
+    {
+      "event": "semantic:resource-validation:POLE:RIGHT",
+      "phase": "onStart",
+      "text": "右侧检测到杆状结构。",
+      "resource": "environment_pole_right",
+      "elapsed_ms": 428102965,
+      "deadline_ms": 428105387
+    },
+    {
+      "event": "semantic:resource-validation:RAILING:LEFT",
+      "phase": "onStart",
+      "text": "左侧检测到栏杆或扶手。",
+      "resource": "environment_railing_left",
+      "elapsed_ms": 428106246,
+      "deadline_ms": 428108682
+    },
+    {
+      "event": "semantic:resource-validation:RAILING:CENTER",
+      "phase": "onStart",
+      "text": "前方检测到栏杆或扶手。",
+      "resource": "environment_railing_center",
+      "elapsed_ms": 428109783,
+      "deadline_ms": 428112233
+    },
+    {
+      "event": "semantic:resource-validation:RAILING:RIGHT",
+      "phase": "onStart",
+      "text": "右侧检测到栏杆或扶手。",
+      "resource": "environment_railing_right",
+      "elapsed_ms": 428113339,
+      "deadline_ms": 428115786
+    },
+    {
+      "event": "semantic:resource-validation:TABLE:LEFT",
+      "phase": "onStart",
+      "text": "左侧检测到桌子。",
+      "resource": "environment_table_left",
+      "elapsed_ms": 428116876,
+      "deadline_ms": 428119312
+    },
+    {
+      "event": "semantic:resource-validation:TABLE:CENTER",
+      "phase": "onStart",
+      "text": "前方检测到桌子。",
+      "resource": "environment_table_center",
+      "elapsed_ms": 428119531,
+      "deadline_ms": 428121988
+    },
+    {
+      "event": "semantic:resource-validation:TABLE:RIGHT",
+      "phase": "onStart",
+      "text": "右侧检测到桌子。",
+      "resource": "environment_table_right",
+      "elapsed_ms": 428122320,
+      "deadline_ms": 428124743
+    },
+    {
+      "event": "semantic:resource-validation:CHAIR:LEFT",
+      "phase": "onStart",
+      "text": "左侧检测到椅子。",
+      "resource": "environment_chair_left",
+      "elapsed_ms": 428125026,
+      "deadline_ms": 428127452
+    },
+    {
+      "event": "semantic:resource-validation:CHAIR:CENTER",
+      "phase": "onStart",
+      "text": "前方检测到椅子。",
+      "resource": "environment_chair_center",
+      "elapsed_ms": 428127650,
+      "deadline_ms": 428130104
+    },
+    {
+      "event": "semantic:resource-validation:CHAIR:RIGHT",
+      "phase": "onStart",
+      "text": "右侧检测到椅子。",
+      "resource": "environment_chair_right",
+      "elapsed_ms": 428130388,
+      "deadline_ms": 428132828
+    },
+    {
+      "event": "semantic:resource-validation:CABINET:LEFT",
+      "phase": "onStart",
+      "text": "左侧检测到柜子。",
+      "resource": "environment_cabinet_left",
+      "elapsed_ms": 428133077,
+      "deadline_ms": 428135505
+    },
+    {
+      "event": "semantic:resource-validation:CABINET:CENTER",
+      "phase": "onStart",
+      "text": "前方检测到柜子。",
+      "resource": "environment_cabinet_center",
+      "elapsed_ms": 428135784,
+      "deadline_ms": 428138219
+    },
+    {
+      "event": "semantic:resource-validation:CABINET:RIGHT",
+      "phase": "onStart",
+      "text": "右侧检测到柜子。",
+      "resource": "environment_cabinet_right",
+      "elapsed_ms": 428138593,
+      "deadline_ms": 428141022
+    },
+    {
+      "event": "semantic:resource-validation:SOFA:LEFT",
+      "phase": "onStart",
+      "text": "左侧检测到沙发。",
+      "resource": "environment_sofa_left",
+      "elapsed_ms": 428141307,
+      "deadline_ms": 428143759
+    },
+    {
+      "event": "semantic:resource-validation:SOFA:CENTER",
+      "phase": "onStart",
+      "text": "前方检测到沙发。",
+      "resource": "environment_sofa_center",
+      "elapsed_ms": 428144081,
+      "deadline_ms": 428146519
+    },
+    {
+      "event": "semantic:resource-validation:SOFA:RIGHT",
+      "phase": "onStart",
+      "text": "右侧检测到沙发。",
+      "resource": "environment_sofa_right",
+      "elapsed_ms": 428146945,
+      "deadline_ms": 428149379
+    },
+    {
+      "event": "semantic:resource-validation:BED:LEFT",
+      "phase": "onStart",
+      "text": "左侧检测到床。",
+      "resource": "environment_bed_left",
+      "elapsed_ms": 428149703,
+      "deadline_ms": 428152147
+    },
+    {
+      "event": "semantic:resource-validation:BED:CENTER",
+      "phase": "onStart",
+      "text": "前方检测到床。",
+      "resource": "environment_bed_center",
+      "elapsed_ms": 428152359,
+      "deadline_ms": 428154790
+    },
+    {
+      "event": "semantic:resource-validation:BED:RIGHT",
+      "phase": "onStart",
+      "text": "右侧检测到床。",
+      "resource": "environment_bed_right",
+      "elapsed_ms": 428155078,
+      "deadline_ms": 428157536
+    },
+    {
+      "event": "semantic:resource-validation:SHELF:LEFT",
+      "phase": "onStart",
+      "text": "左侧检测到架子。",
+      "resource": "environment_shelf_left",
+      "elapsed_ms": 428157702,
+      "deadline_ms": 428160144
+    },
+    {
+      "event": "semantic:resource-validation:SHELF:CENTER",
+      "phase": "onStart",
+      "text": "前方检测到架子。",
+      "resource": "environment_shelf_center",
+      "elapsed_ms": 428160449,
+      "deadline_ms": 428162884
+    },
+    {
+      "event": "semantic:resource-validation:SHELF:RIGHT",
+      "phase": "onStart",
+      "text": "右侧检测到架子。",
+      "resource": "environment_shelf_right",
+      "elapsed_ms": 428163262,
+      "deadline_ms": 428165713
+    },
+    {
+      "event": "semantic:resource-validation:COUNTER:LEFT",
+      "phase": "onStart",
+      "text": "左侧检测到柜台或台面。",
+      "resource": "environment_counter_left",
+      "elapsed_ms": 428165983,
+      "deadline_ms": 428168418
+    },
+    {
+      "event": "semantic:resource-validation:COUNTER:CENTER",
+      "phase": "onStart",
+      "text": "前方检测到柜台或台面。",
+      "resource": "environment_counter_center",
+      "elapsed_ms": 428169529,
+      "deadline_ms": 428171967
+    },
+    {
+      "event": "semantic:resource-validation:COUNTER:RIGHT",
+      "phase": "onStart",
+      "text": "右侧检测到柜台或台面。",
+      "resource": "environment_counter_right",
+      "elapsed_ms": 428173197,
+      "deadline_ms": 428175626
+    },
+    {
+      "event": "semantic:resource-validation:APPLIANCE:LEFT",
+      "phase": "onStart",
+      "text": "左侧检测到冰箱。",
+      "resource": "environment_appliance_left",
+      "elapsed_ms": 428176772,
+      "deadline_ms": 428179201
+    },
+    {
+      "event": "semantic:resource-validation:APPLIANCE:CENTER",
+      "phase": "onStart",
+      "text": "前方检测到冰箱。",
+      "resource": "environment_appliance_center",
+      "elapsed_ms": 428179525,
+      "deadline_ms": 428181975
+    },
+    {
+      "event": "semantic:resource-validation:APPLIANCE:RIGHT",
+      "phase": "onStart",
+      "text": "右侧检测到冰箱。",
+      "resource": "environment_appliance_right",
+      "elapsed_ms": 428182436,
+      "deadline_ms": 428184863
+    }
+  ],
+  "completed_count": 39
+}

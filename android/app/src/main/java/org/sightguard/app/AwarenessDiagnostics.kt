@@ -12,14 +12,16 @@ class AwarenessDiagnostics(private val maximum: Int=1500) {
         while(records.size>maximum) records.removeFirst()
     }
     @Synchronized fun snapshot(session: JSONObject): String = JSONObject()
-        .put("schema_version",1).put("app_version","0.4-metric-corridor-shadow")
+        .put("schema_version",2).put("app_version",BuildConfig.VERSION_NAME)
+        .put("environment_taxonomy_version",EnvironmentTaxonomy.VERSION)
         .put("device",android.os.Build.MODEL).put("api",android.os.Build.VERSION.SDK_INT)
-        .put("semantic_model_sha256",SpatialDetector.MODEL_SHA).put("session",session)
-        .put("wall_proximity_automatic",false).put("records",JSONArray(records.toList())).toString(2)
+        .put("semantic_default_model_sha256",SegFormerModels.DETAIL_SHA).put("semantic_fallback_model_sha256",SpatialDetector.MODEL_SHA).put("session",session)
+        .put("monocular_wall_proximity_automatic",false).put("records",JSONArray(records.toList())).toString(2)
 }
 
 fun environmentSupportJson(support: EnvironmentSupport): JSONObject = JSONObject()
     .put("kind",support.kind.name).put("raw_class_ids",JSONArray(support.rawClassIds.sorted()))
     .put("roi_fraction",support.roiFraction).put("confidence",support.confidence).put("confidence_p10",support.confidenceP10)
+    .put("raw_class_confidence",support.rawConfidence).put("confidence_basis",support.confidenceBasis)
     .put("cells",support.cells).put("supported",support.supported).put("direction",support.direction.name)
     .put("bounds",JSONArray(listOf(support.left,support.top,support.right,support.bottom)))

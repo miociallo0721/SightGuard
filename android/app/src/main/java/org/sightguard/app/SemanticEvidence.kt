@@ -29,10 +29,10 @@ data class SemanticSummary(val regions: List<SemanticRegion>, val overview: Stri
 /** Pure deterministic aggregation of nonoverlapping segmentation cells; no alert state. */
 object SemanticEvidence {
     val groundClassIds: Set<Int> = setOf(3, 6, 11)
-    val displayedClassIds: Set<Int> = setOf(0, 1, 2, 3, 4, 6, 9, 10, 11, 14, 15, 17, 19, 21, 32, 34, 38, 42, 53, 59, 87, 93, 95, 96, 121)
+    val displayedClassIds: Set<Int> = setOf(0, 1, 2, 3, 4, 6, 9, 10, 11, 14, 15, 17, 19, 21, 32, 34, 38, 42, 53, 59, 87, 93, 95, 96, 121) + EnvironmentTaxonomy.furnitureClassIds
     private fun direction(centerX: Float): Direction = when { centerX < 1f / 3f -> Direction.LEFT; centerX > 2f / 3f -> Direction.RIGHT; else -> Direction.CENTER }
     private fun directionText(direction: Direction): String = when (direction) { Direction.LEFT -> "左侧"; Direction.CENTER -> "前方"; Direction.RIGHT -> "右侧" }
-    private fun sceneName(region: SemanticRegion): String = when (region.classId) {
+    private fun sceneName(region: SemanticRegion): String = EnvironmentTaxonomy.chineseName(region.classId) ?: when (region.classId) {
         10 -> "柜子"; 15 -> "桌子"; 19 -> "椅子"; 32 -> "围栏"; 34 -> "岩石"; 38 -> "栏杆"; 42 -> "立柱"; 87 -> "路灯"; 93 -> "杆柱"; 95 -> "扶手"; 96 -> "自动扶梯"
         else -> region.group.displayName
     }
@@ -44,7 +44,7 @@ object SemanticEvidence {
         14 -> SemanticGroup.DOOR; 17 -> SemanticGroup.PLANT; 21 -> SemanticGroup.WATER
         53 -> SemanticGroup.STAIRS; 59 -> SemanticGroup.STAIRWAY; 121 -> SemanticGroup.STEP
         10, 15, 19, 32, 34, 38, 42, 87, 93, 95, 96 -> SemanticGroup.STATIC
-        else -> SemanticGroup.OTHER
+        else -> if(classId in EnvironmentTaxonomy.furnitureClassIds) SemanticGroup.STATIC else SemanticGroup.OTHER
     }
 
     fun summarize(cells: List<SemanticCell>, detections: List<Detection>, quality: SemanticSourceQuality, config: SemanticConfig = SemanticConfig()): SemanticSummary {
@@ -58,11 +58,16 @@ object SemanticEvidence {
             val confidence = items.sumOf { (it.confidence * (it.right - it.left) * (it.bottom - it.top)).toDouble() }.toFloat() / area
             SemanticRegion(key.second, key.first, area, confidence, items.size, items.minOf { it.left }, items.minOf { it.top }, items.maxOf { it.right }, items.maxOf { it.bottom }, key.third)
         }.filter { it.areaFraction >= config.minAreaFraction }.sortedWith(compareByDescending<SemanticRegion> { it.areaFraction }.thenBy { it.classId }.thenBy { it.group.ordinal }.thenBy { it.direction.ordinal })
-        val scene = regions.take(config.maxOverviewItems).map { directionText(it.direction) + sceneName(it) }
+        val scene = regions.map {
+            val family=EnvironmentTaxonomy.kindForClass(it.classId)?.takeIf {kind->kind.furniture}
+            directionText(it.direction) + (family?.label ?: sceneName(it))
+        }.distinct().take(config.maxOverviewItems)
         val objects = detections.filter {
             it.classId in Labels.coco80.indices && it.confidence.isFinite() && it.confidence in config.minConfidence..1f &&
                 listOf(it.left, it.top, it.right, it.bottom).all { v -> v.isFinite() && v in 0f..1f } && it.right > it.left && it.bottom > it.top
-        }.map { it.classId to direction((it.left + it.right) / 2f) }.distinct().sortedWith(compareBy<Pair<Int, Direction>> { it.first }.thenBy { it.second.ordinal }).take(config.maxOverviewItems).map { directionText(it.second) + Labels.coco80[it.first] }
+        }.map { it.classId to direction((it.left + it.right) / 2f) }.distinct().sortedWith(compareBy<Pair<Int, Direction>> { it.first }.thenBy { it.second.ordinal })
+            .map { directionText(it.second) + (EnvironmentTaxonomy.yoloKind(it.first)?.label ?: Labels.coco80[it.first]) }
+            .distinct().filter {it !in scene}.take(config.maxOverviewItems)
         val parts = listOfNotNull(scene.takeIf { it.isNotEmpty() }?.joinToString("、"), objects.takeIf { it.isNotEmpty() }?.let { "检测到" + it.joinToString("、") })
         return if (parts.isEmpty()) SemanticSummary(regions, "当前环境信息不足。", "缺少达到阈值的语义和检测证据")
         else SemanticSummary(regions, "环境概览：" + parts.joinToString("；") + " · 仅视觉语义")

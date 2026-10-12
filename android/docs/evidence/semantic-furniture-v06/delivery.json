@@ -1,0 +1,34 @@
+{
+  "schema": "sightguard.semantic-furniture-delivery.v1",
+  "baseline_git_sha": "5a7b471fb48b8632bbc20a9506317e1f9fb42778",
+  "branch": "codex/android-semantic-furniture-v06",
+  "apk": {
+    "path": "D:\\program\\SightGuard-metric-corridor\\android\\deliveries\\semantic-furniture-v06\\SightGuard-0.6-semantic-furniture-verified.apk",
+    "sha256": "635dd46dfb3048fc86ef13c612b8cf1da53193ad866b969053a3788efb20389a",
+    "bytes": 340998968,
+    "version_code": 7,
+    "version_name": "0.6-semantic-furniture",
+    "variant": "release, local development signature"
+  },
+  "baseline_apk": {
+    "path": "D:\\program\\SightGuard-metric-corridor\\android\\deliveries\\arcore-awareness\\SightGuard-0.5-arcore-experimental.apk",
+    "sha256": "adc3912d383dfe5e8bcf7e3414b438faea10e1ca8cd89874fa9b9db709775384",
+    "bytes": 323154050
+  },
+  "phone_install": "Release candidate installed and live tested; later 320 debug research installed. See phone-live-summary.json for actual 384 freshness failure.",
+  "avd_install": "ADB Success and actual CameraX runtime",
+  "automatic_environment": [
+    "WALL",
+    "STAIRS",
+    "POLE",
+    "RAILING",
+    "BED (384 only)",
+    "APPLIANCE (384 only)"
+  ],
+  "formal_yolo_risk_changed": false,
+  "new_distance_approach_navigation_speech": false,
+  "jvm_tests": 159,
+  "python_tests": 5,
+  "known_phone_instrumentation_failure": "A subsequent fridge batch did not finish and was force-stopped by host. Process crashed result is host termination, not confirmed native model crash; older batches showed do_freezer_trap.",
+  "rollback_limit": "Direct v7 to v6 install -r -d rejected VERSION_DOWNGRADE; no data erased"
+}

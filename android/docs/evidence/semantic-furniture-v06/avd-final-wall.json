@@ -1,0 +1,253 @@
+{
+  "schema_version": 1,
+  "device": "sdk_gphone64_x86_64",
+  "api": 36,
+  "model_sha256": "49166600bda475ede43b413e8b145b735fe4532361fa663646e237f19e7dad69",
+  "input_sha256": "26d14443b40affb0211180bcde069065ad8b22889374b6e658ec530269554264",
+  "source": "v03-room.jpg; original CC0 photograph; repeated static input, not moving camera validation",
+  "observations": [
+    {
+      "frame": 0,
+      "source_ms": 51077,
+      "latency_ms": 321,
+      "completion_age_ms": 321,
+      "status": "环境：连续观测确认中",
+      "wall_cells": 3443,
+      "class_counts": {
+        "0": 3443,
+        "66": 45,
+        "14": 1,
+        "17": 68,
+        "8": 52,
+        "27": 24,
+        "22": 3,
+        "19": 788,
+        "15": 174,
+        "10": 10,
+        "3": 2151
+      },
+      "wall_roi_fraction": 0.3659844,
+      "wall_confidence": 0.98964566,
+      "notices": [],
+      "depth_available": false,
+      "approach_enabled": false
+    },
+    {
+      "frame": 1,
+      "source_ms": 53439,
+      "latency_ms": 242,
+      "completion_age_ms": 242,
+      "status": "墙面：已确认存在",
+      "wall_cells": 3443,
+      "class_counts": {
+        "0": 3443,
+        "66": 45,
+        "14": 1,
+        "17": 68,
+        "8": 52,
+        "27": 24,
+        "22": 3,
+        "19": 788,
+        "15": 174,
+        "10": 10,
+        "3": 2151
+      },
+      "wall_roi_fraction": 0.3659844,
+      "wall_confidence": 0.98964566,
+      "notices": [
+        "semantic:100:0:WALL:1"
+      ],
+      "depth_available": false,
+      "approach_enabled": false
+    },
+    {
+      "frame": 2,
+      "source_ms": 55472,
+      "latency_ms": 199,
+      "completion_age_ms": 199,
+      "status": "墙面：已确认存在",
+      "wall_cells": 3443,
+      "class_counts": {
+        "0": 3443,
+        "66": 45,
+        "14": 1,
+        "17": 68,
+        "8": 52,
+        "27": 24,
+        "22": 3,
+        "19": 788,
+        "15": 174,
+        "10": 10,
+        "3": 2151
+      },
+      "wall_roi_fraction": 0.3659844,
+      "wall_confidence": 0.98964566,
+      "notices": [],
+      "depth_available": false,
+      "approach_enabled": false
+    },
+    {
+      "frame": 3,
+      "source_ms": 57236,
+      "latency_ms": 176,
+      "completion_age_ms": 176,
+      "status": "墙面：已确认存在",
+      "wall_cells": 3443,
+      "class_counts": {
+        "0": 3443,
+        "66": 45,
+        "14": 1,
+        "17": 68,
+        "8": 52,
+        "27": 24,
+        "22": 3,
+        "19": 788,
+        "15": 174,
+        "10": 10,
+        "3": 2151
+      },
+      "wall_roi_fraction": 0.3659844,
+      "wall_confidence": 0.98964566,
+      "notices": [],
+      "depth_available": false,
+      "approach_enabled": false
+    },
+    {
+      "frame": 4,
+      "source_ms": 59024,
+      "latency_ms": 176,
+      "completion_age_ms": 176,
+      "status": "墙面：已确认存在",
+      "wall_cells": 3443,
+      "class_counts": {
+        "0": 3443,
+        "66": 45,
+        "14": 1,
+        "17": 68,
+        "8": 52,
+        "27": 24,
+        "22": 3,
+        "19": 788,
+        "15": 174,
+        "10": 10,
+        "3": 2151
+      },
+      "wall_roi_fraction": 0.3659844,
+      "wall_confidence": 0.98964566,
+      "notices": [],
+      "depth_available": false,
+      "approach_enabled": false
+    },
+    {
+      "frame": 5,
+      "source_ms": 60777,
+      "latency_ms": 174,
+      "completion_age_ms": 174,
+      "status": "墙面：已确认存在",
+      "wall_cells": 3443,
+      "class_counts": {
+        "0": 3443,
+        "66": 45,
+        "14": 1,
+        "17": 68,
+        "8": 52,
+        "27": 24,
+        "22": 3,
+        "19": 788,
+        "15": 174,
+        "10": 10,
+        "3": 2151
+      },
+      "wall_roi_fraction": 0.3659844,
+      "wall_confidence": 0.98964566,
+      "notices": [],
+      "depth_available": false,
+      "approach_enabled": false
+    },
+    {
+      "frame": 6,
+      "source_ms": 62518,
+      "latency_ms": 174,
+      "completion_age_ms": 174,
+      "status": "墙面：已确认存在",
+      "wall_cells": 3443,
+      "class_counts": {
+        "0": 3443,
+        "66": 45,
+        "14": 1,
+        "17": 68,
+        "8": 52,
+        "27": 24,
+        "22": 3,
+        "19": 788,
+        "15": 174,
+        "10": 10,
+        "3": 2151
+      },
+      "wall_roi_fraction": 0.3659844,
+      "wall_confidence": 0.98964566,
+      "notices": [],
+      "depth_available": false,
+      "approach_enabled": false
+    },
+    {
+      "frame": 7,
+      "source_ms": 64232,
+      "latency_ms": 165,
+      "completion_age_ms": 165,
+      "status": "墙面：已确认存在",
+      "wall_cells": 3443,
+      "class_counts": {
+        "0": 3443,
+        "66": 45,
+        "14": 1,
+        "17": 68,
+        "8": 52,
+        "27": 24,
+        "22": 3,
+        "19": 788,
+        "15": 174,
+        "10": 10,
+        "3": 2151
+      },
+      "wall_roi_fraction": 0.3659844,
+      "wall_confidence": 0.98964566,
+      "notices": [],
+      "depth_available": false,
+      "approach_enabled": false
+    }
+  ],
+  "audio_events": [
+    {
+      "phase": "requested",
+      "event": "semantic:100:0:WALL:1",
+      "elapsed_ms": 53722,
+      "deadline_ms": 53939
+    },
+    {
+      "phase": "accepted",
+      "event": "semantic:100:0:WALL:1",
+      "elapsed_ms": 53723,
+      "deadline_ms": 53939,
+      "detail": "started"
+    },
+    {
+      "phase": "onStart",
+      "event": "semantic:100:0:WALL:1",
+      "text": "前方检测到墙面。",
+      "elapsed_ms": 53746,
+      "deadline_ms": 53939,
+      "resource": "environment_wall",
+      "detail": "local_media_player"
+    },
+    {
+      "phase": "completed",
+      "event": "semantic:100:0:WALL:1",
+      "text": "前方检测到墙面。",
+      "elapsed_ms": 56462,
+      "deadline_ms": 53939,
+      "resource": "environment_wall",
+      "detail": "local_media_player"
+    }
+  ]
+}

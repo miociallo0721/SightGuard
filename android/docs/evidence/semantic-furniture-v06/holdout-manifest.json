@@ -1,0 +1,5730 @@
+{
+  "schema": "sightguard.furniture-eval.v1",
+  "source": "https://data.csail.mit.edu/places/ADEchallenge/ADEChallengeData2016.zip",
+  "archive_etag": "\"39a91415-5e46c686a7a37\"",
+  "archive_bytes": 967382037,
+  "downloaded_bytes": 82875105,
+  "license_reference": "https://github.com/CSAILVision/sceneparsing/blob/master/LICENSE",
+  "license": "BSD-3-Clause per benchmark repository and dataset card; images kept local",
+  "annotation_contract": "0=ignore; 1..150 maps to logits 0..149 by subtracting one",
+  "selection_parameters": {
+    "start_index": 160,
+    "scan_count": 320,
+    "per_group": 8,
+    "negative_count": 16
+  },
+  "selection": "Lexically ordered bounded validation slice, first N per furniture group >=1.5% GT area, first N images without furniture above that area. Selected using GT only before inference. Not a full benchmark or independent external-domain validation.",
+  "counts": {
+    "TABLE": 8,
+    "BED": 8,
+    "SHELF": 8,
+    "CHAIR": 8,
+    "CABINET": 8,
+    "SOFA": 8,
+    "NEGATIVE": 16,
+    "COUNTER": 6,
+    "APPLIANCE": 8
+  },
+  "cases": [
+    {
+      "image": "ADE_val_00000161.jpg",
+      "mask": "ADE_val_00000161.png",
+      "groups": [
+        "TABLE",
+        "BED",
+        "SHELF"
+      ],
+      "gt_fractions": {
+        "TABLE": 0.01520798141891892,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.19520692567567569,
+        "SHELF": 0.015181587837837837,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "image_sha256": "91f73902fe5ad89d9e5a716a9bd21a0f63f951e9f1cc34e86476e41d68d37c32",
+      "mask_sha256": "50b062d7f697b81fd1d999dd80728431ac67e62d22d3a7cbef21cba9c3f0681f",
+      "split": "validation"
+    },
+    {
+      "image": "ADE_val_00000162.jpg",
+      "mask": "ADE_val_00000162.png",
+      "groups": [
+        "BED"
+      ],
+      "gt_fractions": {
+        "TABLE": 0.0112762451171875,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.329498291015625,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "image_sha256": "c9aa63676447f23ed8328e27f12263516c6b1e4351ad2acc453f3c3f8d3e15d4",
+      "mask_sha256": "be6ea8d400cc71b791b6578ac3502492f4571e0572194c209cb9dd4727ca068e",
+      "split": "validation"
+    },
+    {
+      "image": "ADE_val_00000163.jpg",
+      "mask": "ADE_val_00000163.png",
+      "groups": [
+        "TABLE",
+        "CHAIR",
+        "CABINET",
+        "BED"
+      ],
+      "gt_fractions": {
+        "TABLE": 0.0473481514084507,
+        "CHAIR": 0.06084213615023474,
+        "CABINET": 0.0246368838028169,
+        "SOFA": 0.0,
+        "BED": 0.1673048708920188,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "image_sha256": "d78666c461b8d31d4a6533163501988f9420981917f6043bacf85aabf09c8a4b",
+      "mask_sha256": "27169dcc9a5a746649e3af8af6685c6c39087a6fd5cb1124dfab9a7e4134180e",
+      "split": "validation"
+    },
+    {
+      "image": "ADE_val_00000164.jpg",
+      "mask": "ADE_val_00000164.png",
+      "groups": [
+        "CHAIR",
+        "BED"
+      ],
+      "gt_fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.057747300512445095,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.06820209553440702,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "image_sha256": "f35e180103c579f7b3207fa7dc5e4f1e58c3739f901fa6347cad8acd81b781f0",
+      "mask_sha256": "4bc45605c35624e21cfc2b87938f99097069612b35dfad743822ee6bbfc39fb1",
+      "split": "validation"
+    },
+    {
+      "image": "ADE_val_00000165.jpg",
+      "mask": "ADE_val_00000165.png",
+      "groups": [
+        "BED"
+      ],
+      "gt_fractions": {
+        "TABLE": 0.0019809825673534074,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.2224767234548336,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "image_sha256": "1ec0d52cb7e88a7c4fe617fdcd02782fdc71346c2f5b71e2b6a8201716345685",
+      "mask_sha256": "cf9f0bb8f956d335432ce9cd4a35d1cded900b83659de7847b8b902ae1ff2464",
+      "split": "validation"
+    },
+    {
+      "image": "ADE_val_00000166.jpg",
+      "mask": "ADE_val_00000166.png",
+      "groups": [
+        "TABLE",
+        "CABINET",
+        "BED"
+      ],
+      "gt_fractions": {
+        "TABLE": 0.02214208912884334,
+        "CHAIR": 0.003806163067349927,
+        "CABINET": 0.10091050512445095,
+        "SOFA": 0.0,
+        "BED": 0.43711966965592974,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "image_sha256": "e3f156186177c5f15009788fa2edef95841190641e9ba17431d12d748e462f24",
+      "mask_sha256": "bb7e3cb59a443b72d4ebfacbf726fe3e47479dc072407a2b5a556abbea77fe28",
+      "split": "validation"
+    },
+    {
+      "image": "ADE_val_00000167.jpg",
+      "mask": "ADE_val_00000167.png",
+      "groups": [
+        "TABLE",
+        "SOFA",
+        "BED"
+      ],
+      "gt_fractions": {
+        "TABLE": 0.0384979248046875,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.1483306884765625,
+        "BED": 0.0565032958984375,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "image_sha256": "ed99690ade4c78d8e72ad902e5ba451132a13f1e934274f82b0fa64e554824e8",
+      "mask_sha256": "65fe9c207003141f69844aadb28032f559bd080257f3953e4ff7b8b36457a65f",
+      "split": "validation"
+    },
+    {
+      "image": "ADE_val_00000168.jpg",
+      "mask": "ADE_val_00000168.png",
+      "groups": [
+        "TABLE",
+        "BED"
+      ],
+      "gt_fractions": {
+        "TABLE": 0.10794218540829986,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.311854187583668,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "image_sha256": "f95792e0c87db99e6e16288ecdd5de01afd064f673840a1d79dde6f1f2d8c94e",
+      "mask_sha256": "3b12b7d080b6f177d6a4fe3874466d9be9b8d1c2df9f43423e34c2fb1417cd93",
+      "split": "validation"
+    },
+    {
+      "image": "ADE_val_00000171.jpg",
+      "mask": "ADE_val_00000171.png",
+      "groups": [
+        "CABINET",
+        "SOFA"
+      ],
+      "gt_fractions": {
+        "TABLE": 0.011357330607476636,
+        "CHAIR": 0.0,
+        "CABINET": 0.021973568925233646,
+        "SOFA": 0.07783659462616822,
+        "BED": 0.08175379672897196,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "image_sha256": "8444b61e1a8cd4ae1adc0470e03df342fc285695f0fdfd44d18f04108d2ee7e4",
+      "mask_sha256": "13ec31598547fa6f0ed66d3bbf9a533f26860a3be66221d68ca8862143ec24f6",
+      "split": "validation"
+    },
+    {
+      "image": "ADE_val_00000172.jpg",
+      "mask": "ADE_val_00000172.png",
+      "groups": [
+        "TABLE",
+        "CHAIR",
+        "CABINET"
+      ],
+      "gt_fractions": {
+        "TABLE": 0.06244566709370425,
+        "CHAIR": 0.06286603221083455,
+        "CABINET": 0.2379895680819912,
+        "SOFA": 0.0,
+        "BED": 0.03589117404831625,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "image_sha256": "60c9b4cb025f87c4456b080e58f7e696951c7dce11dc08ee5610000edca9eafe",
+      "mask_sha256": "0d3074fc5876ad2ff8de50444f7ebbad43e73c2db953993594b11c8610576c99",
+      "split": "validation"
+    },
+    {
+      "image": "ADE_val_00000175.jpg",
+      "mask": "ADE_val_00000175.png",
+      "groups": [
+        "TABLE",
+        "CHAIR"
+      ],
+      "gt_fractions": {
+        "TABLE": 0.02618846083455344,
+        "CHAIR": 0.01903939421669107,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.13411934937774525,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "image_sha256": "b8b72c095c61c8e61c26adb7689e3f2a74bb78047ce24cc96d1fa961b8afe097",
+      "mask_sha256": "4417c3fc41169d4f92e0eb23aec19374c8d55c8a6c57cddb9973b6a1fca1dee3",
+      "split": "validation"
+    },
+    {
+      "image": "ADE_val_00000176.jpg",
+      "mask": "ADE_val_00000176.png",
+      "groups": [
+        "TABLE",
+        "CHAIR"
+      ],
+      "gt_fractions": {
+        "TABLE": 0.08044564852150538,
+        "CHAIR": 0.03253633232526882,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.004205519153225807,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "image_sha256": "665390fd62be6ca2dccfed8bda0db2221d5bf6ab70a37d8606f64b1ab2af80a5",
+      "mask_sha256": "5e484cd724e8f13e3a4ecc9f4b34b61707d4566366466cd97768d852e020246c",
+      "split": "validation"
+    },
+    {
+      "image": "ADE_val_00000179.jpg",
+      "mask": "ADE_val_00000179.png",
+      "groups": [
+        "CABINET",
+        "SHELF"
+      ],
+      "gt_fractions": {
+        "TABLE": 0.02483585743045388,
+        "CHAIR": 0.006022373718887262,
+        "CABINET": 0.0891116855783309,
+        "SOFA": 0.0,
+        "BED": 0.026474423499267936,
+        "SHELF": 0.039174025439238654,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "image_sha256": "5bbaa0b6ab60e1e316967873fb845090583849d4c0ffed47328da3678824d69b",
+      "mask_sha256": "eeedf0102bd874a783ee772babed978afdae1c83cba31e84330fb2f6563d04f2",
+      "split": "validation"
+    },
+    {
+      "image": "ADE_val_00000181.jpg",
+      "mask": "ADE_val_00000181.png",
+      "groups": [
+        "CABINET"
+      ],
+      "gt_fractions": {
+        "TABLE": 0.0250244140625,
+        "CHAIR": 0.0,
+        "CABINET": 0.1549835205078125,
+        "SOFA": 0.0,
+        "BED": 0.0796966552734375,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "image_sha256": "9bbecc7419e28cdc8efea5b36a305d758493f9647402fc4faa016fe2fed8006c",
+      "mask_sha256": "69bba6500e5f0f4c0b8a4d591e590d10ef6a56853dd20b6d6c3f16be24906fef",
+      "split": "validation"
+    },
+    {
+      "image": "ADE_val_00000182.jpg",
+      "mask": "ADE_val_00000182.png",
+      "groups": [
+        "CABINET"
+      ],
+      "gt_fractions": {
+        "TABLE": 0.08588392300498753,
+        "CHAIR": 0.00961219996882793,
+        "CABINET": 0.06761903834164588,
+        "SOFA": 0.0,
+        "BED": 0.14083200202618454,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "image_sha256": "ee44c266326c957191b19d25df1b03bbcf0ff801020112bd2b7fccc7fa013a07",
+      "mask_sha256": "bc8c3680f300efb0c5cb81b260d9117df79d4bdabf0bc560af35e0707c40ed63",
+      "split": "validation"
+    },
+    {
+      "image": "ADE_val_00000185.jpg",
+      "mask": "ADE_val_00000185.png",
+      "groups": [
+        "CHAIR"
+      ],
+      "gt_fractions": {
+        "TABLE": 0.007723851573938506,
+        "CHAIR": 0.035851139275256225,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "image_sha256": "8ba79fc475e2782ed531cf5981d01ba8361fd41276c5cc7f631238fc43cae055",
+      "mask_sha256": "1546b6e17e75742cf8f7ad9f9b4c9dbaef7eb3abb4a2b246cbd7f6eb2b81652d",
+      "split": "validation"
+    },
+    {
+      "image": "ADE_val_00000186.jpg",
+      "mask": "ADE_val_00000186.png",
+      "groups": [
+        "NEGATIVE"
+      ],
+      "gt_fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "image_sha256": "abf7200405574ee44c1e5bf2065d8ae221a5a6a3bc2b1d8cc97d308d1a86095b",
+      "mask_sha256": "a9eb7a9798e460c1ed13f1d988eb115aafa115105bcc41a96c4d53dd198d507a",
+      "split": "validation"
+    },
+    {
+      "image": "ADE_val_00000188.jpg",
+      "mask": "ADE_val_00000188.png",
+      "groups": [
+        "CHAIR"
+      ],
+      "gt_fractions": {
+        "TABLE": 0.09177570093457944,
+        "CHAIR": 0.07462616822429907,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "image_sha256": "c20b099e49475794ca4f44eef5ac72da760896b5c43474c33185cf5171e98e00",
+      "mask_sha256": "dce9475023044eb92bd38c595ec73dab265cc9b296e257ac33185e717d412045",
+      "split": "validation"
+    },
+    {
+      "image": "ADE_val_00000189.jpg",
+      "mask": "ADE_val_00000189.png",
+      "groups": [
+        "NEGATIVE"
+      ],
+      "gt_fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "image_sha256": "8ff3a7d8a00201861e0bca56651a64b8190493b16c764ba306d4ab5fcb2148f5",
+      "mask_sha256": "d241b4e6de8e51cf0cae9403be84ae7ffeb8548280f4399efca42cc953839258",
+      "split": "validation"
+    },
+    {
+      "image": "ADE_val_00000190.jpg",
+      "mask": "ADE_val_00000190.png",
+      "groups": [
+        "NEGATIVE"
+      ],
+      "gt_fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "image_sha256": "dd329942599649f1bfb6eac70d9eb2c8d7ee6176e8e3bd47327e93e618495ee1",
+      "mask_sha256": "7987f8df4a2983bebc72e79163dc167adb1b9225e16ef01f2bb7b55873dec950",
+      "split": "validation"
+    },
+    {
+      "image": "ADE_val_00000191.jpg",
+      "mask": "ADE_val_00000191.png",
+      "groups": [
+        "SHELF"
+      ],
+      "gt_fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.5028612303290415,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "image_sha256": "914581b9499e0214e523801e0d755877e0b0a0d6785542172a30492148d8a11f",
+      "mask_sha256": "164725a3749e7377cb3e29dfb0ba948b8663ebf51d839ebb8a2edec02661253b",
+      "split": "validation"
+    },
+    {
+      "image": "ADE_val_00000192.jpg",
+      "mask": "ADE_val_00000192.png",
+      "groups": [
+        "CABINET"
+      ],
+      "gt_fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0165,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "image_sha256": "7cdc1b17ae3bf6fdeb4fccfcf3ea317809ee8f636ccb9a5293e3bae0ba81fc1f",
+      "mask_sha256": "9bb3dc2abdb7ba2d2c37723c845bf45007eff6bd77ea091210fa39788699d105",
+      "split": "validation"
+    },
+    {
+      "image": "ADE_val_00000193.jpg",
+      "mask": "ADE_val_00000193.png",
+      "groups": [
+        "NEGATIVE"
+      ],
+      "gt_fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "image_sha256": "71aa454e6d66b89e763cac41cc2274d34d64d282b7a81d51b6b1ee7610a23fad",
+      "mask_sha256": "9da97e8a4244f14a7e8b1a50d7782f6a01bb4cd0c7ae1198ef8253e476438adb",
+      "split": "validation"
+    },
+    {
+      "image": "ADE_val_00000194.jpg",
+      "mask": "ADE_val_00000194.png",
+      "groups": [
+        "NEGATIVE"
+      ],
+      "gt_fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "image_sha256": "4e84799ee23a1e7a198579f043be92a2fd57babf86e7fdc818dcf315e76970cc",
+      "mask_sha256": "9f82dae89056fa74686f0a70811ca2a04504279d7cba460541f5ec71cf11b07d",
+      "split": "validation"
+    },
+    {
+      "image": "ADE_val_00000195.jpg",
+      "mask": "ADE_val_00000195.png",
+      "groups": [
+        "CHAIR"
+      ],
+      "gt_fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.03670517793894417,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "image_sha256": "b4e3be03e86ef5e7ee195855dff04de6afec6e6eace70ce1f418d176d3cbb92b",
+      "mask_sha256": "916125e63500375585232fca04dcf8b2fb401cf69c3fb425d6255c1c6fdcec4b",
+      "split": "validation"
+    },
+    {
+      "image": "ADE_val_00000196.jpg",
+      "mask": "ADE_val_00000196.png",
+      "groups": [
+        "NEGATIVE"
+      ],
+      "gt_fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "image_sha256": "2dd64970e99ec5851230e2f7069dc858626c0439bbd43b6b475dfcd7c1cbf178",
+      "mask_sha256": "2d86c736e901b09df5309f8e8bb1c0d0ca041b5cbcce5ee805a403dfc206eccd",
+      "split": "validation"
+    },
+    {
+      "image": "ADE_val_00000197.jpg",
+      "mask": "ADE_val_00000197.png",
+      "groups": [
+        "NEGATIVE"
+      ],
+      "gt_fractions": {
+        "TABLE": 0.0037825520833333335,
+        "CHAIR": 0.005006510416666667,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "image_sha256": "29ce71ed4fadf8104b1788d9e2435b6b2f9fee61ceabf6a10a3fafd35099fba0",
+      "mask_sha256": "9d7766a390f0f32e0dd30461e7e9f529d04b02ff26a9b5d34836a449a57cd1dc",
+      "split": "validation"
+    },
+    {
+      "image": "ADE_val_00000198.jpg",
+      "mask": "ADE_val_00000198.png",
+      "groups": [
+        "NEGATIVE"
+      ],
+      "gt_fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "image_sha256": "d0ad17edf201b27b138e27bf801ac1f62368e4b38ccd530ecaed86c29aa3dda3",
+      "mask_sha256": "625b985e1cde5651c155a31bcd8ecec556d737af5f4474267ea804d80b5cfb0c",
+      "split": "validation"
+    },
+    {
+      "image": "ADE_val_00000199.jpg",
+      "mask": "ADE_val_00000199.png",
+      "groups": [
+        "NEGATIVE"
+      ],
+      "gt_fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "image_sha256": "0269b2bdac195246207199af817003db9bcc6a0d0bcbddc0a97cb450f5e4030e",
+      "mask_sha256": "caf54a117093cecff96cabb38e6ad8994f0a3bf2e4dc2edacc3a0b8f2b1c741f",
+      "split": "validation"
+    },
+    {
+      "image": "ADE_val_00000200.jpg",
+      "mask": "ADE_val_00000200.png",
+      "groups": [
+        "NEGATIVE"
+      ],
+      "gt_fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "image_sha256": "ab5852ac864d4d1930942f58e139ec851b627c329b27df9c42b97ad4b660cf5d",
+      "mask_sha256": "a17b289a3c1d2b2dac0adc966bab89f6333b0f92d65807ff42c97b1b5dfdfcf5",
+      "split": "validation"
+    },
+    {
+      "image": "ADE_val_00000201.jpg",
+      "mask": "ADE_val_00000201.png",
+      "groups": [
+        "NEGATIVE"
+      ],
+      "gt_fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "image_sha256": "f7d57bd0211e05c3f723e5e01c23a77eb55db436cc3e7f588532f49b4cb592e1",
+      "mask_sha256": "1c691d817a7d9e426bf356861eca37d8f97f718c65b80c64e76c01ee71d071f6",
+      "split": "validation"
+    },
+    {
+      "image": "ADE_val_00000202.jpg",
+      "mask": "ADE_val_00000202.png",
+      "groups": [
+        "NEGATIVE"
+      ],
+      "gt_fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "image_sha256": "ed5011e7cc6d31991948408777dea520422868ca37aafb42ff12f3d08afc3574",
+      "mask_sha256": "d9acd8cdfe5a3d7f27953f53e0232a3bc644d2879441fdf04459023eb4c19716",
+      "split": "validation"
+    },
+    {
+      "image": "ADE_val_00000203.jpg",
+      "mask": "ADE_val_00000203.png",
+      "groups": [
+        "NEGATIVE"
+      ],
+      "gt_fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "image_sha256": "4ebbf4f0678e620c65c2f73382dbce692e79f651aaf4b6fd910755cbb26adfd6",
+      "mask_sha256": "dd0179d28ad6e8f6ce4d0bbb7ec10b407c88d8b4de022f7d9297a5af848f1aa7",
+      "split": "validation"
+    },
+    {
+      "image": "ADE_val_00000204.jpg",
+      "mask": "ADE_val_00000204.png",
+      "groups": [
+        "NEGATIVE"
+      ],
+      "gt_fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "image_sha256": "3f306900e682ff43b650659e65590f290e2961d67d26bcfec7c0b0577d85365a",
+      "mask_sha256": "e25be96071f0d937b378da751b7a9b8cf8d805404767ca700eb0fdce62f4e7df",
+      "split": "validation"
+    },
+    {
+      "image": "ADE_val_00000205.jpg",
+      "mask": "ADE_val_00000205.png",
+      "groups": [
+        "NEGATIVE"
+      ],
+      "gt_fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "image_sha256": "229cc42b54c1246df8c6e4cd9725611a7f4dad6d7eb3383f982353d5ba7b5e05",
+      "mask_sha256": "20fb1f97b5d0dd849a8d668e38bd42d6eaa59e787a9253a46b14acc542e72c60",
+      "split": "validation"
+    },
+    {
+      "image": "ADE_val_00000206.jpg",
+      "mask": "ADE_val_00000206.png",
+      "groups": [
+        "NEGATIVE"
+      ],
+      "gt_fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "image_sha256": "553a0e7c6632f9ae5b7a9648356210eea5e326d3f9e3e586f301398e2f93f584",
+      "mask_sha256": "001411ad198ff2126f43dc4b490200ad839295383887e834aa56f9a2dd074a8d",
+      "split": "validation"
+    },
+    {
+      "image": "ADE_val_00000218.jpg",
+      "mask": "ADE_val_00000218.png",
+      "groups": [
+        "SOFA"
+      ],
+      "gt_fractions": {
+        "TABLE": 0.01696279069767442,
+        "CHAIR": 0.013874418604651162,
+        "CABINET": 0.0,
+        "SOFA": 0.027372093023255814,
+        "BED": 0.04645581395348837,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "image_sha256": "f722fb748490590eafe042ad5d61774ff79d47cb00fd7ce1fd2ba659f9fec703",
+      "mask_sha256": "6354666f942b98958f6c1336a98713c06a2ae09a32d2cc41fadab99fe3493e5e",
+      "split": "validation"
+    },
+    {
+      "image": "ADE_val_00000223.jpg",
+      "mask": "ADE_val_00000223.png",
+      "groups": [
+        "SHELF"
+      ],
+      "gt_fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.2010832265739385,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "image_sha256": "dbcece819a301d2d3205ff60c1e7404cc1d2984758871797fcb40dcf965b0a5f",
+      "mask_sha256": "e75978f7405c6be55454781166b69aea8a03460a23b19fe4027a297eefd0bbe0",
+      "split": "validation"
+    },
+    {
+      "image": "ADE_val_00000244.jpg",
+      "mask": "ADE_val_00000244.png",
+      "groups": [
+        "SHELF"
+      ],
+      "gt_fractions": {
+        "TABLE": 0.03016187939367311,
+        "CHAIR": 0.022479816564147628,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.07926460896309315,
+        "SHELF": 0.05227097978910369,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "image_sha256": "7fbfcb0f7d674d2103db7f38a8c9624255ceb0d6ee9f4e25c98ab132693fd88f",
+      "mask_sha256": "8ea3f4fc0a07e584ae5693aef9c53b54ea89963daac5b13b1221ab8c472d021c",
+      "split": "validation"
+    },
+    {
+      "image": "ADE_val_00000255.jpg",
+      "mask": "ADE_val_00000255.png",
+      "groups": [
+        "SHELF"
+      ],
+      "gt_fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.03134065934065934,
+        "CABINET": 0.3067399267399267,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.11635897435897435,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "image_sha256": "764c80f3763581fee5652a2c369bedb405677df5af139a076b0d67c1ff98bbf1",
+      "mask_sha256": "5fbc352d72de31c84b1718632d815bbee2d52dc28aeb1029d821917e5a212729",
+      "split": "validation"
+    },
+    {
+      "image": "ADE_val_00000297.jpg",
+      "mask": "ADE_val_00000297.png",
+      "groups": [
+        "COUNTER"
+      ],
+      "gt_fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.22582933333333333,
+        "APPLIANCE": 0.0
+      },
+      "image_sha256": "8577307c74d8ed4e836a73254bda0bd8c39e6819b378caa22634bfdca2c08680",
+      "mask_sha256": "6ff11dae98d440646123de895cf9174e187f559fba9efac926700f08358f2c0b",
+      "split": "validation"
+    },
+    {
+      "image": "ADE_val_00000300.jpg",
+      "mask": "ADE_val_00000300.png",
+      "groups": [
+        "SHELF"
+      ],
+      "gt_fractions": {
+        "TABLE": 0.04831145314622001,
+        "CHAIR": 0.09400633770937075,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.026287913082842916,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "image_sha256": "73c44c2ccb6dbec0236ac364a6702fbfeb6744da8738ab54ba834ca13629027f",
+      "mask_sha256": "afb8486cb713f088a6312edb99a1e124537b903b37e6d20948b3f86b6be2df4f",
+      "split": "validation"
+    },
+    {
+      "image": "ADE_val_00000303.jpg",
+      "mask": "ADE_val_00000303.png",
+      "groups": [
+        "SOFA",
+        "COUNTER"
+      ],
+      "gt_fractions": {
+        "TABLE": 0.0381317586143695,
+        "CHAIR": 0.06778947489002933,
+        "CABINET": 0.0,
+        "SOFA": 0.03185999358504399,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.04270527859237536,
+        "APPLIANCE": 0.0
+      },
+      "image_sha256": "c041fddbb142c848e5fa70e1fabb9275a6466ab7337cff7cb6edc8ddeb9418a1",
+      "mask_sha256": "b613916745551477ee82652ac2a8e05554cbac589b30af2822a920cd40a2d4b8",
+      "split": "validation"
+    },
+    {
+      "image": "ADE_val_00000318.jpg",
+      "mask": "ADE_val_00000318.png",
+      "groups": [
+        "SOFA"
+      ],
+      "gt_fractions": {
+        "TABLE": 0.0848236083984375,
+        "CHAIR": 0.034891764322916664,
+        "CABINET": 0.0,
+        "SOFA": 0.021998087565104168,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "image_sha256": "402bea59567d5e35d9d8d85cd51e02e51453db40865194214d1a78b2c858e758",
+      "mask_sha256": "86288e22af8b7002c788f9114be8074dbfa4fc90b233784171f39d4bc5ef7292",
+      "split": "validation"
+    },
+    {
+      "image": "ADE_val_00000324.jpg",
+      "mask": "ADE_val_00000324.png",
+      "groups": [
+        "SOFA"
+      ],
+      "gt_fractions": {
+        "TABLE": 0.13269525530746706,
+        "CHAIR": 0.10077896229868229,
+        "CABINET": 0.022971380856515372,
+        "SOFA": 0.025948252196193265,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "image_sha256": "025ce5f56a23cd63d52446a455a1710530cb30ba90859e12191e5be9c1ff7091",
+      "mask_sha256": "1f75e5f1efb1e0c8190dabfab706200f6bc93354c5f5f0264c2ac2e6bff2aafd",
+      "split": "validation"
+    },
+    {
+      "image": "ADE_val_00000336.jpg",
+      "mask": "ADE_val_00000336.png",
+      "groups": [
+        "SHELF"
+      ],
+      "gt_fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.14141333333333334,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.44782933333333336,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "image_sha256": "ec7b4afb70d2b25212c96c3a174d7afdd3a3b0e35680b727f393c3bee286230d",
+      "mask_sha256": "e3cc4b43b1a1a11304f1c2df2e0e27e0eecd488ede148a07ae4867d67067c6d6",
+      "split": "validation"
+    },
+    {
+      "image": "ADE_val_00000353.jpg",
+      "mask": "ADE_val_00000353.png",
+      "groups": [
+        "COUNTER"
+      ],
+      "gt_fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.26707261029411766,
+        "APPLIANCE": 0.0
+      },
+      "image_sha256": "216c17d7e0aced8caa0e3f17f4b71c54f3a45a66a435fcf132930c3859faff9a",
+      "mask_sha256": "f5c5f45cb24eb3319a290570a05a0f0949b712536e32d9a2833c723e77d8bf2f",
+      "split": "validation"
+    },
+    {
+      "image": "ADE_val_00000372.jpg",
+      "mask": "ADE_val_00000372.png",
+      "groups": [
+        "APPLIANCE"
+      ],
+      "gt_fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.37176290263543194,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.200559914897511
+      },
+      "image_sha256": "e3c2b31d2c34846a0d1268cd28cef66d9df4800d19a6248f087108ecb20792d5",
+      "mask_sha256": "baf5728bb3461bde7d334691e06270b645150c9ce4f7d16b579e0d59551f11b4",
+      "split": "validation"
+    },
+    {
+      "image": "ADE_val_00000373.jpg",
+      "mask": "ADE_val_00000373.png",
+      "groups": [
+        "SOFA"
+      ],
+      "gt_fractions": {
+        "TABLE": 0.007612326134699854,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.06138474560761347,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "image_sha256": "ac06967734ed0a3d73737620fe5ae1098bc5da873c222f3f13430544dd683389",
+      "mask_sha256": "a7f26ebeb68048853a554c006da577e2ddc9314bf34082e31e0de174ad3ab99a",
+      "split": "validation"
+    },
+    {
+      "image": "ADE_val_00000375.jpg",
+      "mask": "ADE_val_00000375.png",
+      "groups": [
+        "SOFA"
+      ],
+      "gt_fractions": {
+        "TABLE": 0.03433839677891654,
+        "CHAIR": 0.023917917276720352,
+        "CABINET": 0.0,
+        "SOFA": 0.10295227855051245,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "image_sha256": "5c02f09366bf68a97865d95f32a9d4ff01d9cae52572f1327ded039c50734338",
+      "mask_sha256": "ca75f3331a95a820cfeec21856b191b4504444ee5c228b8868e09b52cf92aa9b",
+      "split": "validation"
+    },
+    {
+      "image": "ADE_val_00000376.jpg",
+      "mask": "ADE_val_00000376.png",
+      "groups": [
+        "COUNTER"
+      ],
+      "gt_fractions": {
+        "TABLE": 0.010029641897081413,
+        "CHAIR": 0.006579421082949309,
+        "CABINET": 0.001659106182795699,
+        "SOFA": 0.02230042722734255,
+        "BED": 0.0,
+        "SHELF": 0.0006840437788018433,
+        "COUNTER": 0.03382116455453149,
+        "APPLIANCE": 0.0
+      },
+      "image_sha256": "00892dd6704eb701f303fbc9e2cb02d13e84f44febe87f32e129ceef0f1aa2a6",
+      "mask_sha256": "bf33301096e4e6fc7ee26d2f83a7b0cf210e09a4a608a27831cd4faddff5ae53",
+      "split": "validation"
+    },
+    {
+      "image": "ADE_val_00000385.jpg",
+      "mask": "ADE_val_00000385.png",
+      "groups": [
+        "COUNTER"
+      ],
+      "gt_fractions": {
+        "TABLE": 0.056383258601756955,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.1106217972181552,
+        "COUNTER": 0.12494566709370425,
+        "APPLIANCE": 0.0
+      },
+      "image_sha256": "ed4b73a5f3846ba547ddf27627f58deadd3e0f92888ba293b8f1a38ea949a016",
+      "mask_sha256": "55807f11c2c241f1ecd98a5d7fee195f2a40ce60533fd399371a54974189625d",
+      "split": "validation"
+    },
+    {
+      "image": "ADE_val_00000460.jpg",
+      "mask": "ADE_val_00000460.png",
+      "groups": [
+        "APPLIANCE"
+      ],
+      "gt_fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.01771508193597561,
+        "CABINET": 0.2350538300304878,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.1984178496570122
+      },
+      "image_sha256": "57ee8c7e7ce82427157738827b8a3e6445d4b08d9fc5a85ceb1c73614883da79",
+      "mask_sha256": "beb92157a48b17a3a99c0767622271e0fe1819a02c2fbf0a82a42c31e2686b61",
+      "split": "validation"
+    },
+    {
+      "image": "ADE_val_00000461.jpg",
+      "mask": "ADE_val_00000461.png",
+      "groups": [
+        "APPLIANCE"
+      ],
+      "gt_fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.1362612097364568,
+        "CABINET": 0.16469161786237188,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.04825905929721815
+      },
+      "image_sha256": "9bc9cacb6d1d370460aaf83f984ebdcb7920350762d195745bf516484e31ffa8",
+      "mask_sha256": "366134540aff409f30c2897b2ef35abf3c5fe4b9b2c390b8df371ef7fb369242",
+      "split": "validation"
+    },
+    {
+      "image": "ADE_val_00000462.jpg",
+      "mask": "ADE_val_00000462.png",
+      "groups": [
+        "APPLIANCE"
+      ],
+      "gt_fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.288637037037037,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.06632592592592593
+      },
+      "image_sha256": "eb305b69a00bf1f4daecd3dd43996c5be1c135d1599737479c8b0f259e5c25e9",
+      "mask_sha256": "c8e613aa6a4c1a01e98ba663adc20569580df063abc4579b9264ff604ce7b638",
+      "split": "validation"
+    },
+    {
+      "image": "ADE_val_00000463.jpg",
+      "mask": "ADE_val_00000463.png",
+      "groups": [
+        "APPLIANCE"
+      ],
+      "gt_fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0651702880859375,
+        "CABINET": 0.22640482584635416,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.016253153483072918
+      },
+      "image_sha256": "edc18db308c7e925e8c04b0663936b664fcc8cd71420bef754933aef00fba10a",
+      "mask_sha256": "150663148b082101d106b712e282b29585bbd0642a9d54136ad47fd10003a158",
+      "split": "validation"
+    },
+    {
+      "image": "ADE_val_00000466.jpg",
+      "mask": "ADE_val_00000466.png",
+      "groups": [
+        "APPLIANCE"
+      ],
+      "gt_fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.22698465983072916,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.10485331217447917
+      },
+      "image_sha256": "fdc121d0e7a9eb2fc67d11d2b421040a38bc1165da3034cb285b18038b2b8299",
+      "mask_sha256": "79c9645b95a7e0b1a43a936526dd5592df11342c56f8717c31d5e3bb189612d6",
+      "split": "validation"
+    },
+    {
+      "image": "ADE_val_00000468.jpg",
+      "mask": "ADE_val_00000468.png",
+      "groups": [
+        "APPLIANCE"
+      ],
+      "gt_fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.30682118733723956,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.052790323893229164
+      },
+      "image_sha256": "2570250d0babe5e91018ab06d4df47801822f64b838cc184b1689cc445bec907",
+      "mask_sha256": "c49d5e673d5b07aeebaaff3a1509d35246f74d40910696e244fcd69f78313ca9",
+      "split": "validation"
+    },
+    {
+      "image": "ADE_val_00000471.jpg",
+      "mask": "ADE_val_00000471.png",
+      "groups": [
+        "APPLIANCE"
+      ],
+      "gt_fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.041554768880208336,
+        "CABINET": 0.2864888509114583,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.08774820963541667
+      },
+      "image_sha256": "617f43db499585c545da96562717ef01c57863770b049a6febc8d6a8a86f4901",
+      "mask_sha256": "f3d442644583715ad6720d87188de865563282c2d4c00b5a179747c8f4fcac7e",
+      "split": "validation"
+    },
+    {
+      "image": "ADE_val_00000476.jpg",
+      "mask": "ADE_val_00000476.png",
+      "groups": [
+        "COUNTER"
+      ],
+      "gt_fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.36843369344547566,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.08276990284222738,
+        "APPLIANCE": 0.014618982018561485
+      },
+      "image_sha256": "fa10c32d6526b41321bd6aacb6fcd797f8a2d5150e6e2613e217875e3e272039",
+      "mask_sha256": "5d5c1cf4265e7f9bda7da4d82f13716cd9a1b591da83ea6fa3a4a49f8178e538",
+      "split": "validation"
+    }
+  ],
+  "scanned": [
+    {
+      "mask": "ADE_val_00000161.png",
+      "fractions": {
+        "TABLE": 0.01520798141891892,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.19520692567567569,
+        "SHELF": 0.015181587837837837,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": true
+    },
+    {
+      "mask": "ADE_val_00000162.png",
+      "fractions": {
+        "TABLE": 0.0112762451171875,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.329498291015625,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": true
+    },
+    {
+      "mask": "ADE_val_00000163.png",
+      "fractions": {
+        "TABLE": 0.0473481514084507,
+        "CHAIR": 0.06084213615023474,
+        "CABINET": 0.0246368838028169,
+        "SOFA": 0.0,
+        "BED": 0.1673048708920188,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": true
+    },
+    {
+      "mask": "ADE_val_00000164.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.057747300512445095,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.06820209553440702,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": true
+    },
+    {
+      "mask": "ADE_val_00000165.png",
+      "fractions": {
+        "TABLE": 0.0019809825673534074,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.2224767234548336,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": true
+    },
+    {
+      "mask": "ADE_val_00000166.png",
+      "fractions": {
+        "TABLE": 0.02214208912884334,
+        "CHAIR": 0.003806163067349927,
+        "CABINET": 0.10091050512445095,
+        "SOFA": 0.0,
+        "BED": 0.43711966965592974,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": true
+    },
+    {
+      "mask": "ADE_val_00000167.png",
+      "fractions": {
+        "TABLE": 0.0384979248046875,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.1483306884765625,
+        "BED": 0.0565032958984375,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": true
+    },
+    {
+      "mask": "ADE_val_00000168.png",
+      "fractions": {
+        "TABLE": 0.10794218540829986,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.311854187583668,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": true
+    },
+    {
+      "mask": "ADE_val_00000169.png",
+      "fractions": {
+        "TABLE": 0.01333796838407494,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.19248755854800936,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000170.png",
+      "fractions": {
+        "TABLE": 0.004445393880208333,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.3123982747395833,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000171.png",
+      "fractions": {
+        "TABLE": 0.011357330607476636,
+        "CHAIR": 0.0,
+        "CABINET": 0.021973568925233646,
+        "SOFA": 0.07783659462616822,
+        "BED": 0.08175379672897196,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": true
+    },
+    {
+      "mask": "ADE_val_00000172.png",
+      "fractions": {
+        "TABLE": 0.06244566709370425,
+        "CHAIR": 0.06286603221083455,
+        "CABINET": 0.2379895680819912,
+        "SOFA": 0.0,
+        "BED": 0.03589117404831625,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": true
+    },
+    {
+      "mask": "ADE_val_00000173.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.19124348958333334,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000174.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.6183074951171875,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000175.png",
+      "fractions": {
+        "TABLE": 0.02618846083455344,
+        "CHAIR": 0.01903939421669107,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.13411934937774525,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": true
+    },
+    {
+      "mask": "ADE_val_00000176.png",
+      "fractions": {
+        "TABLE": 0.08044564852150538,
+        "CHAIR": 0.03253633232526882,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.004205519153225807,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": true
+    },
+    {
+      "mask": "ADE_val_00000177.png",
+      "fractions": {
+        "TABLE": 0.028988035322108346,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.28457574579062955,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000178.png",
+      "fractions": {
+        "TABLE": 0.06575425512445095,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.4185092194363104,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000179.png",
+      "fractions": {
+        "TABLE": 0.02483585743045388,
+        "CHAIR": 0.006022373718887262,
+        "CABINET": 0.0891116855783309,
+        "SOFA": 0.0,
+        "BED": 0.026474423499267936,
+        "SHELF": 0.039174025439238654,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": true
+    },
+    {
+      "mask": "ADE_val_00000180.png",
+      "fractions": {
+        "TABLE": 0.0033857979502196194,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.08868274158125915,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000181.png",
+      "fractions": {
+        "TABLE": 0.0250244140625,
+        "CHAIR": 0.0,
+        "CABINET": 0.1549835205078125,
+        "SOFA": 0.0,
+        "BED": 0.0796966552734375,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": true
+    },
+    {
+      "mask": "ADE_val_00000182.png",
+      "fractions": {
+        "TABLE": 0.08588392300498753,
+        "CHAIR": 0.00961219996882793,
+        "CABINET": 0.06761903834164588,
+        "SOFA": 0.0,
+        "BED": 0.14083200202618454,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": true
+    },
+    {
+      "mask": "ADE_val_00000183.png",
+      "fractions": {
+        "TABLE": 0.019925878477306,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.6303703788433382,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000184.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.24301948051948052,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000185.png",
+      "fractions": {
+        "TABLE": 0.007723851573938506,
+        "CHAIR": 0.035851139275256225,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": true
+    },
+    {
+      "mask": "ADE_val_00000186.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": true
+    },
+    {
+      "mask": "ADE_val_00000187.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.15849898580121705,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000188.png",
+      "fractions": {
+        "TABLE": 0.09177570093457944,
+        "CHAIR": 0.07462616822429907,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": true
+    },
+    {
+      "mask": "ADE_val_00000189.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": true
+    },
+    {
+      "mask": "ADE_val_00000190.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": true
+    },
+    {
+      "mask": "ADE_val_00000191.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.5028612303290415,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": true
+    },
+    {
+      "mask": "ADE_val_00000192.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0165,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": true
+    },
+    {
+      "mask": "ADE_val_00000193.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": true
+    },
+    {
+      "mask": "ADE_val_00000194.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": true
+    },
+    {
+      "mask": "ADE_val_00000195.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.03670517793894417,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": true
+    },
+    {
+      "mask": "ADE_val_00000196.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": true
+    },
+    {
+      "mask": "ADE_val_00000197.png",
+      "fractions": {
+        "TABLE": 0.0037825520833333335,
+        "CHAIR": 0.005006510416666667,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": true
+    },
+    {
+      "mask": "ADE_val_00000198.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": true
+    },
+    {
+      "mask": "ADE_val_00000199.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": true
+    },
+    {
+      "mask": "ADE_val_00000200.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": true
+    },
+    {
+      "mask": "ADE_val_00000201.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": true
+    },
+    {
+      "mask": "ADE_val_00000202.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": true
+    },
+    {
+      "mask": "ADE_val_00000203.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": true
+    },
+    {
+      "mask": "ADE_val_00000204.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": true
+    },
+    {
+      "mask": "ADE_val_00000205.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": true
+    },
+    {
+      "mask": "ADE_val_00000206.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": true
+    },
+    {
+      "mask": "ADE_val_00000207.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000208.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000209.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000210.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000211.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000212.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000213.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000214.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000215.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.04896549176088081,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000216.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.1529888888888889,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000217.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000218.png",
+      "fractions": {
+        "TABLE": 0.01696279069767442,
+        "CHAIR": 0.013874418604651162,
+        "CABINET": 0.0,
+        "SOFA": 0.027372093023255814,
+        "BED": 0.04645581395348837,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": true
+    },
+    {
+      "mask": "ADE_val_00000219.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000220.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.03621771928858543,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000221.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.005718163145539906,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000222.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000223.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.2010832265739385,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": true
+    },
+    {
+      "mask": "ADE_val_00000224.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000225.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.6293723691434846,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000226.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000227.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.01310781568228106,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000228.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.007377777777777777,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000229.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000230.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.03484962406015037,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000231.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000232.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000233.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000234.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000235.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000236.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.14652439024390243,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000237.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000238.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000239.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000240.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000241.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000242.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000243.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000244.png",
+      "fractions": {
+        "TABLE": 0.03016187939367311,
+        "CHAIR": 0.022479816564147628,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.07926460896309315,
+        "SHELF": 0.05227097978910369,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": true
+    },
+    {
+      "mask": "ADE_val_00000245.png",
+      "fractions": {
+        "TABLE": 0.042675163172468354,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.21578013746044303,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000246.png",
+      "fractions": {
+        "TABLE": 0.038480649784997614,
+        "CHAIR": 0.0037744863831820352,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0295970695970696,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000247.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0945935960591133,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000248.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.2263641357421875,
+        "CABINET": 0.008697509765625,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000249.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000250.png",
+      "fractions": {
+        "TABLE": 0.1627022342064715,
+        "CHAIR": 0.007493499614791988,
+        "CABINET": 0.020698911787365177,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000251.png",
+      "fractions": {
+        "TABLE": 0.028462727864583332,
+        "CHAIR": 0.054931640625,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000252.png",
+      "fractions": {
+        "TABLE": 0.02328828828828829,
+        "CHAIR": 0.03033033033033033,
+        "CABINET": 0.033228228228228227,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000253.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.006455139544025157,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000254.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000255.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.03134065934065934,
+        "CABINET": 0.3067399267399267,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.11635897435897435,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": true
+    },
+    {
+      "mask": "ADE_val_00000256.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.5379929996339677,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000257.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.4545179175118323,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000258.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.44882428278688524,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000259.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000260.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000261.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000262.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000263.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000264.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.16688209187408493,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000265.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.03589391860996799,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.002629172382258802,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000266.png",
+      "fractions": {
+        "TABLE": 0.26667734260614934,
+        "CHAIR": 0.033892295021961935,
+        "CABINET": 0.042559823389458275,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000267.png",
+      "fractions": {
+        "TABLE": 0.045842488606770836,
+        "CHAIR": 0.16048177083333334,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.008771260579427084,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000268.png",
+      "fractions": {
+        "TABLE": 0.19318493777452417,
+        "CHAIR": 0.09244315062225476,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000269.png",
+      "fractions": {
+        "TABLE": 0.075408935546875,
+        "CHAIR": 0.24072265625,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000270.png",
+      "fractions": {
+        "TABLE": 0.22009398075632133,
+        "CHAIR": 0.2748937122398747,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000271.png",
+      "fractions": {
+        "TABLE": 0.108184814453125,
+        "CHAIR": 0.1527862548828125,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000272.png",
+      "fractions": {
+        "TABLE": 0.0991553591008772,
+        "CHAIR": 0.10018046418128655,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000273.png",
+      "fractions": {
+        "TABLE": 0.2636515299479167,
+        "CHAIR": 0.06358846028645833,
+        "CABINET": 0.0279388427734375,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000274.png",
+      "fractions": {
+        "TABLE": 0.10106850785818713,
+        "CHAIR": 0.2238326937134503,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000275.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000276.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000277.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000278.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000279.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000280.png",
+      "fractions": {
+        "TABLE": 0.002848188140556369,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000281.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.00775170233463035,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000282.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000283.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000284.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000285.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000286.png",
+      "fractions": {
+        "TABLE": 0.011365204194260486,
+        "CHAIR": 0.033507088162251654,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000287.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000288.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000289.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000290.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000291.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000292.png",
+      "fractions": {
+        "TABLE": 0.01812145406295754,
+        "CHAIR": 0.04185921486090776,
+        "CABINET": 0.02763829154465593,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000293.png",
+      "fractions": {
+        "TABLE": 0.03775279099560761,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000294.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000295.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000296.png",
+      "fractions": {
+        "TABLE": 0.08238012445095168,
+        "CHAIR": 0.10407325219619326,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000297.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.22582933333333333,
+        "APPLIANCE": 0.0
+      },
+      "selected": true
+    },
+    {
+      "mask": "ADE_val_00000298.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.14750564334085778,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000299.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000300.png",
+      "fractions": {
+        "TABLE": 0.04831145314622001,
+        "CHAIR": 0.09400633770937075,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.026287913082842916,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": true
+    },
+    {
+      "mask": "ADE_val_00000301.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000302.png",
+      "fractions": {
+        "TABLE": 0.030242391353502464,
+        "CHAIR": 0.08179577624022069,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000303.png",
+      "fractions": {
+        "TABLE": 0.0381317586143695,
+        "CHAIR": 0.06778947489002933,
+        "CABINET": 0.0,
+        "SOFA": 0.03185999358504399,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.04270527859237536,
+        "APPLIANCE": 0.0
+      },
+      "selected": true
+    },
+    {
+      "mask": "ADE_val_00000304.png",
+      "fractions": {
+        "TABLE": 0.05917910793768546,
+        "CHAIR": 0.10614973571958457,
+        "CABINET": 0.2725681565281899,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000305.png",
+      "fractions": {
+        "TABLE": 0.20563289256954612,
+        "CHAIR": 0.2251241077964861,
+        "CABINET": 0.11523151537335286,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000306.png",
+      "fractions": {
+        "TABLE": 0.19270986880896226,
+        "CHAIR": 0.01998958947523585,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000307.png",
+      "fractions": {
+        "TABLE": 0.06500244140625,
+        "CHAIR": 0.129486083984375,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000308.png",
+      "fractions": {
+        "TABLE": 0.08093826233814974,
+        "CHAIR": 0.27095515106023643,
+        "CABINET": 0.0,
+        "SOFA": 0.012610245824732596,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000309.png",
+      "fractions": {
+        "TABLE": 0.089228515625,
+        "CHAIR": 0.11301106770833333,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000310.png",
+      "fractions": {
+        "TABLE": 0.11528748111782477,
+        "CHAIR": 0.06613481873111783,
+        "CABINET": 0.04447047299848943,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000311.png",
+      "fractions": {
+        "TABLE": 0.055788526348039214,
+        "CHAIR": 0.1086633220996732,
+        "CABINET": 0.12366919424019608,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000312.png",
+      "fractions": {
+        "TABLE": 0.04362932375549048,
+        "CHAIR": 0.06273162975841874,
+        "CABINET": 0.016056803623718887,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000313.png",
+      "fractions": {
+        "TABLE": 0.11393106096408318,
+        "CHAIR": 0.33999881852551983,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000314.png",
+      "fractions": {
+        "TABLE": 0.02083587646484375,
+        "CHAIR": 0.13186136881510416,
+        "CABINET": 0.07761383056640625,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000315.png",
+      "fractions": {
+        "TABLE": 0.10606355234260614,
+        "CHAIR": 0.24527017752562225,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000316.png",
+      "fractions": {
+        "TABLE": 0.06955661525974026,
+        "CHAIR": 0.0707817573051948,
+        "CABINET": 0.05950689935064935,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000317.png",
+      "fractions": {
+        "TABLE": 0.069110789427157,
+        "CHAIR": 0.028462583981612447,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.001055295261669024,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000318.png",
+      "fractions": {
+        "TABLE": 0.0848236083984375,
+        "CHAIR": 0.034891764322916664,
+        "CABINET": 0.0,
+        "SOFA": 0.021998087565104168,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": true
+    },
+    {
+      "mask": "ADE_val_00000319.png",
+      "fractions": {
+        "TABLE": 0.09024870986238533,
+        "CHAIR": 0.13914850917431193,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000320.png",
+      "fractions": {
+        "TABLE": 0.087493896484375,
+        "CHAIR": 0.263275146484375,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000321.png",
+      "fractions": {
+        "TABLE": 0.047566731770833336,
+        "CHAIR": 0.06995646158854167,
+        "CABINET": 0.14543660481770834,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000322.png",
+      "fractions": {
+        "TABLE": 0.11857618979357798,
+        "CHAIR": 0.09067397744648319,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000323.png",
+      "fractions": {
+        "TABLE": 0.037569681803385414,
+        "CHAIR": 0.1383997599283854,
+        "CABINET": 0.04888153076171875,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.005826314290364583,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000324.png",
+      "fractions": {
+        "TABLE": 0.13269525530746706,
+        "CHAIR": 0.10077896229868229,
+        "CABINET": 0.022971380856515372,
+        "SOFA": 0.025948252196193265,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": true
+    },
+    {
+      "mask": "ADE_val_00000325.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000326.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.007545827152963574,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000327.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000328.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000329.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000330.png",
+      "fractions": {
+        "TABLE": 0.019867924528301887,
+        "CHAIR": 0.0,
+        "CABINET": 0.07881132075471699,
+        "SOFA": 0.0,
+        "BED": 0.17547169811320754,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000331.png",
+      "fractions": {
+        "TABLE": 0.0897062866568915,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.2982754078079179,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000332.png",
+      "fractions": {
+        "TABLE": 0.058966503267973855,
+        "CHAIR": 0.03283547794117647,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.1991293913398693,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000333.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000334.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000335.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000336.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.14141333333333334,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.44782933333333336,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": true
+    },
+    {
+      "mask": "ADE_val_00000337.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000338.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000339.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000340.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000341.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000342.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000343.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000344.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000345.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000346.png",
+      "fractions": {
+        "TABLE": 0.03742857142857143,
+        "CHAIR": 0.11241071428571428,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000347.png",
+      "fractions": {
+        "TABLE": 0.0027333333333333333,
+        "CHAIR": 0.057975,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000348.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.3114304996339678,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000349.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000350.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000351.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000352.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000353.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.26707261029411766,
+        "APPLIANCE": 0.0
+      },
+      "selected": true
+    },
+    {
+      "mask": "ADE_val_00000354.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000355.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.015976047904191618,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000356.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.15140195186084143,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000357.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000358.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.07960914622986823,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000359.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000360.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000361.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000362.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000363.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000364.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000365.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000366.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000367.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000368.png",
+      "fractions": {
+        "TABLE": 0.003448753462603878,
+        "CHAIR": 0.006481994459833795,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000369.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000370.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000371.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000372.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.37176290263543194,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.200559914897511
+      },
+      "selected": true
+    },
+    {
+      "mask": "ADE_val_00000373.png",
+      "fractions": {
+        "TABLE": 0.007612326134699854,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.06138474560761347,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": true
+    },
+    {
+      "mask": "ADE_val_00000374.png",
+      "fractions": {
+        "TABLE": 0.0044640963008309945,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000375.png",
+      "fractions": {
+        "TABLE": 0.03433839677891654,
+        "CHAIR": 0.023917917276720352,
+        "CABINET": 0.0,
+        "SOFA": 0.10295227855051245,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": true
+    },
+    {
+      "mask": "ADE_val_00000376.png",
+      "fractions": {
+        "TABLE": 0.010029641897081413,
+        "CHAIR": 0.006579421082949309,
+        "CABINET": 0.001659106182795699,
+        "SOFA": 0.02230042722734255,
+        "BED": 0.0,
+        "SHELF": 0.0006840437788018433,
+        "COUNTER": 0.03382116455453149,
+        "APPLIANCE": 0.0
+      },
+      "selected": true
+    },
+    {
+      "mask": "ADE_val_00000377.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.008833394130998703,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000378.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000379.png",
+      "fractions": {
+        "TABLE": 0.041770566434846265,
+        "CHAIR": 0.0,
+        "CABINET": 0.04426130124450952,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.007463625549048316,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000380.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000381.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000382.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000383.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000384.png",
+      "fractions": {
+        "TABLE": 0.00206756591796875,
+        "CHAIR": 0.004842122395833333,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000385.png",
+      "fractions": {
+        "TABLE": 0.056383258601756955,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.1106217972181552,
+        "COUNTER": 0.12494566709370425,
+        "APPLIANCE": 0.0
+      },
+      "selected": true
+    },
+    {
+      "mask": "ADE_val_00000386.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000387.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000388.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000389.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000390.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000391.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000392.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000393.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000394.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000395.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.014986666666666667,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000396.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.02310546875,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000397.png",
+      "fractions": {
+        "TABLE": 0.009429931640625,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.016387939453125,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000398.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000399.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000400.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.17993923611111112,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000401.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000402.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000403.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000404.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000405.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000406.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000407.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000408.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000409.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000410.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000411.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000412.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000413.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000414.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000415.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000416.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000417.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000418.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000419.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000420.png",
+      "fractions": {
+        "TABLE": 0.015685052159590044,
+        "CHAIR": 0.032902864202049784,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.012954108711566617,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000421.png",
+      "fractions": {
+        "TABLE": 0.0959930419921875,
+        "CHAIR": 0.0602569580078125,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.02154541015625,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000422.png",
+      "fractions": {
+        "TABLE": 0.1262467972181552,
+        "CHAIR": 0.054004049231332354,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000423.png",
+      "fractions": {
+        "TABLE": 0.07678097547584187,
+        "CHAIR": 0.07819935029282576,
+        "CABINET": 0.008430179355783309,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000424.png",
+      "fractions": {
+        "TABLE": 0.028210913872452333,
+        "CHAIR": 0.042060749506903354,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000425.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.17711188779239767,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000426.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000427.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000428.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000429.png",
+      "fractions": {
+        "TABLE": 0.011652978587115666,
+        "CHAIR": 0.07386701592240118,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000430.png",
+      "fractions": {
+        "TABLE": 0.0233,
+        "CHAIR": 0.01571111111111111,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.10082222222222222,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000431.png",
+      "fractions": {
+        "TABLE": 0.029607213438735177,
+        "CHAIR": 0.07429594861660078,
+        "CABINET": 0.1373147233201581,
+        "SOFA": 0.0,
+        "BED": 0.21284584980237153,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000432.png",
+      "fractions": {
+        "TABLE": 0.027591973244147156,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.055251134734830384,
+        "BED": 0.12833701624462493,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000433.png",
+      "fractions": {
+        "TABLE": 0.0049900484992679356,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.3423859580893119,
+        "SHELF": 0.002390647877013177,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000434.png",
+      "fractions": {
+        "TABLE": 0.03899100933382137,
+        "CHAIR": 0.039491443997071746,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.28628580252562225,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000435.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000436.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000437.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000438.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000439.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000440.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000441.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000442.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000443.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000444.png",
+      "fractions": {
+        "TABLE": 0.1434416278166278,
+        "CHAIR": 0.05837825369075369,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000445.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000446.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000447.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000448.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.00859126984126984,
+        "CABINET": 0.023386243386243386,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000449.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.011077880859375,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000450.png",
+      "fractions": {
+        "TABLE": 0.016338238962334748,
+        "CHAIR": 0.021264654527313544,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.10490978631412655,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000451.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000452.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000453.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000454.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000455.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000456.png",
+      "fractions": {
+        "TABLE": 0.063088,
+        "CHAIR": 0.019621333333333334,
+        "CABINET": 0.10829866666666667,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.042661333333333336,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000457.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.0,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000458.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.08178818173499268,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000459.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.28507254464285714,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000460.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.01771508193597561,
+        "CABINET": 0.2350538300304878,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.1984178496570122
+      },
+      "selected": true
+    },
+    {
+      "mask": "ADE_val_00000461.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.1362612097364568,
+        "CABINET": 0.16469161786237188,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.04825905929721815
+      },
+      "selected": true
+    },
+    {
+      "mask": "ADE_val_00000462.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.288637037037037,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.06632592592592593
+      },
+      "selected": true
+    },
+    {
+      "mask": "ADE_val_00000463.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0651702880859375,
+        "CABINET": 0.22640482584635416,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.016253153483072918
+      },
+      "selected": true
+    },
+    {
+      "mask": "ADE_val_00000464.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.3790201822916667,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.020992838541666666,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000465.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.4383653951401051,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000466.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.22698465983072916,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.10485331217447917
+      },
+      "selected": true
+    },
+    {
+      "mask": "ADE_val_00000467.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.4787644125183016,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000468.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.30682118733723956,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.052790323893229164
+      },
+      "selected": true
+    },
+    {
+      "mask": "ADE_val_00000469.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.29729250549048314,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000470.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.15524627104685212,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000471.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.041554768880208336,
+        "CABINET": 0.2864888509114583,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.08774820963541667
+      },
+      "selected": true
+    },
+    {
+      "mask": "ADE_val_00000472.png",
+      "fractions": {
+        "TABLE": 0.009242313323572475,
+        "CHAIR": 0.03666041361639824,
+        "CABINET": 0.1401217057101025,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.10060452507320644
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000473.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.027499682848443844,
+        "CABINET": 0.3844643310216509,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0879989851150203
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000474.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.058856835651537334,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.0
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000475.png",
+      "fractions": {
+        "TABLE": 0.018762010431918007,
+        "CHAIR": 0.0,
+        "CABINET": 0.348385454795022,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.11958100750366032
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000476.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.36843369344547566,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.08276990284222738,
+        "APPLIANCE": 0.014618982018561485
+      },
+      "selected": true
+    },
+    {
+      "mask": "ADE_val_00000477.png",
+      "fractions": {
+        "TABLE": 0.058344875346260386,
+        "CHAIR": 0.0,
+        "CABINET": 0.06893286876731301,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.013926159972299169
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000478.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.11069629629629629,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.21872592592592593
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000479.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.32579154465592974,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.0,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.18495207265739386
+      },
+      "selected": false
+    },
+    {
+      "mask": "ADE_val_00000480.png",
+      "fractions": {
+        "TABLE": 0.0,
+        "CHAIR": 0.0,
+        "CABINET": 0.28385332005851754,
+        "SOFA": 0.0,
+        "BED": 0.0,
+        "SHELF": 0.012666104518855657,
+        "COUNTER": 0.0,
+        "APPLIANCE": 0.016681566970091027
+      },
+      "selected": false
+    }
+  ]
+}

@@ -67,6 +67,15 @@ $directions = @(
     [pscustomobject]@{ Key = 'right'; Text = '右侧' }
 )
 foreach ($direction in $directions) {
+    foreach ($item in @(
+        @('table','桌子'), @('chair','椅子'), @('cabinet','柜子'), @('sofa','沙发'),
+        @('bed','床'), @('shelf','架子'), @('counter','柜台或台面'), @('appliance','冰箱')
+    )) {
+        $prompts.Add([pscustomobject]@{
+            Name = "environment_$($item[0])_$($direction.Key)"
+            Text = "$($direction.Text)检测到$($item[1])。"
+        })
+    }
     $prompts.Add([pscustomobject]@{
         Name = "alert_$($direction.Key)_risk_elevated"
         Text = "$($direction.Text)目标风险升高，请注意"

@@ -1,0 +1,59 @@
+{
+  "device": "25053RT47C",
+  "model_sha256": "49166600bda475ede43b413e8b145b735fe4532361fa663646e237f19e7dad69",
+  "input_size": 384,
+  "all_kinds_enabled_for_test_only": false,
+  "audio": [
+    {
+      "phase": "requested",
+      "event": "semantic:10000:0:BED:2",
+      "elapsed_ms": 432492266,
+      "deadline_ms": 432492443
+    },
+    {
+      "phase": "accepted",
+      "event": "semantic:10000:0:BED:2",
+      "elapsed_ms": 432492271,
+      "deadline_ms": 432492443
+    },
+    {
+      "phase": "onStart",
+      "event": "semantic:10000:0:BED:2",
+      "text": "前方检测到床。",
+      "elapsed_ms": 432492324,
+      "deadline_ms": 432492443
+    }
+  ],
+  "cases": [
+    {
+      "image": "ADE_val_00000161.jpg",
+      "observations": [
+        {
+          "latency_ms": 514,
+          "source_age_ms": 810,
+          "events": []
+        },
+        {
+          "latency_ms": 273,
+          "source_age_ms": 416,
+          "events": []
+        },
+        {
+          "latency_ms": 252,
+          "source_age_ms": 342,
+          "events": [
+            "semantic:10000:0:WALL:1"
+          ]
+        },
+        {
+          "latency_ms": 244,
+          "source_age_ms": 351,
+          "events": [
+            "semantic:10000:0:WALL:1",
+            "semantic:10000:0:BED:2"
+          ]
+        }
+      ]
+    }
+  ]
+}

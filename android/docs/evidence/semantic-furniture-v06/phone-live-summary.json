@@ -1,0 +1,56 @@
+{
+  "device": "REDMI Turbo 4 Pro / 25053RT47C, API 36",
+  "scope": "actual unlocked phone ARCore image + YOLO + semantic pipeline; natural uncontrolled scene, no scene labels or metric ground truth",
+  "source_log_local_only": "android\\deliveries\\semantic-furniture-v06\\phone-live-verified.log",
+  "source_log_sha256": "d52f328ce6e4c4ebb353417e0d17cf4a565b16749a11a3b85f4775ba900e93d3",
+  "fps": {
+    "n": 173,
+    "p50": 15.334948,
+    "p95": 16.713093,
+    "max": 19.86755,
+    "min": 1.0235415
+  },
+  "sampled_pss_kb": {
+    "n": 684,
+    "p50": 492521.0,
+    "p95": 547012,
+    "max": 590567,
+    "min": 261889
+  },
+  "fallback_count": 3,
+  "models": {
+    "256": {
+      "latency_ms": {
+        "n": 502,
+        "p50": 125.0,
+        "p95": 164,
+        "max": 351,
+        "min": 88
+      },
+      "source_age_ms": {
+        "n": 502,
+        "p50": 395.0,
+        "p95": 448,
+        "max": 691,
+        "min": 343
+      }
+    },
+    "384": {
+      "latency_ms": {
+        "n": 6,
+        "p50": 399.0,
+        "p95": 573,
+        "max": 573,
+        "min": 218
+      },
+      "source_age_ms": {
+        "n": 6,
+        "p50": 664.0,
+        "p95": 907,
+        "max": 907,
+        "min": 463
+      }
+    }
+  },
+  "interpretation": "384 does not meet freshness in observed concurrent phone startup; automatic bed/fridge remain disabled after verified 256 fallback. Do not equate standalone bitmap success with live furniture acceptance."
+}

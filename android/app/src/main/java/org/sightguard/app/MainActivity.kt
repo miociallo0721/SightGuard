@@ -82,6 +82,7 @@ class MainActivity : ComponentActivity() {
     private lateinit var environmentEngine: SemanticEnvironmentEngine
     private var environmentStatus by mutableStateOf("墙面：等待有效语义观测")
     private val semanticPending = mutableSetOf<String>()
+    private val environmentSpeechDeduplicator = EnvironmentSpeechDeduplicator()
     private var lastRapidAtMs = -1L
     private var gridEnabled by mutableStateOf(false)
     private var imuEnabled by mutableStateOf(true)
@@ -196,6 +197,9 @@ class MainActivity : ComponentActivity() {
         environmentEngine = SemanticEnvironmentEngine(loadEnvironmentConfig(this))
         arSpeech=ArSpeechPolicy(loadArSpeechConfig(this))
         autoStart = getSharedPreferences("perception", MODE_PRIVATE).getBoolean("auto_start", true)
+        // Debug fixture host keeps the target UID foreground without camera/model overlap.
+        // It never edits the user's saved auto-start setting and cannot affect release builds.
+        if(BuildConfig.DEBUG && intent.getBooleanExtra("foreground_fixture_test",false)) autoStart=false
         muted = getSharedPreferences("perception", MODE_PRIVATE).getBoolean("muted", false)
         arEnabled = getSharedPreferences("perception", MODE_PRIVATE).getBoolean("ar_enabled", true)
         videoMode = savedInstanceState?.getBoolean("video_mode") ?: false
@@ -218,7 +222,7 @@ class MainActivity : ComponentActivity() {
         if (running || isFinishing || isDestroyed || !lifecycle.currentState.isAtLeast(androidx.lifecycle.Lifecycle.State.STARTED)) return
         if(primaryReleasePending) { restartAfterRelease=true; status="正在释放旧会话，随后启动…"; return }
         val token = ++generation
-        environmentEngine.reset(); semanticPending.clear(); lastRapidAtMs=-1L
+        environmentEngine.reset(); semanticPending.clear(); environmentSpeechDeduplicator.reset(); lastRapidAtMs=-1L
         running = true; active = true; frame = null; videoBitmap = null; fps = 0f; latencyMs = 0; lastValidAtMs = 0
         interrupted = false; pendingSpeech.clear(); startedAtMs = SystemClock.elapsedRealtime(); videoRateStart = 0; videoRateFrames = 0
         status = "正在加载本地 YOLO26n…"; inputStatus = if (videoMode) "读取本地视频" else "等待后置摄像头"
@@ -313,7 +317,12 @@ class MainActivity : ComponentActivity() {
         val availability=com.google.ar.core.ArCoreApk.getInstance().checkAvailability(this)
         Log.i("SG_AR","availability=$availability")
         if(availability!=com.google.ar.core.ArCoreApk.Availability.SUPPORTED_INSTALLED) {
-            arStatus="空间测量暂不可用：$availability";return false
+            diagnostics.record("ar_availability",JSONObject().put("availability",availability.toString()))
+            arStatus="空间测量暂不可用："+when(availability.toString()) {
+                "UNSUPPORTED_DEVICE_NOT_CAPABLE" -> "当前设备不支持，基础感知仍可使用。"
+                "SUPPORTED_NOT_INSTALLED", "SUPPORTED_APK_TOO_OLD" -> "空间服务需要安装或更新，基础感知仍可使用。"
+                else -> "空间服务尚未就绪，基础感知仍可使用。"
+            };return false
         }
         return try {
             var first=0L;var count=0;var rateStart=SystemClock.elapsedRealtime();var rateFrames=0
@@ -353,7 +362,7 @@ class MainActivity : ComponentActivity() {
                 }
             })
             inputStatus="ARCore 相机 · 离线图像分析";arStatus="空间测量：等待跟踪与深度";true
-        } catch(error: Exception) {Log.w("SG_AR","fallback to CameraX",error);arFailed=true;arStatus="空间测量暂不可用：${error.javaClass.simpleName}";false}
+        } catch(error: Exception) {Log.w("SG_AR","fallback to CameraX",error);arFailed=true;arStatus="空间测量暂不可用：启动受限，基础感知仍可使用。";false}
     }
     private fun invalidateAr(reason: String) {
         arInvalidatedAtMs=SystemClock.elapsedRealtime();spatialSession?.invalidateArEvidence()
@@ -435,6 +444,12 @@ class MainActivity : ComponentActivity() {
             SpeechPlaybackPhase.ON_START -> {
                 pendingSpeech.remove(event.eventId)
                 if (running && generation == pending.token && (!videoMode || videoEpoch == pending.epoch)) {
+                    val spokenIds = (pending.presentation.merged + pending.presentation.alert).map { it.eventId }.toSet()
+                    pending.result.risk.frame.observations.filter { it.eventId in spokenIds }.forEach { observation ->
+                        observation.features?.spatial?.bboxNormalized?.let { box ->
+                            environmentSpeechDeduplicator.yoloStarted(pending.token,pending.epoch,observation.classId,box,event.elapsedRealtimeMs,event.spokenText.orEmpty())
+                        }
+                    }
                     pending.stage.presenter.accepted(pending.presentation, pending.result.risk, event.elapsedRealtimeMs)
                     worker?.execute { if (active && generation == pending.token) pending.stage.accept(pending.presentation) }
                 }
@@ -444,7 +459,7 @@ class MainActivity : ComponentActivity() {
         }
     }
     private fun seekVideo(position: Long) {
-        environmentEngine.reset(); semanticPending.clear()
+        environmentEngine.reset(); semanticPending.clear(); environmentSpeechDeduplicator.reset()
         spatialSnapshot = null; environmentOverview = "当前环境信息不足。"
         videoEpoch++; pendingSpeech.clear(); speech.cancelAlerts("video_seek")
         videoPosition = position.coerceIn(0, (videoDuration - 1).coerceAtLeast(0)); frame = null; videoBitmap = null; fps = 0f
@@ -473,7 +488,7 @@ class MainActivity : ComponentActivity() {
         restartAfterRelease = false
         if (!running) { if (stopSpeech) speech.stop(false); return }
         invalidateAr("session_stopped");arSpeech.reset();arSource?.close();arSource=null
-        environmentEngine.reset(); semanticPending.clear(); environmentStatus="墙面：感知已停止"
+        environmentEngine.reset(); semanticPending.clear(); environmentSpeechDeduplicator.reset(); environmentStatus="墙面：感知已停止"
         metricResearchStatus="米制研究：感知已停止，旧结果不再有效"
         running = false; active = false; generation++; pendingSpeech.clear(); videoPlaying = false; videoEpoch++
         spatialSession?.let { old -> spatialReleasePending=true; old.release { spatialReleasePending=false; if(running) startSpatialSession() } }; spatialSession = null; spatialSnapshot = null; spatialStatus = "空间资源已释放"; environmentOverview = "当前环境信息不足。"
@@ -514,7 +529,7 @@ class MainActivity : ComponentActivity() {
 
     private fun startSpatialSession() {
         invalidateAr("spatial_session_changed")
-        environmentEngine.reset(); semanticPending.clear(); speech.cancelSemanticExcept(emptySet(),"semantic_settings_changed")
+        environmentEngine.reset(); semanticPending.clear(); environmentSpeechDeduplicator.reset(); speech.cancelSemanticExcept(emptySet(),"semantic_settings_changed")
         environmentStatus=if(spatialEnabled) "墙面：等待有效语义观测" else "墙面：语义提示关闭"
         spatialSnapshot = null; environmentOverview = "当前环境信息不足。"
         imuMonitor?.close(); imuMonitor = null
@@ -548,6 +563,7 @@ class MainActivity : ComponentActivity() {
         }, { key -> imuMonitor?.evidence(key) ?: MotionEvidence(MotionQuality.UNKNOWN, if(videoMode) "video not synchronized to device IMU" else "IMU disabled") }, ::onSemanticEvidence, {
             if(running && generation==token) {
                 environmentEngine.invalidate(SystemClock.elapsedRealtime(),"墙面：画面变化，等待重新确认")
+                environmentSpeechDeduplicator.reset()
                 speech.cancelSemanticExcept(emptySet(),"semantic_scene_changed")
                 invalidateAr("scene_changed")
                 environmentStatus=environmentEngine.status
@@ -608,8 +624,9 @@ class MainActivity : ComponentActivity() {
         val key=evidence.key; val now=SystemClock.elapsedRealtime()
         if(!running || generation!=key.generation || (videoMode && (videoEpoch!=key.epoch || !videoPlaying))) return
         val rapid=motion.quality==MotionQuality.RAPID || imuMonitor?.currentDeviceMotion()?.quality==MotionQuality.RAPID || lastRapidAtMs>=key.capturedAtMs
+        if(!sceneCurrent || rapid) environmentSpeechDeduplicator.reset()
         environmentEngine.observe(evidence,now,sceneCurrent,rapid)
-        diagnostics.record("semantic",JSONObject().put("source_frame_key","${key.generation}:${key.epoch}:${key.frameIndex}").put("source_ms",key.timestampMs).put("source_age_ms",now-key.capturedAtMs).put("model_sha256",SpatialDetector.MODEL_SHA).put("latency_ms",evidence.latencyMs).put("motion_quality",motion.quality.name).put("synchronized",motion.synchronized).put("scene_current",sceneCurrent).put("class_counts",JSONObject(evidence.cells.groupingBy{it.classId.toString()}.eachCount())).put("structures",JSONArray(environmentEngine.supports.map {environmentSupportJson(it)})).put("silence_reason",environmentEngine.silenceReason))
+        diagnostics.record("semantic",JSONObject().put("source_frame_key","${key.generation}:${key.epoch}:${key.frameIndex}").put("source_ms",key.timestampMs).put("source_age_ms",now-key.capturedAtMs).put("model_sha256",evidence.modelSha).put("model_input_size",evidence.inputSize).put("latency_ms",evidence.latencyMs).put("motion_quality",motion.quality.name).put("synchronized",motion.synchronized).put("scene_current",sceneCurrent).put("class_counts",JSONObject(evidence.cells.groupingBy{it.classId.toString()}.eachCount())).put("structures",JSONArray(environmentEngine.supports.map {environmentSupportJson(it)})).put("silence_reason",environmentEngine.silenceReason))
         Log.i("SG_ENV", "observed frame=${key.frameIndex} sourceMs=${key.timestampMs} ageMs=${now-key.capturedAtMs} sceneCurrent=$sceneCurrent rapid=$rapid classes=${evidence.cells.groupingBy{it.classId}.eachCount()} support=${environmentEngine.supports.map{environmentSupportJson(it)}} status=${environmentEngine.status} approach=false")
         if(!sceneCurrent || rapid) speech.cancelSemanticExcept(emptySet(),"semantic_scene_changed")
         else speech.cancelSemanticExcept(environmentEngine.validIds(now),if(now-key.capturedAtMs>environmentEngine.config.maxSourceAgeMs) "semantic_expired" else "semantic_absent")
@@ -622,6 +639,7 @@ class MainActivity : ComponentActivity() {
         if(imuMonitor?.currentDeviceMotion()?.quality==MotionQuality.RAPID) {
             lastRapidAtMs=now
             environmentEngine.invalidate(now,"墙面：设备快速转动，等待新鲜证据")
+            environmentSpeechDeduplicator.reset()
             speech.cancelSemanticExcept(emptySet(),"semantic_rapid_motion")
         }
         val notices=environmentEngine.pending(now)
@@ -629,6 +647,11 @@ class MainActivity : ComponentActivity() {
         speech.cancelSemanticExcept(environmentEngine.validIds(now),"semantic_expired")
         if(!speech.isReady || muted || (videoMode && !videoPlaying) || pendingSpeech.isNotEmpty()) return
         for(notice in notices) {
+            if(environmentSpeechDeduplicator.alreadyHeard(generation,if(videoMode) videoEpoch else 0L,notice,now)) {
+                environmentEngine.acknowledgedByDetection(notice.id)
+                diagnostics.record("semantic_dedup",JSONObject().put("event_id",notice.id).put("reason","overlapping_compatible_yolo_actual_onStart"))
+                continue
+            }
             if(notice.id in semanticPending || !speech.canQueueOrdinaryAlert) continue
             semanticPending.add(notice.id)
             Log.i("SG_ENV", "proposed event=${notice.id} frame=${notice.frameIndex} sourceMs=${notice.sourceMs} deadline=${notice.validUntilMs} text=${notice.text} riskScore=unchanged")
@@ -839,7 +862,7 @@ class MainActivity : ComponentActivity() {
                     drawRect(Color.White.copy(alpha=.25f),origin,extent,style=Stroke(1f))
                 }
             }
-            Text("${grid.state} · 运动 ${grid.motion.quality}\n黄=地面 紫=墙 红=框占用 粉=冲突 青=植被 灰=UNKNOWN/降级\n同帧研究证据，非安全通行网格",Modifier.align(Alignment.TopStart).padding(top=30.dp,start=8.dp).background(Color(0xCC090E17)).padding(5.dp),fontSize=9.sp,color=Color.White)
+            Text("${grid.state} · 运动 ${grid.motion.quality}\n黄=地面 紫=墙 红=检测框/家具语义 粉=冲突 青=植被 灰=UNKNOWN/降级\n同帧研究证据，非安全通行网格",Modifier.align(Alignment.TopStart).padding(top=30.dp,start=8.dp).background(Color(0xCC090E17)).padding(5.dp),fontSize=9.sp,color=Color.White)
         }
     }
     internal fun sessionDiagnostics(): JSONObject = JSONObject().put("arActive",arSource!=null).put("arStatus",arStatus).put("arTracking",arRecord?.geometry?.tracking).put("arPoints",arRecord?.geometry?.points?.size).put("running",running).put("generation",generation).put("modelReady",stage!=null).put("frameIndex",frame?.vision?.records?.frameIndex ?: -1).put("source",if(videoMode) "video" else "camera").put("explicitStop",autoPolicy.explicitlyStopped).put("releasePending",primaryReleasePending).put("spatialReleasePending",spatialReleasePending).put("semanticEnabled",spatialEnabled).put("debugThermalOverride",ignoreAuxThermalForTest).put("muted",muted).put("settingsPanel",settingsPanel).put("developerPanel",spatialPanel).put("currentAlert",currentAlertText()).put("environmentStatus",environmentStatus).put("fps",fps).put("latencyMs",latencyMs).put("speechStatus",speechStatus).put("lastSpeech",lastSpeech)
