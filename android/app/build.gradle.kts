@@ -23,7 +23,9 @@ android {
     androidResources { noCompress += listOf("onnx", "bin") }
     sourceSets {
         getByName("test").kotlin.directories += "src/sharedTest/java"
+        getByName("test").resources.directories += "src/sharedTest/assets"
         getByName("androidTest").kotlin.directories += "src/sharedTest/java"
+        getByName("androidTest").assets.directories += "src/sharedTest/assets"
     }
 }
 dependencies {

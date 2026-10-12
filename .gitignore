@@ -3,6 +3,12 @@ __pycache__/
 *.py[cod]
 .pytest_cache/
 .ruff_cache/
+.idea/
+*.apk
+*.aab
+*.jks
+*.keystore
+local.properties
 *.egg-info/
 dist/
 build/
@@ -10,6 +16,7 @@ models/*
 !models/.gitkeep
 outputs/*
 !outputs/.gitkeep
+output/
 examples/*
 !examples/README.md
 *.pt

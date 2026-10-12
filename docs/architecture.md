@@ -1,152 +1,29 @@
-# SightGuard 架构与既有接口
+# 架构
 
-## 当前状态索引（2026-10-11）
+SightGuard 将模型推理、证据管理、提醒策略和界面分开。Android 与桌面共享问题域和回放契约，运行管线与跟踪实现各自独立。
 
-本文件保留各阶段接口说明，以下 Phase 1–5 是已存在代码的历史扩展记录。
-完整当前调用审计见 [architecture_audit_2026-10-11.md](architecture_audit_2026-10-11.md)，
-目标领域边界与新契约提案见 [architecture_consolidation_plan.md](architecture_consolidation_plan.md)。
-目标架构不表示 Corridor Intelligence 已实现。
+## Android
 
-默认产品入口为 `sightguard ui`（FastAPI）；研究台为 `sightguard ui --research`（Gradio）。
-规则主链路在实时 LiveSession 和离线 assess 中复用 AssessmentEngine，AlertScheduler 产生
-AlertEvent。SegFormer / Path Relevance 仅离线 Shadow；Laya / Vision / Hybrid 按需 Shadow；
-Event Association v2 的跨类别同 ID 关联默认关闭。音频需要显式启用，AlertEvent 与实际播放分开。
+`CameraX / 本地视频 → VisionStage → 目标跟踪与风险事件 → SpeechController`
 
-## 模块与依赖方向
+低频辅助链：`同源图像 → SegFormer / 可选 Depth → 环境证据与 Spatial Grid → 环境事件 / 局部空间候选`。
 
-`cli → pipeline → perception / visualization`，上述模块通过 `data` 的 dataclass 交互。
-`config` 管理配置；`data.replay_records` 只使用标准库，不加载视频或视觉模型。
-`perception.yolo` 将 Ultralytics Results 转为 `Detection`，不向其他模块暴露张量。
-`pipeline.video` 新建视频级感知器、管理资源、输出及来源记录。
-`visualization.annotate` 只读取图像与帧记录，绘制 OpenCV 标注。
+- 目标主链优先；辅助任务不积压，不通过延长 TTL 掩盖过慢推理。
+- `SpatialFrameKey` 绑定会话、图像尺寸、源帧与时间。过期或来源不匹配的证据不触发新提醒。
+- 环境事件独立于既有风险评分，经统一声音队列调度；实际播放回调与事件提议分开。
+- 候选带只消费已确认的图像空间证据，使用与预览一致的映射；不生成世界坐标路线。
+- 普通界面负责状态与核心操作，研究参数留在开发者工具。
 
-Phase 2 已实现：`risk` 计算空间/运动特征及评分，`decision` 管理原生状态机与提醒抑制；
-`pipeline.assess` 读取既有感知 JSONL，导出风险帧、事件和提醒。
-`evaluation` 的独立标注与对照评估、`ui` 的 Gradio 研究台及 FastAPI 产品页均已实现，
-见下方阶段记录；真实独立标注和道路效果验证仍未完成。
-risk/decision 不得引用 YOLO、torch、Gradio；UI 只能调用核心模块。
-未来 ONNX/Core ML 可替换感知适配器；现在不实现导出或 Swift。
+代码入口：[MainActivity](../android/app/src/main/java/org/sightguard/app/MainActivity.kt)、[候选评估](../android/app/src/main/java/org/sightguard/app/LocalSpaceCandidate.kt)、[声音调度](../android/app/src/main/java/org/sightguard/app/SpeechController.kt)。
 
-## JSONL 1.0
+## 桌面
 
-一条帧记录示例：
+`CLI / UI → pipeline → perception → FrameRecord → risk / decision → AlertEvent`
 
-```json
-{"frame_index":0,"timestamp_ms":0.0,"frame_width":640,"frame_height":480,"detections":[{"track_id":1,"class_id":0,"class_name":"person","confidence":0.91,"bbox_xyxy":[12.0,20.0,100.0,220.0]}],"status":"ok","error":null,"timestamp_source":"video_pts","schema_version":"1.0"}
-```
+`perception` 适配 YOLO26n / BoT-SORT；`risk` 与 `decision` 不依赖模型或 UI 对象。`evaluation` 管理独立标注与对照，`audio` 管理可选空间音频。已保存的感知结果可以重放，不必重复模型推理。
 
-帧编号从 0 开始，顺序连续。时间是视频时间，毫秒；坐标是当前帧原始像素，不是模型输入缩放尺寸。
-同一帧可有多个 detection，ID 可为 null；每个视频独立运行，不把 ID 跨视频关联。
-空检测为成功帧与空列表，不意味着场景安全。
-处理失败为 `processing_error`、非空 `error` 与空 detections，随后终止该运行。
-数据可从 JSONL 流式读取，反序列化拒绝未知版本、非法值与乱序记录。
-版本不支持时显式报错，不静默套用旧字段含义。重放不依赖原始视频或权重。
+历史接口与数据格式见 [PC 数据契约](reference/pc-data-contracts.md)。研究模块的深度、运动和空间证据不会自动成为正式提醒，详见[研究索引](research/README.md)。
 
-## 时间与资源生命周期
+## 资源与数据
 
-输入只支持本地 MP4。OpenCV 报告的 PTS 合法且递增时采用它；否则使用 FPS 派生的单调时间，
-各帧标记来源。该回退不是对可变帧率视频原时间的恢复。墙钟仅写入运行审计信息。
-每个 analyze 调用新建 YoloPerceptor，模型 track 对连续帧使用 persist=True。
-不得为了提速跳过空帧的跟踪更新。所有 capture/writer 在 finally 释放。
-成功完成前关闭编码器，重新打开输出，检查容器帧数和首帧解码/尺寸；完整逐帧输出解码
-由自动化测试及集成验证另行检查，此快速运行检查不保证每个压缩帧都无损坏。
-YOLO异常写入失败帧后停止，不继续传播潜在已破坏的 tracker 状态。
-提前读失败与无帧输入视为异常；没有总帧数时无法区分 EOF 与故障，显式记录这种不确定性。
-
-## 可复现性
-
-提交 uv.lock、配置、源码与测试；权重/输入/跟踪 YAML 哈希放入每次 metadata。
-软件版本、设备、实际源尺寸/FPS、输出编码、时间来源与结束原因也保存。
-模型默认参数由固定 Ultralytics 版本确定，显式传入配置中的关键推理参数。
-保留原始 JSONL 用于后续风险算法对照，不重新推理生成不同感知输入。
-输入、权重和环境一致仍不代表跨硬件严格逐位一致；检测/跟踪质量必须基于独立标注评估。
-输出视频是恒定 FPS 的可视化副本，无音频；不是研究时间的权威来源。
-
-## Phase 2 扩展
-
-Phase 1 的 config/data/perception/video 接口及 schema 1.0 保留。
-Phase 2 配置与结果另用 schema 2.0，详见 [phase2.md](phase2.md)。
-`risk.schema` 提供明确的 dataclass 和枚举；`risk.config` 为严格的嵌套 YAML 配置。
-`risk.features`、`risk.scoring`、`decision.events`、`decision.health`、`decision.alerts`
-均不引用 YOLO、torch、OpenCV、NumPy 或 UI。`risk.engine.AssessmentEngine` 将这些组件串联，
-每个实例对应一个视频，step 只使用已到达的当前帧和历史。
-pipeline 导出的旧 analyze_video 接口改为延迟导入，保持可用，同时让 assess 完全不加载视觉库。
-稳定视频标识独立于全文输入哈希；哈希仅作为审计来源，不参与事件决策。
-终端 EOF 的 censored 日志属于观测终止信息，不参与或改写此前的风险分数及提醒。
-
-## Phase 3 扩展
-
-`evaluation.schema` 为独立真值、策略提醒及匹配记录定义 schema 3.0；保留 Phase 1
-schema 1.0 和 Phase 2 schema 2.0。`dataset` 校验来源、哈希、审核状态、时间覆盖和
-development/test 分组；`importing` 创建真实视频 draft 引用并在人工审核后绑定标注哈希。
-`strategies` 使用同一个 Phase 2 AssessmentEngine 计算共享风险流，将 A/B 的简易决策和
-C 的实际核心提醒包装为统一接口，不接收 Ground Truth。
-`matching` 只评价生成后的提醒，用确定性的二分图最大匹配分配独立标注机会；
-`metrics` 按合并计数及有效时长计算指标，`runner` 保存失败状态、输入证据和完整结果。
-`protocol` 绑定数据、配置、源码、uv.lock 及依赖版本，test 必须校验冻结协议。
-`reporting` 用原生 CSV/JSON 与 Matplotlib Agg 导出静态研究图表，不依赖 UI。
-
-所有决策保持因果性；事后匹配可以查看完整标注和提醒集合，但不反馈到策略中。
-真值事件 ID 与模型事件/track ID 分离，目标类别、人工区域、时间窗及严重程度用于匹配。
-空间/尺度/运动仅为画面代理线索，不能测量真实距离、场景语义或碰撞概率。
-合成轨迹用于验证实现与评价器，不是人工道路观测；当前无真实风险效果结论。
-
-## Phase 4 扩展
-
-`ui.app` 以 Gradio Blocks 提供本地控制台（后续新增实时、标注和 Shadow 等页面）；
-`ui.services.ConsoleStore` 读取并验证已有产物，
-不重算实验指标，`ui.jobs.AnalysisJobs` 为主动上传分析创建唯一新目录并调用既有流水线。
-`ui.presentation`/`ui.plots` 使用原值和视频时间呈现表格与 Plotly 图，不参与决策。
-新增 `analyze_video(on_progress=...)` 可选帧进度回调，旧调用接口保持兼容。
-风险/决策/评价核心不引用 UI。媒体缓存和导出副本集中于 `outputs/console/`，不覆盖研究来源。
-完整边界和接口见 [ui_architecture.md](ui_architecture.md)。
-
-## Phase 5 P0–P2 实时适配
-
-`cli → live.app → live.runtime → YoloPerceptor / AssessmentEngine`；`live.display` 只展示
-实际 StepResult。采集/推理/窗口分别在采集线程、推理线程、主线程运行，单槽缓存覆盖待处理旧帧。
-FrameRecord 新增 `monotonic` 时间来源，风险与事件算法保持原实现，采集序号与连续处理序号分离。
-配置、过期处理、退出及验证边界见 [live.md](live.md)。保留独立 OpenCV CLI。
-Gradio 的 `ui.live.LiveController` 为现有 LiveSession 添加单页面所有权、心跳和资源释放，
-`ui.live_tab` 新增第五个实时页。内存 JPEG 与原始结果绑定，UI 不生成评分或提醒。
-
-
-## Spatial 原生音频适配
-
-`spatial.risk_adapter` 仅将现有 AlertEvent 转成 SpatialCue，不修改评分或事件条件。
-`spatial.navigation_adapter` 提供听者相对方向的手动模拟，统一交给有界 TTL/优先级调度与
-独立 AudioWorker；OpenAL Soft ctypes 后端实际查询 HRTF，失败不停止视觉流程。
-产品网页通过 `ui.product_live` 复用现有控制器，研究台保留独立试听页。
-摄像头先设置尺寸/FPS、最后设置 MJPG，时间戳仍使用 monotonic。
-详见 [空间音频架构](spatial_audio_architecture.md)及[验证记录](spatial_audio_validation.md)。
-
-## Hybrid Intelligence 影子研究
-
-`live.runtime` 在原规则提醒/音频提交之后，将不可变 LiveResult 引用交给
-`hybrid.manager` 的容量一最新状态槽。独立语义线程拥有选定辅助模型的子进程；
-模型加载失败、超时、OOM、卸载与模式切换均不重建摄像头或 Phase 2 引擎。
-`hybrid.input` 提取原图/检测/时序特征，排除规则最终风险标签；`hybrid.schema`
-定义版本化结果、同源事件比较和标签融合。四种模式都是研究选择，实际 AlertEvent
-及空间音频仍来自现有规则链路。产品网页通过 `/api/live/intelligence` 与已有所有权
-控制器交互，研究控制台保持原入口。详见 [Hybrid 架构](hybrid_intelligence_architecture.md)。
-
-GPU 可行性工具独立于 UI 和规则引擎。Vision 精度适配保留 FP32 readout，仅 CUDA
-encoder 使用 FP16；实际参数 dtype/device 写入记录，2026-10-11 已完成真实 CUDA 前向与
-固定输入实测。Windows 隔离
-模型进程使用 safetensors pread 读取以规避历史 GPU 研究发现的 mmap 原生故障，权重哈希在加载
-前验证。当前 `configs/hybrid.yaml` 中 Structured 是 CPU INT8 ONNX，Vision 是
-auto / FP32，且辅助模型仍默认不加载；隔离 CUDA 研究不等于正式提醒接管。
-见 [GPU 研究记录](hybrid_gpu_feasibility.md)。
-
-## 产品演示与 Path Relevance 边界
-
-产品页 `ui.product_app` 复用 AnalysisJobs 执行 MP4 感知和风险重放，实时 API 复用
-LiveController / LiveSession。MP4 展示的 `DemoGuidance` suggestion 和浏览器语音试听
-由独立图像区域演示规则产生，不是 AlertScheduler 的 AlertEvent；手动 NavigationCue
-也是模拟方向输入，没有实际导航能力。
-
-`path_relevance.model` 使用本地 SegFormer MiT-B0 / ADE20K，`engine` 估计图像语义地面
-连通候选及目标相关性，`pipeline` 复用原视频和既有 tracks/risk/alerts 生成离线 Shadow。
-Research Console 只浏览这些结果；未接入实时、正式评分、提醒或音频。
-当前没有统一空间网格、可靠相机姿态、度量深度或经验证的可通行走廊。
-权威批次与限制见 [Path Relevance 验证](path_relevance_validation.md)。
+模型、原始视频、构建缓存和本机交付物不提交 Git。模型清单、配置、锁文件、必要的小型固定回放样本和可复现工具保留。JVM 和 Android 对照测试共享 `android/app/src/sharedTest/assets/`，避免两份大数据漂移。
