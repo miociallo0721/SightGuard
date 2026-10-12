@@ -728,8 +728,25 @@ class MainActivity : ComponentActivity() {
                 if(spaceView=="环境语义") SemanticOverlay(snapshot.semantics,snapshot.key.width,snapshot.key.height)
                 if(spaceView=="Spatial Grid") GridOverlay(snapshot.grid,snapshot.key.width,snapshot.key.height)
                 if(boxesEnabled) BoxesOverlay(snapshot.detections,snapshot.key.width,snapshot.key.height)
-            } else if(boxesEnabled) DetectionOverlay(frame)
+            } else {
+                LocalSpacePreviewOverlay()
+                if(boxesEnabled) DetectionOverlay(frame)
+            }
         }
+    }
+    @Composable private fun LocalSpacePreviewOverlay() {
+        val record=localSpacePreviewRecord(displayNow) ?: return
+        LocalSpaceBandOverlay(record)
+    }
+    private fun localSpacePreviewRecord(now: Long): LocalSpaceRecord? {
+        val primary=frame ?: return null
+        val record=localSpace.current ?: return null
+        if(!running || !spatialEnabled || (videoMode && !videoPlaying) ||
+            !ResultFreshness.isCurrent(primary.receivedAtMs,now) ||
+            !LocalSpacePreview.visible(record,now,generation,if(videoMode) videoEpoch else 0L,
+                primary.width,primary.height,imuMonitor?.currentDeviceMotion()?.quality==MotionQuality.RAPID) ||
+            LocalSpacePreview.obstructed(record,primary.vision.raw)) return null
+        return record
     }
     @Composable private fun DetectionOverlay(result: FrameResult?) {
         if (result != null) BoxesOverlay(result.vision.raw, result.width, result.height,null)
@@ -799,7 +816,7 @@ class MainActivity : ComponentActivity() {
             Text("${grid.state} · 运动 ${grid.motion.quality}\n黄=地面 紫=墙 红=检测框/家具语义 粉=冲突 青=植被 灰=UNKNOWN/降级\n同帧研究证据，非安全通行网格",Modifier.align(Alignment.TopStart).padding(top=30.dp,start=8.dp).background(Color(0xCC090E17)).padding(5.dp),fontSize=9.sp,color=Color.White)
         }
     }
-    internal fun sessionDiagnostics(): JSONObject = JSONObject().put("arActive",false).put("cameraBackend","CameraX").put("detectorModelSha",stage?.modelSha).put("running",running).put("generation",generation).put("modelReady",stage!=null).put("frameIndex",frame?.vision?.records?.frameIndex ?: -1).put("source",if(videoMode) "video" else "camera").put("explicitStop",autoPolicy.explicitlyStopped).put("releasePending",primaryReleasePending).put("spatialReleasePending",spatialReleasePending).put("semanticEnabled",spatialEnabled).put("debugThermalOverride",ignoreAuxThermalForTest).put("muted",muted).put("settingsPanel",settingsPanel).put("developerPanel",spatialPanel).put("currentAlert",currentAlertText()).put("environmentStatus",environmentStatus).put("fps",fps).put("latencyMs",latencyMs).put("speechStatus",speechStatus).put("lastSpeech",lastSpeech)
+    internal fun sessionDiagnostics(): JSONObject = JSONObject().put("localSpaceStatus",localSpace.current?.status).put("previewBandVisible",localSpacePreviewRecord(SystemClock.elapsedRealtime())!=null).put("previewBandCells",localSpace.current?.previewCells?.size ?: 0).put("arActive",false).put("cameraBackend","CameraX").put("detectorModelSha",stage?.modelSha).put("running",running).put("generation",generation).put("modelReady",stage!=null).put("frameIndex",frame?.vision?.records?.frameIndex ?: -1).put("source",if(videoMode) "video" else "camera").put("explicitStop",autoPolicy.explicitlyStopped).put("releasePending",primaryReleasePending).put("spatialReleasePending",spatialReleasePending).put("semanticEnabled",spatialEnabled).put("debugThermalOverride",ignoreAuxThermalForTest).put("muted",muted).put("settingsPanel",settingsPanel).put("developerPanel",spatialPanel).put("currentAlert",currentAlertText()).put("environmentStatus",environmentStatus).put("fps",fps).put("latencyMs",latencyMs).put("speechStatus",speechStatus).put("lastSpeech",lastSpeech)
     private fun timeLabel(ms: Long) = "%02d:%02d".format(ms / 60000, ms / 1000 % 60)
     private fun recordJson(result: VisionResult): JSONObject = JSONObject()
         .put("android_relevance_policy", "android-relevance-1.0")
