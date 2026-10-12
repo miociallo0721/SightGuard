@@ -9,8 +9,8 @@ android {
         applicationId = "org.sightguard.app"
         minSdk = 26
         targetSdk = 36
-        versionCode = 8
-        versionName = "0.7-yoloe-camerax"
+        versionCode = 9
+        versionName = "0.8-local-space"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         ndk { abiFilters += listOf("arm64-v8a", "armeabi-v7a", "x86_64") }
     }

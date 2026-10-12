@@ -1,0 +1,11 @@
+{
+  "schema_version": 1,
+  "max_age_ms": 1200,
+  "max_gap_ms": 4000,
+  "confirmations": 3,
+  "cooldown_ms": 20000,
+  "min_ground": 0.75,
+  "max_occupancy": 0.08,
+  "min_connected": 0.65,
+  "tie_margin": 0.15
+}

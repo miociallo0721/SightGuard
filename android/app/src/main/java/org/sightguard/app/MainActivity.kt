@@ -74,6 +74,9 @@ class MainActivity : ComponentActivity() {
     private var spatialEnabled by mutableStateOf(true)
     private var ignoreAuxThermalForTest = false
     private lateinit var environmentEngine: SemanticEnvironmentEngine
+    private lateinit var localSpace: LocalSpaceCandidateEvaluator
+    private var localSpaceStatus by mutableStateOf("局部空间：等待有效证据")
+    private var localSpacePending: String? = null
     private var environmentStatus by mutableStateOf("墙面：等待有效语义观测")
     private val semanticPending = mutableSetOf<String>()
     private val environmentSpeechDeduplicator = EnvironmentSpeechDeduplicator()
@@ -161,7 +164,7 @@ class MainActivity : ComponentActivity() {
     private val watchdog = object : Runnable {
         override fun run() {
             displayNow = SystemClock.elapsedRealtime()
-            if(running) serviceEnvironment()
+            if(running) { serviceEnvironment(); serviceLocalSpace() }
             val snapshot = spatialSnapshot
             if (snapshot != null && !(videoMode && !videoPlaying && frame?.vision?.records?.frameIndex == snapshot.key.frameIndex) && SystemClock.elapsedRealtime() - snapshot.key.capturedAtMs > SpatialSessionAnalyzer.RESULT_TTL_MS) {
                 spatialSnapshot = null; environmentOverview = "当前环境信息不足。"
@@ -190,6 +193,7 @@ class MainActivity : ComponentActivity() {
             intent.getBooleanExtra("ignore_aux_thermal_for_test",false)
         baselineDetector = getSharedPreferences("perception", MODE_PRIVATE).getBoolean("baseline_detector",false)
         environmentEngine = SemanticEnvironmentEngine(loadEnvironmentConfig(this))
+        localSpace = LocalSpaceCandidateEvaluator(loadLocalSpaceConfig(this))
         autoStart = getSharedPreferences("perception", MODE_PRIVATE).getBoolean("auto_start", true)
         // Debug fixture host keeps the target UID foreground without camera/model overlap.
         // It never edits the user's saved auto-start setting and cannot affect release builds.
@@ -215,7 +219,7 @@ class MainActivity : ComponentActivity() {
         if (running || isFinishing || isDestroyed || !lifecycle.currentState.isAtLeast(androidx.lifecycle.Lifecycle.State.STARTED)) return
         if(primaryReleasePending) { restartAfterRelease=true; status="正在释放旧会话，随后启动…"; return }
         val token = ++generation
-        environmentEngine.reset(); semanticPending.clear(); environmentSpeechDeduplicator.reset(); lastRapidAtMs=-1L
+        localSpace.reset(); speech.cancelLocalSpaceExcept(emptySet(),"session_changed"); localSpacePending=null; localSpaceStatus="局部空间：等待有效证据"; environmentEngine.reset(); semanticPending.clear(); environmentSpeechDeduplicator.reset(); lastRapidAtMs=-1L
         running = true; active = true; frame = null; videoBitmap = null; fps = 0f; latencyMs = 0; lastValidAtMs = 0
         interrupted = false; pendingSpeech.clear(); startedAtMs = SystemClock.elapsedRealtime(); videoRateStart = 0; videoRateFrames = 0
         status = if(baselineDetector) "正在加载本地 YOLO26n…" else "正在加载本地 YOLOE…"; inputStatus = if (videoMode) "读取本地视频" else "等待后置摄像头"
@@ -364,6 +368,11 @@ class MainActivity : ComponentActivity() {
     }
     private fun onPlayback(event: SpeechPlaybackEvent) {
         diagnostics.record("audio",JSONObject().put("phase",event.phase.logName).put("event_id",event.eventId).put("requested_text",event.requestedText).put("spoken_text",event.spokenText).put("deadline_ms",event.validUntilElapsedMs).put("detail",event.detail).put("resource",event.resourceName))
+        if(event.eventId?.startsWith("local-space:")==true) {
+            if(event.phase==SpeechPlaybackPhase.ON_START) localSpace.playbackStarted(event.eventId,event.elapsedRealtimeMs)
+            if(event.phase in setOf(SpeechPlaybackPhase.ON_START,SpeechPlaybackPhase.SUPPRESSED,SpeechPlaybackPhase.CANCELLED)) localSpacePending=null
+            return
+        }
         if(event.eventId?.startsWith("semantic:")==true) {
             if(event.phase==SpeechPlaybackPhase.ON_START) {
                 environmentEngine.playbackStarted(event.eventId)
@@ -392,7 +401,7 @@ class MainActivity : ComponentActivity() {
         }
     }
     private fun seekVideo(position: Long) {
-        environmentEngine.reset(); semanticPending.clear(); environmentSpeechDeduplicator.reset()
+        localSpace.reset(); speech.cancelLocalSpaceExcept(emptySet(),"session_changed"); localSpacePending=null; localSpaceStatus="局部空间：等待有效证据"; environmentEngine.reset(); semanticPending.clear(); environmentSpeechDeduplicator.reset()
         spatialSnapshot = null; environmentOverview = "当前环境信息不足。"
         videoEpoch++; pendingSpeech.clear(); speech.cancelAlerts("video_seek")
         videoPosition = position.coerceIn(0, (videoDuration - 1).coerceAtLeast(0)); frame = null; videoBitmap = null; fps = 0f
@@ -420,7 +429,7 @@ class MainActivity : ComponentActivity() {
     private fun stopPerception(announce: Boolean = true, stopSpeech: Boolean = true) {
         restartAfterRelease = false
         if (!running) { if (stopSpeech) speech.stop(false); return }
-        environmentEngine.reset(); semanticPending.clear(); environmentSpeechDeduplicator.reset(); environmentStatus="墙面：感知已停止"
+        localSpace.reset(); speech.cancelLocalSpaceExcept(emptySet(),"session_changed"); localSpacePending=null; localSpaceStatus="局部空间：等待有效证据"; environmentEngine.reset(); semanticPending.clear(); environmentSpeechDeduplicator.reset(); environmentStatus="墙面：感知已停止"
         metricResearchStatus="米制研究：感知已停止，旧结果不再有效"
         running = false; active = false; generation++; pendingSpeech.clear(); videoPlaying = false; videoEpoch++
         spatialSession?.let { old -> spatialReleasePending=true; old.release { spatialReleasePending=false; if(running) startSpatialSession() } }; spatialSession = null; spatialSnapshot = null; spatialStatus = "空间资源已释放"; environmentOverview = "当前环境信息不足。"
@@ -460,7 +469,7 @@ class MainActivity : ComponentActivity() {
     override fun onDestroy() { stopPerception(false); handler.removeCallbacksAndMessages(null); speech.close(); super.onDestroy() }
 
     private fun startSpatialSession() {
-        environmentEngine.reset(); semanticPending.clear(); environmentSpeechDeduplicator.reset(); speech.cancelSemanticExcept(emptySet(),"semantic_settings_changed")
+        localSpace.reset(); speech.cancelLocalSpaceExcept(emptySet(),"session_changed"); localSpacePending=null; localSpaceStatus="局部空间：等待有效证据"; environmentEngine.reset(); semanticPending.clear(); environmentSpeechDeduplicator.reset(); speech.cancelSemanticExcept(emptySet(),"semantic_settings_changed")
         environmentStatus=if(spatialEnabled) "墙面：等待有效语义观测" else "墙面：语义提示关闭"
         spatialSnapshot = null; environmentOverview = "当前环境信息不足。"
         imuMonitor?.close(); imuMonitor = null
@@ -493,6 +502,7 @@ class MainActivity : ComponentActivity() {
             }
         }, { key -> imuMonitor?.evidence(key) ?: MotionEvidence(MotionQuality.UNKNOWN, if(videoMode) "video not synchronized to device IMU" else "IMU disabled") }, ::onSemanticEvidence, {
             if(running && generation==token) {
+                localSpace.invalidate(); speech.cancelLocalSpaceExcept(emptySet(),"scene_changed"); localSpaceStatus="局部空间：画面变化，等待确认"
                 environmentEngine.invalidate(SystemClock.elapsedRealtime(),"墙面：画面变化，等待重新确认")
                 environmentSpeechDeduplicator.reset()
                 speech.cancelSemanticExcept(emptySet(),"semantic_scene_changed")
@@ -507,6 +517,13 @@ class MainActivity : ComponentActivity() {
             if(running && generation==record.key.generation && (!videoMode || videoEpoch==record.key.epoch)) {
                 metricResearchStatus="最近米制研究记录：${record.status} · 预测光轴深度 ${record.median?.let {"%.2f m".format(it)} ?: "UNKNOWN"} · 完成时年龄 ${record.sourceAgeMs}ms · ${record.rejectionReasons.joinToString()} · 未标定"
                 diagnostics.record("wall_metric",metricWallJson(record))
+            }
+        }, {grid,evidence,current ->
+            if(running && generation==grid.key.generation && (!videoMode || videoPlaying && videoEpoch==grid.key.epoch)) {
+                val record=localSpace.observe(grid,evidence,SystemClock.elapsedRealtime(),current && lastRapidAtMs<grid.key.capturedAtMs)
+                diagnostics.record("local_space",localSpaceJson(record))
+                Log.i("SG_LOCAL_SPACE",localSpaceJson(record).toString())
+                serviceLocalSpace()
             }
         }, { imuMonitor?.currentDeviceMotion() ?: MotionEvidence(MotionQuality.UNKNOWN,"current device motion unavailable") })
     }
@@ -547,6 +564,31 @@ class MainActivity : ComponentActivity() {
             Log.i("SG_ENV", "proposed event=${notice.id} frame=${notice.frameIndex} sourceMs=${notice.sourceMs} deadline=${notice.validUntilMs} text=${notice.text} riskScore=unchanged")
             if(!speech.offer(notice.text,false,notice.id,notice.validUntilMs,notice.direction,requireExactSpeech=false)) semanticPending.remove(notice.id)
         }
+    }
+
+    private fun serviceLocalSpace() {
+        val now=SystemClock.elapsedRealtime()
+        val record=localSpace.current
+        val currentFrame=frame?.takeIf {ResultFreshness.isCurrent(it.receivedAtMs,now)}
+        val intrusion=currentFrame?.vision?.raw?.let {localSpace.obstructed(it)}==true
+        if(!running || !spatialEnabled || (videoMode && !videoPlaying) || intrusion || imuMonitor?.currentDeviceMotion()?.quality==MotionQuality.RAPID || (!videoMode && currentFrame==null)) {
+            localSpace.invalidate()
+            speech.cancelLocalSpaceExcept(emptySet(),"scene_or_obstacle_changed")
+            localSpaceStatus="局部空间：当前证据不足"
+            return
+        }
+        val valid=record?.takeIf {it.status=="SUPPORTED_CANDIDATE" && now<it.validUntilMs}
+        speech.cancelLocalSpaceExcept(valid?.eventId?.let {setOf(it)} ?: emptySet(),if(record!=null && record.validUntilMs>0 && now>=record.validUntilMs) "local_space_expired" else "candidate_changed")
+        localSpaceStatus=when {
+            valid!=null -> valid.text!!
+            record?.status=="CONFIRMING" && now<record.validUntilMs -> "局部空间：正在连续确认"
+            record?.status=="TIED" -> "局部空间：方向证据接近，暂不提示"
+            else -> "局部空间：当前证据不足"
+        }
+        val notice=localSpace.pending(now) ?: return
+        if(muted || !speech.isReady || localSpacePending!=null || pendingSpeech.isNotEmpty() || environmentEngine.pending(now).isNotEmpty() || !speech.canQueueOrdinaryAlert) return
+        localSpacePending=notice.eventId
+        if(!speech.offer(notice.text!!,false,notice.eventId,notice.validUntilMs,notice.direction)) localSpacePending=null
     }
 
     private fun describeEnvironment() {
@@ -595,6 +637,8 @@ class MainActivity : ComponentActivity() {
                 Text("语音：$speechStatus")
                 Text("最近事件：$lastEvent")
                 Text("环境：$environmentStatus")
+                Text(localSpaceStatus)
+                localSpace.current?.let {Text("${it.status} · ${it.reason} · 确认 ${it.support}",fontSize=11.sp)}
                 OutlinedButton(::exportDiagnostics,Modifier.fillMaxWidth().heightIn(min=52.dp)) {Text("导出诊断记录")}
                 if(videoMode) {
                     Text(videoName)
@@ -643,6 +687,7 @@ class MainActivity : ComponentActivity() {
         val texts=mutableListOf<String>()
         if(risk!=null) texts.add("检测到${Labels.detectionNames.getOrElse(risk.classId){"目标"}}，请注意。")
         texts.addAll(environment)
+        localSpace.current?.takeIf {it.status=="SUPPORTED_CANDIDATE" && now<it.validUntilMs}?.text?.let {texts.add(it)}
         return texts.joinToString("\n").ifBlank { if(current==null || interrupted) "当前感知受限。" else "暂无已确认的提醒。" }
     }
     @Composable private fun Screen() {
