@@ -172,12 +172,21 @@ def _synthetic_scenarios(config: RiskConfig) -> list[dict[str, Any]]:
     """Small labeled state fixtures; these are hand-authored inputs, never model output."""
     width, height = 640, 480
 
-    def detection(box: tuple[float, float, float, float], track_id: int | None = 11,
-                  confidence: float = 0.9, class_id: int = 0) -> list[float | int]:
+    def detection(
+        box: tuple[float, float, float, float],
+        track_id: int | None = 11,
+        confidence: float = 0.9,
+        class_id: int = 0,
+    ) -> list[float | int]:
         return [class_id, confidence, *box, track_id]
 
-    def raw_frame(timestamp_ms: float, detections: list[list[float | int]] | None = None,
-                  *, status: str = "ok", error: str | None = None) -> dict[str, Any]:
+    def raw_frame(
+        timestamp_ms: float,
+        detections: list[list[float | int]] | None = None,
+        *,
+        status: str = "ok",
+        error: str | None = None,
+    ) -> dict[str, Any]:
         return {
             "timestamp_ms": timestamp_ms,
             "width": width,
@@ -274,8 +283,7 @@ def _synthetic_scenarios(config: RiskConfig) -> list[dict[str, Any]]:
     result = []
     for name, description, raw_frames in definitions:
         records = [
-            _frame_record(raw, index, synthetic=True)
-            for index, raw in enumerate(raw_frames)
+            _frame_record(raw, index, synthetic=True) for index, raw in enumerate(raw_frames)
         ]
         result.append(
             {
@@ -303,8 +311,7 @@ def generate_reference(output_path: Path = DEFAULT_OUTPUT_PATH) -> dict[str, Any
         raise ValueError(f"Expected 200 saved CameraX frames; got {len(raw_detector_frames)}")
 
     records = [
-        _frame_record(raw, index, synthetic=False)
-        for index, raw in enumerate(raw_detector_frames)
+        _frame_record(raw, index, synthetic=False) for index, raw in enumerate(raw_detector_frames)
     ]
     config = RiskConfig()
     fixture = {

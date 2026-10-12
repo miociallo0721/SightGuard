@@ -43,9 +43,7 @@ def letterbox_rgb(image_bgr: np.ndarray) -> tuple[np.ndarray, dict[str, Any]]:
     resized_width = int(round(width * scale))
     resized_height = int(round(height * scale))
     rgb = cv2.cvtColor(image_bgr, cv2.COLOR_BGR2RGB)
-    resized = cv2.resize(
-        rgb, (resized_width, resized_height), interpolation=cv2.INTER_LINEAR
-    )
+    resized = cv2.resize(rgb, (resized_width, resized_height), interpolation=cv2.INTER_LINEAR)
     pad_left = (IMAGE_SIZE - resized_width) // 2
     pad_top = (IMAGE_SIZE - resized_height) // 2
     canvas = np.full((IMAGE_SIZE, IMAGE_SIZE, 3), 114, dtype=np.uint8)
@@ -189,9 +187,7 @@ def main() -> None:
             "row_count": int(rows.shape[0]),
             "count_at_or_above_0_25": int(np.count_nonzero(rows[:, 4] >= 0.25)),
             "android_min_score": 0.35,
-            "count_at_or_above_android_min_score": int(
-                np.count_nonzero(rows[:, 4] >= 0.35)
-            ),
+            "count_at_or_above_android_min_score": int(np.count_nonzero(rows[:, 4] >= 0.35)),
             "top_10_by_score": [
                 {
                     "rank": index + 1,
@@ -220,8 +216,7 @@ def main() -> None:
             "color_order": "RGB",
             "normalization": "float32 / 255.0",
             "preprocessing": (
-                "centered letterbox to 320x320; OpenCV INTER_LINEAR; "
-                "pad RGB=(114,114,114)"
+                "centered letterbox to 320x320; OpenCV INTER_LINEAR; pad RGB=(114,114,114)"
             ),
         },
         "outputs": [

@@ -22,7 +22,9 @@ SOURCE_REVISION = (
     "https://commons.wikimedia.org/w/index.php?"
     "title=File:Traffic_control_in_Mexico_City.ogv&oldid=982908504"
 )
-SOURCE_URL = "https://upload.wikimedia.org/wikipedia/commons/f/f4/Traffic_control_in_Mexico_City.ogv"
+SOURCE_URL = (
+    "https://upload.wikimedia.org/wikipedia/commons/f/f4/Traffic_control_in_Mexico_City.ogv"
+)
 LICENSE_NAME = "Creative Commons Attribution-ShareAlike 3.0 Unported (CC BY-SA 3.0)"
 LICENSE_URL = "https://creativecommons.org/licenses/by-sa/3.0/"
 ATTRIBUTION = "Uwebart, 'Traffic control in Mexico City', Wikimedia Commons"
@@ -105,8 +107,7 @@ def trim_to_mp4(source: Path, output: Path) -> dict[str, int | float]:
                 ok, frame = capture.read()
                 if not ok:
                     raise RuntimeError(
-                        f"Source ended after writing {written} of "
-                        f"{frames_to_write} frames"
+                        f"Source ended after writing {written} of {frames_to_write} frames"
                     )
                 if first_source_timestamp_ms is None:
                     first_source_timestamp_ms = float(capture.get(cv2.CAP_PROP_POS_MSEC))
@@ -147,8 +148,7 @@ def verify_output(path: Path, expected: dict[str, int | float]) -> None:
             raise RuntimeError(f"Output dimensions changed unexpectedly: {width}x{height}")
         if frame_count != expected["outputFrameCount"]:
             raise RuntimeError(
-                f"Output has {frame_count} frames, "
-                f"expected {expected['outputFrameCount']}"
+                f"Output has {frame_count} frames, expected {expected['outputFrameCount']}"
             )
         if abs(fps - float(expected["outputFps"])) > 0.01:
             raise RuntimeError(f"Output FPS changed unexpectedly: {fps}")
@@ -213,8 +213,7 @@ def main() -> None:
                 "durationMsRequested": CLIP_DURATION_MS,
                 "outputFormat": "MP4, MPEG-4 Part 2 video (mp4v), no audio",
                 "method": (
-                    "OpenCV sequentially decodes and trims frames, then re-encodes "
-                    "without overlays"
+                    "OpenCV sequentially decodes and trims frames, then re-encodes without overlays"
                 ),
                 "changes": [
                     "Trimmed to a 20-second segment starting near 20 seconds.",

@@ -1,21 +1,33 @@
-# Android 0.2 / PC 能力对照
+# Android 0.4 / PC 能力差异
 
-来源：2026-10-11仓库实现、48项JVM测试、9项Android16/API36 AVD设备测试及本机验收。下述对照限定所测输入；没有最终版本的真机测量。
+核对日期：2026-10-12，Android 稳定基线 4a1fdfb、米制研究 b3d0aeb。参数与测试范围必须按版本报告，不将单张同输入对照推断为整体精度等价。
 
-- **Detection / FrameRecord：已实现，时源有差异。** Kotlin保留像素框、类别、分数、时间与状态契约；视频时间是请求位置估计，不是解码PTS。
-- **YOLO26n：真实推理已验证，默认行为不同。** Android ONNX320/0.35/COCO80；PC默认640/0.25/类别过滤。同320真实照片的目标级对照通过，非整体精度等价。
-- **BoT-SORT：需要移植。** Android为互相最佳几何关联、速度预测、短时恢复、歧义弃配的轻量跟踪器。
-- **Risk Features / Scoring：同输入对照通过。** 纯Kotlin特征、质量、加权评分、迟滞；200帧实际CameraX保存记录和7组合成状态场景的全字段容差1e-9。
-- **AssessmentEngine / EventManager：同输入对照通过。** 候选、激活、丢失、恢复、退出、ID变化、会话隔离及事件时间；移动应用另设2.5秒恢复窗口。
-- **AlertScheduler：默认核心对照通过，移动交付有差异。** Android额外冷却、合并、方向迟滞、优先级、期限；实际音频onStart之后才提交已提醒状态。
-- **DemoGuidance：需要移植。** 当前只展示风险和感知状态，不给绕行或安全导航建议。
-- **Spatial Audio：行为不一致。** Android左/前/右中文；尚无PC空间音频研究后端和HRTF。
-- **SegFormer MiT-B0：真实Android模型验证通过，预处理不同。** 256输入、默认关闭、独立低频线程和过期机制；相同张量argmax100%、最大误差0.000118。PC默认512/INTER_AREA；图层仅表示地面语义。
-- **Depth Anything V2 Small：需要模型转换。** 本轮仅选择SegFormer验证，没有同时集成深度模型。
-- **Spatial Grid / Corridor：需要移植。** 当前没有这些研究算法，没有人工安全Mask或路线。
-- **CameraX / ONNX Runtime：已实现且AVD验证。** KEEP_ONLY_LATEST、后台串行推理、前台会话、旋转/坐标映射、停止与后台释放。ORT Android1.24.3 CPU。
-- **本地文件分析：已实现且AVD验证，回放方式不同。** SAF、兼容MP4、同帧检测Overlay、暂停/跳转/末尾重播；抽样分析而非PC完整逐帧研究回放。
-- **中文TTS / 本地音频：降级播放已验证。** 平台离线voice检查已接入；AVD缺中文离线voice，实际播放79条固定预合成片段，动态中文TTS未验证。
-- **真机性能：当前未知。** 用户报告旧MVP红米Turbo4Pro/Android16/语音开启约23FPS；新版仅AVD，不能据此推算新版手机FPS或空间模型开销。
+## 检测、跟踪与风险
 
-模型SHA、实际测试范围和限制见 [交付记录](android_pc_parity_delivery.md)。本机交互Canvas保留于D盘，不随源码发布。
+- PC：YOLO26n / BoT-SORT，默认配置 640、阈值 0.25、限定 COCO 类别；可改配置进行评测。
+- Android：YOLO26n ONNX 320、阈值 0.35、COCO80；轻量几何跟踪和短时恢复，不是完整 BoT-SORT。
+- 规则评分与事件生命周期有历史同输入对照；移动端另加风险相关性、播报冷却、方向迟滞、资源 / 会话策略，不能声称所有运行行为相同。
+- PC 已结束事件仍留在历史字典；Android 已移除 RESOLVED 事件。长会话问题见[清单](product/known-issues.md#p0-04-pc-长会话事件保留未有界化)。
+
+## 环境语义与空间证据
+
+- Android SegFormer MiT-B0 / ADE20K 256：正式环境事件自动运行，默认墙面 / 楼梯 / 杆柱 / 栏杆；图层显示不是推理开关。
+- STEP 原始 121 类和事件实现保留，真实台阶 / 路缘识别不足，自动播报关闭。
+- PC Path Relevance / Grid / Corridor：独立研究；PC 默认实时规则链没有自动接管 Android 环境语义策略。
+- 两端已有相对 Depth Anything V2 Small；相对深度不是米制测距。Android 原 Depth 真机约 0.9 秒，过期结果不能用于新语音。
+- Android 已有 15×15 Grid 和 IMU 运动质量研究；没有安全通道结论，UNKNOWN 时钟不作精确融合。
+- 新米制墙距、视觉接近与局部候选首先在 PC 研究。Android 只有默认关闭的米制适配；局部 Corridor 评估器仍仅 PC。
+
+## 声音、UI 与文件
+
+- Android：中文左 / 前 / 右固定离线语音与动态离线中文 TTS 支持。真实起播由 onStart 确认，缺少动态 voice 时描述只显示文本。
+- PC：可选 OpenAL HRTF，需显式准备 / 启用；网页试听和演示方向与正式事件分离。
+- Android：原生简洁无障碍主界面，前台自动感知、主动停止和静音；研究工具在设置中。
+- PC：FastAPI 产品演示页和按需 Gradio 研究台，是开发 / 评测工作台。
+- Android 文件分析是抽样解码，时间是请求位置估计；PC analyze 是完整帧记录，精确时间以记录的来源类型为准。二者不能直接混算延迟和召回。
+
+## 验收与仍缺少的能力
+
+0.4 稳定包有 nova12 真机模型 / 音频 / 短生命周期回归；TalkBack、200% 字体专项在 AVD。实验包后续 ADB 安装成功，但新米制 Android 推理、FPS、内存和 CameraX 时效未验证。
+
+两端都没有经过部署域验证的米制墙距播报、身体接近、净空宽度、安全路线或自动绕障。具体证据和失败见[当前状态](product/status.md)、[0.4 验收](../android/docs/accessible_awareness_v04.md)和[研究记录](../android/docs/metric_corridor_research.md)。

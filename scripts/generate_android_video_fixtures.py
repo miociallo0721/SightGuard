@@ -83,9 +83,7 @@ def write_video(
 ) -> None:
     width, height = size
     encoded_size = (height, width) if rotate_for_track else size
-    writer = cv2.VideoWriter(
-        str(path), cv2.VideoWriter_fourcc(*"mp4v"), FPS, encoded_size
-    )
+    writer = cv2.VideoWriter(str(path), cv2.VideoWriter_fourcc(*"mp4v"), FPS, encoded_size)
     if not writer.isOpened():
         raise RuntimeError(f"OpenCV could not open an MP4 writer for {path}")
     try:
