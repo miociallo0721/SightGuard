@@ -1,0 +1,99 @@
+{
+  "schema_version": "sightguard.metric-depth-model.v1",
+  "shadow_only": true,
+  "default_enabled": false,
+  "automatic_speech": false,
+  "model_id": "depth-anything/Depth-Anything-V2-Metric-Hypersim-Small",
+  "revision": "3bc65d4e14a6786a61acec16453c50e12bf5f338",
+  "checkpoint_sha256": "b782898d8a3e8be1f639de33837ed85e9b4b73e40f8f5e5cd99067588d722545",
+  "official_source_git_sha": "a561b849ebae10a6f5ef49e26c83cbbcd36c71bf",
+  "license": "Apache-2.0",
+  "quantity": "predicted_optical_axis_z_m",
+  "max_depth_m": 20,
+  "opset": 17,
+  "input_size": 280,
+  "preprocessing": {
+    "resize": "official_lower_bound_preserve_aspect_multiple_14",
+    "interpolation": "OpenCV_INTER_CUBIC_half_pixel_a_minus_0_75",
+    "channel_order": "RGB",
+    "mean": [
+      0.485,
+      0.456,
+      0.406
+    ],
+    "std": [
+      0.229,
+      0.224,
+      0.225
+    ],
+    "padding": "NONE",
+    "unsupported_aspect": "ABSTAIN_no_warp_or_letterbox"
+  },
+  "shared_weights": {
+    "file": "metric_weights.bin",
+    "sha256": "e22f7cdc34c6bf662ad7b53c58649653f6eb4101c3c55a87e25328550c36d677",
+    "bytes": 98678272
+  },
+  "graphs": [
+    {
+      "file": "metric_280x378.onnx",
+      "sha256": "e58bcbe9a18ec5568e656c538816bd02aa1e0dd115470a4924755c33a781c00e",
+      "input_shape": [
+        1,
+        3,
+        280,
+        378
+      ],
+      "output_shape": [
+        1,
+        280,
+        378
+      ]
+    },
+    {
+      "file": "metric_378x280.onnx",
+      "sha256": "f3dba666f9627d6d466d3d5b8bf6f3cdeed37b760adef07fae15cead547a6c75",
+      "input_shape": [
+        1,
+        3,
+        378,
+        280
+      ],
+      "output_shape": [
+        1,
+        378,
+        280
+      ]
+    },
+    {
+      "file": "metric_280x504.onnx",
+      "sha256": "0e2b17f492a27757620cd2ae0eeb7cdcea13613d0151c12b7d2cb6e8109946f2",
+      "input_shape": [
+        1,
+        3,
+        280,
+        504
+      ],
+      "output_shape": [
+        1,
+        280,
+        504
+      ]
+    },
+    {
+      "file": "metric_504x280.onnx",
+      "sha256": "bdde436c5de2153c54216d7714e7283cbfa3171e4324121f3cb7121ab7d6e3de",
+      "input_shape": [
+        1,
+        3,
+        504,
+        280
+      ],
+      "output_shape": [
+        1,
+        504,
+        280
+      ]
+    }
+  ]
+}

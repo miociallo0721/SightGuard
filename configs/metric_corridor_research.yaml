@@ -1,0 +1,43 @@
+schema_version: sightguard.metric-corridor-research.v1
+shadow_only: true
+automatic_metric_speech: false
+automatic_approach_speech: false
+resources:
+  minimum_free_ram_mb: 1536
+  torch_threads: 2
+  ort_threads: 2
+  gpu_memory_fraction: 0.65
+  download_limit: 8M
+  feature_freeze_utc: '2026-10-11T22:00:00+00:00'
+  operations_stop_utc: '2026-10-11T22:20:00+00:00'
+dataset:
+  sample_count_per_sequence: 100
+  maximum_depth_association_ms: 20
+  selection: uniformly_spaced_rgb_indices_before_inference
+wall:
+  minimum_confidence: 0.55
+  minimum_component_pixels: 64
+  minimum_roi_coverage: 0.08
+  minimum_valid_fraction: 0.75
+  maximum_source_age_ms: 500
+  roi_xyxy: [0.25, 0.2, 0.75, 0.9]
+approach:
+  minimum_features: 24
+  minimum_inlier_fraction: 0.75
+  minimum_quadrants: 3
+  maximum_fb_error_px: 1.0
+  maximum_residual_px: 1.25
+  maximum_rotation_rad: 0.015
+  minimum_expansion_per_second: 0.04
+  minimum_confirmations: 3
+  maximum_pair_ms: 400
+local_corridor:
+  maximum_source_age_ms: 500
+  maximum_pair_ms: 500
+  minimum_confirmations: 3
+  maximum_unknown_fraction: 0.45
+  maximum_conflict_fraction: 0.4
+  maximum_wall_fraction: 0.2
+  maximum_near_bbox_fraction: 0.4
+  minimum_semantic_confidence: 0.45
+  tie_margin: 0.03

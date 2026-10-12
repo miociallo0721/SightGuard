@@ -17,6 +17,7 @@ app/src/main/assets/*.png
 validation/validation.jpg
 app/src/androidTest/assets/*.jpg
 app/src/androidTest/assets/awareness/
+app/src/androidTest/assets/metric_research/
 validation/*.png
 validation/*.xml
 validation/*.txt

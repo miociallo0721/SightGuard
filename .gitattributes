@@ -1,0 +1,2 @@
+# Frozen fixture hashes are defined over committed LF bytes on every platform.
+datasets/synthetic/** text eol=lf
