@@ -27,6 +27,9 @@ object EnvironmentTaxonomy {
         59 -> EnvironmentKind.BED
         60 -> EnvironmentKind.TABLE
         72 -> EnvironmentKind.APPLIANCE
+        80 -> EnvironmentKind.CABINET
+        81 -> EnvironmentKind.SHELF
+        82 -> EnvironmentKind.COUNTER
         else -> null
     }
     val furnitureFamilyIds: Map<Int,Set<Int>> = furnitureClassIds.associateWith {kindForClass(it)!!.classIds}

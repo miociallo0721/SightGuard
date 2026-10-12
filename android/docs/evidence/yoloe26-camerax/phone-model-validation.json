@@ -1,0 +1,62 @@
+{
+  "device": "25053RT47C",
+  "api": 36,
+  "parity_max_bbox_delta": 3.0517578e-05,
+  "parity_matches": 4,
+  "furniture": [
+    {
+      "class_id": 59,
+      "source_class_id": 59,
+      "score": 0.77637017
+    },
+    {
+      "class_id": 60,
+      "source_class_id": 81,
+      "score": 0.6162773
+    }
+  ],
+  "runs": [
+    {
+      "experimental": false,
+      "sha256": "e093d7e1805d63cc1b671c333ce0b48b5cd33f70f64ea16c9b5bd713e33242cf",
+      "load_ms": 194,
+      "times_ms": [
+        60,
+        52,
+        65,
+        65,
+        59,
+        51,
+        70,
+        73,
+        56,
+        60,
+        60,
+        77
+      ],
+      "pss_before_kb": 106919,
+      "pss_loaded_kb": 210489
+    },
+    {
+      "experimental": true,
+      "sha256": "07bb23a0d1d8ff463d19276a1a12ac007ac171487ced6dc8924e24476031ac17",
+      "load_ms": 168,
+      "times_ms": [
+        41,
+        71,
+        49,
+        83,
+        47,
+        93,
+        110,
+        110,
+        68,
+        52,
+        42,
+        39
+      ],
+      "pss_before_kb": 209928,
+      "pss_loaded_kb": 280005
+    }
+  ]
+}

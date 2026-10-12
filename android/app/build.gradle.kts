@@ -9,13 +9,14 @@ android {
         applicationId = "org.sightguard.app"
         minSdk = 26
         targetSdk = 36
-        versionCode = 7
-        versionName = "0.6-semantic-furniture"
+        versionCode = 8
+        versionName = "0.7-yoloe-camerax"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         ndk { abiFilters += listOf("arm64-v8a", "armeabi-v7a", "x86_64") }
     }
     buildFeatures { compose = true; buildConfig = true }
-    // Local experimental delivery: same development key permits in-place rollback.
+    // Local experimental delivery: same development key permits updates.
+    // Older version codes still require a forward-versioned rollback build.
     // Non-debuggable ART execution is needed for representative camera performance.
     buildTypes { getByName("release") { signingConfig = signingConfigs.getByName("debug") } }
     compileOptions { sourceCompatibility = JavaVersion.VERSION_17; targetCompatibility = JavaVersion.VERSION_17 }
@@ -26,7 +27,6 @@ android {
     }
 }
 dependencies {
-    implementation("com.google.ar:core:1.56.0")
     implementation("androidx.activity:activity-compose:1.12.4")
     implementation(platform("androidx.compose:compose-bom:2026.02.01"))
     implementation("androidx.compose.material3:material3")
