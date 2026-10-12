@@ -83,7 +83,7 @@ def main(argv: list[str] | None = None) -> int:
     for flag in ("video-id", "source-group-id", "scene"):
         importing.add_argument(f"--{flag}", required=True)
     importing.add_argument("--split", choices=("development", "test"), default="development")
-    ui = sub.add_parser("ui", help="Launch local SightGuard Research Console")
+    ui = sub.add_parser("ui", help="Launch the local product UI (or --research console)")
     ui.add_argument("--port", type=int, default=7860)
     ui.add_argument("--open-browser", action="store_true")
     ui.add_argument("--research", action="store_true", help="Open the Gradio research console")

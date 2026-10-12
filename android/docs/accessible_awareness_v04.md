@@ -128,9 +128,9 @@ TalkBack 开启时使用 transient_may_duck，避免强制反复夺取独占焦�
 
 修改前与修改后（AVD，研究控制移出普通界面）：
 
-![修改前](../deliveries/accessible-awareness/checkpoint/ui-before.png)
+修改前：`../deliveries/accessible-awareness/checkpoint/ui-before.png`（历史本机产物，不随仓库分发）
 
-![修改后](../deliveries/accessible-awareness/ui-after.png)
+修改后：`../deliveries/accessible-awareness/ui-after.png`（历史本机产物，不随仓库分发）
 
 真机普通界面见 `../deliveries/accessible-awareness/nova12-camera-wall-override.png`；该截图时新鲜证据已过期，因此正确显示过期原因，而不会用最近一次播报冒充当前有效墙面提醒。
 
