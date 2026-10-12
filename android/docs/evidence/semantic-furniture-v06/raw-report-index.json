@@ -1,0 +1,22 @@
+[
+  {
+    "path": "android\\deliveries\\semantic-furniture-v06\\avd-pilot.json",
+    "sha256": "abd0cf441f020e79914e66ff9ff4e3f749ed6cc48ad1af934606419dd55eee47"
+  },
+  {
+    "path": "android\\deliveries\\semantic-furniture-v06\\avd-pilot-family.json",
+    "sha256": "795f8e1e952a2b4a480ae1ef2cde57ba5e08d2f22686eb71c31021bed59df693"
+  },
+  {
+    "path": "android\\deliveries\\semantic-furniture-v06\\avd-pilot-384.json",
+    "sha256": "f03cb97625eb9f1224d8898bd39c83627e4443691b8dedb97d27514aeb0c57f6"
+  },
+  {
+    "path": "android\\deliveries\\semantic-furniture-v06\\avd-holdout-256.json",
+    "sha256": "faedc0ecaa405f72a0cb4a8ec9425f89aae5b56c38309b30cd4e6ec5abdda82b"
+  },
+  {
+    "path": "android\\deliveries\\semantic-furniture-v06\\avd-holdout-384.json",
+    "sha256": "9c0a1161050e1e7548506b187600336473b80388e23b9f11d29e1684a2260f00"
+  }
+]

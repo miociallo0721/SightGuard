@@ -15,17 +15,25 @@ import org.json.JSONObject
 import kotlin.math.roundToInt
 
 /** One CPU session, accessed only by its owning serial inference executor. */
-class Detector(context: Context) : AutoCloseable {
+class Detector(context: Context, val experimental: Boolean = !context.getSharedPreferences("perception", Context.MODE_PRIVATE).getBoolean("baseline_detector", false)) : AutoCloseable {
     private val environment = OrtEnvironment.getEnvironment()
     private val session: OrtSession
     private val inputName: String
     val modelSha: String
+    private val classMapping: List<Int>
 
     init {
-        val bytes = context.assets.open("yolo26n.onnx").use { it.readBytes() }
+        val bytes = context.assets.open(if(experimental) "yoloe26n.onnx" else "yolo26n.onnx").use { it.readBytes() }
         modelSha = MessageDigest.getInstance("SHA-256").digest(bytes).joinToString("") { "%02x".format(it) }
-        val manifest = JSONObject(context.assets.open("model_manifest.json").bufferedReader().use { it.readText() })
+        val manifest = JSONObject(context.assets.open(if(experimental) "yoloe_model_manifest.json" else "model_manifest.json").bufferedReader().use { it.readText() })
         require(modelSha == manifest.getString("onnx_sha256")) { "模型 SHA 与清单不一致" }
+        classMapping = if(experimental) {
+            require(manifest.getString("schema_version")=="sightguard.yoloe26.v1")
+            val mapping=manifest.getJSONArray("app_class_ids")
+            List(mapping.length()) {mapping.getInt(it)}.also {
+                require(it==DetectorTaxonomy.yoloeMapping && manifest.getJSONArray("names").length()==90)
+            }
+        } else (0..79).toList()
         OrtSession.SessionOptions().use { options ->
             options.setIntraOpNumThreads(2)
             options.setInterOpNumThreads(1)
@@ -38,7 +46,7 @@ class Detector(context: Context) : AutoCloseable {
             require(input.shape.contentEquals(longArrayOf(1, 3, SIZE.toLong(), SIZE.toLong()))) { "不支持的模型输入: ${input.shape.contentToString()}" }
             // This is the verified YOLO26 end-to-end export, not a YOLOv8 feature map.
             require(output.shape.size == 3 && output.shape[0] == 1L && output.shape[2] == 6L) { "不支持的模型输出: ${output.shape.contentToString()}" }
-            android.util.Log.i("SG_MODEL", "loaded sha=$modelSha input=${input.shape.contentToString()} output=${output.shape.contentToString()}")
+            android.util.Log.i("SG_MODEL", "loaded kind=${if(experimental) "YOLOE26n" else "YOLO26n"} sha=$modelSha input=${input.shape.contentToString()} output=${output.shape.contentToString()}")
         } catch (error: Exception) { session.close(); throw error }
     }
 
@@ -72,17 +80,26 @@ class Detector(context: Context) : AutoCloseable {
                 return rows.mapNotNull { row ->
                     if (row.size != 6 || row.any { !it.isFinite() } || row[4] !in MIN_SCORE..1f) return@mapNotNull null
                     val classId = row[5].roundToInt()
-                    if (classId !in 0..79) return@mapNotNull null
+                    if (classId !in classMapping.indices || kotlin.math.abs(row[5]-classId)>0.001f) return@mapNotNull null
                     val left = ((row[0] - padX) / scaledWidth).coerceIn(0f, 1f)
                     val top = ((row[1] - padY) / scaledHeight).coerceIn(0f, 1f)
                     val right = ((row[2] - padX) / scaledWidth).coerceIn(0f, 1f)
                     val bottom = ((row[3] - padY) / scaledHeight).coerceIn(0f, 1f)
-                    if (right <= left || bottom <= top) null else Detection(classId, row[4], left, top, right, bottom)
+                    if (right <= left || bottom <= top) null else Detection(classMapping[classId], row[4], left, top, right, bottom, if(experimental) classId else null)
                 }
             }
         }
     }
 
+    internal fun inferTensor(values: FloatArray): Array<FloatArray> {
+        require(values.size==3*SIZE*SIZE && values.all {it.isFinite()})
+        OnnxTensor.createTensor(environment,FloatBuffer.wrap(values),longArrayOf(1,3,SIZE.toLong(),SIZE.toLong())).use {input ->
+            session.run(mapOf(inputName to input)).use {output ->
+                @Suppress("UNCHECKED_CAST")
+                return (output[0].value as Array<Array<FloatArray>>)[0]
+            }
+        }
+    }
     override fun close() { session.close() }
     companion object { const val SIZE = 320; const val MIN_SCORE = 0.35f }
 }

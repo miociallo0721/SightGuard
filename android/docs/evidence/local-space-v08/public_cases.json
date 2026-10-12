@@ -1,0 +1,5111 @@
+{
+  "cases": [
+    {
+      "schema_version": 1,
+      "source_frame_key": "1:0:3",
+      "source_ms": 2400,
+      "status": "INSUFFICIENT_EVIDENCE",
+      "reason": "no_unique_connected_ground_band",
+      "scope": "IMAGE_CANDIDATE_ONLY",
+      "direction": null,
+      "support": 0,
+      "deadline_ms": 0,
+      "event_id": null,
+      "text": null,
+      "bands": [
+        {
+          "direction": "LEFT",
+          "connected_fraction": 0,
+          "reaches_top": false,
+          "unknown_fraction": 0.4,
+          "eligible": false
+        },
+        {
+          "direction": "CENTER",
+          "connected_fraction": 0,
+          "reaches_top": false,
+          "unknown_fraction": 0.5714286,
+          "eligible": false
+        },
+        {
+          "direction": "RIGHT",
+          "connected_fraction": 0,
+          "reaches_top": false,
+          "unknown_fraction": 0.6571429,
+          "eligible": false
+        }
+      ],
+      "physical_width_m": null,
+      "body_alignment": "UNKNOWN",
+      "risk_score_changed": false,
+      "image": "ADE_val_00000001.jpg",
+      "gt_bands": [
+        {
+          "ground_fraction": 0,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.016810130315374264
+        },
+        {
+          "ground_fraction": 0,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.009891360199662335
+        },
+        {
+          "ground_fraction": 0.032206562431182556,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.020883799456800998
+        }
+      ],
+      "timing_scope": "cached output replay, synthetic 800ms observation intervals; not live timing"
+    },
+    {
+      "schema_version": 1,
+      "source_frame_key": "1:0:3",
+      "source_ms": 2400,
+      "status": "INSUFFICIENT_EVIDENCE",
+      "reason": "no_unique_connected_ground_band",
+      "scope": "IMAGE_CANDIDATE_ONLY",
+      "direction": null,
+      "support": 0,
+      "deadline_ms": 0,
+      "event_id": null,
+      "text": null,
+      "bands": [
+        {
+          "direction": "LEFT",
+          "connected_fraction": 0,
+          "reaches_top": false,
+          "unknown_fraction": 0.82857144,
+          "eligible": false
+        },
+        {
+          "direction": "CENTER",
+          "connected_fraction": 0,
+          "reaches_top": false,
+          "unknown_fraction": 1,
+          "eligible": false
+        },
+        {
+          "direction": "RIGHT",
+          "connected_fraction": 0,
+          "reaches_top": false,
+          "unknown_fraction": 0.9142857,
+          "eligible": false
+        }
+      ],
+      "physical_width_m": null,
+      "body_alignment": "UNKNOWN",
+      "risk_score_changed": false,
+      "image": "ADE_val_00000002.jpg",
+      "gt_bands": [
+        {
+          "ground_fraction": 0,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.03348688873139617
+        },
+        {
+          "ground_fraction": 0,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.20785487847833745
+        },
+        {
+          "ground_fraction": 0,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.308453680873547
+        }
+      ],
+      "timing_scope": "cached output replay, synthetic 800ms observation intervals; not live timing"
+    },
+    {
+      "schema_version": 1,
+      "source_frame_key": "1:0:3",
+      "source_ms": 2400,
+      "status": "SUPPORTED_CANDIDATE",
+      "reason": "image_only_pose_body_clearance_unknown;motion=UNKNOWN",
+      "scope": "IMAGE_CANDIDATE_ONLY",
+      "direction": "CENTER",
+      "support": 3,
+      "deadline_ms": 3600,
+      "event_id": "local-space:1:0:1",
+      "text": "画面中央可见地面较连续，通行条件尚未确认。",
+      "bands": [
+        {
+          "direction": "LEFT",
+          "connected_fraction": 0.74285716,
+          "reaches_top": false,
+          "unknown_fraction": 0.22857143,
+          "eligible": false
+        },
+        {
+          "direction": "CENTER",
+          "connected_fraction": 0.94285715,
+          "reaches_top": true,
+          "unknown_fraction": 0,
+          "eligible": true
+        },
+        {
+          "direction": "RIGHT",
+          "connected_fraction": 0.74285716,
+          "reaches_top": false,
+          "unknown_fraction": 0.2,
+          "eligible": false
+        }
+      ],
+      "physical_width_m": null,
+      "body_alignment": "UNKNOWN",
+      "risk_score_changed": false,
+      "image": "ADE_val_00000003.jpg",
+      "gt_bands": [
+        {
+          "ground_fraction": 0.7854457572502686,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.016702470461868957
+        },
+        {
+          "ground_fraction": 0.9822771213748658,
+          "hazard_fraction": 0.005692803437164339,
+          "unknown_fraction": 0.012030075187969926
+        },
+        {
+          "ground_fraction": 0.917590618336887,
+          "hazard_fraction": 0.061513859275053304,
+          "unknown_fraction": 0.020895522388059702
+        }
+      ],
+      "timing_scope": "cached output replay, synthetic 800ms observation intervals; not live timing",
+      "annotation_support": true
+    },
+    {
+      "schema_version": 1,
+      "source_frame_key": "1:0:3",
+      "source_ms": 2400,
+      "status": "INSUFFICIENT_EVIDENCE",
+      "reason": "no_unique_connected_ground_band",
+      "scope": "IMAGE_CANDIDATE_ONLY",
+      "direction": null,
+      "support": 0,
+      "deadline_ms": 0,
+      "event_id": null,
+      "text": null,
+      "bands": [
+        {
+          "direction": "LEFT",
+          "connected_fraction": 0,
+          "reaches_top": false,
+          "unknown_fraction": 0.2857143,
+          "eligible": false
+        },
+        {
+          "direction": "CENTER",
+          "connected_fraction": 0,
+          "reaches_top": false,
+          "unknown_fraction": 0.37142858,
+          "eligible": false
+        },
+        {
+          "direction": "RIGHT",
+          "connected_fraction": 0,
+          "reaches_top": false,
+          "unknown_fraction": 0.4,
+          "eligible": false
+        }
+      ],
+      "physical_width_m": null,
+      "body_alignment": "UNKNOWN",
+      "risk_score_changed": false,
+      "image": "ADE_val_00000004.jpg",
+      "gt_bands": [
+        {
+          "ground_fraction": 0,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.019335336294767108
+        },
+        {
+          "ground_fraction": 0,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.015763781839536077
+        },
+        {
+          "ground_fraction": 0,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.03125229391470308
+        }
+      ],
+      "timing_scope": "cached output replay, synthetic 800ms observation intervals; not live timing"
+    },
+    {
+      "schema_version": 1,
+      "source_frame_key": "1:0:3",
+      "source_ms": 2400,
+      "status": "INSUFFICIENT_EVIDENCE",
+      "reason": "no_unique_connected_ground_band",
+      "scope": "IMAGE_CANDIDATE_ONLY",
+      "direction": null,
+      "support": 0,
+      "deadline_ms": 0,
+      "event_id": null,
+      "text": null,
+      "bands": [
+        {
+          "direction": "LEFT",
+          "connected_fraction": 0,
+          "reaches_top": false,
+          "unknown_fraction": 0,
+          "eligible": false
+        },
+        {
+          "direction": "CENTER",
+          "connected_fraction": 0,
+          "reaches_top": false,
+          "unknown_fraction": 0.2,
+          "eligible": false
+        },
+        {
+          "direction": "RIGHT",
+          "connected_fraction": 0,
+          "reaches_top": false,
+          "unknown_fraction": 0.028571429,
+          "eligible": false
+        }
+      ],
+      "physical_width_m": null,
+      "body_alignment": "UNKNOWN",
+      "risk_score_changed": false,
+      "image": "ADE_val_00000005.jpg",
+      "gt_bands": [
+        {
+          "ground_fraction": 0,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.007142857142857143
+        },
+        {
+          "ground_fraction": 0.30209452201933407,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.011868958109559614
+        },
+        {
+          "ground_fraction": 0,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.2404584221748401
+        }
+      ],
+      "timing_scope": "cached output replay, synthetic 800ms observation intervals; not live timing"
+    },
+    {
+      "schema_version": 1,
+      "source_frame_key": "1:0:3",
+      "source_ms": 2400,
+      "status": "INSUFFICIENT_EVIDENCE",
+      "reason": "no_unique_connected_ground_band",
+      "scope": "IMAGE_CANDIDATE_ONLY",
+      "direction": null,
+      "support": 0,
+      "deadline_ms": 0,
+      "event_id": null,
+      "text": null,
+      "bands": [
+        {
+          "direction": "LEFT",
+          "connected_fraction": 0,
+          "reaches_top": false,
+          "unknown_fraction": 1,
+          "eligible": false
+        },
+        {
+          "direction": "CENTER",
+          "connected_fraction": 0,
+          "reaches_top": false,
+          "unknown_fraction": 1,
+          "eligible": false
+        },
+        {
+          "direction": "RIGHT",
+          "connected_fraction": 0,
+          "reaches_top": false,
+          "unknown_fraction": 1,
+          "eligible": false
+        }
+      ],
+      "physical_width_m": null,
+      "body_alignment": "UNKNOWN",
+      "risk_score_changed": false,
+      "image": "ADE_val_00000006.jpg",
+      "gt_bands": [
+        {
+          "ground_fraction": 0,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.007925828986415497
+        },
+        {
+          "ground_fraction": 0,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.003486750348675035
+        },
+        {
+          "ground_fraction": 0,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.00923071276517654
+        }
+      ],
+      "timing_scope": "cached output replay, synthetic 800ms observation intervals; not live timing"
+    },
+    {
+      "schema_version": 1,
+      "source_frame_key": "1:0:3",
+      "source_ms": 2400,
+      "status": "INSUFFICIENT_EVIDENCE",
+      "reason": "no_unique_connected_ground_band",
+      "scope": "IMAGE_CANDIDATE_ONLY",
+      "direction": null,
+      "support": 0,
+      "deadline_ms": 0,
+      "event_id": null,
+      "text": null,
+      "bands": [
+        {
+          "direction": "LEFT",
+          "connected_fraction": 0.028571429,
+          "reaches_top": false,
+          "unknown_fraction": 0,
+          "eligible": false
+        },
+        {
+          "direction": "CENTER",
+          "connected_fraction": 0.45714286,
+          "reaches_top": false,
+          "unknown_fraction": 0.14285715,
+          "eligible": false
+        },
+        {
+          "direction": "RIGHT",
+          "connected_fraction": 0.08571429,
+          "reaches_top": false,
+          "unknown_fraction": 0,
+          "eligible": false
+        }
+      ],
+      "physical_width_m": null,
+      "body_alignment": "UNKNOWN",
+      "risk_score_changed": false,
+      "image": "ADE_val_00000007.jpg",
+      "gt_bands": [
+        {
+          "ground_fraction": 0.050376506024096386,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.00625
+        },
+        {
+          "ground_fraction": 0.5056137724550899,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.15538922155688623
+        },
+        {
+          "ground_fraction": 0.0777320359281437,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.013922155688622755
+        }
+      ],
+      "timing_scope": "cached output replay, synthetic 800ms observation intervals; not live timing"
+    },
+    {
+      "schema_version": 1,
+      "source_frame_key": "1:0:3",
+      "source_ms": 2400,
+      "status": "INSUFFICIENT_EVIDENCE",
+      "reason": "no_unique_connected_ground_band",
+      "scope": "IMAGE_CANDIDATE_ONLY",
+      "direction": null,
+      "support": 0,
+      "deadline_ms": 0,
+      "event_id": null,
+      "text": null,
+      "bands": [
+        {
+          "direction": "LEFT",
+          "connected_fraction": 0,
+          "reaches_top": false,
+          "unknown_fraction": 0.42857143,
+          "eligible": false
+        },
+        {
+          "direction": "CENTER",
+          "connected_fraction": 0.4857143,
+          "reaches_top": false,
+          "unknown_fraction": 0.114285715,
+          "eligible": false
+        },
+        {
+          "direction": "RIGHT",
+          "connected_fraction": 0.34285715,
+          "reaches_top": false,
+          "unknown_fraction": 0.22857143,
+          "eligible": false
+        }
+      ],
+      "physical_width_m": null,
+      "body_alignment": "UNKNOWN",
+      "risk_score_changed": false,
+      "image": "ADE_val_00000008.jpg",
+      "gt_bands": [
+        {
+          "ground_fraction": 0.323965811965812,
+          "hazard_fraction": 0.028273504273504273,
+          "unknown_fraction": 0.13292307692307692
+        },
+        {
+          "ground_fraction": 0.6994529914529914,
+          "hazard_fraction": 0.002769230769230769,
+          "unknown_fraction": 0.05760683760683761
+        },
+        {
+          "ground_fraction": 0.630051282051282,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.11958974358974359
+        }
+      ],
+      "timing_scope": "cached output replay, synthetic 800ms observation intervals; not live timing"
+    },
+    {
+      "schema_version": 1,
+      "source_frame_key": "1:0:3",
+      "source_ms": 2400,
+      "status": "INSUFFICIENT_EVIDENCE",
+      "reason": "no_unique_connected_ground_band",
+      "scope": "IMAGE_CANDIDATE_ONLY",
+      "direction": null,
+      "support": 0,
+      "deadline_ms": 0,
+      "event_id": null,
+      "text": null,
+      "bands": [
+        {
+          "direction": "LEFT",
+          "connected_fraction": 0.51428574,
+          "reaches_top": false,
+          "unknown_fraction": 0.42857143,
+          "eligible": false
+        },
+        {
+          "direction": "CENTER",
+          "connected_fraction": 0.8857143,
+          "reaches_top": false,
+          "unknown_fraction": 0,
+          "eligible": false
+        },
+        {
+          "direction": "RIGHT",
+          "connected_fraction": 0.82857144,
+          "reaches_top": false,
+          "unknown_fraction": 0.08571429,
+          "eligible": false
+        }
+      ],
+      "physical_width_m": null,
+      "body_alignment": "UNKNOWN",
+      "risk_score_changed": false,
+      "image": "ADE_val_00000009.jpg",
+      "gt_bands": [
+        {
+          "ground_fraction": 0.580887160041841,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.015657688284518828
+        },
+        {
+          "ground_fraction": 0.9245064069037657,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.017308446652719665
+        },
+        {
+          "ground_fraction": 0.8513827144351465,
+          "hazard_fraction": 0.005311846234309623,
+          "unknown_fraction": 0.025169979079497907
+        }
+      ],
+      "timing_scope": "cached output replay, synthetic 800ms observation intervals; not live timing"
+    },
+    {
+      "schema_version": 1,
+      "source_frame_key": "1:0:3",
+      "source_ms": 2400,
+      "status": "INSUFFICIENT_EVIDENCE",
+      "reason": "no_unique_connected_ground_band",
+      "scope": "IMAGE_CANDIDATE_ONLY",
+      "direction": null,
+      "support": 0,
+      "deadline_ms": 0,
+      "event_id": null,
+      "text": null,
+      "bands": [
+        {
+          "direction": "LEFT",
+          "connected_fraction": 0.4,
+          "reaches_top": false,
+          "unknown_fraction": 0.17142858,
+          "eligible": false
+        },
+        {
+          "direction": "CENTER",
+          "connected_fraction": 0.42857143,
+          "reaches_top": false,
+          "unknown_fraction": 0.42857143,
+          "eligible": false
+        },
+        {
+          "direction": "RIGHT",
+          "connected_fraction": 0.17142858,
+          "reaches_top": false,
+          "unknown_fraction": 0.51428574,
+          "eligible": false
+        }
+      ],
+      "physical_width_m": null,
+      "body_alignment": "UNKNOWN",
+      "risk_score_changed": false,
+      "image": "ADE_val_00000010.jpg",
+      "gt_bands": [
+        {
+          "ground_fraction": 0.6193594252787548,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.037566414727231906
+        },
+        {
+          "ground_fraction": 0.7846914865920334,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.015881280916428014
+        },
+        {
+          "ground_fraction": 0.5010227991222523,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.03429166511697103
+        }
+      ],
+      "timing_scope": "cached output replay, synthetic 800ms observation intervals; not live timing"
+    },
+    {
+      "schema_version": 1,
+      "source_frame_key": "1:0:3",
+      "source_ms": 2400,
+      "status": "INSUFFICIENT_EVIDENCE",
+      "reason": "no_unique_connected_ground_band",
+      "scope": "IMAGE_CANDIDATE_ONLY",
+      "direction": null,
+      "support": 0,
+      "deadline_ms": 0,
+      "event_id": null,
+      "text": null,
+      "bands": [
+        {
+          "direction": "LEFT",
+          "connected_fraction": 0,
+          "reaches_top": false,
+          "unknown_fraction": 0,
+          "eligible": false
+        },
+        {
+          "direction": "CENTER",
+          "connected_fraction": 0,
+          "reaches_top": false,
+          "unknown_fraction": 0,
+          "eligible": false
+        },
+        {
+          "direction": "RIGHT",
+          "connected_fraction": 0,
+          "reaches_top": false,
+          "unknown_fraction": 0.17142858,
+          "eligible": false
+        }
+      ],
+      "physical_width_m": null,
+      "body_alignment": "UNKNOWN",
+      "risk_score_changed": false,
+      "image": "ADE_val_00000013.jpg",
+      "gt_bands": [
+        {
+          "ground_fraction": 0.13658977838082315,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.013011863758132415
+        },
+        {
+          "ground_fraction": 0.059423163900775844,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.008454232334829349
+        },
+        {
+          "ground_fraction": 0.01060668877833057,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.03565505804311774
+        }
+      ],
+      "timing_scope": "cached output replay, synthetic 800ms observation intervals; not live timing"
+    },
+    {
+      "schema_version": 1,
+      "source_frame_key": "1:0:3",
+      "source_ms": 2400,
+      "status": "INSUFFICIENT_EVIDENCE",
+      "reason": "no_unique_connected_ground_band",
+      "scope": "IMAGE_CANDIDATE_ONLY",
+      "direction": null,
+      "support": 0,
+      "deadline_ms": 0,
+      "event_id": null,
+      "text": null,
+      "bands": [
+        {
+          "direction": "LEFT",
+          "connected_fraction": 0,
+          "reaches_top": false,
+          "unknown_fraction": 0,
+          "eligible": false
+        },
+        {
+          "direction": "CENTER",
+          "connected_fraction": 0,
+          "reaches_top": false,
+          "unknown_fraction": 0,
+          "eligible": false
+        },
+        {
+          "direction": "RIGHT",
+          "connected_fraction": 0,
+          "reaches_top": false,
+          "unknown_fraction": 1,
+          "eligible": false
+        }
+      ],
+      "physical_width_m": null,
+      "body_alignment": "UNKNOWN",
+      "risk_score_changed": false,
+      "image": "ADE_val_00000019.jpg",
+      "gt_bands": [
+        {
+          "ground_fraction": 0,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.022606382978723406
+        },
+        {
+          "ground_fraction": 0,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.03074468085106383
+        },
+        {
+          "ground_fraction": 0,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.018882978723404255
+        }
+      ],
+      "timing_scope": "cached output replay, synthetic 800ms observation intervals; not live timing"
+    },
+    {
+      "schema_version": 1,
+      "source_frame_key": "1:0:3",
+      "source_ms": 2400,
+      "status": "INSUFFICIENT_EVIDENCE",
+      "reason": "no_unique_connected_ground_band",
+      "scope": "IMAGE_CANDIDATE_ONLY",
+      "direction": null,
+      "support": 0,
+      "deadline_ms": 0,
+      "event_id": null,
+      "text": null,
+      "bands": [
+        {
+          "direction": "LEFT",
+          "connected_fraction": 0,
+          "reaches_top": false,
+          "unknown_fraction": 0.08571429,
+          "eligible": false
+        },
+        {
+          "direction": "CENTER",
+          "connected_fraction": 0,
+          "reaches_top": false,
+          "unknown_fraction": 0,
+          "eligible": false
+        },
+        {
+          "direction": "RIGHT",
+          "connected_fraction": 0.028571429,
+          "reaches_top": false,
+          "unknown_fraction": 0.2857143,
+          "eligible": false
+        }
+      ],
+      "physical_width_m": null,
+      "body_alignment": "UNKNOWN",
+      "risk_score_changed": false,
+      "image": "ADE_val_00000029.jpg",
+      "gt_bands": [
+        {
+          "ground_fraction": 0,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.4475112054729889
+        },
+        {
+          "ground_fraction": 0,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.2241094597782496
+        },
+        {
+          "ground_fraction": 0,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.04977589054022175
+        }
+      ],
+      "timing_scope": "cached output replay, synthetic 800ms observation intervals; not live timing"
+    },
+    {
+      "schema_version": 1,
+      "source_frame_key": "1:0:3",
+      "source_ms": 2400,
+      "status": "INSUFFICIENT_EVIDENCE",
+      "reason": "no_unique_connected_ground_band",
+      "scope": "IMAGE_CANDIDATE_ONLY",
+      "direction": null,
+      "support": 0,
+      "deadline_ms": 0,
+      "event_id": null,
+      "text": null,
+      "bands": [
+        {
+          "direction": "LEFT",
+          "connected_fraction": 0,
+          "reaches_top": false,
+          "unknown_fraction": 0.057142857,
+          "eligible": false
+        },
+        {
+          "direction": "CENTER",
+          "connected_fraction": 0,
+          "reaches_top": false,
+          "unknown_fraction": 0,
+          "eligible": false
+        },
+        {
+          "direction": "RIGHT",
+          "connected_fraction": 0,
+          "reaches_top": false,
+          "unknown_fraction": 0.25714287,
+          "eligible": false
+        }
+      ],
+      "physical_width_m": null,
+      "body_alignment": "UNKNOWN",
+      "risk_score_changed": false,
+      "image": "ADE_val_00000036.jpg",
+      "gt_bands": [
+        {
+          "ground_fraction": 0.07796228539262595,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.1580957741948454
+        },
+        {
+          "ground_fraction": 0.003940332113706727,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.006191950464396285
+        },
+        {
+          "ground_fraction": 0,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.07989464442493416
+        }
+      ],
+      "timing_scope": "cached output replay, synthetic 800ms observation intervals; not live timing"
+    },
+    {
+      "schema_version": 1,
+      "source_frame_key": "1:0:3",
+      "source_ms": 2400,
+      "status": "INSUFFICIENT_EVIDENCE",
+      "reason": "no_unique_connected_ground_band",
+      "scope": "IMAGE_CANDIDATE_ONLY",
+      "direction": null,
+      "support": 0,
+      "deadline_ms": 0,
+      "event_id": null,
+      "text": null,
+      "bands": [
+        {
+          "direction": "LEFT",
+          "connected_fraction": 0.25714287,
+          "reaches_top": false,
+          "unknown_fraction": 0.6,
+          "eligible": false
+        },
+        {
+          "direction": "CENTER",
+          "connected_fraction": 0.6,
+          "reaches_top": false,
+          "unknown_fraction": 0.114285715,
+          "eligible": false
+        },
+        {
+          "direction": "RIGHT",
+          "connected_fraction": 0.25714287,
+          "reaches_top": false,
+          "unknown_fraction": 0.45714286,
+          "eligible": false
+        }
+      ],
+      "physical_width_m": null,
+      "body_alignment": "UNKNOWN",
+      "risk_score_changed": false,
+      "image": "ADE_val_00000038.jpg",
+      "gt_bands": [
+        {
+          "ground_fraction": 0.34621621621621623,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.02216216216216216
+        },
+        {
+          "ground_fraction": 0.7827027027027027,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.01
+        },
+        {
+          "ground_fraction": 0.4992792792792793,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.01891891891891892
+        }
+      ],
+      "timing_scope": "cached output replay, synthetic 800ms observation intervals; not live timing"
+    },
+    {
+      "schema_version": 1,
+      "source_frame_key": "1:0:3",
+      "source_ms": 2400,
+      "status": "INSUFFICIENT_EVIDENCE",
+      "reason": "no_unique_connected_ground_band",
+      "scope": "IMAGE_CANDIDATE_ONLY",
+      "direction": null,
+      "support": 0,
+      "deadline_ms": 0,
+      "event_id": null,
+      "text": null,
+      "bands": [
+        {
+          "direction": "LEFT",
+          "connected_fraction": 0.42857143,
+          "reaches_top": false,
+          "unknown_fraction": 0.028571429,
+          "eligible": false
+        },
+        {
+          "direction": "CENTER",
+          "connected_fraction": 0.31428573,
+          "reaches_top": false,
+          "unknown_fraction": 0.54285717,
+          "eligible": false
+        },
+        {
+          "direction": "RIGHT",
+          "connected_fraction": 0.51428574,
+          "reaches_top": false,
+          "unknown_fraction": 0.37142858,
+          "eligible": false
+        }
+      ],
+      "physical_width_m": null,
+      "body_alignment": "UNKNOWN",
+      "risk_score_changed": false,
+      "image": "ADE_val_00000039.jpg",
+      "gt_bands": [
+        {
+          "ground_fraction": 0.5701616426387068,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.024464831804281346
+        },
+        {
+          "ground_fraction": 0.28881607688947136,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.20484927916120577
+        },
+        {
+          "ground_fraction": 0.5773758005885408,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.023974381166695518
+        }
+      ],
+      "timing_scope": "cached output replay, synthetic 800ms observation intervals; not live timing"
+    },
+    {
+      "schema_version": 1,
+      "source_frame_key": "1:0:3",
+      "source_ms": 2400,
+      "status": "INSUFFICIENT_EVIDENCE",
+      "reason": "no_unique_connected_ground_band",
+      "scope": "IMAGE_CANDIDATE_ONLY",
+      "direction": null,
+      "support": 0,
+      "deadline_ms": 0,
+      "event_id": null,
+      "text": null,
+      "bands": [
+        {
+          "direction": "LEFT",
+          "connected_fraction": 0,
+          "reaches_top": false,
+          "unknown_fraction": 0.31428573,
+          "eligible": false
+        },
+        {
+          "direction": "CENTER",
+          "connected_fraction": 0,
+          "reaches_top": false,
+          "unknown_fraction": 0.45714286,
+          "eligible": false
+        },
+        {
+          "direction": "RIGHT",
+          "connected_fraction": 0,
+          "reaches_top": false,
+          "unknown_fraction": 0.9142857,
+          "eligible": false
+        }
+      ],
+      "physical_width_m": null,
+      "body_alignment": "UNKNOWN",
+      "risk_score_changed": false,
+      "image": "ADE_val_00000040.jpg",
+      "gt_bands": [
+        {
+          "ground_fraction": 0.5316245620505256,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.08790337451595058
+        },
+        {
+          "ground_fraction": 0.5625950979852976,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.10720636491961356
+        },
+        {
+          "ground_fraction": 0.21263451209004747,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.5157014794038387
+        }
+      ],
+      "timing_scope": "cached output replay, synthetic 800ms observation intervals; not live timing"
+    },
+    {
+      "schema_version": 1,
+      "source_frame_key": "1:0:3",
+      "source_ms": 2400,
+      "status": "INSUFFICIENT_EVIDENCE",
+      "reason": "no_unique_connected_ground_band",
+      "scope": "IMAGE_CANDIDATE_ONLY",
+      "direction": null,
+      "support": 0,
+      "deadline_ms": 0,
+      "event_id": null,
+      "text": null,
+      "bands": [
+        {
+          "direction": "LEFT",
+          "connected_fraction": 0,
+          "reaches_top": false,
+          "unknown_fraction": 0.057142857,
+          "eligible": false
+        },
+        {
+          "direction": "CENTER",
+          "connected_fraction": 0,
+          "reaches_top": false,
+          "unknown_fraction": 0,
+          "eligible": false
+        },
+        {
+          "direction": "RIGHT",
+          "connected_fraction": 0,
+          "reaches_top": false,
+          "unknown_fraction": 0.14285715,
+          "eligible": false
+        }
+      ],
+      "physical_width_m": null,
+      "body_alignment": "UNKNOWN",
+      "risk_score_changed": false,
+      "image": "ADE_val_00000045.jpg",
+      "gt_bands": [
+        {
+          "ground_fraction": 0,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.008570954601588852
+        },
+        {
+          "ground_fraction": 0,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.0041841004184100415
+        },
+        {
+          "ground_fraction": 0.33125963444175294,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.012203626220362623
+        }
+      ],
+      "timing_scope": "cached output replay, synthetic 800ms observation intervals; not live timing"
+    },
+    {
+      "schema_version": 1,
+      "source_frame_key": "1:0:3",
+      "source_ms": 2400,
+      "status": "INSUFFICIENT_EVIDENCE",
+      "reason": "no_unique_connected_ground_band",
+      "scope": "IMAGE_CANDIDATE_ONLY",
+      "direction": null,
+      "support": 0,
+      "deadline_ms": 0,
+      "event_id": null,
+      "text": null,
+      "bands": [
+        {
+          "direction": "LEFT",
+          "connected_fraction": 0.25714287,
+          "reaches_top": false,
+          "unknown_fraction": 0.4,
+          "eligible": false
+        },
+        {
+          "direction": "CENTER",
+          "connected_fraction": 0.057142857,
+          "reaches_top": false,
+          "unknown_fraction": 0.34285715,
+          "eligible": false
+        },
+        {
+          "direction": "RIGHT",
+          "connected_fraction": 0.14285715,
+          "reaches_top": false,
+          "unknown_fraction": 0.08571429,
+          "eligible": false
+        }
+      ],
+      "physical_width_m": null,
+      "body_alignment": "UNKNOWN",
+      "risk_score_changed": false,
+      "image": "ADE_val_00000049.jpg",
+      "gt_bands": [
+        {
+          "ground_fraction": 0.2878734816507843,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.00864468324332295
+        },
+        {
+          "ground_fraction": 0.18712838581810173,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.005230125523012552
+        },
+        {
+          "ground_fraction": 0.30006239447992367,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.010368494457902078
+        }
+      ],
+      "timing_scope": "cached output replay, synthetic 800ms observation intervals; not live timing"
+    },
+    {
+      "schema_version": 1,
+      "source_frame_key": "1:0:3",
+      "source_ms": 2400,
+      "status": "SUPPORTED_CANDIDATE",
+      "reason": "image_only_pose_body_clearance_unknown;motion=UNKNOWN",
+      "scope": "IMAGE_CANDIDATE_ONLY",
+      "direction": "CENTER",
+      "support": 3,
+      "deadline_ms": 3600,
+      "event_id": "local-space:1:0:1",
+      "text": "画面中央可见地面较连续，通行条件尚未确认。",
+      "bands": [
+        {
+          "direction": "LEFT",
+          "connected_fraction": 0.2857143,
+          "reaches_top": false,
+          "unknown_fraction": 0.2,
+          "eligible": false
+        },
+        {
+          "direction": "CENTER",
+          "connected_fraction": 0.82857144,
+          "reaches_top": true,
+          "unknown_fraction": 0.114285715,
+          "eligible": true
+        },
+        {
+          "direction": "RIGHT",
+          "connected_fraction": 0.028571429,
+          "reaches_top": false,
+          "unknown_fraction": 0.74285716,
+          "eligible": false
+        }
+      ],
+      "physical_width_m": null,
+      "body_alignment": "UNKNOWN",
+      "risk_score_changed": false,
+      "image": "ADE_val_00000065.jpg",
+      "gt_bands": [
+        {
+          "ground_fraction": 0.2897047772410091,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.47759527643585614
+        },
+        {
+          "ground_fraction": 0.8737393162393162,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.01047008547008547
+        },
+        {
+          "ground_fraction": 0.29196581196581195,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.5205128205128206
+        }
+      ],
+      "timing_scope": "cached output replay, synthetic 800ms observation intervals; not live timing",
+      "annotation_support": true
+    },
+    {
+      "schema_version": 1,
+      "source_frame_key": "1:0:3",
+      "source_ms": 2400,
+      "status": "INSUFFICIENT_EVIDENCE",
+      "reason": "no_unique_connected_ground_band",
+      "scope": "IMAGE_CANDIDATE_ONLY",
+      "direction": null,
+      "support": 0,
+      "deadline_ms": 0,
+      "event_id": null,
+      "text": null,
+      "bands": [
+        {
+          "direction": "LEFT",
+          "connected_fraction": 0.028571429,
+          "reaches_top": false,
+          "unknown_fraction": 0.71428573,
+          "eligible": false
+        },
+        {
+          "direction": "CENTER",
+          "connected_fraction": 0.028571429,
+          "reaches_top": false,
+          "unknown_fraction": 0.51428574,
+          "eligible": false
+        },
+        {
+          "direction": "RIGHT",
+          "connected_fraction": 0.114285715,
+          "reaches_top": false,
+          "unknown_fraction": 0.42857143,
+          "eligible": false
+        }
+      ],
+      "physical_width_m": null,
+      "body_alignment": "UNKNOWN",
+      "risk_score_changed": false,
+      "image": "ADE_val_00000067.jpg",
+      "gt_bands": [
+        {
+          "ground_fraction": 0.21785714285714286,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.08604497354497355
+        },
+        {
+          "ground_fraction": 0.17605820105820105,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.31164021164021166
+        },
+        {
+          "ground_fraction": 0.13293650793650794,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.0373015873015873
+        }
+      ],
+      "timing_scope": "cached output replay, synthetic 800ms observation intervals; not live timing"
+    },
+    {
+      "schema_version": 1,
+      "source_frame_key": "1:0:3",
+      "source_ms": 2400,
+      "status": "INSUFFICIENT_EVIDENCE",
+      "reason": "no_unique_connected_ground_band",
+      "scope": "IMAGE_CANDIDATE_ONLY",
+      "direction": null,
+      "support": 0,
+      "deadline_ms": 0,
+      "event_id": null,
+      "text": null,
+      "bands": [
+        {
+          "direction": "LEFT",
+          "connected_fraction": 0,
+          "reaches_top": false,
+          "unknown_fraction": 0.54285717,
+          "eligible": false
+        },
+        {
+          "direction": "CENTER",
+          "connected_fraction": 0.028571429,
+          "reaches_top": false,
+          "unknown_fraction": 0.34285715,
+          "eligible": false
+        },
+        {
+          "direction": "RIGHT",
+          "connected_fraction": 0,
+          "reaches_top": false,
+          "unknown_fraction": 0.45714286,
+          "eligible": false
+        }
+      ],
+      "physical_width_m": null,
+      "body_alignment": "UNKNOWN",
+      "risk_score_changed": false,
+      "image": "ADE_val_00000077.jpg",
+      "gt_bands": [
+        {
+          "ground_fraction": 0.029269602577873255,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.02741675617615467
+        },
+        {
+          "ground_fraction": 0.05545112781954887,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.004538131041890441
+        },
+        {
+          "ground_fraction": 0,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.01572494669509595
+        }
+      ],
+      "timing_scope": "cached output replay, synthetic 800ms observation intervals; not live timing"
+    },
+    {
+      "schema_version": 1,
+      "source_frame_key": "1:0:3",
+      "source_ms": 2400,
+      "status": "INSUFFICIENT_EVIDENCE",
+      "reason": "no_unique_connected_ground_band",
+      "scope": "IMAGE_CANDIDATE_ONLY",
+      "direction": null,
+      "support": 0,
+      "deadline_ms": 0,
+      "event_id": null,
+      "text": null,
+      "bands": [
+        {
+          "direction": "LEFT",
+          "connected_fraction": 0,
+          "reaches_top": false,
+          "unknown_fraction": 0.2,
+          "eligible": false
+        },
+        {
+          "direction": "CENTER",
+          "connected_fraction": 0,
+          "reaches_top": false,
+          "unknown_fraction": 0.6571429,
+          "eligible": false
+        },
+        {
+          "direction": "RIGHT",
+          "connected_fraction": 0,
+          "reaches_top": false,
+          "unknown_fraction": 0.34285715,
+          "eligible": false
+        }
+      ],
+      "physical_width_m": null,
+      "body_alignment": "UNKNOWN",
+      "risk_score_changed": false,
+      "image": "ADE_val_00000081.jpg",
+      "gt_bands": [
+        {
+          "ground_fraction": 0.03361607966070441,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.05028581965701641
+        },
+        {
+          "ground_fraction": 0.06077104988175769,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.16816073621881245
+        },
+        {
+          "ground_fraction": 0,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.03659095492126345
+        }
+      ],
+      "timing_scope": "cached output replay, synthetic 800ms observation intervals; not live timing"
+    },
+    {
+      "schema_version": 1,
+      "source_frame_key": "1:0:3",
+      "source_ms": 2400,
+      "status": "INSUFFICIENT_EVIDENCE",
+      "reason": "no_unique_connected_ground_band",
+      "scope": "IMAGE_CANDIDATE_ONLY",
+      "direction": null,
+      "support": 0,
+      "deadline_ms": 0,
+      "event_id": null,
+      "text": null,
+      "bands": [
+        {
+          "direction": "LEFT",
+          "connected_fraction": 0,
+          "reaches_top": false,
+          "unknown_fraction": 0.45714286,
+          "eligible": false
+        },
+        {
+          "direction": "CENTER",
+          "connected_fraction": 0,
+          "reaches_top": false,
+          "unknown_fraction": 0.08571429,
+          "eligible": false
+        },
+        {
+          "direction": "RIGHT",
+          "connected_fraction": 0,
+          "reaches_top": false,
+          "unknown_fraction": 0.8,
+          "eligible": false
+        }
+      ],
+      "physical_width_m": null,
+      "body_alignment": "UNKNOWN",
+      "risk_score_changed": false,
+      "image": "ADE_val_00000083.jpg",
+      "gt_bands": [
+        {
+          "ground_fraction": 0,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.009839173640167363
+        },
+        {
+          "ground_fraction": 0,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.06415075836820083
+        },
+        {
+          "ground_fraction": 0,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.009741108786610879
+        }
+      ],
+      "timing_scope": "cached output replay, synthetic 800ms observation intervals; not live timing"
+    },
+    {
+      "schema_version": 1,
+      "source_frame_key": "1:0:3",
+      "source_ms": 2400,
+      "status": "INSUFFICIENT_EVIDENCE",
+      "reason": "no_unique_connected_ground_band",
+      "scope": "IMAGE_CANDIDATE_ONLY",
+      "direction": null,
+      "support": 0,
+      "deadline_ms": 0,
+      "event_id": null,
+      "text": null,
+      "bands": [
+        {
+          "direction": "LEFT",
+          "connected_fraction": 0,
+          "reaches_top": false,
+          "unknown_fraction": 0.31428573,
+          "eligible": false
+        },
+        {
+          "direction": "CENTER",
+          "connected_fraction": 0,
+          "reaches_top": false,
+          "unknown_fraction": 0.2,
+          "eligible": false
+        },
+        {
+          "direction": "RIGHT",
+          "connected_fraction": 0,
+          "reaches_top": false,
+          "unknown_fraction": 0.6571429,
+          "eligible": false
+        }
+      ],
+      "physical_width_m": null,
+      "body_alignment": "UNKNOWN",
+      "risk_score_changed": false,
+      "image": "ADE_val_00000092.jpg",
+      "gt_bands": [
+        {
+          "ground_fraction": 0,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.020404401599911526
+        },
+        {
+          "ground_fraction": 0,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.276279086838435
+        },
+        {
+          "ground_fraction": 0,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.3460507964471849
+        }
+      ],
+      "timing_scope": "cached output replay, synthetic 800ms observation intervals; not live timing"
+    },
+    {
+      "schema_version": 1,
+      "source_frame_key": "1:0:3",
+      "source_ms": 2400,
+      "status": "INSUFFICIENT_EVIDENCE",
+      "reason": "no_unique_connected_ground_band",
+      "scope": "IMAGE_CANDIDATE_ONLY",
+      "direction": null,
+      "support": 0,
+      "deadline_ms": 0,
+      "event_id": null,
+      "text": null,
+      "bands": [
+        {
+          "direction": "LEFT",
+          "connected_fraction": 0.2,
+          "reaches_top": false,
+          "unknown_fraction": 0.6857143,
+          "eligible": false
+        },
+        {
+          "direction": "CENTER",
+          "connected_fraction": 0.71428573,
+          "reaches_top": false,
+          "unknown_fraction": 0.08571429,
+          "eligible": false
+        },
+        {
+          "direction": "RIGHT",
+          "connected_fraction": 0.31428573,
+          "reaches_top": false,
+          "unknown_fraction": 0.4857143,
+          "eligible": false
+        }
+      ],
+      "physical_width_m": null,
+      "body_alignment": "UNKNOWN",
+      "risk_score_changed": false,
+      "image": "ADE_val_00000102.jpg",
+      "gt_bands": [
+        {
+          "ground_fraction": 0.3233082706766917,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.33837271750805586
+        },
+        {
+          "ground_fraction": 0.7449516648764769,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.022798066595059077
+        },
+        {
+          "ground_fraction": 0.5713752665245203,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.032436034115138596
+        }
+      ],
+      "timing_scope": "cached output replay, synthetic 800ms observation intervals; not live timing"
+    },
+    {
+      "schema_version": 1,
+      "source_frame_key": "1:0:3",
+      "source_ms": 2400,
+      "status": "INSUFFICIENT_EVIDENCE",
+      "reason": "no_unique_connected_ground_band",
+      "scope": "IMAGE_CANDIDATE_ONLY",
+      "direction": null,
+      "support": 0,
+      "deadline_ms": 0,
+      "event_id": null,
+      "text": null,
+      "bands": [
+        {
+          "direction": "LEFT",
+          "connected_fraction": 0.4857143,
+          "reaches_top": false,
+          "unknown_fraction": 0.31428573,
+          "eligible": false
+        },
+        {
+          "direction": "CENTER",
+          "connected_fraction": 0.42857143,
+          "reaches_top": false,
+          "unknown_fraction": 0.17142858,
+          "eligible": false
+        },
+        {
+          "direction": "RIGHT",
+          "connected_fraction": 0.54285717,
+          "reaches_top": false,
+          "unknown_fraction": 0.42857143,
+          "eligible": false
+        }
+      ],
+      "physical_width_m": null,
+      "body_alignment": "UNKNOWN",
+      "risk_score_changed": false,
+      "image": "ADE_val_00000118.jpg",
+      "gt_bands": [
+        {
+          "ground_fraction": 0.5482213232868626,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.09932464105279605
+        },
+        {
+          "ground_fraction": 0.5773885680694353,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.19397282063695148
+        },
+        {
+          "ground_fraction": 0.5594245997441128,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.0190532176078011
+        }
+      ],
+      "timing_scope": "cached output replay, synthetic 800ms observation intervals; not live timing"
+    },
+    {
+      "schema_version": 1,
+      "source_frame_key": "1:0:3",
+      "source_ms": 2400,
+      "status": "INSUFFICIENT_EVIDENCE",
+      "reason": "no_unique_connected_ground_band",
+      "scope": "IMAGE_CANDIDATE_ONLY",
+      "direction": null,
+      "support": 0,
+      "deadline_ms": 0,
+      "event_id": null,
+      "text": null,
+      "bands": [
+        {
+          "direction": "LEFT",
+          "connected_fraction": 0,
+          "reaches_top": false,
+          "unknown_fraction": 0.114285715,
+          "eligible": false
+        },
+        {
+          "direction": "CENTER",
+          "connected_fraction": 0,
+          "reaches_top": false,
+          "unknown_fraction": 0.42857143,
+          "eligible": false
+        },
+        {
+          "direction": "RIGHT",
+          "connected_fraction": 0,
+          "reaches_top": false,
+          "unknown_fraction": 0.31428573,
+          "eligible": false
+        }
+      ],
+      "physical_width_m": null,
+      "body_alignment": "UNKNOWN",
+      "risk_score_changed": false,
+      "image": "ADE_val_00000137.jpg",
+      "gt_bands": [
+        {
+          "ground_fraction": 0,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.04023809523809524
+        },
+        {
+          "ground_fraction": 0.3110476190476191,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.017238095238095236
+        },
+        {
+          "ground_fraction": 0.17752380952380953,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.013666666666666667
+        }
+      ],
+      "timing_scope": "cached output replay, synthetic 800ms observation intervals; not live timing"
+    },
+    {
+      "schema_version": 1,
+      "source_frame_key": "1:0:3",
+      "source_ms": 2400,
+      "status": "INSUFFICIENT_EVIDENCE",
+      "reason": "no_unique_connected_ground_band",
+      "scope": "IMAGE_CANDIDATE_ONLY",
+      "direction": null,
+      "support": 0,
+      "deadline_ms": 0,
+      "event_id": null,
+      "text": null,
+      "bands": [
+        {
+          "direction": "LEFT",
+          "connected_fraction": 0,
+          "reaches_top": false,
+          "unknown_fraction": 0.54285717,
+          "eligible": false
+        },
+        {
+          "direction": "CENTER",
+          "connected_fraction": 0.057142857,
+          "reaches_top": false,
+          "unknown_fraction": 0.14285715,
+          "eligible": false
+        },
+        {
+          "direction": "RIGHT",
+          "connected_fraction": 0.22857143,
+          "reaches_top": false,
+          "unknown_fraction": 0.6571429,
+          "eligible": false
+        }
+      ],
+      "physical_width_m": null,
+      "body_alignment": "UNKNOWN",
+      "risk_score_changed": false,
+      "image": "ADE_val_00000161.jpg",
+      "gt_bands": [
+        {
+          "ground_fraction": 0.05204612715583223,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.006293159165901283
+        },
+        {
+          "ground_fraction": 0.14031135127809868,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.003049142005319059
+        },
+        {
+          "ground_fraction": 0.24159368488811342,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.08173394542035811
+        }
+      ],
+      "timing_scope": "cached output replay, synthetic 800ms observation intervals; not live timing"
+    },
+    {
+      "schema_version": 1,
+      "source_frame_key": "1:0:3",
+      "source_ms": 2400,
+      "status": "INSUFFICIENT_EVIDENCE",
+      "reason": "no_unique_connected_ground_band",
+      "scope": "IMAGE_CANDIDATE_ONLY",
+      "direction": null,
+      "support": 0,
+      "deadline_ms": 0,
+      "event_id": null,
+      "text": null,
+      "bands": [
+        {
+          "direction": "LEFT",
+          "connected_fraction": 0,
+          "reaches_top": false,
+          "unknown_fraction": 0.42857143,
+          "eligible": false
+        },
+        {
+          "direction": "CENTER",
+          "connected_fraction": 0,
+          "reaches_top": false,
+          "unknown_fraction": 0.028571429,
+          "eligible": false
+        },
+        {
+          "direction": "RIGHT",
+          "connected_fraction": 0,
+          "reaches_top": false,
+          "unknown_fraction": 0.028571429,
+          "eligible": false
+        }
+      ],
+      "physical_width_m": null,
+      "body_alignment": "UNKNOWN",
+      "risk_score_changed": false,
+      "image": "ADE_val_00000162.jpg",
+      "gt_bands": [
+        {
+          "ground_fraction": 0.2326470588235294,
+          "hazard_fraction": 0.014509803921568627,
+          "unknown_fraction": 0.011862745098039215
+        },
+        {
+          "ground_fraction": 0.000392156862745098,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.010294117647058823
+        },
+        {
+          "ground_fraction": 0.13798449612403102,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.008333333333333333
+        }
+      ],
+      "timing_scope": "cached output replay, synthetic 800ms observation intervals; not live timing"
+    },
+    {
+      "schema_version": 1,
+      "source_frame_key": "1:0:3",
+      "source_ms": 2400,
+      "status": "INSUFFICIENT_EVIDENCE",
+      "reason": "no_unique_connected_ground_band",
+      "scope": "IMAGE_CANDIDATE_ONLY",
+      "direction": null,
+      "support": 0,
+      "deadline_ms": 0,
+      "event_id": null,
+      "text": null,
+      "bands": [
+        {
+          "direction": "LEFT",
+          "connected_fraction": 0.2,
+          "reaches_top": false,
+          "unknown_fraction": 0.08571429,
+          "eligible": false
+        },
+        {
+          "direction": "CENTER",
+          "connected_fraction": 0.028571429,
+          "reaches_top": false,
+          "unknown_fraction": 0.028571429,
+          "eligible": false
+        },
+        {
+          "direction": "RIGHT",
+          "connected_fraction": 0.17142858,
+          "reaches_top": false,
+          "unknown_fraction": 0.2,
+          "eligible": false
+        }
+      ],
+      "physical_width_m": null,
+      "body_alignment": "UNKNOWN",
+      "risk_score_changed": false,
+      "image": "ADE_val_00000163.jpg",
+      "gt_bands": [
+        {
+          "ground_fraction": 0.27352726071672917,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.019251185504989738
+        },
+        {
+          "ground_fraction": 0.10323920069832732,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0
+        },
+        {
+          "ground_fraction": 0.37878645564269947,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.003240501573286996
+        }
+      ],
+      "timing_scope": "cached output replay, synthetic 800ms observation intervals; not live timing"
+    },
+    {
+      "schema_version": 1,
+      "source_frame_key": "1:0:3",
+      "source_ms": 2400,
+      "status": "INSUFFICIENT_EVIDENCE",
+      "reason": "no_unique_connected_ground_band",
+      "scope": "IMAGE_CANDIDATE_ONLY",
+      "direction": null,
+      "support": 0,
+      "deadline_ms": 0,
+      "event_id": null,
+      "text": null,
+      "bands": [
+        {
+          "direction": "LEFT",
+          "connected_fraction": 0,
+          "reaches_top": false,
+          "unknown_fraction": 0.42857143,
+          "eligible": false
+        },
+        {
+          "direction": "CENTER",
+          "connected_fraction": 0.4857143,
+          "reaches_top": false,
+          "unknown_fraction": 0.14285715,
+          "eligible": false
+        },
+        {
+          "direction": "RIGHT",
+          "connected_fraction": 0.08571429,
+          "reaches_top": false,
+          "unknown_fraction": 0.6,
+          "eligible": false
+        }
+      ],
+      "physical_width_m": null,
+      "body_alignment": "UNKNOWN",
+      "risk_score_changed": false,
+      "image": "ADE_val_00000164.jpg",
+      "gt_bands": [
+        {
+          "ground_fraction": 0.16107865002856986,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.015501446924594032
+        },
+        {
+          "ground_fraction": 0.4837957865374734,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.2067826469940542
+        },
+        {
+          "ground_fraction": 0.11605373265800484,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.8273691551053366
+        }
+      ],
+      "timing_scope": "cached output replay, synthetic 800ms observation intervals; not live timing"
+    },
+    {
+      "schema_version": 1,
+      "source_frame_key": "1:0:3",
+      "source_ms": 2400,
+      "status": "INSUFFICIENT_EVIDENCE",
+      "reason": "no_unique_connected_ground_band",
+      "scope": "IMAGE_CANDIDATE_ONLY",
+      "direction": null,
+      "support": 0,
+      "deadline_ms": 0,
+      "event_id": null,
+      "text": null,
+      "bands": [
+        {
+          "direction": "LEFT",
+          "connected_fraction": 0,
+          "reaches_top": false,
+          "unknown_fraction": 0,
+          "eligible": false
+        },
+        {
+          "direction": "CENTER",
+          "connected_fraction": 0,
+          "reaches_top": false,
+          "unknown_fraction": 0.057142857,
+          "eligible": false
+        },
+        {
+          "direction": "RIGHT",
+          "connected_fraction": 0.4857143,
+          "reaches_top": false,
+          "unknown_fraction": 0.34285715,
+          "eligible": false
+        }
+      ],
+      "physical_width_m": null,
+      "body_alignment": "UNKNOWN",
+      "risk_score_changed": false,
+      "image": "ADE_val_00000165.jpg",
+      "gt_bands": [
+        {
+          "ground_fraction": 0.008507670850767085,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.024686192468619247
+        },
+        {
+          "ground_fraction": 0.004941223351265192,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.1601315002988643
+        },
+        {
+          "ground_fraction": 0.6025897796902576,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.08655733803962005
+        }
+      ],
+      "timing_scope": "cached output replay, synthetic 800ms observation intervals; not live timing"
+    },
+    {
+      "schema_version": 1,
+      "source_frame_key": "1:0:3",
+      "source_ms": 2400,
+      "status": "INSUFFICIENT_EVIDENCE",
+      "reason": "no_unique_connected_ground_band",
+      "scope": "IMAGE_CANDIDATE_ONLY",
+      "direction": null,
+      "support": 0,
+      "deadline_ms": 0,
+      "event_id": null,
+      "text": null,
+      "bands": [
+        {
+          "direction": "LEFT",
+          "connected_fraction": 0,
+          "reaches_top": false,
+          "unknown_fraction": 0.4,
+          "eligible": false
+        },
+        {
+          "direction": "CENTER",
+          "connected_fraction": 0,
+          "reaches_top": false,
+          "unknown_fraction": 0,
+          "eligible": false
+        },
+        {
+          "direction": "RIGHT",
+          "connected_fraction": 0,
+          "reaches_top": false,
+          "unknown_fraction": 0.057142857,
+          "eligible": false
+        }
+      ],
+      "physical_width_m": null,
+      "body_alignment": "UNKNOWN",
+      "risk_score_changed": false,
+      "image": "ADE_val_00000166.jpg",
+      "gt_bands": [
+        {
+          "ground_fraction": 0.24372845741249333,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.050172340700053455
+        },
+        {
+          "ground_fraction": 0.03191294134918887,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.005009909711517287
+        },
+        {
+          "ground_fraction": 0.09540850033032372,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.010863980033766424
+        }
+      ],
+      "timing_scope": "cached output replay, synthetic 800ms observation intervals; not live timing"
+    },
+    {
+      "schema_version": 1,
+      "source_frame_key": "1:0:3",
+      "source_ms": 2400,
+      "status": "INSUFFICIENT_EVIDENCE",
+      "reason": "no_unique_connected_ground_band",
+      "scope": "IMAGE_CANDIDATE_ONLY",
+      "direction": null,
+      "support": 0,
+      "deadline_ms": 0,
+      "event_id": null,
+      "text": null,
+      "bands": [
+        {
+          "direction": "LEFT",
+          "connected_fraction": 0.22857143,
+          "reaches_top": false,
+          "unknown_fraction": 0.2,
+          "eligible": false
+        },
+        {
+          "direction": "CENTER",
+          "connected_fraction": 0.057142857,
+          "reaches_top": false,
+          "unknown_fraction": 0.028571429,
+          "eligible": false
+        },
+        {
+          "direction": "RIGHT",
+          "connected_fraction": 0.4,
+          "reaches_top": false,
+          "unknown_fraction": 0.2,
+          "eligible": false
+        }
+      ],
+      "physical_width_m": null,
+      "body_alignment": "UNKNOWN",
+      "risk_score_changed": false,
+      "image": "ADE_val_00000167.jpg",
+      "gt_bands": [
+        {
+          "ground_fraction": 0.5525490196078431,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.008333333333333333
+        },
+        {
+          "ground_fraction": 0.3896078431372549,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.008333333333333333
+        },
+        {
+          "ground_fraction": 0.6062015503875969,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.015697674418604653
+        }
+      ],
+      "timing_scope": "cached output replay, synthetic 800ms observation intervals; not live timing"
+    },
+    {
+      "schema_version": 1,
+      "source_frame_key": "1:0:3",
+      "source_ms": 2400,
+      "status": "INSUFFICIENT_EVIDENCE",
+      "reason": "no_unique_connected_ground_band",
+      "scope": "IMAGE_CANDIDATE_ONLY",
+      "direction": null,
+      "support": 0,
+      "deadline_ms": 0,
+      "event_id": null,
+      "text": null,
+      "bands": [
+        {
+          "direction": "LEFT",
+          "connected_fraction": 0.2,
+          "reaches_top": false,
+          "unknown_fraction": 0.4,
+          "eligible": false
+        },
+        {
+          "direction": "CENTER",
+          "connected_fraction": 0.17142858,
+          "reaches_top": false,
+          "unknown_fraction": 0.08571429,
+          "eligible": false
+        },
+        {
+          "direction": "RIGHT",
+          "connected_fraction": 0.114285715,
+          "reaches_top": false,
+          "unknown_fraction": 0.028571429,
+          "eligible": false
+        }
+      ],
+      "physical_width_m": null,
+      "body_alignment": "UNKNOWN",
+      "risk_score_changed": false,
+      "image": "ADE_val_00000168.jpg",
+      "gt_bands": [
+        {
+          "ground_fraction": 0.2463410125859085,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.002470131572314362
+        },
+        {
+          "ground_fraction": 0.21900152912906856,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.001680361613819294
+        },
+        {
+          "ground_fraction": 0.1697165229957487,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.005881265648367529
+        }
+      ],
+      "timing_scope": "cached output replay, synthetic 800ms observation intervals; not live timing"
+    },
+    {
+      "schema_version": 1,
+      "source_frame_key": "1:0:3",
+      "source_ms": 2400,
+      "status": "INSUFFICIENT_EVIDENCE",
+      "reason": "no_unique_connected_ground_band",
+      "scope": "IMAGE_CANDIDATE_ONLY",
+      "direction": null,
+      "support": 0,
+      "deadline_ms": 0,
+      "event_id": null,
+      "text": null,
+      "bands": [
+        {
+          "direction": "LEFT",
+          "connected_fraction": 0.028571429,
+          "reaches_top": false,
+          "unknown_fraction": 0.9142857,
+          "eligible": false
+        },
+        {
+          "direction": "CENTER",
+          "connected_fraction": 0,
+          "reaches_top": false,
+          "unknown_fraction": 0.82857144,
+          "eligible": false
+        },
+        {
+          "direction": "RIGHT",
+          "connected_fraction": 0,
+          "reaches_top": false,
+          "unknown_fraction": 0.54285717,
+          "eligible": false
+        }
+      ],
+      "physical_width_m": null,
+      "body_alignment": "UNKNOWN",
+      "risk_score_changed": false,
+      "image": "ADE_val_00000171.jpg",
+      "gt_bands": [
+        {
+          "ground_fraction": 0.169037558685446,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.07086854460093897
+        },
+        {
+          "ground_fraction": 0.028145539906103287,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.014178403755868544
+        },
+        {
+          "ground_fraction": 0.1455841121495327,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.016822429906542057
+        }
+      ],
+      "timing_scope": "cached output replay, synthetic 800ms observation intervals; not live timing"
+    },
+    {
+      "schema_version": 1,
+      "source_frame_key": "1:0:3",
+      "source_ms": 2400,
+      "status": "INSUFFICIENT_EVIDENCE",
+      "reason": "no_unique_connected_ground_band",
+      "scope": "IMAGE_CANDIDATE_ONLY",
+      "direction": null,
+      "support": 0,
+      "deadline_ms": 0,
+      "event_id": null,
+      "text": null,
+      "bands": [
+        {
+          "direction": "LEFT",
+          "connected_fraction": 0.17142858,
+          "reaches_top": false,
+          "unknown_fraction": 0.62857145,
+          "eligible": false
+        },
+        {
+          "direction": "CENTER",
+          "connected_fraction": 0.25714287,
+          "reaches_top": false,
+          "unknown_fraction": 0.25714287,
+          "eligible": false
+        },
+        {
+          "direction": "RIGHT",
+          "connected_fraction": 0,
+          "reaches_top": false,
+          "unknown_fraction": 0.31428573,
+          "eligible": false
+        }
+      ],
+      "physical_width_m": null,
+      "body_alignment": "UNKNOWN",
+      "risk_score_changed": false,
+      "image": "ADE_val_00000172.jpg",
+      "gt_bands": [
+        {
+          "ground_fraction": 0.26557056752621977,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.02351943671317715
+        },
+        {
+          "ground_fraction": 0.4361007120311238,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.0020736988915804155
+        },
+        {
+          "ground_fraction": 0.27438890112310066,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.012313734126110254
+        }
+      ],
+      "timing_scope": "cached output replay, synthetic 800ms observation intervals; not live timing"
+    },
+    {
+      "schema_version": 1,
+      "source_frame_key": "1:0:3",
+      "source_ms": 2400,
+      "status": "INSUFFICIENT_EVIDENCE",
+      "reason": "no_unique_connected_ground_band",
+      "scope": "IMAGE_CANDIDATE_ONLY",
+      "direction": null,
+      "support": 0,
+      "deadline_ms": 0,
+      "event_id": null,
+      "text": null,
+      "bands": [
+        {
+          "direction": "LEFT",
+          "connected_fraction": 0,
+          "reaches_top": false,
+          "unknown_fraction": 0.2857143,
+          "eligible": false
+        },
+        {
+          "direction": "CENTER",
+          "connected_fraction": 0,
+          "reaches_top": false,
+          "unknown_fraction": 0.31428573,
+          "eligible": false
+        },
+        {
+          "direction": "RIGHT",
+          "connected_fraction": 0,
+          "reaches_top": false,
+          "unknown_fraction": 0.45714286,
+          "eligible": false
+        }
+      ],
+      "physical_width_m": null,
+      "body_alignment": "UNKNOWN",
+      "risk_score_changed": false,
+      "image": "ADE_val_00000175.jpg",
+      "gt_bands": [
+        {
+          "ground_fraction": 0,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.08633597639682833
+        },
+        {
+          "ground_fraction": 0.08097307008377788,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.011255935030889659
+        },
+        {
+          "ground_fraction": 0.07516178115089187,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.060496067755595885
+        }
+      ],
+      "timing_scope": "cached output replay, synthetic 800ms observation intervals; not live timing"
+    },
+    {
+      "schema_version": 1,
+      "source_frame_key": "1:0:3",
+      "source_ms": 2400,
+      "status": "INSUFFICIENT_EVIDENCE",
+      "reason": "no_unique_connected_ground_band",
+      "scope": "IMAGE_CANDIDATE_ONLY",
+      "direction": null,
+      "support": 0,
+      "deadline_ms": 0,
+      "event_id": null,
+      "text": null,
+      "bands": [
+        {
+          "direction": "LEFT",
+          "connected_fraction": 0.42857143,
+          "reaches_top": false,
+          "unknown_fraction": 0.114285715,
+          "eligible": false
+        },
+        {
+          "direction": "CENTER",
+          "connected_fraction": 0.4,
+          "reaches_top": false,
+          "unknown_fraction": 0.057142857,
+          "eligible": false
+        },
+        {
+          "direction": "RIGHT",
+          "connected_fraction": 0,
+          "reaches_top": false,
+          "unknown_fraction": 0.057142857,
+          "eligible": false
+        }
+      ],
+      "physical_width_m": null,
+      "body_alignment": "UNKNOWN",
+      "risk_score_changed": false,
+      "image": "ADE_val_00000176.jpg",
+      "gt_bands": [
+        {
+          "ground_fraction": 0.5672324200296937,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.08113443109731408
+        },
+        {
+          "ground_fraction": 0.5070691051423943,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.46016668916183023
+        },
+        {
+          "ground_fraction": 0.2510291537319476,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.02299568092860035
+        }
+      ],
+      "timing_scope": "cached output replay, synthetic 800ms observation intervals; not live timing"
+    },
+    {
+      "schema_version": 1,
+      "source_frame_key": "1:0:3",
+      "source_ms": 2400,
+      "status": "INSUFFICIENT_EVIDENCE",
+      "reason": "no_unique_connected_ground_band",
+      "scope": "IMAGE_CANDIDATE_ONLY",
+      "direction": null,
+      "support": 0,
+      "deadline_ms": 0,
+      "event_id": null,
+      "text": null,
+      "bands": [
+        {
+          "direction": "LEFT",
+          "connected_fraction": 0.057142857,
+          "reaches_top": false,
+          "unknown_fraction": 0.6857143,
+          "eligible": false
+        },
+        {
+          "direction": "CENTER",
+          "connected_fraction": 0,
+          "reaches_top": false,
+          "unknown_fraction": 0.7714286,
+          "eligible": false
+        },
+        {
+          "direction": "RIGHT",
+          "connected_fraction": 0,
+          "reaches_top": false,
+          "unknown_fraction": 0.45714286,
+          "eligible": false
+        }
+      ],
+      "physical_width_m": null,
+      "body_alignment": "UNKNOWN",
+      "risk_score_changed": false,
+      "image": "ADE_val_00000179.jpg",
+      "gt_bands": [
+        {
+          "ground_fraction": 0.08445615910640886,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.05671575765395462
+        },
+        {
+          "ground_fraction": 0.4652059017837481,
+          "hazard_fraction": 0.025288115686706306,
+          "unknown_fraction": 0.00950598252954562
+        },
+        {
+          "ground_fraction": 0.1108786610878661,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.2862989062614696
+        }
+      ],
+      "timing_scope": "cached output replay, synthetic 800ms observation intervals; not live timing"
+    },
+    {
+      "schema_version": 1,
+      "source_frame_key": "1:0:3",
+      "source_ms": 2400,
+      "status": "INSUFFICIENT_EVIDENCE",
+      "reason": "no_unique_connected_ground_band",
+      "scope": "IMAGE_CANDIDATE_ONLY",
+      "direction": null,
+      "support": 0,
+      "deadline_ms": 0,
+      "event_id": null,
+      "text": null,
+      "bands": [
+        {
+          "direction": "LEFT",
+          "connected_fraction": 0.22857143,
+          "reaches_top": false,
+          "unknown_fraction": 0.45714286,
+          "eligible": false
+        },
+        {
+          "direction": "CENTER",
+          "connected_fraction": 0.14285715,
+          "reaches_top": false,
+          "unknown_fraction": 0.114285715,
+          "eligible": false
+        },
+        {
+          "direction": "RIGHT",
+          "connected_fraction": 0.14285715,
+          "reaches_top": false,
+          "unknown_fraction": 0.22857143,
+          "eligible": false
+        }
+      ],
+      "physical_width_m": null,
+      "body_alignment": "UNKNOWN",
+      "risk_score_changed": false,
+      "image": "ADE_val_00000181.jpg",
+      "gt_bands": [
+        {
+          "ground_fraction": 0.3433333333333333,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.02107843137254902
+        },
+        {
+          "ground_fraction": 0.2088235294117647,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.008627450980392156
+        },
+        {
+          "ground_fraction": 0.27994186046511627,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.016472868217054265
+        }
+      ],
+      "timing_scope": "cached output replay, synthetic 800ms observation intervals; not live timing"
+    },
+    {
+      "schema_version": 1,
+      "source_frame_key": "1:0:3",
+      "source_ms": 2400,
+      "status": "INSUFFICIENT_EVIDENCE",
+      "reason": "no_unique_connected_ground_band",
+      "scope": "IMAGE_CANDIDATE_ONLY",
+      "direction": null,
+      "support": 0,
+      "deadline_ms": 0,
+      "event_id": null,
+      "text": null,
+      "bands": [
+        {
+          "direction": "LEFT",
+          "connected_fraction": 0,
+          "reaches_top": false,
+          "unknown_fraction": 0,
+          "eligible": false
+        },
+        {
+          "direction": "CENTER",
+          "connected_fraction": 0.14285715,
+          "reaches_top": false,
+          "unknown_fraction": 0.31428573,
+          "eligible": false
+        },
+        {
+          "direction": "RIGHT",
+          "connected_fraction": 0.057142857,
+          "reaches_top": false,
+          "unknown_fraction": 0.34285715,
+          "eligible": false
+        }
+      ],
+      "physical_width_m": null,
+      "body_alignment": "UNKNOWN",
+      "risk_score_changed": false,
+      "image": "ADE_val_00000182.jpg",
+      "gt_bands": [
+        {
+          "ground_fraction": 0,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.013367182235594629
+        },
+        {
+          "ground_fraction": 0.19295441367746383,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.007568990644539514
+        },
+        {
+          "ground_fraction": 0.043417847998501215,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.009773309186286142
+        }
+      ],
+      "timing_scope": "cached output replay, synthetic 800ms observation intervals; not live timing"
+    },
+    {
+      "schema_version": 1,
+      "source_frame_key": "1:0:3",
+      "source_ms": 2400,
+      "status": "INSUFFICIENT_EVIDENCE",
+      "reason": "no_unique_connected_ground_band",
+      "scope": "IMAGE_CANDIDATE_ONLY",
+      "direction": null,
+      "support": 0,
+      "deadline_ms": 0,
+      "event_id": null,
+      "text": null,
+      "bands": [
+        {
+          "direction": "LEFT",
+          "connected_fraction": 0,
+          "reaches_top": false,
+          "unknown_fraction": 0.74285716,
+          "eligible": false
+        },
+        {
+          "direction": "CENTER",
+          "connected_fraction": 0,
+          "reaches_top": false,
+          "unknown_fraction": 0.74285716,
+          "eligible": false
+        },
+        {
+          "direction": "RIGHT",
+          "connected_fraction": 0,
+          "reaches_top": false,
+          "unknown_fraction": 0.4857143,
+          "eligible": false
+        }
+      ],
+      "physical_width_m": null,
+      "body_alignment": "UNKNOWN",
+      "risk_score_changed": false,
+      "image": "ADE_val_00000185.jpg",
+      "gt_bands": [
+        {
+          "ground_fraction": 0.20056033767717915,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.03402576816028607
+        },
+        {
+          "ground_fraction": 0.17272260148278645,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.010074873375908391
+        },
+        {
+          "ground_fraction": 0.041290464655362256,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.04252000293621082
+        }
+      ],
+      "timing_scope": "cached output replay, synthetic 800ms observation intervals; not live timing"
+    },
+    {
+      "schema_version": 1,
+      "source_frame_key": "1:0:3",
+      "source_ms": 2400,
+      "status": "INSUFFICIENT_EVIDENCE",
+      "reason": "no_unique_connected_ground_band",
+      "scope": "IMAGE_CANDIDATE_ONLY",
+      "direction": null,
+      "support": 0,
+      "deadline_ms": 0,
+      "event_id": null,
+      "text": null,
+      "bands": [
+        {
+          "direction": "LEFT",
+          "connected_fraction": 0.8,
+          "reaches_top": false,
+          "unknown_fraction": 0.08571429,
+          "eligible": false
+        },
+        {
+          "direction": "CENTER",
+          "connected_fraction": 0.34285715,
+          "reaches_top": false,
+          "unknown_fraction": 0.5714286,
+          "eligible": false
+        },
+        {
+          "direction": "RIGHT",
+          "connected_fraction": 0.17142858,
+          "reaches_top": false,
+          "unknown_fraction": 0.2,
+          "eligible": false
+        }
+      ],
+      "physical_width_m": null,
+      "body_alignment": "UNKNOWN",
+      "risk_score_changed": false,
+      "image": "ADE_val_00000186.jpg",
+      "gt_bands": [
+        {
+          "ground_fraction": 0.8430059523809523,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.021130952380952382
+        },
+        {
+          "ground_fraction": 0.3119047619047619,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.6793154761904762
+        },
+        {
+          "ground_fraction": 0.22916666666666666,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.4936011904761905
+        }
+      ],
+      "timing_scope": "cached output replay, synthetic 800ms observation intervals; not live timing"
+    },
+    {
+      "schema_version": 1,
+      "source_frame_key": "1:0:3",
+      "source_ms": 2400,
+      "status": "INSUFFICIENT_EVIDENCE",
+      "reason": "no_unique_connected_ground_band",
+      "scope": "IMAGE_CANDIDATE_ONLY",
+      "direction": null,
+      "support": 0,
+      "deadline_ms": 0,
+      "event_id": null,
+      "text": null,
+      "bands": [
+        {
+          "direction": "LEFT",
+          "connected_fraction": 0.057142857,
+          "reaches_top": false,
+          "unknown_fraction": 0.7714286,
+          "eligible": false
+        },
+        {
+          "direction": "CENTER",
+          "connected_fraction": 0,
+          "reaches_top": false,
+          "unknown_fraction": 0.54285717,
+          "eligible": false
+        },
+        {
+          "direction": "RIGHT",
+          "connected_fraction": 0.4,
+          "reaches_top": false,
+          "unknown_fraction": 0.42857143,
+          "eligible": false
+        }
+      ],
+      "physical_width_m": null,
+      "body_alignment": "UNKNOWN",
+      "risk_score_changed": false,
+      "image": "ADE_val_00000188.jpg",
+      "gt_bands": [
+        {
+          "ground_fraction": 0.4838,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.0099
+        },
+        {
+          "ground_fraction": 0.4408,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.0181
+        },
+        {
+          "ground_fraction": 0.5552,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.254
+        }
+      ],
+      "timing_scope": "cached output replay, synthetic 800ms observation intervals; not live timing"
+    },
+    {
+      "schema_version": 1,
+      "source_frame_key": "1:0:3",
+      "source_ms": 2400,
+      "status": "INSUFFICIENT_EVIDENCE",
+      "reason": "no_unique_connected_ground_band",
+      "scope": "IMAGE_CANDIDATE_ONLY",
+      "direction": null,
+      "support": 0,
+      "deadline_ms": 0,
+      "event_id": null,
+      "text": null,
+      "bands": [
+        {
+          "direction": "LEFT",
+          "connected_fraction": 0,
+          "reaches_top": false,
+          "unknown_fraction": 1,
+          "eligible": false
+        },
+        {
+          "direction": "CENTER",
+          "connected_fraction": 0,
+          "reaches_top": false,
+          "unknown_fraction": 1,
+          "eligible": false
+        },
+        {
+          "direction": "RIGHT",
+          "connected_fraction": 0,
+          "reaches_top": false,
+          "unknown_fraction": 1,
+          "eligible": false
+        }
+      ],
+      "physical_width_m": null,
+      "body_alignment": "UNKNOWN",
+      "risk_score_changed": false,
+      "image": "ADE_val_00000189.jpg",
+      "gt_bands": [
+        {
+          "ground_fraction": 0.10958762886597938,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.02216494845360825
+        },
+        {
+          "ground_fraction": 0,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.011649484536082473
+        },
+        {
+          "ground_fraction": 0,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.029896907216494847
+        }
+      ],
+      "timing_scope": "cached output replay, synthetic 800ms observation intervals; not live timing"
+    },
+    {
+      "schema_version": 1,
+      "source_frame_key": "1:0:3",
+      "source_ms": 2400,
+      "status": "INSUFFICIENT_EVIDENCE",
+      "reason": "no_unique_connected_ground_band",
+      "scope": "IMAGE_CANDIDATE_ONLY",
+      "direction": null,
+      "support": 0,
+      "deadline_ms": 0,
+      "event_id": null,
+      "text": null,
+      "bands": [
+        {
+          "direction": "LEFT",
+          "connected_fraction": 0,
+          "reaches_top": false,
+          "unknown_fraction": 0.8,
+          "eligible": false
+        },
+        {
+          "direction": "CENTER",
+          "connected_fraction": 0,
+          "reaches_top": false,
+          "unknown_fraction": 0.8857143,
+          "eligible": false
+        },
+        {
+          "direction": "RIGHT",
+          "connected_fraction": 0,
+          "reaches_top": false,
+          "unknown_fraction": 0.71428573,
+          "eligible": false
+        }
+      ],
+      "physical_width_m": null,
+      "body_alignment": "UNKNOWN",
+      "risk_score_changed": false,
+      "image": "ADE_val_00000190.jpg",
+      "gt_bands": [
+        {
+          "ground_fraction": 0,
+          "hazard_fraction": 0.4159941305942773,
+          "unknown_fraction": 0.19156272927366105
+        },
+        {
+          "ground_fraction": 0,
+          "hazard_fraction": 0.39908290535583274,
+          "unknown_fraction": 0.01636096845194424
+        },
+        {
+          "ground_fraction": 0,
+          "hazard_fraction": 0.3914979018427294,
+          "unknown_fraction": 0.02842546980478015
+        }
+      ],
+      "timing_scope": "cached output replay, synthetic 800ms observation intervals; not live timing"
+    },
+    {
+      "schema_version": 1,
+      "source_frame_key": "1:0:3",
+      "source_ms": 2400,
+      "status": "INSUFFICIENT_EVIDENCE",
+      "reason": "no_unique_connected_ground_band",
+      "scope": "IMAGE_CANDIDATE_ONLY",
+      "direction": null,
+      "support": 0,
+      "deadline_ms": 0,
+      "event_id": null,
+      "text": null,
+      "bands": [
+        {
+          "direction": "LEFT",
+          "connected_fraction": 0,
+          "reaches_top": false,
+          "unknown_fraction": 0.42857143,
+          "eligible": false
+        },
+        {
+          "direction": "CENTER",
+          "connected_fraction": 0.14285715,
+          "reaches_top": false,
+          "unknown_fraction": 0.2,
+          "eligible": false
+        },
+        {
+          "direction": "RIGHT",
+          "connected_fraction": 0,
+          "reaches_top": false,
+          "unknown_fraction": 0,
+          "eligible": false
+        }
+      ],
+      "physical_width_m": null,
+      "body_alignment": "UNKNOWN",
+      "risk_score_changed": false,
+      "image": "ADE_val_00000191.jpg",
+      "gt_bands": [
+        {
+          "ground_fraction": 0.001931434089811685,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.1106953162723322
+        },
+        {
+          "ground_fraction": 0.34258812168034763,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.019555770159343313
+        },
+        {
+          "ground_fraction": 0.001931434089811685,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.3491067117334621
+        }
+      ],
+      "timing_scope": "cached output replay, synthetic 800ms observation intervals; not live timing"
+    },
+    {
+      "schema_version": 1,
+      "source_frame_key": "1:0:3",
+      "source_ms": 2400,
+      "status": "INSUFFICIENT_EVIDENCE",
+      "reason": "no_unique_connected_ground_band",
+      "scope": "IMAGE_CANDIDATE_ONLY",
+      "direction": null,
+      "support": 0,
+      "deadline_ms": 0,
+      "event_id": null,
+      "text": null,
+      "bands": [
+        {
+          "direction": "LEFT",
+          "connected_fraction": 0.31428573,
+          "reaches_top": false,
+          "unknown_fraction": 0.4857143,
+          "eligible": false
+        },
+        {
+          "direction": "CENTER",
+          "connected_fraction": 0.2,
+          "reaches_top": false,
+          "unknown_fraction": 0.114285715,
+          "eligible": false
+        },
+        {
+          "direction": "RIGHT",
+          "connected_fraction": 0,
+          "reaches_top": false,
+          "unknown_fraction": 0,
+          "eligible": false
+        }
+      ],
+      "physical_width_m": null,
+      "body_alignment": "UNKNOWN",
+      "risk_score_changed": false,
+      "image": "ADE_val_00000192.jpg",
+      "gt_bands": [
+        {
+          "ground_fraction": 0.44167561761546725,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.05128893662728249
+        },
+        {
+          "ground_fraction": 0.36944146079484425,
+          "hazard_fraction": 0.030612244897959183,
+          "unknown_fraction": 0.02599355531686359
+        },
+        {
+          "ground_fraction": 0.11295309168443497,
+          "hazard_fraction": 0.11188699360341152,
+          "unknown_fraction": 0.17622601279317698
+        }
+      ],
+      "timing_scope": "cached output replay, synthetic 800ms observation intervals; not live timing"
+    },
+    {
+      "schema_version": 1,
+      "source_frame_key": "1:0:3",
+      "source_ms": 2400,
+      "status": "INSUFFICIENT_EVIDENCE",
+      "reason": "no_unique_connected_ground_band",
+      "scope": "IMAGE_CANDIDATE_ONLY",
+      "direction": null,
+      "support": 0,
+      "deadline_ms": 0,
+      "event_id": null,
+      "text": null,
+      "bands": [
+        {
+          "direction": "LEFT",
+          "connected_fraction": 0.028571429,
+          "reaches_top": false,
+          "unknown_fraction": 0.9142857,
+          "eligible": false
+        },
+        {
+          "direction": "CENTER",
+          "connected_fraction": 0,
+          "reaches_top": false,
+          "unknown_fraction": 1,
+          "eligible": false
+        },
+        {
+          "direction": "RIGHT",
+          "connected_fraction": 0,
+          "reaches_top": false,
+          "unknown_fraction": 1,
+          "eligible": false
+        }
+      ],
+      "physical_width_m": null,
+      "body_alignment": "UNKNOWN",
+      "risk_score_changed": false,
+      "image": "ADE_val_00000193.jpg",
+      "gt_bands": [
+        {
+          "ground_fraction": 0.24722673160173161,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.028544372294372296
+        },
+        {
+          "ground_fraction": 0.17830239440408932,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.021119182136131287
+        },
+        {
+          "ground_fraction": 0.2464352972827549,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.023372343287597526
+        }
+      ],
+      "timing_scope": "cached output replay, synthetic 800ms observation intervals; not live timing"
+    },
+    {
+      "schema_version": 1,
+      "source_frame_key": "1:0:3",
+      "source_ms": 2400,
+      "status": "INSUFFICIENT_EVIDENCE",
+      "reason": "no_unique_connected_ground_band",
+      "scope": "IMAGE_CANDIDATE_ONLY",
+      "direction": null,
+      "support": 0,
+      "deadline_ms": 0,
+      "event_id": null,
+      "text": null,
+      "bands": [
+        {
+          "direction": "LEFT",
+          "connected_fraction": 0,
+          "reaches_top": false,
+          "unknown_fraction": 0.82857144,
+          "eligible": false
+        },
+        {
+          "direction": "CENTER",
+          "connected_fraction": 0,
+          "reaches_top": false,
+          "unknown_fraction": 0.4,
+          "eligible": false
+        },
+        {
+          "direction": "RIGHT",
+          "connected_fraction": 0,
+          "reaches_top": false,
+          "unknown_fraction": 0.45714286,
+          "eligible": false
+        }
+      ],
+      "physical_width_m": null,
+      "body_alignment": "UNKNOWN",
+      "risk_score_changed": false,
+      "image": "ADE_val_00000194.jpg",
+      "gt_bands": [
+        {
+          "ground_fraction": 0,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.0210400147519823
+        },
+        {
+          "ground_fraction": 0,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.01574730975819905
+        },
+        {
+          "ground_fraction": 0,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.028653137546059505
+        }
+      ],
+      "timing_scope": "cached output replay, synthetic 800ms observation intervals; not live timing"
+    },
+    {
+      "schema_version": 1,
+      "source_frame_key": "1:0:3",
+      "source_ms": 2400,
+      "status": "INSUFFICIENT_EVIDENCE",
+      "reason": "no_unique_connected_ground_band",
+      "scope": "IMAGE_CANDIDATE_ONLY",
+      "direction": null,
+      "support": 0,
+      "deadline_ms": 0,
+      "event_id": null,
+      "text": null,
+      "bands": [
+        {
+          "direction": "LEFT",
+          "connected_fraction": 0,
+          "reaches_top": false,
+          "unknown_fraction": 0.4857143,
+          "eligible": false
+        },
+        {
+          "direction": "CENTER",
+          "connected_fraction": 0.114285715,
+          "reaches_top": false,
+          "unknown_fraction": 0.74285716,
+          "eligible": false
+        },
+        {
+          "direction": "RIGHT",
+          "connected_fraction": 0.14285715,
+          "reaches_top": false,
+          "unknown_fraction": 0.71428573,
+          "eligible": false
+        }
+      ],
+      "physical_width_m": null,
+      "body_alignment": "UNKNOWN",
+      "risk_score_changed": false,
+      "image": "ADE_val_00000195.jpg",
+      "gt_bands": [
+        {
+          "ground_fraction": 0.0016260162601626016,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.01043360433604336
+        },
+        {
+          "ground_fraction": 0.22556458897922313,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.058401084010840106
+        },
+        {
+          "ground_fraction": 0.1857470334412082,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.10324523552678892
+        }
+      ],
+      "timing_scope": "cached output replay, synthetic 800ms observation intervals; not live timing"
+    },
+    {
+      "schema_version": 1,
+      "source_frame_key": "1:0:3",
+      "source_ms": 2400,
+      "status": "INSUFFICIENT_EVIDENCE",
+      "reason": "no_unique_connected_ground_band",
+      "scope": "IMAGE_CANDIDATE_ONLY",
+      "direction": null,
+      "support": 0,
+      "deadline_ms": 0,
+      "event_id": null,
+      "text": null,
+      "bands": [
+        {
+          "direction": "LEFT",
+          "connected_fraction": 0,
+          "reaches_top": false,
+          "unknown_fraction": 0.25714287,
+          "eligible": false
+        },
+        {
+          "direction": "CENTER",
+          "connected_fraction": 0,
+          "reaches_top": false,
+          "unknown_fraction": 0.2857143,
+          "eligible": false
+        },
+        {
+          "direction": "RIGHT",
+          "connected_fraction": 0,
+          "reaches_top": false,
+          "unknown_fraction": 0.34285715,
+          "eligible": false
+        }
+      ],
+      "physical_width_m": null,
+      "body_alignment": "UNKNOWN",
+      "risk_score_changed": false,
+      "image": "ADE_val_00000196.jpg",
+      "gt_bands": [
+        {
+          "ground_fraction": 0.045544097920858485,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.0391934942991281
+        },
+        {
+          "ground_fraction": 0.06423960429242119,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.016557679409792084
+        },
+        {
+          "ground_fraction": 0.1204939919893191,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.043328604806408544
+        }
+      ],
+      "timing_scope": "cached output replay, synthetic 800ms observation intervals; not live timing"
+    },
+    {
+      "schema_version": 1,
+      "source_frame_key": "1:0:3",
+      "source_ms": 2400,
+      "status": "INSUFFICIENT_EVIDENCE",
+      "reason": "no_unique_connected_ground_band",
+      "scope": "IMAGE_CANDIDATE_ONLY",
+      "direction": null,
+      "support": 0,
+      "deadline_ms": 0,
+      "event_id": null,
+      "text": null,
+      "bands": [
+        {
+          "direction": "LEFT",
+          "connected_fraction": 0,
+          "reaches_top": false,
+          "unknown_fraction": 0.94285715,
+          "eligible": false
+        },
+        {
+          "direction": "CENTER",
+          "connected_fraction": 0,
+          "reaches_top": false,
+          "unknown_fraction": 0.74285716,
+          "eligible": false
+        },
+        {
+          "direction": "RIGHT",
+          "connected_fraction": 0.028571429,
+          "reaches_top": false,
+          "unknown_fraction": 0.71428573,
+          "eligible": false
+        }
+      ],
+      "physical_width_m": null,
+      "body_alignment": "UNKNOWN",
+      "risk_score_changed": false,
+      "image": "ADE_val_00000197.jpg",
+      "gt_bands": [
+        {
+          "ground_fraction": 0.12820674044265593,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.8107184775318578
+        },
+        {
+          "ground_fraction": 0.3234825620389001,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.6765174379611
+        },
+        {
+          "ground_fraction": 0.41770277036048065,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.5789803070761015
+        }
+      ],
+      "timing_scope": "cached output replay, synthetic 800ms observation intervals; not live timing"
+    },
+    {
+      "schema_version": 1,
+      "source_frame_key": "1:0:3",
+      "source_ms": 2400,
+      "status": "INSUFFICIENT_EVIDENCE",
+      "reason": "no_unique_connected_ground_band",
+      "scope": "IMAGE_CANDIDATE_ONLY",
+      "direction": null,
+      "support": 0,
+      "deadline_ms": 0,
+      "event_id": null,
+      "text": null,
+      "bands": [
+        {
+          "direction": "LEFT",
+          "connected_fraction": 0.71428573,
+          "reaches_top": false,
+          "unknown_fraction": 0.14285715,
+          "eligible": false
+        },
+        {
+          "direction": "CENTER",
+          "connected_fraction": 0.71428573,
+          "reaches_top": false,
+          "unknown_fraction": 0.17142858,
+          "eligible": false
+        },
+        {
+          "direction": "RIGHT",
+          "connected_fraction": 0.6571429,
+          "reaches_top": false,
+          "unknown_fraction": 0.057142857,
+          "eligible": false
+        }
+      ],
+      "physical_width_m": null,
+      "body_alignment": "UNKNOWN",
+      "risk_score_changed": false,
+      "image": "ADE_val_00000198.jpg",
+      "gt_bands": [
+        {
+          "ground_fraction": 0.7563724950451443,
+          "hazard_fraction": 0.03611539308522352,
+          "unknown_fraction": 0.11831094472583131
+        },
+        {
+          "ground_fraction": 0.7444406337883257,
+          "hazard_fraction": 0.1223952260100144,
+          "unknown_fraction": 0.10933534535976404
+        },
+        {
+          "ground_fraction": 0.709788051306674,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.12021400644763015
+        }
+      ],
+      "timing_scope": "cached output replay, synthetic 800ms observation intervals; not live timing"
+    },
+    {
+      "schema_version": 1,
+      "source_frame_key": "1:0:3",
+      "source_ms": 2400,
+      "status": "INSUFFICIENT_EVIDENCE",
+      "reason": "no_unique_connected_ground_band",
+      "scope": "IMAGE_CANDIDATE_ONLY",
+      "direction": null,
+      "support": 0,
+      "deadline_ms": 0,
+      "event_id": null,
+      "text": null,
+      "bands": [
+        {
+          "direction": "LEFT",
+          "connected_fraction": 0,
+          "reaches_top": false,
+          "unknown_fraction": 0.94285715,
+          "eligible": false
+        },
+        {
+          "direction": "CENTER",
+          "connected_fraction": 0.028571429,
+          "reaches_top": false,
+          "unknown_fraction": 0.85714287,
+          "eligible": false
+        },
+        {
+          "direction": "RIGHT",
+          "connected_fraction": 0.17142858,
+          "reaches_top": false,
+          "unknown_fraction": 0.5714286,
+          "eligible": false
+        }
+      ],
+      "physical_width_m": null,
+      "body_alignment": "UNKNOWN",
+      "risk_score_changed": false,
+      "image": "ADE_val_00000199.jpg",
+      "gt_bands": [
+        {
+          "ground_fraction": 0.1633185700727618,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.017636823789939894
+        },
+        {
+          "ground_fraction": 0.1102485689641653,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.02007370814710264
+        },
+        {
+          "ground_fraction": 0.18772053634438957,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.032462949894142556
+        }
+      ],
+      "timing_scope": "cached output replay, synthetic 800ms observation intervals; not live timing"
+    },
+    {
+      "schema_version": 1,
+      "source_frame_key": "1:0:3",
+      "source_ms": 2400,
+      "status": "INSUFFICIENT_EVIDENCE",
+      "reason": "no_unique_connected_ground_band",
+      "scope": "IMAGE_CANDIDATE_ONLY",
+      "direction": null,
+      "support": 0,
+      "deadline_ms": 0,
+      "event_id": null,
+      "text": null,
+      "bands": [
+        {
+          "direction": "LEFT",
+          "connected_fraction": 0,
+          "reaches_top": false,
+          "unknown_fraction": 1,
+          "eligible": false
+        },
+        {
+          "direction": "CENTER",
+          "connected_fraction": 0,
+          "reaches_top": false,
+          "unknown_fraction": 1,
+          "eligible": false
+        },
+        {
+          "direction": "RIGHT",
+          "connected_fraction": 0,
+          "reaches_top": false,
+          "unknown_fraction": 1,
+          "eligible": false
+        }
+      ],
+      "physical_width_m": null,
+      "body_alignment": "UNKNOWN",
+      "risk_score_changed": false,
+      "image": "ADE_val_00000200.jpg",
+      "gt_bands": [
+        {
+          "ground_fraction": 0,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.05019607843137255
+        },
+        {
+          "ground_fraction": 0,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.27784313725490195
+        },
+        {
+          "ground_fraction": 0,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.1635658914728682
+        }
+      ],
+      "timing_scope": "cached output replay, synthetic 800ms observation intervals; not live timing"
+    },
+    {
+      "schema_version": 1,
+      "source_frame_key": "1:0:3",
+      "source_ms": 2400,
+      "status": "INSUFFICIENT_EVIDENCE",
+      "reason": "no_unique_connected_ground_band",
+      "scope": "IMAGE_CANDIDATE_ONLY",
+      "direction": null,
+      "support": 0,
+      "deadline_ms": 0,
+      "event_id": null,
+      "text": null,
+      "bands": [
+        {
+          "direction": "LEFT",
+          "connected_fraction": 0,
+          "reaches_top": false,
+          "unknown_fraction": 1,
+          "eligible": false
+        },
+        {
+          "direction": "CENTER",
+          "connected_fraction": 0,
+          "reaches_top": false,
+          "unknown_fraction": 1,
+          "eligible": false
+        },
+        {
+          "direction": "RIGHT",
+          "connected_fraction": 0,
+          "reaches_top": false,
+          "unknown_fraction": 1,
+          "eligible": false
+        }
+      ],
+      "physical_width_m": null,
+      "body_alignment": "UNKNOWN",
+      "risk_score_changed": false,
+      "image": "ADE_val_00000201.jpg",
+      "gt_bands": [
+        {
+          "ground_fraction": 0,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.019111434519839106
+        },
+        {
+          "ground_fraction": 0,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.015594364602914721
+        },
+        {
+          "ground_fraction": 0,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.019327519282149517
+        }
+      ],
+      "timing_scope": "cached output replay, synthetic 800ms observation intervals; not live timing"
+    },
+    {
+      "schema_version": 1,
+      "source_frame_key": "1:0:3",
+      "source_ms": 2400,
+      "status": "INSUFFICIENT_EVIDENCE",
+      "reason": "no_unique_connected_ground_band",
+      "scope": "IMAGE_CANDIDATE_ONLY",
+      "direction": null,
+      "support": 0,
+      "deadline_ms": 0,
+      "event_id": null,
+      "text": null,
+      "bands": [
+        {
+          "direction": "LEFT",
+          "connected_fraction": 0,
+          "reaches_top": false,
+          "unknown_fraction": 1,
+          "eligible": false
+        },
+        {
+          "direction": "CENTER",
+          "connected_fraction": 0,
+          "reaches_top": false,
+          "unknown_fraction": 1,
+          "eligible": false
+        },
+        {
+          "direction": "RIGHT",
+          "connected_fraction": 0,
+          "reaches_top": false,
+          "unknown_fraction": 1,
+          "eligible": false
+        }
+      ],
+      "physical_width_m": null,
+      "body_alignment": "UNKNOWN",
+      "risk_score_changed": false,
+      "image": "ADE_val_00000202.jpg",
+      "gt_bands": [
+        {
+          "ground_fraction": 0.052647058823529415,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.034019607843137255
+        },
+        {
+          "ground_fraction": 0.030098039215686274,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.011274509803921568
+        },
+        {
+          "ground_fraction": 0.02005813953488372,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.007655038759689922
+        }
+      ],
+      "timing_scope": "cached output replay, synthetic 800ms observation intervals; not live timing"
+    },
+    {
+      "schema_version": 1,
+      "source_frame_key": "1:0:3",
+      "source_ms": 2400,
+      "status": "INSUFFICIENT_EVIDENCE",
+      "reason": "no_unique_connected_ground_band",
+      "scope": "IMAGE_CANDIDATE_ONLY",
+      "direction": null,
+      "support": 0,
+      "deadline_ms": 0,
+      "event_id": null,
+      "text": null,
+      "bands": [
+        {
+          "direction": "LEFT",
+          "connected_fraction": 0,
+          "reaches_top": false,
+          "unknown_fraction": 1,
+          "eligible": false
+        },
+        {
+          "direction": "CENTER",
+          "connected_fraction": 0,
+          "reaches_top": false,
+          "unknown_fraction": 1,
+          "eligible": false
+        },
+        {
+          "direction": "RIGHT",
+          "connected_fraction": 0,
+          "reaches_top": false,
+          "unknown_fraction": 1,
+          "eligible": false
+        }
+      ],
+      "physical_width_m": null,
+      "body_alignment": "UNKNOWN",
+      "risk_score_changed": false,
+      "image": "ADE_val_00000203.jpg",
+      "gt_bands": [
+        {
+          "ground_fraction": 0,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.027450980392156862
+        },
+        {
+          "ground_fraction": 0,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.005980392156862745
+        },
+        {
+          "ground_fraction": 0,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.004069767441860465
+        }
+      ],
+      "timing_scope": "cached output replay, synthetic 800ms observation intervals; not live timing"
+    },
+    {
+      "schema_version": 1,
+      "source_frame_key": "1:0:3",
+      "source_ms": 2400,
+      "status": "INSUFFICIENT_EVIDENCE",
+      "reason": "no_unique_connected_ground_band",
+      "scope": "IMAGE_CANDIDATE_ONLY",
+      "direction": null,
+      "support": 0,
+      "deadline_ms": 0,
+      "event_id": null,
+      "text": null,
+      "bands": [
+        {
+          "direction": "LEFT",
+          "connected_fraction": 0,
+          "reaches_top": false,
+          "unknown_fraction": 1,
+          "eligible": false
+        },
+        {
+          "direction": "CENTER",
+          "connected_fraction": 0,
+          "reaches_top": false,
+          "unknown_fraction": 0.94285715,
+          "eligible": false
+        },
+        {
+          "direction": "RIGHT",
+          "connected_fraction": 0,
+          "reaches_top": false,
+          "unknown_fraction": 0.6571429,
+          "eligible": false
+        }
+      ],
+      "physical_width_m": null,
+      "body_alignment": "UNKNOWN",
+      "risk_score_changed": false,
+      "image": "ADE_val_00000204.jpg",
+      "gt_bands": [
+        {
+          "ground_fraction": 0.045098039215686274,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.012352941176470587
+        },
+        {
+          "ground_fraction": 0,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.015196078431372549
+        },
+        {
+          "ground_fraction": 0,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.007364341085271318
+        }
+      ],
+      "timing_scope": "cached output replay, synthetic 800ms observation intervals; not live timing"
+    },
+    {
+      "schema_version": 1,
+      "source_frame_key": "1:0:3",
+      "source_ms": 2400,
+      "status": "INSUFFICIENT_EVIDENCE",
+      "reason": "no_unique_connected_ground_band",
+      "scope": "IMAGE_CANDIDATE_ONLY",
+      "direction": null,
+      "support": 0,
+      "deadline_ms": 0,
+      "event_id": null,
+      "text": null,
+      "bands": [
+        {
+          "direction": "LEFT",
+          "connected_fraction": 0,
+          "reaches_top": false,
+          "unknown_fraction": 1,
+          "eligible": false
+        },
+        {
+          "direction": "CENTER",
+          "connected_fraction": 0,
+          "reaches_top": false,
+          "unknown_fraction": 1,
+          "eligible": false
+        },
+        {
+          "direction": "RIGHT",
+          "connected_fraction": 0,
+          "reaches_top": false,
+          "unknown_fraction": 1,
+          "eligible": false
+        }
+      ],
+      "physical_width_m": null,
+      "body_alignment": "UNKNOWN",
+      "risk_score_changed": false,
+      "image": "ADE_val_00000205.jpg",
+      "gt_bands": [
+        {
+          "ground_fraction": 0.28823529411764703,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.1319607843137255
+        },
+        {
+          "ground_fraction": 0.5035294117647059,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.10970588235294118
+        },
+        {
+          "ground_fraction": 0.44525193798449614,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.0027131782945736434
+        }
+      ],
+      "timing_scope": "cached output replay, synthetic 800ms observation intervals; not live timing"
+    },
+    {
+      "schema_version": 1,
+      "source_frame_key": "1:0:3",
+      "source_ms": 2400,
+      "status": "INSUFFICIENT_EVIDENCE",
+      "reason": "no_unique_connected_ground_band",
+      "scope": "IMAGE_CANDIDATE_ONLY",
+      "direction": null,
+      "support": 0,
+      "deadline_ms": 0,
+      "event_id": null,
+      "text": null,
+      "bands": [
+        {
+          "direction": "LEFT",
+          "connected_fraction": 0.45714286,
+          "reaches_top": false,
+          "unknown_fraction": 0.31428573,
+          "eligible": false
+        },
+        {
+          "direction": "CENTER",
+          "connected_fraction": 0.5714286,
+          "reaches_top": false,
+          "unknown_fraction": 0.2857143,
+          "eligible": false
+        },
+        {
+          "direction": "RIGHT",
+          "connected_fraction": 0.5714286,
+          "reaches_top": false,
+          "unknown_fraction": 0.37142858,
+          "eligible": false
+        }
+      ],
+      "physical_width_m": null,
+      "body_alignment": "UNKNOWN",
+      "risk_score_changed": false,
+      "image": "ADE_val_00000206.jpg",
+      "gt_bands": [
+        {
+          "ground_fraction": 0.6668627450980392,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.009705882352941177
+        },
+        {
+          "ground_fraction": 0.7105882352941176,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.005490196078431373
+        },
+        {
+          "ground_fraction": 0.7459302325581395,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.0037790697674418604
+        }
+      ],
+      "timing_scope": "cached output replay, synthetic 800ms observation intervals; not live timing"
+    },
+    {
+      "schema_version": 1,
+      "source_frame_key": "1:0:3",
+      "source_ms": 2400,
+      "status": "INSUFFICIENT_EVIDENCE",
+      "reason": "no_unique_connected_ground_band",
+      "scope": "IMAGE_CANDIDATE_ONLY",
+      "direction": null,
+      "support": 0,
+      "deadline_ms": 0,
+      "event_id": null,
+      "text": null,
+      "bands": [
+        {
+          "direction": "LEFT",
+          "connected_fraction": 0,
+          "reaches_top": false,
+          "unknown_fraction": 0.9714286,
+          "eligible": false
+        },
+        {
+          "direction": "CENTER",
+          "connected_fraction": 0,
+          "reaches_top": false,
+          "unknown_fraction": 0.9714286,
+          "eligible": false
+        },
+        {
+          "direction": "RIGHT",
+          "connected_fraction": 0,
+          "reaches_top": false,
+          "unknown_fraction": 0.94285715,
+          "eligible": false
+        }
+      ],
+      "physical_width_m": null,
+      "body_alignment": "UNKNOWN",
+      "risk_score_changed": false,
+      "image": "ADE_val_00000218.jpg",
+      "gt_bands": [
+        {
+          "ground_fraction": 0.12803452616435892,
+          "hazard_fraction": 0.025834682011628606,
+          "unknown_fraction": 0.04336749985014686
+        },
+        {
+          "ground_fraction": 0.29719665147317303,
+          "hazard_fraction": 0.3284475824470462,
+          "unknown_fraction": 0.018202401167813628
+        },
+        {
+          "ground_fraction": 0.09971102570977448,
+          "hazard_fraction": 0.08865850388774689,
+          "unknown_fraction": 0.05168766943724491
+        }
+      ],
+      "timing_scope": "cached output replay, synthetic 800ms observation intervals; not live timing"
+    },
+    {
+      "schema_version": 1,
+      "source_frame_key": "1:0:3",
+      "source_ms": 2400,
+      "status": "INSUFFICIENT_EVIDENCE",
+      "reason": "no_unique_connected_ground_band",
+      "scope": "IMAGE_CANDIDATE_ONLY",
+      "direction": null,
+      "support": 0,
+      "deadline_ms": 0,
+      "event_id": null,
+      "text": null,
+      "bands": [
+        {
+          "direction": "LEFT",
+          "connected_fraction": 0,
+          "reaches_top": false,
+          "unknown_fraction": 1,
+          "eligible": false
+        },
+        {
+          "direction": "CENTER",
+          "connected_fraction": 0,
+          "reaches_top": false,
+          "unknown_fraction": 1,
+          "eligible": false
+        },
+        {
+          "direction": "RIGHT",
+          "connected_fraction": 0,
+          "reaches_top": false,
+          "unknown_fraction": 1,
+          "eligible": false
+        }
+      ],
+      "physical_width_m": null,
+      "body_alignment": "UNKNOWN",
+      "risk_score_changed": false,
+      "image": "ADE_val_00000223.jpg",
+      "gt_bands": [
+        {
+          "ground_fraction": 0,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.44335238797713444
+        },
+        {
+          "ground_fraction": 0,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.5273607215530991
+        },
+        {
+          "ground_fraction": 0,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.48571009551045846
+        }
+      ],
+      "timing_scope": "cached output replay, synthetic 800ms observation intervals; not live timing"
+    },
+    {
+      "schema_version": 1,
+      "source_frame_key": "1:0:3",
+      "source_ms": 2400,
+      "status": "INSUFFICIENT_EVIDENCE",
+      "reason": "no_unique_connected_ground_band",
+      "scope": "IMAGE_CANDIDATE_ONLY",
+      "direction": null,
+      "support": 0,
+      "deadline_ms": 0,
+      "event_id": null,
+      "text": null,
+      "bands": [
+        {
+          "direction": "LEFT",
+          "connected_fraction": 0.34285715,
+          "reaches_top": false,
+          "unknown_fraction": 0.17142858,
+          "eligible": false
+        },
+        {
+          "direction": "CENTER",
+          "connected_fraction": 0.14285715,
+          "reaches_top": false,
+          "unknown_fraction": 0.028571429,
+          "eligible": false
+        },
+        {
+          "direction": "RIGHT",
+          "connected_fraction": 0.4857143,
+          "reaches_top": false,
+          "unknown_fraction": 0.17142858,
+          "eligible": false
+        }
+      ],
+      "physical_width_m": null,
+      "body_alignment": "UNKNOWN",
+      "risk_score_changed": false,
+      "image": "ADE_val_00000244.jpg",
+      "gt_bands": [
+        {
+          "ground_fraction": 0.3897633437382391,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.1639104735339045
+        },
+        {
+          "ground_fraction": 0.22585333626954415,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.5040739925126624
+        },
+        {
+          "ground_fraction": 0.6267562210966747,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.015657344197313367
+        }
+      ],
+      "timing_scope": "cached output replay, synthetic 800ms observation intervals; not live timing"
+    },
+    {
+      "schema_version": 1,
+      "source_frame_key": "1:0:3",
+      "source_ms": 2400,
+      "status": "INSUFFICIENT_EVIDENCE",
+      "reason": "no_unique_connected_ground_band",
+      "scope": "IMAGE_CANDIDATE_ONLY",
+      "direction": null,
+      "support": 0,
+      "deadline_ms": 0,
+      "event_id": null,
+      "text": null,
+      "bands": [
+        {
+          "direction": "LEFT",
+          "connected_fraction": 0.114285715,
+          "reaches_top": false,
+          "unknown_fraction": 0.22857143,
+          "eligible": false
+        },
+        {
+          "direction": "CENTER",
+          "connected_fraction": 0,
+          "reaches_top": false,
+          "unknown_fraction": 0.31428573,
+          "eligible": false
+        },
+        {
+          "direction": "RIGHT",
+          "connected_fraction": 0,
+          "reaches_top": false,
+          "unknown_fraction": 0.6571429,
+          "eligible": false
+        }
+      ],
+      "physical_width_m": null,
+      "body_alignment": "UNKNOWN",
+      "risk_score_changed": false,
+      "image": "ADE_val_00000255.jpg",
+      "gt_bands": [
+        {
+          "ground_fraction": 0.19022556390977444,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.31893796992481205
+        },
+        {
+          "ground_fraction": 0.049342105263157895,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.0350093984962406
+        },
+        {
+          "ground_fraction": 0.002631578947368421,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.03656015037593985
+        }
+      ],
+      "timing_scope": "cached output replay, synthetic 800ms observation intervals; not live timing"
+    },
+    {
+      "schema_version": 1,
+      "source_frame_key": "1:0:3",
+      "source_ms": 2400,
+      "status": "INSUFFICIENT_EVIDENCE",
+      "reason": "no_unique_connected_ground_band",
+      "scope": "IMAGE_CANDIDATE_ONLY",
+      "direction": null,
+      "support": 0,
+      "deadline_ms": 0,
+      "event_id": null,
+      "text": null,
+      "bands": [
+        {
+          "direction": "LEFT",
+          "connected_fraction": 0,
+          "reaches_top": false,
+          "unknown_fraction": 0.2857143,
+          "eligible": false
+        },
+        {
+          "direction": "CENTER",
+          "connected_fraction": 0,
+          "reaches_top": false,
+          "unknown_fraction": 0.42857143,
+          "eligible": false
+        },
+        {
+          "direction": "RIGHT",
+          "connected_fraction": 0,
+          "reaches_top": false,
+          "unknown_fraction": 0.82857144,
+          "eligible": false
+        }
+      ],
+      "physical_width_m": null,
+      "body_alignment": "UNKNOWN",
+      "risk_score_changed": false,
+      "image": "ADE_val_00000297.jpg",
+      "gt_bands": [
+        {
+          "ground_fraction": 0,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.07449225473321859
+        },
+        {
+          "ground_fraction": 0,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.07924721984602225
+        },
+        {
+          "ground_fraction": 0,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.1426518391787853
+        }
+      ],
+      "timing_scope": "cached output replay, synthetic 800ms observation intervals; not live timing"
+    },
+    {
+      "schema_version": 1,
+      "source_frame_key": "1:0:3",
+      "source_ms": 2400,
+      "status": "INSUFFICIENT_EVIDENCE",
+      "reason": "no_unique_connected_ground_band",
+      "scope": "IMAGE_CANDIDATE_ONLY",
+      "direction": null,
+      "support": 0,
+      "deadline_ms": 0,
+      "event_id": null,
+      "text": null,
+      "bands": [
+        {
+          "direction": "LEFT",
+          "connected_fraction": 0,
+          "reaches_top": false,
+          "unknown_fraction": 0.82857144,
+          "eligible": false
+        },
+        {
+          "direction": "CENTER",
+          "connected_fraction": 0.028571429,
+          "reaches_top": false,
+          "unknown_fraction": 0.74285716,
+          "eligible": false
+        },
+        {
+          "direction": "RIGHT",
+          "connected_fraction": 0,
+          "reaches_top": false,
+          "unknown_fraction": 0.6857143,
+          "eligible": false
+        }
+      ],
+      "physical_width_m": null,
+      "body_alignment": "UNKNOWN",
+      "risk_score_changed": false,
+      "image": "ADE_val_00000300.jpg",
+      "gt_bands": [
+        {
+          "ground_fraction": 0.12604895104895106,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.042744755244755246
+        },
+        {
+          "ground_fraction": 0.30011580775911983,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.01447596988998263
+        },
+        {
+          "ground_fraction": 0.31265199768384483,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.030457440648523453
+        }
+      ],
+      "timing_scope": "cached output replay, synthetic 800ms observation intervals; not live timing"
+    },
+    {
+      "schema_version": 1,
+      "source_frame_key": "1:0:3",
+      "source_ms": 2400,
+      "status": "INSUFFICIENT_EVIDENCE",
+      "reason": "no_unique_connected_ground_band",
+      "scope": "IMAGE_CANDIDATE_ONLY",
+      "direction": null,
+      "support": 0,
+      "deadline_ms": 0,
+      "event_id": null,
+      "text": null,
+      "bands": [
+        {
+          "direction": "LEFT",
+          "connected_fraction": 0.45714286,
+          "reaches_top": false,
+          "unknown_fraction": 0.37142858,
+          "eligible": false
+        },
+        {
+          "direction": "CENTER",
+          "connected_fraction": 0.4857143,
+          "reaches_top": false,
+          "unknown_fraction": 0.2857143,
+          "eligible": false
+        },
+        {
+          "direction": "RIGHT",
+          "connected_fraction": 0.2857143,
+          "reaches_top": false,
+          "unknown_fraction": 0.2,
+          "eligible": false
+        }
+      ],
+      "physical_width_m": null,
+      "body_alignment": "UNKNOWN",
+      "risk_score_changed": false,
+      "image": "ADE_val_00000303.jpg",
+      "gt_bands": [
+        {
+          "ground_fraction": 0.5859302968836437,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.011783145860224968
+        },
+        {
+          "ground_fraction": 0.6439164787622138,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.004234724742891712
+        },
+        {
+          "ground_fraction": 0.4590551614145081,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.017855506058772848
+        }
+      ],
+      "timing_scope": "cached output replay, synthetic 800ms observation intervals; not live timing"
+    },
+    {
+      "schema_version": 1,
+      "source_frame_key": "1:0:3",
+      "source_ms": 2400,
+      "status": "INSUFFICIENT_EVIDENCE",
+      "reason": "no_unique_connected_ground_band",
+      "scope": "IMAGE_CANDIDATE_ONLY",
+      "direction": null,
+      "support": 0,
+      "deadline_ms": 0,
+      "event_id": null,
+      "text": null,
+      "bands": [
+        {
+          "direction": "LEFT",
+          "connected_fraction": 0.54285717,
+          "reaches_top": false,
+          "unknown_fraction": 0.2857143,
+          "eligible": false
+        },
+        {
+          "direction": "CENTER",
+          "connected_fraction": 0.08571429,
+          "reaches_top": false,
+          "unknown_fraction": 0.2857143,
+          "eligible": false
+        },
+        {
+          "direction": "RIGHT",
+          "connected_fraction": 0,
+          "reaches_top": false,
+          "unknown_fraction": 0.08571429,
+          "eligible": false
+        }
+      ],
+      "physical_width_m": null,
+      "body_alignment": "UNKNOWN",
+      "risk_score_changed": false,
+      "image": "ADE_val_00000318.jpg",
+      "gt_bands": [
+        {
+          "ground_fraction": 0.6973391736401674,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.010345842050209206
+        },
+        {
+          "ground_fraction": 0.25472345711297073,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.0042331328451882845
+        },
+        {
+          "ground_fraction": 0.04563284518828452,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.013451229079497909
+        }
+      ],
+      "timing_scope": "cached output replay, synthetic 800ms observation intervals; not live timing"
+    },
+    {
+      "schema_version": 1,
+      "source_frame_key": "1:0:3",
+      "source_ms": 2400,
+      "status": "INSUFFICIENT_EVIDENCE",
+      "reason": "no_unique_connected_ground_band",
+      "scope": "IMAGE_CANDIDATE_ONLY",
+      "direction": null,
+      "support": 0,
+      "deadline_ms": 0,
+      "event_id": null,
+      "text": null,
+      "bands": [
+        {
+          "direction": "LEFT",
+          "connected_fraction": 0.057142857,
+          "reaches_top": false,
+          "unknown_fraction": 0.6,
+          "eligible": false
+        },
+        {
+          "direction": "CENTER",
+          "connected_fraction": 0,
+          "reaches_top": false,
+          "unknown_fraction": 0.31428573,
+          "eligible": false
+        },
+        {
+          "direction": "RIGHT",
+          "connected_fraction": 0,
+          "reaches_top": false,
+          "unknown_fraction": 0.85714287,
+          "eligible": false
+        }
+      ],
+      "physical_width_m": null,
+      "body_alignment": "UNKNOWN",
+      "risk_score_changed": false,
+      "image": "ADE_val_00000324.jpg",
+      "gt_bands": [
+        {
+          "ground_fraction": 0,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.04302066245184598
+        },
+        {
+          "ground_fraction": 0,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.14675548704396976
+        },
+        {
+          "ground_fraction": 0.4062981722087646,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.11702635249210894
+        }
+      ],
+      "timing_scope": "cached output replay, synthetic 800ms observation intervals; not live timing"
+    },
+    {
+      "schema_version": 1,
+      "source_frame_key": "1:0:3",
+      "source_ms": 2400,
+      "status": "INSUFFICIENT_EVIDENCE",
+      "reason": "no_unique_connected_ground_band",
+      "scope": "IMAGE_CANDIDATE_ONLY",
+      "direction": null,
+      "support": 0,
+      "deadline_ms": 0,
+      "event_id": null,
+      "text": null,
+      "bands": [
+        {
+          "direction": "LEFT",
+          "connected_fraction": 0,
+          "reaches_top": false,
+          "unknown_fraction": 0.94285715,
+          "eligible": false
+        },
+        {
+          "direction": "CENTER",
+          "connected_fraction": 0,
+          "reaches_top": false,
+          "unknown_fraction": 1,
+          "eligible": false
+        },
+        {
+          "direction": "RIGHT",
+          "connected_fraction": 0,
+          "reaches_top": false,
+          "unknown_fraction": 1,
+          "eligible": false
+        }
+      ],
+      "physical_width_m": null,
+      "body_alignment": "UNKNOWN",
+      "risk_score_changed": false,
+      "image": "ADE_val_00000336.jpg",
+      "gt_bands": [
+        {
+          "ground_fraction": 0.008950086058519793,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.027125645438898453
+        },
+        {
+          "ground_fraction": 0,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.02682634730538922
+        },
+        {
+          "ground_fraction": 0,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.02412318220701454
+        }
+      ],
+      "timing_scope": "cached output replay, synthetic 800ms observation intervals; not live timing"
+    },
+    {
+      "schema_version": 1,
+      "source_frame_key": "1:0:3",
+      "source_ms": 2400,
+      "status": "INSUFFICIENT_EVIDENCE",
+      "reason": "no_unique_connected_ground_band",
+      "scope": "IMAGE_CANDIDATE_ONLY",
+      "direction": null,
+      "support": 0,
+      "deadline_ms": 0,
+      "event_id": null,
+      "text": null,
+      "bands": [
+        {
+          "direction": "LEFT",
+          "connected_fraction": 0,
+          "reaches_top": false,
+          "unknown_fraction": 0.31428573,
+          "eligible": false
+        },
+        {
+          "direction": "CENTER",
+          "connected_fraction": 0,
+          "reaches_top": false,
+          "unknown_fraction": 0.74285716,
+          "eligible": false
+        },
+        {
+          "direction": "RIGHT",
+          "connected_fraction": 0,
+          "reaches_top": false,
+          "unknown_fraction": 0.2,
+          "eligible": false
+        }
+      ],
+      "physical_width_m": null,
+      "body_alignment": "UNKNOWN",
+      "risk_score_changed": false,
+      "image": "ADE_val_00000353.jpg",
+      "gt_bands": [
+        {
+          "ground_fraction": 0.14025760931987857,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.012338994175075889
+        },
+        {
+          "ground_fraction": 0.3326934120928706,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.021675280991057512
+        },
+        {
+          "ground_fraction": 0.200557880055788,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.01886947247518254
+        }
+      ],
+      "timing_scope": "cached output replay, synthetic 800ms observation intervals; not live timing"
+    },
+    {
+      "schema_version": 1,
+      "source_frame_key": "1:0:3",
+      "source_ms": 2400,
+      "status": "INSUFFICIENT_EVIDENCE",
+      "reason": "no_unique_connected_ground_band",
+      "scope": "IMAGE_CANDIDATE_ONLY",
+      "direction": null,
+      "support": 0,
+      "deadline_ms": 0,
+      "event_id": null,
+      "text": null,
+      "bands": [
+        {
+          "direction": "LEFT",
+          "connected_fraction": 0,
+          "reaches_top": false,
+          "unknown_fraction": 0.51428574,
+          "eligible": false
+        },
+        {
+          "direction": "CENTER",
+          "connected_fraction": 0,
+          "reaches_top": false,
+          "unknown_fraction": 0.4,
+          "eligible": false
+        },
+        {
+          "direction": "RIGHT",
+          "connected_fraction": 0,
+          "reaches_top": false,
+          "unknown_fraction": 0,
+          "eligible": false
+        }
+      ],
+      "physical_width_m": null,
+      "body_alignment": "UNKNOWN",
+      "risk_score_changed": false,
+      "image": "ADE_val_00000372.jpg",
+      "gt_bands": [
+        {
+          "ground_fraction": 0,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.6192468619246861
+        },
+        {
+          "ground_fraction": 0.0027710489613154226,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.1442230052117742
+        },
+        {
+          "ground_fraction": 0,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.07821331571606842
+        }
+      ],
+      "timing_scope": "cached output replay, synthetic 800ms observation intervals; not live timing"
+    },
+    {
+      "schema_version": 1,
+      "source_frame_key": "1:0:3",
+      "source_ms": 2400,
+      "status": "INSUFFICIENT_EVIDENCE",
+      "reason": "no_unique_connected_ground_band",
+      "scope": "IMAGE_CANDIDATE_ONLY",
+      "direction": null,
+      "support": 0,
+      "deadline_ms": 0,
+      "event_id": null,
+      "text": null,
+      "bands": [
+        {
+          "direction": "LEFT",
+          "connected_fraction": 0,
+          "reaches_top": false,
+          "unknown_fraction": 0.2857143,
+          "eligible": false
+        },
+        {
+          "direction": "CENTER",
+          "connected_fraction": 0,
+          "reaches_top": false,
+          "unknown_fraction": 0.4857143,
+          "eligible": false
+        },
+        {
+          "direction": "RIGHT",
+          "connected_fraction": 0.4857143,
+          "reaches_top": false,
+          "unknown_fraction": 0.2,
+          "eligible": false
+        }
+      ],
+      "physical_width_m": null,
+      "body_alignment": "UNKNOWN",
+      "risk_score_changed": false,
+      "image": "ADE_val_00000373.jpg",
+      "gt_bands": [
+        {
+          "ground_fraction": 0.4186680920870735,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.5762446316332738
+        },
+        {
+          "ground_fraction": 0.5658261763194598,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.29635542831975337
+        },
+        {
+          "ground_fraction": 0.8313330397122514,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.0084232547896939
+        }
+      ],
+      "timing_scope": "cached output replay, synthetic 800ms observation intervals; not live timing"
+    },
+    {
+      "schema_version": 1,
+      "source_frame_key": "1:0:3",
+      "source_ms": 2400,
+      "status": "INSUFFICIENT_EVIDENCE",
+      "reason": "no_unique_connected_ground_band",
+      "scope": "IMAGE_CANDIDATE_ONLY",
+      "direction": null,
+      "support": 0,
+      "deadline_ms": 0,
+      "event_id": null,
+      "text": null,
+      "bands": [
+        {
+          "direction": "LEFT",
+          "connected_fraction": 0,
+          "reaches_top": false,
+          "unknown_fraction": 0.82857144,
+          "eligible": false
+        },
+        {
+          "direction": "CENTER",
+          "connected_fraction": 0.057142857,
+          "reaches_top": false,
+          "unknown_fraction": 0.71428573,
+          "eligible": false
+        },
+        {
+          "direction": "RIGHT",
+          "connected_fraction": 0.31428573,
+          "reaches_top": false,
+          "unknown_fraction": 0.42857143,
+          "eligible": false
+        }
+      ],
+      "physical_width_m": null,
+      "body_alignment": "UNKNOWN",
+      "risk_score_changed": false,
+      "image": "ADE_val_00000375.jpg",
+      "gt_bands": [
+        {
+          "ground_fraction": 0.007133246087773948,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.9084474591266842
+        },
+        {
+          "ground_fraction": 0.2409528004110695,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.6900095426851648
+        },
+        {
+          "ground_fraction": 0.39914115833516844,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.03789547089481025
+        }
+      ],
+      "timing_scope": "cached output replay, synthetic 800ms observation intervals; not live timing"
+    },
+    {
+      "schema_version": 1,
+      "source_frame_key": "1:0:3",
+      "source_ms": 2400,
+      "status": "INSUFFICIENT_EVIDENCE",
+      "reason": "no_unique_connected_ground_band",
+      "scope": "IMAGE_CANDIDATE_ONLY",
+      "direction": null,
+      "support": 0,
+      "deadline_ms": 0,
+      "event_id": null,
+      "text": null,
+      "bands": [
+        {
+          "direction": "LEFT",
+          "connected_fraction": 0.6571429,
+          "reaches_top": false,
+          "unknown_fraction": 0.2857143,
+          "eligible": false
+        },
+        {
+          "direction": "CENTER",
+          "connected_fraction": 0.34285715,
+          "reaches_top": false,
+          "unknown_fraction": 0.4857143,
+          "eligible": false
+        },
+        {
+          "direction": "RIGHT",
+          "connected_fraction": 0.2857143,
+          "reaches_top": false,
+          "unknown_fraction": 0.37142858,
+          "eligible": false
+        }
+      ],
+      "physical_width_m": null,
+      "body_alignment": "UNKNOWN",
+      "risk_score_changed": false,
+      "image": "ADE_val_00000376.jpg",
+      "gt_bands": [
+        {
+          "ground_fraction": 0.688467693731562,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.056186491332934844
+        },
+        {
+          "ground_fraction": 0.4612344060312747,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.31504155178065285
+        },
+        {
+          "ground_fraction": 0.4270289030715539,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.23581358579334014
+        }
+      ],
+      "timing_scope": "cached output replay, synthetic 800ms observation intervals; not live timing"
+    },
+    {
+      "schema_version": 1,
+      "source_frame_key": "1:0:3",
+      "source_ms": 2400,
+      "status": "INSUFFICIENT_EVIDENCE",
+      "reason": "no_unique_connected_ground_band",
+      "scope": "IMAGE_CANDIDATE_ONLY",
+      "direction": null,
+      "support": 0,
+      "deadline_ms": 0,
+      "event_id": null,
+      "text": null,
+      "bands": [
+        {
+          "direction": "LEFT",
+          "connected_fraction": 0.17142858,
+          "reaches_top": false,
+          "unknown_fraction": 0.62857145,
+          "eligible": false
+        },
+        {
+          "direction": "CENTER",
+          "connected_fraction": 0.6857143,
+          "reaches_top": false,
+          "unknown_fraction": 0.22857143,
+          "eligible": false
+        },
+        {
+          "direction": "RIGHT",
+          "connected_fraction": 0.31428573,
+          "reaches_top": false,
+          "unknown_fraction": 0.6,
+          "eligible": false
+        }
+      ],
+      "physical_width_m": null,
+      "body_alignment": "UNKNOWN",
+      "risk_score_changed": false,
+      "image": "ADE_val_00000385.jpg",
+      "gt_bands": [
+        {
+          "ground_fraction": 0.2333880154092861,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.01306840174736881
+        },
+        {
+          "ground_fraction": 0.6837884460104235,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.011781545914996697
+        },
+        {
+          "ground_fraction": 0.37851427732511195,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.014258973794318432
+        }
+      ],
+      "timing_scope": "cached output replay, synthetic 800ms observation intervals; not live timing"
+    },
+    {
+      "schema_version": 1,
+      "source_frame_key": "1:0:3",
+      "source_ms": 2400,
+      "status": "INSUFFICIENT_EVIDENCE",
+      "reason": "no_unique_connected_ground_band",
+      "scope": "IMAGE_CANDIDATE_ONLY",
+      "direction": null,
+      "support": 0,
+      "deadline_ms": 0,
+      "event_id": null,
+      "text": null,
+      "bands": [
+        {
+          "direction": "LEFT",
+          "connected_fraction": 0.114285715,
+          "reaches_top": false,
+          "unknown_fraction": 0.4857143,
+          "eligible": false
+        },
+        {
+          "direction": "CENTER",
+          "connected_fraction": 0.028571429,
+          "reaches_top": false,
+          "unknown_fraction": 0.5714286,
+          "eligible": false
+        },
+        {
+          "direction": "RIGHT",
+          "connected_fraction": 0,
+          "reaches_top": false,
+          "unknown_fraction": 0.45714286,
+          "eligible": false
+        }
+      ],
+      "physical_width_m": null,
+      "body_alignment": "UNKNOWN",
+      "risk_score_changed": false,
+      "image": "ADE_val_00000460.jpg",
+      "gt_bands": [
+        {
+          "ground_fraction": 0.23874323442478215,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.025603623661279797
+        },
+        {
+          "ground_fraction": 0.13813263025161918,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.07111060163160811
+        },
+        {
+          "ground_fraction": 0.02810416308438891,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.02007986091209568
+        }
+      ],
+      "timing_scope": "cached output replay, synthetic 800ms observation intervals; not live timing"
+    },
+    {
+      "schema_version": 1,
+      "source_frame_key": "1:0:3",
+      "source_ms": 2400,
+      "status": "INSUFFICIENT_EVIDENCE",
+      "reason": "no_unique_connected_ground_band",
+      "scope": "IMAGE_CANDIDATE_ONLY",
+      "direction": null,
+      "support": 0,
+      "deadline_ms": 0,
+      "event_id": null,
+      "text": null,
+      "bands": [
+        {
+          "direction": "LEFT",
+          "connected_fraction": 0.2,
+          "reaches_top": false,
+          "unknown_fraction": 0.42857143,
+          "eligible": false
+        },
+        {
+          "direction": "CENTER",
+          "connected_fraction": 0,
+          "reaches_top": false,
+          "unknown_fraction": 0.2857143,
+          "eligible": false
+        },
+        {
+          "direction": "RIGHT",
+          "connected_fraction": 0.057142857,
+          "reaches_top": false,
+          "unknown_fraction": 0.14285715,
+          "eligible": false
+        }
+      ],
+      "physical_width_m": null,
+      "body_alignment": "UNKNOWN",
+      "risk_score_changed": false,
+      "image": "ADE_val_00000461.jpg",
+      "gt_bands": [
+        {
+          "ground_fraction": 0.37850441450242384,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.03968444141337806
+        },
+        {
+          "ground_fraction": 0.011634735373999854,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.1937532114805843
+        },
+        {
+          "ground_fraction": 0.2798208911399839,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.02251706672539088
+        }
+      ],
+      "timing_scope": "cached output replay, synthetic 800ms observation intervals; not live timing"
+    },
+    {
+      "schema_version": 1,
+      "source_frame_key": "1:0:3",
+      "source_ms": 2400,
+      "status": "INSUFFICIENT_EVIDENCE",
+      "reason": "no_unique_connected_ground_band",
+      "scope": "IMAGE_CANDIDATE_ONLY",
+      "direction": null,
+      "support": 0,
+      "deadline_ms": 0,
+      "event_id": null,
+      "text": null,
+      "bands": [
+        {
+          "direction": "LEFT",
+          "connected_fraction": 0,
+          "reaches_top": false,
+          "unknown_fraction": 0,
+          "eligible": false
+        },
+        {
+          "direction": "CENTER",
+          "connected_fraction": 0,
+          "reaches_top": false,
+          "unknown_fraction": 0.4857143,
+          "eligible": false
+        },
+        {
+          "direction": "RIGHT",
+          "connected_fraction": 0,
+          "reaches_top": false,
+          "unknown_fraction": 0.37142858,
+          "eligible": false
+        }
+      ],
+      "physical_width_m": null,
+      "body_alignment": "UNKNOWN",
+      "risk_score_changed": false,
+      "image": "ADE_val_00000462.jpg",
+      "gt_bands": [
+        {
+          "ground_fraction": 0,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.019904761904761904
+        },
+        {
+          "ground_fraction": 0,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.144
+        },
+        {
+          "ground_fraction": 0,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.11085714285714286
+        }
+      ],
+      "timing_scope": "cached output replay, synthetic 800ms observation intervals; not live timing"
+    },
+    {
+      "schema_version": 1,
+      "source_frame_key": "1:0:3",
+      "source_ms": 2400,
+      "status": "INSUFFICIENT_EVIDENCE",
+      "reason": "no_unique_connected_ground_band",
+      "scope": "IMAGE_CANDIDATE_ONLY",
+      "direction": null,
+      "support": 0,
+      "deadline_ms": 0,
+      "event_id": null,
+      "text": null,
+      "bands": [
+        {
+          "direction": "LEFT",
+          "connected_fraction": 0,
+          "reaches_top": false,
+          "unknown_fraction": 0.5714286,
+          "eligible": false
+        },
+        {
+          "direction": "CENTER",
+          "connected_fraction": 0,
+          "reaches_top": false,
+          "unknown_fraction": 0.9714286,
+          "eligible": false
+        },
+        {
+          "direction": "RIGHT",
+          "connected_fraction": 0,
+          "reaches_top": false,
+          "unknown_fraction": 1,
+          "eligible": false
+        }
+      ],
+      "physical_width_m": null,
+      "body_alignment": "UNKNOWN",
+      "risk_score_changed": false,
+      "image": "ADE_val_00000463.jpg",
+      "gt_bands": [
+        {
+          "ground_fraction": 0,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.24473718619246862
+        },
+        {
+          "ground_fraction": 0.006276150627615063,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.5020430177824268
+        },
+        {
+          "ground_fraction": 0,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.6848359048117155
+        }
+      ],
+      "timing_scope": "cached output replay, synthetic 800ms observation intervals; not live timing"
+    },
+    {
+      "schema_version": 1,
+      "source_frame_key": "1:0:3",
+      "source_ms": 2400,
+      "status": "INSUFFICIENT_EVIDENCE",
+      "reason": "no_unique_connected_ground_band",
+      "scope": "IMAGE_CANDIDATE_ONLY",
+      "direction": null,
+      "support": 0,
+      "deadline_ms": 0,
+      "event_id": null,
+      "text": null,
+      "bands": [
+        {
+          "direction": "LEFT",
+          "connected_fraction": 0,
+          "reaches_top": false,
+          "unknown_fraction": 0.9142857,
+          "eligible": false
+        },
+        {
+          "direction": "CENTER",
+          "connected_fraction": 0,
+          "reaches_top": false,
+          "unknown_fraction": 0.94285715,
+          "eligible": false
+        },
+        {
+          "direction": "RIGHT",
+          "connected_fraction": 0,
+          "reaches_top": false,
+          "unknown_fraction": 0.5714286,
+          "eligible": false
+        }
+      ],
+      "physical_width_m": null,
+      "body_alignment": "UNKNOWN",
+      "risk_score_changed": false,
+      "image": "ADE_val_00000466.jpg",
+      "gt_bands": [
+        {
+          "ground_fraction": 0,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.7137650366108786
+        },
+        {
+          "ground_fraction": 0,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.5910532165271967
+        },
+        {
+          "ground_fraction": 0,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.40337343096234307
+        }
+      ],
+      "timing_scope": "cached output replay, synthetic 800ms observation intervals; not live timing"
+    },
+    {
+      "schema_version": 1,
+      "source_frame_key": "1:0:3",
+      "source_ms": 2400,
+      "status": "INSUFFICIENT_EVIDENCE",
+      "reason": "no_unique_connected_ground_band",
+      "scope": "IMAGE_CANDIDATE_ONLY",
+      "direction": null,
+      "support": 0,
+      "deadline_ms": 0,
+      "event_id": null,
+      "text": null,
+      "bands": [
+        {
+          "direction": "LEFT",
+          "connected_fraction": 0.42857143,
+          "reaches_top": false,
+          "unknown_fraction": 0.4857143,
+          "eligible": false
+        },
+        {
+          "direction": "CENTER",
+          "connected_fraction": 0.08571429,
+          "reaches_top": false,
+          "unknown_fraction": 0.85714287,
+          "eligible": false
+        },
+        {
+          "direction": "RIGHT",
+          "connected_fraction": 0,
+          "reaches_top": false,
+          "unknown_fraction": 0.62857145,
+          "eligible": false
+        }
+      ],
+      "physical_width_m": null,
+      "body_alignment": "UNKNOWN",
+      "risk_score_changed": false,
+      "image": "ADE_val_00000468.jpg",
+      "gt_bands": [
+        {
+          "ground_fraction": 0.4339206328451883,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.06472280334728034
+        },
+        {
+          "ground_fraction": 0.26774973849372385,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.06392194037656904
+        },
+        {
+          "ground_fraction": 0.061862578451882845,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.03303151150627615
+        }
+      ],
+      "timing_scope": "cached output replay, synthetic 800ms observation intervals; not live timing"
+    },
+    {
+      "schema_version": 1,
+      "source_frame_key": "1:0:3",
+      "source_ms": 2400,
+      "status": "INSUFFICIENT_EVIDENCE",
+      "reason": "no_unique_connected_ground_band",
+      "scope": "IMAGE_CANDIDATE_ONLY",
+      "direction": null,
+      "support": 0,
+      "deadline_ms": 0,
+      "event_id": null,
+      "text": null,
+      "bands": [
+        {
+          "direction": "LEFT",
+          "connected_fraction": 0.028571429,
+          "reaches_top": false,
+          "unknown_fraction": 0.2,
+          "eligible": false
+        },
+        {
+          "direction": "CENTER",
+          "connected_fraction": 0,
+          "reaches_top": false,
+          "unknown_fraction": 0.5714286,
+          "eligible": false
+        },
+        {
+          "direction": "RIGHT",
+          "connected_fraction": 0,
+          "reaches_top": false,
+          "unknown_fraction": 0.08571429,
+          "eligible": false
+        }
+      ],
+      "physical_width_m": null,
+      "body_alignment": "UNKNOWN",
+      "risk_score_changed": false,
+      "image": "ADE_val_00000471.jpg",
+      "gt_bands": [
+        {
+          "ground_fraction": 0.1732479079497908,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.025431485355648535
+        },
+        {
+          "ground_fraction": 0.004167756276150627,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.0356138859832636
+        },
+        {
+          "ground_fraction": 0.20984244246861924,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.06290860355648535
+        }
+      ],
+      "timing_scope": "cached output replay, synthetic 800ms observation intervals; not live timing"
+    },
+    {
+      "schema_version": 1,
+      "source_frame_key": "1:0:3",
+      "source_ms": 2400,
+      "status": "INSUFFICIENT_EVIDENCE",
+      "reason": "no_unique_connected_ground_band",
+      "scope": "IMAGE_CANDIDATE_ONLY",
+      "direction": null,
+      "support": 0,
+      "deadline_ms": 0,
+      "event_id": null,
+      "text": null,
+      "bands": [
+        {
+          "direction": "LEFT",
+          "connected_fraction": 0,
+          "reaches_top": false,
+          "unknown_fraction": 0.6,
+          "eligible": false
+        },
+        {
+          "direction": "CENTER",
+          "connected_fraction": 0,
+          "reaches_top": false,
+          "unknown_fraction": 0.37142858,
+          "eligible": false
+        },
+        {
+          "direction": "RIGHT",
+          "connected_fraction": 0,
+          "reaches_top": false,
+          "unknown_fraction": 0.2,
+          "eligible": false
+        }
+      ],
+      "physical_width_m": null,
+      "body_alignment": "UNKNOWN",
+      "risk_score_changed": false,
+      "image": "ADE_val_00000476.jpg",
+      "gt_bands": [
+        {
+          "ground_fraction": 0,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.16639487478159581
+        },
+        {
+          "ground_fraction": 0,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.10535000868507903
+        },
+        {
+          "ground_fraction": 0,
+          "hazard_fraction": 0,
+          "unknown_fraction": 0.28872097736089397
+        }
+      ],
+      "timing_scope": "cached output replay, synthetic 800ms observation intervals; not live timing"
+    }
+  ],
+  "count": 88
+}

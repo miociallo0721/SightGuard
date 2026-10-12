@@ -1,0 +1,5969 @@
+[
+  {
+    "image": "ADE_val_00000001.jpg",
+    "gt_fractions": {
+      "TABLE": 0,
+      "CHAIR": 0,
+      "CABINET": 0,
+      "SOFA": 0,
+      "BED": 0,
+      "SHELF": 0,
+      "COUNTER": 0,
+      "APPLIANCE": 0
+    },
+    "pixels": {
+      "TABLE": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16209
+      },
+      "CHAIR": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16209
+      },
+      "CABINET": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16209
+      },
+      "SOFA": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16209
+      },
+      "BED": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16209
+      },
+      "SHELF": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16209
+      },
+      "COUNTER": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16209
+      },
+      "APPLIANCE": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16209
+      }
+    },
+    "events": [],
+    "audio_started": []
+  },
+  {
+    "image": "ADE_val_00000002.jpg",
+    "gt_fractions": {
+      "TABLE": 0,
+      "CHAIR": 0,
+      "CABINET": 0,
+      "SOFA": 0,
+      "BED": 0,
+      "SHELF": 0,
+      "COUNTER": 0,
+      "APPLIANCE": 0
+    },
+    "pixels": {
+      "TABLE": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 14792
+      },
+      "CHAIR": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 14792
+      },
+      "CABINET": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 14792
+      },
+      "SOFA": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 14792
+      },
+      "BED": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 14792
+      },
+      "SHELF": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 14792
+      },
+      "COUNTER": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 14792
+      },
+      "APPLIANCE": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 14792
+      }
+    },
+    "events": [],
+    "audio_started": []
+  },
+  {
+    "image": "ADE_val_00000003.jpg",
+    "gt_fractions": {
+      "TABLE": 0,
+      "CHAIR": 0,
+      "CABINET": 0,
+      "SOFA": 0,
+      "BED": 0,
+      "SHELF": 0,
+      "COUNTER": 0,
+      "APPLIANCE": 0
+    },
+    "pixels": {
+      "TABLE": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16195
+      },
+      "CHAIR": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16195
+      },
+      "CABINET": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16195
+      },
+      "SOFA": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16195
+      },
+      "BED": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16195
+      },
+      "SHELF": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16195
+      },
+      "COUNTER": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16195
+      },
+      "APPLIANCE": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16195
+      }
+    },
+    "events": [],
+    "audio_started": []
+  },
+  {
+    "image": "ADE_val_00000004.jpg",
+    "gt_fractions": {
+      "TABLE": 0,
+      "CHAIR": 0,
+      "CABINET": 0,
+      "SOFA": 0,
+      "BED": 0,
+      "SHELF": 0,
+      "COUNTER": 0,
+      "APPLIANCE": 0
+    },
+    "pixels": {
+      "TABLE": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16216
+      },
+      "CHAIR": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16216
+      },
+      "CABINET": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16216
+      },
+      "SOFA": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16216
+      },
+      "BED": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16216
+      },
+      "SHELF": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16216
+      },
+      "COUNTER": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16216
+      },
+      "APPLIANCE": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16216
+      }
+    },
+    "events": [],
+    "audio_started": []
+  },
+  {
+    "image": "ADE_val_00000005.jpg",
+    "gt_fractions": {
+      "TABLE": 0.001275,
+      "CHAIR": 0.4195333333333333,
+      "CABINET": 0,
+      "SOFA": 0,
+      "BED": 0,
+      "SHELF": 0,
+      "COUNTER": 0,
+      "APPLIANCE": 0
+    },
+    "pixels": {
+      "TABLE": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 15,
+        "tn": 12988
+      },
+      "CHAIR": {
+        "tp": 6343,
+        "fp": 982,
+        "fn": 604,
+        "tn": 5074
+      },
+      "CABINET": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 13003
+      },
+      "SOFA": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 13003
+      },
+      "BED": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 13003
+      },
+      "SHELF": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 13003
+      },
+      "COUNTER": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 13003
+      },
+      "APPLIANCE": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 13003
+      }
+    },
+    "events": [
+      "semantic:10004:0:CHAIR:1",
+      "semantic:10004:0:WALL:2"
+    ],
+    "audio_started": [
+      "前方检测到椅子。"
+    ]
+  },
+  {
+    "image": "ADE_val_00000006.jpg",
+    "gt_fractions": {
+      "TABLE": 0,
+      "CHAIR": 0,
+      "CABINET": 0,
+      "SOFA": 0,
+      "BED": 0,
+      "SHELF": 0,
+      "COUNTER": 0,
+      "APPLIANCE": 0
+    },
+    "pixels": {
+      "TABLE": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16372
+      },
+      "CHAIR": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16372
+      },
+      "CABINET": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16372
+      },
+      "SOFA": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16372
+      },
+      "BED": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16372
+      },
+      "SHELF": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16372
+      },
+      "COUNTER": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16372
+      },
+      "APPLIANCE": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16372
+      }
+    },
+    "events": [],
+    "audio_started": []
+  },
+  {
+    "image": "ADE_val_00000007.jpg",
+    "gt_fractions": {
+      "TABLE": 0,
+      "CHAIR": 0,
+      "CABINET": 0,
+      "SOFA": 0,
+      "BED": 0,
+      "SHELF": 0,
+      "COUNTER": 0,
+      "APPLIANCE": 0
+    },
+    "pixels": {
+      "TABLE": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 15987
+      },
+      "CHAIR": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 15987
+      },
+      "CABINET": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 15987
+      },
+      "SOFA": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 15987
+      },
+      "BED": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 15987
+      },
+      "SHELF": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 15987
+      },
+      "COUNTER": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 15987
+      },
+      "APPLIANCE": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 15987
+      }
+    },
+    "events": [
+      "semantic:10006:0:WALL:3"
+    ],
+    "audio_started": []
+  },
+  {
+    "image": "ADE_val_00000008.jpg",
+    "gt_fractions": {
+      "TABLE": 0,
+      "CHAIR": 0,
+      "CABINET": 0,
+      "SOFA": 0,
+      "BED": 0,
+      "SHELF": 0,
+      "COUNTER": 0,
+      "APPLIANCE": 0
+    },
+    "pixels": {
+      "TABLE": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 14896
+      },
+      "CHAIR": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 14896
+      },
+      "CABINET": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 14896
+      },
+      "SOFA": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 14896
+      },
+      "BED": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 14896
+      },
+      "SHELF": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 14896
+      },
+      "COUNTER": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 14896
+      },
+      "APPLIANCE": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 14896
+      }
+    },
+    "events": [
+      "semantic:10007:0:WALL:4"
+    ],
+    "audio_started": []
+  },
+  {
+    "image": "ADE_val_00000009.jpg",
+    "gt_fractions": {
+      "TABLE": 0.0607757568359375,
+      "CHAIR": 0.013407389322916666,
+      "CABINET": 0,
+      "SOFA": 0,
+      "BED": 0,
+      "SHELF": 0,
+      "COUNTER": 0,
+      "APPLIANCE": 0
+    },
+    "pixels": {
+      "TABLE": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 980,
+        "tn": 14568
+      },
+      "CHAIR": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 210,
+        "tn": 15338
+      },
+      "CABINET": {
+        "tp": 0,
+        "fp": 54,
+        "fn": 0,
+        "tn": 15494
+      },
+      "SOFA": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 15548
+      },
+      "BED": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 15548
+      },
+      "SHELF": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 15548
+      },
+      "COUNTER": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 15548
+      },
+      "APPLIANCE": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 15548
+      }
+    },
+    "events": [],
+    "audio_started": []
+  },
+  {
+    "image": "ADE_val_00000010.jpg",
+    "gt_fractions": {
+      "TABLE": 0.001698550724637681,
+      "CHAIR": 0.006168115942028985,
+      "CABINET": 0,
+      "SOFA": 0,
+      "BED": 0,
+      "SHELF": 0,
+      "COUNTER": 0,
+      "APPLIANCE": 0
+    },
+    "pixels": {
+      "TABLE": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 23,
+        "tn": 15687
+      },
+      "CHAIR": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 99,
+        "tn": 15611
+      },
+      "CABINET": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 15710
+      },
+      "SOFA": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 15710
+      },
+      "BED": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 15710
+      },
+      "SHELF": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 15710
+      },
+      "COUNTER": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 15710
+      },
+      "APPLIANCE": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 15710
+      }
+    },
+    "events": [],
+    "audio_started": []
+  },
+  {
+    "image": "ADE_val_00000013.jpg",
+    "gt_fractions": {
+      "TABLE": 0,
+      "CHAIR": 0,
+      "CABINET": 0,
+      "SOFA": 0,
+      "BED": 0.2582422931314224,
+      "SHELF": 0.05228772309356409,
+      "COUNTER": 0,
+      "APPLIANCE": 0
+    },
+    "pixels": {
+      "TABLE": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16118
+      },
+      "CHAIR": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16118
+      },
+      "CABINET": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16118
+      },
+      "SOFA": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16118
+      },
+      "BED": {
+        "tp": 3963,
+        "fp": 675,
+        "fn": 262,
+        "tn": 11218
+      },
+      "SHELF": {
+        "tp": 430,
+        "fp": 956,
+        "fn": 439,
+        "tn": 14293
+      },
+      "COUNTER": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16118
+      },
+      "APPLIANCE": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16118
+      }
+    },
+    "events": [
+      "semantic:10010:0:BED:6",
+      "semantic:10010:0:WALL:5"
+    ],
+    "audio_started": [
+      "右侧检测到床。"
+    ]
+  },
+  {
+    "image": "ADE_val_00000019.jpg",
+    "gt_fractions": {
+      "TABLE": 0,
+      "CHAIR": 0.024498341625207296,
+      "CABINET": 0,
+      "SOFA": 0,
+      "BED": 0,
+      "SHELF": 0,
+      "COUNTER": 0,
+      "APPLIANCE": 0
+    },
+    "pixels": {
+      "TABLE": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16184
+      },
+      "CHAIR": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 410,
+        "tn": 15774
+      },
+      "CABINET": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16184
+      },
+      "SOFA": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16184
+      },
+      "BED": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16184
+      },
+      "SHELF": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16184
+      },
+      "COUNTER": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16184
+      },
+      "APPLIANCE": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16184
+      }
+    },
+    "events": [],
+    "audio_started": []
+  },
+  {
+    "image": "ADE_val_00000029.jpg",
+    "gt_fractions": {
+      "TABLE": 0.0335913027455316,
+      "CHAIR": 0,
+      "CABINET": 0,
+      "SOFA": 0,
+      "BED": 0,
+      "SHELF": 0,
+      "COUNTER": 0,
+      "APPLIANCE": 0
+    },
+    "pixels": {
+      "TABLE": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 567,
+        "tn": 10282
+      },
+      "CHAIR": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 10849
+      },
+      "CABINET": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 10849
+      },
+      "SOFA": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 10849
+      },
+      "BED": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 10849
+      },
+      "SHELF": {
+        "tp": 0,
+        "fp": 1605,
+        "fn": 0,
+        "tn": 9244
+      },
+      "COUNTER": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 10849
+      },
+      "APPLIANCE": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 10849
+      }
+    },
+    "events": [
+      "semantic:10012:0:SHELF:7"
+    ],
+    "audio_started": [
+      "左侧检测到架子。"
+    ]
+  },
+  {
+    "image": "ADE_val_00000036.jpg",
+    "gt_fractions": {
+      "TABLE": 0.0500375,
+      "CHAIR": 0.0285375,
+      "CABINET": 0,
+      "SOFA": 0,
+      "BED": 0,
+      "SHELF": 0,
+      "COUNTER": 0,
+      "APPLIANCE": 0
+    },
+    "pixels": {
+      "TABLE": {
+        "tp": 779,
+        "fp": 793,
+        "fn": 32,
+        "tn": 9854
+      },
+      "CHAIR": {
+        "tp": 16,
+        "fp": 0,
+        "fn": 428,
+        "tn": 11014
+      },
+      "CABINET": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 11458
+      },
+      "SOFA": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 11458
+      },
+      "BED": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 11458
+      },
+      "SHELF": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 11458
+      },
+      "COUNTER": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 11458
+      },
+      "APPLIANCE": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 11458
+      }
+    },
+    "events": [
+      "semantic:10013:0:TABLE:9",
+      "semantic:10013:0:WALL:8"
+    ],
+    "audio_started": [
+      "右侧检测到桌子。"
+    ]
+  },
+  {
+    "image": "ADE_val_00000038.jpg",
+    "gt_fractions": {
+      "TABLE": 0,
+      "CHAIR": 0.08983750105245432,
+      "CABINET": 0.06936375627964413,
+      "SOFA": 0,
+      "BED": 0,
+      "SHELF": 0,
+      "COUNTER": 0,
+      "APPLIANCE": 0
+    },
+    "pixels": {
+      "TABLE": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16180
+      },
+      "CHAIR": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 1485,
+        "tn": 14695
+      },
+      "CABINET": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 1133,
+        "tn": 15047
+      },
+      "SOFA": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16180
+      },
+      "BED": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16180
+      },
+      "SHELF": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16180
+      },
+      "COUNTER": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16180
+      },
+      "APPLIANCE": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16180
+      }
+    },
+    "events": [
+      "semantic:10014:0:WALL:10"
+    ],
+    "audio_started": []
+  },
+  {
+    "image": "ADE_val_00000039.jpg",
+    "gt_fractions": {
+      "TABLE": 0.0913714891074048,
+      "CHAIR": 0,
+      "CABINET": 0,
+      "SOFA": 0,
+      "BED": 0,
+      "SHELF": 0,
+      "COUNTER": 0,
+      "APPLIANCE": 0
+    },
+    "pixels": {
+      "TABLE": {
+        "tp": 228,
+        "fp": 0,
+        "fn": 1272,
+        "tn": 14056
+      },
+      "CHAIR": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 15556
+      },
+      "CABINET": {
+        "tp": 0,
+        "fp": 78,
+        "fn": 0,
+        "tn": 15478
+      },
+      "SOFA": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 15556
+      },
+      "BED": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 15556
+      },
+      "SHELF": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 15556
+      },
+      "COUNTER": {
+        "tp": 0,
+        "fp": 18,
+        "fn": 0,
+        "tn": 15538
+      },
+      "APPLIANCE": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 15556
+      }
+    },
+    "events": [
+      "semantic:10015:0:WALL:11"
+    ],
+    "audio_started": []
+  },
+  {
+    "image": "ADE_val_00000040.jpg",
+    "gt_fractions": {
+      "TABLE": 0,
+      "CHAIR": 0.05097570461200586,
+      "CABINET": 0.06084427617130307,
+      "SOFA": 0,
+      "BED": 0,
+      "SHELF": 0,
+      "COUNTER": 0,
+      "APPLIANCE": 0
+    },
+    "pixels": {
+      "TABLE": {
+        "tp": 0,
+        "fp": 1211,
+        "fn": 0,
+        "tn": 12399
+      },
+      "CHAIR": {
+        "tp": 574,
+        "fp": 408,
+        "fn": 258,
+        "tn": 12370
+      },
+      "CABINET": {
+        "tp": 0,
+        "fp": 4,
+        "fn": 999,
+        "tn": 12607
+      },
+      "SOFA": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 13610
+      },
+      "BED": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 13610
+      },
+      "SHELF": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 13610
+      },
+      "COUNTER": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 13610
+      },
+      "APPLIANCE": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 13610
+      }
+    },
+    "events": [
+      "semantic:10016:0:CHAIR:13",
+      "semantic:10016:0:WALL:12"
+    ],
+    "audio_started": [
+      "左侧检测到椅子。"
+    ]
+  },
+  {
+    "image": "ADE_val_00000045.jpg",
+    "gt_fractions": {
+      "TABLE": 0,
+      "CHAIR": 0,
+      "CABINET": 0.12555476756954612,
+      "SOFA": 0,
+      "BED": 0.39293843795754024,
+      "SHELF": 0,
+      "COUNTER": 0,
+      "APPLIANCE": 0
+    },
+    "pixels": {
+      "TABLE": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16339
+      },
+      "CHAIR": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16339
+      },
+      "CABINET": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 2069,
+        "tn": 14270
+      },
+      "SOFA": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16339
+      },
+      "BED": {
+        "tp": 6430,
+        "fp": 276,
+        "fn": 48,
+        "tn": 9585
+      },
+      "SHELF": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16339
+      },
+      "COUNTER": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16339
+      },
+      "APPLIANCE": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16339
+      }
+    },
+    "events": [
+      "semantic:10017:0:BED:14",
+      "semantic:10017:0:WALL:15"
+    ],
+    "audio_started": [
+      "前方检测到床。"
+    ]
+  },
+  {
+    "image": "ADE_val_00000049.jpg",
+    "gt_fractions": {
+      "TABLE": 0.02889366764275256,
+      "CHAIR": 0,
+      "CABINET": 0,
+      "SOFA": 0,
+      "BED": 0.25671440336749635,
+      "SHELF": 0,
+      "COUNTER": 0,
+      "APPLIANCE": 0
+    },
+    "pixels": {
+      "TABLE": {
+        "tp": 122,
+        "fp": 0,
+        "fn": 351,
+        "tn": 15830
+      },
+      "CHAIR": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16303
+      },
+      "CABINET": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16303
+      },
+      "SOFA": {
+        "tp": 0,
+        "fp": 364,
+        "fn": 0,
+        "tn": 15939
+      },
+      "BED": {
+        "tp": 3179,
+        "fp": 614,
+        "fn": 1033,
+        "tn": 11477
+      },
+      "SHELF": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16303
+      },
+      "COUNTER": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16303
+      },
+      "APPLIANCE": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16303
+      }
+    },
+    "events": [
+      "semantic:10018:0:BED:17",
+      "semantic:10018:0:WALL:16"
+    ],
+    "audio_started": [
+      "前方检测到床。"
+    ]
+  },
+  {
+    "image": "ADE_val_00000065.jpg",
+    "gt_fractions": {
+      "TABLE": 0.006964490110557526,
+      "CHAIR": 0.033140561230448874,
+      "CABINET": 0,
+      "SOFA": 0.007988974281109113,
+      "BED": 0,
+      "SHELF": 0,
+      "COUNTER": 0.01964540166787358,
+      "APPLIANCE": 0
+    },
+    "pixels": {
+      "TABLE": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 111,
+        "tn": 10201
+      },
+      "CHAIR": {
+        "tp": 210,
+        "fp": 30,
+        "fn": 348,
+        "tn": 9724
+      },
+      "CABINET": {
+        "tp": 0,
+        "fp": 12,
+        "fn": 0,
+        "tn": 10300
+      },
+      "SOFA": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 136,
+        "tn": 10176
+      },
+      "BED": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 10312
+      },
+      "SHELF": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 10312
+      },
+      "COUNTER": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 329,
+        "tn": 9983
+      },
+      "APPLIANCE": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 10312
+      }
+    },
+    "events": [],
+    "audio_started": []
+  },
+  {
+    "image": "ADE_val_00000067.jpg",
+    "gt_fractions": {
+      "TABLE": 0,
+      "CHAIR": 0.10814814814814815,
+      "CABINET": 0.02707818930041152,
+      "SOFA": 0,
+      "BED": 0,
+      "SHELF": 0,
+      "COUNTER": 0,
+      "APPLIANCE": 0
+    },
+    "pixels": {
+      "TABLE": {
+        "tp": 0,
+        "fp": 91,
+        "fn": 0,
+        "tn": 15190
+      },
+      "CHAIR": {
+        "tp": 0,
+        "fp": 418,
+        "fn": 1798,
+        "tn": 13065
+      },
+      "CABINET": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 457,
+        "tn": 14824
+      },
+      "SOFA": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 15281
+      },
+      "BED": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 15281
+      },
+      "SHELF": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 15281
+      },
+      "COUNTER": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 15281
+      },
+      "APPLIANCE": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 15281
+      }
+    },
+    "events": [
+      "semantic:10020:0:WALL:18"
+    ],
+    "audio_started": []
+  },
+  {
+    "image": "ADE_val_00000077.jpg",
+    "gt_fractions": {
+      "TABLE": 0,
+      "CHAIR": 0,
+      "CABINET": 0,
+      "SOFA": 0,
+      "BED": 0,
+      "SHELF": 0.046575,
+      "COUNTER": 0.1612375,
+      "APPLIANCE": 0
+    },
+    "pixels": {
+      "TABLE": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 15930
+      },
+      "CHAIR": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 15930
+      },
+      "CABINET": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 15930
+      },
+      "SOFA": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 15930
+      },
+      "BED": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 15930
+      },
+      "SHELF": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 776,
+        "tn": 15154
+      },
+      "COUNTER": {
+        "tp": 1904,
+        "fp": 226,
+        "fn": 749,
+        "tn": 13051
+      },
+      "APPLIANCE": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 15930
+      }
+    },
+    "events": [
+      "semantic:10021:0:COUNTER:20",
+      "semantic:10021:0:WALL:19"
+    ],
+    "audio_started": [
+      "前方检测到柜台或台面。"
+    ]
+  },
+  {
+    "image": "ADE_val_00000081.jpg",
+    "gt_fractions": {
+      "TABLE": 0,
+      "CHAIR": 0,
+      "CABINET": 0.05498490117130307,
+      "SOFA": 0,
+      "BED": 0,
+      "SHELF": 0,
+      "COUNTER": 0.018101436676427527,
+      "APPLIANCE": 0
+    },
+    "pixels": {
+      "TABLE": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 15603
+      },
+      "CHAIR": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 15603
+      },
+      "CABINET": {
+        "tp": 696,
+        "fp": 19,
+        "fn": 218,
+        "tn": 14670
+      },
+      "SOFA": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 15603
+      },
+      "BED": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 15603
+      },
+      "SHELF": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 15603
+      },
+      "COUNTER": {
+        "tp": 212,
+        "fp": 160,
+        "fn": 84,
+        "tn": 15147
+      },
+      "APPLIANCE": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 15603
+      }
+    },
+    "events": [
+      "semantic:10022:0:WALL:21"
+    ],
+    "audio_started": []
+  },
+  {
+    "image": "ADE_val_00000083.jpg",
+    "gt_fractions": {
+      "TABLE": 0,
+      "CHAIR": 0,
+      "CABINET": 0,
+      "SOFA": 0,
+      "BED": 0,
+      "SHELF": 0.0240325927734375,
+      "COUNTER": 0,
+      "APPLIANCE": 0
+    },
+    "pixels": {
+      "TABLE": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16108
+      },
+      "CHAIR": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16108
+      },
+      "CABINET": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16108
+      },
+      "SOFA": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16108
+      },
+      "BED": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16108
+      },
+      "SHELF": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 400,
+        "tn": 15708
+      },
+      "COUNTER": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16108
+      },
+      "APPLIANCE": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16108
+      }
+    },
+    "events": [
+      "semantic:10023:0:WALL:22",
+      "semantic:10023:0:WALL:23"
+    ],
+    "audio_started": []
+  },
+  {
+    "image": "ADE_val_00000092.jpg",
+    "gt_fractions": {
+      "TABLE": 0,
+      "CHAIR": 0,
+      "CABINET": 0.22879872803806736,
+      "SOFA": 0,
+      "BED": 0,
+      "SHELF": 0,
+      "COUNTER": 0.08566297584187409,
+      "APPLIANCE": 0
+    },
+    "pixels": {
+      "TABLE": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 14669
+      },
+      "CHAIR": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 14669
+      },
+      "CABINET": {
+        "tp": 2559,
+        "fp": 458,
+        "fn": 1199,
+        "tn": 10453
+      },
+      "SOFA": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 14669
+      },
+      "BED": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 14669
+      },
+      "SHELF": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 14669
+      },
+      "COUNTER": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 1417,
+        "tn": 13252
+      },
+      "APPLIANCE": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 14669
+      }
+    },
+    "events": [
+      "semantic:10024:0:CABINET:25",
+      "semantic:10024:0:WALL:24"
+    ],
+    "audio_started": [
+      "前方检测到柜子。"
+    ]
+  },
+  {
+    "image": "ADE_val_00000102.jpg",
+    "gt_fractions": {
+      "TABLE": 0,
+      "CHAIR": 0,
+      "CABINET": 0.0592375,
+      "SOFA": 0,
+      "BED": 0,
+      "SHELF": 0.036020833333333335,
+      "COUNTER": 0.04455833333333333,
+      "APPLIANCE": 0
+    },
+    "pixels": {
+      "TABLE": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 15161
+      },
+      "CHAIR": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 15161
+      },
+      "CABINET": {
+        "tp": 0,
+        "fp": 513,
+        "fn": 961,
+        "tn": 13687
+      },
+      "SOFA": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 15161
+      },
+      "BED": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 15161
+      },
+      "SHELF": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 598,
+        "tn": 14563
+      },
+      "COUNTER": {
+        "tp": 539,
+        "fp": 415,
+        "fn": 187,
+        "tn": 14020
+      },
+      "APPLIANCE": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 15161
+      }
+    },
+    "events": [
+      "semantic:10025:0:WALL:26"
+    ],
+    "audio_started": []
+  },
+  {
+    "image": "ADE_val_00000118.jpg",
+    "gt_fractions": {
+      "TABLE": 0.06615301724137931,
+      "CHAIR": 0,
+      "CABINET": 0.13350484913793104,
+      "SOFA": 0,
+      "BED": 0.03297683189655173,
+      "SHELF": 0,
+      "COUNTER": 0,
+      "APPLIANCE": 0
+    },
+    "pixels": {
+      "TABLE": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 1076,
+        "tn": 14281
+      },
+      "CHAIR": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 15357
+      },
+      "CABINET": {
+        "tp": 1273,
+        "fp": 123,
+        "fn": 895,
+        "tn": 13066
+      },
+      "SOFA": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 15357
+      },
+      "BED": {
+        "tp": 143,
+        "fp": 255,
+        "fn": 405,
+        "tn": 14554
+      },
+      "SHELF": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 15357
+      },
+      "COUNTER": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 15357
+      },
+      "APPLIANCE": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 15357
+      }
+    },
+    "events": [
+      "semantic:10026:0:CABINET:28",
+      "semantic:10026:0:WALL:27"
+    ],
+    "audio_started": [
+      "右侧检测到柜子。"
+    ]
+  },
+  {
+    "image": "ADE_val_00000137.jpg",
+    "gt_fractions": {
+      "TABLE": 0.05723703703703704,
+      "CHAIR": 0.12515555555555555,
+      "CABINET": 0.01631111111111111,
+      "SOFA": 0.07678518518518518,
+      "BED": 0.029222222222222222,
+      "SHELF": 0,
+      "COUNTER": 0,
+      "APPLIANCE": 0
+    },
+    "pixels": {
+      "TABLE": {
+        "tp": 35,
+        "fp": 7,
+        "fn": 921,
+        "tn": 15295
+      },
+      "CHAIR": {
+        "tp": 168,
+        "fp": 0,
+        "fn": 1907,
+        "tn": 14183
+      },
+      "CABINET": {
+        "tp": 0,
+        "fp": 72,
+        "fn": 268,
+        "tn": 15918
+      },
+      "SOFA": {
+        "tp": 1237,
+        "fp": 1952,
+        "fn": 44,
+        "tn": 13025
+      },
+      "BED": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 473,
+        "tn": 15785
+      },
+      "SHELF": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16258
+      },
+      "COUNTER": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16258
+      },
+      "APPLIANCE": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16258
+      }
+    },
+    "events": [
+      "semantic:10027:0:SOFA:30",
+      "semantic:10027:0:WALL:29"
+    ],
+    "audio_started": [
+      "右侧检测到沙发。"
+    ]
+  },
+  {
+    "image": "ADE_val_00000161.jpg",
+    "gt_fractions": {
+      "TABLE": 0.01520798141891892,
+      "CHAIR": 0,
+      "CABINET": 0,
+      "SOFA": 0,
+      "BED": 0.19520692567567569,
+      "SHELF": 0.015181587837837837,
+      "COUNTER": 0,
+      "APPLIANCE": 0
+    },
+    "pixels": {
+      "TABLE": {
+        "tp": 6,
+        "fp": 102,
+        "fn": 253,
+        "tn": 15781
+      },
+      "CHAIR": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16142
+      },
+      "CABINET": {
+        "tp": 0,
+        "fp": 658,
+        "fn": 0,
+        "tn": 15484
+      },
+      "SOFA": {
+        "tp": 0,
+        "fp": 2613,
+        "fn": 0,
+        "tn": 13529
+      },
+      "BED": {
+        "tp": 392,
+        "fp": 442,
+        "fn": 2819,
+        "tn": 12489
+      },
+      "SHELF": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 251,
+        "tn": 15891
+      },
+      "COUNTER": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16142
+      },
+      "APPLIANCE": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16142
+      }
+    },
+    "events": [
+      "semantic:10000:0:SOFA:2",
+      "semantic:10000:0:WALL:1"
+    ],
+    "audio_started": [
+      "前方检测到沙发。"
+    ]
+  },
+  {
+    "image": "ADE_val_00000162.jpg",
+    "gt_fractions": {
+      "TABLE": 0.0112762451171875,
+      "CHAIR": 0,
+      "CABINET": 0,
+      "SOFA": 0,
+      "BED": 0.329498291015625,
+      "SHELF": 0,
+      "COUNTER": 0,
+      "APPLIANCE": 0
+    },
+    "pixels": {
+      "TABLE": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 184,
+        "tn": 15941
+      },
+      "CHAIR": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16125
+      },
+      "CABINET": {
+        "tp": 0,
+        "fp": 8,
+        "fn": 0,
+        "tn": 16117
+      },
+      "SOFA": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16125
+      },
+      "BED": {
+        "tp": 5086,
+        "fp": 448,
+        "fn": 290,
+        "tn": 10301
+      },
+      "SHELF": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16125
+      },
+      "COUNTER": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16125
+      },
+      "APPLIANCE": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16125
+      }
+    },
+    "events": [
+      "semantic:10001:0:BED:3",
+      "semantic:10001:0:WALL:4"
+    ],
+    "audio_started": [
+      "前方检测到床。"
+    ]
+  },
+  {
+    "image": "ADE_val_00000163.jpg",
+    "gt_fractions": {
+      "TABLE": 0.0473481514084507,
+      "CHAIR": 0.06084213615023474,
+      "CABINET": 0.0246368838028169,
+      "SOFA": 0,
+      "BED": 0.1673048708920188,
+      "SHELF": 0,
+      "COUNTER": 0,
+      "APPLIANCE": 0
+    },
+    "pixels": {
+      "TABLE": {
+        "tp": 652,
+        "fp": 96,
+        "fn": 131,
+        "tn": 15449
+      },
+      "CHAIR": {
+        "tp": 610,
+        "fp": 462,
+        "fn": 394,
+        "tn": 14862
+      },
+      "CABINET": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 402,
+        "tn": 15926
+      },
+      "SOFA": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16328
+      },
+      "BED": {
+        "tp": 2706,
+        "fp": 1727,
+        "fn": 45,
+        "tn": 11850
+      },
+      "SHELF": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16328
+      },
+      "COUNTER": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16328
+      },
+      "APPLIANCE": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16328
+      }
+    },
+    "events": [
+      "semantic:10002:0:BED:5",
+      "semantic:10002:0:CHAIR:7",
+      "semantic:10002:0:WALL:6"
+    ],
+    "audio_started": [
+      "前方检测到床。"
+    ]
+  },
+  {
+    "image": "ADE_val_00000164.jpg",
+    "gt_fractions": {
+      "TABLE": 0,
+      "CHAIR": 0.057747300512445095,
+      "CABINET": 0,
+      "SOFA": 0,
+      "BED": 0.06820209553440702,
+      "SHELF": 0,
+      "COUNTER": 0,
+      "APPLIANCE": 0
+    },
+    "pixels": {
+      "TABLE": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 12019
+      },
+      "CHAIR": {
+        "tp": 717,
+        "fp": 3,
+        "fn": 238,
+        "tn": 11061
+      },
+      "CABINET": {
+        "tp": 0,
+        "fp": 15,
+        "fn": 0,
+        "tn": 12004
+      },
+      "SOFA": {
+        "tp": 0,
+        "fp": 864,
+        "fn": 0,
+        "tn": 11155
+      },
+      "BED": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 1129,
+        "tn": 10890
+      },
+      "SHELF": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 12019
+      },
+      "COUNTER": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 12019
+      },
+      "APPLIANCE": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 12019
+      }
+    },
+    "events": [
+      "semantic:10003:0:CHAIR:9",
+      "semantic:10003:0:WALL:8"
+    ],
+    "audio_started": [
+      "左侧检测到椅子。"
+    ]
+  },
+  {
+    "image": "ADE_val_00000165.jpg",
+    "gt_fractions": {
+      "TABLE": 0.0019809825673534074,
+      "CHAIR": 0,
+      "CABINET": 0,
+      "SOFA": 0,
+      "BED": 0.2224767234548336,
+      "SHELF": 0,
+      "COUNTER": 0,
+      "APPLIANCE": 0
+    },
+    "pixels": {
+      "TABLE": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 31,
+        "tn": 15620
+      },
+      "CHAIR": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 15651
+      },
+      "CABINET": {
+        "tp": 0,
+        "fp": 96,
+        "fn": 0,
+        "tn": 15555
+      },
+      "SOFA": {
+        "tp": 0,
+        "fp": 2628,
+        "fn": 0,
+        "tn": 13023
+      },
+      "BED": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 3637,
+        "tn": 12014
+      },
+      "SHELF": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 15651
+      },
+      "COUNTER": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 15651
+      },
+      "APPLIANCE": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 15651
+      }
+    },
+    "events": [
+      "semantic:10004:0:SOFA:11",
+      "semantic:10004:0:WALL:10"
+    ],
+    "audio_started": [
+      "左侧检测到沙发。"
+    ]
+  },
+  {
+    "image": "ADE_val_00000166.jpg",
+    "gt_fractions": {
+      "TABLE": 0.02214208912884334,
+      "CHAIR": 0.003806163067349927,
+      "CABINET": 0.10091050512445095,
+      "SOFA": 0,
+      "BED": 0.43711966965592974,
+      "SHELF": 0,
+      "COUNTER": 0,
+      "APPLIANCE": 0
+    },
+    "pixels": {
+      "TABLE": {
+        "tp": 313,
+        "fp": 732,
+        "fn": 60,
+        "tn": 15105
+      },
+      "CHAIR": {
+        "tp": 0,
+        "fp": 6,
+        "fn": 57,
+        "tn": 16147
+      },
+      "CABINET": {
+        "tp": 948,
+        "fp": 0,
+        "fn": 719,
+        "tn": 14543
+      },
+      "SOFA": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16210
+      },
+      "BED": {
+        "tp": 5603,
+        "fp": 38,
+        "fn": 1592,
+        "tn": 8977
+      },
+      "SHELF": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16210
+      },
+      "COUNTER": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16210
+      },
+      "APPLIANCE": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16210
+      }
+    },
+    "events": [
+      "semantic:10005:0:BED:12",
+      "semantic:10005:0:CABINET:13"
+    ],
+    "audio_started": [
+      "前方检测到床。"
+    ]
+  },
+  {
+    "image": "ADE_val_00000167.jpg",
+    "gt_fractions": {
+      "TABLE": 0.0384979248046875,
+      "CHAIR": 0,
+      "CABINET": 0,
+      "SOFA": 0.1483306884765625,
+      "BED": 0.0565032958984375,
+      "SHELF": 0,
+      "COUNTER": 0,
+      "APPLIANCE": 0
+    },
+    "pixels": {
+      "TABLE": {
+        "tp": 222,
+        "fp": 42,
+        "fn": 406,
+        "tn": 15473
+      },
+      "CHAIR": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16143
+      },
+      "CABINET": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16143
+      },
+      "SOFA": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 2426,
+        "tn": 13717
+      },
+      "BED": {
+        "tp": 629,
+        "fp": 2291,
+        "fn": 305,
+        "tn": 12918
+      },
+      "SHELF": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16143
+      },
+      "COUNTER": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16143
+      },
+      "APPLIANCE": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16143
+      }
+    },
+    "events": [],
+    "audio_started": []
+  },
+  {
+    "image": "ADE_val_00000168.jpg",
+    "gt_fractions": {
+      "TABLE": 0.10794218540829986,
+      "CHAIR": 0,
+      "CABINET": 0,
+      "SOFA": 0,
+      "BED": 0.311854187583668,
+      "SHELF": 0,
+      "COUNTER": 0,
+      "APPLIANCE": 0
+    },
+    "pixels": {
+      "TABLE": {
+        "tp": 1481,
+        "fp": 53,
+        "fn": 286,
+        "tn": 14462
+      },
+      "CHAIR": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16282
+      },
+      "CABINET": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16282
+      },
+      "SOFA": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16282
+      },
+      "BED": {
+        "tp": 4619,
+        "fp": 655,
+        "fn": 492,
+        "tn": 10516
+      },
+      "SHELF": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16282
+      },
+      "COUNTER": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16282
+      },
+      "APPLIANCE": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16282
+      }
+    },
+    "events": [
+      "semantic:10007:0:BED:14",
+      "semantic:10007:0:TABLE:16",
+      "semantic:10007:0:WALL:15"
+    ],
+    "audio_started": [
+      "前方检测到床。"
+    ]
+  },
+  {
+    "image": "ADE_val_00000171.jpg",
+    "gt_fractions": {
+      "TABLE": 0.011357330607476636,
+      "CHAIR": 0,
+      "CABINET": 0.021973568925233646,
+      "SOFA": 0.07783659462616822,
+      "BED": 0.08175379672897196,
+      "SHELF": 0,
+      "COUNTER": 0,
+      "APPLIANCE": 0
+    },
+    "pixels": {
+      "TABLE": {
+        "tp": 0,
+        "fp": 99,
+        "fn": 189,
+        "tn": 15685
+      },
+      "CHAIR": {
+        "tp": 0,
+        "fp": 132,
+        "fn": 0,
+        "tn": 15841
+      },
+      "CABINET": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 354,
+        "tn": 15619
+      },
+      "SOFA": {
+        "tp": 657,
+        "fp": 609,
+        "fn": 617,
+        "tn": 14090
+      },
+      "BED": {
+        "tp": 6,
+        "fp": 0,
+        "fn": 1360,
+        "tn": 14607
+      },
+      "SHELF": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 15973
+      },
+      "COUNTER": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 15973
+      },
+      "APPLIANCE": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 15973
+      }
+    },
+    "events": [
+      "semantic:10008:0:WALL:17",
+      "semantic:10008:0:WALL:18"
+    ],
+    "audio_started": []
+  },
+  {
+    "image": "ADE_val_00000172.jpg",
+    "gt_fractions": {
+      "TABLE": 0.06244566709370425,
+      "CHAIR": 0.06286603221083455,
+      "CABINET": 0.2379895680819912,
+      "SOFA": 0,
+      "BED": 0.03589117404831625,
+      "SHELF": 0,
+      "COUNTER": 0,
+      "APPLIANCE": 0
+    },
+    "pixels": {
+      "TABLE": {
+        "tp": 805,
+        "fp": 555,
+        "fn": 218,
+        "tn": 14576
+      },
+      "CHAIR": {
+        "tp": 114,
+        "fp": 620,
+        "fn": 923,
+        "tn": 14497
+      },
+      "CABINET": {
+        "tp": 506,
+        "fp": 0,
+        "fn": 3393,
+        "tn": 12255
+      },
+      "SOFA": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16154
+      },
+      "BED": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 595,
+        "tn": 15559
+      },
+      "SHELF": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16154
+      },
+      "COUNTER": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16154
+      },
+      "APPLIANCE": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16154
+      }
+    },
+    "events": [
+      "semantic:10009:0:TABLE:20",
+      "semantic:10009:0:WALL:19"
+    ],
+    "audio_started": [
+      "右侧检测到桌子。"
+    ]
+  },
+  {
+    "image": "ADE_val_00000175.jpg",
+    "gt_fractions": {
+      "TABLE": 0.02618846083455344,
+      "CHAIR": 0.01903939421669107,
+      "CABINET": 0,
+      "SOFA": 0,
+      "BED": 0.13411934937774525,
+      "SHELF": 0,
+      "COUNTER": 0,
+      "APPLIANCE": 0
+    },
+    "pixels": {
+      "TABLE": {
+        "tp": 1,
+        "fp": 5,
+        "fn": 435,
+        "tn": 15531
+      },
+      "CHAIR": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 315,
+        "tn": 15657
+      },
+      "CABINET": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 15972
+      },
+      "SOFA": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 15972
+      },
+      "BED": {
+        "tp": 1443,
+        "fp": 25,
+        "fn": 775,
+        "tn": 13729
+      },
+      "SHELF": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 15972
+      },
+      "COUNTER": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 15972
+      },
+      "APPLIANCE": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 15972
+      }
+    },
+    "events": [
+      "semantic:10010:0:WALL:21",
+      "semantic:10010:0:WALL:22"
+    ],
+    "audio_started": []
+  },
+  {
+    "image": "ADE_val_00000176.jpg",
+    "gt_fractions": {
+      "TABLE": 0.08044564852150538,
+      "CHAIR": 0.03253633232526882,
+      "CABINET": 0,
+      "SOFA": 0,
+      "BED": 0.004205519153225807,
+      "SHELF": 0,
+      "COUNTER": 0,
+      "APPLIANCE": 0
+    },
+    "pixels": {
+      "TABLE": {
+        "tp": 239,
+        "fp": 65,
+        "fn": 1081,
+        "tn": 13560
+      },
+      "CHAIR": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 535,
+        "tn": 14410
+      },
+      "CABINET": {
+        "tp": 0,
+        "fp": 344,
+        "fn": 0,
+        "tn": 14601
+      },
+      "SOFA": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 14945
+      },
+      "BED": {
+        "tp": 16,
+        "fp": 169,
+        "fn": 51,
+        "tn": 14709
+      },
+      "SHELF": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 14945
+      },
+      "COUNTER": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 14945
+      },
+      "APPLIANCE": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 14945
+      }
+    },
+    "events": [
+      "semantic:10011:0:WALL:23"
+    ],
+    "audio_started": []
+  },
+  {
+    "image": "ADE_val_00000179.jpg",
+    "gt_fractions": {
+      "TABLE": 0.02483585743045388,
+      "CHAIR": 0.006022373718887262,
+      "CABINET": 0.0891116855783309,
+      "SOFA": 0,
+      "BED": 0.026474423499267936,
+      "SHELF": 0.039174025439238654,
+      "COUNTER": 0,
+      "APPLIANCE": 0
+    },
+    "pixels": {
+      "TABLE": {
+        "tp": 276,
+        "fp": 948,
+        "fn": 138,
+        "tn": 13995
+      },
+      "CHAIR": {
+        "tp": 34,
+        "fp": 34,
+        "fn": 68,
+        "tn": 15221
+      },
+      "CABINET": {
+        "tp": 634,
+        "fp": 228,
+        "fn": 828,
+        "tn": 13667
+      },
+      "SOFA": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 15357
+      },
+      "BED": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 451,
+        "tn": 14906
+      },
+      "SHELF": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 647,
+        "tn": 14710
+      },
+      "COUNTER": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 15357
+      },
+      "APPLIANCE": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 15357
+      }
+    },
+    "events": [
+      "semantic:10012:0:CABINET:24"
+    ],
+    "audio_started": [
+      "左侧检测到柜子。"
+    ]
+  },
+  {
+    "image": "ADE_val_00000181.jpg",
+    "gt_fractions": {
+      "TABLE": 0.0250244140625,
+      "CHAIR": 0,
+      "CABINET": 0.1549835205078125,
+      "SOFA": 0,
+      "BED": 0.0796966552734375,
+      "SHELF": 0,
+      "COUNTER": 0,
+      "APPLIANCE": 0
+    },
+    "pixels": {
+      "TABLE": {
+        "tp": 40,
+        "fp": 0,
+        "fn": 359,
+        "tn": 15689
+      },
+      "CHAIR": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16088
+      },
+      "CABINET": {
+        "tp": 2330,
+        "fp": 22,
+        "fn": 201,
+        "tn": 13535
+      },
+      "SOFA": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16088
+      },
+      "BED": {
+        "tp": 980,
+        "fp": 2108,
+        "fn": 320,
+        "tn": 12680
+      },
+      "SHELF": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16088
+      },
+      "COUNTER": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16088
+      },
+      "APPLIANCE": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16088
+      }
+    },
+    "events": [
+      "semantic:10013:0:BED:25",
+      "semantic:10013:0:CABINET:26",
+      "semantic:10013:0:WALL:27"
+    ],
+    "audio_started": [
+      "前方检测到床。"
+    ]
+  },
+  {
+    "image": "ADE_val_00000182.jpg",
+    "gt_fractions": {
+      "TABLE": 0.08588392300498753,
+      "CHAIR": 0.00961219996882793,
+      "CABINET": 0.06761903834164588,
+      "SOFA": 0,
+      "BED": 0.14083200202618454,
+      "SHELF": 0,
+      "COUNTER": 0,
+      "APPLIANCE": 0
+    },
+    "pixels": {
+      "TABLE": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 1426,
+        "tn": 14877
+      },
+      "CHAIR": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 156,
+        "tn": 16147
+      },
+      "CABINET": {
+        "tp": 192,
+        "fp": 0,
+        "fn": 923,
+        "tn": 15188
+      },
+      "SOFA": {
+        "tp": 0,
+        "fp": 480,
+        "fn": 0,
+        "tn": 15823
+      },
+      "BED": {
+        "tp": 1660,
+        "fp": 6,
+        "fn": 633,
+        "tn": 14004
+      },
+      "SHELF": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16303
+      },
+      "COUNTER": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16303
+      },
+      "APPLIANCE": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16303
+      }
+    },
+    "events": [
+      "semantic:10014:0:BED:29",
+      "semantic:10014:0:WALL:28"
+    ],
+    "audio_started": [
+      "左侧检测到床。"
+    ]
+  },
+  {
+    "image": "ADE_val_00000185.jpg",
+    "gt_fractions": {
+      "TABLE": 0.007723851573938506,
+      "CHAIR": 0.035851139275256225,
+      "CABINET": 0,
+      "SOFA": 0,
+      "BED": 0,
+      "SHELF": 0,
+      "COUNTER": 0,
+      "APPLIANCE": 0
+    },
+    "pixels": {
+      "TABLE": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 129,
+        "tn": 15504
+      },
+      "CHAIR": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 586,
+        "tn": 15047
+      },
+      "CABINET": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 15633
+      },
+      "SOFA": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 15633
+      },
+      "BED": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 15633
+      },
+      "SHELF": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 15633
+      },
+      "COUNTER": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 15633
+      },
+      "APPLIANCE": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 15633
+      }
+    },
+    "events": [],
+    "audio_started": []
+  },
+  {
+    "image": "ADE_val_00000186.jpg",
+    "gt_fractions": {
+      "TABLE": 0,
+      "CHAIR": 0,
+      "CABINET": 0,
+      "SOFA": 0,
+      "BED": 0,
+      "SHELF": 0,
+      "COUNTER": 0,
+      "APPLIANCE": 0
+    },
+    "pixels": {
+      "TABLE": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 10176
+      },
+      "CHAIR": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 10176
+      },
+      "CABINET": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 10176
+      },
+      "SOFA": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 10176
+      },
+      "BED": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 10176
+      },
+      "SHELF": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 10176
+      },
+      "COUNTER": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 10176
+      },
+      "APPLIANCE": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 10176
+      }
+    },
+    "events": [],
+    "audio_started": []
+  },
+  {
+    "image": "ADE_val_00000188.jpg",
+    "gt_fractions": {
+      "TABLE": 0.09177570093457944,
+      "CHAIR": 0.07462616822429907,
+      "CABINET": 0,
+      "SOFA": 0,
+      "BED": 0,
+      "SHELF": 0,
+      "COUNTER": 0,
+      "APPLIANCE": 0
+    },
+    "pixels": {
+      "TABLE": {
+        "tp": 1033,
+        "fp": 1828,
+        "fn": 478,
+        "tn": 12158
+      },
+      "CHAIR": {
+        "tp": 478,
+        "fp": 230,
+        "fn": 741,
+        "tn": 14048
+      },
+      "CABINET": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 15497
+      },
+      "SOFA": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 15497
+      },
+      "BED": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 15497
+      },
+      "SHELF": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 15497
+      },
+      "COUNTER": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 15497
+      },
+      "APPLIANCE": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 15497
+      }
+    },
+    "events": [
+      "semantic:10017:0:TABLE:31",
+      "semantic:10017:0:WALL:30"
+    ],
+    "audio_started": [
+      "前方检测到桌子。"
+    ]
+  },
+  {
+    "image": "ADE_val_00000189.jpg",
+    "gt_fractions": {
+      "TABLE": 0,
+      "CHAIR": 0,
+      "CABINET": 0,
+      "SOFA": 0,
+      "BED": 0,
+      "SHELF": 0,
+      "COUNTER": 0,
+      "APPLIANCE": 0
+    },
+    "pixels": {
+      "TABLE": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 15981
+      },
+      "CHAIR": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 15981
+      },
+      "CABINET": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 15981
+      },
+      "SOFA": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 15981
+      },
+      "BED": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 15981
+      },
+      "SHELF": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 15981
+      },
+      "COUNTER": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 15981
+      },
+      "APPLIANCE": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 15981
+      }
+    },
+    "events": [],
+    "audio_started": []
+  },
+  {
+    "image": "ADE_val_00000190.jpg",
+    "gt_fractions": {
+      "TABLE": 0,
+      "CHAIR": 0,
+      "CABINET": 0,
+      "SOFA": 0,
+      "BED": 0,
+      "SHELF": 0,
+      "COUNTER": 0,
+      "APPLIANCE": 0
+    },
+    "pixels": {
+      "TABLE": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 15776
+      },
+      "CHAIR": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 15776
+      },
+      "CABINET": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 15776
+      },
+      "SOFA": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 15776
+      },
+      "BED": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 15776
+      },
+      "SHELF": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 15776
+      },
+      "COUNTER": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 15776
+      },
+      "APPLIANCE": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 15776
+      }
+    },
+    "events": [],
+    "audio_started": []
+  },
+  {
+    "image": "ADE_val_00000191.jpg",
+    "gt_fractions": {
+      "TABLE": 0,
+      "CHAIR": 0,
+      "CABINET": 0,
+      "SOFA": 0,
+      "BED": 0,
+      "SHELF": 0.5028612303290415,
+      "COUNTER": 0,
+      "APPLIANCE": 0
+    },
+    "pixels": {
+      "TABLE": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 14300
+      },
+      "CHAIR": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 14300
+      },
+      "CABINET": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 14300
+      },
+      "SOFA": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 14300
+      },
+      "BED": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 14300
+      },
+      "SHELF": {
+        "tp": 7575,
+        "fp": 3088,
+        "fn": 603,
+        "tn": 3034
+      },
+      "COUNTER": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 14300
+      },
+      "APPLIANCE": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 14300
+      }
+    },
+    "events": [
+      "semantic:10020:0:SHELF:32"
+    ],
+    "audio_started": [
+      "前方检测到架子。"
+    ]
+  },
+  {
+    "image": "ADE_val_00000192.jpg",
+    "gt_fractions": {
+      "TABLE": 0,
+      "CHAIR": 0,
+      "CABINET": 0.0165,
+      "SOFA": 0,
+      "BED": 0,
+      "SHELF": 0,
+      "COUNTER": 0,
+      "APPLIANCE": 0
+    },
+    "pixels": {
+      "TABLE": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 14991
+      },
+      "CHAIR": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 14991
+      },
+      "CABINET": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 255,
+        "tn": 14736
+      },
+      "SOFA": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 14991
+      },
+      "BED": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 14991
+      },
+      "SHELF": {
+        "tp": 0,
+        "fp": 7447,
+        "fn": 0,
+        "tn": 7544
+      },
+      "COUNTER": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 14991
+      },
+      "APPLIANCE": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 14991
+      }
+    },
+    "events": [
+      "semantic:10021:0:SHELF:33"
+    ],
+    "audio_started": [
+      "前方检测到架子。"
+    ]
+  },
+  {
+    "image": "ADE_val_00000193.jpg",
+    "gt_fractions": {
+      "TABLE": 0,
+      "CHAIR": 0,
+      "CABINET": 0,
+      "SOFA": 0,
+      "BED": 0,
+      "SHELF": 0,
+      "COUNTER": 0,
+      "APPLIANCE": 0
+    },
+    "pixels": {
+      "TABLE": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16190
+      },
+      "CHAIR": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16190
+      },
+      "CABINET": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16190
+      },
+      "SOFA": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16190
+      },
+      "BED": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16190
+      },
+      "SHELF": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16190
+      },
+      "COUNTER": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16190
+      },
+      "APPLIANCE": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16190
+      }
+    },
+    "events": [
+      "semantic:10022:0:POLE:34"
+    ],
+    "audio_started": []
+  },
+  {
+    "image": "ADE_val_00000194.jpg",
+    "gt_fractions": {
+      "TABLE": 0,
+      "CHAIR": 0,
+      "CABINET": 0,
+      "SOFA": 0,
+      "BED": 0,
+      "SHELF": 0,
+      "COUNTER": 0,
+      "APPLIANCE": 0
+    },
+    "pixels": {
+      "TABLE": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16084
+      },
+      "CHAIR": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16084
+      },
+      "CABINET": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16084
+      },
+      "SOFA": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16084
+      },
+      "BED": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16084
+      },
+      "SHELF": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16084
+      },
+      "COUNTER": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16084
+      },
+      "APPLIANCE": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16084
+      }
+    },
+    "events": [],
+    "audio_started": []
+  },
+  {
+    "image": "ADE_val_00000195.jpg",
+    "gt_fractions": {
+      "TABLE": 0,
+      "CHAIR": 0.03670517793894417,
+      "CABINET": 0,
+      "SOFA": 0,
+      "BED": 0,
+      "SHELF": 0,
+      "COUNTER": 0,
+      "APPLIANCE": 0
+    },
+    "pixels": {
+      "TABLE": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 15965
+      },
+      "CHAIR": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 608,
+        "tn": 15357
+      },
+      "CABINET": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 15965
+      },
+      "SOFA": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 15965
+      },
+      "BED": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 15965
+      },
+      "SHELF": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 15965
+      },
+      "COUNTER": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 15965
+      },
+      "APPLIANCE": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 15965
+      }
+    },
+    "events": [],
+    "audio_started": []
+  },
+  {
+    "image": "ADE_val_00000196.jpg",
+    "gt_fractions": {
+      "TABLE": 0,
+      "CHAIR": 0,
+      "CABINET": 0,
+      "SOFA": 0,
+      "BED": 0,
+      "SHELF": 0,
+      "COUNTER": 0,
+      "APPLIANCE": 0
+    },
+    "pixels": {
+      "TABLE": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16066
+      },
+      "CHAIR": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16066
+      },
+      "CABINET": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16066
+      },
+      "SOFA": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16066
+      },
+      "BED": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16066
+      },
+      "SHELF": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16066
+      },
+      "COUNTER": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16066
+      },
+      "APPLIANCE": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16066
+      }
+    },
+    "events": [],
+    "audio_started": []
+  },
+  {
+    "image": "ADE_val_00000197.jpg",
+    "gt_fractions": {
+      "TABLE": 0.0037825520833333335,
+      "CHAIR": 0.005006510416666667,
+      "CABINET": 0,
+      "SOFA": 0,
+      "BED": 0,
+      "SHELF": 0,
+      "COUNTER": 0,
+      "APPLIANCE": 0
+    },
+    "pixels": {
+      "TABLE": {
+        "tp": 0,
+        "fp": 899,
+        "fn": 65,
+        "tn": 9933
+      },
+      "CHAIR": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 65,
+        "tn": 10832
+      },
+      "CABINET": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 10897
+      },
+      "SOFA": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 10897
+      },
+      "BED": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 10897
+      },
+      "SHELF": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 10897
+      },
+      "COUNTER": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 10897
+      },
+      "APPLIANCE": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 10897
+      }
+    },
+    "events": [
+      "semantic:10026:0:TABLE:36",
+      "semantic:10026:0:WALL:35"
+    ],
+    "audio_started": [
+      "前方检测到桌子。"
+    ]
+  },
+  {
+    "image": "ADE_val_00000198.jpg",
+    "gt_fractions": {
+      "TABLE": 0,
+      "CHAIR": 0,
+      "CABINET": 0,
+      "SOFA": 0,
+      "BED": 0,
+      "SHELF": 0,
+      "COUNTER": 0,
+      "APPLIANCE": 0
+    },
+    "pixels": {
+      "TABLE": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 13893
+      },
+      "CHAIR": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 13893
+      },
+      "CABINET": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 13893
+      },
+      "SOFA": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 13893
+      },
+      "BED": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 13893
+      },
+      "SHELF": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 13893
+      },
+      "COUNTER": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 13893
+      },
+      "APPLIANCE": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 13893
+      }
+    },
+    "events": [
+      "semantic:10027:0:WALL:37"
+    ],
+    "audio_started": []
+  },
+  {
+    "image": "ADE_val_00000199.jpg",
+    "gt_fractions": {
+      "TABLE": 0,
+      "CHAIR": 0,
+      "CABINET": 0,
+      "SOFA": 0,
+      "BED": 0,
+      "SHELF": 0,
+      "COUNTER": 0,
+      "APPLIANCE": 0
+    },
+    "pixels": {
+      "TABLE": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16179
+      },
+      "CHAIR": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16179
+      },
+      "CABINET": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16179
+      },
+      "SOFA": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16179
+      },
+      "BED": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16179
+      },
+      "SHELF": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16179
+      },
+      "COUNTER": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16179
+      },
+      "APPLIANCE": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16179
+      }
+    },
+    "events": [],
+    "audio_started": []
+  },
+  {
+    "image": "ADE_val_00000200.jpg",
+    "gt_fractions": {
+      "TABLE": 0,
+      "CHAIR": 0,
+      "CABINET": 0,
+      "SOFA": 0,
+      "BED": 0,
+      "SHELF": 0,
+      "COUNTER": 0,
+      "APPLIANCE": 0
+    },
+    "pixels": {
+      "TABLE": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 14834
+      },
+      "CHAIR": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 14834
+      },
+      "CABINET": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 14834
+      },
+      "SOFA": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 14834
+      },
+      "BED": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 14834
+      },
+      "SHELF": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 14834
+      },
+      "COUNTER": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 14834
+      },
+      "APPLIANCE": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 14834
+      }
+    },
+    "events": [],
+    "audio_started": []
+  },
+  {
+    "image": "ADE_val_00000201.jpg",
+    "gt_fractions": {
+      "TABLE": 0,
+      "CHAIR": 0,
+      "CABINET": 0,
+      "SOFA": 0,
+      "BED": 0,
+      "SHELF": 0,
+      "COUNTER": 0,
+      "APPLIANCE": 0
+    },
+    "pixels": {
+      "TABLE": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16248
+      },
+      "CHAIR": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16248
+      },
+      "CABINET": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16248
+      },
+      "SOFA": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16248
+      },
+      "BED": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16248
+      },
+      "SHELF": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16248
+      },
+      "COUNTER": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16248
+      },
+      "APPLIANCE": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16248
+      }
+    },
+    "events": [],
+    "audio_started": []
+  },
+  {
+    "image": "ADE_val_00000202.jpg",
+    "gt_fractions": {
+      "TABLE": 0,
+      "CHAIR": 0,
+      "CABINET": 0,
+      "SOFA": 0,
+      "BED": 0,
+      "SHELF": 0,
+      "COUNTER": 0,
+      "APPLIANCE": 0
+    },
+    "pixels": {
+      "TABLE": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16149
+      },
+      "CHAIR": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16149
+      },
+      "CABINET": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16149
+      },
+      "SOFA": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16149
+      },
+      "BED": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16149
+      },
+      "SHELF": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16149
+      },
+      "COUNTER": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16149
+      },
+      "APPLIANCE": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16149
+      }
+    },
+    "events": [],
+    "audio_started": []
+  },
+  {
+    "image": "ADE_val_00000203.jpg",
+    "gt_fractions": {
+      "TABLE": 0,
+      "CHAIR": 0,
+      "CABINET": 0,
+      "SOFA": 0,
+      "BED": 0,
+      "SHELF": 0,
+      "COUNTER": 0,
+      "APPLIANCE": 0
+    },
+    "pixels": {
+      "TABLE": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16182
+      },
+      "CHAIR": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16182
+      },
+      "CABINET": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16182
+      },
+      "SOFA": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16182
+      },
+      "BED": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16182
+      },
+      "SHELF": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16182
+      },
+      "COUNTER": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16182
+      },
+      "APPLIANCE": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16182
+      }
+    },
+    "events": [],
+    "audio_started": []
+  },
+  {
+    "image": "ADE_val_00000204.jpg",
+    "gt_fractions": {
+      "TABLE": 0,
+      "CHAIR": 0,
+      "CABINET": 0,
+      "SOFA": 0,
+      "BED": 0,
+      "SHELF": 0,
+      "COUNTER": 0,
+      "APPLIANCE": 0
+    },
+    "pixels": {
+      "TABLE": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16269
+      },
+      "CHAIR": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16269
+      },
+      "CABINET": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16269
+      },
+      "SOFA": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16269
+      },
+      "BED": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16269
+      },
+      "SHELF": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16269
+      },
+      "COUNTER": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16269
+      },
+      "APPLIANCE": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16269
+      }
+    },
+    "events": [],
+    "audio_started": []
+  },
+  {
+    "image": "ADE_val_00000205.jpg",
+    "gt_fractions": {
+      "TABLE": 0,
+      "CHAIR": 0,
+      "CABINET": 0,
+      "SOFA": 0,
+      "BED": 0,
+      "SHELF": 0,
+      "COUNTER": 0,
+      "APPLIANCE": 0
+    },
+    "pixels": {
+      "TABLE": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 15764
+      },
+      "CHAIR": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 15764
+      },
+      "CABINET": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 15764
+      },
+      "SOFA": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 15764
+      },
+      "BED": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 15764
+      },
+      "SHELF": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 15764
+      },
+      "COUNTER": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 15764
+      },
+      "APPLIANCE": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 15764
+      }
+    },
+    "events": [],
+    "audio_started": []
+  },
+  {
+    "image": "ADE_val_00000206.jpg",
+    "gt_fractions": {
+      "TABLE": 0,
+      "CHAIR": 0,
+      "CABINET": 0,
+      "SOFA": 0,
+      "BED": 0,
+      "SHELF": 0,
+      "COUNTER": 0,
+      "APPLIANCE": 0
+    },
+    "pixels": {
+      "TABLE": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 15918
+      },
+      "CHAIR": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 15918
+      },
+      "CABINET": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 15918
+      },
+      "SOFA": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 15918
+      },
+      "BED": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 15918
+      },
+      "SHELF": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 15918
+      },
+      "COUNTER": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 15918
+      },
+      "APPLIANCE": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 15918
+      }
+    },
+    "events": [],
+    "audio_started": []
+  },
+  {
+    "image": "ADE_val_00000218.jpg",
+    "gt_fractions": {
+      "TABLE": 0.01696279069767442,
+      "CHAIR": 0.013874418604651162,
+      "CABINET": 0,
+      "SOFA": 0.027372093023255814,
+      "BED": 0.04645581395348837,
+      "SHELF": 0,
+      "COUNTER": 0,
+      "APPLIANCE": 0
+    },
+    "pixels": {
+      "TABLE": {
+        "tp": 0,
+        "fp": 112,
+        "fn": 286,
+        "tn": 15718
+      },
+      "CHAIR": {
+        "tp": 68,
+        "fp": 302,
+        "fn": 167,
+        "tn": 15579
+      },
+      "CABINET": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16116
+      },
+      "SOFA": {
+        "tp": 0,
+        "fp": 594,
+        "fn": 439,
+        "tn": 15083
+      },
+      "BED": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 762,
+        "tn": 15354
+      },
+      "SHELF": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16116
+      },
+      "COUNTER": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16116
+      },
+      "APPLIANCE": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16116
+      }
+    },
+    "events": [],
+    "audio_started": []
+  },
+  {
+    "image": "ADE_val_00000223.jpg",
+    "gt_fractions": {
+      "TABLE": 0,
+      "CHAIR": 0,
+      "CABINET": 0,
+      "SOFA": 0,
+      "BED": 0,
+      "SHELF": 0.2010832265739385,
+      "COUNTER": 0,
+      "APPLIANCE": 0
+    },
+    "pixels": {
+      "TABLE": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 5105
+      },
+      "CHAIR": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 5105
+      },
+      "CABINET": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 5105
+      },
+      "SOFA": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 5105
+      },
+      "BED": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 5105
+      },
+      "SHELF": {
+        "tp": 53,
+        "fp": 0,
+        "fn": 3297,
+        "tn": 1755
+      },
+      "COUNTER": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 5105
+      },
+      "APPLIANCE": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 5105
+      }
+    },
+    "events": [],
+    "audio_started": []
+  },
+  {
+    "image": "ADE_val_00000244.jpg",
+    "gt_fractions": {
+      "TABLE": 0.03016187939367311,
+      "CHAIR": 0.022479816564147628,
+      "CABINET": 0,
+      "SOFA": 0,
+      "BED": 0.07926460896309315,
+      "SHELF": 0.05227097978910369,
+      "COUNTER": 0,
+      "APPLIANCE": 0
+    },
+    "pixels": {
+      "TABLE": {
+        "tp": 6,
+        "fp": 0,
+        "fn": 501,
+        "tn": 14070
+      },
+      "CHAIR": {
+        "tp": 13,
+        "fp": 1,
+        "fn": 356,
+        "tn": 14207
+      },
+      "CABINET": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 14577
+      },
+      "SOFA": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 14577
+      },
+      "BED": {
+        "tp": 771,
+        "fp": 512,
+        "fn": 511,
+        "tn": 12783
+      },
+      "SHELF": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 847,
+        "tn": 13730
+      },
+      "COUNTER": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 14577
+      },
+      "APPLIANCE": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 14577
+      }
+    },
+    "events": [
+      "semantic:10038:0:BED:39",
+      "semantic:10038:0:WALL:38"
+    ],
+    "audio_started": [
+      "前方检测到床。"
+    ]
+  },
+  {
+    "image": "ADE_val_00000255.jpg",
+    "gt_fractions": {
+      "TABLE": 0,
+      "CHAIR": 0.03134065934065934,
+      "CABINET": 0.3067399267399267,
+      "SOFA": 0,
+      "BED": 0,
+      "SHELF": 0.11635897435897435,
+      "COUNTER": 0,
+      "APPLIANCE": 0
+    },
+    "pixels": {
+      "TABLE": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 14666
+      },
+      "CHAIR": {
+        "tp": 365,
+        "fp": 319,
+        "fn": 161,
+        "tn": 13821
+      },
+      "CABINET": {
+        "tp": 4211,
+        "fp": 5246,
+        "fn": 820,
+        "tn": 4389
+      },
+      "SOFA": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 14666
+      },
+      "BED": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 14666
+      },
+      "SHELF": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 1885,
+        "tn": 12781
+      },
+      "COUNTER": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 14666
+      },
+      "APPLIANCE": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 14666
+      }
+    },
+    "events": [
+      "semantic:10039:0:CABINET:40"
+    ],
+    "audio_started": [
+      "前方检测到柜子。"
+    ]
+  },
+  {
+    "image": "ADE_val_00000297.jpg",
+    "gt_fractions": {
+      "TABLE": 0,
+      "CHAIR": 0,
+      "CABINET": 0,
+      "SOFA": 0,
+      "BED": 0,
+      "SHELF": 0,
+      "COUNTER": 0.22582933333333333,
+      "APPLIANCE": 0
+    },
+    "pixels": {
+      "TABLE": {
+        "tp": 0,
+        "fp": 16,
+        "fn": 0,
+        "tn": 15529
+      },
+      "CHAIR": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 15545
+      },
+      "CABINET": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 15545
+      },
+      "SOFA": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 15545
+      },
+      "BED": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 15545
+      },
+      "SHELF": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 15545
+      },
+      "COUNTER": {
+        "tp": 2886,
+        "fp": 955,
+        "fn": 856,
+        "tn": 10848
+      },
+      "APPLIANCE": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 15545
+      }
+    },
+    "events": [
+      "semantic:10040:0:COUNTER:42",
+      "semantic:10040:0:WALL:41"
+    ],
+    "audio_started": [
+      "左侧检测到柜台或台面。"
+    ]
+  },
+  {
+    "image": "ADE_val_00000300.jpg",
+    "gt_fractions": {
+      "TABLE": 0.04831145314622001,
+      "CHAIR": 0.09400633770937075,
+      "CABINET": 0,
+      "SOFA": 0,
+      "BED": 0,
+      "SHELF": 0.026287913082842916,
+      "COUNTER": 0,
+      "APPLIANCE": 0
+    },
+    "pixels": {
+      "TABLE": {
+        "tp": 88,
+        "fp": 0,
+        "fn": 697,
+        "tn": 15156
+      },
+      "CHAIR": {
+        "tp": 782,
+        "fp": 303,
+        "fn": 753,
+        "tn": 14103
+      },
+      "CABINET": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 15941
+      },
+      "SOFA": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 15941
+      },
+      "BED": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 15941
+      },
+      "SHELF": {
+        "tp": 1,
+        "fp": 27,
+        "fn": 435,
+        "tn": 15478
+      },
+      "COUNTER": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 15941
+      },
+      "APPLIANCE": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 15941
+      }
+    },
+    "events": [
+      "semantic:10041:0:CHAIR:44",
+      "semantic:10041:0:WALL:43"
+    ],
+    "audio_started": [
+      "右侧检测到椅子。"
+    ]
+  },
+  {
+    "image": "ADE_val_00000303.jpg",
+    "gt_fractions": {
+      "TABLE": 0.0381317586143695,
+      "CHAIR": 0.06778947489002933,
+      "CABINET": 0,
+      "SOFA": 0.03185999358504399,
+      "BED": 0,
+      "SHELF": 0,
+      "COUNTER": 0.04270527859237536,
+      "APPLIANCE": 0
+    },
+    "pixels": {
+      "TABLE": {
+        "tp": 134,
+        "fp": 336,
+        "fn": 485,
+        "tn": 15309
+      },
+      "CHAIR": {
+        "tp": 725,
+        "fp": 126,
+        "fn": 393,
+        "tn": 15020
+      },
+      "CABINET": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16264
+      },
+      "SOFA": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 535,
+        "tn": 15729
+      },
+      "BED": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16264
+      },
+      "SHELF": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16264
+      },
+      "COUNTER": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 711,
+        "tn": 15553
+      },
+      "APPLIANCE": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16264
+      }
+    },
+    "events": [
+      "semantic:10042:0:CHAIR:46",
+      "semantic:10042:0:WALL:45"
+    ],
+    "audio_started": [
+      "右侧检测到椅子。"
+    ]
+  },
+  {
+    "image": "ADE_val_00000318.jpg",
+    "gt_fractions": {
+      "TABLE": 0.0848236083984375,
+      "CHAIR": 0.034891764322916664,
+      "CABINET": 0,
+      "SOFA": 0.021998087565104168,
+      "BED": 0,
+      "SHELF": 0,
+      "COUNTER": 0,
+      "APPLIANCE": 0
+    },
+    "pixels": {
+      "TABLE": {
+        "tp": 475,
+        "fp": 403,
+        "fn": 901,
+        "tn": 14430
+      },
+      "CHAIR": {
+        "tp": 66,
+        "fp": 0,
+        "fn": 489,
+        "tn": 15654
+      },
+      "CABINET": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16209
+      },
+      "SOFA": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 358,
+        "tn": 15851
+      },
+      "BED": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16209
+      },
+      "SHELF": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16209
+      },
+      "COUNTER": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16209
+      },
+      "APPLIANCE": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16209
+      }
+    },
+    "events": [
+      "semantic:10043:0:WALL:47",
+      "semantic:10043:0:WALL:48"
+    ],
+    "audio_started": []
+  },
+  {
+    "image": "ADE_val_00000324.jpg",
+    "gt_fractions": {
+      "TABLE": 0.13269525530746706,
+      "CHAIR": 0.10077896229868229,
+      "CABINET": 0.022971380856515372,
+      "SOFA": 0.025948252196193265,
+      "BED": 0,
+      "SHELF": 0,
+      "COUNTER": 0,
+      "APPLIANCE": 0
+    },
+    "pixels": {
+      "TABLE": {
+        "tp": 1228,
+        "fp": 1655,
+        "fn": 939,
+        "tn": 11023
+      },
+      "CHAIR": {
+        "tp": 167,
+        "fp": 43,
+        "fn": 1473,
+        "tn": 13162
+      },
+      "CABINET": {
+        "tp": 132,
+        "fp": 42,
+        "fn": 234,
+        "tn": 14437
+      },
+      "SOFA": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 426,
+        "tn": 14419
+      },
+      "BED": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 14845
+      },
+      "SHELF": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 14845
+      },
+      "COUNTER": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 14845
+      },
+      "APPLIANCE": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 14845
+      }
+    },
+    "events": [
+      "semantic:10044:0:TABLE:49"
+    ],
+    "audio_started": [
+      "前方检测到桌子。"
+    ]
+  },
+  {
+    "image": "ADE_val_00000336.jpg",
+    "gt_fractions": {
+      "TABLE": 0,
+      "CHAIR": 0,
+      "CABINET": 0.14141333333333334,
+      "SOFA": 0,
+      "BED": 0,
+      "SHELF": 0.44782933333333336,
+      "COUNTER": 0,
+      "APPLIANCE": 0
+    },
+    "pixels": {
+      "TABLE": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 15882
+      },
+      "CHAIR": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 15882
+      },
+      "CABINET": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 2347,
+        "tn": 13535
+      },
+      "SOFA": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 15882
+      },
+      "BED": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 15882
+      },
+      "SHELF": {
+        "tp": 2858,
+        "fp": 1168,
+        "fn": 4571,
+        "tn": 7285
+      },
+      "COUNTER": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 15882
+      },
+      "APPLIANCE": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 15882
+      }
+    },
+    "events": [],
+    "audio_started": []
+  },
+  {
+    "image": "ADE_val_00000353.jpg",
+    "gt_fractions": {
+      "TABLE": 0,
+      "CHAIR": 0,
+      "CABINET": 0,
+      "SOFA": 0,
+      "BED": 0,
+      "SHELF": 0,
+      "COUNTER": 0.26707261029411766,
+      "APPLIANCE": 0
+    },
+    "pixels": {
+      "TABLE": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16158
+      },
+      "CHAIR": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16158
+      },
+      "CABINET": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16158
+      },
+      "SOFA": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16158
+      },
+      "BED": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16158
+      },
+      "SHELF": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16158
+      },
+      "COUNTER": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 4348,
+        "tn": 11810
+      },
+      "APPLIANCE": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16158
+      }
+    },
+    "events": [
+      "semantic:10046:0:WALL:50"
+    ],
+    "audio_started": []
+  },
+  {
+    "image": "ADE_val_00000372.jpg",
+    "gt_fractions": {
+      "TABLE": 0,
+      "CHAIR": 0,
+      "CABINET": 0.37176290263543194,
+      "SOFA": 0,
+      "BED": 0,
+      "SHELF": 0,
+      "COUNTER": 0,
+      "APPLIANCE": 0.200559914897511
+    },
+    "pixels": {
+      "TABLE": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 14132
+      },
+      "CHAIR": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 14132
+      },
+      "CABINET": {
+        "tp": 2905,
+        "fp": 792,
+        "fn": 3214,
+        "tn": 7221
+      },
+      "SOFA": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 14132
+      },
+      "BED": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 14132
+      },
+      "SHELF": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 14132
+      },
+      "COUNTER": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 14132
+      },
+      "APPLIANCE": {
+        "tp": 3142,
+        "fp": 179,
+        "fn": 165,
+        "tn": 10646
+      }
+    },
+    "events": [
+      "semantic:10047:0:APPLIANCE:52",
+      "semantic:10047:0:CABINET:53",
+      "semantic:10047:0:WALL:51"
+    ],
+    "audio_started": [
+      "右侧检测到冰箱。"
+    ]
+  },
+  {
+    "image": "ADE_val_00000373.jpg",
+    "gt_fractions": {
+      "TABLE": 0.007612326134699854,
+      "CHAIR": 0,
+      "CABINET": 0,
+      "SOFA": 0.06138474560761347,
+      "BED": 0,
+      "SHELF": 0,
+      "COUNTER": 0,
+      "APPLIANCE": 0
+    },
+    "pixels": {
+      "TABLE": {
+        "tp": 0,
+        "fp": 189,
+        "fn": 127,
+        "tn": 12702
+      },
+      "CHAIR": {
+        "tp": 0,
+        "fp": 14,
+        "fn": 0,
+        "tn": 13004
+      },
+      "CABINET": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 13018
+      },
+      "SOFA": {
+        "tp": 321,
+        "fp": 169,
+        "fn": 682,
+        "tn": 11846
+      },
+      "BED": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 13018
+      },
+      "SHELF": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 13018
+      },
+      "COUNTER": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 13018
+      },
+      "APPLIANCE": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 13018
+      }
+    },
+    "events": [
+      "semantic:10048:0:TABLE:55",
+      "semantic:10048:0:WALL:54"
+    ],
+    "audio_started": [
+      "左侧检测到桌子。"
+    ]
+  },
+  {
+    "image": "ADE_val_00000375.jpg",
+    "gt_fractions": {
+      "TABLE": 0.03433839677891654,
+      "CHAIR": 0.023917917276720352,
+      "CABINET": 0,
+      "SOFA": 0.10295227855051245,
+      "BED": 0,
+      "SHELF": 0,
+      "COUNTER": 0,
+      "APPLIANCE": 0
+    },
+    "pixels": {
+      "TABLE": {
+        "tp": 24,
+        "fp": 98,
+        "fn": 533,
+        "tn": 11368
+      },
+      "CHAIR": {
+        "tp": 194,
+        "fp": 656,
+        "fn": 197,
+        "tn": 10976
+      },
+      "CABINET": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 12023
+      },
+      "SOFA": {
+        "tp": 828,
+        "fp": 32,
+        "fn": 860,
+        "tn": 10303
+      },
+      "BED": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 12023
+      },
+      "SHELF": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 12023
+      },
+      "COUNTER": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 12023
+      },
+      "APPLIANCE": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 12023
+      }
+    },
+    "events": [
+      "semantic:10049:0:TABLE:57",
+      "semantic:10049:0:WALL:56"
+    ],
+    "audio_started": [
+      "前方检测到桌子。"
+    ]
+  },
+  {
+    "image": "ADE_val_00000376.jpg",
+    "gt_fractions": {
+      "TABLE": 0.010029641897081413,
+      "CHAIR": 0.006579421082949309,
+      "CABINET": 0.001659106182795699,
+      "SOFA": 0.02230042722734255,
+      "BED": 0,
+      "SHELF": 0.0006840437788018433,
+      "COUNTER": 0.03382116455453149,
+      "APPLIANCE": 0
+    },
+    "pixels": {
+      "TABLE": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 164,
+        "tn": 14593
+      },
+      "CHAIR": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 107,
+        "tn": 14650
+      },
+      "CABINET": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 21,
+        "tn": 14736
+      },
+      "SOFA": {
+        "tp": 304,
+        "fp": 62,
+        "fn": 67,
+        "tn": 14324
+      },
+      "BED": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 14757
+      },
+      "SHELF": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 17,
+        "tn": 14740
+      },
+      "COUNTER": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 567,
+        "tn": 14190
+      },
+      "APPLIANCE": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 14757
+      }
+    },
+    "events": [
+      "semantic:10050:0:WALL:58"
+    ],
+    "audio_started": []
+  },
+  {
+    "image": "ADE_val_00000385.jpg",
+    "gt_fractions": {
+      "TABLE": 0.056383258601756955,
+      "CHAIR": 0,
+      "CABINET": 0,
+      "SOFA": 0,
+      "BED": 0,
+      "SHELF": 0.1106217972181552,
+      "COUNTER": 0.12494566709370425,
+      "APPLIANCE": 0
+    },
+    "pixels": {
+      "TABLE": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 931,
+        "tn": 14883
+      },
+      "CHAIR": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 15814
+      },
+      "CABINET": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 15814
+      },
+      "SOFA": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 15814
+      },
+      "BED": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 15814
+      },
+      "SHELF": {
+        "tp": 403,
+        "fp": 1029,
+        "fn": 1421,
+        "tn": 12961
+      },
+      "COUNTER": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 2061,
+        "tn": 13753
+      },
+      "APPLIANCE": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 15814
+      }
+    },
+    "events": [],
+    "audio_started": []
+  },
+  {
+    "image": "ADE_val_00000460.jpg",
+    "gt_fractions": {
+      "TABLE": 0,
+      "CHAIR": 0.01771508193597561,
+      "CABINET": 0.2350538300304878,
+      "SOFA": 0,
+      "BED": 0,
+      "SHELF": 0,
+      "COUNTER": 0,
+      "APPLIANCE": 0.1984178496570122
+    },
+    "pixels": {
+      "TABLE": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16039
+      },
+      "CHAIR": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 297,
+        "tn": 15742
+      },
+      "CABINET": {
+        "tp": 1247,
+        "fp": 4451,
+        "fn": 2619,
+        "tn": 7722
+      },
+      "SOFA": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16039
+      },
+      "BED": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16039
+      },
+      "SHELF": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16039
+      },
+      "COUNTER": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16039
+      },
+      "APPLIANCE": {
+        "tp": 127,
+        "fp": 11,
+        "fn": 3143,
+        "tn": 12758
+      }
+    },
+    "events": [
+      "semantic:10052:0:CABINET:60",
+      "semantic:10052:0:WALL:59"
+    ],
+    "audio_started": [
+      "右侧检测到柜子。"
+    ]
+  },
+  {
+    "image": "ADE_val_00000461.jpg",
+    "gt_fractions": {
+      "TABLE": 0,
+      "CHAIR": 0.1362612097364568,
+      "CABINET": 0.16469161786237188,
+      "SOFA": 0,
+      "BED": 0,
+      "SHELF": 0,
+      "COUNTER": 0,
+      "APPLIANCE": 0.04825905929721815
+    },
+    "pixels": {
+      "TABLE": {
+        "tp": 0,
+        "fp": 369,
+        "fn": 0,
+        "tn": 14403
+      },
+      "CHAIR": {
+        "tp": 1079,
+        "fp": 199,
+        "fn": 1147,
+        "tn": 12347
+      },
+      "CABINET": {
+        "tp": 1596,
+        "fp": 1653,
+        "fn": 1056,
+        "tn": 10467
+      },
+      "SOFA": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 14772
+      },
+      "BED": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 14772
+      },
+      "SHELF": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 14772
+      },
+      "COUNTER": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 14772
+      },
+      "APPLIANCE": {
+        "tp": 431,
+        "fp": 38,
+        "fn": 383,
+        "tn": 13920
+      }
+    },
+    "events": [
+      "semantic:10053:0:CABINET:61",
+      "semantic:10053:0:CABINET:62",
+      "semantic:10053:0:CHAIR:63"
+    ],
+    "audio_started": [
+      "左侧检测到柜子。"
+    ]
+  },
+  {
+    "image": "ADE_val_00000462.jpg",
+    "gt_fractions": {
+      "TABLE": 0,
+      "CHAIR": 0,
+      "CABINET": 0.288637037037037,
+      "SOFA": 0,
+      "BED": 0,
+      "SHELF": 0,
+      "COUNTER": 0,
+      "APPLIANCE": 0.06632592592592593
+    },
+    "pixels": {
+      "TABLE": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 15620
+      },
+      "CHAIR": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 15620
+      },
+      "CABINET": {
+        "tp": 4436,
+        "fp": 813,
+        "fn": 282,
+        "tn": 10089
+      },
+      "SOFA": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 15620
+      },
+      "BED": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 15620
+      },
+      "SHELF": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 15620
+      },
+      "COUNTER": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 15620
+      },
+      "APPLIANCE": {
+        "tp": 1010,
+        "fp": 117,
+        "fn": 94,
+        "tn": 14399
+      }
+    },
+    "events": [
+      "semantic:10054:0:CABINET:64",
+      "semantic:10054:0:CABINET:66",
+      "semantic:10054:0:WALL:65"
+    ],
+    "audio_started": [
+      "前方检测到柜子。"
+    ]
+  },
+  {
+    "image": "ADE_val_00000463.jpg",
+    "gt_fractions": {
+      "TABLE": 0,
+      "CHAIR": 0.0651702880859375,
+      "CABINET": 0.22640482584635416,
+      "SOFA": 0,
+      "BED": 0,
+      "SHELF": 0,
+      "COUNTER": 0,
+      "APPLIANCE": 0.016253153483072918
+    },
+    "pixels": {
+      "TABLE": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 12222
+      },
+      "CHAIR": {
+        "tp": 168,
+        "fp": 0,
+        "fn": 926,
+        "tn": 11128
+      },
+      "CABINET": {
+        "tp": 2555,
+        "fp": 914,
+        "fn": 1167,
+        "tn": 7586
+      },
+      "SOFA": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 12222
+      },
+      "BED": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 12222
+      },
+      "SHELF": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 12222
+      },
+      "COUNTER": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 12222
+      },
+      "APPLIANCE": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 260,
+        "tn": 11962
+      }
+    },
+    "events": [
+      "semantic:10055:0:CABINET:67"
+    ],
+    "audio_started": [
+      "左侧检测到柜子。"
+    ]
+  },
+  {
+    "image": "ADE_val_00000466.jpg",
+    "gt_fractions": {
+      "TABLE": 0,
+      "CHAIR": 0,
+      "CABINET": 0.22698465983072916,
+      "SOFA": 0,
+      "BED": 0,
+      "SHELF": 0,
+      "COUNTER": 0,
+      "APPLIANCE": 0.10485331217447917
+    },
+    "pixels": {
+      "TABLE": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 11898
+      },
+      "CHAIR": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 11898
+      },
+      "CABINET": {
+        "tp": 707,
+        "fp": 242,
+        "fn": 3020,
+        "tn": 7929
+      },
+      "SOFA": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 11898
+      },
+      "BED": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 11898
+      },
+      "SHELF": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 11898
+      },
+      "COUNTER": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 11898
+      },
+      "APPLIANCE": {
+        "tp": 1365,
+        "fp": 146,
+        "fn": 372,
+        "tn": 10015
+      }
+    },
+    "events": [
+      "semantic:10056:0:APPLIANCE:68"
+    ],
+    "audio_started": [
+      "右侧检测到冰箱。"
+    ]
+  },
+  {
+    "image": "ADE_val_00000468.jpg",
+    "gt_fractions": {
+      "TABLE": 0,
+      "CHAIR": 0,
+      "CABINET": 0.30682118733723956,
+      "SOFA": 0,
+      "BED": 0,
+      "SHELF": 0,
+      "COUNTER": 0,
+      "APPLIANCE": 0.052790323893229164
+    },
+    "pixels": {
+      "TABLE": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 15485
+      },
+      "CHAIR": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 15485
+      },
+      "CABINET": {
+        "tp": 2653,
+        "fp": 652,
+        "fn": 2368,
+        "tn": 9812
+      },
+      "SOFA": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 15485
+      },
+      "BED": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 15485
+      },
+      "SHELF": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 15485
+      },
+      "COUNTER": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 15485
+      },
+      "APPLIANCE": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 860,
+        "tn": 14625
+      }
+    },
+    "events": [],
+    "audio_started": []
+  },
+  {
+    "image": "ADE_val_00000471.jpg",
+    "gt_fractions": {
+      "TABLE": 0,
+      "CHAIR": 0.041554768880208336,
+      "CABINET": 0.2864888509114583,
+      "SOFA": 0,
+      "BED": 0,
+      "SHELF": 0,
+      "COUNTER": 0,
+      "APPLIANCE": 0.08774820963541667
+    },
+    "pixels": {
+      "TABLE": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 15944
+      },
+      "CHAIR": {
+        "tp": 386,
+        "fp": 344,
+        "fn": 298,
+        "tn": 14916
+      },
+      "CABINET": {
+        "tp": 3995,
+        "fp": 1387,
+        "fn": 746,
+        "tn": 9816
+      },
+      "SOFA": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 15944
+      },
+      "BED": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 15944
+      },
+      "SHELF": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 15944
+      },
+      "COUNTER": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 15944
+      },
+      "APPLIANCE": {
+        "tp": 1133,
+        "fp": 40,
+        "fn": 299,
+        "tn": 14472
+      }
+    },
+    "events": [
+      "semantic:10058:0:CABINET:70",
+      "semantic:10058:0:CABINET:71",
+      "semantic:10058:0:CABINET:72",
+      "semantic:10058:0:WALL:69"
+    ],
+    "audio_started": [
+      "右侧检测到柜子。"
+    ]
+  },
+  {
+    "image": "ADE_val_00000476.jpg",
+    "gt_fractions": {
+      "TABLE": 0,
+      "CHAIR": 0,
+      "CABINET": 0.36843369344547566,
+      "SOFA": 0,
+      "BED": 0,
+      "SHELF": 0,
+      "COUNTER": 0.08276990284222738,
+      "APPLIANCE": 0.014618982018561485
+    },
+    "pixels": {
+      "TABLE": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 14605
+      },
+      "CHAIR": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 14605
+      },
+      "CABINET": {
+        "tp": 5795,
+        "fp": 1325,
+        "fn": 225,
+        "tn": 7260
+      },
+      "SOFA": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 14605
+      },
+      "BED": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 14605
+      },
+      "SHELF": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 14605
+      },
+      "COUNTER": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 1332,
+        "tn": 13273
+      },
+      "APPLIANCE": {
+        "tp": 42,
+        "fp": 0,
+        "fn": 199,
+        "tn": 14364
+      }
+    },
+    "events": [
+      "semantic:10059:0:CABINET:73",
+      "semantic:10059:0:CABINET:75",
+      "semantic:10059:0:WALL:74"
+    ],
+    "audio_started": [
+      "前方检测到柜子。"
+    ]
+  }
+]

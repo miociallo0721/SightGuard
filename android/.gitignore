@@ -25,3 +25,5 @@ validation/*.txt
 parity-validation/**/*.png
 parity-validation/**/*.xml
 parity-validation/**/*.txt
+
+app/src/androidTest/assets/local_space/

@@ -1,0 +1,103 @@
+{
+  "schema_version": 1,
+  "service_active": true,
+  "checks": [
+    {
+      "mode": "font200_portrait",
+      "label": "描述周围",
+      "bounds": "[16,702][524,776]",
+      "focus": false
+    },
+    {
+      "mode": "font200_portrait",
+      "label": "静音提醒",
+      "bounds": "[16,787][524,861]",
+      "focus": false
+    },
+    {
+      "mode": "font200_portrait",
+      "label": "停止感知",
+      "bounds": "[16,872][524,946]",
+      "focus": false
+    },
+    {
+      "mode": "font200_portrait",
+      "label": "设置",
+      "bounds": "[16,957][524,1031]",
+      "focus": false
+    },
+    {
+      "mode": "font200_landscape",
+      "label": "描述周围",
+      "bounds": "[608,379][1184,453]",
+      "focus": false
+    },
+    {
+      "mode": "font200_landscape",
+      "label": "静音提醒",
+      "bounds": "[608,246][1184,320]",
+      "focus": false
+    },
+    {
+      "mode": "font200_landscape",
+      "label": "停止感知",
+      "bounds": "[608,332][1184,406]",
+      "focus": false
+    },
+    {
+      "mode": "font200_landscape",
+      "label": "设置",
+      "bounds": "[608,418][1184,492]",
+      "focus": false
+    },
+    {
+      "mode": "font200_narrow",
+      "label": "描述周围",
+      "bounds": "[16,702][404,776]",
+      "focus": false
+    },
+    {
+      "mode": "font200_narrow",
+      "label": "静音提醒",
+      "bounds": "[16,787][404,861]",
+      "focus": false
+    },
+    {
+      "mode": "font200_narrow",
+      "label": "停止感知",
+      "bounds": "[16,693][404,767]",
+      "focus": false
+    },
+    {
+      "mode": "font200_narrow",
+      "label": "设置",
+      "bounds": "[16,778][404,852]",
+      "focus": false
+    }
+  ],
+  "accessibility_focus_and_announcement_events": [
+    "32768:[]:null",
+    "32768:[]:null",
+    "32768:[]:null",
+    "32768:[]:null",
+    "32768:[]:null",
+    "32768:[]:null",
+    "32768:[]:null",
+    "32768:[]:null",
+    "32768:[]:null",
+    "32768:[]:null",
+    "32768:[]:null",
+    "32768:[]:null",
+    "32768:[]:null",
+    "32768:[]:null",
+    "32768:[]:null",
+    "32768:[]:null"
+  ],
+  "audio_phases": [
+    "requested",
+    "accepted",
+    "onStart",
+    "completed"
+  ],
+  "limitation": "Platform focus and app audio start verified; human Chinese pronunciation and physical-device interaction not certified"
+}

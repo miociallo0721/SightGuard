@@ -1,0 +1,234 @@
+{
+  "schema": "sightguard.furniture-validation-summary.v1",
+  "device": "sdk_gphone64_x86_64",
+  "sdk": 36,
+  "model_sha256": "85913f7adae1b787da8cbe4a046e6d8a22bae901340d548be2fea46ec7ff2e0f",
+  "model_input_size": 256,
+  "family_confidence": false,
+  "case_count": 28,
+  "scope": "real Android ONNX on labelled validation stills; not live camera or field accuracy",
+  "metric_definition": "128x128 normalized pixel-center sampling; annotation 0 ignored; confidence-filtered model masks; missed cells count as FN",
+  "groups": {
+    "TABLE": {
+      "pixels": {
+        "tp": 1164,
+        "fp": 2102,
+        "fn": 5348,
+        "tn": 413590
+      },
+      "precision": 0.35639926515615433,
+      "recall": 0.17874692874692874,
+      "iou": 0.1351288599953564,
+      "gt_positive_images": 7,
+      "fresh_event_images": [
+        "ADE_val_00000036.jpg"
+      ],
+      "missed_positive_images": [
+        "ADE_val_00000009.jpg",
+        "ADE_val_00000029.jpg",
+        "ADE_val_00000039.jpg",
+        "ADE_val_00000049.jpg",
+        "ADE_val_00000118.jpg",
+        "ADE_val_00000137.jpg"
+      ],
+      "false_event_images": [],
+      "pilot_gate_pass": false,
+      "rejection_reasons": [
+        "fewer_than_half_positive_images_have_fresh_confirmed_event",
+        "pixel_precision_below_060",
+        "pixel_iou_below_030"
+      ]
+    },
+    "CHAIR": {
+      "pixels": {
+        "tp": 7311,
+        "fp": 1838,
+        "fn": 7547,
+        "tn": 405508
+      },
+      "precision": 0.7991037271832987,
+      "recall": 0.4920581504913178,
+      "iou": 0.43788931480594157,
+      "gt_positive_images": 8,
+      "fresh_event_images": [
+        "ADE_val_00000005.jpg"
+      ],
+      "missed_positive_images": [
+        "ADE_val_00000019.jpg",
+        "ADE_val_00000036.jpg",
+        "ADE_val_00000038.jpg",
+        "ADE_val_00000040.jpg",
+        "ADE_val_00000065.jpg",
+        "ADE_val_00000067.jpg",
+        "ADE_val_00000137.jpg"
+      ],
+      "false_event_images": [],
+      "pilot_gate_pass": false,
+      "rejection_reasons": [
+        "fewer_than_half_positive_images_have_fresh_confirmed_event"
+      ]
+    },
+    "CABINET": {
+      "pixels": {
+        "tp": 4528,
+        "fp": 1333,
+        "fn": 8199,
+        "tn": 408144
+      },
+      "precision": 0.7725644088039584,
+      "recall": 0.3557790524082659,
+      "iou": 0.3220483641536273,
+      "gt_positive_images": 9,
+      "fresh_event_images": [
+        "ADE_val_00000092.jpg"
+      ],
+      "missed_positive_images": [
+        "ADE_val_00000038.jpg",
+        "ADE_val_00000040.jpg",
+        "ADE_val_00000045.jpg",
+        "ADE_val_00000067.jpg",
+        "ADE_val_00000081.jpg",
+        "ADE_val_00000102.jpg",
+        "ADE_val_00000118.jpg",
+        "ADE_val_00000137.jpg"
+      ],
+      "false_event_images": [],
+      "pilot_gate_pass": false,
+      "rejection_reasons": [
+        "fewer_than_half_positive_images_have_fresh_confirmed_event"
+      ]
+    },
+    "SOFA": {
+      "pixels": {
+        "tp": 1237,
+        "fp": 2316,
+        "fn": 180,
+        "tn": 418471
+      },
+      "precision": 0.3481564874753729,
+      "recall": 0.8729710656316161,
+      "iou": 0.33136887222073397,
+      "gt_positive_images": 1,
+      "fresh_event_images": [
+        "ADE_val_00000137.jpg"
+      ],
+      "missed_positive_images": [],
+      "false_event_images": [],
+      "pilot_gate_pass": false,
+      "rejection_reasons": [
+        "fewer_than_four_gt_positive_images",
+        "pixel_precision_below_060"
+      ]
+    },
+    "BED": {
+      "pixels": {
+        "tp": 13715,
+        "fp": 1820,
+        "fn": 2221,
+        "tn": 404448
+      },
+      "precision": 0.8828451882845189,
+      "recall": 0.8606300200803213,
+      "iou": 0.7724149583239468,
+      "gt_positive_images": 5,
+      "fresh_event_images": [
+        "ADE_val_00000013.jpg",
+        "ADE_val_00000045.jpg",
+        "ADE_val_00000049.jpg"
+      ],
+      "missed_positive_images": [
+        "ADE_val_00000118.jpg",
+        "ADE_val_00000137.jpg"
+      ],
+      "false_event_images": [],
+      "pilot_gate_pass": true,
+      "rejection_reasons": []
+    },
+    "SHELF": {
+      "pixels": {
+        "tp": 430,
+        "fp": 2561,
+        "fn": 2213,
+        "tn": 417000
+      },
+      "precision": 0.14376462721497826,
+      "recall": 0.16269390843738177,
+      "iou": 0.08262874711760185,
+      "gt_positive_images": 4,
+      "fresh_event_images": [],
+      "missed_positive_images": [
+        "ADE_val_00000013.jpg",
+        "ADE_val_00000077.jpg",
+        "ADE_val_00000083.jpg",
+        "ADE_val_00000102.jpg"
+      ],
+      "false_event_images": [
+        "ADE_val_00000029.jpg"
+      ],
+      "pilot_gate_pass": false,
+      "rejection_reasons": [
+        "fewer_than_half_positive_images_have_fresh_confirmed_event",
+        "pixel_precision_below_060",
+        "pixel_iou_below_030",
+        "event_on_image_without_any_gt_class_pixels"
+      ]
+    },
+    "COUNTER": {
+      "pixels": {
+        "tp": 2655,
+        "fp": 819,
+        "fn": 2766,
+        "tn": 415964
+      },
+      "precision": 0.7642487046632125,
+      "recall": 0.48976203652462647,
+      "iou": 0.4254807692307692,
+      "gt_positive_images": 5,
+      "fresh_event_images": [
+        "ADE_val_00000077.jpg"
+      ],
+      "missed_positive_images": [
+        "ADE_val_00000065.jpg",
+        "ADE_val_00000081.jpg",
+        "ADE_val_00000092.jpg",
+        "ADE_val_00000102.jpg"
+      ],
+      "false_event_images": [],
+      "pilot_gate_pass": false,
+      "rejection_reasons": [
+        "fewer_than_half_positive_images_have_fresh_confirmed_event"
+      ]
+    },
+    "APPLIANCE": {
+      "pixels": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 422204
+      },
+      "precision": null,
+      "recall": null,
+      "iou": null,
+      "gt_positive_images": 0,
+      "fresh_event_images": [],
+      "missed_positive_images": [],
+      "false_event_images": [],
+      "pilot_gate_pass": false,
+      "rejection_reasons": [
+        "fewer_than_four_gt_positive_images",
+        "pixel_precision_below_060",
+        "pixel_iou_below_030",
+        "no_real_model_event_audio_onStart"
+      ]
+    }
+  },
+  "model_load_ms": 188,
+  "latency_ms_p50": 87,
+  "latency_ms_p95": 111,
+  "source_age_ms_p95": 205,
+  "component_measure_ms_p95": 12,
+  "peak_sampled_pss_kb": 307877,
+  "fresh_observation_fraction": 1.0,
+  "audio_onStart_count": 9,
+  "warning": "Repeated validation stills, same ADE20K domain used for model training. No live field accuracy, metric ranging, motion, or body clearance validation."
+}

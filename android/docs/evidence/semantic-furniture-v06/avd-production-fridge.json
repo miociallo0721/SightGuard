@@ -1,0 +1,59 @@
+{
+  "device": "sdk_gphone64_x86_64",
+  "model_sha256": "49166600bda475ede43b413e8b145b735fe4532361fa663646e237f19e7dad69",
+  "input_size": 384,
+  "all_kinds_enabled_for_test_only": false,
+  "audio": [
+    {
+      "phase": "requested",
+      "event": "semantic:10047:0:APPLIANCE:2",
+      "elapsed_ms": 155535,
+      "deadline_ms": 155770
+    },
+    {
+      "phase": "accepted",
+      "event": "semantic:10047:0:APPLIANCE:2",
+      "elapsed_ms": 155540,
+      "deadline_ms": 155770
+    },
+    {
+      "phase": "onStart",
+      "event": "semantic:10047:0:APPLIANCE:2",
+      "text": "右侧检测到冰箱。",
+      "elapsed_ms": 155575,
+      "deadline_ms": 155770
+    }
+  ],
+  "cases": [
+    {
+      "image": "ADE_val_00000372.jpg",
+      "observations": [
+        {
+          "latency_ms": 274,
+          "source_age_ms": 526,
+          "events": []
+        },
+        {
+          "latency_ms": 241,
+          "source_age_ms": 335,
+          "events": []
+        },
+        {
+          "latency_ms": 196,
+          "source_age_ms": 281,
+          "events": [
+            "semantic:10047:0:WALL:1"
+          ]
+        },
+        {
+          "latency_ms": 196,
+          "source_age_ms": 292,
+          "events": [
+            "semantic:10047:0:WALL:1",
+            "semantic:10047:0:APPLIANCE:2"
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -17,7 +17,10 @@ fun loadEnvironmentConfig(context: Context): EnvironmentConfig {
         json.getLong("recovery_ms"),json.getLong("cooldown_ms"),json.getInt("confirmation_count"),json.getLong("min_confirmation_span_ms"),
         json.getDouble("min_confidence").toFloat(),json.getDouble("min_roi_fraction").toFloat(),json.getInt("min_cells"),
         roi.getDouble(0).toFloat(),roi.getDouble(1).toFloat(),roi.getDouble(2).toFloat(),roi.getDouble(3).toFloat(),json.getDouble("max_scene_difference").toFloat(),thresholds,
-        json.getJSONArray("automatic_kinds").let { a -> (0 until a.length()).map {EnvironmentKind.valueOf(a.getString(it))}.toSet() })
+        json.getJSONArray("automatic_kinds").let { a -> (0 until a.length()).map {EnvironmentKind.valueOf(a.getString(it))}.toSet() },
+        json.optBoolean("furniture_family_confidence",false),json.optInt("preferred_semantic_input_size",256),
+        json.optJSONObject("automatic_model_requirements")?.let { requirements -> requirements.keys().asSequence().associate {EnvironmentKind.valueOf(it) to requirements.getString(it)} } ?: emptyMap(),
+        json.optLong("resolution_fallback_age_ms",400),json.optInt("resolution_fallback_count",2),json.optInt("resolution_fallback_primary_slow",5))
 }
 
 fun semanticSceneSignature(bitmap: Bitmap): FloatArray {

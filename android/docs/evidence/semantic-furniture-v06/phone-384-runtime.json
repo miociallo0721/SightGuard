@@ -1,0 +1,14 @@
+{
+  "device": "25053RT47C",
+  "model_sha256": "49166600bda475ede43b413e8b145b735fe4532361fa663646e237f19e7dad69",
+  "load_ms": 132,
+  "bitmap_latencies_ms": [
+    319,
+    241,
+    235
+  ],
+  "max_absolute_logit_error": 0.00012207031,
+  "before_pss_kb": 113947,
+  "peak_sampled_pss_kb": 457117,
+  "scope": "real Android CPU model and bitmap; no concurrent YOLO or live camera acceptance"
+}

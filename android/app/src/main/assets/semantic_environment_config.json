@@ -1,5 +1,8 @@
 {
-  "schema_version": 2,
+  "schema_version": 3,
+  "resolution_fallback_age_ms": 400,
+  "resolution_fallback_count": 2,
+  "resolution_fallback_primary_slow": 5,
   "max_source_age_ms": 500,
   "sample_interval_ms": 650,
   "recovery_ms": 4000,
@@ -17,7 +20,14 @@
   ],
   "max_scene_difference": 0.12,
   "approach_enabled": false,
-  "automatic_kinds": ["WALL", "STAIRS", "POLE", "RAILING"],
+  "automatic_kinds": [
+    "WALL",
+    "STAIRS",
+    "POLE",
+    "RAILING",
+    "BED",
+    "APPLIANCE"
+  ],
   "step_validation": "insufficient real single-step and curb evidence; retain class 121 observations without automatic speech",
   "structures": {
     "STAIRS": {
@@ -43,6 +53,61 @@
       "min_cells": 8,
       "min_confidence": 0.6,
       "confirmation_count": 2
+    },
+    "TABLE": {
+      "min_roi_fraction": 0.035,
+      "min_cells": 12,
+      "min_confidence": 0.6,
+      "confirmation_count": 3
+    },
+    "CHAIR": {
+      "min_roi_fraction": 0.025,
+      "min_cells": 10,
+      "min_confidence": 0.6,
+      "confirmation_count": 3
+    },
+    "CABINET": {
+      "min_roi_fraction": 0.035,
+      "min_cells": 12,
+      "min_confidence": 0.6,
+      "confirmation_count": 3
+    },
+    "SOFA": {
+      "min_roi_fraction": 0.035,
+      "min_cells": 12,
+      "min_confidence": 0.6,
+      "confirmation_count": 3
+    },
+    "BED": {
+      "min_roi_fraction": 0.035,
+      "min_cells": 12,
+      "min_confidence": 0.6,
+      "confirmation_count": 3
+    },
+    "SHELF": {
+      "min_roi_fraction": 0.035,
+      "min_cells": 12,
+      "min_confidence": 0.6,
+      "confirmation_count": 3
+    },
+    "COUNTER": {
+      "min_roi_fraction": 0.035,
+      "min_cells": 12,
+      "min_confidence": 0.6,
+      "confirmation_count": 3
+    },
+    "APPLIANCE": {
+      "min_roi_fraction": 0.035,
+      "min_cells": 12,
+      "min_confidence": 0.6,
+      "confirmation_count": 3
     }
+  },
+  "furniture_validation": "ADE20K validation subset n=88: only BED and APPLIANCE pass preregistered 384 gate. Other furniture overview/shadow only. Fallback 256 does not inherit new automatic speech.",
+  "preferred_semantic_input_size": 384,
+  "furniture_family_confidence": true,
+  "automatic_model_requirements": {
+    "BED": "49166600bda475ede43b413e8b145b735fe4532361fa663646e237f19e7dad69",
+    "APPLIANCE": "49166600bda475ede43b413e8b145b735fe4532361fa663646e237f19e7dad69"
   }
 }

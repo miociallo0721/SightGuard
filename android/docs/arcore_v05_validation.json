@@ -1,0 +1,154 @@
+{
+  "schema": "sightguard.arcore-validation.v1",
+  "date": "2026-10-12",
+  "device": "REDMI Turbo 4 Pro / 25053RT47C / Android 16 API 36",
+  "baseline_sha": "fa2315595da6f2396487b5955a6e598a03c1c133",
+  "arcore_sdk_runtime": "1.56.0",
+  "artifacts": {
+    "SightGuard-0.5-arcore-experimental.apk": {
+      "sha256": "adc3912d383dfe5e8bcf7e3414b438faea10e1ca8cd89874fa9b9db709775384",
+      "bytes": 323154050
+    },
+    "SightGuard-0.5-arcore-debug.apk": {
+      "sha256": "40ce36cebb6355830b24b87e62820137b4a52b837e834afd07d6d87d54a72755",
+      "bytes": 327110864
+    }
+  },
+  "jvm": {
+    "tests": 147,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "device_tests": {
+    "final_parity_model_runtime": 4,
+    "final_isolated_audio": 1,
+    "yolo_and_video_regression": 4,
+    "failures_retained": [
+      "Initial runtime test launches blocked by HyperOS background-start policy; changed test launch to authorized shell.",
+      "Audio bundled run interrupted before completion; retained log; standalone final run passed five clips."
+    ]
+  },
+  "audio_resource_playback_only": [
+    {
+      "text": "前方墙面可能较近，请注意。",
+      "resource": "ar_wall_near",
+      "request_to_start_ms": 83,
+      "started_before_deadline": true,
+      "completed": true
+    },
+    {
+      "text": "相机可能正在靠近前方墙面，请注意。",
+      "resource": "ar_wall_approaching",
+      "request_to_start_ms": 50,
+      "started_before_deadline": true,
+      "completed": true
+    },
+    {
+      "text": "画面左侧可见地面较连续，通行条件尚未确认。",
+      "resource": "ar_corridor_left",
+      "request_to_start_ms": 63,
+      "started_before_deadline": true,
+      "completed": true
+    },
+    {
+      "text": "画面中央可见地面较连续，通行条件尚未确认。",
+      "resource": "ar_corridor_center",
+      "request_to_start_ms": 51,
+      "started_before_deadline": true,
+      "completed": true
+    },
+    {
+      "text": "画面右侧可见地面较连续，通行条件尚未确认。",
+      "resource": "ar_corridor_right",
+      "request_to_start_ms": 49,
+      "started_before_deadline": true,
+      "completed": true
+    }
+  ],
+  "performance": {
+    "release-live": {
+      "fps": {
+        "median": 11.61,
+        "min": 10.050251,
+        "max": 13.839286,
+        "samples": 39
+      },
+      "processing_ms": {
+        "median": 78.0,
+        "min": 40.0,
+        "max": 126.0,
+        "samples": 39
+      },
+      "yolo_ms": {
+        "median": 62.0,
+        "min": 32.0,
+        "max": 110.0,
+        "samples": 39
+      },
+      "source_age_ms": {
+        "median": 436.0,
+        "min": 343,
+        "max": 492,
+        "samples": 148
+      },
+      "fresh_at_log": 148,
+      "geometry_records": 148,
+      "wall_distance_outputs": 0,
+      "near_outputs": 0,
+      "approach_outputs": 0,
+      "corridor_outputs": 0,
+      "tracking_states": [
+        "PAUSED",
+        "TRACKING"
+      ],
+      "maximum_points": 0,
+      "semantic_ms": {
+        "median": 156.0,
+        "min": 74,
+        "max": 192,
+        "samples": 148
+      },
+      "semantic_post_ms": {
+        "median": 10.0,
+        "min": 4,
+        "max": 15,
+        "samples": 148
+      },
+      "pss_kb": {
+        "median": 459910.0,
+        "min": 361788,
+        "max": 507908,
+        "samples": 40
+      }
+    },
+    "release-camerax": {
+      "fps": {
+        "median": 11.31,
+        "min": 10.128914,
+        "max": 17.983074,
+        "samples": 67
+      },
+      "processing_ms": {
+        "median": 86.0,
+        "min": 47.0,
+        "max": 97.0,
+        "samples": 67
+      },
+      "yolo_ms": {
+        "median": 62.0,
+        "min": 34.0,
+        "max": 67.0,
+        "samples": 67
+      }
+    }
+  },
+  "performance_limitations": "Sequential uncontrolled scenes and temperatures; these are short samples, not controlled AR overhead or sustained FPS measurements. Processing latency excludes capture-to-receive age; source age is reported separately.",
+  "calibrated_wall_distance": false,
+  "controlled_approach_validation": false,
+  "physical_corridor_validation": false,
+  "numeric_distance_speech": false,
+  "navigation_instructions": false,
+  "formal_risk_changed": false,
+  "private_images_logs_committed": false
+}

@@ -9,17 +9,23 @@ android {
         applicationId = "org.sightguard.app"
         minSdk = 26
         targetSdk = 36
-        versionCode = 5
-        versionName = "0.4-metric-corridor-shadow"
+        versionCode = 10
+        versionName = "0.8.1-preview-band"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         ndk { abiFilters += listOf("arm64-v8a", "armeabi-v7a", "x86_64") }
     }
-    buildFeatures { compose = true }
+    buildFeatures { compose = true; buildConfig = true }
+    // Local experimental delivery: same development key permits updates.
+    // Older version codes still require a forward-versioned rollback build.
+    // Non-debuggable ART execution is needed for representative camera performance.
+    buildTypes { getByName("release") { signingConfig = signingConfigs.getByName("debug") } }
     compileOptions { sourceCompatibility = JavaVersion.VERSION_17; targetCompatibility = JavaVersion.VERSION_17 }
     androidResources { noCompress += listOf("onnx", "bin") }
     sourceSets {
         getByName("test").kotlin.directories += "src/sharedTest/java"
+        getByName("test").resources.directories += "src/sharedTest/assets"
         getByName("androidTest").kotlin.directories += "src/sharedTest/java"
+        getByName("androidTest").assets.directories += "src/sharedTest/assets"
     }
 }
 dependencies {

@@ -1,0 +1,37 @@
+{
+  "scope": "AVD API36 virtual camera, release build, 2 vCPU/1536MB guest, host 16GB; not REDMI performance",
+  "yolo_reported_fps_after_initial_frame": {
+    "count": 75,
+    "p50": 14.98847,
+    "p95": 18.54067,
+    "min": 8.474576,
+    "max": 22.321428
+  },
+  "fallback_observed": true,
+  "semantic_256_latency_ms": {
+    "count": 64,
+    "p50": 156.0,
+    "p95": 279,
+    "min": 104,
+    "max": 441
+  },
+  "semantic_256_source_age_ms": {
+    "count": 64,
+    "p50": 220.0,
+    "p95": 337,
+    "min": 156,
+    "max": 596
+  },
+  "sampled_process_pss_kb": {
+    "count": 66,
+    "p50": 394241.0,
+    "p95": 405262,
+    "min": 284499,
+    "max": 406393
+  },
+  "limitations": [
+    "No same-condition baseline throughput benchmark",
+    "Phone locked: no live phone camera or ARCore integration performance acceptance",
+    "384 first two CameraX observations were stale; fallback is an observed negative performance result, not 384 camera acceptance"
+  ]
+}

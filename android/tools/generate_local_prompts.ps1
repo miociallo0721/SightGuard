@@ -13,6 +13,11 @@ $manifestDirectory = Join-Path $repositoryRoot 'validation'
 New-Item -ItemType Directory -Force -Path $rawDirectory, $manifestDirectory | Out-Null
 
 $prompts = [System.Collections.Generic.List[object]]::new()
+$prompts.Add([pscustomobject]@{ Name = 'ar_wall_near'; Text = '前方墙面可能较近，请注意。' })
+$prompts.Add([pscustomobject]@{ Name = 'ar_wall_approaching'; Text = '相机可能正在靠近前方墙面，请注意。' })
+$prompts.Add([pscustomobject]@{ Name = 'ar_corridor_left'; Text = '画面左侧可见地面较连续，通行条件尚未确认。' })
+$prompts.Add([pscustomobject]@{ Name = 'ar_corridor_center'; Text = '画面中央可见地面较连续，通行条件尚未确认。' })
+$prompts.Add([pscustomobject]@{ Name = 'ar_corridor_right'; Text = '画面右侧可见地面较连续，通行条件尚未确认。' })
 $prompts.Add([pscustomobject]@{ Name = 'perception_started'; Text = '感知已开启' })
 $prompts.Add([pscustomobject]@{ Name = 'perception_stopped'; Text = '感知已停止' })
 $prompts.Add([pscustomobject]@{ Name = 'perception_interrupted'; Text = '视觉感知暂时中断' })
@@ -62,6 +67,15 @@ $directions = @(
     [pscustomobject]@{ Key = 'right'; Text = '右侧' }
 )
 foreach ($direction in $directions) {
+    foreach ($item in @(
+        @('table','桌子'), @('chair','椅子'), @('cabinet','柜子'), @('sofa','沙发'),
+        @('bed','床'), @('shelf','架子'), @('counter','柜台或台面'), @('appliance','冰箱')
+    )) {
+        $prompts.Add([pscustomobject]@{
+            Name = "environment_$($item[0])_$($direction.Key)"
+            Text = "$($direction.Text)检测到$($item[1])。"
+        })
+    }
     $prompts.Add([pscustomobject]@{
         Name = "alert_$($direction.Key)_risk_elevated"
         Text = "$($direction.Text)目标风险升高，请注意"

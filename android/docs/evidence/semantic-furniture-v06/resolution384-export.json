@@ -1,0 +1,193 @@
+{
+  "schemaVersion": "sightguard.segformer-onnx-validation.v1",
+  "status": "completed",
+  "startedAtUtc": "2026-10-12T07:21:52.451395+00:00",
+  "architecture": "SegFormer MiT-B0 ADE20K MMSegmentation checkpoint",
+  "checkpoint": {
+    "path": "D:\\program\\SightGuard\\models\\path_relevance\\segformer_mit_b0_ade20k_160k.pth",
+    "sourceUrl": "https://download.openmmlab.com/mmsegmentation/v0.5/segformer/segformer_mit-b0_512x512_160k_ade20k/segformer_mit-b0_512x512_160k_ade20k_20210726_101530-8ffa8fda.pth",
+    "expectedSha256": "8ffa8fdac140ffaef9119150aca65e9fcb4e7a165e60b80be0102cc805d73a9c",
+    "sha256": "8ffa8fdac140ffaef9119150aca65e9fcb4e7a165e60b80be0102cc805d73a9c"
+  },
+  "image": {
+    "path": "D:\\program\\SightGuard\\android\\validation\\validation.jpg",
+    "sha256": "c02019c4979c191eb739ddd944445ef408dad5679acab6fd520ef9d434bfbc63",
+    "source": "existing Ultralytics bundled bus.jpg validation photograph",
+    "width": 810,
+    "height": 1080
+  },
+  "output": {
+    "path": "D:\\program\\SightGuard-metric-corridor\\android\\deliveries\\semantic-furniture-v06\\resolution384\\segformer_384.onnx",
+    "format": "ONNX",
+    "opset": 17,
+    "input": {
+      "name": "pixel_values",
+      "shape": [
+        1,
+        3,
+        384,
+        384
+      ]
+    },
+    "outputName": "class_logits",
+    "dynamicAxes": false,
+    "outputSemantics": "raw ADE20K class logits at the decoder's 1/4 input resolution",
+    "sha256": "49166600bda475ede43b413e8b145b735fe4532361fa663646e237f19e7dad69",
+    "sizeBytes": 15150109
+  },
+  "software": {
+    "python": "3.12.15",
+    "torch": "2.14.1",
+    "transformers": "5.19.0",
+    "numpy": "2.5.3",
+    "opencv": "4.14.0.94",
+    "onnx": "1.19.1",
+    "onnxruntime": "1.24.4"
+  },
+  "runtime": {
+    "device": "cpu",
+    "processRssBeforeModelBytes": 26615808,
+    "processRssAfterModelLoadBytes": 398077952,
+    "processRssAfterOnnxSessionBytes": 744730624
+  },
+  "preprocessing": {
+    "method": "center_letterbox_preserve_aspect",
+    "sourceWidth": 810,
+    "sourceHeight": 1080,
+    "targetWidth": 384,
+    "targetHeight": 384,
+    "resizedWidth": 288,
+    "resizedHeight": 384,
+    "scale": 0.35555555555555557,
+    "padLeft": 48,
+    "padTop": 0,
+    "padRight": 48,
+    "padBottom": 0,
+    "padValueAfterNormalization": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "interpolation": "cv2.INTER_AREA",
+    "channelOrder": "RGB",
+    "normalization": {
+      "rangeBeforeNormalization": "[0,1]",
+      "mean": [
+        0.48500001430511475,
+        0.4560000002384186,
+        0.4059999883174896
+      ],
+      "std": [
+        0.2290000021457672,
+        0.2240000069141388,
+        0.22499999403953552
+      ]
+    },
+    "tensorShape": [
+      1,
+      3,
+      384,
+      384
+    ],
+    "tensorDtype": "float32",
+    "tensorSha256": "51e9752aa7fd62a1129a0eae4c0f976f18573775ca1b1a10803ad8b102fe62c1"
+  },
+  "onnx": {
+    "sha256": "49166600bda475ede43b413e8b145b735fe4532361fa663646e237f19e7dad69",
+    "sizeBytes": 15150109,
+    "checkerPassed": true,
+    "inputName": "pixel_values",
+    "inputShape": [
+      1,
+      3,
+      384,
+      384
+    ],
+    "inputType": "tensor(float)",
+    "outputName": "class_logits",
+    "outputShape": [
+      1,
+      150,
+      96,
+      96
+    ],
+    "outputType": "tensor(float)",
+    "providers": [
+      "CPUExecutionProvider"
+    ]
+  },
+  "comparison": {
+    "sameInputTensor": true,
+    "pytorchOutputShape": [
+      1,
+      150,
+      96,
+      96
+    ],
+    "onnxOutputShape": [
+      1,
+      150,
+      96,
+      96
+    ],
+    "maxAbsoluteError": 0.0001068115234375,
+    "meanAbsoluteError": 7.175540957312612e-06,
+    "allCloseRtol1e3Atol1e4": true,
+    "argmaxPixelAgreement": 1.0,
+    "argmaxPixelAgreementPercent": 100.0
+  },
+  "referenceBinaries": {
+    "byteOrder": "little-endian",
+    "dtype": "float32",
+    "layout": "contiguous NCHW",
+    "inputTensor": {
+      "path": "D:\\program\\SightGuard-metric-corridor\\android\\deliveries\\semantic-furniture-v06\\resolution384\\input.tensor.bin",
+      "shape": [
+        1,
+        3,
+        384,
+        384
+      ],
+      "sizeBytes": 1769472,
+      "sha256": "51e9752aa7fd62a1129a0eae4c0f976f18573775ca1b1a10803ad8b102fe62c1"
+    },
+    "pytorchLogits": {
+      "path": "D:\\program\\SightGuard-metric-corridor\\android\\deliveries\\semantic-furniture-v06\\resolution384\\reference.logits.bin",
+      "shape": [
+        1,
+        150,
+        96,
+        96
+      ],
+      "sizeBytes": 5529600,
+      "sha256": "1d7feb9da6e7900a6a4f3fcc8fd454a00f6c5d14e09976b984d2f5593f47665b"
+    }
+  },
+  "timing": {
+    "pytorchCpu": {
+      "warmupRuns": 1,
+      "timedRuns": 3,
+      "medianMs": 166.91259999061003,
+      "minimumMs": 165.50089998054318,
+      "maximumMs": 172.80840000603348,
+      "samplesMs": [
+        172.80840000603348,
+        166.91259999061003,
+        165.50089998054318
+      ]
+    },
+    "onnxruntimeCpu": {
+      "warmupRuns": 1,
+      "timedRuns": 3,
+      "medianMs": 107.54100000485778,
+      "minimumMs": 106.91030000452884,
+      "maximumMs": 109.12909999024123,
+      "samplesMs": [
+        109.12909999024123,
+        107.54100000485778,
+        106.91030000452884
+      ]
+    }
+  },
+  "finishedAtUtc": "2026-10-12T07:22:05.857365+00:00"
+}

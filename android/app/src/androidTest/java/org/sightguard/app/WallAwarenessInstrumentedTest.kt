@@ -23,6 +23,7 @@ class WallAwarenessInstrumentedTest {
         val instrumentation=InstrumentationRegistry.getInstrumentation()
         val context=instrumentation.targetContext
         val config=loadEnvironmentConfig(context)
+        val modelSize=InstrumentationRegistry.getArguments().getString("semantic_size",config.preferredInputSize.toString()).toInt()
         val engine=SemanticEnvironmentEngine(config)
         val events=CopyOnWriteArrayList<SpeechPlaybackEvent>()
         val started=CountDownLatch(1)
@@ -41,7 +42,7 @@ class WallAwarenessInstrumentedTest {
             speech.startLocalFallbackForTest()
         }
         try {
-            SpatialDetector(context).use { detector ->
+            SpatialDetector(context,2,modelSize).use { detector ->
                 for(i in 0..7) {
                     val now=SystemClock.elapsedRealtime()
                     val key=SpatialFrameKey(100,0,i,now.toDouble(),wall.width,wall.height,now)
@@ -58,7 +59,7 @@ class WallAwarenessInstrumentedTest {
                         .put("class_counts",JSONObject(evidence.cells.groupingBy{it.classId.toString()}.eachCount()))
                         .put("wall_roi_fraction",engine.measure(evidence.cells).first().roiFraction).put("wall_confidence",engine.measure(evidence.cells).first().confidence)
                         .put("notices",JSONArray(notices.map{it.id})).put("depth_available",false).put("approach_enabled",engine.approachEnabled))
-                    val grid=SpatialGridFusion().fuse(key,GridSemanticSource(key,evidence.cells,SpatialDetector.MODEL_SHA),null,
+                    val grid=SpatialGridFusion().fuse(key,GridSemanticSource(key,evidence.cells,SegFormerModels.contract(modelSize).sha256),null,
                         GridDetectionSource(key,emptyList(),"no detector required for presence"),MotionEvidence(MotionQuality.UNKNOWN,"fixture has no IMU"))
                     assertTrue(grid.cells.any { it.state=="WALL" })
                     if(i==0) {
@@ -90,7 +91,7 @@ class WallAwarenessInstrumentedTest {
             }
         } finally {
             val report=JSONObject().put("schema_version",1).put("device",android.os.Build.MODEL).put("api",android.os.Build.VERSION.SDK_INT)
-                .put("model_sha256",SpatialDetector.MODEL_SHA).put("input_sha256",MessageDigest.getInstance("SHA-256").digest(bytes).joinToString(""){"%02x".format(it)})
+                .put("model_sha256",SegFormerModels.contract(modelSize).sha256).put("input_sha256",MessageDigest.getInstance("SHA-256").digest(bytes).joinToString(""){"%02x".format(it)})
                 .put("source","v03-room.jpg; original CC0 photograph; repeated static input, not moving camera validation")
                 .put("observations",observations).put("audio_events",JSONArray(events.map{ e -> JSONObject().put("phase",e.phase.logName).put("event",e.eventId).put("text",e.spokenText).put("elapsed_ms",e.elapsedRealtimeMs).put("deadline_ms",e.validUntilElapsedMs).put("resource",e.resourceName).put("detail",e.detail) }))
             File(context.filesDir,"wall_awareness_actual.json").writeText(report.toString(2))

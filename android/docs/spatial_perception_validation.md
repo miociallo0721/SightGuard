@@ -25,7 +25,7 @@
 
 ## 风险与自动启动
 
-根因与政策见 [风险相关性说明](../../docs/android-risk-relevance.md)：Android将COCO80全部送入类别无关评分，大框/中心位置、初始无运动重新归一化和降级迟滞共同造成HIGH偏多；核心本来已有三级，界面原先只展示最高ACTIVE且固定红色。
+根因与政策见 [风险相关性说明](../../docs/archive/android-risk-relevance.md)：Android将COCO80全部送入类别无关评分，大框/中心位置、初始无运动重新归一化和降级迟滞共同造成HIGH偏多；核心本来已有三级，界面原先只展示最高ACTIVE且固定红色。
 
 - 等级继续来自原核心 `.35/.65`，升级margin `.02`、降级margin `.05`/hold400ms，事件确认250ms/2观察。NONE独立于VALID/LIMITED/UNKNOWN/UNAVAILABLE；UNKNOWN不显示无风险。
 - 原始YOLO与全量tracking records保留；只有风险输入过滤。书、鼠标、电脑、keyboard、knife作为context保留框，不自动生成步行风险。条件家具需位置+500ms/3观察。knife保守标类别不确定；COCO无pen，未声称模型混淆已解决。

@@ -1,0 +1,59 @@
+{
+  "scope": "AVD release virtual CameraX, ten samples over about five minutes; not a long-term leak proof",
+  "samples": [
+    {
+      "sample": 0,
+      "utc": "2026-10-12T08:04:25.6843364Z",
+      "memory": "           TOTAL PSS:   363261            TOTAL RSS:   456296       TOTAL SWAP PSS:     6838"
+    },
+    {
+      "sample": 1,
+      "utc": "2026-10-12T08:04:55.9826653Z",
+      "memory": "           TOTAL PSS:   382368            TOTAL RSS:   475580       TOTAL SWAP PSS:     6659"
+    },
+    {
+      "sample": 2,
+      "utc": "2026-10-12T08:05:26.2717474Z",
+      "memory": "           TOTAL PSS:   398163            TOTAL RSS:   491580       TOTAL SWAP PSS:     6659"
+    },
+    {
+      "sample": 3,
+      "utc": "2026-10-12T08:05:56.5358505Z",
+      "memory": "           TOTAL PSS:   381568            TOTAL RSS:   475108       TOTAL SWAP PSS:     6658"
+    },
+    {
+      "sample": 4,
+      "utc": "2026-10-12T08:06:26.7735837Z",
+      "memory": "           TOTAL PSS:   371566            TOTAL RSS:   463696       TOTAL SWAP PSS:     6654"
+    },
+    {
+      "sample": 5,
+      "utc": "2026-10-12T08:06:57.0278437Z",
+      "memory": "           TOTAL PSS:   390478            TOTAL RSS:   482248       TOTAL SWAP PSS:     6654"
+    },
+    {
+      "sample": 6,
+      "utc": "2026-10-12T08:07:27.3358242Z",
+      "memory": "           TOTAL PSS:   376839            TOTAL RSS:   468628       TOTAL SWAP PSS:     6654"
+    },
+    {
+      "sample": 7,
+      "utc": "2026-10-12T08:07:57.6146974Z",
+      "memory": "           TOTAL PSS:   397612            TOTAL RSS:   489412       TOTAL SWAP PSS:     6658"
+    },
+    {
+      "sample": 8,
+      "utc": "2026-10-12T08:08:27.8772347Z",
+      "memory": "           TOTAL PSS:   369850            TOTAL RSS:   460508       TOTAL SWAP PSS:     6654"
+    },
+    {
+      "sample": 9,
+      "utc": "2026-10-12T08:08:58.2009206Z",
+      "memory": "           TOTAL PSS:   378145            TOTAL RSS:   467672       TOTAL SWAP PSS:     6655"
+    }
+  ],
+  "minimum_pss_kb": 363261,
+  "maximum_pss_kb": 398163,
+  "final_pss_kb": 378145,
+  "host_stopped_app_after_run": true
+}

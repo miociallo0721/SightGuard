@@ -25,7 +25,7 @@ class ModelInstrumentedTest {
         val started = SystemClock.elapsedRealtime()
         val detections: List<Detection>
         var modelSha = ""
-        Detector(context).use { detector ->
+        Detector(context, experimental = false).use { detector ->
             modelSha = detector.modelSha
             detections = detector.detect(image)
         }
